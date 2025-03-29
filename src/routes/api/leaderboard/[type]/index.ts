@@ -12,6 +12,7 @@ export async function get({ params }) {
    const {type} = params
 	const { data, error } = await from('leaderboard').select('*').eq('puzzle_type', type);
 
+
    if(error) {
       return {
          status: 500,

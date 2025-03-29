@@ -35,7 +35,6 @@
    }
    
    function handleKeyPress(event: KeyboardEvent) {
-      console.log(event.code)
 		if (event.code != "Enter") return;
 		submitAnswer()
 	}

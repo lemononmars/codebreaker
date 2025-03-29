@@ -3,7 +3,7 @@
    export async function load({fetch, params}) {
 
       const {year, week} = params
-      const res = await fetch('/api/leaderboard/weekly')
+      const res = await fetch(`/api/leaderboard/weekly/${year}/${week}`)
       const data: Leaderboard[] = await res.json()
       return {
          props: { 

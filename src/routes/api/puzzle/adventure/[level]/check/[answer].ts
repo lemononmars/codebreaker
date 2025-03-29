@@ -12,7 +12,6 @@ const solutions = ['1', '2', '3', '4']
 export async function get({ params }) {
 
    const {level, answer} = params;
-   console.log(level, answer)
 
    if(answer === solutions[level-1])
       return {

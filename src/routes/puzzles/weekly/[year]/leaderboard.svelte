@@ -4,13 +4,12 @@
    export async function load({fetch, params}) {
 
       const {year} = params
-      const res = await fetch('/api/leaderboard/weekly')
+      const res = await fetch(`/api/leaderboard/weekly/${year}`)
       const data: Leaderboard[] = await res.json()
 
       return {
          props: { 
-            data: data.filter(d=>String(d.puzzle_id).startsWith(year)),
-            year,
+            data
          },
          
       };
