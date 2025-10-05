@@ -4,8 +4,10 @@
    import {dateToThaiString} from '$lib/utils/date'
    export let content: IEvent
 
-   const url = content.type === 'event' ? 'events': 'puzzles/' + content.type
-   const imgURL = content.type === 'event' ? getImageURL('events', content.image) : getPuzzleImageURL(content.type, content.image)
+   const url = content.type === 'event' ? 'events'
+      :'puzzles/' + content.type
+   const imgURL = content.type === 'event' ? getImageURL('events', content.image)
+      :getPuzzleImageURL(content.type, content.image)
 </script>
 
 <a href="/{url}/{content.redirect || content.id}">

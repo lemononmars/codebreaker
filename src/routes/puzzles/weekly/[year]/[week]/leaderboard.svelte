@@ -7,7 +7,7 @@
       const data: Leaderboard[] = await res.json()
       return {
          props: { 
-            data: data.filter(d=>d.puzzle_id % 100 == week && Math.floor(d.puzzle_id / 100) == year),
+            data,
             year,
             week
          },

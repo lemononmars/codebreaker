@@ -25,7 +25,7 @@ export async function post( {request} ){
    }
 
    sendhook(
-      ':game_die: ' + puzzle_type + '/' + puzzle_id + ' solved by ' + name + ' - ' + score
+      ':game_die: ' + puzzle_type + '/' + puzzle_id + ' solved by ' + name + ' - ' + submission.score
    )
 	return data
 }

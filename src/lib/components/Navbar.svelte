@@ -1,11 +1,11 @@
 <script lang=ts>
    import logo from '$lib/images/logo.png'
-   import {HomeIcon, CalendarIcon, PlayCircleIcon, InfoIcon, ChevronDownIcon, ChevronUpIcon, SettingsIcon} from 'svelte-feather-icons'
+   import {HomeIcon, CalendarIcon, PlayCircleIcon, InfoIcon, ChevronDownIcon, ChevronUpIcon, SettingsIcon, ShoppingCartIcon} from 'svelte-feather-icons'
    import {username} from '$lib/store'
 
-   const icons = [HomeIcon, CalendarIcon, PlayCircleIcon, InfoIcon]
-   const menus = ['Home', 'Events', 'Puzzles', 'About']
-   const links = ['', 'events', 'puzzles', 'about']
+   const icons = [HomeIcon, CalendarIcon, PlayCircleIcon, ShoppingCartIcon, InfoIcon]
+   const menus = ['Home', 'Events', 'Puzzles', 'Shop', 'About']
+   const links = ['', 'events', 'puzzles', 'shop', 'about']
 
    let hideBar = false
    let openModal = false

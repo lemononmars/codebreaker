@@ -1,6 +1,5 @@
 <script context=module lang=ts>
    import type {Leaderboard} from '$lib/interfaces'
-	import { dateToThaiString } from '$lib/utils/date';
    export async function load({fetch, params}) {
 
       const {year} = params
@@ -9,9 +8,8 @@
 
       return {
          props: { 
-            data
-         },
-         
+            data, year
+         }
       };
    }
 </script>
