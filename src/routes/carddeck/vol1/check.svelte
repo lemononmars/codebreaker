@@ -1,5 +1,5 @@
 <script lang=ts>
-   import {answers, numPuzzles, puzzleTitles} from '$lib/data/puzzles/carddeck/vol1'
+   import {answers, puzzleTitles} from '$lib/data/puzzles/carddeck/vol1'
 
    let answer:string = ""
    let lastAnswer: string = ""
