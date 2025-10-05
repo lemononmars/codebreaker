@@ -10,7 +10,7 @@
 
 <h1><a href="./">Puzzle Card Deck Vol.1</a></h1>
 
-<div class="flex flex-col justify-left text-left">
+<div class="flex flex-col justify-left text-left px-2">
    <img src="https://raw.githubusercontent.com/lemononmars/codebreaker/main/src/lib/images/product/puzzle_card_deck_vol1_promote.jpg" onerror='this.style.display = "none"' class="aspect-auto object-contain" alt="img"><br>
 
    <p>Puzzle Card Deck Vol.1 พร้อมจำหน่ายแล้วในราคาเพียง 150 บาท

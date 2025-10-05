@@ -10,7 +10,7 @@
 
 <h1>Code Breaker Logic Puzzle Contest Book</h1>
 
-<div class="flex flex-col justify-left text-left">
+<div class="flex flex-col justify-left text-left px-2">
    <img src="https://raw.githubusercontent.com/lemononmars/codebreaker/main/src/lib/images/product/logic_puzzle_contest_book_cover.jpg" onerror='this.style.display = "none"' class="h-64 aspect-auto object-contain" alt="img"><br>
 
    <div class="flex flex-col m-auto">
@@ -19,7 +19,7 @@
 
    <div class="divider"></div>
 
-   <p>หนังสือรวบรวมโจทย์ทั้งหมดจากงาน <a href="/events/logiccontest" target="_blank">Code Breaker Logic Puzzle Contest</a> พร้อมโจทย์พิเศษอีกกว่า 40 ข้อ พร้อมจำหน่ายแล้วในราคา 120 บาท (+ ค่าส่ง 30 บาท)</p><br>
+   <p>หนังสือรวบรวมโจทย์ทั้งหมดจากงาน <a href="/events/logiccontest" target="_blank">Code Breaker Logic Puzzle Contest</a> พร้อมโจทย์พิเศษอีกกว่า 40 ข้อ พร้อมจำหน่ายแล้วในราคา 150 บาท (+ ค่าส่ง 30 บาท)</p><br>
 
    <ul>
       <li>ปริศนา logic puzzle รวม 85 ข้อ ได้แก่ <br>
@@ -41,7 +41,7 @@
 
    <div class="divider"></div>
 
-   <p>A puzzle book from <a href="/events/logiccontest" target="_blank">Code Breaker Logic Puzzle Contest</a> plus about 40 bonus puzzles, is on sale for 120 Baht (+ 30 Baht shipping.)</p><br>
+   <p>A puzzle book from <a href="/events/logiccontest" target="_blank">Code Breaker Logic Puzzle Contest</a> plus about 40 bonus puzzles, is on sale for 150 Baht (+ 30 Baht shipping.)</p><br>
 
    <ul>
       <li>85 logic puzzles!<br>

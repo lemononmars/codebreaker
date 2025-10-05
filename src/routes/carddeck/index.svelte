@@ -14,7 +14,7 @@
       <li>
          <a href="carddeck/vol1">
             <h2>Puzzle Card Deck Vol.1</h2><br>
-            <img src="https://raw.githubusercontent.com/lemononmars/codebreaker/main/src/lib/images/product/puzzle_card_deck_vol1_promote.jpg" onerror='this.style.display = "none"' class="aspect-auto object-contain" alt="img"><br>
+            <img src="https://raw.githubusercontent.com/lemononmars/codebreaker/main/src/lib/images/product/puzzle_card_deck_vol1.jpg" onerror='this.style.display = "none"' class="aspect-auto object-contain" alt="img"><br>
          </a>
       </li>
       
