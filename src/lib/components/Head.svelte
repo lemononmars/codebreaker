@@ -2,7 +2,7 @@
   export let title: string
   export let description: string
   export let url: string
-  export let imageUrl: string = "https://raw.githubusercontent.com/lemononmars/codebreaker/main/static/favicon.jpg"
+  export let imageUrl: string = "https://raw.githubusercontent.com/lemononmars/codebreaker/main/static/icon_sm.jpg"
   export let gtagId: string = "G-RWHT35NLCF"
 </script>
 

@@ -6,7 +6,7 @@
    <title>Code Breaker | Logic Puzzle Contest Book - Errata</title>
 </svelte:head>
 
-<h1><a href="./">Logic Puzzle Contest Book</a></h1>
+<h1>Errata</h1>
 
 <div class="flex flex-col justify-left text-left px-2">
    <ul>
