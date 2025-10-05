@@ -23,7 +23,7 @@
 
    <ul>
       <li>ปริศนา logic puzzle รวม 85 ข้อ ได้แก่ <br>
-      Akari (2), Battleship (2), Cave (3), Choco Banana (27), Double Choco (3), Fillomino (3), Ice Walk (4), Kakuro (2), Masyu (3), Midloop (6), Nurikabe (2), Pentominous (3), Ripple Effect (3), Shikaku (2), Slitherlink (2), Star Battle (3), Statue Park (3), Sudoku (2), Sudoku (Interconnected) 1, Sudoku (2), Territory (5), Yajilin (2)
+      Akari (2), Battleship (2), Cave (3), Choco Banana (27), Double Choco (3), Fillomino (3), Ice Walk (4), Kakuro (2), Masyu (3), Midloop (6), Nurikabe (2), Pentominous (3), Ripple Effect (3), Shikaku (2), Slitherlink (2), Star Battle (3), Statue Park (3), Sudoku (2), Sudoku (Interconnected) 1, Territory (5), Yajilin (2)
       </li> 
       <br>
       <li>ปริศนาหลายรูปแบบ ได้แก่
@@ -45,7 +45,7 @@
 
    <ul>
       <li>85 logic puzzles!<br>
-      Akari (2), Battleship (2), Cave (3), Choco Banana (27), Double Choco (3), Fillomino (3), Ice Walk (4), Kakuro (2), Masyu (3), Midloop (6), Nurikabe (2), Pentominous (3), Ripple Effect (3), Shikaku (2), Slitherlink (2), Star Battle (3), Statue Park (3), Sudoku (2), Sudoku (Interconnected) 1, Sudoku (2), Territory (5), Yajilin (2)
+      Akari (2), Battleship (2), Cave (3), Choco Banana (27), Double Choco (3), Fillomino (3), Ice Walk (4), Kakuro (2), Masyu (3), Midloop (6), Nurikabe (2), Pentominous (3), Ripple Effect (3), Shikaku (2), Slitherlink (2), Star Battle (3), Statue Park (3), Sudoku (2), Sudoku (Interconnected) 1, Territory (5), Yajilin (2)
       </li> 
       <br>
       <li>Various puzzles
@@ -61,5 +61,7 @@
 
    <p>For more info, contact the facebook page <a href="http://m.me/codebreakerTH" target="_blank">Code Breaker Thailand</a></p>
    <div class="divider"></div>
-   <h1 class="bg-blue-100"><a href="/shop/logiccontestbook/errata">Book Errata</a></h1>
+   <div class="mx-auto">
+      <h1 class="bg-blue-100 mx-auto"><a href="/shop/logiccontestbook/errata">Book Errata</a></h1>
+   </div>
 </div>

@@ -28,7 +28,7 @@
       <a href="/shop/{p.url}">
          <div class="flex flex-row gap-2 border-2 shadow-lg shadow-white hover:scale-105 transition ease-in-out hover:bg-info-content m-4">
             <div>
-               <img src="{imgUrlPrefix + p.imgUrl}" class="h-32 aspect-square object-cover" alt="img">
+               <img src="{imgUrlPrefix + p.imgUrl}" class="w-32 aspect-square object-cover" alt="img">
             </div>
             <div class="text-center grid content-between">
                <h1 class="capitalize">{p.title}</h1>
