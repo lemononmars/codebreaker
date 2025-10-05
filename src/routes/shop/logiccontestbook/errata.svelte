@@ -16,9 +16,9 @@
       <img src="https://raw.githubusercontent.com/lemononmars/codebreaker/main/src/lib/images/product/4-14 Choco Banana.png" onerror='this.style.display = "none"' class="h-64 aspect-auto object-contain" alt="img"><br>
       <li>4.23. Choco Banana (Flooded) - Uniqueness: the puzzle has been revamped. see the new version below.</li>
       <img src="https://raw.githubusercontent.com/lemononmars/codebreaker/main/src/lib/images/product/4-23 Choco Banana.png" onerror='this.style.display = "none"' class="h-64 aspect-auto object-contain" alt="img"><br>
-      <a href="https://raw.githubusercontent.com/lemononmars/codebreaker/main/src/lib/images/product/4-23 Choco Banana Sol.png"> Solution </a>
+      <a href="https://raw.githubusercontent.com/lemononmars/codebreaker/main/src/lib/images/product/4-23 Choco Banana Sol.png" target="_blank"> Solution </a>
       <li>4.24. Choco Banana (Flooded) - Uniqueness: the center clues have been adjusted. see the new version below.</li>
       <img src="https://raw.githubusercontent.com/lemononmars/codebreaker/main/src/lib/images/product/4-24 Choco Banana.png" onerror='this.style.display = "none"' class="h-64 aspect-auto object-contain" alt="img"><br>
-      <a href="https://raw.githubusercontent.com/lemononmars/codebreaker/main/src/lib/images/product/4-24 Choco Banana Sol.png"> Solution </a>
+      <a href="https://raw.githubusercontent.com/lemononmars/codebreaker/main/src/lib/images/product/4-24 Choco Banana Sol.png" target="_blank"> Solution </a>
    </ul>
 </div>

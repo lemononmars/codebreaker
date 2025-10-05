@@ -60,4 +60,6 @@
    </ul><br>
 
    <p>For more info, contact the facebook page <a href="http://m.me/codebreakerTH" target="_blank">Code Breaker Thailand</a></p>
+   <div class="divider"></div>
+   <h1 class="bg-blue-100"><a href="/shop/logiccontestbook/errata">Book Errata</a></h1>
 </div>
