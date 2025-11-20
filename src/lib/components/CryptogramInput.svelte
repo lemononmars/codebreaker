@@ -65,13 +65,13 @@
       letterElement[splittedIndex[activeWordIndex]].classList.add('bg-warning', 'border-info')
       for(let i = 0; i < numBlocks; i ++) {
          if(cryptogramIndices[i] == activeCryptogramIndex)
-            letterElement[splittedIndex[i]].classList.add('bg-info', 'border-info')
+            letterElement[splittedIndex[i]].classList.add('bg-info-content', 'border-info')
       }
    }
 
    function clearActive() {
       letterElement.forEach((l) => {
-         l.classList.remove('bg-info', 'border-info', 'bg-warning')
+         l.classList.remove('bg-info-content', 'border-info', 'bg-warning')
       })
    }
 
