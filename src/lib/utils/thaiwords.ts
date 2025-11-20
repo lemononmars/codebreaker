@@ -15,7 +15,7 @@ export function splitWord(word: string) {
 }
 
 export function isLegal(a: string) {
-   return a.length == 1 && a.match(/[\u0E00-\u0E4C]/)
+   return a.length == 1 && a.match(/[\u0E00-\u0E4C]/) !== null
 }
 
 export function appendable(a: string, b: string) {
@@ -23,15 +23,19 @@ export function appendable(a: string, b: string) {
 }
 
 export function isUpper(a: string) {
-    return a.match(upperLetterRegex)
+    return a.match(upperLetterRegex) !== null
 }
 
 export function isLower(a: string) {
-    return a.match(lowerLetterRegex)
+    return a.match(lowerLetterRegex) !== null
+}
+
+export function isMiddle(a: string) {
+    return a.match(/[ก-ฮ]/) || a.match(/[ใเแโไาำะๆฯฤา]/)
 }
 
 export function isTall(a: string) {
-    return a === 'ใ' || a === 'ไ'
+    return a === 'ใ' || a === 'ไ' || a === 'โ'
 }
 
 export const consonantRegex = /[\u0E01-\u0E2E]/

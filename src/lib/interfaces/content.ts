@@ -69,4 +69,12 @@ export interface IMissingVowels extends IContent{
    answers: string[]
 }
 
-export type PuzzleType = 'alphabet' | 'rebus' | 'crossword' | 'puzzlehunt' | 'weekly' | 'missingvowels'
+export interface ICryptogram extends IContent{
+   type: 'cryptogram',
+   title: string,
+   answer: string,
+   newlines: number[],
+   showUsedLetters: boolean
+}
+
+export type PuzzleType = 'alphabet' | 'rebus' | 'crossword' | 'puzzlehunt' | 'weekly' | 'missingvowels' | 'cryptogram'

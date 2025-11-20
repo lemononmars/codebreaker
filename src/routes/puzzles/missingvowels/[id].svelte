@@ -39,7 +39,7 @@
    function stripVowels(w: string){
       let naked = w.replace(/[^\u0E00-\u0E2E]/g, '')
       let shuffle = naked.split("").reduce(
-         (w,c)=>w+c+ (Math.random()<0.7?'':' '),
+         (w,c)=>w+c+ (Math.random()<0.6?'':' '),
          ''
       )
       return shuffle
@@ -107,7 +107,8 @@
                   {a}
                </div>
             {:else}
-               <div class="input-group w-72 mx-auto">
+               <div class="input-group w-80 mx-auto">
+                  <div class="btn btn-error " on:click={nextRound}>เฉลย</div>
                   <input class="input input-bordered" type="text" bind:value={answer} on:keydown={handleKeyPress} use:focusOnMount>
                   <div class="btn btn-primary " on:click={checkAnswer}>ตอบ</div>
                </div>

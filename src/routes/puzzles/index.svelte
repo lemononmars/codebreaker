@@ -35,7 +35,12 @@
       {
          type: "missingvowels",
          description: "ทายคำโดยใช้แค่พยัญชนะ",
-         icon: getImageURL('assets', 'rebus.png')
+         icon: getImageURL('assets', 'missing.png')
+      },
+      {
+         type: "cryptogram",
+         description: "ทายคำจากรหัสอักษร",
+         icon: getImageURL('assets', 'cryptogram.png')
       },
       // {
       //    type: "adventure",
