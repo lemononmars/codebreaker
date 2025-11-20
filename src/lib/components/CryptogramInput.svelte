@@ -189,14 +189,14 @@
    <div class="flex flex-row flex-wrap justify-center gap-2 mx-auto">
    {#each poolArray as p, index} 
          <div 
-            class="w-8 lg:w-12 h-8 lg:h-12 border-2 bg-none"
+            class="w-10 lg:w-12 h-8 lg:h-12 border-2 bg-none"
             class:w-8={!showUsedLetters}
             class:bg-error={usedPoolLetters[index]}
             bind:this={poolLetterElement[index]}
             on:click={()=>handlePool(p, index)}
             on:keypress={()=>{}}
          >
-            <p class="lg:text-4xl translate-y-2">{p}</p>
+            <p class="text-lg lg:text-4xl translate-y-1">{p}</p>
          </div>
    {/each}
    </div>

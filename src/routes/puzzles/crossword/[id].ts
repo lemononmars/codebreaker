@@ -1,8 +1,13 @@
 import crosswords from '$lib/data/puzzles/crosswords'
 
 /** @type {import('./__types/[id]').RequestHandler} */
-export async function get({ params }) {
-  const {id} = params
+export async function get({ params }: { params: { id: number } }) {
+   let {id} = params
+   // TODO: make it fetch, await, etc?
+  id = Number(id)
+  const total: number = Object.keys(crosswords).length
+  id = (id+total-1)%total + 1
+  
   const content = crosswords.filter(n => n.id == id)
    if (content.length > 0) {
      return {

@@ -8,7 +8,7 @@
    <title>Code Breaker | Cryptogram </title>
 </svelte:head>
 
-<h1>Rebus</h1>
+<h1>Cryptogram</h1>
 
 <div class="flex flex-col justify-center">
    <table class="table table-zebra table-compact w-full mx-auto">

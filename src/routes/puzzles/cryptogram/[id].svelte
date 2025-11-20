@@ -10,11 +10,13 @@
 
 <TitleTab {content}/>
 
+{#key content}
 <div class="flex flex-col gap-2 pb-10">
    <CryptogramInput word={content.answer} newlines={content.newlines} showUsedLetters={content.showUsedLetters}
       on:solved={()=>openModal=true}
    />
 </div>
+{/key}
 
 <!-- Put this part before </body> tag -->
 <input type="checkbox" id="submit-modal" class="modal-toggle"/>
