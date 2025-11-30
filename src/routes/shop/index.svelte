@@ -14,6 +14,12 @@
          description: "ปริศนาจากงาน Logic Puzzle Contest",
          imgUrl: 'logic_puzzle_contest_book_cover.jpg'
       },
+      {
+         url: 'rebusbook',
+         title: "Rebus Puzzle Book",
+         description: "หนังสือปริศนาอักษรแทนคำ",
+         imgUrl: 'rebus_book_cover.jpg'
+      },
    ]
 </script>
 
