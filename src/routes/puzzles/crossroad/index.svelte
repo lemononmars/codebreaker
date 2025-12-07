@@ -146,6 +146,7 @@
       numSkip = 0
       numHint = 0
       answerHistory = []
+      correctHistory = []
       if(isTimed) {
          time = maxTime
          timer = setInterval(()=>time -= 100, 100)
@@ -228,7 +229,7 @@
             </div>
          {/key}
       {:else if isFinished}
-         <div class="stats stats-vertical lg:stats-horizontal shadow p-2">
+         <div class="stats stats-vertical lg:stats-horizontal shadow p-2 overflow-clip">
             <div class="stat" in:fly={{y:10, delay:1000}}>
                <div class="stat-figure text-info">
                   <PlusCircleIcon size=20/>
@@ -353,9 +354,9 @@
          พิมพ์คำลงในช่องตรงกลาง เพื่อให้ช่องที่ติดกันอ่านตามลูกศรได้คำ 4 คำ เช่น
 
          <div class="relative w-48 h-32 mx-auto border p-4 m-4">
-            <div class="absolute top-0 inset-x-0 m-auto">ชาย</div>
+            <div class="absolute top-0 inset-x-0 m-auto">กึ่ง</div>
             <div class="absolute top-1/2 left-0 -translate-y-1/2 px-2">คน</div>
-            <div class="absolute top-1/2 right-0 -translate-y-1/2 px-2">คืน</div>
+            <div class="absolute top-1/2 right-0 -translate-y-1/2 px-2">คน</div>
             <div class="absolute bottom-0 inset-x-0 m-auto">วัน</div>
             <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"><span class="border w-4 h-4">????</span></div>
             <ArrowDownIcon class="absolute top-1/4 m-auto inset-x-0 -translate-y-2" size=20/>
@@ -367,7 +368,7 @@
          ถ้าใส่คำว่า<span class="underline">กลาง</span>ลงไปในช่อง จะเกิดเป็นคำว่า
          
          <br>
-         - ชายกลาง คนกลาง กลางคืน และกลางวัน -
+         - กึ่งกลาง คนกลาง กลางคน และกลางวัน -
          <br>
          
          ฉะนั้นคำตอบคือ <span class="underline">กลาง</span>
@@ -390,13 +391,13 @@
 			transform: rotate(0);
 		}
 		25% {
-			transform: rotate(15deg);
+			transform: rotate(10deg);
 		}
 		50% {
 			transform: rotate(0);
 		}
 		75% {
-			transform: rotate(-15deg);
+			transform: rotate(-10deg);
 		}
 		100% {
 			transform: rotate(0);
