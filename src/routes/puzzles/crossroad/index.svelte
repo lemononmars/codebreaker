@@ -118,7 +118,6 @@
       answer = currentAnswer
       numSkip ++
       setTimeout(()=>{
-         isWiggle = false
          isCoolingDown = false
          getNewAnswer()
       }, 1000)
@@ -140,22 +139,25 @@
 
    function play() {
       isPlaying = true
-      getNewAnswer()
+      clearInterval(timer)
       score = 0
       numCorrect = 0
       numSkip = 0
       numHint = 0
       answerHistory = []
       correctHistory = []
+      getNewAnswer()
       if(isTimed) {
          time = maxTime
-         timer = setInterval(()=>time -= 100, 100)
-         setTimeout(()=>{
-            isPlaying = false
-            isFinished = true
-            clearInterval(timer)
-            time = 0
-         }, maxTime)
+         timer = setInterval(()=>{
+            time -= 100
+            if(time <= 0) {
+               isPlaying = false
+               isFinished = true
+               clearInterval(timer)
+               time = 0
+            }
+         }, 100)
       }
       else {
          time = 0
