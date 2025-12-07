@@ -38,6 +38,16 @@ export function isTall(a: string) {
     return a === 'ใ' || a === 'ไ' || a === 'โ'
 }
 
+export function wordLength(word: string) {
+  return word.replace(/[\u0E31\u0E34-\u0E3A\u0E47-\u0E4E]/g, "").length
+}
+
+export function getFirstLetter(word: string) {
+  for(var l of word.split(""))
+    if(l.match(/[ก-ฮ]/)) return l
+  return ""
+}
+
 export const consonantRegex = /[\u0E01-\u0E2E]/
 export const upperLetterRegex = /[\u0E31\u0E34-\u0E37\u0E47-\u0E4C`]/
 export const lowerLetterRegex = /[\u0E38-\u0E39]/

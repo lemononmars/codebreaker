@@ -42,6 +42,11 @@
          description: "ทายคำจากรหัสอักษร",
          icon: getImageURL('assets', 'cryptogram.png')
       },
+      {
+         type: "crossroad",
+         description: "เติมคำเพื่อสร้างคำทั้งสี่ทิศทาง",
+         icon: getImageURL('assets', 'crossroad.png')
+      },
       // {
       //    type: "adventure",
       //    description: "ตะลุยด่านไขรหัส",
