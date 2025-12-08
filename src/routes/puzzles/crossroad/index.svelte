@@ -174,10 +174,9 @@
 
 <div class="flex flex-col gap-2 h-full lg:h-auto relative overflow-y-clip lg:overflow-y-none">
    <h1>Crossroad</h1>
-   <div class="sticky top-0 lg:top-20 flex flex-col z-20 bg-info-content lg:h-auto py-20">
+   <div class="sticky top-0 lg:top-20 flex flex-col z-20 bg-info-content lg:h-auto py-4">
       {#if isPlaying}
-         {#key currentAnswer}
-            <div class="relative w-96 h-96 mx-auto">
+            <div class="relative t-0 w-80 h-80 lg:w-96 lg:h-96 mx-auto">
                <!-- top left -->
                {#if isTimed}
                   <div class="radial-progress absolute top-0 left-0 w-20 m-4 text-sm"
@@ -193,19 +192,23 @@
                   </div>
                {/if}
                <!-- top middle -->
-               <div class="btn btn-xl absolute top-0 inset-x-0 m-auto w-24 h-24 text-3xl text-info" 
-                  in:fly={{y:10, delay:100}}
-               >{currentPostClues[0]}</div>
+               {#key currentAnswer}
+                  <div class="btn btn-xl absolute top-0 inset-x-0 m-auto w-20 h-20 lg:w-24 lg:h-24 text-xl lg:text-3xl text-info" 
+                     in:fly={{y:10, delay:100}}
+                  >{currentPostClues[0]}</div>
+               {/key}
                <!-- top right -->
                <div class="btn btn-xl btn-outline absolute top-0 right-0 m-4 w-20 h-20 text-3xl"
                >{score}</div>
                <!-- center left -->
-               <div class="btn btn-xl absolute left-0 inset-y-0 m-auto w-24 h-24 text-3xl text-info" 
+               {#key currentAnswer}
+               <div class="btn btn-xl absolute left-0 inset-y-0 m-auto w-20 h-20 lg:w-24 lg:h-24 text-xl lg:text-3xl text-info" 
                   in:fly={{x:10, delay:200}}
                >{currentPostClues[1]}</div>
+               {/key}
                <!-- center middle -->
                <input 
-                  class="input absolute input-bordered text-center text-3xl h-32 w-32 transition-colors inset-x-0 inset-y-0 m-auto" 
+                  class="input absolute input-bordered text-center text-xl lg:text-3xl w-24 h-24 lg:w-32 lg:h-32 transition-colors inset-x-0 inset-y-0 m-auto" 
                   class:input-success={answer === currentAnswer}
                   class:text-success={answer === currentAnswer}
                   class:wiggle={isWiggle}
@@ -214,13 +217,19 @@
                   bind:value={answer}
                   on:keyup={handleAnswer}>
                <!-- center right -->
-               <div class="btn btn-xl absolute text-3xl right-0 inset-y-0 m-auto w-24 h-24 text-accent"
-                  in:fly={{x:-10, delay:300}}>{currentPreClues[0]}</div>
+               {#key currentAnswer}
+                  <div class="btn btn-xl absolute text-xl lg:text-3xl right-0 inset-y-0 m-auto w-20 h-20 lg:w-24 lg:h-24 text-accent"
+                     in:fly={{x:-10, delay:300}}
+                  >{currentPreClues[0]}</div>
+               {/key}
                <!-- bottom left -->
                <div class="btn btn-success absolute bottom-0 right-0 w-20 h-20 m-4" on:click={getHints} on:keypress={()=>{}}><kbd class="kbd kbd-sm bg-base-content">▲</kbd><kbd class="kbd kbd-sm bg-base-content">▼</kbd> เปลี่ยนคำใบ้</div>
                <!-- bottom middle -->
-               <div class="btn btn-xl absolute text-3xl bottom-0 inset-x-0 m-auto w-24 h-24 text-accent"
-                  in:fly={{y:-10, delay:400}}>{currentPreClues[1]}</div>
+               {#key currentAnswer}
+                  <div class="btn btn-xl absolute text-xl lg:text-3xl bottom-0 inset-x-0 m-auto w-20 h-20 lg:w-24 lg:h-24 text-accent"
+                     in:fly={{y:-10, delay:400}}
+                  >{currentPreClues[1]}</div>
+               {/key}
                <!-- bottom right -->
                <div class="btn btn-warning absolute bottom-0 left-0 w-20 h-20 m-4" on:click={giveUp} on:keypress={()=>{}}> <kbd class="kbd bg-base-content">▶︎</kbd> ข้าม </div>
                
@@ -229,7 +238,6 @@
                <ArrowRightIcon class="absolute m-auto inset-y-0 left-1/4 translate-x-1" size=20/>
                <ArrowRightIcon class="absolute m-auto inset-y-0 right-1/4 -translate-x-1" size=20/>
             </div>
-         {/key}
       {:else if isFinished}
          <div class="stats stats-vertical lg:stats-horizontal shadow p-2 overflow-clip">
             <div class="stat" in:fly={{y:10, delay:1000}}>
