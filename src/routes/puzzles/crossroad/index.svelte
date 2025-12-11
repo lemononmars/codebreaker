@@ -239,7 +239,7 @@
                <ArrowRightIcon class="absolute m-auto inset-y-0 right-1/4 -translate-x-1" size=20/>
             </div>
       {:else if isFinished}
-         <div class="stats stats-vertical lg:stats-horizontal shadow p-2 overflow-clip">
+         <div class="stats stats-vertical lg:stats-horizontal shadow p-2 overflow-clip mx-2">
             <div class="stat" in:fly={{y:10, delay:1000}}>
                <div class="stat-figure text-info">
                   <PlusCircleIcon size=20/>
