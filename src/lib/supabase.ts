@@ -1,5 +1,5 @@
 import { createClient } from '@supabase/supabase-js';
-import type {PuzzleType} from '$lib/interfaces'
+import type { PuzzleType } from '$lib/interfaces'
 
 type SupaStorageBucket = 'puzzles' | 'events' | 'assets';
 const DIR_IMAGE = 'https://ojjggolcfmjnovmipaav.supabase.in/storage/v1/object/';
@@ -13,7 +13,7 @@ export const supabaseClient = createClient(
  * Convenience re-exports for typed selections
  *
  */
-// export const auth = supabaseClient.auth;
+export const auth = supabaseClient.auth;
 export const storage = supabaseClient.storage;
 
 /**
