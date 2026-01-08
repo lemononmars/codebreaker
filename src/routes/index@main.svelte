@@ -6,9 +6,36 @@
 		shopProductDescriptions,
 		shopImgUrlPrefix
 	} from '$lib/data/metadata';
+	import { onMount } from 'svelte';
+	import { getPuzzleImageURL, DEFAULT_WEEKLY_IMAGE_URL } from '$lib/supabase';
 
 	// get 4 random puzzle types
 	const randomPuzzleTypes = puzzleDescriptions.sort(() => 0.5 - Math.random()).slice(0, 4);
+
+	let recentWeeklyPuzzles: any[] = [];
+
+	onMount(async () => {
+		try {
+			const res = await fetch('/api/puzzle/weekly/');
+			const data = await res.json();
+			if (data.content) {
+				// Sort by year and week descending, take 4 most recent
+				recentWeeklyPuzzles = data.content
+					.sort((a: any, b: any) => {
+						if (a.year !== b.year) return b.year - a.year;
+						return b.week - a.week;
+					})
+					.slice(0, 4);
+			}
+		} catch (error) {
+			console.error('Failed to load weekly puzzles:', error);
+		}
+	});
+
+	function getWeeklyPuzzleImage(year: number, week: number) {
+		const weekStr = String(week).padStart(2, '0');
+		return getPuzzleImageURL('weekly', `${year}${weekStr}.jpg`);
+	}
 </script>
 
 <svelte:head>
@@ -25,14 +52,42 @@
 				</div>
 			</div>
 			<h1 class="text-5xl font-bold">Welcome to Code Breaker</h1>
-			<p class="py-6">
-				Unleash your inner detective with our collection of mind-bending puzzles and games.
-			</p>
+			<p class="py-6">Solve the puzzles. Break the codes.</p>
 		</div>
 	</div>
 </div>
 
-<!-- Recent Puzzles Section -->
+<!-- Weekly Puzzles Section -->
+<section class="max-w-7xl mx-auto px-4 py-8">
+	<div class="flex justify-between items-center mb-6">
+		<h2 class="text-3xl font-bold">ปริศนารายสัปดาห์</h2>
+		<a href="/puzzles/weekly" class="btn btn-primary btn-sm">ดูทั้งหมด</a>
+	</div>
+
+	<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+		{#each recentWeeklyPuzzles as p}
+			<a
+				href="/puzzles/weekly/{p.year}/{p.week}"
+				class="card bg-base-100 shadow-xl hover:scale-105 transition-transform duration-200 border border-base-300"
+			>
+				<figure class="px-4 pt-4">
+					<img
+						src={getWeeklyPuzzleImage(p.year, p.week)}
+						alt="Week {p.week} Puzzle"
+						class="rounded-xl w-full h-48 object-cover"
+						onerror="this.src='{DEFAULT_WEEKLY_IMAGE_URL}'"
+					/>
+				</figure>
+				<div class="card-body items-center text-center">
+					<div class="text-xs badge badge-primary mb-2">Week {p.week} Year {p.year}</div>
+					<h2 class="card-title text-lg">{p.title || `ปริศนาสัปดาห์ที่ ${p.week}`}</h2>
+				</div>
+			</a>
+		{/each}
+	</div>
+</section>
+
+<!-- Random Puzzles Section -->
 <section class="max-w-7xl mx-auto px-4 py-8">
 	<div class="flex justify-between items-center mb-6">
 		<h2 class="text-3xl font-bold">เล่นเลย</h2>

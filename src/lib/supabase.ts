@@ -3,6 +3,7 @@ import type { PuzzleType } from '$lib/interfaces'
 
 type SupaStorageBucket = 'puzzles' | 'events' | 'assets';
 const DIR_IMAGE = 'https://ojjggolcfmjnovmipaav.supabase.in/storage/v1/object/';
+export const DEFAULT_WEEKLY_IMAGE_URL = DIR_IMAGE + 'weekly/placeholder.png';
 
 export const supabaseClient = createClient(
 	String(import.meta.env.VITE_SUPABASE_URL),
@@ -33,6 +34,29 @@ export function getImageURL(type: SupaStorageBucket, url: string) {
 	return fromBucket(type).getPublicUrl(url).data?.publicUrl
 }
 
-export function getPuzzleImageURL(type: PuzzleType, url: string) {
-	return fromBucket('puzzles').getPublicUrl(type + '/' + url).data?.publicUrl
+export function getPuzzleImageURL(type: string, filename: string) {
+	return getImageURL('puzzles', type + '/' + filename);
+}
+
+export async function uploadProfilePicture(userId: string, file: File): Promise<string | null> {
+	try {
+		const fileExt = file.name.split('.').pop();
+		const fileName = `${userId}-${Date.now()}.${fileExt}`;
+		const filePath = `${userId}/${fileName}`;
+
+		const { error: uploadError } = await supabaseClient.storage
+			.from('profile-pictures')
+			.upload(filePath, file, { upsert: true });
+
+		if (uploadError) throw uploadError;
+
+		const { data } = supabaseClient.storage
+			.from('profile-pictures')
+			.getPublicUrl(filePath);
+
+		return data.publicUrl;
+	} catch (error) {
+		console.error('Error uploading profile picture:', error);
+		return null;
+	}
 }

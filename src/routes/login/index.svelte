@@ -31,7 +31,10 @@
 	async function handleOAuth(provider: 'google' | 'facebook') {
 		try {
 			const { error } = await auth.signInWithOAuth({
-				provider: provider
+				provider: provider,
+				options: {
+					redirectTo: window.location.origin + '/profile'
+				}
 			});
 			if (error) throw error;
 		} catch (e: any) {

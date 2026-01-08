@@ -37,10 +37,9 @@
 								{e.title}
 							</h2>
 						</div>
-						<p class="text-xs font-semibold opacity-60 uppercase tracking-wider">
+						<p class="text-base font-medium opacity-80 leading-relaxed line-clamp-2">
 							{dateToThaiString(e.date)}
 						</p>
-						<p class="text-base font-medium opacity-80 leading-relaxed line-clamp-2">{e.content}</p>
 					</div>
 				</div>
 			</a>

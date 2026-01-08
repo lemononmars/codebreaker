@@ -1,10 +1,10 @@
 <script lang="ts">
 	import { user, username } from '$lib/store';
-	import { from, auth } from '$lib/supabase';
+	import { from, auth, uploadProfilePicture } from '$lib/supabase';
 	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
 	import type { Leaderboard } from '$lib/interfaces';
-	import { Edit2Icon, SaveIcon, XIcon } from 'svelte-feather-icons';
+	import { Edit2Icon, SaveIcon, XIcon, UploadIcon } from 'svelte-feather-icons';
 
 	let profile: any = null;
 	let solved: Leaderboard[] = [];
@@ -17,6 +17,9 @@
 	let isEditing = false;
 	let newUsername = '';
 	let isUpdating = false;
+	let profilePictureUrl = '';
+	let isUploadingPicture = false;
+	let userProfileRecord: any = null;
 
 	user.subscribe((value) => {
 		profile = value;
@@ -37,8 +40,40 @@
 			}
 		}
 
+		await ensureUserProfile();
 		await loadProfileData();
 	});
+
+	async function ensureUserProfile() {
+		if (!profile) return;
+
+		// Check if user_profiles record exists
+		const { data: existingProfile } = await from('user_profiles')
+			.select('*')
+			.eq('id', profile.id)
+			.single();
+
+		if (existingProfile) {
+			userProfileRecord = existingProfile;
+			profilePictureUrl =
+				existingProfile.profile_picture_url || profile.user_metadata?.avatar_url || '';
+		} else {
+			// Create user_profiles record
+			const { data: newProfile, error } = await from('user_profiles')
+				.insert({
+					id: profile.id,
+					username: $username,
+					profile_picture_url: profile.user_metadata?.avatar_url || null
+				})
+				.select()
+				.single();
+
+			if (!error && newProfile) {
+				userProfileRecord = newProfile;
+				profilePictureUrl = newProfile.profile_picture_url || '';
+			}
+		}
+	}
 
 	async function loadProfileData() {
 		loading = true;
@@ -97,13 +132,43 @@
 			user.set(data.user);
 			profile = data.user;
 			username.set(newUsername);
-			// Reload to fetch scores for new username (if any exist, though likely empty if unique)
-			// Or user intends to migrate scores manually?
-			// For now, per simplified request, we just reload based on new name.
+
+			// Update user_profiles table
+			await from('user_profiles')
+				.update({ username: newUsername, updated_at: new Date().toISOString() })
+				.eq('id', profile.id);
+
 			await loadProfileData();
 		}
 		isUpdating = false;
 		isEditing = false;
+	}
+
+	async function handlePictureUpload(event: Event) {
+		const input = event.target as HTMLInputElement;
+		if (!input.files || !input.files[0] || !profile) return;
+
+		const file = input.files[0];
+		if (file.size > 2 * 1024 * 1024) {
+			alert('File size must be less than 2MB');
+			return;
+		}
+
+		isUploadingPicture = true;
+		const url = await uploadProfilePicture(profile.id, file);
+
+		if (url) {
+			// Update user_profiles table
+			const { error } = await from('user_profiles')
+				.update({ profile_picture_url: url, updated_at: new Date().toISOString() })
+				.eq('id', profile.id);
+
+			if (!error) {
+				profilePictureUrl = url;
+			}
+		}
+
+		isUploadingPicture = false;
 	}
 
 	function startEditing() {
@@ -127,41 +192,72 @@
 	{#if profile}
 		<div class="card bg-neutral text-neutral-content shadow-xl p-8 mb-8">
 			<div class="flex flex-col md:flex-row justify-between items-center gap-4">
-				<div class="flex-1">
-					<h1 class="text-3xl font-bold text-primary">User Profile</h1>
-
-					<div class="mt-2 flex items-center gap-4">
-						{#if isEditing}
-							<input
-								type="text"
-								class="input input-sm text-base-content"
-								bind:value={newUsername}
-							/>
-							<button
-								class="btn btn-sm btn-success btn-circle"
-								class:loading={isUpdating}
-								on:click={updateUsername}
+				<div class="flex flex-col md:flex-row items-center gap-6 flex-1">
+					<!-- Profile Picture -->
+					<div class="relative">
+						<div class="avatar">
+							<div
+								class="w-24 h-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2"
 							>
-								<SaveIcon size="16" />
-							</button>
-							<button class="btn btn-sm btn-ghost btn-circle" on:click={() => (isEditing = false)}>
-								<XIcon size="16" />
-							</button>
-						{:else}
-							<p class="text-xl opacity-80">
-								{$username}
-							</p>
-							<button
-								class="btn btn-sm btn-ghost btn-circle opacity-50 hover:opacity-100"
-								on:click={startEditing}
-								title="Edit Username"
-							>
-								<Edit2Icon size="16" />
-							</button>
-						{/if}
+								<img src={profilePictureUrl || '/default-avatar.png'} alt={$username} />
+							</div>
+						</div>
+						<label
+							class="absolute bottom-0 right-0 btn btn-circle btn-sm btn-primary {isUploadingPicture
+								? 'loading'
+								: ''}"
+						>
+							{#if !isUploadingPicture}
+								<UploadIcon size="16" />
+							{/if}
+							<input type="file" accept="image/*" class="hidden" on:change={handlePictureUpload} />
+						</label>
 					</div>
 
-					<p class="text-sm opacity-50 mt-1">{profile.email}</p>
+					<div class="flex-1 text-center md:text-left">
+						<h1 class="text-3xl font-bold text-primary">User Profile</h1>
+
+						<div class="mt-2 flex items-center gap-4 justify-center md:justify-start">
+							{#if isEditing}
+								<input
+									type="text"
+									class="input input-sm text-base-content"
+									bind:value={newUsername}
+								/>
+								<button
+									class="btn btn-sm btn-success btn-circle"
+									class:loading={isUpdating}
+									on:click={updateUsername}
+								>
+									<SaveIcon size="16" />
+								</button>
+								<button
+									class="btn btn-sm btn-ghost btn-circle"
+									on:click={() => (isEditing = false)}
+								>
+									<XIcon size="16" />
+								</button>
+							{:else}
+								<p class="text-xl opacity-80">
+									{$username}
+								</p>
+								<button
+									class="btn btn-sm btn-ghost btn-circle opacity-50 hover:opacity-100"
+									on:click={startEditing}
+									title="Edit Username"
+								>
+									<Edit2Icon size="16" />
+								</button>
+							{/if}
+						</div>
+
+						<p class="text-sm opacity-50 mt-1">{profile.email}</p>
+						{#if userProfileRecord}
+							<a href="/user/{$username}" class="text-sm link link-primary mt-2 inline-block"
+								>View Public Profile</a
+							>
+						{/if}
+					</div>
 				</div>
 				<button class="btn btn-outline btn-error" on:click={handleLogout}>Logout</button>
 			</div>
