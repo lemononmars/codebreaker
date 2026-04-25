@@ -8,13 +8,14 @@
 		ChevronDownIcon,
 		ChevronUpIcon,
 		SettingsIcon,
-		ShoppingCartIcon
+		ShoppingCartIcon,
+		ToolIcon
 	} from 'svelte-feather-icons';
 	import { username } from '$lib/store';
 
-	const icons = [HomeIcon, CalendarIcon, PlayCircleIcon, ShoppingCartIcon, InfoIcon];
-	const menus = ['Home', 'Events', 'Puzzles', 'Shop', 'About'];
-	const links = ['', 'events', 'puzzles', 'shop', 'about'];
+	const icons = [HomeIcon, CalendarIcon, PlayCircleIcon, ShoppingCartIcon, InfoIcon, ToolIcon];
+	const menus = ['Home', 'Events', 'Puzzles', 'Shop', 'About', 'Tools'];
+	const links = ['', 'events', 'puzzles', 'shop', 'about', 'tool'];
 
 	let hideBar = false;
 	let openModal = false;

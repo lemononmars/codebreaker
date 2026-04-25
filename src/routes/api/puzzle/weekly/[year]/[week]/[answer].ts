@@ -1,4 +1,5 @@
 import { from } from '$lib/supabase';
+import { sendhook } from '$lib/discord'
 
 /**
  * a simple answer checker
@@ -10,13 +11,17 @@ import { from } from '$lib/supabase';
 /** @type {import('/api/puzzle/weekly/[year]/[week]/[answer].ts').RequestHandler} */
 export async function get({ params }) {
 
-   const {year, week, answer} = params;
+   const { year, week, answer } = params;
 
    const { data, error } = await from('weekly_solution').select('*').eq('week', week).eq('year', year);
-   if(data) {
+   if (data) {
       const ans = await data[0].answer
 
-      if(answer.toUpperCase() === ans.toUpperCase())
+      sendhook(
+         'submitting ' + answer + ' for ' + year + '/' + week
+      )
+
+      if (answer.toUpperCase() === ans.toUpperCase())
          return {
             status: 200,
             headers: { 'Content-Type': 'application/json' },

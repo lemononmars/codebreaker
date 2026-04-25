@@ -1,31 +1,50 @@
 import { from } from '$lib/supabase';
 import type { Leaderboard } from '$lib/interfaces'
-import { sendhook} from '$lib/discord'
+import { sendhook } from '$lib/discord'
 /**
  * @type {import('@sveltejs/kit').RequestHandler}
  */
-export async function post( {request} ){
-	let submission: Leaderboard = await request.json()
-	const {name, puzzle_type, puzzle_id, score} = submission
+export async function post({ request }) {
+   let submission: Leaderboard = await request.json()
+   const { name, puzzle_type, puzzle_id, score } = submission
+
+   // check for duplicate
+   const { data: duplicateData } = await from('leaderboard')
+      .select('*')
+      .eq('puzzle_id', puzzle_id)
+      .eq('name', name);
+
+   if (duplicateData && duplicateData.length > 0) {
+      return {
+         status: 400,
+         body: { error: 'You have already submitted a score for this puzzle.' }
+      };
+   }
 
    // weekly puzzle requires scoring system
-   if(puzzle_type === 'weekly') {
-      const {data, error} = await from('leaderboard').select('*').eq('puzzle_id', puzzle_id)
-      if(data) {
-         submission.score = 10 - Math.min(data.length,5)
+   if (puzzle_type === 'weekly') {
+      const { data, error } = await from('leaderboard').select('*').eq('puzzle_id', puzzle_id)
+      if (data) {
+         submission.score = 10 - Math.min(data.length, 5)
       }
    }
-	const {data, error} = await from('leaderboard').insert(submission)
+   const { data, error } = await from('leaderboard').insert(submission)
 
-   if(error) {
- 	   sendhook(
-         'error submitting ' + puzzle_type + '/' + puzzle_id
+   if (error) {
+      sendhook(
+         ':x: error submitting ' + puzzle_type + '/' + puzzle_id
       )
-      return error
+      return {
+         status: 500,
+         body: { error: 'Internal server error' }
+      };
    }
 
    sendhook(
       ':game_die: ' + puzzle_type + '/' + puzzle_id + ' solved by ' + name + ' - ' + submission.score
    )
-	return data
+   return {
+      status: 200,
+      body: data
+   };
 }
