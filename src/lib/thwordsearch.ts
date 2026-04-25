@@ -275,7 +275,7 @@ function matchQuery(w: string, q: string, e:string[], vars: Record<string, strin
           return true
         // otherwise, find the next matching character and recursively check the rest
         while(wIndex < wordSplitted.length) {
-          const wildMatch = querySplitted[qIndex] === "." && (!strict || wordSplitted[wIndex].length === 1);
+          const wildMatch = querySplitted[qIndex] === ".";
           if(wildMatch || checkMatch(wordSplitted[wIndex], querySplitted[qIndex]))
             if(matchQuery(wordSplitted.slice(wIndex).join(""), querySplitted.slice(qIndex).join(""), e, vars, strict))
               return true
@@ -285,7 +285,7 @@ function matchQuery(w: string, q: string, e:string[], vars: Record<string, strin
       }
       // letter: must match
       // wild: increment
-      else if((querySplitted[qIndex] === "." && (!strict || wordSplitted[wIndex].length === 1)) || checkMatch(wordSplitted[wIndex], querySplitted[qIndex])) {
+      else if(querySplitted[qIndex] === "." || checkMatch(wordSplitted[wIndex], querySplitted[qIndex])) {
         qIndex ++
         wIndex ++
       }
