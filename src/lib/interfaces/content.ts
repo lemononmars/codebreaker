@@ -25,7 +25,9 @@ export interface IRebus extends IContent {
 export interface IPuzzleCrossword extends IContent {
    type: 'crossword',
    clues: CrosswordClue[],
-   size: [number, number]
+   row: number,
+   col: number,
+   uid: string
 }
 
 export interface CrosswordClue {
@@ -55,7 +57,7 @@ export interface IPuzzleHuntSingle {
    solution?: string
 }
 
-export interface IPuzzleHunt extends IContent{
+export interface IPuzzleHunt extends IContent {
    type: 'puzzlehunt',
    id: number,
    image?: string,
@@ -63,13 +65,13 @@ export interface IPuzzleHunt extends IContent{
    puzzles: IPuzzleHuntSingle[]
 }
 
-export interface IMissingVowels extends IContent{
+export interface IMissingVowels extends IContent {
    type: 'missingvowels',
    title: string,
    answers: string[]
 }
 
-export interface ICryptogram extends IContent{
+export interface ICryptogram extends IContent {
    type: 'cryptogram',
    title: string,
    answer: string,

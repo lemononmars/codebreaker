@@ -9,10 +9,12 @@ import { from } from '$lib/supabase';
 /** @type {import('/api/puzzle/[type]/[id].ts').RequestHandler} */
 export async function get({ params }) {
 
-	const {type, id} = params;
-	const { data, error } = await from(type).select('*').eq('id', id);
+	const { type, id } = params;
+	const field = type === 'crossword' ? 'uid' : 'id';
+	const { data, error } = await from(type).select('*').eq(field, id);
 
-	if(error) 
+	console.log(data)
+	if (error)
 		return {
 			status: 500,
 			headers: { 'Content-Type': 'application/json' },
@@ -36,11 +38,11 @@ export async function get({ params }) {
 /** @type {import('/api/puzzle/[type]/[id].ts').RequestHandler} */
 export async function post({ params }) {
 
-	const {type, id} = params;
+	const { type, id } = params;
 	let error
-	let data = [{result: 'incorrect', hint: 'no hint for you'}]
+	let data = [{ result: 'incorrect', hint: 'no hint for you' }]
 
-	if(error) 
+	if (error)
 		return {
 			status: 500,
 			headers: { 'Content-Type': 'application/json' },

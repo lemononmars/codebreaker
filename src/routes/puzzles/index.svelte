@@ -46,12 +46,12 @@
 			type: 'crossroad',
 			description: 'เติมคำเพื่อสร้างคำทั้งสี่ทิศทาง',
 			icon: getImageURL('assets', 'crossroad.png')
-		},
-		{
-			type: 'adventure',
-			description: 'ตะลุยด่านไขรหัส',
-			icon: getImageURL('assets', 'adventure.png')
 		}
+		// {
+		// 	type: 'adventure',
+		// 	description: 'ตะลุยด่านไขรหัส',
+		// 	icon: getImageURL('assets', 'adventure.png')
+		// }
 	];
 </script>
 
