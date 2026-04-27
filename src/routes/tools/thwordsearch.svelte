@@ -64,8 +64,8 @@
 		start + Math.min(100, queryResults.count - start)
 	);
 
-	const url = 'https://codebreakerth.vercathwordsearch';
-	const title = 'TH Wordle Search';
+	const url = 'https://codebreakerth.vercel.app/tool/thwordsearch';
+	const title = 'Thai Word Search';
 	const description = 'Pattern-matching in Thai language';
 	const imageUrl = '';
 	const gtagId = 'G-YTV7TZ3EMC';
@@ -176,8 +176,18 @@
 	});
 </script>
 
+<svelte:head>
+	<title>{title} | Code Breaker</title>
+	<meta name="description" content={description} />
+	<meta property="og:title" content={title} />
+	<meta property="og:description" content={description} />
+	<meta property="og:url" content={url} />
+	<meta property="og:type" content="website" />
+	<meta name="twitter:card" content="summary_large_image" />
+</svelte:head>
+
 <div class="flex flex-col justify-items-center text-center gap-2">
-	<h1 class="text-xl lg:text-5xl font-extrabold mb-2">TH Wordle Search</h1>
+	<h1 class="text-2xl lg:text-3xl font-extrabold mb-2">Thai Word Search</h1>
 	<div class="flex flex-col lg:flex-row m-auto">
 		<div class="flex flex-row justify-center items-center gap-4">
 			<input

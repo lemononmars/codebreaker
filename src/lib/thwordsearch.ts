@@ -1,6 +1,57 @@
 import dict from '$lib/dict.json'
 import wiki from '$lib/wiki.json'
 
+// --- Trie Implementation for Thai Crossword Optimization ---
+let dictTrie: any = null;
+let combinedTrie: any = null;
+
+function buildThaiTrie(words: string[]) {
+  const root: any = {};
+  for (let i = 0; i < words.length; i++) {
+    const word = words[i];
+    const parts = splitWord(word);
+    let curr = root;
+    for (let j = 0; j < parts.length; j++) {
+      const p = parts[j];
+      if (!curr[p]) curr[p] = {};
+      curr = curr[p];
+    }
+    curr.$ = true;
+  }
+  return root;
+}
+
+function searchThaiTrie(root: any, pattern: string, strict: boolean) {
+  const parts = splitWord(pattern);
+  const results: string[] = [];
+  function dfs(node: any, idx: number, currentWord: string) {
+    if (idx === parts.length) {
+      if (node.$) results.push(currentWord);
+      return;
+    }
+    const p = parts[idx];
+    if (p === '.') {
+      for (const key in node) {
+        if (key === '$') continue;
+        dfs(node[key], idx + 1, currentWord + key);
+      }
+    } else {
+      if (strict) {
+        if (node[p]) dfs(node[p], idx + 1, currentWord + p);
+      } else {
+        for (const key in node) {
+          if (key === '$') continue;
+          if (key.startsWith(p)) {
+            dfs(node[key], idx + 1, currentWord + key);
+          }
+        }
+      }
+    }
+  }
+  dfs(root, 0, "");
+  return results;
+}
+
 export function splitWord(word: string) {
   const alphas = word.split("")
   const out: string[] = []
@@ -8,8 +59,10 @@ export function splitWord(word: string) {
   alphas.forEach((a) => {
     if (a.match(/[A-Zก-ฮ]/) || a.match(/[ใเแโไาำะๆฯฤา]/) || a.match(/[\.\*\/\[\]\~]/)) {
       out.push(a)
-    } else {
+    } else if (out.length > 0) {
       out[out.length - 1] += a
+    } else {
+      out.push(a)
     }
   })
 
@@ -39,6 +92,27 @@ export async function search(query: string, includeWiki: boolean, abortSignal?: 
 
   if (query.includes(';')) {
     return await solveSystem(query, includeWiki, abortSignal, progressObj, strict);
+  }
+
+  // Crossword optimization: check if query is a simple pattern (Thai chars and dots only)
+  // No variable, no anagram, no subset, no length, no union/intersection
+  const isSimplePattern = !query.match(/[\&\|\^\:\/\!\{\}\*\[\]\~A-Z]/);
+  if (isSimplePattern) {
+    if (includeWiki) {
+      if (!combinedTrie) combinedTrie = buildThaiTrie([...dict, ...(wiki as string[])]);
+    } else {
+      if (!dictTrie) dictTrie = buildThaiTrie(dict);
+    }
+    const root = includeWiki ? combinedTrie : dictTrie;
+    let results = searchThaiTrie(root, query, strict);
+    // Sort locale Thai
+    results = results.sort((a,b)=>a.localeCompare(b, 'th'));
+    return {
+      valid: true,
+      count: results.length,
+      results: results,
+      aborted: false
+    };
   }
 
   let andMode = query.includes('&')

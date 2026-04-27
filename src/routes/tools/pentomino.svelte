@@ -1,18 +1,21 @@
-<script>
+<script lang="ts">
 	import { solvePentomino, countSolutions } from '$lib/pentomino_engine.js';
 	import { fade, fly } from 'svelte/transition';
 
-	let grid = Array.from({ length: 8 }, () => Array(8).fill(null));
-	let blockedCells = [];
-	let forcedCells = [];
+	type ForcedCell = { r: number; c: number; id: string };
+	type BlockedCell = [number, number];
+
+	let grid: (string | null)[][] = Array.from({ length: 8 }, () => Array(8).fill(null));
+	let blockedCells: BlockedCell[] = [];
+	let forcedCells: ForcedCell[] = [];
 	let hasSolutionShown = false;
 	let solving = false;
 	let counting = false;
-	let message = 'Select 4 cells to remove from the 8x8 grid.';
+	let message = 'เลือกช่องที่ไม่ได้ใช้ 4 ช่อง';
 	let error = '';
-	let solutionCount = null;
+	let solutionCount: number | null = null;
 
-	const PIECE_COLORS = {
+	const PIECE_COLORS: Record<string, string> = {
 		F: '#ff5f5f',
 		I: '#5fff5f',
 		L: '#5f5fff',
@@ -35,7 +38,7 @@
 		grid = newGrid;
 	}
 
-	function toggleCell(r, c) {
+	function toggleCell(r: number, c: number) {
 		if (solving || counting) return;
 		if (hasSolutionShown) {
 			clearSolution();
@@ -67,7 +70,7 @@
 			blockedCells.length < 4 ? `Selected ${blockedCells.length}/4 cells.` : 'Ready to solve!';
 	}
 
-	function handleKeydown(e, r, c) {
+	function handleKeydown(e: KeyboardEvent, r: number, c: number) {
 		if (solving || counting) return;
 
 		const key = e.key.toUpperCase();
@@ -139,10 +142,10 @@
 			if (result) {
 				grid = result;
 				hasSolutionShown = true;
-				message = 'Solution found!';
+				message = 'เจอแล้ว!';
 			} else {
-				message = 'No solution found.';
-				error = 'This specific layout is impossible to solve.';
+				message = 'ไม่มีคำตอบ';
+				error = 'หาไม่เจอจริง ๆ ลองเปลี่ยนช่องดูนะ';
 			}
 			solving = false;
 		}, 100);
@@ -150,19 +153,19 @@
 
 	async function handleCount() {
 		if (blockedCells.length !== 4) {
-			error = 'Please select exactly 4 cells.';
+			error = 'เลือกให้ครบ 4 ช่อง';
 			return;
 		}
 
 		counting = true;
-		message = 'Counting all solutions... (this may take a minute)';
+		message = 'กำลังนับ...';
 		error = '';
 		solutionCount = null;
 
 		setTimeout(() => {
 			const count = countSolutions(blockedCells, forcedCells);
 			solutionCount = count;
-			message = `Found ${count} total solution(s)!`;
+			message = `มี ${count} คำตอบ`;
 			counting = false;
 		}, 100);
 	}
@@ -172,7 +175,7 @@
 			clearSolution();
 			hasSolutionShown = false;
 			solutionCount = null;
-			message = 'Solution cleared. You can modify clues or solve again.';
+			message = 'ล้างกระดานแล้ว';
 			error = '';
 		} else {
 			grid = Array.from({ length: 8 }, () => Array(8).fill(null));
@@ -182,15 +185,30 @@
 			solving = false;
 			counting = false;
 			solutionCount = null;
-			message = 'Select 4 cells to remove from the 8x8 grid.';
+			message = 'เลือกช่องที่ไม่ได้ใช้ 4 ช่อง';
 			error = '';
 		}
 	}
 </script>
 
-<div class="pt-20 pb-20 min-h-screen text-white flex flex-col items-center font-sans">
-	<header class="text-center mb-8" in:fly={{ y: -20, duration: 800 }}>
-		<h1 class="text-5xl font-black bg-primary bg-clip-text text-transparent mb-2">
+<svelte:head>
+	<title>8x8 Pentomino Solver | Code Breaker</title>
+	<meta
+		name="description"
+		content="Solve 8x8 pentomino puzzles with custom obstacles and forced piece positions. Fast and efficient solving algorithm."
+	/>
+	<meta property="og:title" content="8x8 Pentomino Solver" />
+	<meta
+		property="og:description"
+		content="Solve 8x8 pentomino puzzles with custom obstacles and forced piece positions. Fast and efficient solving algorithm."
+	/>
+	<meta property="og:type" content="website" />
+	<meta name="twitter:card" content="summary_large_image" />
+</svelte:head>
+
+<div class="pt-8 pb-12 min-h-screen text-white flex flex-col items-center font-sans">
+	<header class="text-center mb-4" in:fly={{ y: -20, duration: 800 }}>
+		<h1 class="text-3xl lg:text-4xl font-black bg-primary bg-clip-text text-transparent mb-2">
 			8x8 Pentomino Solver
 		</h1>
 	</header>
@@ -203,13 +221,11 @@
 			>
 				<h2 class="text-xl font-bold mb-4 flex items-center gap-2">
 					<span class="w-2 h-6 bg-blue-500 rounded-full" />
-					Instructions
+					วิธีใช้
 				</h2>
 				<p class="text-slate-300 leading-relaxed mb-6 text-sm">
-					Click on the grid to mark exactly <strong>4 cells</strong> as obstacles. You can also
-					<strong>hover over a cell and type a letter (F, I, L, P, N, T, U, V, W, X, Y, Z)</strong>
-					to force a specific piece to cover that position. The solver will then attempt to fit all pieces
-					appropriately.
+					คลิกช่องที่ไม่ใช้ <strong>4 ช่อง</strong> หรือคลิกและพิมพ์ตัวอักษร (F, I, L, P, N, T, U, V,
+					W, X, Y, Z) เพื่อบังคับตัว pentomino ในช่องนั้น
 				</p>
 
 				<div class="space-y-4">
@@ -221,7 +237,7 @@
 							? 'bg-blue-600 hover:bg-blue-500 shadow-lg shadow-blue-900/40 translate-y-0 active:translate-y-1'
 							: 'bg-slate-700 text-slate-500 cursor-not-allowed'}"
 					>
-						{solving ? 'Calculating...' : 'Find Solution'}
+						{solving ? 'กำลังหา...' : 'หาคำตอบ'}
 					</button>
 
 					<button
@@ -232,7 +248,7 @@
 							? 'opacity-100 cursor-pointer'
 							: 'opacity-50 cursor-not-allowed'}"
 					>
-						{counting ? 'Counting...' : 'Count All Solutions'}
+						{counting ? 'นับอยู่...' : 'หาจำนวนคำตอบทั้งหมด'}
 					</button>
 
 					<button
@@ -242,7 +258,7 @@
 							? 'text-amber-400 border-amber-500/50 hover:bg-amber-900/20'
 							: ''}"
 					>
-						{hasSolutionShown ? 'Clear Solution' : 'Reset Grid'}
+						{hasSolutionShown ? 'ล้างคำตอบ' : 'ล้างกระดาน'}
 					</button>
 				</div>
 			</div>
@@ -282,7 +298,7 @@
 							<button
 								on:click={() => toggleCell(r, c)}
 								on:keydown={(e) => handleKeydown(e, r, c)}
-								on:mouseenter={(e) => e.target.focus()}
+								on:mouseenter={(e) => e.currentTarget.focus()}
 								tabindex="0"
 								class="w-8 h-8 sm:w-12 sm:h-12 rounded-md transition-all duration-300 relative overflow-hidden group/cell
                                        {cell === null
@@ -320,8 +336,4 @@
 			</div>
 		</div>
 	</main>
-
-	<footer class="mt-auto py-8 text-slate-500 text-sm">
-		Built with SvelteKit (Classic Routing)
-	</footer>
 </div>

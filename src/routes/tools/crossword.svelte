@@ -1,13 +1,10 @@
 <script lang="ts">
 	import { search, splitWord } from '$lib/thwordsearch';
-	import { supabaseClient } from '$lib/supabase';
 	import { onMount } from 'svelte';
 	import { beforeNavigate } from '$app/navigation';
 	import {
 		PlusSquareIcon,
 		MinusSquareIcon,
-		ZoomInIcon,
-		ZoomOutIcon,
 		CheckSquareIcon,
 		DownloadIcon,
 		CornerUpLeftIcon,
@@ -26,18 +23,6 @@
 	let numZoom = 1.0;
 	const CELL_MIN = 24;
 	const CELL_MAX = 80;
-	function zoomIn() {
-		cellSize = Math.min(CELL_MAX, cellSize + 8);
-	}
-	function zoomOut() {
-		cellSize = Math.max(CELL_MIN, cellSize - 8);
-	}
-	function numZoomIn() {
-		numZoom = Math.min(2.5, numZoom + 0.25);
-	}
-	function numZoomOut() {
-		numZoom = Math.max(0.5, numZoom - 0.25);
-	}
 
 	type Cell = { letter: string; black: boolean };
 
@@ -69,16 +54,25 @@
 	let suggestionAbort: AbortController | null = null;
 
 	// Clue Management
-	let title = 'Untitled Crossword';
+	let title = '';
 	let author = '';
-	let clueHints: Record<string, string> = {}; // key: "dir-r-c"
+	let clues: Record<string, string> = {}; // key: "dir-r-c"
 	let isSavingToDB = false;
 	let saveStatus = '';
-	let showSaveCard = false;
 	let isPublic = true;
+	let toasts: { id: number; message: string; type: 'info' | 'success' | 'error' }[] = [];
+	let toastId = 0;
+
+	function addToast(message: string, type: 'info' | 'success' | 'error' = 'info') {
+		const id = toastId++;
+		toasts = [...toasts, { id, message, type }];
+		setTimeout(() => {
+			toasts = toasts.filter((t) => t.id !== id);
+		}, 3000);
+	}
 
 	// Stepped Workflow
-	let currentStep = 1; // 1: Construct, 2: Hints, 3: Share
+	let currentStep = 1; // 1: Construct, 2: Clues, 3: Share
 
 	function nextStep() {
 		if (currentStep < 3) currentStep++;
@@ -147,7 +141,7 @@
 		savedLink = '';
 
 		const cluesToSave = detectedClues.map((c) => ({
-			clue: clueHints[`${c.direction}-${c.r}-${c.c}`] || '',
+			clue: clues[`${c.direction}-${c.r}-${c.c}`] || '',
 			answer: c.answer,
 			direction: c.direction,
 			position: [c.c, c.r] // UI uses [c, r] format for database
@@ -491,9 +485,6 @@
 		syncHiddenInput();
 	}
 
-	// CONSONANT only needed for cursor logic in keydown
-	const CONSONANT = /[ก-ฮ]/;
-
 	function handleKeydown(e: KeyboardEvent) {
 		if (selectedRow < 0 || selectedCol < 0) return;
 		if (showModal || showResizeControls) return;
@@ -626,18 +617,27 @@
 			}
 			if (sig.aborted) return;
 
+			// Optimization: Sort slots by number of candidates (MCV - Most Constrained Variable first)
+			// This drastically reduces the search space by filling hard slots early.
+			// Also shuffle each word list for variety.
+			const combined = slots.map((s, i) => ({
+				slot: s,
+				list: wordLists[i].sort(() => Math.random() - 0.5)
+			}));
+			combined.sort((a, b) => a.list.length - b.list.length);
+
+			const sortedSlots = combined.map((c) => c.slot);
+			const sortedWordLists = combined.map((c) => c.list);
+
 			solveMsg = 'กำลังแก้...';
-			const ok = await solveBacktrack(tempGrid, slots, wordLists, 0, sig);
+			const ok = await solveBacktrack(tempGrid, sortedSlots, sortedWordLists, 0, sig, new Set());
 			if (!sig.aborted) {
 				if (ok) {
 					grid = tempGrid;
 					grid = grid;
-					solveMsg = 'เสร็จ!';
-					setTimeout(() => {
-						if (solveMsg === 'เสร็จ!') solveMsg = '';
-					}, 3000);
+					addToast('เติมคำสำเร็จ!', 'success');
 				} else {
-					solveMsg = 'ไม่พบคำตอบ';
+					addToast('ไม่พบคำที่ลงตัวในตารางนี้', 'error');
 				}
 			}
 		} catch (e) {
@@ -653,13 +653,15 @@
 		slots: { cells: { r: number; c: number }[] }[],
 		wl: string[][],
 		idx: number,
-		sig: AbortSignal
+		sig: AbortSignal,
+		usedWords: Set<string>
 	): Promise<boolean> {
 		if (sig.aborted || idx === slots.length) return !sig.aborted;
 		await new Promise((r) => setTimeout(r, 0));
 
 		const slot = slots[idx];
 		const candidates = wl[idx].filter((word) => {
+			if (usedWords.has(word)) return false;
 			const parts = splitWord(word);
 			if (parts.length !== slot.cells.length) return false;
 			return parts.every((p, i) => {
@@ -679,7 +681,9 @@
 			slot.cells.forEach(({ r, c }, i) => {
 				g[r][c].letter = parts[i] ?? '';
 			});
-			if (await solveBacktrack(g, slots, wl, idx + 1, sig)) return true;
+			usedWords.add(word);
+			if (await solveBacktrack(g, slots, wl, idx + 1, sig, usedWords)) return true;
+			usedWords.delete(word);
 			slot.cells.forEach(({ r, c }, i) => {
 				g[r][c].letter = backup[i];
 			});
@@ -801,7 +805,7 @@
 		csv += '\nCLUES\n';
 		csv += 'No,Dir,Answer,Clue\n';
 		detectedClues.forEach((c) => {
-			const hint = (clueHints[`${c.direction}-${c.r}-${c.c}`] || '').replace(/"/g, '""');
+			const hint = (clues[`${c.direction}-${c.r}-${c.c}`] || '').replace(/"/g, '""');
 			csv += `${c.index},${c.direction},${c.answer},"${hint}"\n`;
 		});
 
@@ -826,11 +830,46 @@
 		const gridWidth = cols * drawCellSize;
 		const gridHeight = rows * drawCellSize;
 		const cluePanelWidth = 360;
+		const gridStartY = padding + 60;
+		let currY = gridStartY;
+
+		// Pre-calculate height based on actual line wrapping
+		ctx.font = 'bold 18px sans-serif';
+		const sectionTitleHeight = 25;
+		const clueLineHeight = 20;
+		const clueSpacing = 5;
+		const sectionSpacing = 20;
+
+		const estimateSectionHeight = (dir: string) => {
+			let h = sectionTitleHeight;
+			const list = detectedClues.filter((c) => c.direction === dir);
+			list.forEach((c) => {
+				const hint = clues[`${c.direction}-${c.r}-${c.c}`] || '(ว่าง)';
+				const text = `${c.index}. ${hint}`;
+				const words = text.split(' ');
+				let line = '';
+				let lineCount = 1;
+				ctx.font = '14px sans-serif';
+				for (let i = 0; i < words.length; i++) {
+					const testLine = line + words[i] + ' ';
+					if (ctx.measureText(testLine).width > cluePanelWidth && i > 0) {
+						lineCount++;
+						line = words[i] + ' ';
+					} else {
+						line = testLine;
+					}
+				}
+				h += lineCount * clueLineHeight + clueSpacing;
+			});
+			return h + sectionSpacing;
+		};
+
+		const totalCluesHeight =
+			currY + estimateSectionHeight('across') + estimateSectionHeight('down');
 
 		canvas.width = gridWidth + cluePanelWidth + padding * 2.5;
 		const baseHeight = gridHeight + padding * 3.5;
-		const estimatedCluesHeight = detectedClues.length * 22 + padding * 3.5;
-		canvas.height = Math.max(baseHeight, estimatedCluesHeight, 600);
+		canvas.height = Math.max(baseHeight, totalCluesHeight, 600);
 
 		// Background
 		ctx.fillStyle = '#ffffff';
@@ -839,12 +878,10 @@
 		// Header
 		ctx.fillStyle = '#000000';
 		ctx.font = 'bold 32px sans-serif';
-		ctx.fillText(title || 'Untitled Crossword', padding, padding);
+		ctx.fillText(title || 'อักษรไขว้', padding, padding);
 		ctx.font = '16px sans-serif';
 		ctx.fillStyle = '#666666';
-		ctx.fillText(`By ${author || 'Anonymous'}`, padding, padding + 30);
-
-		const gridStartY = padding + 60;
+		ctx.fillText(`By ${author || 'นิรนาม'}`, padding, padding + 30);
 
 		// Draw cells
 		grid.forEach((row, r) => {
@@ -873,7 +910,7 @@
 
 		// Draw Clues
 		const clueX = gridWidth + padding * 2;
-		let currY = gridStartY;
+		currY = gridStartY;
 
 		const drawClueSection = (label: string, dir: string) => {
 			ctx.fillStyle = '#000000';
@@ -885,7 +922,7 @@
 			detectedClues
 				.filter((c) => c.direction === dir)
 				.forEach((c) => {
-					const hint = clueHints[`${c.direction}-${c.r}-${c.c}`] || '(No hint)';
+					const hint = clues[`${c.direction}-${c.r}-${c.c}`] || '(ว่าง)';
 					const text = `${c.index}. ${hint}`;
 
 					// Simple line wrapping
@@ -907,8 +944,8 @@
 			currY += 20;
 		};
 
-		drawClueSection('ACROSS', 'across');
-		drawClueSection('DOWN', 'down');
+		drawClueSection('แนวนอน', 'across');
+		drawClueSection('แนวตั้ง', 'down');
 
 		const link = document.createElement('a');
 		link.download = `${title || 'crossword'}.png`;
@@ -919,7 +956,7 @@
 	function abortSolve() {
 		if (solveAbort) solveAbort.abort();
 		isSolving = false;
-		solveMsg = '';
+		addToast('ยกเลิกการเติมคำ', 'info');
 	}
 
 	function importFromText() {
@@ -927,26 +964,30 @@
 		saveHistory();
 
 		const lines = importText.trim().split(/\r?\n/);
-		
+
 		// 1. Extract Metadata
-		const titleLine = lines.find(l => l.startsWith('Title,'));
+		const titleLine = lines.find((l) => l.startsWith('Title,'));
 		if (titleLine) title = titleLine.split(',')[1] || title;
-		
-		const authorLine = lines.find(l => l.startsWith('Author,'));
+
+		const authorLine = lines.find((l) => l.startsWith('Author,'));
 		if (authorLine) author = authorLine.split(',')[1] || author;
 
 		// 2. Extract Grid
 		let gridLines: string[] = [];
 		const gridStart = lines.findIndex((l) => l.trim().toUpperCase() === 'GRID');
 		const cluesStart = lines.findIndex((l) => l.trim().toUpperCase() === 'CLUES');
-		
+
 		if (gridStart !== -1) {
 			const end = cluesStart !== -1 ? cluesStart : lines.length;
-			gridLines = lines.slice(gridStart + 1, end).filter(l => l.trim().length > 0 && !l.startsWith('Title,') && !l.startsWith('Author,'));
+			gridLines = lines
+				.slice(gridStart + 1, end)
+				.filter((l) => l.trim().length > 0 && !l.startsWith('Title,') && !l.startsWith('Author,'));
 		} else {
 			// Fallback to old behavior (everything before CLUES or everything)
 			const end = cluesStart !== -1 ? cluesStart : lines.length;
-			gridLines = lines.slice(0, end).filter(l => l.trim().length > 0 && !l.startsWith('Title,') && !l.startsWith('Author,'));
+			gridLines = lines
+				.slice(0, end)
+				.filter((l) => l.trim().length > 0 && !l.startsWith('Title,') && !l.startsWith('Author,'));
 		}
 
 		const dataLines = gridLines.map((line) => line.split(/[,\t; ]+/).filter((x) => x !== ''));
@@ -968,8 +1009,8 @@
 		// 3. Extract Hints
 		if (cluesStart !== -1) {
 			const clueLines = lines.slice(cluesStart + 2); // Skip CLUES and Header
-			clueHints = {}; // Reset hints
-			clueLines.forEach(line => {
+			clues = {}; // Reset hints
+			clueLines.forEach((line) => {
 				// Format: No,Dir,Answer,Clue
 				// Use a simple CSV parser that handles quotes
 				const match = line.match(/(".*?"|[^",\s]+)(?=\s*,|\s*$)/g);
@@ -977,7 +1018,7 @@
 					const dir = match[1].toLowerCase().trim();
 					const answer = match[2];
 					const hint = match[3].replace(/^"|"$/g, '').replace(/""/g, '"');
-					
+
 					// We need to find the r,c for this clue
 					// Since we just updated the grid, we can recalculate cellNumbers
 					// and then match the clue to the r,c
@@ -986,7 +1027,7 @@
 						for (let c = 0; c < cols; c++) {
 							const num = numbers.get(`${r},${c}`);
 							if (num && num.toString() === match[0]) {
-								clueHints[`${dir}-${r}-${c}`] = hint;
+								clues[`${dir}-${r}-${c}`] = hint;
 							}
 						}
 					}
@@ -1006,6 +1047,21 @@
 	});
 </script>
 
+<svelte:head>
+	<title>Thai Crossword Builder | Code Breaker</title>
+	<meta
+		name="description"
+		content="Build and share Thai crossword puzzles with this advanced tool. Features smart word suggestions and automated solving."
+	/>
+	<meta property="og:title" content="Thai Crossword Builder" />
+	<meta
+		property="og:description"
+		content="Build and share Thai crossword puzzles with this advanced tool. Features smart word suggestions and automated solving."
+	/>
+	<meta property="og:type" content="website" />
+	<meta name="twitter:card" content="summary_large_image" />
+</svelte:head>
+
 <svelte:window on:keydown={handleKeydown} />
 
 <!-- Hidden input for reliable Thai IME input -->
@@ -1021,230 +1077,277 @@
 	disabled={showResizeControls}
 />
 
-<div class="flex flex-col items-center gap-6 p-4 min-h-screen bg-base-100 text-base-content text-lg">
-	<div class="text-center mb-4">
-		<h1 class="text-3xl lg:text-5xl font-extrabold tracking-tight">Crossword Creator</h1>
-		<p class="text-base-content/50 mt-1">เครื่องมือสร้างและแชร์ปริศนาอักษรไขว้</p>
-	</div>
-
-	<!-- Step Progress -->
-	<div class="w-full max-w-2xl mb-4 px-4">
-		<ul class="steps steps-horizontal steps-sm w-full">
-			<li
-				class="step cursor-pointer {currentStep >= 1 ? 'step-primary' : ''}"
-				on:click={() => goToStep(1)}
-			>
-				สร้างตาราง
-			</li>
-			<li
-				class="step cursor-pointer {currentStep >= 2 ? 'step-primary' : ''}"
-				on:click={() => goToStep(2)}
-			>
-				เพิ่มคำใบ้
-			</li>
-			<li
-				class="step cursor-pointer {currentStep >= 3 ? 'step-primary' : ''}"
-				on:click={() => goToStep(3)}
-			>
-				แชร์ผลงาน
-			</li>
-		</ul>
-	</div>
-
-	<!-- Toolbar Area (Fixed height to prevent layout shift) -->
-	<div class="h-16 flex items-center justify-center w-full">
-		{#if currentStep === 1}
+<div
+	class="flex flex-col items-center p-0 h-[100dvh] overflow-hidden bg-base-100 text-base-content relative"
+	on:click={() => {
+		selectedRow = -1;
+		selectedCol = -1;
+		updateSuggestions();
+	}}
+>
+	<!-- Compact Header & Toolbar -->
+	<div
+		class="flex items-center justify-between w-full px-4 py-1 bg-base-200 border-b border-base-300 z-[100] shadow-sm shrink-0"
+	>
+		<!-- Left: (Flexible space to keep center tools centered) -->
+		<div class="flex-1 flex items-center gap-2">
+			<!-- svelte-ignore a11y-click-events-have-key-events -->
 			<div
-				class="bg-base-200 p-2 rounded-2xl flex items-center gap-2 flex-wrap justify-center shadow-inner border border-base-300 animate-fade-in"
+				class="flex items-center gap-2 opacity-50 hover:opacity-100 transition-opacity"
+				on:click|stopPropagation
 			>
-				<div class="tooltip tooltip-bottom" data-tip="สร้างตารางใหม่">
-					<button
-						on:click={openModal}
-						class="btn btn-ghost btn-sm text-primary"
-						disabled={showResizeControls}
-					>
-						<PlusSquareIcon size="20" />
-					</button>
+				<div
+					class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-primary-content"
+				>
+					<GridIcon size="18" />
 				</div>
+				<span class="text-xs font-black tracking-tighter hidden sm:block uppercase">Builder</span>
+			</div>
+			<div class="divider divider-horizontal mx-0 h-4 opacity-10" />
+			<div class="tooltip tooltip-bottom" data-tip="วิธีสร้าง">
+				<button
+					class="btn btn-ghost btn-xs btn-circle opacity-40 hover:opacity-100"
+					on:click|stopPropagation={() => {
+						selectedRow = -1;
+						selectedCol = -1;
+						updateSuggestions();
+					}}
+				>
+					<span class="text-xs font-black">?</span>
+				</button>
+			</div>
+		</div>
 
-				<div class="tooltip tooltip-bottom" data-tip="สลับการปรับขนาด (Resize Controls)">
-					<button
-						on:click={() => (showResizeControls = !showResizeControls)}
-						class="btn btn-ghost btn-sm {showResizeControls ? 'text-primary' : 'opacity-40'}"
-					>
-						<Maximize2Icon size="20" />
-					</button>
-				</div>
-
-				<div class="divider divider-horizontal mx-0" />
-
-				<div class="join bg-base-300/30 rounded-xl">
-					<div class="tooltip tooltip-bottom" data-tip="นำเข้าจากข้อความ/CSV">
+		<!-- Center: Tools (Step 1 Only) -->
+		<div class="flex-none flex items-center gap-1" on:click|stopPropagation>
+			{#if currentStep === 1}
+				<div
+					class="bg-base-300/50 p-1 rounded-xl flex items-center gap-1 animate-fade-in scale-90 lg:scale-100"
+				>
+					<div class="tooltip tooltip-bottom" data-tip="สร้างตารางใหม่">
 						<button
-							on:click={() => (showImportModal = true)}
-							class="btn btn-ghost btn-sm join-item text-primary"
+							on:click={openModal}
+							class="btn btn-ghost btn-xs text-primary"
 							disabled={showResizeControls}
 						>
-							<ClipboardIcon size="18" />
+							<PlusSquareIcon size="16" />
 						</button>
 					</div>
-				</div>
-
-				<div class="divider divider-horizontal mx-0" />
-
-				<div class="flex items-center gap-1">
-					<div class="tooltip tooltip-bottom" data-tip="เลิกทำ (Undo)">
+					<div class="tooltip tooltip-bottom" data-tip="ปรับขนาดตาราง">
+						<button
+							on:click={() => (showResizeControls = !showResizeControls)}
+							class="btn btn-ghost btn-xs {showResizeControls ? 'text-primary' : 'opacity-40'}"
+						>
+							<Maximize2Icon size="16" />
+						</button>
+					</div>
+					<div class="h-4 w-px bg-base-content/10 mx-1" />
+					<div class="tooltip tooltip-bottom" data-tip="นำเข้าข้อมูล">
+						<button
+							on:click={() => (showImportModal = true)}
+							class="btn btn-ghost btn-xs text-primary"
+							disabled={showResizeControls}
+						>
+							<ClipboardIcon size="16" />
+						</button>
+					</div>
+					<div class="h-4 w-px bg-base-content/10 mx-1" />
+					<div class="tooltip tooltip-bottom" data-tip="ย้อนกลับ">
 						<button
 							on:click={undo}
 							disabled={history.length === 0 || showResizeControls}
-							class="btn btn-ghost btn-sm"
+							class="btn btn-ghost btn-xs"
 						>
-							<CornerUpLeftIcon size="20" />
+							<CornerUpLeftIcon size="16" />
 						</button>
 					</div>
-					<div class="tooltip tooltip-bottom" data-tip="ค้นหาสองชั้น">
+					<div
+						class="tooltip tooltip-bottom"
+						data-tip="ค้นหาอัจฉริยะ {smartMode ? 'เปิดอยู่' : 'ปิดอยู่'}"
+					>
 						<button
 							on:click={() => {
 								smartMode = !smartMode;
 								updateSuggestions();
 							}}
-							class="btn btn-ghost btn-sm {smartMode ? 'text-secondary' : 'opacity-40'}"
+							class="btn btn-ghost btn-xs {smartMode ? 'text-secondary' : 'opacity-40'}"
 							disabled={showResizeControls}
 						>
-							<ZapIcon size="20" />
+							<ZapIcon size="16" />
 						</button>
 					</div>
-				</div>
+					<div class="h-4 w-px bg-base-content/10 mx-1" />
 
-				<div class="divider divider-horizontal mx-0" />
-
-				<div class="flex items-center gap-1">
-					<!-- Cell Zoom -->
-					<div class="dropdown dropdown-top dropdown-end">
-						<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
-						<div tabindex="0" role="button" class="btn btn-ghost btn-sm px-2">
-							<GridIcon size="18" class="text-primary" />
-						</div>
-						<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
+					<!-- Zoom Dropdowns (Compact) -->
+					<div class="dropdown dropdown-hover dropdown-bottom dropdown-end">
 						<div
 							tabindex="0"
-							class="dropdown-content z-[200] p-3 shadow-xl bg-base-200 border border-base-300 rounded-xl w-48 mt-2"
+							role="button"
+							class="btn btn-ghost btn-xs px-1 flex items-center justify-center"
 						>
-							<div class="flex flex-col gap-2">
-								<span class="text-[10px] uppercase tracking-widest opacity-50 font-bold"
-									>ขนาดช่องตาราง</span
-								>
-								<input
-									type="range"
-									min={CELL_MIN}
-									max={CELL_MAX}
-									bind:value={cellSize}
-									class="range range-xs range-primary"
-								/>
-							</div>
+							<GridIcon size="14" class="text-primary" />
+						</div>
+						<div
+							tabindex="0"
+							class="dropdown-content z-[200] p-3 shadow-xl bg-base-200 border border-base-300 rounded-xl w-48 mt-0 pt-2"
+						>
+							<span class="text-sm font-bold opacity-50 uppercase mb-1 block">ขนาดช่อง</span>
+							<input
+								type="range"
+								min={CELL_MIN}
+								max={CELL_MAX}
+								bind:value={cellSize}
+								class="range range-xs range-primary"
+							/>
+						</div>
+					</div>
+					<div class="dropdown dropdown-hover dropdown-bottom dropdown-end">
+						<div
+							tabindex="0"
+							role="button"
+							class="btn btn-ghost btn-xs px-1 flex items-center justify-center"
+						>
+							<HashIcon size="14" class="text-primary" />
+						</div>
+						<div
+							tabindex="0"
+							class="dropdown-content z-[200] p-3 shadow-xl bg-base-200 border border-base-300 rounded-xl w-48 mt-0 pt-2"
+						>
+							<span class="text-sm font-bold opacity-50 uppercase mb-1 block">ขนาดตัวเลข</span>
+							<input
+								type="range"
+								min="0.5"
+								max="2.5"
+								step="0.05"
+								bind:value={numZoom}
+								class="range range-xs range-primary"
+							/>
+						</div>
+					</div>
+					<div class="dropdown dropdown-hover dropdown-bottom dropdown-end">
+						<div
+							tabindex="0"
+							role="button"
+							class="btn btn-ghost btn-xs px-1 flex items-center justify-center"
+						>
+							<TypeIcon size="14" class="text-secondary" />
+						</div>
+						<div
+							tabindex="0"
+							class="dropdown-content z-[200] p-3 shadow-xl bg-base-200 border border-base-300 rounded-xl w-48 mt-0 pt-2"
+						>
+							<span class="text-sm font-bold opacity-50 uppercase mb-1 block">ขนาดตัวอักษร</span>
+							<input
+								type="range"
+								min="0.5"
+								max="2.5"
+								step="0.1"
+								bind:value={suggestionZoom}
+								class="range range-xs range-secondary"
+							/>
 						</div>
 					</div>
 
-					<!-- Number Zoom -->
-					<div class="dropdown dropdown-top dropdown-end">
-						<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
-						<div tabindex="0" role="button" class="btn btn-ghost btn-sm px-2">
-							<HashIcon size="18" class="text-primary" />
-						</div>
-						<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
-						<div
-							tabindex="0"
-							class="dropdown-content z-[200] p-3 shadow-xl bg-base-200 border border-base-300 rounded-xl w-48 mt-2"
-						>
-							<div class="flex flex-col gap-2">
-								<span class="text-[10px] uppercase tracking-widest opacity-50 font-bold"
-									>ขนาดตัวเลข</span
-								>
-								<input
-									type="range"
-									min="0.5"
-									max="2.5"
-									step="0.05"
-									bind:value={numZoom}
-									class="range range-xs range-primary"
-								/>
-							</div>
-						</div>
-					</div>
+					<div class="h-4 w-px bg-base-content/10 mx-1" />
 
-					<!-- Text Zoom -->
-					<div class="dropdown dropdown-top dropdown-end">
-						<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
-						<div tabindex="0" role="button" class="btn btn-ghost btn-sm px-2">
-							<TypeIcon size="18" class="text-primary" />
-						</div>
-						<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
-						<div
-							tabindex="0"
-							class="dropdown-content z-[200] p-3 shadow-xl bg-base-200 border border-base-300 rounded-xl w-48 mt-2"
-						>
-							<div class="flex flex-col gap-2">
-								<span class="text-[10px] uppercase tracking-widest opacity-50 font-bold"
-									>ขนาดคำแนะนำ</span
-								>
-								<input
-									type="range"
-									min="0.8"
-									max="2.5"
-									step="0.1"
-									bind:value={suggestionZoom}
-									class="range range-xs range-primary"
-								/>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="divider divider-horizontal mx-0" />
-
-				<div class="flex items-center gap-2">
 					{#if !isSolving}
-						<div class="flex items-center gap-2">
-							{#if solveMsg}
-								<span
-									class="text-xs font-medium {solveMsg.includes('เสร็จ')
-										? 'text-success'
-										: 'text-error'} animate-fade-in"
-								>
-									{solveMsg}
-								</span>
-							{/if}
+						<div class="tooltip tooltip-bottom" data-tip="เติมคำอัตโนมัติ">
 							<button
 								on:click={finishGrid}
-								class="btn btn-success btn-sm gap-2"
+								class="btn btn-xs gap-1 border-none bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-white shadow-lg shadow-emerald-500/20 flex items-center justify-center px-2"
 								disabled={showResizeControls}
 							>
-								<CheckSquareIcon size="18" />
-								<span>เติมคำ</span>
+								<CheckSquareIcon size="14" class="translate-y-[0.5px]" />
+								<span class="uppercase tracking-widest font-black text-[9px] translate-y-[0.5px]"
+									>Autofill</span
+								>
 							</button>
 						</div>
 					{:else}
-						<div class="flex items-center gap-2 px-2">
-							<span class="loading loading-spinner loading-xs text-primary" />
-							<span class="text-xs font-medium animate-pulse">{solveMsg}</span>
-							<button on:click={abortSolve} class="btn btn-error btn-xs btn-outline">ยกเลิก</button>
+						<div class="flex items-center gap-1 px-1 animate-fade-in">
+							<div class="relative flex items-center justify-center">
+								<span class="loading loading-spinner loading-xs text-primary scale-75" />
+								<ZapIcon size="10" class="absolute text-secondary animate-spin-slow" />
+							</div>
+							<button
+								on:click={abortSolve}
+								class="btn btn-error btn-xs scale-75 hover:scale-90 transition-transform"
+								>Cancel</button
+							>
 						</div>
 					{/if}
 				</div>
+			{/if}
+		</div>
+
+		<!-- Right: Step Navigation -->
+		<div class="flex-1 flex items-center justify-end" on:click|stopPropagation>
+			<div
+				class="flex items-center bg-base-300/30 rounded-2xl p-1 border border-base-300 shadow-sm gap-1"
+			>
+				<div class="join">
+					<!-- Prev Button -->
+					<div class="tooltip tooltip-bottom" data-tip="ย้อนกลับ">
+						<button
+							class="btn btn-ghost btn-xs join-item px-3 gap-1 border-r border-base-300/50"
+							disabled={currentStep === 1}
+							on:click={prevStep}
+						>
+							<CornerUpLeftIcon size="12" />
+							<span class="uppercase text-[9px] font-black hidden lg:inline">Back</span>
+						</button>
+					</div>
+
+					{#each [1, 2, 3] as s}
+						<div class="tooltip tooltip-bottom" data-tip="ขั้นตอนที่ {s}">
+							<button
+								class="btn btn-xs join-item border-none {currentStep === s
+									? 'btn-primary'
+									: 'btn-ghost opacity-40 hover:opacity-100'} px-3"
+								on:click={() => goToStep(s)}
+							>
+								<span class="text-[10px] font-black">{s}</span>
+							</button>
+						</div>
+					{/each}
+
+					<!-- Next Button -->
+					<div class="tooltip tooltip-bottom" data-tip="ถัดไป">
+						<button
+							class="btn btn-primary btn-xs px-4 gap-2 join-item border-l border-white/10"
+							disabled={currentStep === 3}
+							on:click={nextStep}
+						>
+							<span class="uppercase text-[9px] font-black tracking-widest translate-y-[0.5px]">
+								{currentStep === 1 ? 'เพิ่มคำใบ้' : currentStep === 2 ? 'เพิ่มข้อมูล' : 'เสร็จ!'}
+							</span>
+							<PlusSquareIcon size="14" class="rotate-90 translate-y-[0.5px]" />
+						</button>
+					</div>
+				</div>
 			</div>
-		{/if}
+
+			<div class="h-8 w-px bg-base-content/5 mx-4 hidden xl:block" />
+		</div>
 	</div>
 
-	<div class="flex flex-col lg:flex-row gap-6 w-full max-w-7xl justify-center items-start">
+	<div
+		class="flex flex-col lg:flex-row gap-6 w-full justify-center items-start flex-1 overflow-hidden"
+	>
 		<!-- Main Content Area -->
-		<div class="flex flex-col gap-6 flex-1 items-center">
+		<div
+			class="flex flex-col gap-6 flex-1 items-center overflow-y-auto h-full p-4 custom-scrollbar"
+		>
 			<!-- Grid View -->
 			<div class="flex flex-col items-center gap-3">
 				{#if showResizeControls && currentStep === 1}
 					<div class="flex items-center gap-2 animate-fade-in">
 						<div class="tooltip" data-tip="แถวบน">
 							<div class="join bg-base-200 shadow-sm border border-base-300">
-								<button on:click={addRowTop} class="btn btn-ghost btn-xs join-item text-primary px-2">
+								<button
+									on:click={addRowTop}
+									class="btn btn-ghost btn-xs join-item text-primary px-2"
+								>
 									<PlusSquareIcon size="14" />
 								</button>
 								<button
@@ -1284,45 +1387,93 @@
 
 					<div
 						class="flex flex-col items-center gap-2 border-2 border-base-300 rounded-2xl p-1 bg-base-300 shadow-inner"
+						on:click|stopPropagation
 					>
 						{#if grid.length > 0}
-							<div
-								class="grid bg-base-content/20 border-2 border-base-content/20 rounded-lg shadow-2xl overflow-hidden"
-								style="grid-template-columns: repeat({cols}, {cellSize}px); gap: 1px;"
-							>
-								{#each grid as row, r}
-									{#each row as cell, c}
-										<!-- svelte-ignore a11y-click-events-have-key-events -->
-										<div
-											class="relative flex items-center justify-center select-none cursor-pointer transition-all duration-150
-												{cell.black
-												? 'bg-base-content'
-												: selectedRow === r && selectedCol === c
-												? 'bg-primary/20 ring-2 ring-primary ring-inset z-10'
-												: 'bg-base-100 hover:bg-base-200'}"
-											style="width:{cellSize}px; height:{cellSize}px;"
-											on:click={() => selectCell(r, c)}
-											on:dblclick={() => toggleBlack(r, c)}
-											role="gridcell"
-											tabindex="-1"
-										>
-											{#if !cell.black}
-												{#if cellNumbers.has(`${r},${c}`)}
+							<div class="relative group">
+								<div
+									class="grid bg-base-content/20 border-2 border-base-content/20 rounded-lg shadow-2xl overflow-hidden {isSolving
+										? 'blur-[1px] grayscale-[0.3]'
+										: ''} transition-all"
+									style="grid-template-columns: repeat({cols}, {cellSize}px); gap: 1px;"
+								>
+									{#each grid as row, r}
+										{#each row as cell, c}
+											<!-- svelte-ignore a11y-click-events-have-key-events -->
+											<div
+												class="relative flex items-center justify-center select-none cursor-pointer transition-all duration-150
+													{cell.black
+													? 'bg-base-content'
+													: selectedRow === r && selectedCol === c
+													? 'bg-primary/20 ring-2 ring-primary ring-inset z-10'
+													: 'bg-base-100 hover:bg-base-200'}"
+												style="width:{cellSize}px; height:{cellSize}px;"
+												on:click={() => selectCell(r, c)}
+												on:dblclick={() => toggleBlack(r, c)}
+												role="gridcell"
+												tabindex="-1"
+											>
+												{#if !cell.black}
+													{#if cellNumbers.has(`${r},${c}`)}
+														<span
+															class="absolute top-0.5 left-1 font-bold text-base-content/30 leading-none pointer-events-none"
+															style="font-size:{Math.max(8, cellSize * 0.22 * numZoom)}px"
+														>
+															{cellNumbers.get(`${r},${c}`)}
+														</span>
+													{/if}
 													<span
-														class="absolute top-0.5 left-1 font-bold text-base-content/30 leading-none pointer-events-none"
-														style="font-size:{Math.max(8, cellSize * 0.22 * numZoom)}px"
+														class="font-bold text-base-content leading-none pointer-events-none"
+														style="font-size:{Math.max(10, cellSize * 0.45)}px">{cell.letter}</span
 													>
-														{cellNumbers.get(`${r},${c}`)}
-													</span>
 												{/if}
-												<span
-													class="font-bold text-base-content leading-none pointer-events-none"
-													style="font-size:{Math.max(10, cellSize * 0.45)}px">{cell.letter}</span
-												>
-											{/if}
-										</div>
+											</div>
+										{/each}
 									{/each}
-								{/each}
+								</div>
+
+								{#if isSolving}
+									<div
+										class="absolute inset-0 z-50 flex flex-col items-center justify-center bg-base-300/60 backdrop-blur-[3px] rounded-lg animate-fade-in"
+									>
+										<div
+											class="bg-base-100 p-8 rounded-[2.5rem] shadow-2xl border border-base-300 flex flex-col items-center gap-5 scale-110 lg:scale-125"
+										>
+											<div class="relative">
+												<div
+													class="w-16 h-16 rounded-full border-4 border-primary/20 border-t-primary animate-spin"
+												/>
+												<ZapIcon
+													size="24"
+													class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-secondary animate-pulse"
+												/>
+											</div>
+											<div class="flex flex-col items-center gap-1">
+												<span class="text-sm font-black uppercase tracking-[0.2em] text-primary"
+													>Autofilling</span
+												>
+												<div class="flex gap-1">
+													{#each [0, 1, 2] as i}
+														<div
+															class="w-1.5 h-1.5 bg-secondary rounded-full animate-bounce"
+															style="animation-delay: {i * 0.1}s"
+														/>
+													{/each}
+												</div>
+											</div>
+											<div class="w-48 h-1.5 bg-base-300 rounded-full overflow-hidden">
+												<div
+													class="h-full bg-gradient-to-r from-primary to-secondary animate-progress-indefinite"
+												/>
+											</div>
+											<button
+												on:click={abortSolve}
+												class="btn btn-error btn-xs rounded-full px-6 hover:scale-110 transition-transform font-bold"
+												>Cancel</button
+											>
+										</div>
+									</div>
+								{/if}
 							</div>
 						{/if}
 					</div>
@@ -1383,35 +1534,19 @@
 					</div>
 				{/if}
 			</div>
-
-			<!-- Step Navigation -->
-			<div class="flex items-center gap-4 mt-4">
-				<button
-					class="btn btn-ghost px-8"
-					disabled={currentStep === 1}
-					on:click={prevStep}
-				>
-					ย้อนกลับ
-				</button>
-				<button
-					class="btn btn-primary px-12"
-					disabled={currentStep === 3}
-					on:click={nextStep}
-				>
-					ถัดไป
-				</button>
-			</div>
 		</div>
 
 		<!-- Right Panel -->
-		<div class="lg:w-96 flex flex-col gap-6">
-			<!-- Step 2: Clues & Hints Section -->
+		<div class="lg:w-96 flex flex-col gap-4 overflow-hidden h-full">
+			<!-- Step 2: Clues Section -->
 			{#if currentStep === 2}
 				<div
 					class="bg-base-200 rounded-3xl border border-base-300 shadow-xl overflow-hidden flex flex-col max-h-[80vh] animate-fade-in"
 				>
-					<div class="p-4 bg-base-300/50 border-b border-base-300 flex items-center justify-between">
-						<h3 class="font-bold text-sm uppercase tracking-widest">คำใบ้ (Hints)</h3>
+					<div
+						class="p-4 bg-base-300/50 border-b border-base-300 flex items-center justify-between"
+					>
+						<h3 class="font-bold text-sm uppercase tracking-widest">คำใบ้</h3>
 						<span class="badge badge-sm">{detectedClues.length} คำ</span>
 					</div>
 					<div class="p-2 overflow-y-auto space-y-4">
@@ -1432,11 +1567,13 @@
 												<div class="flex gap-3 items-start">
 													<div class="flex flex-col items-center gap-1 min-w-[4.5rem]">
 														<span class="badge badge-primary badge-sm font-bold">{c.index}</span>
-														<span class="text-[10px] font-mono opacity-50 uppercase">{c.answer}</span>
+														<span class="text-[10px] font-mono opacity-50 uppercase"
+															>{c.answer}</span
+														>
 													</div>
 													<textarea
-														bind:value={clueHints[`${c.direction}-${c.r}-${c.c}`]}
-														class="textarea textarea-bordered textarea-xs w-full leading-tight h-16"
+														bind:value={clues[`${c.direction}-${c.r}-${c.c}`]}
+														class="textarea textarea-bordered textarea-sm w-full leading-snug h-16 text-base"
 														placeholder="พิมพ์คำใบ้ที่นี่..."
 													/>
 												</div>
@@ -1448,7 +1585,9 @@
 
 							<!-- Down Clues -->
 							<div>
-								<h4 class="text-[10px] font-black text-secondary uppercase px-2 mb-2 tracking-widest">
+								<h4
+									class="text-[10px] font-black text-secondary uppercase px-2 mb-2 tracking-widest"
+								>
 									แนวตั้ง
 								</h4>
 								<div class="space-y-2">
@@ -1458,11 +1597,13 @@
 												<div class="flex gap-3 items-start">
 													<div class="flex flex-col items-center gap-1 min-w-[4.5rem]">
 														<span class="badge badge-secondary badge-sm font-bold">{c.index}</span>
-														<span class="text-[10px] font-mono opacity-50 uppercase">{c.answer}</span>
+														<span class="text-[10px] font-mono opacity-50 uppercase"
+															>{c.answer}</span
+														>
 													</div>
 													<textarea
-														bind:value={clueHints[`${c.direction}-${c.r}-${c.c}`]}
-														class="textarea textarea-bordered textarea-xs w-full leading-tight h-16"
+														bind:value={clues[`${c.direction}-${c.r}-${c.c}`]}
+														class="textarea textarea-bordered textarea-sm w-full leading-snug h-16 text-base"
 														placeholder="พิมพ์คำใบ้ที่นี่..."
 													/>
 												</div>
@@ -1490,27 +1631,35 @@
 
 					<div class="space-y-4">
 						<div class="form-control">
-							<label class="label pt-0"><span class="label-text-alt font-bold">ชื่อปริศนา</span></label>
+							<label class="label pt-0"
+								><span class="label-text-alt font-bold">ชื่อปริศนา</span></label
+							>
 							<input
 								type="text"
 								bind:value={title}
 								class="input input-bordered input-sm focus:input-primary"
-								placeholder="ระบุชื่อปริศนา..."
+								placeholder="อักษรไขว้"
 							/>
 						</div>
 						<div class="form-control">
-							<label class="label pt-0"><span class="label-text-alt font-bold">ผู้แต่ง</span></label>
+							<label class="label pt-0"
+								><span class="label-text-alt font-bold">ผู้เขียน</span></label
+							>
 							<input
 								type="text"
 								bind:value={author}
 								class="input input-bordered input-sm focus:input-primary"
-								placeholder="ชื่อของคุณ..."
+								placeholder="นิรนาม"
 							/>
 						</div>
 
 						<div class="p-3 bg-base-300/30 rounded-xl border border-white/5">
 							<div class="flex items-center gap-3">
-								<input type="checkbox" bind:checked={isPublic} class="checkbox checkbox-primary checkbox-sm" />
+								<input
+									type="checkbox"
+									bind:checked={isPublic}
+									class="checkbox checkbox-primary checkbox-sm"
+								/>
 								<div class="flex-1">
 									<p class="text-xs font-bold leading-none">แชร์เป็นสาธารณะ</p>
 								</div>
@@ -1575,12 +1724,30 @@
 
 			<!-- Step 1: Suggestions panel -->
 			{#if currentStep === 1}
-				<div class="flex flex-col gap-4 animate-fade-in">
+				<div class="flex flex-col gap-4 animate-fade-in" on:click|stopPropagation>
 					{#if selectedRow < 0}
-						<div
-							class="flex items-center justify-center h-24 text-base-content/30 text-xs border border-dashed border-base-300 rounded-xl"
-						>
-							คลิกที่ช่องว่างเพื่อดูคำแนะนำ
+						<div class="flex flex-col gap-4 animate-fade-in">
+							<div class="bg-primary/5 border border-primary/10 rounded-2xl p-4">
+								<h4 class="text-md font-black uppercase tracking-widest text-primary mb-3">
+									วิธีสร้าง
+								</h4>
+								<ul class="text-left text-sm">
+									<li>คลิกที่ช่องเพื่อพิมพ์ตัวอักษร</li>
+									<li>และกดปุ่มลูกศรเพื่อเปลี่ยนช่อง</li>
+									<li>ดับเบิลคลิกที่ช่องเพื่อสลับเป็น <strong>"ช่องดำ"</strong> หรือช่องปกติ</li>
+									<li>
+										<span class="inline-flex items-center gap-2">
+											กด <CheckSquareIcon size="16" /> เพื่อเติมคำที่เหลือในตารางให้โดยอัตโนมัติ
+										</span>
+									</li>
+									<li>
+										<span class="inline-flex items-center gap-2"
+											>กด <ZapIcon size="16" /> เพื่อตัดคำที่ใช้ไม่ได้ออก</span
+										>
+									</li>
+									<li>เมื่อสร้างตารางเสร็จแล้ว คลิก <strong>"เพิ่มคำใบ้"</strong></li>
+								</ul>
+							</div>
 						</div>
 					{:else if loadingSuggestions}
 						<div class="flex items-center gap-2 text-base-content/60 py-2 justify-center">
@@ -1591,12 +1758,15 @@
 						<!-- Across suggestions -->
 						{#if acrossPattern.length > 1}
 							<div class="border border-base-300 rounded-2xl p-3 bg-base-100 shadow-sm">
-								<div class="font-bold text-xs mb-2 flex items-center gap-2">
+								<div
+									class="font-bold mb-2 flex items-center gap-2"
+									style="font-size: {10 * suggestionZoom}px"
+								>
 									<span class="text-primary">→</span>
 									<span>แนวนอน</span>
 									<code
-										class="bg-base-200 px-1.5 py-0.5 rounded text-[10px] font-mono text-base-content/60 ml-auto"
-										>{acrossPattern}</code
+										class="bg-base-200 px-1.5 py-0.5 rounded font-mono text-base-content/60 ml-auto"
+										style="font-size: {9 * suggestionZoom}px">{acrossPattern}</code
 									>
 								</div>
 								{#if acrossResults.length === 0}
@@ -1626,12 +1796,15 @@
 						<!-- Down suggestions -->
 						{#if downPattern.length > 1}
 							<div class="border border-base-300 rounded-2xl p-3 bg-base-100 shadow-sm">
-								<div class="font-bold text-xs mb-2 flex items-center gap-2">
+								<div
+									class="font-bold mb-2 flex items-center gap-2"
+									style="font-size: {10 * suggestionZoom}px"
+								>
 									<span class="text-secondary">↓</span>
 									<span>แนวตั้ง</span>
 									<code
-										class="bg-base-200 px-1.5 py-0.5 rounded text-[10px] font-mono text-base-content/60 ml-auto"
-										>{downPattern}</code
+										class="bg-base-200 px-1.5 py-0.5 rounded font-mono text-base-content/60 ml-auto"
+										style="font-size: {9 * suggestionZoom}px">{downPattern}</code
 									>
 								</div>
 								{#if downResults.length === 0}
@@ -1672,11 +1845,11 @@
 			<h3 class="font-bold text-lg">สร้างตาราง Crossword ใหม่</h3>
 			<p class="text-sm text-base-content/60 mt-1">ตารางเดิมจะถูกล้างทั้งหมด</p>
 			<div class="form-control mt-4">
-				<label class="label"><span class="label-text">จำนวนแถว (Rows)</span></label>
+				<label class="label"><span class="label-text">จำนวนแถวแนวนอน</span></label>
 				<input type="number" min="3" max="25" bind:value={modalRows} class="input input-bordered" />
 			</div>
 			<div class="form-control mt-2">
-				<label class="label"><span class="label-text">จำนวนคอลัมน์ (Columns)</span></label>
+				<label class="label"><span class="label-text">จำนวนแถวแนวตั้ง</span></label>
 				<input type="number" min="3" max="25" bind:value={modalCols} class="input input-bordered" />
 			</div>
 			<div class="modal-action">
@@ -1715,7 +1888,46 @@
 	</div>
 {/if}
 
+{#if toasts.length > 0}
+	<div
+		class="fixed bottom-8 left-1/2 -translate-x-1/2 z-[1000] pointer-events-none flex flex-col gap-2"
+	>
+		{#each toasts as t (t.id)}
+			<div
+				class="alert {t.type === 'success'
+					? 'alert-success'
+					: t.type === 'error'
+					? 'alert-error'
+					: 'alert-info'} 
+				shadow-2xl border-none text-white font-bold py-3 px-6 rounded-2xl animate-fade-in flex items-center gap-3 min-w-[200px]"
+			>
+				{#if t.type === 'success'}
+					<CheckSquareIcon size="18" />
+				{:else if t.type === 'error'}
+					<XIcon size="18" />
+				{:else}
+					<ZapIcon size="18" />
+				{/if}
+				<span class="text-sm">{t.message}</span>
+			</div>
+		{/each}
+	</div>
+{/if}
+
 <style>
+	.custom-scrollbar::-webkit-scrollbar {
+		width: 4px;
+	}
+	.custom-scrollbar::-webkit-scrollbar-track {
+		background: transparent;
+	}
+	.custom-scrollbar::-webkit-scrollbar-thumb {
+		background: hsl(var(--bc) / 0.1);
+		border-radius: 10px;
+	}
+	.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+		background: hsl(var(--bc) / 0.2);
+	}
 	@keyframes fadeIn {
 		from {
 			opacity: 0;
@@ -1728,5 +1940,27 @@
 	}
 	.animate-fade-in {
 		animation: fadeIn 0.3s ease-out forwards;
+	}
+	.animate-spin-slow {
+		animation: spin 3s linear infinite;
+	}
+	@keyframes spin {
+		from {
+			transform: rotate(0deg);
+		}
+		to {
+			transform: rotate(360deg);
+		}
+	}
+	@keyframes progress-indefinite {
+		0% {
+			transform: translateX(-100%);
+		}
+		100% {
+			transform: translateX(100%);
+		}
+	}
+	.animate-progress-indefinite {
+		animation: progress-indefinite 1.5s infinite linear;
 	}
 </style>

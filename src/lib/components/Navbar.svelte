@@ -13,9 +13,9 @@
 	} from 'svelte-feather-icons';
 	import { username } from '$lib/store';
 
-	const icons = [HomeIcon, CalendarIcon, PlayCircleIcon, ShoppingCartIcon, InfoIcon, ToolIcon];
-	const menus = ['Home', 'Events', 'Puzzles', 'Shop', 'About', 'Tools'];
-	const links = ['', 'events', 'puzzles', 'shop', 'about', 'tool'];
+	const icons = [HomeIcon, CalendarIcon, PlayCircleIcon, ToolIcon, ShoppingCartIcon, InfoIcon];
+	const menus = ['Home', 'Events', 'Puzzles', 'Tools', 'Shop', 'About'];
+	const links = ['', 'events', 'puzzles', 'tools', 'shop', 'about'];
 
 	let hideBar = false;
 	let openModal = false;
