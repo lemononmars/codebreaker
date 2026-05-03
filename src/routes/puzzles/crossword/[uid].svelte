@@ -23,7 +23,7 @@
 	import KeyboardLayout from '$lib/components/KeyboardLayout.svelte';
 	import TitleTab from '$lib/components/TitleTab.svelte';
 	import { onMount } from 'svelte';
-	import { ChevronLeftIcon, ChevronRightIcon } from 'svelte-feather-icons';
+	import { ChevronLeftIcon, ChevronRightIcon, EyeIcon, EyeOffIcon, CheckCircleIcon } from 'svelte-feather-icons';
 	import { fade, scale } from 'svelte/transition';
 
 	interface ExtendedClue extends CrosswordClue {
@@ -41,10 +41,12 @@
 	let solved = false;
 	let openModal = false;
 
-	// Timer state
+	// Settings & Timer
 	let seconds = 0;
 	let paused = false;
 	let timerInterval: any;
+	let showTimer = true;
+	let autoCheck = true;
 
 	function startTimer() {
 		if (timerInterval) clearInterval(timerInterval);
@@ -149,8 +151,17 @@
 		}
 	}
 
-	onMount(() => {
+	$: if (content) {
 		init();
+		if (typeof window !== 'undefined') {
+			seconds = 0;
+			solved = false;
+			openModal = false;
+			paused = false;
+		}
+	}
+
+	onMount(() => {
 		startTimer();
 		return () => clearInterval(timerInterval);
 	});
@@ -316,10 +327,21 @@
 	}
 
 	function checkAnswer(r: number, c: number) {
+		if (!autoCheck) return;
 		const cell = grid[r][c];
 		if (cell.downClueId !== -1) checkClue(cell.downClueId);
 		if (cell.acrossClueId !== -1) checkClue(cell.acrossClueId);
 
+		if (clues.every((cl) => cl.solved)) {
+			solved = true;
+			openModal = true;
+		}
+	}
+
+	function manualCheckAll() {
+		clues.forEach((cl) => {
+			if (!cl.solved) checkClue(cl.id);
+		});
 		if (clues.every((cl) => cl.solved)) {
 			solved = true;
 			openModal = true;
@@ -357,18 +379,6 @@
 			{/if}
 		</div>
 
-		<div class="flex items-center gap-4 bg-base-200 px-6 py-3 rounded-2xl border border-white/5 shadow-inner">
-			<div class="text-2xl font-mono font-bold tracking-widest text-primary w-20 text-center">
-				{formatTime(seconds)}
-			</div>
-			<button class="btn btn-sm btn-circle btn-ghost hover:bg-primary/20 transition-colors" on:click={togglePause}>
-				{#if paused}
-					<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 fill-primary" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
-				{:else}
-					<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 fill-primary" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" /></svg>
-				{/if}
-			</button>
-		</div>
 	</div>
 
 	<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mt-8 relative">
@@ -467,10 +477,50 @@
 			<div
 				class="bg-base-200 rounded-3xl p-6 flex flex-col overflow-hidden border border-white/5 shadow-xl"
 			>
-				<div class="flex items-center gap-2 mb-4">
-					<div class="w-2 h-6 bg-primary rounded-full" />
-					<h3 class="text-lg font-black uppercase tracking-tight">รายการคำใบ้</h3>
+				<div class="flex items-center justify-between mb-4 bg-base-300/50 p-3 rounded-2xl border border-white/5 shadow-inner">
+					<div class="flex items-center gap-2">
+						<div class="w-2 h-6 bg-primary rounded-full" />
+						<h3 class="text-lg font-black uppercase tracking-tight">คำใบ้</h3>
+					</div>
+					<div class="flex items-center gap-2">
+						<div class="text-xl font-mono font-bold tracking-tighter text-primary w-16 transition-all {showTimer ? 'opacity-100' : 'opacity-0 select-none'}">
+							{formatTime(seconds)}
+						</div>
+						<div class="flex items-center bg-base-100 rounded-full p-1 border border-white/5 shadow-sm">
+							<button 
+								class="btn btn-xs btn-circle btn-ghost {showTimer ? 'text-primary' : 'opacity-30'}" 
+								on:click={() => showTimer = !showTimer}
+								title={showTimer ? "ซ่อนเวลา" : "แสดงเวลา"}
+							>
+								{#if showTimer}<EyeIcon size="12" />{:else}<EyeOffIcon size="12" />{/if}
+							</button>
+							<button 
+								class="btn btn-xs btn-circle btn-ghost {autoCheck ? 'text-success' : 'opacity-30'}" 
+								on:click={() => autoCheck = !autoCheck}
+								title={autoCheck ? "ตรวจสอบอัตโนมัติ: เปิด" : "ตรวจสอบอัตโนมัติ: ปิด"}
+							>
+								<CheckCircleIcon size="12" />
+							</button>
+							<div class="w-px h-3 bg-base-content/10 mx-0.5" />
+							<button class="btn btn-xs btn-circle btn-ghost hover:bg-primary/20 transition-colors" on:click={togglePause}>
+								{#if paused}
+									<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 fill-primary" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
+								{:else}
+									<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 fill-primary" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" /></svg>
+								{/if}
+							</button>
+						</div>
+					</div>
 				</div>
+				
+				{#if !autoCheck}
+					<button 
+						class="btn btn-xs btn-success btn-block mb-4 rounded-xl shadow-md transition-all animate-fade-in"
+						on:click={manualCheckAll}
+					>
+						ตรวจสอบคำตอบทั้งหมด
+					</button>
+				{/if}
 
 				<div class="grid grid-cols-2 gap-4 flex-1 overflow-hidden">
 					<!-- Across Clues -->

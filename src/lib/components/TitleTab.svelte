@@ -5,18 +5,14 @@
 
    export let content: IContent
 </script>
-<div class="flex flex-row justify-between place-items-center">
-   <div class="btn btn-outline btn-sm" on:click={()=>{}} on:keypress={()=>{}}>
-      <a href="/puzzles/{content.type}/{content.id-1}">
-            <ChevronLeftIcon size=20/>
+<div class="relative flex items-center justify-center w-full min-h-[40px]">
+   <div class="absolute left-0">
+      <a href="/puzzles/{content.type}" class="btn btn-ghost btn-sm gap-2 opacity-60 hover:opacity-100 transition-opacity">
+         <ChevronLeftIcon size="18"/>
+         <span class="hidden sm:inline">รายการปริศนา</span>
       </a>
    </div>
-   <h1><a href="/puzzles/{content.type}">{content.title}</a></h1>
-   <div class="btn btn-outline btn-sm" on:click={()=>{}} on:keypress={()=>{}}>
-      <a href="/puzzles/{content.type}/{content.id+1}">
-            <ChevronRightIcon size=20/>
-      </a>
-   </div>
+   <h1 class="text-2xl font-black tracking-tight text-center px-12">{content.title}</h1>
 </div>
 <div class="hidden lg:block">
    <div class="flex flex-row items-center gap-2 mx-auto justify-center">

@@ -16,7 +16,11 @@
 		XIcon,
 		TypeIcon,
 		CloudIcon,
-		ExternalLinkIcon
+		ExternalLinkIcon,
+		InfoIcon,
+		ChevronRightIcon,
+		ChevronLeftIcon,
+		CheckCircleIcon
 	} from 'svelte-feather-icons';
 
 	let cellSize = 44; // px
@@ -35,6 +39,8 @@
 	let modalRows = 5;
 	let modalCols = 5;
 
+	$: effectiveCellSize = showResizeControls ? Math.min(cellSize, 34) : cellSize;
+
 	// Selection
 	let selectedRow = -1;
 	let selectedCol = -1;
@@ -45,7 +51,7 @@
 	let acrossResults: string[] = [];
 	let downResults: string[] = [];
 	let loadingSuggestions = false;
-	let strict = true;
+	let strict = false;
 	let smartMode = false;
 	let showResizeControls = false;
 	let showImportModal = false;
@@ -62,6 +68,7 @@
 	let isPublic = true;
 	let toasts: { id: number; message: string; type: 'info' | 'success' | 'error' }[] = [];
 	let toastId = 0;
+	let showQuickTips = true;
 
 	function addToast(message: string, type: 'info' | 'success' | 'error' = 'info') {
 		const id = toastId++;
@@ -130,7 +137,8 @@
 
 	let savedLink = '';
 
-	async function saveToDatabase() {
+	async function saveToDatabase(publicMode: boolean) {
+		isPublic = publicMode;
 		if (!title.trim()) {
 			saveStatus = 'กรุณาใส่ชื่อปริศนา';
 			return;
@@ -214,7 +222,7 @@
 
 	beforeNavigate(({ cancel }) => {
 		if (grid.some((row) => row.some((c) => c.letter || c.black))) {
-			if (!confirm('คุณยังไม่ได้บันทึกความคืบหน้า ต้องการออกจากหน้านี้ใช่หรือไม่?')) {
+			if (!confirm('ยังไม่ได้บันทึก ต้องการออกจากหน้านี้ใช่หรือไม่?')) {
 				cancel();
 			}
 		}
@@ -390,7 +398,7 @@
 
 	function fillSlot(r: number, c: number, dir: 'across' | 'down', word: string) {
 		saveHistory();
-		const chars = splitWord(word);
+		const chars = splitThaiCells(word);
 		// Figure out slot start
 		if (dir === 'across') {
 			let start = c;
@@ -414,6 +422,7 @@
 		saveHistory();
 		grid[r][c].black = !grid[r][c].black;
 		grid[r][c].letter = '';
+		showQuickTips = false;
 		if (selectedRow === r && selectedCol === c) {
 			selectedRow = -1;
 			selectedCol = -1;
@@ -481,6 +490,7 @@
 		if (grid[r][c].black) return;
 		selectedRow = r;
 		selectedCol = c;
+		showQuickTips = false;
 		updateSuggestions();
 		syncHiddenInput();
 	}
@@ -662,7 +672,7 @@
 		const slot = slots[idx];
 		const candidates = wl[idx].filter((word) => {
 			if (usedWords.has(word)) return false;
-			const parts = splitWord(word);
+			const parts = splitThaiCells(word);
 			if (parts.length !== slot.cells.length) return false;
 			return parts.every((p, i) => {
 				const existing = g[slot.cells[i].r][slot.cells[i].c].letter;
@@ -677,7 +687,7 @@
 			if (count % 25 === 0) await new Promise((r) => setTimeout(r, 0));
 
 			const backup = slot.cells.map(({ r, c }) => g[r][c].letter);
-			const parts = splitWord(word);
+			const parts = splitThaiCells(word);
 			slot.cells.forEach(({ r, c }, i) => {
 				g[r][c].letter = parts[i] ?? '';
 			});
@@ -820,7 +830,7 @@
 		document.body.removeChild(link);
 	}
 
-	function exportPNG() {
+	function exportPNG(showAnswers = false) {
 		const canvas = document.createElement('canvas');
 		const ctx = canvas.getContext('2d');
 		if (!ctx) return;
@@ -904,6 +914,17 @@
 						ctx.font = '10px sans-serif';
 						ctx.fillText(cellNumbers.get(posKey)!.toString(), x + 4, y + 12);
 					}
+
+					// Letter (Answer)
+					if (showAnswers && cell.letter) {
+						ctx.fillStyle = '#000000';
+						ctx.font = 'bold 24px sans-serif';
+						ctx.textAlign = 'center';
+						ctx.textBaseline = 'middle';
+						ctx.fillText(cell.letter, x + drawCellSize / 2, y + drawCellSize / 2 + 5);
+						ctx.textAlign = 'start';
+						ctx.textBaseline = 'alphabetic';
+					}
 				}
 			});
 		});
@@ -948,7 +969,7 @@
 		drawClueSection('แนวตั้ง', 'down');
 
 		const link = document.createElement('a');
-		link.download = `${title || 'crossword'}.png`;
+		link.download = `${title || 'crossword'}${showAnswers ? '-solution' : ''}.png`;
 		link.href = canvas.toDataURL('image/png');
 		link.click();
 	}
@@ -1078,251 +1099,232 @@
 />
 
 <div
-	class="flex flex-col items-center p-0 h-[100dvh] overflow-hidden bg-base-100 text-base-content relative"
+	class="flex flex-col items-center p-0 h-[100dvh] overflow-hidden bg-base-100 text-base-content relative overscroll-none"
+	style="height: 100dvh; max-height: 100dvh;"
 	on:click={() => {
 		selectedRow = -1;
 		selectedCol = -1;
 		updateSuggestions();
 	}}
+	on:keydown={() => {}}
 >
 	<!-- Compact Header & Toolbar -->
 	<div
-		class="flex items-center justify-between w-full px-4 py-1 bg-base-200 border-b border-base-300 z-[100] shadow-sm shrink-0"
+		class="sticky top-0 flex items-center justify-between w-full px-4 py-1 bg-base-200/90 backdrop-blur-md border-b border-base-300 z-[9999] shadow-sm shrink-0"
 	>
-		<!-- Left: (Flexible space to keep center tools centered) -->
-		<div class="flex-1 flex items-center gap-2">
-			<!-- svelte-ignore a11y-click-events-have-key-events -->
-			<div
-				class="flex items-center gap-2 opacity-50 hover:opacity-100 transition-opacity"
-				on:click|stopPropagation
-			>
+		<div class="flex items-center gap-3">
+			<!-- Logo & Info -->
+			<div class="flex items-center gap-2 shrink-0">
+				<!-- svelte-ignore a11y-click-events-have-key-events -->
 				<div
-					class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-primary-content"
+					class="flex items-center gap-2 opacity-50 hover:opacity-100 transition-opacity"
+					on:click|stopPropagation
 				>
-					<GridIcon size="18" />
-				</div>
-				<span class="text-xs font-black tracking-tighter hidden sm:block uppercase">Builder</span>
-			</div>
-			<div class="divider divider-horizontal mx-0 h-4 opacity-10" />
-			<div class="tooltip tooltip-bottom" data-tip="วิธีสร้าง">
-				<button
-					class="btn btn-ghost btn-xs btn-circle opacity-40 hover:opacity-100"
-					on:click|stopPropagation={() => {
-						selectedRow = -1;
-						selectedCol = -1;
-						updateSuggestions();
-					}}
-				>
-					<span class="text-xs font-black">?</span>
-				</button>
-			</div>
-		</div>
-
-		<!-- Center: Tools (Step 1 Only) -->
-		<div class="flex-none flex items-center gap-1" on:click|stopPropagation>
-			{#if currentStep === 1}
-				<div
-					class="bg-base-300/50 p-1 rounded-xl flex items-center gap-1 animate-fade-in scale-90 lg:scale-100"
-				>
-					<div class="tooltip tooltip-bottom" data-tip="สร้างตารางใหม่">
-						<button
-							on:click={openModal}
-							class="btn btn-ghost btn-xs text-primary"
-							disabled={showResizeControls}
-						>
-							<PlusSquareIcon size="16" />
-						</button>
-					</div>
-					<div class="tooltip tooltip-bottom" data-tip="ปรับขนาดตาราง">
-						<button
-							on:click={() => (showResizeControls = !showResizeControls)}
-							class="btn btn-ghost btn-xs {showResizeControls ? 'text-primary' : 'opacity-40'}"
-						>
-							<Maximize2Icon size="16" />
-						</button>
-					</div>
-					<div class="h-4 w-px bg-base-content/10 mx-1" />
-					<div class="tooltip tooltip-bottom" data-tip="นำเข้าข้อมูล">
-						<button
-							on:click={() => (showImportModal = true)}
-							class="btn btn-ghost btn-xs text-primary"
-							disabled={showResizeControls}
-						>
-							<ClipboardIcon size="16" />
-						</button>
-					</div>
-					<div class="h-4 w-px bg-base-content/10 mx-1" />
-					<div class="tooltip tooltip-bottom" data-tip="ย้อนกลับ">
-						<button
-							on:click={undo}
-							disabled={history.length === 0 || showResizeControls}
-							class="btn btn-ghost btn-xs"
-						>
-							<CornerUpLeftIcon size="16" />
-						</button>
-					</div>
 					<div
-						class="tooltip tooltip-bottom"
-						data-tip="ค้นหาอัจฉริยะ {smartMode ? 'เปิดอยู่' : 'ปิดอยู่'}"
+						class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-primary-content"
 					>
-						<button
-							on:click={() => {
-								smartMode = !smartMode;
-								updateSuggestions();
-							}}
-							class="btn btn-ghost btn-xs {smartMode ? 'text-secondary' : 'opacity-40'}"
-							disabled={showResizeControls}
-						>
-							<ZapIcon size="16" />
-						</button>
+						<GridIcon size="18" />
 					</div>
-					<div class="h-4 w-px bg-base-content/10 mx-1" />
+					<span class="text-xs font-black tracking-tighter hidden lg:block uppercase">Builder</span>
+				</div>
+				<div class="tooltip tooltip-bottom" data-tip="วิธีสร้าง">
+					<button
+						class="btn btn-ghost btn-xs btn-circle {showQuickTips
+							? 'text-info bg-primary/10 opacity-100'
+							: 'opacity-40 hover:opacity-100'}"
+						on:click|stopPropagation={() => {
+							showQuickTips = !showQuickTips;
+							if (showQuickTips) {
+								selectedRow = -1;
+								selectedCol = -1;
+							}
+							updateSuggestions();
+						}}
+					>
+						<InfoIcon size="14" />
+					</button>
+				</div>
+			</div>
 
-					<!-- Zoom Dropdowns (Compact) -->
-					<div class="dropdown dropdown-hover dropdown-bottom dropdown-end">
-						<div
-							tabindex="0"
-							role="button"
-							class="btn btn-ghost btn-xs px-1 flex items-center justify-center"
-						>
-							<GridIcon size="14" class="text-primary" />
-						</div>
-						<div
-							tabindex="0"
-							class="dropdown-content z-[200] p-3 shadow-xl bg-base-200 border border-base-300 rounded-xl w-48 mt-0 pt-2"
-						>
-							<span class="text-sm font-bold opacity-50 uppercase mb-1 block">ขนาดช่อง</span>
-							<input
-								type="range"
-								min={CELL_MIN}
-								max={CELL_MAX}
-								bind:value={cellSize}
-								class="range range-xs range-primary"
-							/>
-						</div>
-					</div>
-					<div class="dropdown dropdown-hover dropdown-bottom dropdown-end">
-						<div
-							tabindex="0"
-							role="button"
-							class="btn btn-ghost btn-xs px-1 flex items-center justify-center"
-						>
-							<HashIcon size="14" class="text-primary" />
-						</div>
-						<div
-							tabindex="0"
-							class="dropdown-content z-[200] p-3 shadow-xl bg-base-200 border border-base-300 rounded-xl w-48 mt-0 pt-2"
-						>
-							<span class="text-sm font-bold opacity-50 uppercase mb-1 block">ขนาดตัวเลข</span>
-							<input
-								type="range"
-								min="0.5"
-								max="2.5"
-								step="0.05"
-								bind:value={numZoom}
-								class="range range-xs range-primary"
-							/>
-						</div>
-					</div>
-					<div class="dropdown dropdown-hover dropdown-bottom dropdown-end">
-						<div
-							tabindex="0"
-							role="button"
-							class="btn btn-ghost btn-xs px-1 flex items-center justify-center"
-						>
-							<TypeIcon size="14" class="text-secondary" />
-						</div>
-						<div
-							tabindex="0"
-							class="dropdown-content z-[200] p-3 shadow-xl bg-base-200 border border-base-300 rounded-xl w-48 mt-0 pt-2"
-						>
-							<span class="text-sm font-bold opacity-50 uppercase mb-1 block">ขนาดตัวอักษร</span>
-							<input
-								type="range"
-								min="0.5"
-								max="2.5"
-								step="0.1"
-								bind:value={suggestionZoom}
-								class="range range-xs range-secondary"
-							/>
-						</div>
-					</div>
+			<div class="h-6 w-px bg-base-content/10 mx-1 hidden sm:block" />
 
-					<div class="h-4 w-px bg-base-content/10 mx-1" />
-
-					{#if !isSolving}
-						<div class="tooltip tooltip-bottom" data-tip="เติมคำอัตโนมัติ">
+			<!-- Tools (Moved Left) -->
+			<div class="flex items-center" on:click|stopPropagation on:keydown={() => {}}>
+				{#if currentStep === 1}
+					<div
+						class="bg-base-300/30 p-1 rounded-xl flex items-center gap-0.5 sm:gap-1 animate-fade-in scale-[0.85] sm:scale-90 lg:scale-100"
+					>
+						<div class="tooltip tooltip-bottom" data-tip="สร้างตารางใหม่">
 							<button
-								on:click={finishGrid}
-								class="btn btn-xs gap-1 border-none bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-white shadow-lg shadow-emerald-500/20 flex items-center justify-center px-2"
+								on:click={openModal}
+								class="btn btn-ghost btn-xs text-primary px-1 sm:px-2"
 								disabled={showResizeControls}
 							>
-								<CheckSquareIcon size="14" class="translate-y-[0.5px]" />
-								<span class="uppercase tracking-widest font-black text-[9px] translate-y-[0.5px]"
-									>Autofill</span
-								>
+								<PlusSquareIcon size="16" />
 							</button>
 						</div>
-					{:else}
-						<div class="flex items-center gap-1 px-1 animate-fade-in">
-							<div class="relative flex items-center justify-center">
-								<span class="loading loading-spinner loading-xs text-primary scale-75" />
-								<ZapIcon size="10" class="absolute text-secondary animate-spin-slow" />
-							</div>
+						<div class="tooltip tooltip-bottom" data-tip="ปรับขนาดตาราง">
 							<button
-								on:click={abortSolve}
-								class="btn btn-error btn-xs scale-75 hover:scale-90 transition-transform"
-								>Cancel</button
+								on:click={() => (showResizeControls = !showResizeControls)}
+								class="btn btn-ghost btn-xs {showResizeControls
+									? 'text-primary'
+									: 'opacity-40'} px-1 sm:px-2"
 							>
+								<Maximize2Icon size="16" />
+							</button>
 						</div>
-					{/if}
-				</div>
-			{/if}
+						<div class="h-4 w-px bg-base-content/10 mx-0.5 hidden sm:block" />
+						<div class="tooltip tooltip-bottom hidden sm:block" data-tip="นำเข้าข้อมูล">
+							<button
+								on:click={() => (showImportModal = true)}
+								class="btn btn-ghost btn-xs text-primary px-1 sm:px-2"
+								disabled={showResizeControls}
+							>
+								<ClipboardIcon size="16" />
+							</button>
+						</div>
+						<div class="tooltip tooltip-bottom" data-tip="ย้อนกลับ">
+							<button
+								on:click={undo}
+								disabled={history.length === 0 || showResizeControls}
+								class="btn btn-ghost btn-xs px-1 sm:px-2"
+							>
+								<CornerUpLeftIcon size="16" />
+							</button>
+						</div>
+						<div class="h-4 w-px bg-base-content/10 mx-0.5 hidden lg:block" />
+
+						<!-- Zoom Dropdowns -->
+						<div class="hidden md:flex items-center">
+							<div class="dropdown dropdown-hover dropdown-bottom dropdown-end">
+								<div
+									tabindex="0"
+									role="button"
+									class="btn btn-ghost btn-xs px-1 flex items-center justify-center"
+								>
+									<GridIcon size="14" class="text-primary" />
+								</div>
+								<div
+									tabindex="0"
+									class="dropdown-content p-3 shadow-xl bg-base-200 border border-base-300 rounded-xl w-48 mt-0 pt-2 z-[9999]"
+								>
+									<span class="text-sm font-bold opacity-50 uppercase mb-1 block">ขนาดช่อง</span>
+									<input
+										type="range"
+										min={CELL_MIN}
+										max={CELL_MAX}
+										bind:value={cellSize}
+										class="range range-xs range-primary"
+									/>
+								</div>
+							</div>
+							<div class="dropdown dropdown-hover dropdown-bottom dropdown-end">
+								<div
+									tabindex="0"
+									role="button"
+									class="btn btn-ghost btn-xs px-1 flex items-center justify-center"
+								>
+									<HashIcon size="14" class="text-primary" />
+								</div>
+								<div
+									tabindex="0"
+									class="dropdown-content p-3 shadow-xl bg-base-200 border border-base-300 rounded-xl w-48 mt-0 pt-2 z-[9999]"
+								>
+									<span class="text-sm font-bold opacity-50 uppercase mb-1 block">ขนาดตัวเลข</span>
+									<input
+										type="range"
+										min="0.5"
+										max="2.5"
+										step="0.05"
+										bind:value={numZoom}
+										class="range range-xs range-primary"
+									/>
+								</div>
+							</div>
+						</div>
+
+						<div class="h-4 w-px bg-base-content/10 mx-0.5 lg:mx-1" />
+
+						{#if !isSolving}
+							<div class="flex items-center gap-0.5">
+								<div
+									class="tooltip tooltip-bottom"
+									data-tip="ค้นหาอัจฉริยะ {smartMode ? 'เปิดอยู่' : 'ปิดอยู่'}"
+								>
+									<button
+										on:click={() => {
+											smartMode = !smartMode;
+											updateSuggestions();
+										}}
+										class="btn btn-ghost btn-xs {smartMode
+											? 'text-secondary'
+											: 'opacity-40'} px-1 sm:px-2"
+										disabled={showResizeControls}
+									>
+										<ZapIcon size="16" />
+									</button>
+								</div>
+								<div class="tooltip tooltip-bottom" data-tip="เติมคำอัตโนมัติ">
+									<button
+										on:click={finishGrid}
+										class="btn btn-ghost btn-xs text-emerald-600 gap-1 px-1.5 sm:px-2"
+										disabled={showResizeControls}
+									>
+										<CheckSquareIcon size="16" />
+									</button>
+								</div>
+							</div>
+						{:else}
+							<div class="flex items-center gap-1 px-1 animate-fade-in">
+								<div class="relative flex items-center justify-center">
+									<span class="loading loading-spinner loading-xs text-primary scale-75" />
+									<ZapIcon size="10" class="absolute text-secondary animate-spin-slow" />
+								</div>
+								<button
+									on:click={abortSolve}
+									class="btn btn-error btn-xs scale-75 hover:scale-90 transition-transform px-1"
+									>Cancel</button
+								>
+							</div>
+						{/if}
+					</div>
+				{/if}
+			</div>
 		</div>
 
-		<!-- Right: Step Navigation -->
-		<div class="flex-1 flex items-center justify-end" on:click|stopPropagation>
-			<div
-				class="flex items-center bg-base-300/30 rounded-2xl p-1 border border-base-300 shadow-sm gap-1"
-			>
-				<div class="join">
-					<!-- Prev Button -->
-					<div class="tooltip tooltip-bottom" data-tip="ย้อนกลับ">
-						<button
-							class="btn btn-ghost btn-xs join-item px-3 gap-1 border-r border-base-300/50"
-							disabled={currentStep === 1}
-							on:click={prevStep}
-						>
-							<CornerUpLeftIcon size="12" />
-							<span class="uppercase text-[9px] font-black hidden lg:inline">Back</span>
-						</button>
-					</div>
-
-					{#each [1, 2, 3] as s}
-						<div class="tooltip tooltip-bottom" data-tip="ขั้นตอนที่ {s}">
+		<div class="flex items-center justify-end" on:click|stopPropagation on:keydown={() => {}}>
+			<div class="flex items-center gap-1 sm:gap-4">
+				<!-- Consolidated Step Navigation -->
+				<div
+					class="flex items-center bg-base-300/30 rounded-full p-0.5 sm:p-1 border border-base-300 shadow-inner px-2"
+				>
+					<!-- Indicators -->
+					<div class="flex items-center gap-0.5 px-0.5 sm:px-1">
+						{#each [{ s: 1, l: 'สร้างตาราง' }, { s: 2, l: 'ใส่คำใบ้' }, { s: 3, l: 'แชร์' }] as step}
 							<button
-								class="btn btn-xs join-item border-none {currentStep === s
-									? 'btn-primary'
-									: 'btn-ghost opacity-40 hover:opacity-100'} px-3"
-								on:click={() => goToStep(s)}
+								class="flex items-center gap-1 px-1.5 sm:px-2 h-6 sm:h-7 rounded-full transition-all duration-200 {currentStep ===
+								step.s
+									? 'bg-primary text-primary-content shadow-md'
+									: 'hover:bg-base-300/50 text-base-content/40 hover:text-base-content'}"
+								on:click={() => goToStep(step.s)}
 							>
-								<span class="text-[10px] font-black">{s}</span>
+								<span
+									class="w-3 sm:w-3.5 h-3 sm:h-3.5 rounded-full flex items-center justify-center text-[7px] sm:text-[8px] font-black {currentStep ===
+									step.s
+										? 'bg-white text-primary'
+										: 'bg-base-content/10'}"
+								>
+									{step.s}
+								</span>
+								<span
+									class="text-[8px] sm:text-[9px] font-black uppercase tracking-wider hidden md:inline"
+									>{step.l}</span
+								>
 							</button>
-						</div>
-					{/each}
-
-					<!-- Next Button -->
-					<div class="tooltip tooltip-bottom" data-tip="ถัดไป">
-						<button
-							class="btn btn-primary btn-xs px-4 gap-2 join-item border-l border-white/10"
-							disabled={currentStep === 3}
-							on:click={nextStep}
-						>
-							<span class="uppercase text-[9px] font-black tracking-widest translate-y-[0.5px]">
-								{currentStep === 1 ? 'เพิ่มคำใบ้' : currentStep === 2 ? 'เพิ่มข้อมูล' : 'เสร็จ!'}
-							</span>
-							<PlusSquareIcon size="14" class="rotate-90 translate-y-[0.5px]" />
-						</button>
+							{#if step.s < 3}
+								<ChevronRightIcon size="10" class="opacity-10 mx-0" />
+							{/if}
+						{/each}
 					</div>
 				</div>
 			</div>
@@ -1332,18 +1334,20 @@
 	</div>
 
 	<div
-		class="flex flex-col lg:flex-row gap-6 w-full justify-center items-start flex-1 overflow-hidden"
+		class="flex flex-col lg:flex-row gap-6 w-full justify-center items-stretch flex-1 overflow-y-auto lg:overflow-hidden p-2 sm:p-4 lg:p-6 custom-scrollbar relative z-0"
 	>
 		<!-- Main Content Area -->
 		<div
-			class="flex flex-col gap-6 flex-1 items-center overflow-y-auto h-full p-4 custom-scrollbar"
+			class="flex flex-col gap-6 flex-1 items-center lg:overflow-y-auto h-auto lg:h-full custom-scrollbar py-4 sm:py-8"
 		>
 			<!-- Grid View -->
 			<div class="flex flex-col items-center gap-3">
 				{#if showResizeControls && currentStep === 1}
-					<div class="flex items-center gap-2 animate-fade-in">
+					<div class="flex items-center gap-2 animate-fade-in mb-1">
 						<div class="tooltip" data-tip="แถวบน">
-							<div class="join bg-base-200 shadow-sm border border-base-300">
+							<div
+								class="join bg-base-200 shadow-md border border-primary/20 scale-90 sm:scale-100"
+							>
 								<button
 									on:click={addRowTop}
 									class="btn btn-ghost btn-xs join-item text-primary px-2"
@@ -1364,9 +1368,9 @@
 
 				<div class="flex items-center gap-3">
 					{#if showResizeControls && currentStep === 1}
-						<div class="tooltip tooltip-left animate-fade-in" data-tip="คอลัมน์ซ้าย">
+						<div class="tooltip tooltip-left animate-fade-in mr-1" data-tip="คอลัมน์ซ้าย">
 							<div
-								class="flex flex-col join join-vertical bg-base-200 shadow-sm border border-base-300"
+								class="flex flex-col join join-vertical bg-base-200 shadow-md border border-primary/20 scale-90 sm:scale-100"
 							>
 								<button
 									on:click={addColLeft}
@@ -1388,6 +1392,7 @@
 					<div
 						class="flex flex-col items-center gap-2 border-2 border-base-300 rounded-2xl p-1 bg-base-300 shadow-inner"
 						on:click|stopPropagation
+						on:keydown={() => {}}
 					>
 						{#if grid.length > 0}
 							<div class="relative group">
@@ -1395,7 +1400,7 @@
 									class="grid bg-base-content/20 border-2 border-base-content/20 rounded-lg shadow-2xl overflow-hidden {isSolving
 										? 'blur-[1px] grayscale-[0.3]'
 										: ''} transition-all"
-									style="grid-template-columns: repeat({cols}, {cellSize}px); gap: 1px;"
+									style="grid-template-columns: repeat({cols}, {effectiveCellSize}px); gap: 1px;"
 								>
 									{#each grid as row, r}
 										{#each row as cell, c}
@@ -1407,7 +1412,7 @@
 													: selectedRow === r && selectedCol === c
 													? 'bg-primary/20 ring-2 ring-primary ring-inset z-10'
 													: 'bg-base-100 hover:bg-base-200'}"
-												style="width:{cellSize}px; height:{cellSize}px;"
+												style="width:{effectiveCellSize}px; height:{effectiveCellSize}px;"
 												on:click={() => selectCell(r, c)}
 												on:dblclick={() => toggleBlack(r, c)}
 												role="gridcell"
@@ -1417,14 +1422,15 @@
 													{#if cellNumbers.has(`${r},${c}`)}
 														<span
 															class="absolute top-0.5 left-1 font-bold text-base-content/30 leading-none pointer-events-none"
-															style="font-size:{Math.max(8, cellSize * 0.22 * numZoom)}px"
+															style="font-size:{Math.max(8, effectiveCellSize * 0.22 * numZoom)}px"
 														>
 															{cellNumbers.get(`${r},${c}`)}
 														</span>
 													{/if}
 													<span
 														class="font-bold text-base-content leading-none pointer-events-none"
-														style="font-size:{Math.max(10, cellSize * 0.45)}px">{cell.letter}</span
+														style="font-size:{Math.max(10, effectiveCellSize * 0.45)}px"
+														>{cell.letter}</span
 													>
 												{/if}
 											</div>
@@ -1479,10 +1485,10 @@
 					</div>
 
 					{#if showResizeControls && currentStep === 1}
-						<div class="flex flex-col gap-4 items-center animate-fade-in">
+						<div class="flex flex-col gap-4 items-center animate-fade-in ml-1">
 							<div class="tooltip tooltip-right" data-tip="คอลัมน์ขวา">
 								<div
-									class="flex flex-col join join-vertical bg-base-200 shadow-sm border border-base-300"
+									class="flex flex-col join join-vertical bg-base-200 shadow-md border border-primary/20 scale-90 sm:scale-100"
 								>
 									<button
 										on:click={addColRight}
@@ -1499,23 +1505,16 @@
 									</button>
 								</div>
 							</div>
-
-							<div class="tooltip tooltip-right" data-tip="ปิดโหมดปรับขนาด">
-								<button
-									on:click={() => (showResizeControls = false)}
-									class="btn btn-circle btn-sm btn-error shadow-lg"
-								>
-									<XIcon size="18" />
-								</button>
-							</div>
 						</div>
 					{/if}
 				</div>
 
 				{#if showResizeControls && currentStep === 1}
-					<div class="flex items-center gap-2 animate-fade-in">
+					<div class="flex items-center gap-2 animate-fade-in mt-1">
 						<div class="tooltip tooltip-bottom" data-tip="แถวล่าง">
-							<div class="join bg-base-200 shadow-sm border border-base-300">
+							<div
+								class="join bg-base-200 shadow-md border border-primary/20 scale-90 sm:scale-100"
+							>
 								<button
 									on:click={addRowBottom}
 									class="btn btn-ghost btn-xs join-item text-primary px-2"
@@ -1537,7 +1536,7 @@
 		</div>
 
 		<!-- Right Panel -->
-		<div class="lg:w-96 flex flex-col gap-4 overflow-hidden h-full">
+		<div class="lg:w-96 flex flex-col gap-4 lg:overflow-hidden h-auto lg:h-full shrink-0">
 			<!-- Step 2: Clues Section -->
 			{#if currentStep === 2}
 				<div
@@ -1566,15 +1565,13 @@
 											<div class="bg-base-100 p-3 rounded-xl border border-base-300 shadow-sm">
 												<div class="flex gap-3 items-start">
 													<div class="flex flex-col items-center gap-1 min-w-[4.5rem]">
-														<span class="badge badge-primary badge-sm font-bold">{c.index}</span>
-														<span class="text-[10px] font-mono opacity-50 uppercase"
-															>{c.answer}</span
-														>
+														<span class="badge badge-primary badge-md font-bold">{c.index}</span>
+														<span class="text-md opacity-50 uppercase">{c.answer}</span>
 													</div>
 													<textarea
 														bind:value={clues[`${c.direction}-${c.r}-${c.c}`]}
 														class="textarea textarea-bordered textarea-sm w-full leading-snug h-16 text-base"
-														placeholder="พิมพ์คำใบ้ที่นี่..."
+														placeholder={c.answer}
 													/>
 												</div>
 											</div>
@@ -1596,15 +1593,13 @@
 											<div class="bg-base-100 p-3 rounded-xl border border-base-300 shadow-sm">
 												<div class="flex gap-3 items-start">
 													<div class="flex flex-col items-center gap-1 min-w-[4.5rem]">
-														<span class="badge badge-secondary badge-sm font-bold">{c.index}</span>
-														<span class="text-[10px] font-mono opacity-50 uppercase"
-															>{c.answer}</span
-														>
+														<span class="badge badge-secondary badge-md font-bold">{c.index}</span>
+														<span class="text-md opacity-50 uppercase">{c.answer}</span>
 													</div>
 													<textarea
 														bind:value={clues[`${c.direction}-${c.r}-${c.c}`]}
 														class="textarea textarea-bordered textarea-sm w-full leading-snug h-16 text-base"
-														placeholder="พิมพ์คำใบ้ที่นี่..."
+														placeholder={c.answer}
 													/>
 												</div>
 											</div>
@@ -1652,47 +1647,53 @@
 								placeholder="นิรนาม"
 							/>
 						</div>
-
-						<div class="p-3 bg-base-300/30 rounded-xl border border-white/5">
-							<div class="flex items-center gap-3">
-								<input
-									type="checkbox"
-									bind:checked={isPublic}
-									class="checkbox checkbox-primary checkbox-sm"
-								/>
-								<div class="flex-1">
-									<p class="text-xs font-bold leading-none">แชร์เป็นสาธารณะ</p>
-								</div>
-							</div>
-						</div>
 					</div>
 
-					<div class="divider my-0" />
-
 					<div class="flex flex-col gap-3">
-						<div class="flex flex-col gap-1">
+						<div class="grid grid-cols-2 gap-2">
 							<button
-								class="btn btn-primary gap-2 shadow-lg shadow-primary/20 w-full"
-								on:click={saveToDatabase}
+								class="btn btn-primary gap-2 shadow-lg shadow-primary/20"
+								on:click={() => saveToDatabase(true)}
 								disabled={isSavingToDB}
 							>
-								{#if isSavingToDB}
+								{#if isSavingToDB && isPublic}
 									<span class="loading loading-spinner loading-xs" />
 								{/if}
 								<CloudIcon size="18" />
-								บันทึก Cloud
+								<div class="flex flex-col items-start leading-tight">
+									<span class="text-xs font-bold">บันทึก Cloud</span>
+									<span class="text-[8px] opacity-70 uppercase tracking-tighter">Public</span>
+								</div>
 							</button>
-							<p class="text-[9px] text-center opacity-40 italic">สิทธิ์ในปริศนาเป็นของผู้เขียน</p>
+							<button
+								class="btn btn-outline gap-2"
+								on:click={() => saveToDatabase(false)}
+								disabled={isSavingToDB}
+							>
+								{#if isSavingToDB && !isPublic}
+									<span class="loading loading-spinner loading-xs" />
+								{/if}
+								<ZapIcon size="18" />
+								<div class="flex flex-col items-start leading-tight">
+									<span class="text-xs font-bold">บันทึกส่วนตัว</span>
+									<span class="text-[8px] opacity-70 uppercase tracking-tighter">Private</span>
+								</div>
+							</button>
 						</div>
+						<p class="text-[9px] text-center opacity-40 italic">สิทธิ์ในปริศนาเป็นของผู้เขียน</p>
 
-						<div class="grid grid-cols-2 gap-2">
-							<button class="btn btn-outline btn-sm gap-2" on:click={exportCSV}>
-								<DownloadIcon size="16" />
-								CSV
+						<div class="grid grid-cols-3 gap-2">
+							<button class="btn btn-outline btn-sm gap-2 px-1" on:click={exportCSV}>
+								<DownloadIcon size="14" />
+								<span class="text-[10px]">CSV</span>
 							</button>
-							<button class="btn btn-outline btn-sm gap-2" on:click={exportPNG}>
-								<GridIcon size="16" />
-								รูปภาพ
+							<button class="btn btn-outline btn-sm gap-2 px-1" on:click={() => exportPNG(false)}>
+								<GridIcon size="14" />
+								<span class="text-[10px]">รูปตาราง</span>
+							</button>
+							<button class="btn btn-outline btn-sm gap-2 px-1" on:click={() => exportPNG(true)}>
+								<CheckSquareIcon size="14" />
+								<span class="text-[10px]">รูปเฉลย</span>
 							</button>
 						</div>
 					</div>
@@ -1724,8 +1725,27 @@
 
 			<!-- Step 1: Suggestions panel -->
 			{#if currentStep === 1}
-				<div class="flex flex-col gap-4 animate-fade-in" on:click|stopPropagation>
-					{#if selectedRow < 0}
+				<div
+					class="flex flex-col gap-4 animate-fade-in w-full lg:w-80"
+					on:click|stopPropagation
+					on:keydown={() => {}}
+				>
+					{#if showResizeControls}
+						<div
+							class="bg-base-200 p-4 rounded-3xl border-2 border-primary shadow-xl animate-bounce-subtle"
+						>
+							<h3 class="font-bold text-sm mb-1">โหมดปรับขนาดตาราง</h3>
+							<p class="text-[10px] opacity-60 mb-4">กดปุ่มรอบตารางเพื่อเพิ่มหรือลดแถว/คอลัมน์</p>
+							<button
+								class="btn btn-primary btn-block rounded-2xl shadow-lg shadow-primary/20"
+								on:click={() => (showResizeControls = false)}
+							>
+								<CheckCircleIcon size="18" />
+								<span>เสร็จสิ้น</span>
+							</button>
+						</div>
+					{/if}
+					{#if selectedRow < 0 && showQuickTips}
 						<div class="flex flex-col gap-4 animate-fade-in">
 							<div class="bg-primary/5 border border-primary/10 rounded-2xl p-4">
 								<h4 class="text-md font-black uppercase tracking-widest text-primary mb-3">
@@ -1775,7 +1795,7 @@
 									<div class="flex flex-wrap gap-1 max-h-32 overflow-y-auto">
 										{#each acrossResults.slice(0, 40) as word}
 											<button
-												class="badge badge-outline hover:badge-primary cursor-pointer transition-colors whitespace-nowrap"
+												class="badge badge-outline hover:bg-primary hover:text-primary-content hover:border-primary cursor-pointer transition-colors whitespace-nowrap"
 												style="font-size: {14 *
 													suggestionZoom}px; height: auto; padding-top: 2px; padding-bottom: 2px;"
 												on:click={() => fillSlot(selectedRow, selectedCol, 'across', word)}
@@ -1813,7 +1833,7 @@
 									<div class="flex flex-wrap gap-1 max-h-32 overflow-y-auto">
 										{#each downResults.slice(0, 40) as word}
 											<button
-												class="badge badge-outline hover:badge-secondary cursor-pointer transition-colors whitespace-nowrap"
+												class="badge badge-outline hover:bg-secondary hover:text-secondary-content hover:border-secondary cursor-pointer transition-colors whitespace-nowrap"
 												style="font-size: {14 *
 													suggestionZoom}px; height: auto; padding-top: 2px; padding-bottom: 2px;"
 												on:click={() => fillSlot(selectedRow, selectedCol, 'down', word)}
@@ -1841,23 +1861,40 @@
 {#if showModal}
 	<!-- svelte-ignore a11y-click-events-have-key-events -->
 	<div class="modal modal-open">
-		<div class="modal-box">
-			<h3 class="font-bold text-lg">สร้างตาราง Crossword ใหม่</h3>
-			<p class="text-sm text-base-content/60 mt-1">ตารางเดิมจะถูกล้างทั้งหมด</p>
-			<div class="form-control mt-4">
-				<label class="label"><span class="label-text">จำนวนแถวแนวนอน</span></label>
-				<input type="number" min="3" max="25" bind:value={modalRows} class="input input-bordered" />
+		<div class="modal-box max-w-sm rounded-3xl border border-primary/20 shadow-2xl">
+			<h3 class="font-bold text-lg text-primary">สร้างตารางใหม่</h3>
+			<p class="text-xs opacity-50 mt-1">ข้อมูลเดิมจะถูกล้างทั้งหมด</p>
+			<div class="grid grid-cols-2 gap-4 mt-6">
+				<div class="form-control">
+					<label class="label pt-0"><span class="label-text-alt font-bold">แถว</span></label>
+					<input
+						type="number"
+						min="3"
+						max="25"
+						bind:value={modalRows}
+						class="input input-bordered input-primary w-full"
+					/>
+				</div>
+				<div class="form-control">
+					<label class="label pt-0"><span class="label-text-alt font-bold">คอลัมน์</span></label>
+					<input
+						type="number"
+						min="3"
+						max="25"
+						bind:value={modalCols}
+						class="input input-bordered input-primary w-full"
+					/>
+				</div>
 			</div>
-			<div class="form-control mt-2">
-				<label class="label"><span class="label-text">จำนวนแถวแนวตั้ง</span></label>
-				<input type="number" min="3" max="25" bind:value={modalCols} class="input input-bordered" />
-			</div>
-			<div class="modal-action">
-				<button class="btn" on:click={() => (showModal = false)}>ยกเลิก</button>
-				<button class="btn btn-primary" on:click={confirmModal}>สร้าง</button>
+			<div class="modal-action mt-8">
+				<button class="btn btn-ghost" on:click={() => (showModal = false)}>ยกเลิก</button>
+				<button class="btn btn-primary px-8 rounded-full" on:click={confirmModal}>สร้าง</button>
 			</div>
 		</div>
-		<div class="modal-backdrop" on:click={() => (showModal = false)} />
+		<div
+			class="modal-backdrop bg-base-300/80 backdrop-blur-sm"
+			on:click={() => (showModal = false)}
+		/>
 	</div>
 {/if}
 

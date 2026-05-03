@@ -1,84 +1,87 @@
-<script lang=ts>
-   import { isLower, isUpper } from '$lib/utils/thaiwords';
+<script lang="ts">
+	import { isLower, isUpper } from '$lib/utils/thaiwords';
+	import { createEventDispatcher } from 'svelte';
+	import { ArrowUpIcon } from 'svelte-feather-icons';
 
-   // stolen from https://github.com/narze/thwordle/blob/main/src/lib/layouts.ts
-   import { createEventDispatcher } from 'svelte'
-   const dispatch = createEventDispatcher();
-   let isShift: boolean = false
+	const dispatch = createEventDispatcher();
+	let isShift: boolean = false;
+	let pressedKey: string | null = null;
 
-	function type(row: number, col: number) {
-      const letter = isShift? layout.rowsShifted[row][col] : layout.rows[row][col]
+	function type(ridx: number, kidx: number) {
+		const letter = isShift ? layout.rowsShifted[ridx][kidx] : layout.rows[ridx][kidx];
 
-      if(letter === "⇧") {
-         isShift = !isShift
-         return
-      }
+		if (letter === '⇧') {
+			isShift = !isShift;
+			return;
+		}
 
-      // release shift after each letter
-      if(isShift)
-         isShift = false
-		dispatch('type', letter)
+		pressedKey = `${ridx}-${kidx}`;
+		setTimeout(() => {
+			pressedKey = null;
+		}, 100);
+
+		if (isShift) isShift = false;
+		dispatch('type', letter);
 	}
 
-   const layout = {
-      rows: [
-         ["ภ", "ถ", "ุ", "ึ", "ค", "ต", "จ", "ข", "ช", "⬅"],
-         ["ไ", "ำ", "พ", "ะ", "ั", "ี", "ร", "น", "ย", "บ", "ล"],
-         ["ฟ", "ห", "ก", "ด", "เ", "้", "่", "า", "ส", "ว", "ง"],
-         ["⇧", "ผ", "ป", "แ", "อ", "ิ", "ื", "ท", "ม", "ใ", "ฝ"],
-      ],
-      rowsShifted: [
-         ["ภ", "ถ", "ู", "ึ", "ค", "ต", "จ", "ข", "ช", "⬅"],
-         ["ไ", "ฎ", "ฑ", "ธ", "ั", "๊", "ณ", "น", "ญ", "ฐ", "ล"],
-         ["ฤ", "ฆ", "ฏ", "โ", "ฌ", "็", "๋", "ษ", "ศ", "ซ", "ง"],
-         ["⇧", "ผ", "ป", "ฉ", "ฮ", "ิ", "์", "ท", "ฒ", "ฬ", "ฝ"],
-      ],
-   }
+	const layout = {
+		rows: [
+			['ภ', 'ถ', 'ุ', 'ึ', 'ค', 'ต', 'จ', 'ข', 'ช', '⬅'],
+			['ไ', 'ำ', 'พ', 'ะ', 'ั', 'ี', 'ร', 'น', 'ย', 'บ', 'ล'],
+			['ฟ', 'ห', 'ก', 'ด', 'เ', '้', '่', 'า', 'ส', 'ว', 'ง'],
+			['⇧', 'ผ', 'ป', 'แ', 'อ', 'ิ', 'ื', 'ท', 'ม', 'ใ', 'ฝ']
+		],
+		rowsShifted: [
+			['ภ', 'ถ', 'ู', 'ึ', 'ค', 'ต', 'จ', 'ข', 'ช', '⬅'],
+			['ไ', 'ฎ', 'ฑ', 'ธ', 'ั', '๊', 'ณ', 'น', 'ญ', 'ฐ', 'ล'],
+			['ฤ', 'ฆ', 'ฏ', 'โ', 'ฌ', '็', '๋', 'ษ', 'ศ', 'ซ', 'ง'],
+			['⇧', 'ผ', 'ป', 'ฉ', 'ฮ', 'ิ', '์', 'ท', 'ฒ', 'ฬ', 'ฝ']
+		]
+	};
 </script>
 
-{#each layout.rows as r, ridx}
-   <div class="flex flex-row gap-1 my-1">
-      {#each r as key, kidx}
-         {@const shiftKey = layout.rowsShifted[ridx][kidx]}
-         <div 
-            class="relative rounded-md border-2 flex-grow h-8 text-2xl hover:bg-success"
-            on:click={()=> type(ridx, kidx)}
-            class:bg-success={key === '⇧' && isShift}
-         >
-            {#if !isShift && key !== shiftKey}
-               <div 
-                  class="absolute top-0 left-0 text-sm" 
-                  class:translate-x-2={isUpper(key) || isLower(key)}
-               >
-                  {isShift? key : shiftKey}
-               </div>
-            {/if}
-            <p 
-               class:translate-x-2={isUpper(key) || isLower(key) || key === 'ำ'}
-               class:translate-y-2={isUpper(key)}
-               class:-translate-y-2={isLower(key)}
-            >
-               {isShift? shiftKey : key}
-            </p>
-         </div>
-      {/each}
-   </div>
-{/each}
-
+<div class="flex flex-col gap-1.5 p-2 bg-base-300/50 rounded-2xl border border-white/5 shadow-inner">
+	{#each layout.rows as r, ridx}
+		<div class="flex flex-row gap-1 w-full justify-center">
+			{#each r as key, kidx}
+				{@const shiftKey = layout.rowsShifted[ridx][kidx]}
+				{@const isPressed = pressedKey === `${ridx}-${kidx}`}
+				<!-- svelte-ignore a11y-click-events-have-key-events -->
+				<div
+					class="relative flex-1 min-w-0 h-11 sm:h-12 bg-base-100 rounded-lg shadow-[0_2px_0_rgba(0,0,0,0.2)] flex items-center justify-center cursor-pointer transition-all active:translate-y-0.5 active:shadow-none select-none
+                  {key === '⇧' && isShift ? 'bg-primary text-primary-content' : 'hover:bg-base-200'}
+                  {isPressed ? 'bg-primary/20 scale-95' : ''}"
+					on:click={() => type(ridx, kidx)}
+				>
+					{#if key === '⇧'}
+						<ArrowUpIcon size="18" fill={isShift ? 'currentColor' : 'none'} />
+					{:else if key === '⬅'}
+						<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"></path><line x1="18" y1="9" x2="12" y2="15"></line><line x1="12" y1="9" x2="18" y2="15"></line></svg>
+					{:else}
+						<div class="flex flex-col items-center justify-center pt-1">
+							{#if !isShift && key !== shiftKey}
+								<span class="absolute top-0.5 right-1 text-[8px] opacity-30 font-bold">
+									{shiftKey}
+								</span>
+							{/if}
+							<span
+								class="text-lg sm:text-xl font-medium
+                        {isUpper(isShift ? shiftKey : key) ? 'translate-y-1' : ''}
+                        {isLower(isShift ? shiftKey : key) ? '-translate-y-1' : ''}"
+							>
+								{isShift ? shiftKey : key}
+							</span>
+						</div>
+					{/if}
+				</div>
+			{/each}
+		</div>
+	{/each}
+</div>
 
 <style>
-	@keyframes pressed {
-		20% {
-			background-color: hsl(var(--su));
-      }
-		80% {
-			background-color: none;
-		}
-	}
-	.typed {
-		animation-duration: 0.5s;
-		animation-fill-mode: both;
-		animation-name: pressed;
-		animation-play-state: running;
+	/* Prevent pull-to-refresh on mobile when typing fast */
+	div {
+		touch-action: manipulation;
 	}
 </style>

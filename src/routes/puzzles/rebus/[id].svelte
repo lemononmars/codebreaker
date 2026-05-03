@@ -14,8 +14,9 @@
 
 <script lang=ts>
    import type {IRebus} from '$lib/interfaces'
-   import {ChevronLeftIcon, ChevronRightIcon} from 'svelte-feather-icons'
+   import { ChevronLeftIcon, ChevronRightIcon } from 'svelte-feather-icons'
    import { getPuzzleImageURL } from '$lib/supabase';
+   import TitleTab from '$lib/components/TitleTab.svelte';
    export let content: IRebus, id: number
    const maxNumPuzzles: number = 31 // hard-coded
 
@@ -75,36 +76,17 @@
       showAnswer = false
    }
 
-   function focusOnMount(node) {
+	$: if (content) {
+		clearAns();
+	}
+
+	function focusOnMount(node) {
 		node.focus();
 	}
 </script>
 
 <div class="flex flex-col gap-2 pb-10">
-   <div class = 'flex flex-col justify-center'>
-      <div class="flex flex-row justify-center items-center gap-2">
-         <!-- svelte-ignore a11y-click-events-have-key-events -->
-         {#if id > 1}
-         <div class="btn btn-outline btn-sm" on:click={clearAns}><a href="/puzzles/rebus/{Number(id)-1}">
-            <ChevronLeftIcon size=20/>
-         </a></div>
-         {/if}
-         <div><h1><a href="/puzzles/rebus">Rebus {id}</a></h1></div>
-         <!-- svelte-ignore a11y-click-events-have-key-events -->
-         {#if id < maxNumPuzzles}
-         <div class="btn btn-outline btn-sm" on:click={clearAns}><a href="/puzzles/rebus/{Number(id)+1}">
-            <ChevronRightIcon size=20/>
-         </a></div>
-         {/if}
-      </div>
-      <div>
-         {#if content.tags}
-            {#each content.tags as t}
-               <a href="/puzzles/{content.type}?tag={t}"><div class="badge badge-outline">{t}</div></a>
-            {/each}
-         {/if}
-      </div>
-   </div>
+   <TitleTab {content} />
 
    <div class="mx-auto w-full lg:w-1/2">
       {#key imgurl}

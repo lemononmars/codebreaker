@@ -15,8 +15,14 @@
       return ("0"+n).slice(-2)
    }
 
-   let openModal: boolean = false
-   let isFinished: boolean = false
+	let openModal: boolean = false;
+	let isFinished: boolean = false;
+	let imageError = false;
+
+	$: if (year || week) {
+		clearAns();
+		imageError = false;
+	}
 
    function triggleWiggle() {
       isWiggle = true
@@ -111,9 +117,22 @@
    {#if title}
       <h2>{title}</h2>
    {/if}
-   <div class="mx-auto w-full lg:w-1/2">
+   <div class="mx-auto w-full lg:w-1/2 min-h-[300px] flex items-center justify-center">
       {#key imgurl}
-         <img src="{getPuzzleImageURL('weekly', imgurl)}" onerror='this.style.display = "none"' class="aspect-auto object-contain" alt="img">
+         {#if !imageError}
+            <img 
+               src="{getPuzzleImageURL('weekly', imgurl)}" 
+               on:error={() => imageError = true} 
+               class="aspect-auto object-contain rounded-2xl shadow-lg" 
+               alt="img"
+            >
+         {:else}
+            <div class="bg-base-200 p-12 rounded-3xl border-2 border-dashed border-base-300 flex flex-col items-center justify-center text-center w-full animate-fade-in">
+                <div class="text-5xl mb-4 opacity-50">🖼️</div>
+                <h3 class="text-xl font-bold opacity-50">ไม่พบรูปภาพปริศนา</h3>
+                <p class="text-sm opacity-30 mt-1">สัปดาห์นี้อาจจะยังไม่ได้อัปโหลดรูปภาพ หรือเกิดข้อผิดพลาดในการโหลด</p>
+            </div>
+         {/if}
       {/key}
    </div>
    <div class="sticky top-0 lg:top-20 flex flex-col z-20 bg-info-content h-1/2 lg:h-auto">
