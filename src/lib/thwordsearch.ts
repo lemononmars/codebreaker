@@ -96,7 +96,7 @@ export async function search(query: string, includeWiki: boolean, abortSignal?: 
 
   // Crossword optimization: check if query is a simple pattern (Thai chars and dots only)
   // No variable, no anagram, no subset, no length, no union/intersection
-  const isSimplePattern = !query.match(/[\&\|\^\:\/\!\{\}\*\[\]\~A-Z]/);
+  const isSimplePattern = !query.match(/[\&\|\^\:\/\!\{\}\*\[\]\~A-Z0-9]/);
   if (isSimplePattern) {
     if (includeWiki) {
       if (!combinedTrie) combinedTrie = buildThaiTrie([...dict, ...(wiki as string[])]);
@@ -134,9 +134,10 @@ export async function search(query: string, includeWiki: boolean, abortSignal?: 
 
   let minLength = 0
   let maxLength = 100
-  let lengthQuery = queries.find((q)=>q.includes(":")) // only the first length query is used
+  let lengthQuery = queries.find((q)=>q.includes(":") || q.match(/^\d+(-\d*)?$/)) // only the first length query is used
   if(lengthQuery) {
-    let lengthStr = lengthQuery.slice(0, lengthQuery.indexOf(":"))
+    let colonIndex = lengthQuery.indexOf(":")
+    let lengthStr = colonIndex >= 0 ? lengthQuery.slice(0, colonIndex) : lengthQuery
 
     // a single number - exact match
     if(!lengthStr.includes("-"))
@@ -278,6 +279,13 @@ function matchQuery(w: string, q: string, e:string[], vars: Record<string, strin
   // return if the word has any excluded character
   if(e.some((ec)=>w.includes(ec))) return false
 
+  if(q.includes(":")) {
+    q = q.slice(q.indexOf(":")+1)
+    if(q === "") return true
+  } else if (q.match(/^\d+(-\d*)?$/)) {
+    return true
+  }
+
   const wordSplitted = splitWord(w)
   let querySplitted = splitWord(q)
 
@@ -285,9 +293,6 @@ function matchQuery(w: string, q: string, e:string[], vars: Record<string, strin
     if (!wCell) return false;
     return strict ? wCell === qCell : wCell.startsWith(qCell);
   };
-
-  if(q.includes(":"))
-    q = q.slice(q.indexOf(":")+1)
   
   let mode = {anagram: false, subset: false}
   const numWilds = querySplitted.reduce((prev, letter) => prev + (letter === '.'? 1:0), 0)
