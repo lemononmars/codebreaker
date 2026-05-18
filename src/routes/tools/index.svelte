@@ -1,7 +1,31 @@
 <script lang="ts">
-	import { CheckCircleIcon, GridIcon, SearchIcon, ColumnsIcon } from 'svelte-feather-icons';
+	import {
+		CheckCircleIcon,
+		GridIcon,
+		SearchIcon,
+		ColumnsIcon,
+		ImageIcon,
+		Edit3Icon
+	} from 'svelte-feather-icons';
 
-	const tools = [
+	const puzzleBuilders = [
+		{
+			name: 'Crossword Builder',
+			path: '/tools/crossword',
+			description: 'สร้างตารางอักษรไขว้ภาษาไทย',
+			icon: ColumnsIcon,
+			color: 'text-accent'
+		},
+		{
+			name: 'Word Search Builder',
+			path: '/tools/wordsearch',
+			description: 'สร้างตารางหาคำศัพท์ภาษาไทย',
+			icon: Edit3Icon,
+			color: 'text-secondary'
+		}
+	];
+
+	const utilities = [
 		{
 			name: 'Answer Checker',
 			path: '/tools/check',
@@ -24,11 +48,11 @@
 			color: 'text-secondary'
 		},
 		{
-			name: 'Crossword Builder',
-			path: '/tools/crossword',
-			description: 'สร้างตารางอักษรไขว้ภาษาไทย',
-			icon: ColumnsIcon,
-			color: 'text-accent'
+			name: 'Jigsaw Quiz',
+			path: '/tools/jigsaw',
+			description: 'ปริศนาเปิดแผ่นป้าย "แฟนพันธุ์แท้"',
+			icon: ImageIcon,
+			color: 'text-info'
 		}
 	];
 </script>
@@ -58,22 +82,53 @@
 		<p class="text-lg text-base-content/70">เครื่องมือช่วยสร้างและแก้ปริศนาของคุณ</p>
 	</div>
 
-	<div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-		{#each tools as tool}
-			<a
-				href={tool.path}
-				class="card bg-base-100 hover:bg-base-200 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl group border border-base-200/50 shadow-lg"
-			>
-				<div class="card-body items-center text-center p-8">
-					<div
-						class="w-20 h-20 rounded-2xl bg-base-200/50 shadow-inner flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300"
-					>
-						<svelte:component this={tool.icon} size="40" class={tool.color} />
+	<div class="max-w-4xl mx-auto mb-16">
+		<h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+			<div class="w-2 h-8 bg-primary rounded-full"></div>
+			Puzzle Builders
+		</h2>
+		<div class="grid md:grid-cols-2 gap-8">
+			{#each puzzleBuilders as tool}
+				<a
+					href={tool.path}
+					class="card bg-base-100 hover:bg-base-200 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl group border border-base-200/50 shadow-lg"
+				>
+					<div class="card-body items-center text-center p-8">
+						<div
+							class="w-20 h-20 rounded-2xl bg-base-200/50 shadow-inner flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300"
+						>
+							<svelte:component this={tool.icon} size="40" class={tool.color} />
+						</div>
+						<h2 class="card-title text-3xl font-bold mb-3">{tool.name}</h2>
+						<p class="text-base-content/70 font-medium">{tool.description}</p>
 					</div>
-					<h2 class="card-title text-3xl font-bold mb-3">{tool.name}</h2>
-					<p class="text-base-content/70 font-medium">{tool.description}</p>
-				</div>
-			</a>
-		{/each}
+				</a>
+			{/each}
+		</div>
+	</div>
+
+	<div class="max-w-4xl mx-auto mb-16">
+		<h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+			<div class="w-2 h-8 bg-secondary rounded-full"></div>
+			Utilities
+		</h2>
+		<div class="grid md:grid-cols-2 gap-8">
+			{#each utilities as tool}
+				<a
+					href={tool.path}
+					class="card bg-base-100 hover:bg-base-200 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl group border border-base-200/50 shadow-lg"
+				>
+					<div class="card-body items-center text-center p-8">
+						<div
+							class="w-20 h-20 rounded-2xl bg-base-200/50 shadow-inner flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300"
+						>
+							<svelte:component this={tool.icon} size="40" class={tool.color} />
+						</div>
+						<h2 class="card-title text-3xl font-bold mb-3">{tool.name}</h2>
+						<p class="text-base-content/70 font-medium">{tool.description}</p>
+					</div>
+				</a>
+			{/each}
+		</div>
 	</div>
 </div>

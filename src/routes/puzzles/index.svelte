@@ -8,6 +8,11 @@
 			icon: getImageURL('assets', 'rebus.png')
 		},
 		{
+			type: 'wordsearch',
+			description: 'ปริศนาหาคำศัพท์',
+			icon: getImageURL('assets', 'crossword.png')
+		},
+		{
 			type: 'crossword',
 			description: 'ปริศนาอักษรไขว้',
 			icon: getImageURL('assets', 'crossword.png')

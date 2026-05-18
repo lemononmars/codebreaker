@@ -158,18 +158,21 @@
 		const uid = Math.random().toString(36).substring(2, 12);
 
 		try {
-			const res = await fetch('/api/puzzle/crossword', {
+			const res = await fetch('/api/puzzle/add', {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify({
-					title,
-					author,
-					row: rows,
-					col: cols,
-					clues: cluesToSave,
-					uid,
-					is_public: isPublic,
-					created_at: new Date().toISOString()
+					type: 'crossword',
+					data: {
+						title,
+						author,
+						row: rows,
+						col: cols,
+						clues: cluesToSave,
+						uid,
+						is_public: isPublic,
+						created_at: new Date().toISOString()
+					}
 				})
 			});
 
