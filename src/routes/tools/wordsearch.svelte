@@ -264,6 +264,19 @@
 
 <svelte:head>
 	<title>Code Breaker | Word Search Builder</title>
+	<meta
+		name="description"
+		content="Create and play custom Word Search puzzles with support for Thai letters. Features difficulty levels and automatic grid generation."
+	/>
+	<meta property="og:title" content="Word Search Builder" />
+	<meta
+		property="og:description"
+		content="Create and play custom Word Search puzzles with support for Thai letters. Features difficulty levels and automatic grid generation."
+	/>
+	<meta property="og:type" content="website" />
+	<meta property="og:image" content="/og-wordsearch-builder.png" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:image" content="/og-wordsearch-builder.png" />
 </svelte:head>
 
 <div class="max-w-4xl mx-auto px-4 py-8">

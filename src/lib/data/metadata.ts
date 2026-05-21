@@ -50,6 +50,11 @@ export const puzzleDescriptions = [
         type: "crossroad",
         description: "เติมคำเพื่อสร้างคำทั้งสี่ทิศทาง",
         icon: getImageURL('assets', 'crossroad.png')
+    },
+    {
+        type: "spellingquiz",
+        description: "เกมสะกดคำไทย ทายคำสะกดที่ถูกต้องของคำที่คนมักเขียนผิดบ่อยที่สุด",
+        icon: getImageURL('assets', 'spellingbee.png')
     }
 ];
 

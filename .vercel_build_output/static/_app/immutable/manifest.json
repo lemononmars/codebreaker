@@ -1,0 +1,1216 @@
+{
+  ".svelte-kit/runtime/client/start.js": {
+    "file": "start-f913d814.js",
+    "src": ".svelte-kit/runtime/client/start.js",
+    "isEntry": true,
+    "imports": [
+      "_index-1d92a957.js",
+      "_index-cf34c359.js",
+      "_preload-helper-60cab3ee.js",
+      "_singletons-d1fb5791.js"
+    ],
+    "dynamicImports": [
+      "src/routes/__layout.svelte",
+      "src/routes/__error.svelte",
+      "src/routes/__layout-main.svelte",
+      "src/routes/user/[username]/__error.svelte",
+      "src/routes/about.svelte",
+      "src/routes/carddeck/vol1/check.svelte",
+      "src/routes/carddeck/vol1/hint.svelte",
+      "src/routes/check/index.svelte",
+      "src/routes/check/v1/[title]/[answer]/index.svelte",
+      "src/routes/events/[id].svelte",
+      "src/routes/events/index.svelte",
+      "src/routes/events/logiccontest.svelte",
+      "src/routes/events/logiccontest2.svelte",
+      "src/routes/events/train.svelte",
+      "src/routes/index@main.svelte",
+      "src/routes/login/index.svelte",
+      "src/routes/profile/index.svelte",
+      "src/routes/puzzles/adventure/[id].svelte",
+      "src/routes/puzzles/adventure/index.svelte",
+      "src/routes/puzzles/alphabet/[id].svelte",
+      "src/routes/puzzles/alphabet/index.svelte",
+      "src/routes/puzzles/calendar2026/index.svelte",
+      "src/routes/puzzles/crossroad/index.svelte",
+      "src/routes/puzzles/crossword/[uid].svelte",
+      "src/routes/puzzles/crossword/index.svelte",
+      "src/routes/puzzles/cryptogram/[id].svelte",
+      "src/routes/puzzles/cryptogram/index.svelte",
+      "src/routes/puzzles/index.svelte",
+      "src/routes/puzzles/missingvowels/[id].svelte",
+      "src/routes/puzzles/missingvowels/index.svelte",
+      "src/routes/puzzles/puzzlehunt/[id].svelte",
+      "src/routes/puzzles/puzzlehunt/index.svelte",
+      "src/routes/puzzles/rebus/[id].svelte",
+      "src/routes/puzzles/rebus/index.svelte",
+      "src/routes/puzzles/spellingbee/[id].svelte",
+      "src/routes/puzzles/spellingbee/index.svelte",
+      "src/routes/puzzles/spellingbee/leaderboard/index.svelte",
+      "src/routes/puzzles/spellingdictionary.svelte",
+      "src/routes/puzzles/spellingquiz.svelte",
+      "src/routes/puzzles/thaimapquiz.svelte",
+      "src/routes/puzzles/weekly/[year]/[week]/index.svelte",
+      "src/routes/puzzles/weekly/[year]/[week]/leaderboard/index.svelte",
+      "src/routes/puzzles/weekly/[year]/leaderboard/index.svelte",
+      "src/routes/puzzles/weekly/index.svelte",
+      "src/routes/puzzles/wordsearch/[uid].svelte",
+      "src/routes/puzzles/wordsearch/index.svelte",
+      "src/routes/register/index.svelte",
+      "src/routes/reset-password/index.svelte",
+      "src/routes/shop/carddeck/index.svelte",
+      "src/routes/shop/carddeck/vol1.svelte",
+      "src/routes/shop/index.svelte",
+      "src/routes/shop/logiccontestbook/errata.svelte",
+      "src/routes/shop/logiccontestbook/index.svelte",
+      "src/routes/shop/rebusbook/f.svelte",
+      "src/routes/shop/rebusbook/index.svelte",
+      "src/routes/tools/check/index.svelte",
+      "src/routes/tools/check/v1/[title]/[answer]/index.svelte",
+      "src/routes/tools/crossword.svelte",
+      "src/routes/tools/index.svelte",
+      "src/routes/tools/jigsaw.svelte",
+      "src/routes/tools/pentomino.svelte",
+      "src/routes/tools/thwordsearch.svelte",
+      "src/routes/tools/wordsearch.svelte",
+      "src/routes/user/[username]/index.svelte"
+    ]
+  },
+  "src/routes/__layout.svelte": {
+    "file": "pages/__layout.svelte-e2578cf9.js",
+    "src": "src/routes/__layout.svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-1d92a957.js",
+      "_PageNavIndicator-161817ea.js",
+      "_stores-29a24611.js",
+      "_ShoppingCartIcon-f01bf0f0.js",
+      "_InfoIcon-023d4e7f.js",
+      "_PlayCircleIcon-0abae00e.js",
+      "_index-278b59fd.js",
+      "_index-cf34c359.js"
+    ]
+  },
+  "src/routes/__error.svelte": {
+    "file": "pages/__error.svelte-75c2fac0.js",
+    "src": "src/routes/__error.svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-1d92a957.js",
+      "_AlertTriangleIcon-8126d9f2.js"
+    ]
+  },
+  "src/routes/__layout-main.svelte": {
+    "file": "pages/__layout-main.svelte-e5e79659.js",
+    "src": "src/routes/__layout-main.svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-1d92a957.js",
+      "_PageNavIndicator-161817ea.js",
+      "_stores-29a24611.js",
+      "_ShoppingCartIcon-f01bf0f0.js",
+      "_InfoIcon-023d4e7f.js",
+      "_PlayCircleIcon-0abae00e.js",
+      "_index-278b59fd.js",
+      "_index-cf34c359.js"
+    ]
+  },
+  "src/routes/user/[username]/__error.svelte": {
+    "file": "pages/user/_username_/__error.svelte-79c6cc15.js",
+    "src": "src/routes/user/[username]/__error.svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-1d92a957.js",
+      "_SearchIcon-47e1959b.js"
+    ]
+  },
+  "src/routes/about.svelte": {
+    "file": "pages/about.svelte-1255dff2.js",
+    "src": "src/routes/about.svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-1d92a957.js",
+      "_YoutubeIcon-46c81372.js"
+    ]
+  },
+  "src/routes/carddeck/vol1/check.svelte": {
+    "file": "pages/carddeck/vol1/check.svelte-5315e1c1.js",
+    "src": "src/routes/carddeck/vol1/check.svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-1d92a957.js",
+      "_vol1-f6474239.js"
+    ]
+  },
+  "src/routes/carddeck/vol1/hint.svelte": {
+    "file": "pages/carddeck/vol1/hint.svelte-6f45a7a3.js",
+    "src": "src/routes/carddeck/vol1/hint.svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-1d92a957.js",
+      "_vol1-f6474239.js"
+    ]
+  },
+  "src/routes/check/index.svelte": {
+    "file": "pages/check/index.svelte-acb00d44.js",
+    "src": "src/routes/check/index.svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-1d92a957.js",
+      "_helper-46a99b91.js"
+    ]
+  },
+  "src/routes/check/v1/[title]/[answer]/index.svelte": {
+    "file": "pages/check/v1/_title_/_answer_/index.svelte-ab874e7d.js",
+    "src": "src/routes/check/v1/[title]/[answer]/index.svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-1d92a957.js",
+      "_helper-46a99b91.js"
+    ]
+  },
+  "src/routes/events/[id].svelte": {
+    "file": "pages/events/_id_.svelte-afee189d.js",
+    "src": "src/routes/events/[id].svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-1d92a957.js",
+      "_supabase-34816d3c.js",
+      "_index-cc7fa7e8.js",
+      "_preload-helper-60cab3ee.js"
+    ]
+  },
+  "src/routes/events/index.svelte": {
+    "file": "pages/events/index.svelte-1f70fd8f.js",
+    "src": "src/routes/events/index.svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-1d92a957.js",
+      "_supabase-34816d3c.js",
+      "_date-5912b33c.js",
+      "_preload-helper-60cab3ee.js"
+    ]
+  },
+  "src/routes/events/logiccontest.svelte": {
+    "file": "pages/events/logiccontest.svelte-fa77ae1c.js",
+    "src": "src/routes/events/logiccontest.svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-1d92a957.js",
+      "_supabase-34816d3c.js",
+      "_index-cc7fa7e8.js",
+      "_index-1bbfe9d8.js",
+      "_Head-c89d1517.js",
+      "_preload-helper-60cab3ee.js"
+    ]
+  },
+  "src/routes/events/logiccontest2.svelte": {
+    "file": "pages/events/logiccontest2.svelte-9929dc8c.js",
+    "src": "src/routes/events/logiccontest2.svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-1d92a957.js",
+      "_supabase-34816d3c.js",
+      "_index-cc7fa7e8.js",
+      "_index-1bbfe9d8.js",
+      "_Head-c89d1517.js",
+      "_preload-helper-60cab3ee.js"
+    ]
+  },
+  "src/routes/events/train.svelte": {
+    "file": "pages/events/train.svelte-2af1d32b.js",
+    "src": "src/routes/events/train.svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-1d92a957.js",
+      "_ShoppingCartIcon-f01bf0f0.js",
+      "_ClockIcon-30d96b10.js",
+      "_PlayCircleIcon-0abae00e.js",
+      "_index-f1212520.js"
+    ],
+    "css": [
+      "assets/pages/events/train.svelte-72946eaa.css"
+    ],
+    "assets": [
+      "assets/traintrial-18fdb699.png",
+      "assets/mrt-logo-90cc3151.svg",
+      "assets/bts-logo-0196774f.png",
+      "assets/gamelabth-logo-78cf6e60.png"
+    ]
+  },
+  "src/routes/index@main.svelte": {
+    "file": "pages/index@main.svelte-1f75a093.js",
+    "src": "src/routes/index@main.svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-1d92a957.js",
+      "_index-cf34c359.js",
+      "_YoutubeIcon-46c81372.js",
+      "_supabase-34816d3c.js",
+      "_preload-helper-60cab3ee.js"
+    ],
+    "css": [
+      "assets/pages/index@main.svelte-438e03c9.css"
+    ]
+  },
+  "src/routes/login/index.svelte": {
+    "file": "pages/login/index.svelte-c2955310.js",
+    "src": "src/routes/login/index.svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-1d92a957.js",
+      "_supabase-34816d3c.js",
+      "_index-278b59fd.js",
+      "_navigation-3f1ea447.js",
+      "_preload-helper-60cab3ee.js",
+      "_index-cf34c359.js",
+      "_singletons-d1fb5791.js"
+    ]
+  },
+  "src/routes/profile/index.svelte": {
+    "file": "pages/profile/index.svelte-350e5081.js",
+    "src": "src/routes/profile/index.svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-1d92a957.js",
+      "_index-278b59fd.js",
+      "_supabase-34816d3c.js",
+      "_navigation-3f1ea447.js",
+      "_SaveIcon-006be302.js",
+      "_XIcon-b0888b77.js",
+      "_index-cf34c359.js",
+      "_preload-helper-60cab3ee.js",
+      "_singletons-d1fb5791.js"
+    ]
+  },
+  "src/routes/puzzles/adventure/[id].svelte": {
+    "file": "pages/puzzles/adventure/_id_.svelte-ae584e66.js",
+    "src": "src/routes/puzzles/adventure/[id].svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-1d92a957.js",
+      "_navigation-3f1ea447.js",
+      "_stores-29a24611.js",
+      "_index-278b59fd.js",
+      "_singletons-d1fb5791.js",
+      "_index-cf34c359.js"
+    ]
+  },
+  "src/routes/puzzles/adventure/index.svelte": {
+    "file": "pages/puzzles/adventure/index.svelte-d3154e48.js",
+    "src": "src/routes/puzzles/adventure/index.svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-1d92a957.js",
+      "_navigation-3f1ea447.js",
+      "_singletons-d1fb5791.js"
+    ]
+  },
+  "src/routes/puzzles/alphabet/[id].svelte": {
+    "file": "pages/puzzles/alphabet/_id_.svelte-cf6bfd66.js",
+    "src": "src/routes/puzzles/alphabet/[id].svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-1d92a957.js",
+      "_thaiwords-32805de7.js",
+      "_index-f1212520.js",
+      "_TitleTab-cee890d1.js",
+      "_ChevronLeftIcon-416fa66a.js",
+      "_date-5912b33c.js"
+    ]
+  },
+  "src/routes/puzzles/alphabet/index.svelte": {
+    "file": "pages/puzzles/alphabet/index.svelte-1214d3ed.js",
+    "src": "src/routes/puzzles/alphabet/index.svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-1d92a957.js",
+      "_date-5912b33c.js"
+    ]
+  },
+  "src/routes/puzzles/calendar2026/index.svelte": {
+    "file": "pages/puzzles/calendar2026/index.svelte-3a5ac009.js",
+    "src": "src/routes/puzzles/calendar2026/index.svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-1d92a957.js",
+      "_index-f1212520.js"
+    ]
+  },
+  "src/routes/puzzles/crossroad/index.svelte": {
+    "file": "pages/puzzles/crossroad/index.svelte-c3cc95c6.js",
+    "src": "src/routes/puzzles/crossroad/index.svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-1d92a957.js",
+      "_thaiwords-32805de7.js",
+      "_CheckSquareIcon-7674f9b3.js",
+      "_HelpCircleIcon-3d1d3c83.js",
+      "_PlayCircleIcon-0abae00e.js",
+      "_index-f1212520.js"
+    ],
+    "css": [
+      "assets/pages/puzzles/crossroad/index.svelte-9fe286b4.css"
+    ]
+  },
+  "src/routes/puzzles/crossword/[uid].svelte": {
+    "file": "pages/puzzles/crossword/_uid_.svelte-2a949fae.js",
+    "src": "src/routes/puzzles/crossword/[uid].svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-1d92a957.js",
+      "_thaiwords-32805de7.js",
+      "_TitleTab-cee890d1.js",
+      "_CheckCircleIcon-25b4161e.js",
+      "_ChevronLeftIcon-416fa66a.js",
+      "_ChevronRightIcon-1ce123ed.js",
+      "_EyeIcon-2215d1f5.js",
+      "_index-f1212520.js",
+      "_date-5912b33c.js"
+    ],
+    "css": [
+      "assets/pages/puzzles/crossword/_uid_.svelte-71e51130.css"
+    ]
+  },
+  "src/routes/puzzles/crossword/index.svelte": {
+    "file": "pages/puzzles/crossword/index.svelte-617e1352.js",
+    "src": "src/routes/puzzles/crossword/index.svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-1d92a957.js",
+      "_date-5912b33c.js"
+    ]
+  },
+  "src/routes/puzzles/cryptogram/[id].svelte": {
+    "file": "pages/puzzles/cryptogram/_id_.svelte-b13bcf6e.js",
+    "src": "src/routes/puzzles/cryptogram/[id].svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-1d92a957.js",
+      "_thaiwords-32805de7.js",
+      "_TitleTab-cee890d1.js",
+      "_ChevronLeftIcon-416fa66a.js",
+      "_date-5912b33c.js"
+    ]
+  },
+  "src/routes/puzzles/cryptogram/index.svelte": {
+    "file": "pages/puzzles/cryptogram/index.svelte-fc80e2fb.js",
+    "src": "src/routes/puzzles/cryptogram/index.svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-1d92a957.js",
+      "_date-5912b33c.js"
+    ]
+  },
+  "src/routes/puzzles/index.svelte": {
+    "file": "pages/puzzles/index.svelte-f26a0738.js",
+    "src": "src/routes/puzzles/index.svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-1d92a957.js",
+      "_supabase-34816d3c.js",
+      "_preload-helper-60cab3ee.js"
+    ]
+  },
+  "src/routes/puzzles/missingvowels/[id].svelte": {
+    "file": "pages/puzzles/missingvowels/_id_.svelte-703b6868.js",
+    "src": "src/routes/puzzles/missingvowels/[id].svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-1d92a957.js",
+      "_PlayCircleIcon-0abae00e.js",
+      "_TitleTab-cee890d1.js",
+      "_index-f1212520.js",
+      "_ChevronLeftIcon-416fa66a.js",
+      "_date-5912b33c.js"
+    ]
+  },
+  "src/routes/puzzles/missingvowels/index.svelte": {
+    "file": "pages/puzzles/missingvowels/index.svelte-75f86130.js",
+    "src": "src/routes/puzzles/missingvowels/index.svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-1d92a957.js",
+      "_date-5912b33c.js"
+    ]
+  },
+  "src/routes/puzzles/puzzlehunt/[id].svelte": {
+    "file": "pages/puzzles/puzzlehunt/_id_.svelte-b2eafdfb.js",
+    "src": "src/routes/puzzles/puzzlehunt/[id].svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-1d92a957.js"
+    ]
+  },
+  "src/routes/puzzles/puzzlehunt/index.svelte": {
+    "file": "pages/puzzles/puzzlehunt/index.svelte-1dba44ac.js",
+    "src": "src/routes/puzzles/puzzlehunt/index.svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-1d92a957.js",
+      "_supabase-34816d3c.js",
+      "_date-5912b33c.js",
+      "_preload-helper-60cab3ee.js"
+    ]
+  },
+  "src/routes/puzzles/rebus/[id].svelte": {
+    "file": "pages/puzzles/rebus/_id_.svelte-34133e45.js",
+    "src": "src/routes/puzzles/rebus/[id].svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-1d92a957.js",
+      "_supabase-34816d3c.js",
+      "_TitleTab-cee890d1.js",
+      "_preload-helper-60cab3ee.js",
+      "_ChevronLeftIcon-416fa66a.js",
+      "_date-5912b33c.js"
+    ]
+  },
+  "src/routes/puzzles/rebus/index.svelte": {
+    "file": "pages/puzzles/rebus/index.svelte-c70fef24.js",
+    "src": "src/routes/puzzles/rebus/index.svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-1d92a957.js",
+      "_date-5912b33c.js"
+    ]
+  },
+  "src/routes/puzzles/spellingbee/[id].svelte": {
+    "file": "pages/puzzles/spellingbee/_id_.svelte-5ba6c5de.js",
+    "src": "src/routes/puzzles/spellingbee/[id].svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-1d92a957.js",
+      "_navigation-3f1ea447.js",
+      "_index-1b016e5b.js",
+      "_thaiwords-32805de7.js",
+      "_XCircleIcon-8974577d.js",
+      "_index-f1212520.js",
+      "_index-29f4faa3.js",
+      "_singletons-d1fb5791.js"
+    ],
+    "css": [
+      "assets/pages/puzzles/spellingbee/_id_.svelte-51eaa80b.css"
+    ]
+  },
+  "src/routes/puzzles/spellingbee/index.svelte": {
+    "file": "pages/puzzles/spellingbee/index.svelte-2ee15757.js",
+    "src": "src/routes/puzzles/spellingbee/index.svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-1d92a957.js",
+      "_index-278b59fd.js",
+      "_index-1b016e5b.js",
+      "_thaiwords-32805de7.js",
+      "_date-5912b33c.js",
+      "_PlayCircleIcon-0abae00e.js",
+      "_XCircleIcon-8974577d.js",
+      "_index-f1212520.js",
+      "_index-29f4faa3.js",
+      "_index-cf34c359.js"
+    ],
+    "css": [
+      "assets/pages/puzzles/spellingbee/_id_.svelte-51eaa80b.css"
+    ]
+  },
+  "src/routes/puzzles/spellingbee/leaderboard/index.svelte": {
+    "file": "pages/puzzles/spellingbee/leaderboard/index.svelte-9ab399c1.js",
+    "src": "src/routes/puzzles/spellingbee/leaderboard/index.svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-1d92a957.js",
+      "_date-5912b33c.js",
+      "_index-1b016e5b.js"
+    ]
+  },
+  "src/routes/puzzles/spellingdictionary.svelte": {
+    "file": "pages/puzzles/spellingdictionary.svelte-29adfac6.js",
+    "src": "src/routes/puzzles/spellingdictionary.svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-1d92a957.js",
+      "_words-48f50b8c.js",
+      "_CheckCircleIcon-25b4161e.js",
+      "_ChevronLeftIcon-416fa66a.js",
+      "_ChevronRightIcon-1ce123ed.js",
+      "_SearchIcon-47e1959b.js",
+      "_XCircleIcon-8974577d.js"
+    ]
+  },
+  "src/routes/puzzles/spellingquiz.svelte": {
+    "file": "pages/puzzles/spellingquiz.svelte-c773bf28.js",
+    "src": "src/routes/puzzles/spellingquiz.svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-1d92a957.js",
+      "_words-48f50b8c.js",
+      "_CompassIcon-483df7fe.js",
+      "_CheckCircleIcon-25b4161e.js",
+      "_ChevronLeftIcon-416fa66a.js",
+      "_ClockIcon-30d96b10.js",
+      "_HelpCircleIcon-3d1d3c83.js",
+      "_XCircleIcon-8974577d.js"
+    ],
+    "css": [
+      "assets/pages/puzzles/spellingquiz.svelte-b3859ae5.css"
+    ]
+  },
+  "src/routes/puzzles/thaimapquiz.svelte": {
+    "file": "pages/puzzles/thaimapquiz.svelte-6c122887.js",
+    "src": "src/routes/puzzles/thaimapquiz.svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-1d92a957.js",
+      "_CompassIcon-483df7fe.js",
+      "_CheckCircleIcon-25b4161e.js",
+      "_InfoIcon-023d4e7f.js",
+      "_XCircleIcon-8974577d.js",
+      "_XIcon-b0888b77.js"
+    ],
+    "css": [
+      "assets/pages/puzzles/thaimapquiz.svelte-96affe91.css"
+    ]
+  },
+  "src/routes/puzzles/weekly/[year]/[week]/index.svelte": {
+    "file": "pages/puzzles/weekly/_year_/_week_/index.svelte-183346f6.js",
+    "src": "src/routes/puzzles/weekly/[year]/[week]/index.svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-1d92a957.js",
+      "_index-278b59fd.js",
+      "_ChevronLeftIcon-416fa66a.js",
+      "_ChevronRightIcon-1ce123ed.js",
+      "_XCircleIcon-8974577d.js",
+      "_supabase-34816d3c.js",
+      "_index-cf34c359.js",
+      "_preload-helper-60cab3ee.js"
+    ],
+    "css": [
+      "assets/pages/puzzles/spellingbee/_id_.svelte-51eaa80b.css"
+    ]
+  },
+  "src/routes/puzzles/weekly/[year]/[week]/leaderboard/index.svelte": {
+    "file": "pages/puzzles/weekly/_year_/_week_/leaderboard/index.svelte-b284fef7.js",
+    "src": "src/routes/puzzles/weekly/[year]/[week]/leaderboard/index.svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-1d92a957.js"
+    ]
+  },
+  "src/routes/puzzles/weekly/[year]/leaderboard/index.svelte": {
+    "file": "pages/puzzles/weekly/_year_/leaderboard/index.svelte-eb30d248.js",
+    "src": "src/routes/puzzles/weekly/[year]/leaderboard/index.svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-1d92a957.js"
+    ]
+  },
+  "src/routes/puzzles/weekly/index.svelte": {
+    "file": "pages/puzzles/weekly/index.svelte-e45336b6.js",
+    "src": "src/routes/puzzles/weekly/index.svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-1d92a957.js"
+    ]
+  },
+  "src/routes/puzzles/wordsearch/[uid].svelte": {
+    "file": "pages/puzzles/wordsearch/_uid_.svelte-36672598.js",
+    "src": "src/routes/puzzles/wordsearch/[uid].svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-1d92a957.js",
+      "_index-f1212520.js",
+      "_TitleTab-cee890d1.js",
+      "_ChevronLeftIcon-416fa66a.js",
+      "_date-5912b33c.js"
+    ]
+  },
+  "src/routes/puzzles/wordsearch/index.svelte": {
+    "file": "pages/puzzles/wordsearch/index.svelte-67e38b59.js",
+    "src": "src/routes/puzzles/wordsearch/index.svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-1d92a957.js",
+      "_date-5912b33c.js"
+    ]
+  },
+  "src/routes/register/index.svelte": {
+    "file": "pages/register/index.svelte-20223c23.js",
+    "src": "src/routes/register/index.svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-1d92a957.js",
+      "_supabase-34816d3c.js",
+      "_index-278b59fd.js",
+      "_navigation-3f1ea447.js",
+      "_preload-helper-60cab3ee.js",
+      "_index-cf34c359.js",
+      "_singletons-d1fb5791.js"
+    ]
+  },
+  "src/routes/reset-password/index.svelte": {
+    "file": "pages/reset-password/index.svelte-e1abf228.js",
+    "src": "src/routes/reset-password/index.svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-1d92a957.js",
+      "_supabase-34816d3c.js",
+      "_preload-helper-60cab3ee.js"
+    ]
+  },
+  "src/routes/shop/carddeck/index.svelte": {
+    "file": "pages/shop/carddeck/index.svelte-52590c96.js",
+    "src": "src/routes/shop/carddeck/index.svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-1d92a957.js"
+    ]
+  },
+  "src/routes/shop/carddeck/vol1.svelte": {
+    "file": "pages/shop/carddeck/vol1.svelte-0c1c7424.js",
+    "src": "src/routes/shop/carddeck/vol1.svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-1d92a957.js",
+      "_Head-c89d1517.js"
+    ]
+  },
+  "src/routes/shop/index.svelte": {
+    "file": "pages/shop/index.svelte-526ecb76.js",
+    "src": "src/routes/shop/index.svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-1d92a957.js"
+    ]
+  },
+  "src/routes/shop/logiccontestbook/errata.svelte": {
+    "file": "pages/shop/logiccontestbook/errata.svelte-e4f561b5.js",
+    "src": "src/routes/shop/logiccontestbook/errata.svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-1d92a957.js"
+    ]
+  },
+  "src/routes/shop/logiccontestbook/index.svelte": {
+    "file": "pages/shop/logiccontestbook/index.svelte-ac47024f.js",
+    "src": "src/routes/shop/logiccontestbook/index.svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-1d92a957.js",
+      "_Head-c89d1517.js"
+    ]
+  },
+  "src/routes/shop/rebusbook/f.svelte": {
+    "file": "pages/shop/rebusbook/f.svelte-f6047fa7.js",
+    "src": "src/routes/shop/rebusbook/f.svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-1d92a957.js"
+    ]
+  },
+  "src/routes/shop/rebusbook/index.svelte": {
+    "file": "pages/shop/rebusbook/index.svelte-1a589df6.js",
+    "src": "src/routes/shop/rebusbook/index.svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-1d92a957.js",
+      "_Head-c89d1517.js"
+    ]
+  },
+  "src/routes/tools/check/index.svelte": {
+    "file": "pages/tools/check/index.svelte-43b38555.js",
+    "src": "src/routes/tools/check/index.svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-1d92a957.js",
+      "_helper-7f7ceee4.js",
+      "_CheckCircleIcon-25b4161e.js",
+      "_LinkIcon-193a083b.js"
+    ]
+  },
+  "src/routes/tools/check/v1/[title]/[answer]/index.svelte": {
+    "file": "pages/tools/check/v1/_title_/_answer_/index.svelte-4decea00.js",
+    "src": "src/routes/tools/check/v1/[title]/[answer]/index.svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-1d92a957.js",
+      "_helper-7f7ceee4.js"
+    ]
+  },
+  "src/routes/tools/crossword.svelte": {
+    "file": "pages/tools/crossword.svelte-465238c8.js",
+    "src": "src/routes/tools/crossword.svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-1d92a957.js",
+      "_thwordsearch-c575b6d1.js",
+      "_navigation-3f1ea447.js",
+      "_CheckCircleIcon-25b4161e.js",
+      "_CheckSquareIcon-7674f9b3.js",
+      "_ChevronRightIcon-1ce123ed.js",
+      "_GridIcon-8369c238.js",
+      "_InfoIcon-023d4e7f.js",
+      "_XIcon-b0888b77.js",
+      "_singletons-d1fb5791.js"
+    ],
+    "css": [
+      "assets/pages/tools/crossword.svelte-87009b03.css"
+    ]
+  },
+  "src/routes/tools/index.svelte": {
+    "file": "pages/tools/index.svelte-2ff2b385.js",
+    "src": "src/routes/tools/index.svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-1d92a957.js",
+      "_CheckCircleIcon-25b4161e.js",
+      "_GridIcon-8369c238.js",
+      "_SearchIcon-47e1959b.js"
+    ]
+  },
+  "src/routes/tools/jigsaw.svelte": {
+    "file": "pages/tools/jigsaw.svelte-c8a85b8f.js",
+    "src": "src/routes/tools/jigsaw.svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-1d92a957.js",
+      "_index-f1212520.js"
+    ],
+    "css": [
+      "assets/pages/tools/jigsaw.svelte-5cc2bce4.css"
+    ]
+  },
+  "src/routes/tools/pentomino.svelte": {
+    "file": "pages/tools/pentomino.svelte-39a4308c.js",
+    "src": "src/routes/tools/pentomino.svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-1d92a957.js",
+      "_index-f1212520.js"
+    ]
+  },
+  "src/routes/tools/thwordsearch.svelte": {
+    "file": "pages/tools/thwordsearch.svelte-362a770b.js",
+    "src": "src/routes/tools/thwordsearch.svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-1d92a957.js",
+      "_thwordsearch-c575b6d1.js",
+      "_index-f1212520.js",
+      "_stores-29a24611.js",
+      "_AlertTriangleIcon-8126d9f2.js",
+      "_ClockIcon-30d96b10.js",
+      "_SearchIcon-47e1959b.js"
+    ]
+  },
+  "src/routes/tools/wordsearch.svelte": {
+    "file": "pages/tools/wordsearch.svelte-2b0ba169.js",
+    "src": "src/routes/tools/wordsearch.svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-1d92a957.js",
+      "_thaiwords-32805de7.js",
+      "_EyeIcon-2215d1f5.js",
+      "_LinkIcon-193a083b.js",
+      "_SaveIcon-006be302.js"
+    ]
+  },
+  "src/routes/user/[username]/index.svelte": {
+    "file": "pages/user/_username_/index.svelte-e35dab1c.js",
+    "src": "src/routes/user/[username]/index.svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-1d92a957.js"
+    ]
+  },
+  "_index-1d92a957.js": {
+    "file": "chunks/index-1d92a957.js"
+  },
+  "_index-cf34c359.js": {
+    "file": "chunks/index-cf34c359.js",
+    "imports": [
+      "_index-1d92a957.js"
+    ]
+  },
+  "_singletons-d1fb5791.js": {
+    "file": "chunks/singletons-d1fb5791.js"
+  },
+  "_preload-helper-60cab3ee.js": {
+    "file": "chunks/preload-helper-60cab3ee.js"
+  },
+  "_PageNavIndicator-161817ea.js": {
+    "file": "chunks/PageNavIndicator-161817ea.js",
+    "imports": [
+      "_index-1d92a957.js",
+      "_ShoppingCartIcon-f01bf0f0.js",
+      "_InfoIcon-023d4e7f.js",
+      "_PlayCircleIcon-0abae00e.js",
+      "_index-278b59fd.js",
+      "_stores-29a24611.js"
+    ],
+    "css": [
+      "assets/PageNavIndicator-13e95c39.css"
+    ]
+  },
+  "_stores-29a24611.js": {
+    "file": "chunks/stores-29a24611.js",
+    "imports": [
+      "_index-1d92a957.js"
+    ]
+  },
+  "_ShoppingCartIcon-f01bf0f0.js": {
+    "file": "chunks/ShoppingCartIcon-f01bf0f0.js",
+    "imports": [
+      "_index-1d92a957.js"
+    ],
+    "assets": [
+      "assets/logo-ab1e3e74.png"
+    ]
+  },
+  "_InfoIcon-023d4e7f.js": {
+    "file": "chunks/InfoIcon-023d4e7f.js",
+    "imports": [
+      "_index-1d92a957.js"
+    ]
+  },
+  "_PlayCircleIcon-0abae00e.js": {
+    "file": "chunks/PlayCircleIcon-0abae00e.js",
+    "imports": [
+      "_index-1d92a957.js"
+    ]
+  },
+  "_index-278b59fd.js": {
+    "file": "chunks/index-278b59fd.js",
+    "imports": [
+      "_index-cf34c359.js"
+    ]
+  },
+  "_AlertTriangleIcon-8126d9f2.js": {
+    "file": "chunks/AlertTriangleIcon-8126d9f2.js",
+    "imports": [
+      "_index-1d92a957.js"
+    ]
+  },
+  "_SearchIcon-47e1959b.js": {
+    "file": "chunks/SearchIcon-47e1959b.js",
+    "imports": [
+      "_index-1d92a957.js"
+    ]
+  },
+  "_YoutubeIcon-46c81372.js": {
+    "file": "chunks/YoutubeIcon-46c81372.js",
+    "imports": [
+      "_index-1d92a957.js"
+    ]
+  },
+  "_vol1-f6474239.js": {
+    "file": "chunks/vol1-f6474239.js"
+  },
+  "_helper-46a99b91.js": {
+    "file": "chunks/helper-46a99b91.js"
+  },
+  "_supabase-34816d3c.js": {
+    "file": "chunks/supabase-34816d3c.js",
+    "imports": [
+      "_preload-helper-60cab3ee.js"
+    ],
+    "dynamicImports": [
+      "_browser-4b396f44.js"
+    ]
+  },
+  "_index-cc7fa7e8.js": {
+    "file": "chunks/index-cc7fa7e8.js",
+    "imports": [
+      "_preload-helper-60cab3ee.js"
+    ],
+    "dynamicImports": [
+      "src/lib/data/events/md/event01.md",
+      "src/lib/data/events/md/event02.md",
+      "src/lib/data/events/md/event03.md",
+      "src/lib/data/events/md/event04.md",
+      "src/lib/data/events/md/event05.md",
+      "src/lib/data/events/md/event06.md",
+      "src/lib/data/events/md/event07.md",
+      "src/lib/data/events/md/event08.md",
+      "src/lib/data/events/md/event09.md"
+    ]
+  },
+  "_date-5912b33c.js": {
+    "file": "chunks/date-5912b33c.js"
+  },
+  "_index-1bbfe9d8.js": {
+    "file": "chunks/index-1bbfe9d8.js"
+  },
+  "_Head-c89d1517.js": {
+    "file": "chunks/Head-c89d1517.js",
+    "imports": [
+      "_index-1d92a957.js"
+    ]
+  },
+  "_ClockIcon-30d96b10.js": {
+    "file": "chunks/ClockIcon-30d96b10.js",
+    "imports": [
+      "_index-1d92a957.js"
+    ]
+  },
+  "_index-f1212520.js": {
+    "file": "chunks/index-f1212520.js",
+    "imports": [
+      "_index-1d92a957.js"
+    ]
+  },
+  "_navigation-3f1ea447.js": {
+    "file": "chunks/navigation-3f1ea447.js",
+    "imports": [
+      "_singletons-d1fb5791.js"
+    ]
+  },
+  "_SaveIcon-006be302.js": {
+    "file": "chunks/SaveIcon-006be302.js",
+    "imports": [
+      "_index-1d92a957.js"
+    ]
+  },
+  "_XIcon-b0888b77.js": {
+    "file": "chunks/XIcon-b0888b77.js",
+    "imports": [
+      "_index-1d92a957.js"
+    ]
+  },
+  "_TitleTab-cee890d1.js": {
+    "file": "chunks/TitleTab-cee890d1.js",
+    "imports": [
+      "_index-1d92a957.js",
+      "_ChevronLeftIcon-416fa66a.js",
+      "_date-5912b33c.js"
+    ]
+  },
+  "_thaiwords-32805de7.js": {
+    "file": "chunks/thaiwords-32805de7.js"
+  },
+  "_ChevronLeftIcon-416fa66a.js": {
+    "file": "chunks/ChevronLeftIcon-416fa66a.js",
+    "imports": [
+      "_index-1d92a957.js"
+    ]
+  },
+  "_CheckSquareIcon-7674f9b3.js": {
+    "file": "chunks/CheckSquareIcon-7674f9b3.js",
+    "imports": [
+      "_index-1d92a957.js"
+    ]
+  },
+  "_HelpCircleIcon-3d1d3c83.js": {
+    "file": "chunks/HelpCircleIcon-3d1d3c83.js",
+    "imports": [
+      "_index-1d92a957.js"
+    ]
+  },
+  "_CheckCircleIcon-25b4161e.js": {
+    "file": "chunks/CheckCircleIcon-25b4161e.js",
+    "imports": [
+      "_index-1d92a957.js"
+    ]
+  },
+  "_ChevronRightIcon-1ce123ed.js": {
+    "file": "chunks/ChevronRightIcon-1ce123ed.js",
+    "imports": [
+      "_index-1d92a957.js"
+    ]
+  },
+  "_EyeIcon-2215d1f5.js": {
+    "file": "chunks/EyeIcon-2215d1f5.js",
+    "imports": [
+      "_index-1d92a957.js"
+    ]
+  },
+  "_index-1b016e5b.js": {
+    "file": "chunks/index-1b016e5b.js"
+  },
+  "_XCircleIcon-8974577d.js": {
+    "file": "chunks/XCircleIcon-8974577d.js",
+    "imports": [
+      "_index-1d92a957.js"
+    ]
+  },
+  "_index-29f4faa3.js": {
+    "file": "chunks/index-29f4faa3.js",
+    "imports": [
+      "_index-f1212520.js",
+      "_index-1d92a957.js"
+    ]
+  },
+  "_words-48f50b8c.js": {
+    "file": "chunks/words-48f50b8c.js",
+    "imports": [
+      "_index-1d92a957.js"
+    ]
+  },
+  "_CompassIcon-483df7fe.js": {
+    "file": "chunks/CompassIcon-483df7fe.js",
+    "imports": [
+      "_index-1d92a957.js"
+    ]
+  },
+  "_helper-7f7ceee4.js": {
+    "file": "chunks/helper-7f7ceee4.js"
+  },
+  "_LinkIcon-193a083b.js": {
+    "file": "chunks/LinkIcon-193a083b.js",
+    "imports": [
+      "_index-1d92a957.js"
+    ]
+  },
+  "_thwordsearch-c575b6d1.js": {
+    "file": "chunks/thwordsearch-c575b6d1.js",
+    "imports": [
+      "_index-1d92a957.js"
+    ]
+  },
+  "_GridIcon-8369c238.js": {
+    "file": "chunks/GridIcon-8369c238.js",
+    "imports": [
+      "_index-1d92a957.js"
+    ]
+  },
+  "src/lib/data/events/md/event01.md": {
+    "file": "chunks/event01-94f4fe73.js",
+    "src": "src/lib/data/events/md/event01.md",
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-1d92a957.js"
+    ]
+  },
+  "src/lib/data/events/md/event02.md": {
+    "file": "chunks/event02-ae794548.js",
+    "src": "src/lib/data/events/md/event02.md",
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-1d92a957.js"
+    ]
+  },
+  "src/lib/data/events/md/event03.md": {
+    "file": "chunks/event03-fd891543.js",
+    "src": "src/lib/data/events/md/event03.md",
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-1d92a957.js"
+    ]
+  },
+  "src/lib/data/events/md/event04.md": {
+    "file": "chunks/event04-bc68deaf.js",
+    "src": "src/lib/data/events/md/event04.md",
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-1d92a957.js"
+    ]
+  },
+  "src/lib/data/events/md/event05.md": {
+    "file": "chunks/event05-80637a94.js",
+    "src": "src/lib/data/events/md/event05.md",
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-1d92a957.js"
+    ]
+  },
+  "src/lib/data/events/md/event06.md": {
+    "file": "chunks/event06-7312a641.js",
+    "src": "src/lib/data/events/md/event06.md",
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-1d92a957.js"
+    ]
+  },
+  "src/lib/data/events/md/event07.md": {
+    "file": "chunks/event07-3e05720f.js",
+    "src": "src/lib/data/events/md/event07.md",
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-1d92a957.js"
+    ]
+  },
+  "src/lib/data/events/md/event08.md": {
+    "file": "chunks/event08-9d4272ef.js",
+    "src": "src/lib/data/events/md/event08.md",
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-1d92a957.js"
+    ]
+  },
+  "src/lib/data/events/md/event09.md": {
+    "file": "chunks/event09-1032c3c2.js",
+    "src": "src/lib/data/events/md/event09.md",
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-1d92a957.js"
+    ]
+  },
+  "_browser-4b396f44.js": {
+    "file": "chunks/browser-4b396f44.js",
+    "isDynamicEntry": true
+  }
+}

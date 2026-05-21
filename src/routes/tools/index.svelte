@@ -69,7 +69,9 @@
 		content="A collection of powerful tools for puzzle solvers: Thai Word Search, Crossword Builder, Pentomino Solver, and more."
 	/>
 	<meta property="og:type" content="website" />
+	<meta property="og:image" content="/og-main.png" />
 	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:image" content="/og-main.png" />
 </svelte:head>
 
 <div class="container mx-auto px-4 pt-12 pb-24">

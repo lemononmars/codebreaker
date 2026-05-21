@@ -1083,7 +1083,9 @@
 		content="Build and share Thai crossword puzzles with this advanced tool. Features smart word suggestions and automated solving."
 	/>
 	<meta property="og:type" content="website" />
+	<meta property="og:image" content="/og-crossword-builder.png" />
 	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:image" content="/og-crossword-builder.png" />
 </svelte:head>
 
 <svelte:window on:keydown={handleKeydown} />

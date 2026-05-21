@@ -40,6 +40,19 @@
 
 <svelte:head>
 	<title>Code Breaker</title>
+	<meta
+		name="description"
+		content="Welcome to Code Breaker! Solve a variety of high-quality puzzles, build custom crosswords and word searches, and explore our collection of puzzle tools."
+	/>
+	<meta property="og:title" content="Code Breaker" />
+	<meta
+		property="og:description"
+		content="Welcome to Code Breaker! Solve a variety of high-quality puzzles, build custom crosswords and word searches, and explore our collection of puzzle tools."
+	/>
+	<meta property="og:type" content="website" />
+	<meta property="og:image" content="/og-main.png" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:image" content="/og-main.png" />
 </svelte:head>
 
 <!-- Hero Section -->

@@ -4,14 +4,30 @@
 
 	let title: string = '';
 	let answer: string = '';
-	let prefix: string = 'https://codebreakerth.vercel.app/check/v1';
+	let prefix: string = 'https://codebreakerth.vercel.app/tools/check/v1';
 	let link: string = '';
 	let submitted: boolean = false;
-
+	let warning: string = '';
+	function handleKey(event: KeyboardEvent) {
+		if (event.key === 'Enter') {
+			create();
+		}
+	}
 	const create = () => {
-		if (!title || !answer) return;
+		const trimmedTitle = title.trim();
+		const trimmedAnswer = answer.trim();
+
+		if (!trimmedTitle || !trimmedAnswer) {
+			warning = 'กรุณากรอกชื่อโจทย์และคำตอบให้ครบถ้วน';
+			return;
+		}
+		if (trimmedTitle.length < 2) {
+			warning = 'หัวข้อสั้นเกินไป (ต้องอย่างน้อย 2 ตัวอักษร)';
+			return;
+		}
+		warning = '';
 		submitted = true;
-		link = `${prefix}/${encode(title.toUpperCase())}/${encode(answer)}`;
+		link = `${prefix}/${encode(trimmedTitle)}/${encode(trimmedAnswer.toUpperCase())}`;
 	};
 
 	let copied = false;
@@ -28,7 +44,9 @@
 	<meta property="og:title" content="สร้างลิงก์ตรวจคำตอบ" />
 	<meta property="og:description" content="สร้างหน้าเว็บสำหรับให้ผู้เล่นมาตรวจคำตอบของโจทย์คุณ" />
 	<meta property="og:type" content="website" />
-	<meta name="twitter:card" content="summary" />
+	<meta property="og:image" content="/og-main.png" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:image" content="/og-main.png" />
 </svelte:head>
 
 <div class="container mx-auto px-4 py-12 max-w-2xl min-h-screen">
@@ -43,30 +61,34 @@
 				<label class="label">
 					<span class="label-text font-bold">ชื่อโจทย์</span>
 				</label>
-				<input
-					class="input input-bordered input-lg focus:input-primary"
-					type="text"
-					placeholder="เช่น ปริศนาเขาวงกต"
-					bind:value={title}
-				/>
-			</div>
+            <input
+                class="input input-bordered input-lg focus:input-primary"
+                type="text"
+                placeholder="เช่น ปริศนาเขาวงกต"
+                bind:value={title}
+                on:keydown={handleKey}
+            />			</div>
 
 			<div class="form-control">
 				<label class="label">
 					<span class="label-text font-bold">คำตอบที่ถูกต้อง</span>
 				</label>
-				<input
-					class="input input-bordered input-lg focus:input-primary"
-					type="text"
-					placeholder="พิมพ์คำตอบที่นี่..."
-					bind:value={answer}
-				/>
-			</div>
+            <input
+                class="input input-bordered input-lg focus:input-primary"
+                type="text"
+                placeholder="พิมพ์คำตอบที่นี่..."
+                bind:value={answer}
+                on:keydown={handleKey}
+            />			</div>
 
 			<button class="btn btn-primary btn-lg mt-4 gap-2" on:click={create}>
 				<CheckCircleIcon size="20" />
 				สร้างลิงก์
 			</button>
+
+			{#if warning}
+				<p class="text-error mt-2" style="text-align:center;">{warning}</p>
+			{/if}
 
 			{#if submitted}
 				<div class="mt-6 p-6 bg-base-200 rounded-2xl border border-base-300">

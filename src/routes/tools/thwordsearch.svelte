@@ -183,7 +183,9 @@
 	<meta property="og:description" content={description} />
 	<meta property="og:url" content={url} />
 	<meta property="og:type" content="website" />
+	<meta property="og:image" content="/og-thai-wordsearch.png" />
 	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:image" content="/og-thai-wordsearch.png" />
 </svelte:head>
 
 <div class="flex flex-col justify-items-center text-center gap-2">

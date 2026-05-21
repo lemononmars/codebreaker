@@ -74,4 +74,14 @@ export const events: IEvent[] = [
       tags: ["event", "logic", "competition"],
       content: '08',
    },
+   {
+      type: "event",
+      id: 9,
+      redirect: "logiccontest2",
+      title: "2nd Code Breaker Logic Puzzle Contest",
+      date: "2026-01-24",
+      image: 'https://raw.githubusercontent.com/lemononmars/codebreaker/main/src/lib/images/event/event_logic2_01.jpg',
+      tags: ["event", "logic", "competition"],
+      content: '09',
+   },
 ]

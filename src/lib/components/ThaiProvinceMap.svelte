@@ -1,117 +1,672 @@
-<script lang=ts>
-   import {onMount} from 'svelte'
-   import {provinceDict, numProvinces, provinceEN} from '$lib/data/puzzles/thaimap/provinces'
-   
-   export let width: number = 900
+<script lang="ts">
+	import { onMount, onDestroy } from 'svelte';
+	import { provinceDict, numProvinces, provinceEN } from '$lib/data/puzzles/thaimap/provinces';
+	import { 
+		MapPinIcon, 
+		CheckCircleIcon, 
+		AwardIcon, 
+		RotateCcwIcon, 
+		AlertTriangleIcon, 
+		CompassIcon, 
+		PlusIcon, 
+		MinusIcon, 
+		MaximizeIcon, 
+		XCircleIcon,
+		InfoIcon,
+		XIcon
+	} from 'svelte-feather-icons';
 
-   let provinceLeft: string[] = shuffleArray(provinceEN)
-   let provinceQuestion: string = ''
-   let provinceQuestionTH: string = ''
-   let selectedProvince: string = ''
-   let selectedProvinceTH: string = '' 
+	export let width: number = 900;
 
-   function shuffleArray(array: string[]) {
-      for (var i = array.length - 1; i >= 0; i--) {
-         var j = Math.floor(Math.random() * (i + 1));
-         var temp = array[i];
-         array[i] = array[j];
-         array[j] = temp;
-      }
-      return array
-   }
+	// Filter out Betong as it is not a playable province in the SVG
+	let playableProvinces = provinceEN.filter(p => p.toLowerCase() !== 'betong');
+	let provinceLeft: string[] = shuffleArray([...playableProvinces]);
+	
+	let provinceQuestion: string = '';
+	let provinceQuestionTH: string = '';
+	let selectedProvince: string = '';
+	let selectedProvinceTH: string = '';
 
-   function getNextProvince() {
-      provinceQuestion =  provinceLeft.pop() || ''
-      provinceQuestionTH = provinceDict[provinceQuestion.toLowerCase()] || ''
-   }
+	let numTries = 0;
+	let numTotalTries = 0;
+	let solvedProvinces = new Set<string>();
 
-   function checkAnswer(node: any) {
-      if (provinceQuestion.toUpperCase() === selectedProvince) {
-         numTries = 0
-         getNextProvince()
-         selectedProvince = ''
-         node.removeEventListener('mouseenter', provinceMouseEnter)
-         node.removeEventListener('mouseleave', provinceMouseLeave)
-         node.setAttributeNS(null, 'opacity', '1')
-      }
-      else {
-         numTries++
-      }
-   }
+	let feedbackMessage = '';
+	let feedbackStatus: 'success' | 'error' | 'warm' | 'hot' | 'cool' | 'cold' | '' = '';
+	let lastClickedDistance: number | null = null;
+	let lastClickedProvinceTH = '';
 
-   function provinceMouseEnter(event: Event){
-      event.target?.setAttributeNS(null, 'opacity', '0.3')
-   }
+	// Difficulty levels
+	let difficulty: 'easy' | 'medium' | 'difficult' = 'easy';
+	let hintTimeout: any = null;
+	let blinkingProvinceId = '';
 
-   function provinceMouseLeave(event: Event){
-      event.target?.setAttributeNS(null, 'opacity', '0.9')
-   }
+	// Zoom and Pan state
+	let zoomScale = 1;
+	let panX = 0;
+	let panY = 0;
+	let isDragging = false;
+	let startX = 0;
+	let startY = 0;
 
-   let numTries = 0
-   let numTotalTries = 0
-   $: foundProvinces = numProvinces - provinceLeft.length - 1
+	// Fullscreen state
+	let isFullscreen = false;
+	let showDifficultyModal = false;
+	let gameStarted = false;
+	let provinceCenters: Array<{ name: string, nameTH: string, x: number, y: number }> = [];
 
-   onMount(async()=>{
-      getNextProvince()
-      const myRects = document.querySelectorAll("rect");
-      myRects.forEach(node => {
-         node.addEventListener('click', () => {
-            const nodeID = node.parentElement?.getAttribute("id") || 'NONE'
-            const p = nodeID.slice(nodeID.indexOf('_', 6)+1)
-            console.log(node.parentElement?.getAttribute('id'))
-            let textBox = document.createElement('text')
-            textBox.setAttribute('text-anchor', 'middle')
-            textBox.setAttribute('font-size', '12px')
-            textBox.setAttribute('font-family', 'Verdana')
-            textBox.setAttribute('x', node.getAttribute('x') || '0')
-            textBox.setAttribute('y', node.getAttribute('y') || '0')
+	function startGame() {
+		gameStarted = true;
+		getNextProvince();
+	}
 
-            const textNode = document.createTextNode('aaa')
-            textBox.appendChild(textNode)
-            node.parentElement?.appendChild(textBox)
-            node.parentElement?.appendChild(textNode)
-            node.appendChild(textBox)
-         })
-         node.setAttribute('opacity', '0.5')
-      })
+	const provinceRegions: Record<string, string> = {
+		'chiangmai': 'ภาคเหนือ', 'chiangrai': 'ภาคเหนือ', 'lampang': 'ภาคเหนือ', 'lamphun': 'ภาคเหนือ',
+		'maehongson': 'ภาคเหนือ', 'nan': 'ภาคเหนือ', 'phayao': 'ภาคเหนือ', 'phrae': 'ภาคเหนือ', 'uttaradit': 'ภาคเหนือ',
+		
+		'bangkok': 'ภาคกลาง', 'angthong': 'ภาคกลาง', 'chainat': 'ภาคกลาง', 'kamphaengphet': 'ภาคกลาง',
+		'lopburi': 'ภาคกลาง', 'nakhonnayok': 'ภาคกลาง', 'nakhonpathom': 'ภาคกลาง', 'nakhonsawan': 'ภาคกลาง',
+		'nonthaburi': 'ภาคกลาง', 'pathumthani': 'ภาคกลาง', 'phetchabun': 'ภาคกลาง', 'phichit': 'ภาคกลาง',
+		'phitsanulok': 'ภาคกลาง', 'ayutthaya': 'ภาคกลาง', 'samutprakan': 'ภาคกลาง', 'samutsakhon': 'ภาคกลาง',
+		'samutsongkhram': 'ภาคกลาง', 'saraburi': 'ภาคกลาง', 'singburi': 'ภาคกลาง', 'sukhothai': 'ภาคกลาง',
+		'suphanburi': 'ภาคกลาง', 'uthaithani': 'ภาคกลาง',
 
-      const provinces = document.querySelectorAll('g');
-      provinces.forEach(node => {
-         node.addEventListener('mouseenter', provinceMouseEnter)
-         node.addEventListener('mouseleave', provinceMouseLeave)
-         node.addEventListener('click', ()=>{
-            const rect = node.querySelector('rect')
-            rect?.setAttributeNS(null, 'opacity', '0.5')
+		'amnatcharoen': 'ภาคตะวันออกเฉียงเหนือ', 'buengkan': 'ภาคตะวันออกเฉียงเหนือ', 'buriram': 'ภาคตะวันออกเฉียงเหนือ',
+		'chaiyaphum': 'ภาคตะวันออกเฉียงเหนือ', 'kalasin': 'ภาคตะวันออกเฉียงเหนือ', 'khonkaen': 'ภาคตะวันออกเฉียงเหนือ',
+		'loei': 'ภาคตะวันออกเฉียงเหนือ', 'mahasarakham': 'ภาคตะวันออกเฉียงเหนือ', 'mukdahan': 'ภาคตะวันออกเฉียงเหนือ',
+		'nakhonphanom': 'ภาคตะวันออกเฉียงเหนือ', 'nakhonratchasima': 'ภาคตะวันออกเฉียงเหนือ',
+		'nongbualamphu': 'ภาคตะวันออกเฉียงเหนือ', 'nongkhai': 'ภาคตะวันออกเฉียงเหนือ', 'roiet': 'ภาคตะวันออกเฉียงเหนือ',
+		'sakonnakhon': 'ภาคตะวันออกเฉียงเหนือ', 'sisaket': 'ภาคตะวันออกเฉียงเหนือ', 'surin': 'ภาคตะวันออกเฉียงเหนือ',
+		'ubonratchathani': 'ภาคตะวันออกเฉียงเหนือ', 'udonthani': 'ภาคตะวันออกเฉียงเหนือ', 'yasothon': 'ภาคตะวันออกเฉียงเหนือ',
 
-            const nodeID = node.getAttribute("id") || 'NONE'
-            selectedProvince = nodeID.slice(nodeID.indexOf('_', 6)+1)
-            selectedProvinceTH = provinceDict[selectedProvince.toLowerCase()]
-            numTotalTries ++
-            checkAnswer(node)
-         })
-      })
-   })
+		'chachoengsao': 'ภาคตะวันออก', 'chanthaburi': 'ภาคตะวันออก', 'chonburi': 'ภาคตะวันออก',
+		'prachinburi': 'ภาคตะวันออก', 'rayong': 'ภาคตะวันออก', 'sakaeo': 'ภาคตะวันออก', 'trat': 'ภาคตะวันออก',
+
+		'kanchanaburi': 'ภาคตะวันตก', 'phetchaburi': 'ภาคตะวันตก', 'prachuapkhirikhan': 'ภาคตะวันตก',
+		'ratchaburi': 'ภาคตะวันตก', 'tak': 'ภาคตะวันตก',
+
+		'chumphon': 'ภาคใต้', 'krabi': 'ภาคใต้', 'nakhonsithammarat': 'ภาคใต้', 'narathiwat': 'ภาคใต้',
+		'pattani': 'ภาคใต้', 'phangnga': 'ภาคใต้', 'phatthalung': 'ภาคใต้', 'phuket': 'ภาคใต้',
+		'ranong': 'ภาคใต้', 'satun': 'ภาคใต้', 'songkhla': 'ภาคใต้', 'suratthani': 'ภาคใต้',
+		'trang': 'ภาคใต้', 'yala': 'ภาคใต้'
+	};
+
+	function toggleFullscreen() {
+		const element = document.getElementById('game-container');
+		if (!element) return;
+		if (!document.fullscreenElement) {
+			element.requestFullscreen().then(() => {
+				isFullscreen = true;
+			}).catch(err => {
+				console.error('Fullscreen request failed:', err);
+			});
+		} else {
+			document.exitFullscreen().then(() => {
+				isFullscreen = false;
+			});
+		}
+	}
+
+	function onFullscreenChange() {
+		isFullscreen = !!document.fullscreenElement;
+	}
+
+	$: foundProvinces = solvedProvinces.size;
+	$: totalPlayable = playableProvinces.length;
+	$: progressPercent = Math.round((foundProvinces / totalPlayable) * 100);
+	$: accuracy = numTotalTries > 0 ? Math.round((foundProvinces / numTotalTries) * 100) : 0;
+
+	function shuffleArray(array: string[]) {
+		for (let i = array.length - 1; i >= 0; i--) {
+			const j = Math.floor(Math.random() * (i + 1));
+			const temp = array[i];
+			array[i] = array[j];
+			array[j] = temp;
+		}
+		return array;
+	}
+
+	function getNextProvince() {
+		stopHintTimer();
+		if (provinceLeft.length === 0) {
+			provinceQuestion = '';
+			provinceQuestionTH = 'ยินดีด้วย! คุณหาครบทุกจังหวัดแล้ว!';
+			return;
+		}
+		provinceQuestion = provinceLeft.pop() || '';
+		provinceQuestionTH = provinceDict[provinceQuestion.toLowerCase()] || '';
+		startHintTimer();
+	}
+
+	function getProvinceElementId(name: string): string {
+		const upper = name.toUpperCase();
+		if (upper === 'BANGKOK') return 'AREA_THAILAND_BANGKOKMETROPOLIS';
+		return 'AREA_THAILAND_' + upper;
+	}
+
+	function getProvinceCenter(name: string) {
+		const id = getProvinceElementId(name);
+		const element = document.getElementById(id);
+		if (!element) return null;
+		try {
+			const bbox = (element as any).getBBox();
+			return {
+				x: bbox.x + bbox.width / 2,
+				y: bbox.y + bbox.height / 2
+			};
+		} catch (e) {
+			return null;
+		}
+	}
+
+	function normalizeProvince(name: string): string {
+		const lower = name.toLowerCase();
+		if (lower === 'bangkokmetropolis') return 'bangkok';
+		return lower;
+	}
+
+	function getCardinalDirection(fromCenter: {x: number, y: number}, toCenter: {x: number, y: number}): string {
+		const dx = toCenter.x - fromCenter.x;
+		const dy = toCenter.y - fromCenter.y; // Y increases downwards in SVG
+		const angle = Math.atan2(-dy, dx) * (180 / Math.PI);
+		
+		let normAngle = angle;
+		if (normAngle < 0) normAngle += 360; // 0 to 360
+		
+		if (normAngle >= 337.5 || normAngle < 22.5) return 'ทิศตะวันออก (E) ➔';
+		if (normAngle >= 22.5 && normAngle < 67.5) return 'ทิศตะวันออกเฉียงเหนือ (NE) ↗';
+		if (normAngle >= 67.5 && normAngle < 112.5) return 'ทิศเหนือ (N) ↑';
+		if (normAngle >= 112.5 && normAngle < 157.5) return 'ทิศตะวันตกเฉียงเหนือ (NW) ↖';
+		if (normAngle >= 157.5 && normAngle < 202.5) return 'ทิศตะวันตก (W) ⬅';
+		if (normAngle >= 202.5 && normAngle < 247.5) return 'ทิศตะวันตกเฉียงใต้ (SW) ↙';
+		if (normAngle >= 247.5 && normAngle < 292.5) return 'ทิศใต้ (S) ↓';
+		return 'ทิศตะวันออกเฉียงใต้ (SE) ↘';
+	}
+
+	function checkAnswer(node: any, clickedLower: string) {
+		const targetLower = provinceQuestion.toLowerCase();
+
+		if (targetLower === clickedLower) {
+			// Correct!
+			stopHintTimer();
+			solvedProvinces.add(targetLower);
+			solvedProvinces = solvedProvinces; // trigger reactivity
+
+			feedbackMessage = `พบ "${provinceQuestionTH}" แล้ว 🎉`;
+			feedbackStatus = 'success';
+			lastClickedDistance = 0;
+
+			// Color it emerald green permanently
+			node.classList.add('solved');
+			const paths = node.querySelectorAll('path');
+			paths.forEach((p: any) => p.setAttribute('fill', '#10B981'));
+			node.setAttribute('opacity', '1');
+
+			// Remove hover events
+			node.removeEventListener('mouseenter', provinceMouseEnter);
+			node.removeEventListener('mouseleave', provinceMouseLeave);
+
+			numTries = 0;
+
+			setTimeout(() => {
+				getNextProvince();
+				selectedProvince = '';
+				feedbackMessage = '';
+				feedbackStatus = '';
+			}, 1500);
+		} else {
+			// Incorrect!
+			numTries++;
+
+			const targetCenter = getProvinceCenter(targetLower);
+			const clickedCenter = getProvinceCenter(clickedLower);
+
+			if (targetCenter && clickedCenter) {
+				const dx = targetCenter.x - clickedCenter.x;
+				const dy = targetCenter.y - clickedCenter.y;
+				const rawDist = Math.sqrt(dx * dx + dy * dy);
+				// Map units to kilometers roughly
+				const distKm = Math.round(rawDist * 2.1);
+				lastClickedDistance = distKm;
+				
+				const dir = getCardinalDirection(clickedCenter, targetCenter);
+				const dirClue = difficulty === 'difficult' ? '' : ` (ไปทาง${dir})`;
+
+				if (distKm < 100) {
+					feedbackStatus = 'hot';
+					feedbackMessage = `ใกล้มากแล้ว! 🔥 อีกนิดเดียว อยู่ห่างออกไปประมาณ ${distKm} กม.${dirClue}`;
+				} else if (distKm < 250) {
+					feedbackStatus = 'warm';
+					feedbackMessage = `อุ่นขึ้นแล้ว! ☀️ อยู่ห่างออกไปประมาณ ${distKm} กม.${dirClue}`;
+				} else if (distKm < 500) {
+					feedbackStatus = 'cool';
+					feedbackMessage = `ค่อนข้างเย็น... 🍃 อยู่ห่างออกไปประมาณ ${distKm} กม.${dirClue}`;
+				} else {
+					feedbackStatus = 'cold';
+					feedbackMessage = `หนาวมาก! ❄️ ไกลสุดกู่ อยู่ห่างออกไปประมาณ ${distKm} กม.${dirClue}`;
+				}
+			} else {
+				feedbackMessage = `ไม่ใช่จังหวัดที่ค้นหา! ลองใหม่อีกครั้ง`;
+				feedbackStatus = 'error';
+				lastClickedDistance = null;
+			}
+
+			// Flash red
+			const paths = node.querySelectorAll('path');
+			const originalFills = Array.from(paths).map((p: any) => p.getAttribute('fill'));
+			paths.forEach((p: any) => p.setAttribute('fill', '#EF4444'));
+			setTimeout(() => {
+				paths.forEach((p: any, idx: number) => p.setAttribute('fill', originalFills[idx] || '#000000'));
+			}, 800);
+		}
+	}
+
+	function provinceMouseEnter(event: Event) {
+		const g = event.currentTarget as HTMLElement;
+		const paths = g.querySelectorAll('path');
+		paths.forEach((p: any) => p.setAttribute('opacity', '0.7'));
+	}
+
+	function provinceMouseLeave(event: Event) {
+		const g = event.currentTarget as HTMLElement;
+		const paths = g.querySelectorAll('path');
+		paths.forEach((p: any) => p.setAttribute('opacity', '1'));
+	}
+
+	// Hint Blinking System
+	function startHintTimer() {
+		stopHintTimer();
+		if (difficulty === 'difficult' || !provinceQuestion) return;
+
+		const delay = difficulty === 'easy' ? 5000 : 10000;
+		hintTimeout = setTimeout(() => {
+			blinkingProvinceId = getProvinceElementId(provinceQuestion);
+			const element = document.getElementById(blinkingProvinceId);
+			if (element) {
+				element.classList.add('animate-pulse-fast');
+			}
+		}, delay);
+	}
+
+	function stopHintTimer() {
+		if (hintTimeout) {
+			clearTimeout(hintTimeout);
+			hintTimeout = null;
+		}
+		if (blinkingProvinceId) {
+			const element = document.getElementById(blinkingProvinceId);
+			if (element) {
+				element.classList.remove('animate-pulse-fast');
+			}
+			blinkingProvinceId = '';
+		}
+	}
+
+	function changeDifficulty(newDiff: 'easy' | 'medium' | 'difficult') {
+		difficulty = newDiff;
+		startHintTimer();
+	}
+
+	// Reset Quiz
+	function resetQuiz() {
+		playableProvinces = provinceEN.filter(p => p.toLowerCase() !== 'betong');
+		provinceLeft = shuffleArray([...playableProvinces]);
+		solvedProvinces.clear();
+		solvedProvinces = solvedProvinces;
+		numTries = 0;
+		numTotalTries = 0;
+		selectedProvince = '';
+		selectedProvinceTH = '';
+		feedbackMessage = '';
+		feedbackStatus = '';
+		lastClickedDistance = null;
+		stopHintTimer();
+		window.location.reload();
+	}
+
+	// Zoom Controls
+	function handleWheel(event: WheelEvent) {
+		event.preventDefault();
+		const zoomIntensity = 0.08;
+		if (event.deltaY < 0) {
+			zoomScale = Math.min(zoomScale + zoomIntensity, 4);
+		} else {
+			zoomScale = Math.max(zoomScale - zoomIntensity, 0.8);
+		}
+	}
+
+	function handleMouseDown(event: MouseEvent) {
+		const target = event.target as HTMLElement;
+		// Only drag if not clicking buttons or UI overlays
+		if (target.closest('button')) return;
+		isDragging = true;
+		startX = event.clientX - panX;
+		startY = event.clientY - panY;
+	}
+
+	function handleMouseMove(event: MouseEvent) {
+		if (!isDragging) return;
+		panX = event.clientX - startX;
+		panY = event.clientY - startY;
+	}
+
+	function handleMouseUp() {
+		isDragging = false;
+	}
+
+	function zoomIn() {
+		zoomScale = Math.min(zoomScale + 0.3, 4);
+	}
+
+	function zoomOut() {
+		zoomScale = Math.max(zoomScale - 0.3, 0.8);
+	}
+
+	function resetZoom() {
+		zoomScale = 1;
+		panX = 0;
+		panY = 0;
+	}
+
+	onMount(async () => {
+		// Calculate centers for all playable provinces to display names before start
+		setTimeout(() => {
+			const playable = provinceEN.filter(p => p.toLowerCase() !== 'betong');
+			provinceCenters = playable.map(name => {
+				const lower = name.toLowerCase();
+				const center = getProvinceCenter(lower);
+				if (center) {
+					return {
+						name: name,
+						nameTH: provinceDict[lower] || name,
+						x: center.x,
+						y: center.y
+					};
+				}
+				return null;
+			}).filter((p): p is { name: string, nameTH: string, x: number, y: number } => p !== null);
+		}, 150);
+		
+		if (typeof document !== 'undefined') {
+			document.addEventListener('fullscreenchange', onFullscreenChange);
+		}
+
+		const provinces = document.querySelectorAll('g');
+		provinces.forEach(node => {
+			const nodeID = node.getAttribute("id") || 'NONE';
+			if (!nodeID.startsWith('AREA_THAILAND_')) return;
+
+			node.addEventListener('mouseenter', provinceMouseEnter);
+			node.addEventListener('mouseleave', provinceMouseLeave);
+			node.addEventListener('click', () => {
+				if (!gameStarted) return;
+				const clickedLower = normalizeProvince(nodeID.slice(nodeID.indexOf('_', 6) + 1));
+
+				if (solvedProvinces.has(clickedLower)) return;
+
+				selectedProvince = nodeID.slice(nodeID.indexOf('_', 6) + 1);
+				selectedProvinceTH = provinceDict[clickedLower] || selectedProvince;
+				lastClickedProvinceTH = selectedProvinceTH;
+
+				numTotalTries++;
+				checkAnswer(node, clickedLower);
+			});
+		});
+	});
+
+	onDestroy(() => {
+		stopHintTimer();
+		if (typeof document !== 'undefined') {
+			document.removeEventListener('fullscreenchange', onFullscreenChange);
+		}
+	});
 </script>
 
-<div class='flex flex-col'>
-   <div>
-      Total clicks: ({numTotalTries} clicks) <br>
-      Provinces found: {foundProvinces}/{numProvinces} <br>
+<div id="game-container" class="w-full h-auto md:h-[calc(100vh-140px)] min-h-[600px] max-h-[820px] text-white font-sans flex flex-col bg-[#0b0f19] p-2 md:p-4 rounded-3xl relative overflow-hidden border border-slate-800/80 difficulty-{difficulty} select-none">
+	
+	<!-- Floating Overlay: Target Province & Difficulty Selector (Top-Left) -->
+	<div class="relative md:absolute md:left-6 md:top-6 z-10 w-full md:w-80 bg-slate-900/90 backdrop-blur-md border border-slate-800 p-4 md:p-5 rounded-2xl shadow-2xl flex flex-col gap-4 pointer-events-auto mb-4 md:mb-0">
+		<!-- Target Question Header -->
+		<div class="relative overflow-hidden group">
+			<div class="absolute -right-4 -bottom-4 opacity-5 text-teal-400 group-hover:scale-110 transition-transform duration-500">
+				<MapPinIcon size="80" />
+			</div>
+			<h2 class="text-[10px] uppercase tracking-widest text-slate-400 font-bold mb-2.5 flex items-center gap-1.5">
+				<span class="w-1.5 h-1.5 bg-teal-400 rounded-full animate-ping"></span>
+				จังหวัดเป้าหมายที่ต้องค้นหา
+			</h2>
+			{#if !gameStarted}
+				<div class="flex flex-col gap-1.5">
+					<span class="text-xl font-bold tracking-tight text-white flex items-center gap-1.5">
+						🗺️ เริ่มทดสอบแผนที่ไทย
+					</span>
+					<p class="text-[11px] text-slate-400 font-semibold leading-relaxed">
+						จดจำตำแหน่งรายชื่อจังหวัดบนแผนที่ <br/>แล้วกดปุ่ม <b>"เริ่มเล่นเกม"</b> เพื่อเริ่มทดสอบ!
+					</p>
+				</div>
+			{:else if provinceQuestion}
+				<div class="flex flex-col gap-0.5">
+					<span class="text-3xl font-black tracking-tight text-white">
+						{provinceQuestionTH}
+					</span>
+					<span class="text-sm font-semibold text-teal-400 font-mono tracking-wide uppercase">
+						{provinceQuestion}
+					</span>
+					{#if difficulty === 'easy'}
+						<span class="inline-flex items-center self-start px-2 py-0.5 mt-1.5 rounded-full text-[9px] font-bold bg-teal-500/20 text-teal-300 border border-teal-500/30 uppercase tracking-wider">
+							ภูมิภาค: {provinceRegions[provinceQuestion.toLowerCase()] || ''}
+						</span>
+					{/if}
+				</div>
+			{:else}
+				<div class="text-center py-2 flex flex-col items-center">
+					<AwardIcon class="text-amber-400 mb-1 animate-bounce" size="36" />
+					<span class="text-lg font-black text-amber-400">หาครบ 77 จังหวัดแล้ว!</span>
+				</div>
+			{/if}
+		</div>
 
-      Find {provinceQuestion} ({provinceQuestionTH})! ({numTries} attempts)<br>
+		<div class="divider my-0 opacity-20"></div>
 
-      {#if selectedProvince}
-         You are clicking on {selectedProvince} ({selectedProvinceTH})
-      {:else if numTotalTries > 0}
-         You found it!
-      {/if}
-   </div>
-   <div id="svgDiv" class="svgMap">
-      <!-- <div id="zoomInfo" style="display: none;">Use ctrl + scroll to zoom the map</div> -->
+		<!-- Difficulty Selector nested beautifully inside the target card to save space -->
+		<div class="flex flex-col gap-2">
+			<div class="flex justify-between items-center w-full">
+				<span class="text-[10px] uppercase tracking-widest text-slate-400 font-bold flex items-center gap-1.5">
+					<CompassIcon size="12" class="text-teal-400" />
+					ระดับความยาก
+				</span>
+				<button 
+					on:click={() => showDifficultyModal = true} 
+					class="p-1 rounded-lg hover:bg-slate-800 text-slate-400 hover:text-white transition-all flex items-center justify-center"
+					title="แสดงคำอธิบายกฎกติกา"
+				>
+					<InfoIcon size="14" />
+				</button>
+			</div>
+			<div class="grid grid-cols-3 gap-1.5 bg-slate-950 p-1 rounded-xl border border-slate-800/80">
+				<button 
+					on:click={() => changeDifficulty('easy')} 
+					class="py-1.5 text-[11px] font-bold rounded-lg transition-all {difficulty === 'easy' ? 'bg-teal-500 text-slate-950 shadow-lg' : 'text-slate-400 hover:text-white'}"
+				>
+					ง่าย
+				</button>
+				<button 
+					on:click={() => changeDifficulty('medium')} 
+					class="py-1.5 text-[11px] font-bold rounded-lg transition-all {difficulty === 'medium' ? 'bg-teal-500 text-slate-950 shadow-lg' : 'text-slate-400 hover:text-white'}"
+				>
+					กลาง
+				</button>
+				<button 
+					on:click={() => changeDifficulty('difficult')} 
+					class="py-1.5 text-[11px] font-bold rounded-lg transition-all {difficulty === 'difficult' ? 'bg-teal-500 text-slate-950 shadow-lg' : 'text-slate-400 hover:text-white'}"
+				>
+					ยาก
+				</button>
+			</div>
+		</div>
+	</div>
 
-      <!--xml version="1.0" encoding="utf-8"? Generator: Adobe Illustrator 24.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-      <svg version="1.1" id="svgpoint" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 {width} 725" enable-background="new 0 0 {width} 725" xml:space="preserve">
-      <rect id="BACKGROUND" x="-0.788" y="0.032" fill="#E7E7E0" stroke="#DEE8ED" stroke-width="0.5669" stroke-miterlimit="2.4142" width="900" height="725.91" />
+	<!-- Floating Overlay: Feedback Alert Box (Top-Right) -->
+	{#if feedbackStatus}
+		<div class="relative md:absolute md:right-6 md:top-6 z-10 w-full md:w-80 p-4 md:p-5 rounded-2xl border transition-all duration-300 shadow-2xl flex gap-3.5 items-start pointer-events-auto mb-4 md:mb-0
+			{feedbackStatus === 'success' ? 'bg-emerald-950/85 border-emerald-500/50 text-emerald-200' : ''}
+			{feedbackStatus === 'hot' ? 'bg-orange-950/85 border-orange-500/50 text-orange-200' : ''}
+			{feedbackStatus === 'warm' ? 'bg-amber-950/85 border-amber-500/50 text-amber-200' : ''}
+			{feedbackStatus === 'cool' ? 'bg-cyan-950/85 border-cyan-500/50 text-cyan-200' : ''}
+			{feedbackStatus === 'cold' ? 'bg-blue-950/85 border-blue-500/50 text-blue-200' : ''}
+			{feedbackStatus === 'error' ? 'bg-red-950/85 border-red-500/50 text-red-200' : ''}"
+		>
+			<div class="flex-shrink-0 mt-0.5">
+				{#if feedbackStatus === 'success'}
+					<CheckCircleIcon class="text-emerald-400" size="20" />
+				{:else}
+					<XCircleIcon class="text-red-400" size="20" />
+				{/if}
+			</div>
+			<div class="flex flex-col gap-0.5 text-xs font-medium">
+				<span class="font-bold text-sm flex items-center gap-1.5">
+					{#if feedbackStatus === 'success'}
+						ถูกต้อง!
+					{:else}
+						{lastClickedProvinceTH}
+					{/if}
+				</span>
+				<p class="leading-relaxed opacity-95">{feedbackMessage}</p>
+			</div>
+		</div>
+	{/if}
+
+	<!-- Floating Overlay: Stats & Reset Button (Bottom-Right, inside the Gulf/empty sea space) -->
+	<div class="relative md:absolute md:right-6 md:bottom-6 z-10 w-full md:w-80 bg-slate-900/90 backdrop-blur-md border border-slate-800 p-4 md:p-5 rounded-2xl shadow-2xl flex flex-col gap-4 pointer-events-auto mb-4 md:mb-0">
+		<h2 class="text-xs font-bold text-slate-300 uppercase tracking-widest flex items-center gap-1.5">
+			<AwardIcon class="text-amber-400" size="16" />
+			สถิติและคะแนนสะสม
+		</h2>
+
+		<!-- Progress Bar -->
+		<div class="flex flex-col gap-1.5">
+			<div class="flex justify-between text-[10px] font-bold uppercase tracking-wider text-slate-400">
+				<span>ความก้าวหน้า</span>
+				<span class="text-teal-400 font-mono text-xs">{foundProvinces} / {totalPlayable} จังหวัด ({progressPercent}%)</span>
+			</div>
+			<div class="w-full bg-slate-800 rounded-full h-2.5 overflow-hidden shadow-inner border border-slate-700/50">
+				<div class="bg-gradient-to-r from-teal-400 to-blue-500 h-full rounded-full transition-all duration-500 ease-out shadow-[0_0_8px_rgba(20,184,166,0.5)]" style="width: {progressPercent}%"></div>
+			</div>
+		</div>
+
+		<!-- Stats Grid -->
+		<div class="grid grid-cols-2 gap-3">
+			<div class="bg-slate-950 p-2.5 rounded-xl border border-slate-800/80 shadow-inner flex flex-col">
+				<span class="text-[9px] text-slate-400 font-bold tracking-wider uppercase">จำนวนการคลิก</span>
+				<span class="text-xl font-black mt-0.5 text-white font-mono">{numTotalTries} ครั้ง</span>
+			</div>
+			<div class="bg-slate-950 p-2.5 rounded-xl border border-slate-800/80 shadow-inner flex flex-col">
+				<span class="text-[9px] text-slate-400 font-bold tracking-wider uppercase">ความแม่นยำ</span>
+				<span class="text-xl font-black mt-0.5 text-teal-400 font-mono">{accuracy}%</span>
+			</div>
+		</div>
+
+		<!-- Reset Button -->
+		<button on:click={resetQuiz} class="btn btn-outline hover:bg-slate-850 w-full btn-xs sm:btn-sm gap-1.5 rounded-xl border border-slate-800 text-slate-300 font-bold">
+			<RotateCcwIcon size="12" />
+			เริ่มเล่นใหม่
+		</button>
+	</div>
+
+	<!-- Fullscreen map canvas wrapper -->
+	<div class="flex-1 h-full w-full relative z-0 flex items-center justify-center bg-slate-950/20 rounded-2xl overflow-hidden">
+		
+		<!-- Zoom and Pan Controls Overlaid on Map (Floating bottom-left to avoid overlaps) -->
+		<div class="absolute left-4 bottom-4 z-20 flex flex-col gap-2 bg-slate-950/80 p-2 rounded-2xl border border-slate-800/80 backdrop-blur-md shadow-2xl pointer-events-auto">
+			<button on:click={zoomIn} class="p-2.5 rounded-xl hover:bg-slate-800 text-slate-300 hover:text-white transition-all" title="Zoom In">
+				<PlusIcon size="16" />
+			</button>
+			<button on:click={zoomOut} class="p-2.5 rounded-xl hover:bg-slate-800 text-slate-300 hover:text-white transition-all" title="Zoom Out">
+				<MinusIcon size="16" />
+			</button>
+			<button on:click={resetZoom} class="p-2.5 rounded-xl hover:bg-slate-800 text-slate-300 hover:text-white transition-all" title="Reset Zoom">
+				<MaximizeIcon size="16" />
+			</button>
+			<div class="text-[9px] font-mono font-bold text-slate-400 text-center border-t border-slate-800 pt-1.5 mt-0.5">
+				{Math.round(zoomScale * 100)}%
+			</div>
+		</div>
+
+		<div 
+			id="svgDiv" 
+			class="w-full h-full flex items-center justify-center relative cursor-grab active:cursor-grabbing overflow-hidden rounded-2xl"
+			on:wheel|preventDefault={handleWheel}
+			on:mousedown={handleMouseDown}
+			on:mousemove={handleMouseMove}
+			on:mouseup={handleMouseUp}
+			on:mouseleave={handleMouseUp}
+		>
+			{#if !gameStarted}
+				<div class="absolute inset-0 bg-slate-950/75 backdrop-blur-[2px] z-30 flex flex-col items-center justify-center p-6 text-center select-none pointer-events-auto">
+					<div class="bg-slate-900/90 border border-slate-800 p-8 rounded-3xl max-w-sm w-full shadow-2xl flex flex-col gap-6 items-center">
+						<div class="w-16 h-16 bg-teal-500/10 border border-teal-500/30 rounded-2xl flex items-center justify-center text-teal-400">
+							<CompassIcon size="32" />
+						</div>
+						<div class="flex flex-col gap-2">
+							<h3 class="text-xl font-bold text-white">ทดสอบความรู้ภูมิศาสตร์ไทย 🗺️</h3>
+							<p class="text-xs text-slate-400 font-medium leading-relaxed">
+								ศึกษารายชื่อและตำแหน่งจังหวัดบนแผนที่ให้พร้อม <br/>เมื่อมั่นใจแล้ว กดปุ่มด้านล่างเพื่อเริ่มเล่นเกม!
+							</p>
+						</div>
+						<button 
+							on:click={startGame} 
+							class="px-8 py-3.5 bg-teal-500 hover:bg-teal-600 text-slate-950 font-bold rounded-xl shadow-lg hover:shadow-teal-500/20 hover:scale-[1.02] active:scale-[0.98] transition-all text-center w-full"
+						>
+							เริ่มเล่นเกม (Start Quiz)
+						</button>
+					</div>
+				</div>
+			{/if}
+				<svg version="1.1" id="svgpoint" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 {width} 725" enable-background="new 0 0 {width} 725" xml:space="preserve" class="w-full h-full">
+				<rect id="BACKGROUND" x="-0.788" y="0.032" fill="#0b0f19" stroke="#1e293b" stroke-width="1" width="900" height="725.91" />
+				
+				<!-- Zoom & Pan transform group -->
+				<g id="ZOOM_PAN_GROUP" style="transform: translate({panX}px, {panY}px) scale({zoomScale}); transform-origin: 450px 362px; transition: transform {isDragging ? '0s' : '0.15s'} ease-out; pointer-events: all;">
+				
+				<!-- dynamic scale bar inside SVG -->
+				<g id="SCALE_BAR" transform="translate(50, 680)">
+					<line x1="0" y1="0" x2="95.2" y2="0" stroke="#475569" stroke-width="2" />
+					<line x1="0" y1="-4" x2="0" y2="4" stroke="#475569" stroke-width="2" />
+					<line x1="95.2" y1="-4" x2="95.2" y2="4" stroke="#475569" stroke-width="2" />
+					<text x="47.6" y="-8" fill="#475569" font-size="10px" font-family="Verdana" text-anchor="middle" font-weight="bold">200 km</text>
+				</g>
+
+				<!-- Province Names Overlay before game start -->
+				{#if !gameStarted}
+					{#each provinceCenters as pc}
+						<g style="pointer-events: none;">
+							<!-- Subtle dark backing shadow for readability -->
+							<text 
+								x={pc.x} 
+								y={pc.y + 1} 
+								fill="#000000" 
+								font-size="6.5px" 
+								font-family="sans-serif" 
+								font-weight="bold" 
+								text-anchor="middle"
+								opacity="0.8"
+							>
+								{pc.nameTH}
+							</text>
+							<text 
+								x={pc.x} 
+								y={pc.y} 
+								fill="#38BDF8" 
+								font-size="6.5px" 
+								font-family="sans-serif" 
+								font-weight="bold" 
+								text-anchor="middle"
+							>
+								{pc.nameTH}
+							</text>
+						</g>
+					{/each}
+				{/if}
 
       <g id="AREA_THAILAND_AMNATCHAROEN">
       <path id="THAILAND_AMNATCHAROEN" fill="#095F8E" stroke="#FFFFFF" stroke-width="0.8504" d="M646.752,217.162&#xD;&#xA;		c0.02,0.26,0.02,0.53-0.05,0.69c-0.13,0.32-0.68,0.79-0.96,0.99c-0.18,0.13-0.73,0.15-0.82,0.35c-0.14,0.31,0.59,1.02,0.4,1.31&#xD;&#xA;		c-0.17,0.26-0.99-0.02-1.24,0.16c-0.25,0.18-0.69,0.84-0.57,1.12c0.04,0.1,0.35,0.05,0.42,0.14c0.18,0.21,0.06,0.85,0.16,1.1&#xD;&#xA;		c0.09,0.21,0.6,0.5,0.53,0.73c-0.05,0.21-0.67,0.19-0.78,0.37c-0.14,0.24,0.3,0.94,0.09,1.12c-0.13,0.12-0.53-0.16-0.71-0.12&#xD;&#xA;		c-0.21,0.05-0.62,0.31-0.68,0.51c-0.07,0.21,0.21,0.64,0.28,0.85c0.05,0.16,0.28,0.49,0.19,0.64c-0.06,0.09-0.37-0.04-0.44,0.05&#xD;&#xA;		c-0.19,0.24,0.18,0.93,0.16,1.24c-0.03,0.36-0.22,1.08-0.4,1.4c-0.12,0.22-0.67,0.5-0.66,0.75c0.01,0.16,0.39,0.29,0.44,0.44&#xD;&#xA;		c0.09,0.27-0.06,0.89-0.19,1.15c-0.08,0.17-0.42,0.38-0.49,0.57c-0.09,0.23,0.14,0.83-0.05,1.01c-0.22,0.21-0.99-0.18-1.24,0&#xD;&#xA;		c-0.15,0.11-0.08,0.62-0.23,0.73c-0.18,0.13-0.74-0.14-0.92,0s-0.32,0.68-0.23,0.89c0.07,0.17,0.58,0.2,0.66,0.37&#xD;&#xA;		c0.11,0.22,0.03,0.79-0.12,0.99c-0.08,0.11-0.42,0.1-0.49,0.21c-0.16,0.27,0.27,0.96,0.14,1.24c-0.08,0.18-0.64,0.27-0.66,0.46&#xD;&#xA;		c-0.01,0.16,0.36,0.34,0.46,0.46c0.15,0.17,0.33,0.63,0.53,0.73c0.17,0.09,0.6-0.06,0.78,0c0.1,0.04,0.31,0.18,0.35,0.28&#xD;&#xA;		c0.09,0.25-0.09,0.81-0.19,1.05c-0.14,0.35-0.59,0.99-0.82,1.29c-0.19,0.24-0.81,0.61-0.85,0.91c-0.03,0.23,0.43,0.57,0.44,0.8&#xD;&#xA;		c0.02,0.39-0.27,1.28-0.64,1.45c-0.31,0.14-1.15-0.1-1.31-0.4c-0.18-0.33,0.61-1.12,0.42-1.45c-0.17-0.31-1.05-0.22-1.36-0.4&#xD;&#xA;		c-0.34-0.19-0.82-0.89-1.17-1.08c-0.23-0.12-0.8-0.08-1.01-0.23c-0.23-0.18-0.36-0.83-0.59-1.03c-0.28-0.25-1.1-0.33-1.38-0.59&#xD;&#xA;		c-0.12-0.11-0.19-0.49-0.33-0.59c-0.29-0.19-1.1,0.02-1.4-0.16c-0.19-0.11-0.29-0.64-0.49-0.73c-0.28-0.13-0.96,0.21-1.26,0.12&#xD;&#xA;		c-0.23-0.08-0.49-0.58-0.73-0.66c-0.17-0.05-0.53,0.12-0.71,0.07c-0.21-0.06-0.49-0.47-0.71-0.53c-0.22-0.07-0.73-0.09-0.94,0.02&#xD;&#xA;		c-0.2,0.11-0.59,0.56-0.51,0.78c0.07,0.23,0.72,0.2,0.89,0.37c0.18,0.18,0.54,0.72,0.42,0.94c-0.14,0.26-0.97-0.05-1.17,0.16&#xD;&#xA;		c-0.22,0.24,0.11,1.04-0.07,1.31c-0.1,0.15-0.52,0.2-0.66,0.32c-0.1,0.1-0.26,0.35-0.26,0.49c0,0.21,0.38,0.53,0.4,0.75&#xD;&#xA;		c0.01,0.15-0.07,0.47-0.19,0.57c-0.14,0.1-0.53-0.09-0.68,0c-0.22,0.13-0.27,0.78-0.49,0.91c-0.28,0.17-1.01,0.15-1.31,0.02&#xD;&#xA;		c-0.17-0.07-0.34-0.47-0.51-0.57c-0.11-0.06-0.33-0.1-0.52-0.11c0.02-0.23,0.01-0.45-0.09-0.58c-0.19-0.25-0.91-0.29-1.22-0.35&#xD;&#xA;		c-0.32-0.06-1.12,0.16-1.29-0.12c-0.22-0.35,0.73-1.16,0.59-1.54c-0.12-0.34-1.17-0.37-1.29-0.73c-0.11-0.35,0.56-0.97,0.61-1.33&#xD;&#xA;		c0.05-0.38,0.02-1.25-0.23-1.54c-0.2-0.24-1.04-0.1-1.19-0.37c-0.26-0.45,0.26-1.55,0.46-2.04c0.08-0.19,0.43-0.49,0.46-0.71&#xD;&#xA;		c0.04-0.29-0.32-0.85-0.35-1.15c-0.02-0.23-0.01-0.71,0.09-0.91c0.15-0.29,0.86-0.58,0.96-0.89c0.11-0.34-0.24-1.07-0.26-1.43&#xD;&#xA;		c-0.01-0.39,0.16-1.17,0.19-1.56c0.01-0.2-0.06-0.61,0-0.8c0.11-0.34,0.65-0.87,0.87-1.15c0.2-0.25,0.73-0.7,0.85-1.01&#xD;&#xA;		c0.09-0.23-0.1-0.78,0-1.01c0.1-0.21,0.6-0.41,0.73-0.61s0.07-0.78,0.26-0.94c0.12-0.1,0.51,0.03,0.64-0.07&#xD;&#xA;		c0.11-0.09,0.21-0.4,0.16-0.53c-0.06-0.17-0.52-0.26-0.61-0.42c-0.09-0.17-0.12-0.63-0.02-0.8c0.15-0.26,0.91-0.33,1.08-0.59&#xD;&#xA;		c0.22-0.32-0.05-1.26,0.19-1.56c0.15-0.19,0.77-0.16,0.92-0.35c0.13-0.17-0.07-0.72,0.09-0.87c0.28-0.25,1.21,0.22,1.52,0&#xD;&#xA;		c0.17-0.12,0.11-0.69,0.28-0.82c0.2-0.15,0.78,0.07,1.01-0.02c0.2-0.08,0.42-0.63,0.64-0.59c0.23,0.05,0.19,0.76,0.4,0.87&#xD;&#xA;		c0.26,0.14,0.88-0.25,1.17-0.21c0.27,0.04,0.71,0.41,0.96,0.51c0.21,0.09,0.66,0.18,0.87,0.26c0.34,0.12,0.97,0.61,1.33,0.59&#xD;&#xA;		c0.26-0.01,0.73-0.33,0.92-0.51c0.11-0.1,0.17-0.45,0.3-0.51c0.27-0.13,1-0.02,1.19,0.21c0.11,0.13-0.1,0.57,0.02,0.68&#xD;&#xA;		c0.21,0.18,0.93,0.09,1.12-0.12c0.2-0.21-0.08-0.9,0.02-1.17c0.08-0.21,0.51-0.46,0.59-0.68c0.09-0.27,0.1-0.96-0.12-1.15&#xD;&#xA;		c-0.27-0.24-1.2,0.26-1.45,0c-0.16-0.18,0.2-0.76,0.07-0.96c-0.1-0.15-0.53-0.12-0.68-0.23c-0.11-0.09-0.26-0.35-0.3-0.49&#xD;&#xA;		c-0.04-0.15-0.03-0.45-0.02-0.63c0.43-0.02,0.97,0.02,1.25,0.13c0.22,0.09,0.48,0.61,0.72,0.63c0.28,0.02,0.71-0.5,0.97-0.63&#xD;&#xA;		c0.21-0.1,0.67-0.24,0.91-0.28c0.18-0.03,0.61,0.11,0.75,0c0.19-0.15,0.07-0.77,0.25-0.94c0.15-0.14,0.64-0.04,0.81-0.15&#xD;&#xA;		c0.31-0.2,0.54-1.04,0.88-1.22c0.28-0.15,1.04,0.15,1.28-0.06c0.14-0.13,0.03-0.59,0.12-0.75c0.13-0.22,0.66-0.4,0.95-0.62&#xD;&#xA;		c0.5,0.46,1.01,0.98,1.17,1.39c0.31,0.8-0.21,2.58,0,3.4c0.22,0.84,0.96,2.56,1.69,3.03&#xD;&#xA;		C645.362,217.172,646.052,217.182,646.752,217.162z" />
@@ -505,6 +1060,98 @@
       <g id="WATER">
          <path fill="#000099" d="M425.992,643.781c0-0.23,0.04-0.44,0.13-0.55c0.26-0.3,1.41,0.17,1.59-0.19c0.1-0.21-0.29-0.66-0.46-0.81&#xD;&#xA;		c-0.22-0.19-0.89-0.22-1.09-0.43c-0.18-0.19-0.34-0.74-0.37-1s0.06-0.81,0.12-1.06c0.02-0.1,0.2-0.3,0.15-0.4&#xD;&#xA;		c-0.11-0.24-0.85-0.18-1-0.4c-0.1-0.13-0.11-0.51-0.03-0.66c0.13-0.22,0.77-0.23,0.91-0.43c0.16-0.24,0.06-0.87,0.09-1.16&#xD;&#xA;		c0.04-0.31,0.41-1.03,0.19-1.25c-0.15-0.15-0.68,0.02-0.85,0.16c-0.2,0.16-0.17,0.86-0.4,0.97c-0.12,0.05-0.41-0.06-0.5-0.15&#xD;&#xA;		c-0.15-0.18-0.23-0.72-0.15-0.94c0.08-0.25,0.66-0.5,0.75-0.75c0.11-0.31-0.06-0.99-0.09-1.31c-0.05-0.51-0.56-1.59-0.28-2.03&#xD;&#xA;		c0.19-0.3,1.15-0.16,1.37-0.43c0.13-0.16,0.18-0.63,0.09-0.81c-0.06-0.11-0.31-0.26-0.43-0.25c-0.23,0.01-0.54,0.45-0.75,0.57&#xD;&#xA;		c-0.25,0.12-0.83,0.16-1.06,0.31c-0.21,0.13-0.62,0.5-0.69,0.75c-0.08,0.28,0.21,0.86,0.22,1.16s-0.16,0.89-0.19,1.18&#xD;&#xA;		c-0.02,0.27,0.05,0.83,0,1.09s-0.37,0.74-0.37,1c0,0.35,0.18,1.17,0.5,1.34c0.25,0.14,0.84-0.29,1.12-0.25&#xD;&#xA;		c0.11,0.02,0.36,0.11,0.4,0.22c0.05,0.16-0.13,0.54-0.28,0.63c-0.23,0.12-0.77-0.19-1.03-0.22c-0.35-0.04-1.06,0.07-1.4,0&#xD;&#xA;		c-0.29-0.05-0.88-0.24-1.09-0.43c-0.33-0.3-0.54-1.25-0.81-1.62c-0.11-0.16-0.49-0.37-0.57-0.57c-0.12-0.31,0.31-1.09,0.09-1.34&#xD;&#xA;		c-0.19-0.22-0.95,0.13-1.16-0.06c-0.42-0.39,0.04-1.81-0.28-2.28c-0.14-0.21-0.66-0.37-0.88-0.5c-0.49-0.28-1.72-0.62-1.97-1.12&#xD;&#xA;		c-0.22-0.45,0.2-1.49,0.25-2c0.04-0.41,0.21-1.25,0.12-1.66c-0.17-0.77-1.34-1.99-1.53-2.74c-0.18-0.75-0.12-2.33,0.09-3.06&#xD;&#xA;		c0.14-0.47,0.67-1.35,1.03-1.69c0.31-0.28,1.24-0.41,1.53-0.72c0.19-0.21,0.21-0.83,0.38-1.14c0.03-0.06,0.07-0.11,0.12-0.14&#xD;&#xA;		c0.31-0.21,1.15,0.07,1.53,0c0.28-0.05,0.78-0.42,1.06-0.43c0.38-0.02,1.19,0.2,1.46,0.46c0.44,0.42,0.77,1.71,0.88,2.31&#xD;&#xA;		c0.06,0.34-0.04,1.03,0,1.37c0.09,0.68,0.63,1.97,0.69,2.65c0.04,0.37,0.03,1.14-0.09,1.5c-0.15,0.44-0.64,1.36-1.06,1.56&#xD;&#xA;		c-0.23,0.11-0.8-0.2-1.03-0.09c-0.32,0.14-0.74,0.79-0.85,1.12c-0.18,0.53-0.37,1.83,0,2.25c0.24,0.27,1.13,0.38,1.43,0.19&#xD;&#xA;		c0.56-0.34,0.36-2.03,0.85-2.47c0.24-0.22,0.96-0.27,1.28-0.31c0.47-0.06,1.51-0.27,1.91,0c0.72,0.49,1.08,2.4,1.28,3.25&#xD;&#xA;		c0.16,0.67,0.14,2.07,0.25,2.74c0.11,0.75,0.51,2.22,0.66,2.97c0.08,0.42,0.17,1.29,0.25,1.72c0.08,0.42,0.45,1.25,0.4,1.69&#xD;&#xA;		c-0.04,0.35-0.57,0.93-0.6,1.28c-0.03,0.33,0.1,1.05,0.34,1.28c0.38,0.36,1.6,0.22,2.09,0.43c0.49,0.22,1.3,0.97,1.75,1.28&#xD;&#xA;		c0.33,0.23,1,0.67,1.34,0.88c0.28,0.17,0.9,0.45,1.16,0.66c0.19,0.15,0.61,0.47,0.66,0.72c0.05,0.27-0.2,0.82-0.37,1.03&#xD;&#xA;		c-0.11,0.14-0.48,0.25-0.63,0.37c-0.22,0.2-0.48,0.81-0.75,0.94s-0.9,0.09-1.19,0.03c-0.19-0.04-0.51-0.33-0.72-0.34&#xD;&#xA;		c-0.19-0.01-0.52,0.27-0.72,0.28c-0.3,0.02-1.02-0.05-1.19-0.31c-0.07-0.11,0.17-0.42,0.09-0.53c-0.12-0.16-0.61-0.09-0.81-0.12&#xD;&#xA;		c-0.29-0.05-0.97,0.03-1.16-0.19c-0.15-0.18,0.08-0.72,0-0.94c-0.09-0.24-0.45-0.65-0.66-0.81c-0.21-0.18-0.83-0.29-0.97-0.53&#xD;&#xA;		C426.042,644.312,425.992,644.042,425.992,643.781z" />
       </g>
-      </svg>
-   </div>
+				</g>
+			</svg>
+			</div>
+		</div>
+
+	<!-- Difficulty Rules Modal -->
+	{#if showDifficultyModal}
+		<div class="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/85 backdrop-blur-md p-4 transition-all duration-300">
+			<div class="bg-slate-900 border border-slate-800 rounded-3xl p-6 max-w-md w-full shadow-2xl flex flex-col gap-6 relative animate-in fade-in zoom-in-95 duration-200">
+				<!-- Close button -->
+				<button on:click={() => showDifficultyModal = false} class="absolute top-4 right-4 p-1.5 rounded-xl hover:bg-slate-800 text-slate-400 hover:text-white transition-all">
+					<XIcon size="18" />
+				</button>
+				
+				<div class="flex items-center gap-3">
+					<CompassIcon class="text-teal-400" size="24" />
+					<h3 class="text-xl font-bold text-white">คำอธิบายระดับความยาก</h3>
+				</div>
+				
+				<div class="flex flex-col gap-4 text-sm text-slate-300">
+					<!-- Easy -->
+					<div class="bg-slate-950 p-4 rounded-xl border border-slate-800 flex flex-col gap-1.5">
+						<span class="text-teal-400 font-bold text-base flex items-center gap-1.5">🟢 ง่าย (Easy)</span>
+						<ul class="list-disc pl-5 flex flex-col gap-1 text-xs leading-relaxed opacity-90">
+							<li>เปิดเผยข้อมูล<b>ภูมิภาค (Region)</b> ของจังหวัดเป้าหมาย</li>
+							<li>เป้าหมายจะ<b>กระพริบแนะนำ</b>บนแผนที่หลังจาก **5 วินาที**</li>
+							<li>แผนที่แยกสีตามปกติเพื่อให้มองเห็นได้ง่าย</li>
+						</ul>
+					</div>
+					
+					<!-- Medium -->
+					<div class="bg-slate-950 p-4 rounded-xl border border-slate-800 flex flex-col gap-1.5">
+						<span class="text-amber-400 font-bold text-base flex items-center gap-1.5">🟡 ปานกลาง (Medium)</span>
+						<ul class="list-disc pl-5 flex flex-col gap-1 text-xs leading-relaxed opacity-90">
+							<li>เป้าหมายจะ<b>กระพริบแนะนำ</b>บนแผนที่หลังจาก **10 วินาที**</li>
+							<li>แผนที่แยกสีตามปกติ</li>
+						</ul>
+					</div>
+					
+					<!-- Difficult -->
+					<div class="bg-slate-950 p-4 rounded-xl border border-slate-800 flex flex-col gap-1.5">
+						<span class="text-red-400 font-bold text-base flex items-center gap-1.5">🔴 ยาก (Difficult)</span>
+						<ul class="list-disc pl-5 flex flex-col gap-1 text-xs leading-relaxed opacity-90">
+							<li><b>ท้าทายขีดสุด!</b> แผนที่ทุกจังหวัดเปลี่ยนเป็นสีเดียวกันทั้งหมด (ไม่มีแยกสี)</li>
+							<li>ไม่มีระบบกระพริบแนะนำเป้าหมายใดๆ</li>
+						</ul>
+					</div>
+				</div>
+				
+				<button on:click={() => showDifficultyModal = false} class="w-full py-3 bg-teal-500 hover:bg-teal-600 text-slate-950 font-bold rounded-xl shadow-lg transition-all text-center">
+					เข้าใจแล้ว
+				</button>
+			</div>
+		</div>
+	{/if}
 </div>
+
+<style>
+	g[id^="AREA_THAILAND_"] {
+		cursor: pointer;
+		transition: transform 0.2s ease, filter 0.2s ease;
+	}
+	g[id^="AREA_THAILAND_"]:hover {
+		filter: brightness(1.2) drop-shadow(0 0 8px rgba(20, 184, 166, 0.4));
+	}
+	path {
+		transition: fill 0.3s ease, opacity 0.3s ease;
+		pointer-events: visiblePainted;
+	}
+	rect[id^="C2_"] {
+		display: none;
+		pointer-events: none;
+	}
+	#game-container:fullscreen {
+		padding: 2rem;
+		background-color: #0b0f19;
+		overflow-y: auto;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+		height: 100%;
+	}
+	:global(.difficulty-difficult g[id^="AREA_THAILAND_"]:not(.solved) path) {
+		fill: #1e293b !important;
+	}
+	@keyframes pulse-fast {
+		0%, 100% { opacity: 1; filter: brightness(1); }
+		50% { opacity: 0.4; filter: brightness(1.8) drop-shadow(0 0 16px #10B981); }
+	}
+	:global(.animate-pulse-fast) {
+		animation: pulse-fast 1s infinite ease-in-out !important;
+	}
+</style>

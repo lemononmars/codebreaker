@@ -203,7 +203,9 @@
 		content="Solve 8x8 pentomino puzzles with custom obstacles and forced piece positions. Fast and efficient solving algorithm."
 	/>
 	<meta property="og:type" content="website" />
+	<meta property="og:image" content="/og-pentomino-solver.png" />
 	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:image" content="/og-pentomino-solver.png" />
 </svelte:head>
 
 <div class="pt-8 pb-12 min-h-screen text-white flex flex-col items-center font-sans">

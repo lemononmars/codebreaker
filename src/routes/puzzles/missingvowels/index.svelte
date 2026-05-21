@@ -9,7 +9,7 @@
 </svelte:head>
 
 
-<h1>Alphabet</h1>
+<h1>Missing Vowels</h1>
 
 <div class="flex flex-col justify-center">
    <table class="table table-zebra table-compact w-full mx-auto">

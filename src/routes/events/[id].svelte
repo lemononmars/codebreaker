@@ -15,7 +15,7 @@
 
 <div class="flex flex-col gap-2">
    <div>
-      <img src="{getImageURL('events', content.image)}" class="w-full h-32 lg:h-60 object-cover" alt="img">
+      <img src="{content.image.startsWith('http') ? content.image : getImageURL('events', content.image)}" class="w-full h-32 lg:h-60 object-cover" alt="img">
    </div>
    <h1>{content.title}</h1>
    <div class="flex flex-row gap-2 mx-auto items-center">

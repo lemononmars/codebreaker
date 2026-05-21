@@ -25,7 +25,7 @@
 					<div class="avatar placeholder">
 						<div class="w-24 h-24 rounded-xl bg-base-100 p-2 mask mask-squircle shadow-inner">
 							<img
-								src={getImageURL('events', e.image)}
+								src={e.image.startsWith('http') ? e.image : getImageURL('events', e.image)}
 								class="object-contain w-full h-full"
 								alt={e.title}
 							/>
