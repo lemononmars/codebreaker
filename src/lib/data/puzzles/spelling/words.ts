@@ -1,8 +1,8 @@
 export interface WordItem {
-    correct: string;
-    incorrect: string[];
-    explanation: string;
-    isLoanWord: boolean;
+  correct: string;
+  incorrect: string[];
+  explanation: string;
+  isLoanWord: boolean;
 }
 
 export const wordDatabase: WordItem[] = [
@@ -78,28 +78,28 @@ export const wordDatabase: WordItem[] = [
     isLoanWord: false
   },
   {
-    correct: "กริยา",
+    correct: "คำกริยา",
     incorrect: [
-      "กิริยา"
+      "คำกิริยา"
     ],
     explanation: "คำชนิดหนึ่ง บอกอาการ การกระทำ",
     isLoanWord: false
   },
   {
-    correct: "กรีฑา",
+    correct: "กีฬากรีฑา",
     incorrect: [
-      "กรีธา",
-      "กรีทา"
+      "กีฬากรีธา",
+      "กีฬากรีทา"
     ],
     explanation: "กีฬาประเภทหนึ่ง",
     isLoanWord: false
   },
   {
-    correct: "กรีธา",
+    correct: "กรีธาทัพ",
     incorrect: [
-      "กรีฑา"
+      "กรีฑาทัพ"
     ],
-    explanation: "เคลื่อน ยก เดินเป็นหมู่หรือเป็นกระบวน เช่น กรีธาทัพ",
+    explanation: "เคลื่อน ยก เดินเป็นหมู่หรือเป็นกระบวน",
     isLoanWord: false
   },
   {
@@ -1734,7 +1734,7 @@ export const wordDatabase: WordItem[] = [
     explanation: "",
     isLoanWord: false
   },
-    {
+  {
     correct: "ทะนง",
     incorrect: [
       "ทนง"
@@ -2805,7 +2805,7 @@ export const wordDatabase: WordItem[] = [
   {
     correct: "ประหารชีวิต",
     incorrect: [
-      "ประหาณชีวติ",
+      "ประหาณชีวิต",
       "ประหานชีวติ",
     ],
     explanation: "ประหาร หมายถึง ตี ฟัน ทำลาย หรือ ฆ่า เช่น ประหารชีวิต",
@@ -5161,11 +5161,11 @@ export const wordDatabase: WordItem[] = [
     isLoanWord: false
   },
   {
-    correct: "ศิลป์, ศิลปะ",
+    correct: "ศิลปะ",
     incorrect: [
       "ศิลป"
     ],
-    explanation: "ใช้เป็นศัพท์โดด",
+    explanation: "สะกด \"ศิลป์\" ได้ ใช้เป็นศัพท์โดด",
     isLoanWord: false
   },
   {

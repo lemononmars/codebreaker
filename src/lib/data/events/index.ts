@@ -1,4 +1,4 @@
-import type {IEvent} from '$lib/interfaces'
+import type { IEvent } from '$lib/interfaces'
 
 export const events: IEvent[] = [
    {
@@ -78,8 +78,8 @@ export const events: IEvent[] = [
       type: "event",
       id: 9,
       redirect: "logiccontest2",
-      title: "2nd Code Breaker Logic Puzzle Contest",
-      date: "2026-01-24",
+      title: "Code Breaker Logic Puzzle Contest II",
+      date: "2026-04-04",
       image: 'https://raw.githubusercontent.com/lemononmars/codebreaker/main/src/lib/images/event/event_logic2_01.jpg',
       tags: ["event", "logic", "competition"],
       content: '09',

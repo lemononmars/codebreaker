@@ -51,7 +51,7 @@
 
 <br/>
 
-อันดับที่ 2 - สินชัย	รุ่งแสงรัตนกุล
+อันดับที่ 2 - สินชัย รุ่งแสงรัตนกุล
 ![image](https://raw.githubusercontent.com/lemononmars/codebreaker/main/src/lib/images/event/event_logic_winner2.jpg)
 
 <br/>

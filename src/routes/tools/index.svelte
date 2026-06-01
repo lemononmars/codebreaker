@@ -5,7 +5,8 @@
 		SearchIcon,
 		ColumnsIcon,
 		ImageIcon,
-		Edit3Icon
+		Edit3Icon,
+		BookOpenIcon
 	} from 'svelte-feather-icons';
 
 	const puzzleBuilders = [
@@ -53,6 +54,13 @@
 			description: 'ปริศนาเปิดแผ่นป้าย "แฟนพันธุ์แท้"',
 			icon: ImageIcon,
 			color: 'text-info'
+		},
+		{
+			name: 'Spelling Dictionary',
+			path: '/tools/spellingdictionary',
+			description: 'พจนานุกรมคำศัพท์ที่มักสะกดผิด',
+			icon: BookOpenIcon,
+			color: 'text-warning'
 		}
 	];
 </script>
