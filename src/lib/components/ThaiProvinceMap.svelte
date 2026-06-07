@@ -55,6 +55,15 @@
 	let gameStarted = false;
 	let provinceCenters: Array<{ name: string, nameTH: string, x: number, y: number }> = [];
 
+	let sessionEnded = false;
+	let sessionCorrect: Array<{ target: string, targetTH: string }> = [];
+	let sessionIncorrect: Array<{ target: string, targetTH: string, guessed: string, guessedTH: string }> = [];
+
+	function endSession() {
+		stopHintTimer();
+		sessionEnded = true;
+	}
+
 	function startGame() {
 		gameStarted = true;
 		getNextProvince();
@@ -191,6 +200,7 @@
 			stopHintTimer();
 			solvedProvinces.add(targetLower);
 			solvedProvinces = solvedProvinces; // trigger reactivity
+			sessionCorrect = [...sessionCorrect, { target: provinceQuestion, targetTH: provinceQuestionTH }];
 
 			feedbackMessage = `พบ "${provinceQuestionTH}" แล้ว 🎉`;
 			feedbackStatus = 'success';
@@ -217,6 +227,13 @@
 		} else {
 			// Incorrect!
 			numTries++;
+			const clickedTH = provinceDict[clickedLower] || clickedLower;
+			sessionIncorrect = [...sessionIncorrect, { 
+				target: provinceQuestion, 
+				targetTH: provinceQuestionTH, 
+				guessed: clickedLower, 
+				guessedTH: clickedTH 
+			}];
 
 			const targetCenter = getProvinceCenter(targetLower);
 			const clickedCenter = getProvinceCenter(clickedLower);
@@ -425,7 +442,7 @@
 <div id="game-container" class="w-full h-auto md:h-[calc(100vh-140px)] min-h-[600px] max-h-[820px] text-white font-sans flex flex-col bg-[#0b0f19] p-2 md:p-4 rounded-3xl relative overflow-hidden border border-slate-800/80 difficulty-{difficulty} select-none">
 	
 	<!-- Floating Overlay: Target Province & Difficulty Selector (Top-Left) -->
-	<div class="relative md:absolute md:left-6 md:top-6 z-10 w-full md:w-80 bg-slate-900/90 backdrop-blur-md border border-slate-800 p-4 md:p-5 rounded-2xl shadow-2xl flex flex-col gap-4 pointer-events-auto mb-4 md:mb-0">
+	<div class="relative md:absolute md:left-6 md:top-6 z-10 w-full md:w-60 bg-slate-900/90 backdrop-blur-md border border-slate-800 p-4 md:p-5 rounded-2xl shadow-2xl flex flex-col gap-4 pointer-events-auto mb-4 md:mb-0">
 		<!-- Target Question Header -->
 		<div class="relative overflow-hidden group">
 			<div class="absolute -right-4 -bottom-4 opacity-5 text-teal-400 group-hover:scale-110 transition-transform duration-500">
@@ -453,7 +470,7 @@
 						{provinceQuestion}
 					</span>
 					{#if difficulty === 'easy'}
-						<span class="inline-flex items-center self-start px-2 py-0.5 mt-1.5 rounded-full text-[9px] font-bold bg-teal-500/20 text-teal-300 border border-teal-500/30 uppercase tracking-wider">
+						<span class="inline-flex items-center self-center px-2 py-0.5 mt-1.5 rounded-full text-[9px] font-bold bg-teal-500/20 text-teal-300 border border-teal-500/30 uppercase tracking-wider">
 							ภูมิภาค: {provinceRegions[provinceQuestion.toLowerCase()] || ''}
 						</span>
 					{/if}
@@ -466,44 +483,46 @@
 			{/if}
 		</div>
 
-		<div class="divider my-0 opacity-20"></div>
+		{#if !gameStarted}
+			<div class="divider my-0 opacity-20"></div>
 
-		<!-- Difficulty Selector nested beautifully inside the target card to save space -->
-		<div class="flex flex-col gap-2">
-			<div class="flex justify-between items-center w-full">
-				<span class="text-[10px] uppercase tracking-widest text-slate-400 font-bold flex items-center gap-1.5">
-					<CompassIcon size="12" class="text-teal-400" />
-					ระดับความยาก
-				</span>
-				<button 
-					on:click={() => showDifficultyModal = true} 
-					class="p-1 rounded-lg hover:bg-slate-800 text-slate-400 hover:text-white transition-all flex items-center justify-center"
-					title="แสดงคำอธิบายกฎกติกา"
-				>
-					<InfoIcon size="14" />
-				</button>
+			<!-- Difficulty Selector nested beautifully inside the target card to save space -->
+			<div class="flex flex-col gap-2">
+				<div class="flex justify-between items-center w-full">
+					<span class="text-[10px] uppercase tracking-widest text-slate-400 font-bold flex items-center gap-1.5">
+						<CompassIcon size="12" class="text-teal-400" />
+						ระดับความยาก
+					</span>
+					<button 
+						on:click={() => showDifficultyModal = true} 
+						class="p-1 rounded-lg hover:bg-slate-800 text-slate-400 hover:text-white transition-all flex items-center justify-center"
+						title="แสดงคำอธิบายกฎกติกา"
+					>
+						<InfoIcon size="14" />
+					</button>
+				</div>
+				<div class="grid grid-cols-3 gap-1.5 bg-slate-950 p-1 rounded-xl border border-slate-800/80">
+					<button 
+						on:click={() => changeDifficulty('easy')} 
+						class="py-1.5 text-[11px] font-bold rounded-lg transition-all {difficulty === 'easy' ? 'bg-teal-500 text-slate-950 shadow-lg' : 'text-slate-400 hover:text-white'}"
+					>
+						ง่าย
+					</button>
+					<button 
+						on:click={() => changeDifficulty('medium')} 
+						class="py-1.5 text-[11px] font-bold rounded-lg transition-all {difficulty === 'medium' ? 'bg-teal-500 text-slate-950 shadow-lg' : 'text-slate-400 hover:text-white'}"
+					>
+						กลาง
+					</button>
+					<button 
+						on:click={() => changeDifficulty('difficult')} 
+						class="py-1.5 text-[11px] font-bold rounded-lg transition-all {difficulty === 'difficult' ? 'bg-teal-500 text-slate-950 shadow-lg' : 'text-slate-400 hover:text-white'}"
+					>
+						ยาก
+					</button>
+				</div>
 			</div>
-			<div class="grid grid-cols-3 gap-1.5 bg-slate-950 p-1 rounded-xl border border-slate-800/80">
-				<button 
-					on:click={() => changeDifficulty('easy')} 
-					class="py-1.5 text-[11px] font-bold rounded-lg transition-all {difficulty === 'easy' ? 'bg-teal-500 text-slate-950 shadow-lg' : 'text-slate-400 hover:text-white'}"
-				>
-					ง่าย
-				</button>
-				<button 
-					on:click={() => changeDifficulty('medium')} 
-					class="py-1.5 text-[11px] font-bold rounded-lg transition-all {difficulty === 'medium' ? 'bg-teal-500 text-slate-950 shadow-lg' : 'text-slate-400 hover:text-white'}"
-				>
-					กลาง
-				</button>
-				<button 
-					on:click={() => changeDifficulty('difficult')} 
-					class="py-1.5 text-[11px] font-bold rounded-lg transition-all {difficulty === 'difficult' ? 'bg-teal-500 text-slate-950 shadow-lg' : 'text-slate-400 hover:text-white'}"
-				>
-					ยาก
-				</button>
-			</div>
-		</div>
+		{/if}
 	</div>
 
 	<!-- Floating Overlay: Feedback Alert Box (Top-Right) -->
@@ -537,7 +556,7 @@
 	{/if}
 
 	<!-- Floating Overlay: Stats & Reset Button (Bottom-Right, inside the Gulf/empty sea space) -->
-	<div class="relative md:absolute md:right-6 md:bottom-6 z-10 w-full md:w-80 bg-slate-900/90 backdrop-blur-md border border-slate-800 p-4 md:p-5 rounded-2xl shadow-2xl flex flex-col gap-4 pointer-events-auto mb-4 md:mb-0">
+	<div class="relative md:absolute md:right-6 md:bottom-6 z-10 w-full md:w-60 bg-slate-900/90 backdrop-blur-md border border-slate-800 p-4 md:p-5 rounded-2xl shadow-2xl flex flex-col gap-4 pointer-events-auto mb-4 md:mb-0">
 		<h2 class="text-xs font-bold text-slate-300 uppercase tracking-widest flex items-center gap-1.5">
 			<AwardIcon class="text-amber-400" size="16" />
 			สถิติและคะแนนสะสม
@@ -566,11 +585,18 @@
 			</div>
 		</div>
 
-		<!-- Reset Button -->
-		<button on:click={resetQuiz} class="btn btn-outline hover:bg-slate-850 w-full btn-xs sm:btn-sm gap-1.5 rounded-xl border border-slate-800 text-slate-300 font-bold">
-			<RotateCcwIcon size="12" />
-			เริ่มเล่นใหม่
-		</button>
+		<!-- End Session / Reset Button -->
+		{#if gameStarted}
+			<button on:click={endSession} class="btn btn-outline hover:bg-slate-850 w-full btn-xs sm:btn-sm gap-1.5 rounded-xl border border-slate-800 text-slate-300 font-bold">
+				<XCircleIcon size="12" />
+				จบการทดสอบ (End Session)
+			</button>
+		{:else}
+			<button on:click={resetQuiz} class="btn btn-outline hover:bg-slate-850 w-full btn-xs sm:btn-sm gap-1.5 rounded-xl border border-slate-800 text-slate-300 font-bold">
+				<RotateCcwIcon size="12" />
+				เริ่มเล่นใหม่
+			</button>
+		{/if}
 	</div>
 
 	<!-- Fullscreen map canvas wrapper -->
@@ -601,27 +627,6 @@
 			on:mouseup={handleMouseUp}
 			on:mouseleave={handleMouseUp}
 		>
-			{#if !gameStarted}
-				<div class="absolute inset-0 bg-slate-950/75 backdrop-blur-[2px] z-30 flex flex-col items-center justify-center p-6 text-center select-none pointer-events-auto">
-					<div class="bg-slate-900/90 border border-slate-800 p-8 rounded-3xl max-w-sm w-full shadow-2xl flex flex-col gap-6 items-center">
-						<div class="w-16 h-16 bg-teal-500/10 border border-teal-500/30 rounded-2xl flex items-center justify-center text-teal-400">
-							<CompassIcon size="32" />
-						</div>
-						<div class="flex flex-col gap-2">
-							<h3 class="text-xl font-bold text-white">ทดสอบความรู้ภูมิศาสตร์ไทย 🗺️</h3>
-							<p class="text-xs text-slate-400 font-medium leading-relaxed">
-								ศึกษารายชื่อและตำแหน่งจังหวัดบนแผนที่ให้พร้อม <br/>เมื่อมั่นใจแล้ว กดปุ่มด้านล่างเพื่อเริ่มเล่นเกม!
-							</p>
-						</div>
-						<button 
-							on:click={startGame} 
-							class="px-8 py-3.5 bg-teal-500 hover:bg-teal-600 text-slate-950 font-bold rounded-xl shadow-lg hover:shadow-teal-500/20 hover:scale-[1.02] active:scale-[0.98] transition-all text-center w-full"
-						>
-							เริ่มเล่นเกม (Start Quiz)
-						</button>
-					</div>
-				</div>
-			{/if}
 				<svg version="1.1" id="svgpoint" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 {width} 725" enable-background="new 0 0 {width} 725" xml:space="preserve" class="w-full h-full">
 				<rect id="BACKGROUND" x="-0.788" y="0.032" fill="#0b0f19" stroke="#1e293b" stroke-width="1" width="900" height="725.91" />
 				
@@ -1064,6 +1069,107 @@
 			</svg>
 			</div>
 		</div>
+
+	<!-- Game Start Overlay -->
+	{#if !gameStarted}
+		<div class="absolute inset-0 bg-slate-950/75 backdrop-blur-[2px] z-30 flex flex-col items-center justify-center p-6 text-center select-none pointer-events-auto">
+			<div class="bg-slate-900/90 border border-slate-800 p-8 rounded-3xl max-w-sm w-full shadow-2xl flex flex-col gap-6 items-center">
+				<div class="w-16 h-16 bg-teal-500/10 border border-teal-500/30 rounded-2xl flex items-center justify-center text-teal-400">
+					<CompassIcon size="32" />
+				</div>
+				<div class="flex flex-col gap-2">
+					<h3 class="text-xl font-bold text-white">ทดสอบความรู้ภูมิศาสตร์ไทย 🗺️</h3>
+					<p class="text-xs text-slate-400 font-medium leading-relaxed">
+						ศึกษารายชื่อและตำแหน่งจังหวัดบนแผนที่ให้พร้อม <br/>เมื่อมั่นใจแล้ว กดปุ่มด้านล่างเพื่อเริ่มเล่นเกม!
+					</p>
+				</div>
+				<button 
+					on:click={startGame} 
+					class="px-8 py-3.5 bg-teal-500 hover:bg-teal-600 text-slate-950 font-bold rounded-xl shadow-lg hover:shadow-teal-500/20 hover:scale-[1.02] active:scale-[0.98] transition-all text-center w-full"
+				>
+					เริ่มเล่นเกม (Start Quiz)
+				</button>
+			</div>
+		</div>
+	{/if}
+
+	<!-- Session Results Overlay -->
+	{#if sessionEnded}
+		<div class="absolute inset-0 bg-slate-950/90 backdrop-blur-md z-40 flex flex-col items-center justify-center p-6 text-center select-none pointer-events-auto">
+			<div class="bg-slate-900/95 border border-slate-800 p-6 rounded-3xl max-w-lg w-full shadow-2xl flex flex-col gap-5 max-h-[90%] overflow-hidden">
+				<div class="flex items-center justify-center gap-2">
+					<AwardIcon class="text-amber-400 animate-bounce" size="28" />
+					<h3 class="text-xl font-bold text-white">สรุปผลการทดสอบ</h3>
+				</div>
+				
+				<div class="grid grid-cols-3 gap-3 bg-slate-950/80 p-3 rounded-2xl border border-slate-800/60">
+					<div class="flex flex-col">
+						<span class="text-[10px] text-slate-400 font-bold uppercase">ความสำเร็จ</span>
+						<span class="text-lg font-black text-white">{foundProvinces} / {totalPlayable}</span>
+					</div>
+					<div class="flex flex-col">
+						<span class="text-[10px] text-slate-400 font-bold uppercase">จำนวนที่คลิก</span>
+						<span class="text-lg font-black text-white">{numTotalTries} ครั้ง</span>
+					</div>
+					<div class="flex flex-col">
+						<span class="text-[10px] text-slate-400 font-bold uppercase">ความแม่นยำ</span>
+						<span class="text-lg font-black text-teal-400">{accuracy}%</span>
+					</div>
+				</div>
+
+				<div class="flex-1 overflow-y-auto text-left flex flex-col gap-4 pr-1">
+					<!-- Correct List -->
+					<div class="flex flex-col gap-1.5">
+						<h4 class="text-xs font-bold text-emerald-400 uppercase tracking-wider flex items-center gap-1.5 sticky top-0 bg-slate-900 py-1 z-10">
+							<CheckCircleIcon size="12" />
+							ทายถูกต้อง ({sessionCorrect.length})
+						</h4>
+						{#if sessionCorrect.length === 0}
+							<p class="text-xs text-slate-500 italic pl-4">ไม่มีรายการ</p>
+						{:else}
+							<div class="grid grid-cols-2 sm:grid-cols-3 gap-1.5 pl-1">
+								{#each sessionCorrect as correct}
+									<span class="px-2.5 py-1 text-[11px] font-semibold bg-emerald-500/10 text-emerald-300 border border-emerald-500/20 rounded-lg">
+										{correct.targetTH}
+									</span>
+								{/each}
+							</div>
+						{/if}
+					</div>
+
+					<div class="divider my-0 opacity-10"></div>
+
+					<!-- Incorrect List -->
+					<div class="flex flex-col gap-1.5">
+						<h4 class="text-xs font-bold text-red-400 uppercase tracking-wider flex items-center gap-1.5 sticky top-0 bg-slate-900 py-1 z-10">
+							<XCircleIcon size="12" />
+							ทายผิดพลาด ({sessionIncorrect.length})
+						</h4>
+						{#if sessionIncorrect.length === 0}
+							<p class="text-xs text-slate-500 italic pl-4">ไม่มีรายการ</p>
+						{:else}
+							<div class="flex flex-col gap-1.5 pl-1">
+								{#each sessionIncorrect as incorrect}
+									<div class="flex justify-between items-center text-[11px] font-medium bg-red-500/10 text-red-300 border border-red-500/20 px-3 py-1.5 rounded-lg gap-2">
+										<span>เป้าหมาย: <b>{incorrect.targetTH}</b></span>
+										<span class="text-slate-400">➔</span>
+										<span>ที่คลิกไป: <b class="text-red-400">{incorrect.guessedTH}</b></span>
+									</div>
+								{/each}
+							</div>
+						{/if}
+					</div>
+				</div>
+
+				<button 
+					on:click={resetQuiz} 
+					class="px-8 py-3 bg-teal-500 hover:bg-teal-600 text-slate-950 font-bold rounded-xl shadow-lg hover:shadow-teal-500/20 active:scale-[0.98] transition-all text-center w-full mt-2"
+				>
+					เริ่มเล่นใหม่ (Restart)
+				</button>
+			</div>
+		</div>
+	{/if}
 
 	<!-- Difficulty Rules Modal -->
 	{#if showDifficultyModal}
