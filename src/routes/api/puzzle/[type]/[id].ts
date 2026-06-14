@@ -39,15 +39,7 @@ export async function get({ params }) {
 export async function post({ params }) {
 
 	const { type, id } = params;
-	let error
 	let data = [{ result: 'incorrect', hint: 'no hint for you' }]
-
-	if (error)
-		return {
-			status: 500,
-			headers: { 'Content-Type': 'application/json' },
-			body: error
-		};
 
 	return {
 		status: 200,
