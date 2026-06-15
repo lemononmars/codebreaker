@@ -1,76 +1,40 @@
-import { describe, it, expect, vi } from 'vitest';
-import { getSubWords } from './thaiwords';
+import { describe, it, expect } from 'vitest';
+import { appendable } from './thaiwords';
 
-// Mock the dictionary so we have a known, small set of words to test against
-vi.mock('$lib/utils/dict', () => {
-    return {
-        // Sample dictionary containing words with and without repeating characters
-        default: [
-            'ก',
-            'กก',
-            'กา',
-            'กาก',
-            'กากา',
-            'ข',
-            'ขา',
-            'แมว',
-            'มม',
-            'แวว'
-        ]
-    }
-});
-
-describe('getSubWords', () => {
-    describe('with allowRepeat = true (default)', () => {
-        it('returns all words that can be formed using only the characters in the input word', () => {
-            // "กา" contains "ก" and "า"
-            // "ก" can form "ก", "กก", "กา", "กาก", "กากา"
-            const result = getSubWords('กา', true);
-            expect(result).toEqual(['ก', 'กก', 'กา', 'กาก', 'กากา']);
-        });
-
-        it('returns empty array if no dictionary word can be formed', () => {
-            const result = getSubWords('ฮ', true);
-            expect(result).toEqual([]);
-        });
-
-        it('returns empty array when input word is empty', () => {
-            const result = getSubWords('', true);
-            expect(result).toEqual([]);
-        });
-
-        it('can use getSubWords with implicit default parameter', () => {
-            // Same as first test, but tests the default value of allowRepeat
-            const result = getSubWords('กา');
-            expect(result).toEqual(['ก', 'กก', 'กา', 'กาก', 'กากา']);
-        });
+describe('appendable', () => {
+    it('should allow consonant followed by upper letter', () => {
+        // ก (consonant) + ั (upper letter)
+        expect(appendable('ก', 'ั')).toBeTruthy();
+        expect(appendable('ก', 'ิ')).toBeTruthy();
+        expect(appendable('ข', '็')).toBeTruthy();
     });
 
-    describe('with allowRepeat = false', () => {
-        it('returns only words where characters do not repeat and exist in input pool', () => {
-            // With allowRepeat=false, "กก", "กาก", "กากา", "มม", "แวว" are invalid
-            // because they contain duplicate letters (ก appears > 1, ม appears > 1, ว appears > 1)
-            const result = getSubWords('กามแว', false);
-            // "ก", "กา", "แมว" should match
-            expect(result).toEqual(['ก', 'กา', 'แมว']);
-        });
+    it('should allow consonant followed by lower letter', () => {
+        // ก (consonant) + ุ (lower letter)
+        expect(appendable('ก', 'ุ')).toBeTruthy();
+        expect(appendable('ข', 'ู')).toBeTruthy();
+    });
 
-        it('excludes words that have repeating characters even if input pool has multiple of that character', () => {
-            // Even though the input contains two 'ก's, getSubWords with allowRepeat=false
-            // explicitly checks if the dictionary word itself has unique characters (new Set(a).size == a.length)
-            const result = getSubWords('กกา', false);
-            // So "กก" and "กาก" will be excluded
-            expect(result).toEqual(['ก', 'กา']);
-        });
+    it('should not allow consonant followed by another consonant', () => {
+        // ก + ก
+        expect(appendable('ก', 'ก')).toBeFalsy();
+    });
 
-        it('returns empty array if no dictionary word without repeating characters can be formed', () => {
-            const result = getSubWords('ฮ', false);
-            expect(result).toEqual([]);
-        });
+    it('should not allow consonant followed by a middle vowel/character', () => {
+        // ก + า
+        expect(appendable('ก', 'า')).toBeFalsy();
+        expect(appendable('ก', 'เ')).toBeFalsy();
+    });
 
-        it('returns empty array when input word is empty', () => {
-            const result = getSubWords('', false);
-            expect(result).toEqual([]);
-        });
+    it('should not allow non-consonant as first character', () => {
+        // า (middle vowel) + ั (upper letter)
+        expect(appendable('า', 'ั')).toBeFalsy();
+        // English letter + upper letter
+        expect(appendable('A', 'ั')).toBeFalsy();
+    });
+
+    it('should not allow English letters', () => {
+        expect(appendable('a', 'b')).toBeFalsy();
+        expect(appendable('ก', 'a')).toBeFalsy();
     });
 });
