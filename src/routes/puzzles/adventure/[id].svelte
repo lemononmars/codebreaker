@@ -4,6 +4,7 @@
 	import { adventureCode, adventureLevel, adventureCodes } from '$lib/store';
 	import { browser } from '$app/env';
 	import { onDestroy } from 'svelte';
+	import DOMPurify from 'isomorphic-dompurify';
 
 	// Reactive level from URL
 	$: level = parseInt($page.params.id);
@@ -22,12 +23,12 @@
 
 	// Local state
 	let content: any = null;
-	let answer: string = '';
-	let status: string = '';
-	let loading: boolean = true;
-	let isLocked: boolean = false;
-	let showModal: boolean = false;
-	let cleanupScript: string = '';
+	let answer = '';
+	let status = '';
+	let loading = true;
+	let isLocked = false;
+	let showModal = false;
+	let cleanupScript = '';
 
 	// Cleanup on destroy
 	onDestroy(() => {
@@ -156,7 +157,7 @@
 			<div
 				class="w-full max-w-3xl p-8 my-10 bg-base-200 rounded-xl shadow-lg transition-all duration-500"
 			>
-				{@html content.question}
+				{@html DOMPurify.sanitize(content.question)}
 			</div>
 
 			{#if content.result === 'correct' && !content.question.includes('Congratulations')}
