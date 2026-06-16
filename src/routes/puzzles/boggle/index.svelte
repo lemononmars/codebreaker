@@ -40,8 +40,9 @@
 	let showRulesModal = false;
 	let showPossibleCount = true;
 
-	let sortedDict: string[] = [];
-	let dictSet: Set<string> = new Set();
+	// Initialize dictionary at module scope (fixes word count issues and avoids race conditions)
+	const sortedDict = [...dict].sort();
+	const dictSet = new Set(sortedDict);
 
 	function search(word: string): boolean {
 		return dictSet.has(word);
@@ -63,6 +64,68 @@
 	let feedbackMessage = '';
 	let feedbackType: 'success' | 'error' | 'info' | '' = '';
 	let feedbackTimeout: any = null;
+
+	// Web Audio API Synthesized SFX
+	function playSFX(type: 'select' | 'correct' | 'incorrect') {
+		if (typeof window === 'undefined') return;
+		try {
+			const AudioContextClass = window.AudioContext || (window as any).webkitAudioContext;
+			if (!AudioContextClass) return;
+			const ctx = new AudioContextClass();
+
+			if (type === 'select') {
+				const osc = ctx.createOscillator();
+				const gain = ctx.createGain();
+				osc.type = 'sine';
+				osc.frequency.setValueAtTime(600, ctx.currentTime);
+				osc.frequency.exponentialRampToValueAtTime(1200, ctx.currentTime + 0.05);
+				gain.gain.setValueAtTime(0.04, ctx.currentTime);
+				gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.05);
+				osc.connect(gain);
+				gain.connect(ctx.destination);
+				osc.start();
+				osc.stop(ctx.currentTime + 0.05);
+			} else if (type === 'correct') {
+				const osc1 = ctx.createOscillator();
+				const osc2 = ctx.createOscillator();
+				const gain = ctx.createGain();
+				
+				osc1.type = 'sine';
+				osc1.frequency.setValueAtTime(523.25, ctx.currentTime); // C5
+				osc1.frequency.exponentialRampToValueAtTime(1046.50, ctx.currentTime + 0.15); // C6
+
+				osc2.type = 'sine';
+				osc2.frequency.setValueAtTime(659.25, ctx.currentTime); // E5
+				osc2.frequency.exponentialRampToValueAtTime(1318.51, ctx.currentTime + 0.15); // E6
+
+				gain.gain.setValueAtTime(0.08, ctx.currentTime);
+				gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.3);
+
+				osc1.connect(gain);
+				osc2.connect(gain);
+				gain.connect(ctx.destination);
+
+				osc1.start();
+				osc2.start();
+				osc1.stop(ctx.currentTime + 0.3);
+				osc2.stop(ctx.currentTime + 0.3);
+			} else if (type === 'incorrect') {
+				const osc = ctx.createOscillator();
+				const gain = ctx.createGain();
+				osc.type = 'triangle';
+				osc.frequency.setValueAtTime(220, ctx.currentTime);
+				osc.frequency.linearRampToValueAtTime(110, ctx.currentTime + 0.2);
+				gain.gain.setValueAtTime(0.1, ctx.currentTime);
+				gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.2);
+				osc.connect(gain);
+				gain.connect(ctx.destination);
+				osc.start();
+				osc.stop(ctx.currentTime + 0.2);
+			}
+		} catch (e) {
+			console.warn('AudioContext error:', e);
+		}
+	}
 
 	// Letters distributions & weights
 	const boggleDiceWeights: Record<string, number> = {
@@ -293,13 +356,13 @@
 		return Array.from(found);
 	}
 
-	// Prefix check using binary search over dict array
+	// Prefix check using binary search over sortedDict array
 	function hasPrefix(prefix: string): boolean {
 		let low = 0;
-		let high = dict.length - 1;
+		let high = sortedDict.length - 1;
 		while (low <= high) {
 			const mid = Math.floor((low + high) / 2);
-			const val = dict[mid];
+			const val = sortedDict[mid];
 			if (val.startsWith(prefix)) {
 				return true;
 			}
@@ -356,6 +419,7 @@
 		feedbackMessage = '';
 		isDragging = true;
 		selectedPath = [{ r, c }];
+		playSFX('select');
 	}
 
 	function handleCellEnter(r: number, c: number) {
@@ -365,7 +429,10 @@
 		const pathIndex = selectedPath.findIndex((p) => p.r === r && p.c === c);
 		if (pathIndex !== -1) {
 			// If moving back to a previous element, crop the path up to it
-			selectedPath = selectedPath.slice(0, pathIndex + 1);
+			if (selectedPath.length !== pathIndex + 1) {
+				selectedPath = selectedPath.slice(0, pathIndex + 1);
+				playSFX('select');
+			}
 			return;
 		}
 
@@ -374,6 +441,38 @@
 		const isAdjacent = Math.abs(lastCell.r - r) <= 1 && Math.abs(lastCell.c - c) <= 1;
 		if (isAdjacent) {
 			selectedPath = [...selectedPath, { r, c }];
+			playSFX('select');
+		}
+	}
+
+	let gridContainer: HTMLDivElement;
+
+	function handlePointerMove(e: PointerEvent) {
+		if (!isDragging || !isPlaying) return;
+		if (!gridContainer) return;
+		const rect = gridContainer.getBoundingClientRect();
+		
+		const pad = 12; // padding offset
+		const gridWidth = rect.width - pad * 2;
+		const gridHeight = rect.height - pad * 2;
+		
+		const x = e.clientX - rect.left - pad;
+		const y = e.clientY - rect.top - pad;
+
+		const cellWidth = gridWidth / cols;
+		const cellHeight = gridHeight / rows;
+
+		const c = Math.floor(x / cellWidth);
+		const r = Math.floor(y / cellHeight);
+
+		if (r >= 0 && r < rows && c >= 0 && c < cols) {
+			const cellCenterX = (c + 0.5) * cellWidth;
+			const cellCenterY = (r + 0.5) * cellHeight;
+			const dist = Math.hypot(x - cellCenterX, y - cellCenterY);
+			const activeRadius = Math.min(cellWidth, cellHeight) * 0.45;
+			if (dist < activeRadius) {
+				handleCellEnter(r, c);
+			}
 		}
 	}
 
@@ -433,6 +532,7 @@
 
 		if (path.length < 3) {
 			showFeedback('คำต้องมีความยาวอย่างน้อย 3 ตัวอักษรขึ้นไป', 'info');
+			playSFX('incorrect');
 			return;
 		}
 
@@ -448,12 +548,15 @@
 			if (addedAny) {
 				foundWords = foundWords; // trigger reactivity
 				showFeedback(`ยอดเยี่ยม! พบคำว่า "${validWords.join(', ')}"`, 'success');
+				playSFX('correct');
 			} else {
 				showFeedback(`คำนี้ถูกหาเจอไปแล้ว`, 'info');
+				playSFX('incorrect');
 			}
 		} else {
 			const rawWord = options[0] || '';
 			showFeedback(`"${rawWord}" ไม่อยู่ในพจนานุกรม`, 'error');
+			playSFX('incorrect');
 		}
 	}
 
@@ -472,8 +575,6 @@
 			: '';
 
 	onMount(() => {
-		sortedDict = [...dict].sort();
-		dictSet = new Set(sortedDict);
 		generateBoard();
 	});
 
@@ -486,8 +587,8 @@
 	<title>Code Breaker | Boggle</title>
 </svelte:head>
 
-<!-- Global mouse release tracking -->
-<svelte:window on:mouseup={handleGlobalMouseUp} on:touchend={handleGlobalMouseUp} />
+<!-- Global pointer release tracking -->
+<svelte:window on:pointerup={handleGlobalMouseUp} />
 
 <div class="min-h-screen bg-[#0b0f19] text-white p-2 md:p-8 flex flex-col items-center">
 	<!-- Title -->
@@ -573,6 +674,9 @@
 
 			<!-- Boggle Grid wrapper -->
 			<div
+				bind:this={gridContainer}
+				on:pointermove={handlePointerMove}
+				style="touch-action: none;"
 				class="relative w-full max-w-[400px] aspect-square bg-slate-900/60 border border-slate-800/80 rounded-3xl p-3 shadow-2xl overflow-hidden select-none"
 			>
 				<!-- SVG Connection line overlay -->
@@ -608,21 +712,8 @@
 								selectedPath[selectedPath.length - 1].c === c}
 							<!-- svelte-ignore a11y-no-static-element-interactions -->
 							<div
-								on:mousedown={() => handleCellStart(r, c)}
-								on:mouseenter={() => handleCellEnter(r, c)}
-								on:mouseup={handleCellEnd}
-								on:touchstart|preventDefault={() => handleCellStart(r, c)}
-								on:touchmove|preventDefault={(e) => {
-									const touch = e.touches[0];
-									const element = document.elementFromPoint(touch.clientX, touch.clientY);
-									if (element) {
-										const targetRow = element.getAttribute('data-row');
-										const targetCol = element.getAttribute('data-col');
-										if (targetRow !== null && targetCol !== null) {
-											handleCellEnter(parseInt(targetRow), parseInt(targetCol));
-										}
-									}
-								}}
+								on:pointerdown={() => handleCellStart(r, c)}
+								on:pointerup={handleCellEnd}
 								data-row={r}
 								data-col={c}
 								class="relative flex items-center justify-center rounded-2xl cursor-pointer transition-all duration-150 border active:scale-95 shadow-inner

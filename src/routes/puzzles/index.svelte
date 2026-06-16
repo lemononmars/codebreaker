@@ -121,6 +121,16 @@
 				<line x1="15" y1="3" x2="15" y2="21" />
 				<path d="M7 8l5 5 5-5" stroke-dasharray="2,2" />
 			</svg>`
+		},
+		{
+			type: 'blanks',
+			description: 'เติมตัวอักษรปริศนาในช่องว่างให้สะกดถูกต้อง',
+			icon: `<svg class="w-12 h-12 text-primary transition-all duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+				<rect x="3" y="3" width="18" height="18" rx="2" />
+				<line x1="7" y1="14" x2="11" y2="14" stroke-width="2.5" />
+				<line x1="13" y1="14" x2="17" y2="14" stroke-width="2.5" />
+				<text x="12" y="10" font-size="8" font-family="sans-serif" font-weight="black" text-anchor="middle" fill="currentColor">?</text>
+			</svg>`
 		}
 	];
 
@@ -208,7 +218,7 @@
 						</div>
 						<div class="flex flex-col gap-1 flex-1 items-center">
 							<h2 class="card-title text-2xl font-bold capitalize tracking-wide text-primary justify-center text-center">
-								{p.type === 'spellingquiz' ? 'Spelling Quiz' : p.type}
+								{p.type === 'spellingquiz' ? 'Spelling Quiz' : p.type === 'blanks' ? 'Blanks' : p.type}
 							</h2>
 							<p class="text-base font-medium opacity-80 leading-relaxed">{p.description}</p>
 						</div>
