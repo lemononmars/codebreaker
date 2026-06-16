@@ -10,14 +10,17 @@
 		"check": "svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
 		"lint": "prettier --check --plugin-search-dir=. . && eslint .",
-		"format": "prettier --write --plugin-search-dir=. ."
+		"format": "prettier --write --plugin-search-dir=. .",
+		"test": "vitest run"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-vercel": "next",
 		"@sveltejs/kit": "next",
+		"@sveltejs/vite-plugin-svelte": "^1.4.0",
 		"@types/three": "^0.141.0",
 		"@typescript-eslint/eslint-plugin": "^5.27.0",
 		"@typescript-eslint/parser": "^5.27.0",
+		"@vitest/coverage-v8": "^4.1.8",
 		"autoprefixer": "^10.4.7",
 		"eslint": "^8.16.0",
 		"eslint-config-prettier": "^8.3.0",
@@ -33,7 +36,8 @@
 		"svelte-preprocess": "^4.10.7",
 		"tailwindcss": "^3.1.4",
 		"tslib": "^2.3.1",
-		"typescript": "^4.7.2"
+		"typescript": "^4.7.2",
+		"vitest": "^4.1.8"
 	},
 	"type": "module",
 	"dependencies": {
@@ -41,6 +45,7 @@
 		"@supabase/supabase-js": "^2.49.1",
 		"daisyui": "^2.17.0",
 		"discord.js": "^13.8.1",
+		"isomorphic-dompurify": "^3.17.0",
 		"npm-check-updates": "^17.1.15",
 		"pusher": "^5.1.1-beta",
 		"three": "^0.142.0",
