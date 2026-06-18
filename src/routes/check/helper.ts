@@ -9,9 +9,9 @@ export function decode(s:string) {
 
 export function encode(s:string) {
   s = btoa(encodeURIComponent(s).replace(/%([0-9A-F]{2})/g,
-    function toSolidBytes(match, p1) {
-        return String.fromCharCode('0x' + p1);
-    }));
+      function toSolidBytes(match: any, p1: string) {
+        return String.fromCharCode(parseInt(p1, 16));
+      }));
   return mask(s)
 }
 

@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * Pentomino Engine Utility
  */

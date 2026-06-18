@@ -88,7 +88,7 @@
 						src={getWeeklyPuzzleImage(p.year, p.week)}
 						alt="Week {p.week} Puzzle"
 						class="rounded-xl w-full h-48 object-cover"
-						onerror="this.src='{DEFAULT_WEEKLY_IMAGE_URL}'"
+						on:error={(e) => { e.currentTarget.src = DEFAULT_WEEKLY_IMAGE_URL; }}
 					/>
 				</figure>
 				<div class="card-body items-center text-center">

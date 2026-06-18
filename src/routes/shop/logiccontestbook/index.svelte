@@ -11,7 +11,7 @@
 <h1>Code Breaker Logic Puzzle Contest Book</h1>
 
 <div class="flex flex-col justify-left text-left px-2">
-   <img src="https://raw.githubusercontent.com/lemononmars/codebreaker/main/src/lib/images/product/logic_puzzle_contest_book_cover.jpg" onerror='this.style.display = "none"' class="h-64 aspect-auto object-contain" alt="img"><br>
+   <img src="https://raw.githubusercontent.com/lemononmars/codebreaker/main/src/lib/images/product/logic_puzzle_contest_book_cover.jpg" on:error={(e) => { e.currentTarget.style.display = 'none'; }} class="h-64 aspect-auto object-contain" alt="img"><br>
 
    <div class="flex flex-col m-auto">
       <p><i>English version below</i></p>

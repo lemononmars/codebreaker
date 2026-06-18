@@ -20,8 +20,8 @@ export function encode(s:string) {
   if (!s) return '';
   try {
     s = btoa(encodeURIComponent(s).replace(/%([0-9A-F]{2})/g,
-      function toSolidBytes(match, p1) {
-          return String.fromCharCode('0x' + p1);
+      function toSolidBytes(match: any, p1: string) {
+          return String.fromCharCode(parseInt(p1, 16));
       }));
     s = s.replace(/=/g, ''); // Strip padding '=' to prevent corruption in mask
     return mask(s)

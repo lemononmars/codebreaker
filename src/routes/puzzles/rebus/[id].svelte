@@ -1,5 +1,5 @@
 <script context=module lang=ts>
-   export async function load({fetch, params}) {
+   export async function load({fetch, params}: any) {
       const {id} = params
       const res = await fetch(`/api/puzzle/rebus/${id}`)
       const content = await res.json()
@@ -14,7 +14,6 @@
 
 <script lang=ts>
    import type {IRebus} from '$lib/interfaces'
-   import { ChevronLeftIcon, ChevronRightIcon } from 'svelte-feather-icons'
    import { getPuzzleImageURL } from '$lib/supabase';
    import TitleTab from '$lib/components/TitleTab.svelte';
    export let content: IRebus, id: number
@@ -80,7 +79,7 @@
 		clearAns();
 	}
 
-	function focusOnMount(node) {
+	function focusOnMount(node: HTMLElement) {
 		node.focus();
 	}
 </script>
@@ -90,7 +89,7 @@
 
    <div class="mx-auto w-full lg:w-1/2">
       {#key imgurl}
-         <img src="{getPuzzleImageURL('rebus', imgurl)}" onerror='this.style.display = "none"' class="aspect-auto object-contain" alt="img">
+         <img src="{getPuzzleImageURL('rebus', imgurl)}" on:error={(e) => { e.currentTarget.style.display = "none"; }} class="aspect-auto object-contain" alt="img">
       {/key}
    </div>
    <h3>ภาพนี้แสดงคำว่าอะไร?</h3>

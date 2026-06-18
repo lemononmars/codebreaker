@@ -1,3 +1,4 @@
+// @ts-nocheck
 // Test suite for Code Breaker Answer Checker Helper functions
 import assert from 'assert';
 

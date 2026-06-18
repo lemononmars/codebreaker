@@ -11,7 +11,7 @@
 <h1><a href="./">หนังสือปริศนาอักษรแทนคำ (Rebus puzzle)</a></h1>
 
 <div class="flex flex-col justify-left text-left px-2">
-   <img src="https://raw.githubusercontent.com/lemononmars/codebreaker/main/src/lib/images/product/rebus_book_cover.jpg" onerror='this.style.display = "none"' class="aspect-auto object-contain" alt="img"><br>
+   <img src="https://raw.githubusercontent.com/lemononmars/codebreaker/main/src/lib/images/product/rebus_book_cover.jpg" on:error={(e) => { e.currentTarget.style.display = 'none'; }} class="aspect-auto object-contain" alt="img"><br>
 
    <p>ปริศนาอักษรแทนคำ (Rebus puzzle) ราคาเล่มละ 100 บาท
    ค่าจัดส่ง 20 บาท (มีส่วนลดค่าส่งในกรณีสั่งหลายชุดในออเดอร์เดียวกัน)</p><br>
