@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { onMount, onDestroy } from 'svelte';
+	import { onMount } from 'svelte';
 	import dict from '$lib/utils/dict';
 	import { search as originalSearch, isUpper, isLower } from '$lib/utils/thaiwords';
 	import {
@@ -576,10 +576,10 @@
 
 	onMount(() => {
 		generateBoard();
-	});
 
-	onDestroy(() => {
-		clearInterval(timerInterval);
+		return () => {
+			clearInterval(timerInterval);
+		};
 	});
 </script>
 

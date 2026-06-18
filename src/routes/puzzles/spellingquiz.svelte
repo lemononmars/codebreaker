@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { onMount, onDestroy } from 'svelte';
+	import { onMount } from 'svelte';
 	import {
 		CompassIcon,
 		AwardIcon,
@@ -217,12 +217,12 @@
 				}
 			}
 		}
-	});
 
-	onDestroy(() => {
-		stopTimer();
-		stopAttackTimer();
-		if (countdownInterval) clearInterval(countdownInterval);
+		return () => {
+			stopTimer();
+			stopAttackTimer();
+			if (countdownInterval) clearInterval(countdownInterval);
+		};
 	});
 
 	// ── Question generation ────────────────────────────────────────────────────

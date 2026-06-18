@@ -2,13 +2,13 @@
 
    import {CreditCardIcon, UsersIcon, ClockIcon, ShoppingCartIcon, HomeIcon, GitBranchIcon, PlayCircleIcon, ShuffleIcon, ChevronDownIcon, ChevronUpIcon} from 'svelte-feather-icons'
    import TrainTrial from '$lib/images/traintrial.png'
-   import {default as IntObs} from "svelte-intersection-observer";
+   import {onMount} from 'svelte'
    import {fly} from 'svelte/transition'
 
    import {MRTLogo, BTSLogo, CBLogo, GameLabLogo} from '$lib/images/index'
 
    let element: any
-   let intersecting: boolean
+   let intersecting: boolean = false
 
    let answer: string = ''
    let response: string = ''
@@ -37,6 +37,20 @@
    function scrollTop() {
 		window.scroll({ top: 0, behavior: 'smooth' });
 	}
+
+   onMount(() => {
+      if (!element) return
+
+      const observer = new IntersectionObserver((entries) => {
+         intersecting = entries.some((entry) => entry.isIntersecting)
+
+         if (intersecting) observer.disconnect()
+      })
+
+      observer.observe(element)
+
+      return () => observer.disconnect()
+   })
 
    const sections = [
       {id: 'introduction', title: 'แนะนำ'},
@@ -77,11 +91,9 @@ Now then, let's see you solve the puzzles we have set out for you.
 The best way to get around is, of course, with Tokyo Metro.
 </p>
 
-<IntObs {element} once bind:intersecting>
-   <div class="bg-success-content py-4 my-4" id="info" bind:this={element}>
-      <h2>ข้อมูล</h2>
-   </div>
-</IntObs>
+<div class="bg-success-content py-4 my-4" id="info" bind:this={element}>
+   <h2>ข้อมูล</h2>
+</div>
 
 {#if intersecting}
    <div class="flex flex-row justify-around" transition:fly={{y:100, delay: 1000, duration: 500}}>

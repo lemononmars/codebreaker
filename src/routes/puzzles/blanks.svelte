@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { onMount, onDestroy } from 'svelte';
+	import { onMount } from 'svelte';
 	import KeyboardLayout from '$lib/components/KeyboardLayout.svelte';
 	import dict from '$lib/utils/dict';
 	import {
@@ -243,12 +243,12 @@
 				}
 			}
 		}
-	});
 
-	onDestroy(() => {
-		stopTimer();
-		stopAttackTimer();
-		if (countdownInterval) clearInterval(countdownInterval);
+		return () => {
+			stopTimer();
+			stopAttackTimer();
+			if (countdownInterval) clearInterval(countdownInterval);
+		};
 	});
 
 	function setupQuestion(selected: string): QuestionWord | null {
@@ -551,8 +551,8 @@
 <svelte:window on:keydown={handleKeyDown} />
 
 <svelte:head>
-	<title>Code Breaker | เติมคำสะกด ✏️</title>
-	<meta name="description" content="เกมเติมตัวอักษรปริศนาในช่องว่าง ทดสอบทักษะสะกดคำภาษาไทย" />
+	<title>Code Breaker | ซ่อนอักษร ✏️</title>
+	<meta name="description" content="เกมเติมตัวอักษรปริศนาในช่องว่าง" />
 </svelte:head>
 
 <div class="flex flex-col gap-6 w-full max-w-4xl mx-auto px-4 select-none pb-12 text-center">
@@ -562,7 +562,7 @@
 			<div class="flex flex-col gap-1 mb-2">
 				<h1 class="text-2xl md:text-4xl font-black tracking-tight text-white">เติมคำสะกด</h1>
 				<p class="text-xs md:text-sm opacity-90 max-w-lg mx-auto leading-relaxed">
-					ค้นหาอักษรที่ขาดหายไปเพื่อกู้คืนคำสะกดภาษาไทยที่ถูกต้องสมบูรณ์
+					หาตัวอักษร 1 ตัวที่เติมในทุกช่องว่างแล้วเป็นคำในพจนานุกรม
 				</p>
 			</div>
 
@@ -605,8 +605,8 @@
 						bind:value={difficulty}
 						class="select select-bordered w-full bg-neutral text-neutral-content border-base-300 font-extrabold focus:border-primary text-sm sm:text-base py-2.5 h-auto rounded-2xl cursor-pointer"
 					>
-						<option value="normal">ทั่วไป (เว้นคำที่ซ้ำกัน 1 เซ็ต)</option>
-						<option value="difficult">ยาก (เว้นคำ 2 เซ็ตซ้ำต่างชนิด)</option>
+						<option value="normal">ทั่วไป (1 ตัวอักษร)</option>
+						<option value="difficult">ท้าทาย (2 ตัวอักษรขึ้นไป)</option>
 					</select>
 				</div>
 			</div>
@@ -619,16 +619,6 @@
 					</span>
 				</div>
 			{/if}
-
-			<!-- Help Cards -->
-			<div
-				class="alert alert-info shadow-md text-left p-3 flex items-start gap-2 border border-info/30 bg-info mt-4"
-			>
-				<HelpCircleIcon class="flex-shrink-0 mt-0.5 text-info-content" size="20" />
-				<p class="text-xs sm:text-sm leading-relaxed text-info-content">
-					<b>คำแนะนำ:</b> เลือกเติมตัวอักษรที่ขาดหายไปในคำสะกดให้ครบทุกช่อง หากคำที่สร้างขึ้นมีความหมายและสะกดถูกต้องจะถูกยอมรับทันที
-				</p>
-			</div>
 
 		<!-- 2. COUNTDOWN SCREEN -->
 		{:else if currentMode === 'countdown'}
@@ -649,7 +639,7 @@
 						? '❤️ Survival Mode'
 						: gameMode === 'timeattack'
 						? '⚡ Time Attack'
-						: '♾️ Endless Mode'} • {difficulty === 'normal' ? 'ทั่วไป' : 'ระดับยาก'}
+						: '♾️ Endless Mode'} • {difficulty === 'normal' ? 'ทั่วไป' : 'ท้าทาย'}
 				</p>
 				<button on:click={goHome} class="btn btn-ghost btn-sm opacity-50 hover:opacity-100 mt-2">
 					ยกเลิก
@@ -732,13 +722,6 @@
 						/>
 					</div>
 				{/if}
-
-				<!-- Question instruction -->
-				<div class="text-center py-1">
-					<span class="text-sm sm:text-base opacity-75 font-extrabold tracking-wider block uppercase text-secondary">
-						เติมอักษรเพื่อกู้คืนคำศัพท์สะกด
-					</span>
-				</div>
 
 				<!-- GUESS WORD ZONE (Thai combining characters stacked vertically) -->
 				{#if qWord}
@@ -915,9 +898,9 @@
 				</div>
 
 				<div class="flex flex-col gap-1">
-					<h2 class="text-3xl sm:text-5xl font-black text-warning">สรุปผลการเล่น 🎉</h2>
+					<h2 class="text-3xl sm:text-5xl font-black text-warning">สรุปผล 🎉</h2>
 					<p class="text-xs sm:text-sm font-extrabold tracking-wide uppercase opacity-75">
-						โหมด: {gameMode === 'normal' ? 'Normal' : gameMode === 'timeattack' ? 'Time Attack ⚡' : 'Endless'} • ความยาก: {difficulty === 'normal' ? 'ทั่วไป' : 'ระดับยาก'}
+						โหมด: {gameMode === 'normal' ? 'Normal' : gameMode === 'timeattack' ? 'Time Attack ⚡' : 'Endless'} • ความยาก: {difficulty === 'normal' ? 'ทั่วไป' : 'ท้าทาย'}
 					</p>
 				</div>
 

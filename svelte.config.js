@@ -1,5 +1,6 @@
 import vercel from '@sveltejs/adapter-vercel';
 import preprocess from 'svelte-preprocess';
+import { resolve } from 'path';
 
 import { mdsvex } from 'mdsvex'
 
@@ -38,6 +39,12 @@ const config = {
 			  noExternal: ['three']
 			},
 			resolve: {
+			  alias: {
+				'svelte/store': resolve('src/lib/vendor/svelte-store.mjs'),
+				'svelte/transition': resolve('src/lib/vendor/svelte-transition.mjs'),
+				'svelte/animate': resolve('src/lib/vendor/svelte-animate.mjs'),
+				'svelte/motion': resolve('src/lib/vendor/svelte-motion.mjs')
+			  },
 			  dedupe: ['svelte']
 			}
 		 }
