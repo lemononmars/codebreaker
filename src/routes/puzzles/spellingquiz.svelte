@@ -437,63 +437,206 @@
 				</p>
 			</div>
 
-			<!-- New Game Button (Very Large) -->
-			<div class="w-full my-4">
+			<!-- STEP 1: Game Type -->
+			<div class="flex flex-col gap-2 text-left w-full mt-1 mb-2">
+				<h2 class="text-lg font-black text-white flex items-center gap-2">
+					<span
+						class="bg-primary text-primary-content w-6 h-6 rounded-full flex items-center justify-center text-xs shadow-md"
+						>1</span
+					>
+					เลือกวิธีเล่น
+				</h2>
+				<div class="grid grid-cols-2 gap-2 w-full">
+					<button
+						on:click={() => (gameType = 'choices')}
+						class="card bg-neutral text-neutral-content shadow-sm hover:shadow-lg hover:border-primary border-2 transition-all duration-300 block text-left p-2 {gameType ===
+						'choices'
+							? 'border-primary shadow-primary/20 bg-primary/5'
+							: 'border-base-300'}"
+					>
+						<div class="flex items-center gap-2 h-full justify-start">
+							<div class="text-2xl drop-shadow-md">✏️</div>
+							<div class="flex flex-col gap-0">
+								<h2
+									class="text-[11px] sm:text-sm font-black {gameType === 'choices'
+										? 'text-primary'
+										: 'text-neutral-content'} tracking-tight transition-colors leading-tight"
+								>
+									เลือกคำที่ถูก
+								</h2>
+								<p class="text-[9px] opacity-75 font-medium leading-tight hidden sm:block">
+									เลือกคำที่สะกดถูกจาก 2 ตัวเลือก
+								</p>
+							</div>
+						</div>
+					</button>
+					<button
+						on:click={() => (gameType = 'yesno')}
+						class="card bg-neutral text-neutral-content shadow-sm hover:shadow-lg hover:border-secondary border-2 transition-all duration-300 block text-left p-2 {gameType ===
+						'yesno'
+							? 'border-secondary shadow-secondary/20 bg-secondary/5'
+							: 'border-base-300'}"
+					>
+						<div class="flex items-center gap-2 h-full justify-start">
+							<div class="text-2xl drop-shadow-md">❓</div>
+							<div class="flex flex-col gap-0">
+								<h2
+									class="text-[11px] sm:text-sm font-black {gameType === 'yesno'
+										? 'text-secondary'
+										: 'text-neutral-content'} tracking-tight transition-colors leading-tight"
+								>
+									ถูกหรือผิด?
+								</h2>
+								<p class="text-[9px] opacity-75 font-medium leading-tight hidden sm:block">
+									ตอบว่าคำศัพท์ที่เห็นสะกดถูกหรือไม่
+								</p>
+							</div>
+						</div>
+					</button>
+				</div>
+			</div>
+
+			<!-- STEP 2: Game Mode -->
+			<div class="flex flex-col gap-2 text-left w-full mt-2 mb-2">
+				<h2 class="text-lg font-black text-white flex items-center gap-2">
+					<span
+						class="bg-primary text-primary-content w-6 h-6 rounded-full flex items-center justify-center text-xs shadow-md"
+						>2</span
+					>
+					เลือกรูปแบบการเล่น
+				</h2>
+				<div class="grid grid-cols-3 gap-2 w-full">
+					<!-- Normal Mode Card -->
+					<button
+						on:click={() => (gameMode = 'normal')}
+						class="card bg-neutral text-neutral-content shadow-sm hover:shadow-lg hover:border-error border-2 transition-all duration-300 block text-center p-2 {gameMode ===
+						'normal'
+							? 'border-error shadow-error/20 bg-error/5'
+							: 'border-base-300'}"
+					>
+						<div class="flex flex-row items-center gap-1.5 h-full justify-center sm:justify-start">
+							<div
+								class="w-6 h-6 sm:w-8 sm:h-8 bg-base-100 rounded-lg flex items-center justify-center flex-shrink-0 text-error shadow-inner"
+							>
+								<HeartIcon size="20" class="fill-error" />
+							</div>
+							<div class="flex flex-col gap-0 flex-1 items-start text-left">
+								<h2
+									class="text-[10px] sm:text-xs font-black {gameMode === 'normal'
+										? 'text-error'
+										: 'text-neutral-content'} tracking-wider uppercase transition-colors"
+								>
+									Normal
+								</h2>
+								<p class="text-[9px] opacity-75 leading-tight font-medium hidden sm:block">
+									3 ชีวิต
+								</p>
+								{#if getHighScore(gameType, 'normal') > 0}
+									<div
+										class="mt-0.5 text-[8px] font-mono font-black text-error bg-error/10 px-1 py-0.5 rounded-sm"
+									>
+										สูงสุด: {getHighScore(gameType, 'normal')}
+									</div>
+								{/if}
+							</div>
+						</div>
+					</button>
+
+					<!-- Time Attack Mode Card -->
+					<button
+						on:click={() => (gameMode = 'timeattack')}
+						class="card bg-neutral text-neutral-content shadow-sm hover:shadow-lg hover:border-warning border-2 transition-all duration-300 block text-center p-2 {gameMode ===
+						'timeattack'
+							? 'border-warning shadow-warning/20 bg-warning/5'
+							: 'border-base-300'}"
+					>
+						<div class="flex flex-row items-center gap-1.5 h-full justify-center sm:justify-start">
+							<div
+								class="w-6 h-6 sm:w-8 sm:h-8 bg-base-100 rounded-lg flex items-center justify-center flex-shrink-0 text-warning shadow-inner"
+							>
+								<ZapIcon size="20" />
+							</div>
+							<div class="flex flex-col gap-0 flex-1 items-start text-left">
+								<h2
+									class="text-[10px] sm:text-xs font-black {gameMode === 'timeattack'
+										? 'text-warning'
+										: 'text-neutral-content'} tracking-wider uppercase transition-colors"
+								>
+									Time Attack
+								</h2>
+								<p class="text-[9px] opacity-75 leading-tight font-medium hidden sm:block">60 วิ</p>
+								{#if getHighScore(gameType, 'timeattack') > 0}
+									<div
+										class="mt-0.5 text-[8px] font-mono font-black text-warning bg-warning/10 px-1 py-0.5 rounded-sm"
+									>
+										สูงสุด: {getHighScore(gameType, 'timeattack')}
+									</div>
+								{/if}
+							</div>
+						</div>
+					</button>
+
+					<!-- Endless Mode Card -->
+					<button
+						on:click={() => (gameMode = 'endless')}
+						class="card bg-neutral text-neutral-content shadow-sm hover:shadow-lg hover:border-success border-2 transition-all duration-300 block text-center p-2 {gameMode ===
+						'endless'
+							? 'border-success shadow-success/20 bg-success/5'
+							: 'border-base-300'}"
+					>
+						<div class="flex flex-row items-center gap-1.5 h-full justify-center sm:justify-start">
+							<div
+								class="w-6 h-6 sm:w-8 sm:h-8 bg-base-100 rounded-lg flex items-center justify-center flex-shrink-0 text-success shadow-inner"
+							>
+								<PlayIcon size="20" />
+							</div>
+							<div class="flex flex-col gap-0 flex-1 items-start text-left">
+								<h2
+									class="text-[10px] sm:text-xs font-black {gameMode === 'endless'
+										? 'text-success'
+										: 'text-neutral-content'} tracking-wider uppercase transition-colors"
+								>
+									Endless
+								</h2>
+								<p class="text-[9px] opacity-75 leading-tight font-medium hidden sm:block">
+									เล่นเรื่อย ๆ
+								</p>
+								{#if getHighScore(gameType, 'endless') > 0}
+									<div
+										class="mt-0.5 text-[8px] font-mono font-black text-success bg-success/10 px-1 py-0.5 rounded-sm"
+									>
+										สูงสุด: {getHighScore(gameType, 'endless')}
+									</div>
+								{/if}
+							</div>
+						</div>
+					</button>
+				</div>
+			</div>
+
+			<!-- STEP 3: Options & Play -->
+			<div class="flex flex-col gap-2 text-left w-full mt-2 mb-2">
+				<h2 class="text-lg font-black text-white flex items-center gap-2">
+					<span
+						class="bg-primary text-primary-content w-6 h-6 rounded-full flex items-center justify-center text-xs shadow-md"
+						>3</span
+					>
+					ไป!
+				</h2>
+
+				<!-- New Game Button -->
 				<button
 					on:click={beginCountdown}
-					class="btn btn-primary w-full gap-3 font-black text-2xl sm:text-3xl shadow-2xl hover:shadow-primary/45 hover:scale-[1.03] active:scale-[0.98] transition-all duration-200 py-6 sm:py-8 h-auto rounded-3xl"
+					class="btn btn-primary w-full gap-2 font-black text-lg shadow-xl hover:shadow-primary/30 hover:scale-[1.02] active:scale-[0.99] transition-all duration-200 py-3 h-auto"
 				>
-					<PlayIcon size="28" class="sm:w-8 sm:h-8" />
-					เริ่มเล่นเกมใหม่ 🚀
+					<PlayIcon size="20" />
+					เริ่มเกมใหม่
 				</button>
 			</div>
 
-			<!-- Dropdown Selections -->
-			<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full text-left my-2">
-				<!-- Game Type Select -->
-				<div class="flex flex-col gap-2">
-					<label for="gameType" class="text-sm font-extrabold text-white/80 flex items-center gap-1.5 px-1">
-						✏️ วิธีเล่น
-					</label>
-					<select
-						id="gameType"
-						bind:value={gameType}
-						class="select select-bordered w-full bg-neutral text-neutral-content border-base-300 font-extrabold focus:border-primary text-sm sm:text-base py-2.5 h-auto rounded-2xl cursor-pointer"
-					>
-						<option value="choices">เลือกคำที่สะกดถูก (2 ตัวเลือก)</option>
-						<option value="yesno">ถูกหรือผิด? (สะกดถูกหรือไม่)</option>
-					</select>
-				</div>
-
-				<!-- Game Mode Select -->
-				<div class="flex flex-col gap-2">
-					<label for="gameMode" class="text-sm font-extrabold text-white/80 flex items-center gap-1.5 px-1">
-						🏆 รูปแบบการเล่น
-					</label>
-					<select
-						id="gameMode"
-						bind:value={gameMode}
-						class="select select-bordered w-full bg-neutral text-neutral-content border-base-300 font-extrabold focus:border-primary text-sm sm:text-base py-2.5 h-auto rounded-2xl cursor-pointer"
-					>
-						<option value="normal">Normal (❤️ 3 ชีวิต)</option>
-						<option value="timeattack">Time Attack (⚡ 60 วินาที)</option>
-						<option value="endless">Endless (♾️ เล่นไปเรื่อยๆ)</option>
-					</select>
-				</div>
-			</div>
-
-			<!-- High Score Info -->
-			{#if highScores[`${gameType}_${gameMode}`] > 0}
-				<div class="flex justify-start px-1 my-1">
-					<span class="text-xs sm:text-sm font-bold text-accent">
-						👑 คะแนนสูงสุดในโหมดนี้: <span class="font-mono font-extrabold">{highScores[`${gameType}_${gameMode}`]}</span> คะแนน
-					</span>
-				</div>
-			{/if}
-
 			<!-- Options Toggle -->
 			<div
-				class="card bg-neutral text-neutral-content shadow-lg w-full border border-base-300 mt-2 mb-2"
+				class="card bg-neutral text-neutral-content shadow-lg w-full border border-base-300 mb-2"
 			>
 				<div class="card-body p-3 flex flex-row items-center justify-between gap-3">
 					<div class="flex items-center gap-2">
