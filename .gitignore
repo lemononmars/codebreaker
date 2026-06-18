@@ -7,3 +7,7 @@ node_modules
 .env.*
 !.env.example
 coverage/
+.npm-cache/
+.pkg-extract-*/
+svelte-3.48.0.tgz
+sveltejs-vite-plugin-svelte-1.0.0-next.48.tgz

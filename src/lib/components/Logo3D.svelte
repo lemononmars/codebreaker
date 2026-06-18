@@ -11,6 +11,8 @@
      PerspectiveCamera
    } from 'threlte'
    import { spring } from 'svelte/motion'
+   import { browser } from '$app/env'
+   import { onMount } from 'svelte'
  
    const scale = spring(1)
 
@@ -47,63 +49,69 @@
     let myColor = new Color("hsl(0, 100%, 50%)")
     let material = new MeshStandardMaterial({ color: myColor })
 
-    setInterval(()=>{
-      value += 0.01
-      if(value > 1) value -= 1
-      myColor.setHSL(value, 1, 0.5)
-      material.color = myColor
-    }, 100)
+    onMount(() => {
+      const interval = setInterval(()=>{
+        value += 0.01
+        if(value > 1) value -= 1
+        myColor.setHSL(value, 1, 0.5)
+        material.color = myColor
+      }, 100)
+
+      return () => clearInterval(interval)
+    })
  </script>
  
  <div class="w-full h-screen">
-   <Canvas>
-     <PerspectiveCamera position={{ x: 0, y: 0, z: -40 }} fov={24}>
-       <OrbitControls
-         maxPolarAngle={DEG2RAD * 80}
-         autoRotate={true}
-         enableZoom={true}
-         target={{ y: 0.5 }}
+   {#if browser}
+     <Canvas>
+       <PerspectiveCamera position={{ x: 0, y: 0, z: -40 }} fov={24}>
+         <OrbitControls
+           maxPolarAngle={DEG2RAD * 80}
+           autoRotate={true}
+           enableZoom={true}
+           target={{ y: 0.5 }}
+         />
+       </PerspectiveCamera>
+   
+       <DirectionalLight shadow position={{ x: 3, y: 10, z: 10 }} />
+       <DirectionalLight position={{ x: -3, y: 10, z: -10 }} intensity={0.2} />
+       <AmbientLight intensity={0.5} />
+   
+       <!-- Cube -->
+       <Group 
+        scale={$scale}
+        rotation={{z: DEG2RAD * 90}}
+        position={{x:2.5}}
+      >
+        <Mesh
+          interactive
+          on:pointerenter={() => ($scale = 1.2)}
+          on:pointerleave={() => ($scale = 1)}
+          castShadow
+          geometry={new ExtrudeBufferGeometry(outer, settings)}
+          material={material}
+        />
+        <Mesh
+          castShadow
+          geometry={new ExtrudeBufferGeometry(inner, settings)}
+          material={material}
+        />
+        <Mesh
+          castShadow
+          geometry={new ExtrudeBufferGeometry(triangle, settings)}
+          material={material}
+        />
+       </Group>
+   
+       <!-- Floor -->
+       <Mesh
+         receiveShadow
+         rotation={{ x: -90 * (Math.PI / 180) }}
+         position={{y:-1}}
+         geometry={new CircleBufferGeometry(3, 72)}
+         material={new MeshStandardMaterial({ side: DoubleSide, color: 'white' })}
        />
-     </PerspectiveCamera>
- 
-     <DirectionalLight shadow position={{ x: 3, y: 10, z: 10 }} />
-     <DirectionalLight position={{ x: -3, y: 10, z: -10 }} intensity={0.2} />
-     <AmbientLight intensity={0.5} />
- 
-     <!-- Cube -->
-     <Group 
-      scale={$scale}
-      rotation={{z: DEG2RAD * 90}}
-      position={{x:2.5}}
-    >
-      <Mesh
-        interactive
-        on:pointerenter={() => ($scale = 1.2)}
-        on:pointerleave={() => ($scale = 1)}
-        castShadow
-        geometry={new ExtrudeBufferGeometry(outer, settings)}
-        material={material}
-      />
-      <Mesh
-        castShadow
-        geometry={new ExtrudeBufferGeometry(inner, settings)}
-        material={material}
-      />
-      <Mesh
-        castShadow
-        geometry={new ExtrudeBufferGeometry(triangle, settings)}
-        material={material}
-      />
-     </Group>
- 
-     <!-- Floor -->
-     <Mesh
-       receiveShadow
-       rotation={{ x: -90 * (Math.PI / 180) }}
-       position={{y:-1}}
-       geometry={new CircleBufferGeometry(3, 72)}
-       material={new MeshStandardMaterial({ side: DoubleSide, color: 'white' })}
-     />
-   </Canvas>
+     </Canvas>
+   {/if}
  </div>
  

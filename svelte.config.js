@@ -36,6 +36,9 @@ const config = {
 		vite: {
 			ssr: {
 			  noExternal: ['three']
+			},
+			resolve: {
+			  dedupe: ['svelte']
 			}
 		 }
 	 }
