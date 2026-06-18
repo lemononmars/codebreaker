@@ -111,6 +111,17 @@
 			</svg>`
 		},
 		{
+			type: 'blanks',
+			description: 'เติมตัวอักษรที่หายไปให้ครบทุกช่องว่าง',
+			icon: `<svg class="w-12 h-12 text-primary transition-all duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+				<rect x="2" y="4" width="20" height="16" rx="2" />
+				<line x1="6" y1="12" x2="8" y2="12" stroke-width="3" />
+				<line x1="11" y1="12" x2="13" y2="12" stroke-dasharray="2,1" stroke-width="2.5" />
+				<line x1="16" y1="12" x2="18" y2="12" stroke-width="3" />
+				<rect x="9.5" y="8.5" width="5" height="7" rx="1" fill="currentColor" fill-opacity="0.15" />
+			</svg>`
+		},
+		{
 			type: 'boggle',
 			description: 'ลากเส้นเชื่อมตัวอักษรเพื่อผสมคำภาษาไทยในพจนานุกรม',
 			icon: `<svg class="w-12 h-12 text-primary transition-all duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -208,7 +219,7 @@
 						</div>
 						<div class="flex flex-col gap-1 flex-1 items-center">
 							<h2 class="card-title text-2xl font-bold capitalize tracking-wide text-primary justify-center text-center">
-								{p.type === 'spellingquiz' ? 'Spelling Quiz' : p.type}
+								{p.type === 'spellingquiz' ? 'Spelling Quiz' : p.type === 'blanks' ? 'ซ่อนอักษร' : p.type}
 							</h2>
 							<p class="text-base font-medium opacity-80 leading-relaxed">{p.description}</p>
 						</div>

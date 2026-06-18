@@ -484,14 +484,19 @@
 				</div>
 			</div>
 
-			<!-- High Score Info -->
-			{#if currentHighScore > 0}
-				<div class="flex justify-start px-1 my-1">
+			<!-- High Score Info + Leaderboard link -->
+			<div class="flex items-center justify-between px-1 my-1">
+				{#if currentHighScore > 0}
 					<span class="text-xs sm:text-sm font-bold text-accent">
 						👑 คะแนนสูงสุดในโหมดนี้: <span class="font-mono font-extrabold">{currentHighScore}</span> คะแนน
 					</span>
-				</div>
-			{/if}
+				{:else}
+					<span></span>
+				{/if}
+				<a href="/puzzles/spellingquiz/leaderboard" class="btn btn-ghost btn-xs gap-1 opacity-60 hover:opacity-100">
+					<AwardIcon size="12" /> ตารางคะแนน
+				</a>
+			</div>
 
 			<!-- Options Toggle -->
 			<div
@@ -954,6 +959,13 @@
 						<ArrowLeftIcon size="16" />
 						กลับหน้าหลัก
 					</button>
+					<a
+						href="/puzzles/spellingquiz/leaderboard"
+						class="btn btn-outline btn-warning flex-1 gap-2 btn-md sm:btn-lg font-black text-sm sm:text-base shadow-md"
+					>
+						<AwardIcon size="16" />
+						ตารางคะแนน
+					</a>
 				</div>
 			</div>
 		{/if}
