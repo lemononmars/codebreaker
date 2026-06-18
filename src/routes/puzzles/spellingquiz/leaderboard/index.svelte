@@ -133,8 +133,8 @@
 							</tr>
 						</thead>
 						<tbody>
-							{@const allScores = group.rows.map(r => r.score)}
 							{#each group.rows as row, idx}
+								{@const allScores = group.rows.map(r => r.score)}
 								{@const modeConf = modeConfigs.find(m => m.key === row.mode)}
 								<tr class="border-b border-base-300/30 last:border-0 transition-colors hover:bg-white/5 {row.score === 0 ? 'opacity-50' : ''}">
 									<td class="py-4 px-4">
