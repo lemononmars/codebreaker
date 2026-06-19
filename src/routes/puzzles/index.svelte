@@ -59,17 +59,6 @@
 			</svg>`
 		},
 		{
-			type: 'spellingbee',
-			description: 'หาคำ 7 ตัวอักษร',
-			icon: `<svg class="w-12 h-12 text-primary transition-all duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-				<path d="M12 2l8.66 5v10L12 22l-8.66-5V7z" />
-				<circle cx="12" cy="12" r="3" />
-				<line x1="8" y1="12" x2="5" y2="12" />
-				<line x1="16" y1="12" x2="19" y2="12" />
-				<path d="M12 9c.5-1.5 2-2 2-2M12 15c-.5 1.5-2 2-2 2" />
-			</svg>`
-		},
-		{
 			type: 'missingvowels',
 			description: 'ทายคำโดยใช้แค่พยัญชนะ',
 			icon: `<svg class="w-12 h-12 text-primary transition-all duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -88,10 +77,24 @@
 				<circle cx="12" cy="16" r="1.5" />
 				<path d="M12 17.5v2" />
 			</svg>`
+		}
+	];
+
+	const generatedWordPuzzles = [
+		{
+			type: 'spellingbee',
+			description: 'หาคำ 7 ตัวอักษร',
+			icon: `<svg class="w-12 h-12 text-primary transition-all duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+				<path d="M12 2l8.66 5v10L12 22l-8.66-5V7z" />
+				<circle cx="12" cy="12" r="3" />
+				<line x1="8" y1="12" x2="5" y2="12" />
+				<line x1="16" y1="12" x2="19" y2="12" />
+				<path d="M12 9c.5-1.5 2-2 2-2M12 15c-.5 1.5-2 2-2 2" />
+			</svg>`
 		},
 		{
 			type: 'crossroad',
-			description: 'เติมคำเพื่อสร้างคำทั้งสี่ทิศทาง',
+			description: 'เติมคำเพื่อสร้างศัพท์ทั้งสี่ทิศทาง',
 			icon: `<svg class="w-12 h-12 text-primary transition-all duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 				<line x1="12" y1="2" x2="12" y2="22" />
 				<line x1="2" y1="12" x2="22" y2="12" />
@@ -160,12 +163,12 @@
 	<title>Code Breaker | Puzzles</title>
 	<meta
 		name="description"
-		content="Explore a variety of unique and challenging puzzles on Code Breaker: Rebus, Word Search, Crossword, Alphabet, Spelling Bee, Cryptograms, and more."
+		content="ลับสมองด้วยปริศนาหลากรูปแบบ ทั้งอักษรไขว้ ทายศัพท์ เติมคำในช่องว่าง และอื่น ๆ อีกมากมาย"
 	/>
 	<meta property="og:title" content="Code Breaker Puzzles" />
 	<meta
 		property="og:description"
-		content="Explore a variety of unique and challenging puzzles on Code Breaker: Rebus, Word Search, Crossword, Alphabet, Spelling Bee, Cryptograms, and more."
+		content="ลับสมองด้วยปริศนาหลากรูปแบบ ทั้งอักษรไขว้ ทายศัพท์ เติมคำในช่องว่าง และอื่น ๆ อีกมากมาย"
 	/>
 	<meta property="og:type" content="website" />
 	<meta property="og:image" content="/og-main.png" />
@@ -205,10 +208,38 @@
 	<!-- 2. Word Puzzles Section -->
 	<section class="flex flex-col gap-4">
 		<h2 class="text-2xl font-bold tracking-tight text-primary border-b border-base-300/20 pb-2">
-			🔠 ปริศนาภาษาและคำศัพท์ (Word Puzzles)
+			🔠 ปริศนาภาษาทำมือ (Crafted Word Puzzles)
 		</h2>
 		<div class="grid md:grid-cols-2 gap-6">
 			{#each wordPuzzles as p}
+				<a
+					href="/puzzles/{p.type}"
+					class="card bg-neutral text-neutral-content shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 block h-full group"
+				>
+					<div class="card-body flex flex-col items-center text-center gap-4 p-6">
+						<div class="w-20 h-20 rounded-2xl bg-base-300/40 text-primary flex items-center justify-center p-3 shadow-inner border border-base-300/60 group-hover:bg-primary/10 group-hover:text-secondary group-hover:border-secondary/30 transition-all duration-300">
+							{@html p.icon}
+						</div>
+						<div class="flex flex-col gap-1 flex-1 items-center">
+							<h2 class="card-title text-2xl font-bold capitalize tracking-wide text-primary justify-center text-center">
+								{p.type === 'spellingquiz' ? 'Spelling Quiz' : p.type === 'blanks' ? 'ซ่อนอักษร' : p.type}
+							</h2>
+							<p class="text-base font-medium opacity-80 leading-relaxed">{p.description}</p>
+						</div>
+					</div>
+				</a>
+			{/each}
+		</div>
+	</section>
+
+	
+	<!-- 2. Word Puzzles Section -->
+	<section class="flex flex-col gap-4">
+		<h2 class="text-2xl font-bold tracking-tight text-primary border-b border-base-300/20 pb-2">
+			🔠 ปริศนาภาษาสร้างจากพจนานุกรม (Generated Word Puzzles)
+		</h2>
+		<div class="grid md:grid-cols-2 gap-6">
+			{#each generatedWordPuzzles as p}
 				<a
 					href="/puzzles/{p.type}"
 					class="card bg-neutral text-neutral-content shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 block h-full group"

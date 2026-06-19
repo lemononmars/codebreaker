@@ -137,8 +137,6 @@
 	}
 
 	function generateBoard() {
-		// To ensure the board is actually fun and solvable, we pick at least one 6+ letter word (length 6-8)
-		// and place it sequentially in the grid, verifying it produces a 6+ letter word in solver.
 		const freshGrid = Array(rows)
 			.fill(null)
 			.map(() => Array(cols).fill(''));
@@ -196,7 +194,6 @@
 			}
 
 			if (success) {
-				// Fill the rest with weighted letter distributions
 				for (let r = 0; r < rows; r++) {
 					for (let c = 0; c < cols; c++) {
 						if (tempGrid[r][c] === '') {
@@ -216,7 +213,6 @@
 			}
 		}
 
-		// Fallback in case of extreme bad luck
 		if (!placed) {
 			const fallbackWord = 'กระต่าย';
 			const chars = fallbackWord.split('').map(normalizeToCombinedChar);
@@ -233,8 +229,6 @@
 		}
 
 		grid = freshGrid;
-
-		// Run DFS solver in background to find all possible valid words
 		allPossibleWords = solveBoard(grid).sort((a, b) => b.length - a.length || a.localeCompare(b));
 	}
 
@@ -293,13 +287,13 @@
 		return Array.from(found);
 	}
 
-	// Prefix check using binary search over dict array
+	// Prefix check using binary search over sortedDict array
 	function hasPrefix(prefix: string): boolean {
 		let low = 0;
-		let high = dict.length - 1;
+		let high = sortedDict.length - 1;
 		while (low <= high) {
 			const mid = Math.floor((low + high) / 2);
-			const val = dict[mid];
+			const val = sortedDict[mid];
 			if (val.startsWith(prefix)) {
 				return true;
 			}
@@ -350,6 +344,7 @@
 		if (len === 6) return 6;
 		return 9;
 	}
+
 	// Dragging handlers
 	function handleCellStart(r: number, c: number) {
 		if (!isPlaying || gameEnded) return;
@@ -364,7 +359,6 @@
 		// Check if it's already in the path
 		const pathIndex = selectedPath.findIndex((p) => p.r === r && p.c === c);
 		if (pathIndex !== -1) {
-			// If moving back to a previous element, crop the path up to it
 			selectedPath = selectedPath.slice(0, pathIndex + 1);
 			return;
 		}
@@ -377,13 +371,13 @@
 		}
 	}
 
+	// Submit word when dragging finishes
 	function handleCellEnd() {
 		if (!isDragging) return;
 		isDragging = false;
 		submitWord();
 	}
 
-	// Global pointer-up safety
 	function handleGlobalMouseUp() {
 		if (isDragging) {
 			isDragging = false;
@@ -409,7 +403,12 @@
 
 	$: currentWordOptions = getPossibleStrings(selectedPath);
 	$: currentWord = selectedPath.map((p) => grid[p.r][p.c]).join('');
-	$: currentWordDisplay = selectedPath.map((p) => grid[p.r][p.c]).join(' ');
+	$: currentWordDisplay = selectedPath
+		.map((p) => {
+			const char = grid[p.r][p.c];
+			return char.includes('/') ? `(${char})` : char;
+		})
+		.join(' ');
 	$: currentWordValid = selectedPath.length >= 3 && currentWordOptions.some((w) => search(w));
 
 	function showFeedback(msg: string, type: 'success' | 'error' | 'info') {
@@ -457,7 +456,6 @@
 		}
 	}
 
-	// Convert cell coordinate to SVG relative line percentage (0 - 100 viewBox coordinate)
 	function getCellSVGCoord(val: number): number {
 		return (val + 0.5) * 25;
 	}
@@ -483,55 +481,63 @@
 </script>
 
 <svelte:head>
-	<title>Code Breaker | Boggle</title>
+	<title>Code Breaker | เส้นทางศัพท์ 🧭</title>
+	<meta name="description" content="ลากเส้นเชื่อมตัวอักษรเพื่อผสมคำภาษาไทยในพจนานุกรม" />
 </svelte:head>
 
-<!-- Global mouse release tracking -->
 <svelte:window on:mouseup={handleGlobalMouseUp} on:touchend={handleGlobalMouseUp} />
 
-<div class="min-h-screen bg-[#0b0f19] text-white p-2 md:p-8 flex flex-col items-center">
-	<!-- Title -->
-	<div class="text-center mb-3 md:mb-8 flex flex-col items-center gap-2 relative">
-		<h1
-			class="text-3xl md:text-4xl font-extrabold tracking-tight bg-gradient-to-r from-teal-400 to-emerald-400 bg-clip-text text-transparent flex items-center justify-center gap-2.5"
+<div class="flex flex-col gap-6 w-full max-w-4xl mx-auto px-4 select-none pb-12 text-center pt-4">
+	<!-- Header / Back button -->
+	<div class="flex flex-col gap-3">
+		<a
+			href="/puzzles"
+			class="inline-flex items-center gap-2 text-sm font-bold opacity-60 hover:opacity-100 transition-opacity w-fit self-start"
 		>
-			ปริศนาเส้นทางศัพท์
-			<button
-				on:click={() => (showRulesModal = true)}
-				class="p-1.5 bg-slate-800 hover:bg-slate-700 rounded-lg text-slate-400 hover:text-white transition-colors"
-				title="วิธีเล่น"
-			>
-				<InfoIcon size="16" />
-			</button>
-		</h1>
-		<p class="hidden md:block text-xs md:text-sm text-slate-400 font-medium">
-			ลากเส้นเชื่อมตัวอักษรที่อยู่ติดกันต่อเนื่อง เพื่อผสมคำภาษาไทยในพจนานุกรม
-		</p>
+			<ChevronLeftIcon size="16" />
+			กลับไปหน้าปริศนา
+		</a>
+
+		<div class="flex flex-col justify-center py-2">
+			<h1 class="text-2xl md:text-4xl font-black tracking-tight text-white flex items-center justify-center gap-2.5">
+				เส้นทางศัพท์
+				<button
+					on:click={() => (showRulesModal = true)}
+					class="p-1.5 bg-neutral hover:bg-base-300/60 border border-base-300/40 rounded-xl text-slate-400 hover:text-white transition-all shadow-sm"
+					title="วิธีเล่น"
+				>
+					<InfoIcon size="16" />
+				</button>
+			</h1>
+			<p class="text-xs md:text-sm opacity-90 max-w-lg mx-auto leading-relaxed mt-1">
+				ลากเส้นเชื่อมตัวอักษรที่อยู่ติดกันต่อเนื่องเพื่อผสมคำภาษาไทยในพจนานุกรม
+			</p>
+		</div>
 	</div>
 
 	<!-- Main Layout -->
-	<div class="w-full max-w-5xl grid lg:grid-cols-12 gap-3 md:gap-8 items-start">
+	<div class="w-full grid lg:grid-cols-12 gap-4 items-start text-left mt-2">
 		<!-- Left Column: The Interactive Board -->
-		<div class="lg:col-span-7 flex flex-col gap-3 md:gap-6 items-center w-full">
+		<div class="lg:col-span-7 flex flex-col gap-4 items-center w-full">
 			<!-- Current Word Drag preview bar -->
 			<div
-				class="w-full h-14 bg-slate-900/90 border border-slate-800 rounded-2xl flex items-center justify-between px-6 shadow-xl relative overflow-hidden"
+				class="w-full h-14 bg-neutral border border-base-300 rounded-2xl flex items-center justify-between px-6 shadow-xl relative overflow-hidden"
 			>
 				{#if feedbackMessage}
 					<div
 						class="absolute inset-0 flex items-center justify-end gap-3 px-6 transition-all duration-300 z-30
-						{feedbackType === 'success' ? 'bg-emerald-950/90 text-emerald-300' : ''}
-						{feedbackType === 'error' ? 'bg-red-950/90 text-red-300' : ''}
-						{feedbackType === 'info' ? 'bg-slate-855 text-slate-300' : ''}"
+						{feedbackType === 'success' ? 'bg-success/15 text-success' : ''}
+						{feedbackType === 'error' ? 'bg-error/15 text-error' : ''}
+						{feedbackType === 'info' ? 'bg-base-300 text-info' : ''}"
 						in:fly={{ y: 5, duration: 150 }}
 					>
 						<span class="text-sm font-black flex items-center gap-1.5">
 							{#if feedbackType === 'success'}
-								<CheckCircleIcon size="16" class="text-emerald-400" />
+								<CheckCircleIcon size="16" class="text-success" />
 							{:else if feedbackType === 'error'}
-								<XCircleIcon size="16" class="text-rose-400" />
+								<XCircleIcon size="16" class="text-error" />
 							{:else}
-								<InfoIcon size="16" class="text-sky-400" />
+								<InfoIcon size="16" class="text-info" />
 							{/if}
 							{feedbackMessage}
 						</span>
@@ -545,8 +551,8 @@
 				{/if}
 
 				<div class="flex items-center gap-2">
-					<span class="text-xs font-bold text-slate-400 uppercase tracking-wider">กำลังสร้าง:</span>
-					<span class="text-2xl font-black text-white tracking-wide">
+					<span class="text-xs font-bold opacity-60 uppercase tracking-wider">กำลังสร้าง:</span>
+					<span class="text-xl sm:text-2xl font-black text-white tracking-wide">
 						{currentWordDisplay || '...'}
 					</span>
 				</div>
@@ -554,15 +560,15 @@
 					<div class="flex items-center gap-1">
 						{#if selectedPath.length < 3}
 							<span
-								class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-amber-500/20 text-amber-400 border border-amber-500/30"
+								class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-warning/20 text-warning border border-warning/30"
 							>
 								สั้นเกินไป
 							</span>
 						{:else}
 							<span
 								class="px-2.5 py-0.5 rounded-full text-[10px] font-bold {currentWordValid
-									? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30'
-									: 'bg-slate-800 text-slate-400'}"
+									? 'bg-success/20 text-success border border-success/30'
+									: 'bg-base-300 text-slate-400'}"
 							>
 								{currentWordValid ? 'เป็นคำศัพท์' : 'รอสร้างต่อ'}
 							</span>
@@ -573,22 +579,22 @@
 
 			<!-- Boggle Grid wrapper -->
 			<div
-				class="relative w-full max-w-[400px] aspect-square bg-slate-900/60 border border-slate-800/80 rounded-3xl p-3 shadow-2xl overflow-hidden select-none"
+				class="relative w-full max-w-[400px] aspect-square bg-slate-900/40 border border-white/5 rounded-3xl p-3 shadow-2xl overflow-hidden select-none"
 			>
 				<!-- SVG Connection line overlay -->
 				<svg
-					class="absolute inset-0 w-full h-full pointer-events-none z-10 p-3"
+					class="absolute inset-0 w-full h-full pointer-events-none z-10 p-3 text-primary opacity-60"
 					viewBox="0 0 100 100"
 				>
 					{#if pathSVGData}
 						<path
 							d={pathSVGData}
-							stroke="rgba(45, 212, 191, 0.45)"
+							stroke="currentColor"
 							stroke-width="5"
 							stroke-linecap="round"
 							stroke-linejoin="round"
 							fill="none"
-							class="drop-shadow-[0_0_8px_rgba(45,212,191,0.4)]"
+							class="drop-shadow-[0_0_8px_rgba(var(--p),0.45)]"
 						/>
 					{/if}
 				</svg>
@@ -628,9 +634,9 @@
 								class="relative flex items-center justify-center rounded-2xl cursor-pointer transition-all duration-150 border active:scale-95 shadow-inner
 									{isSelected
 									? isLastSelected
-										? 'bg-teal-500 border-teal-400 text-slate-950 scale-105 shadow-[0_0_15px_rgba(45,212,191,0.5)] z-20'
-										: 'bg-slate-800/90 border-teal-500/50 text-teal-300 z-15'
-									: 'bg-slate-950/80 border-slate-800/80 text-white hover:bg-slate-850 hover:border-slate-700'}"
+										? 'bg-primary border-primary text-primary-content scale-105 shadow-[0_0_15px_rgba(var(--p),0.5)] z-20'
+										: 'bg-neutral border-primary/40 text-primary z-15'
+									: 'bg-neutral/40 border-base-300/40 text-white hover:bg-neutral/80 hover:border-base-300'}"
 							>
 								<!-- Letter text layout optimized for Thai accents and combined characters -->
 								{#if char.includes('/')}
@@ -638,16 +644,16 @@
 									<div
 										class="grid h-full w-full select-none pointer-events-none text-center rounded-2xl overflow-hidden
 										{symbols.length === 2 ? 'grid-cols-2 divide-x' : 'grid-cols-2 grid-rows-2 divide-x divide-y'}
-										{isSelected ? 'divide-teal-500/35' : 'divide-slate-800/60'}"
+										{isSelected ? 'divide-primary/20' : 'divide-base-300/30'}"
 									>
 										{#each symbols as symbol}
 											<div class="flex items-center justify-center h-full w-full">
 												<span
 													class="font-black select-none pointer-events-none tracking-tighter"
-													class:text-3xl={symbols.length === 2}
-													class:text-xl={symbols.length > 2}
-													class:md:text-4xl={symbols.length === 2}
-													class:md:text-2xl={symbols.length > 2}
+													class:text-2xl={symbols.length === 2}
+													class:text-lg={symbols.length > 2}
+													class:md:text-3xl={symbols.length === 2}
+													class:md:text-xl={symbols.length > 2}
 												>
 													{symbol}
 												</span>
@@ -656,9 +662,9 @@
 									</div>
 								{:else}
 									<span
-										class="font-black select-none pointer-events-none tracking-tighter text-4xl md:text-5xl"
-										class:text-5xl={isUpper(char) || isLower(char)}
-										class:md:text-6xl={isUpper(char) || isLower(char)}
+										class="font-black select-none pointer-events-none tracking-tighter text-3xl md:text-4xl"
+										class:text-4xl={isUpper(char) || isLower(char)}
+										class:md:text-5xl={isUpper(char) || isLower(char)}
 										class:translate-x-2={isUpper(char) || isLower(char)}
 										class:translate-y-1.5={!isLower(char)}
 									>
@@ -673,23 +679,23 @@
 				<!-- Game Starting Mask -->
 				{#if !isPlaying && !gameEnded}
 					<div
-						class="absolute inset-0 bg-slate-950/85 backdrop-blur-[3px] z-30 flex flex-col items-center justify-center p-6 text-center"
+						class="absolute inset-0 bg-neutral/95 backdrop-blur-[3px] z-30 flex flex-col items-center justify-center p-6 text-center"
 					>
 						<div class="flex flex-col items-center gap-4 max-w-[280px]">
 							<div
-								class="w-14 h-14 bg-teal-500/10 border border-teal-500/30 rounded-2xl flex items-center justify-center text-teal-400 shadow-inner"
+								class="w-14 h-14 bg-primary/10 border border-primary/30 rounded-2xl flex items-center justify-center text-primary shadow-inner animate-pulse"
 							>
 								<CompassIcon size="28" />
 							</div>
 							<div class="flex flex-col gap-1.5">
-								<h3 class="text-lg font-bold text-white">พร้อมเล่นไหม? ⏱️</h3>
-								<p class="text-xs text-slate-400 leading-relaxed font-medium">
+								<h3 class="text-lg font-extrabold text-white">พร้อมเล่นไหม? ⏱️</h3>
+								<p class="text-xs opacity-70 leading-relaxed font-bold">
 									เวลาจำกัด 2 นาที คุณจะหาคำภาษาไทยในตาราง 4x4 ได้ทั้งหมดกี่คำ?
 								</p>
 							</div>
 							<button
 								on:click={startNewGame}
-								class="flex items-center justify-center gap-2 py-3 bg-teal-500 hover:bg-teal-600 text-slate-950 font-bold rounded-xl shadow-lg hover:shadow-teal-500/20 active:scale-[0.98] transition-all w-full text-sm"
+								class="btn btn-primary w-full gap-2 font-bold rounded-xl shadow-lg hover:shadow-primary/20 active:scale-[0.98] transition-all text-sm py-3.5 h-auto"
 							>
 								<PlayCircleIcon size="16" />
 								เริ่มเล่นเกม
@@ -701,16 +707,16 @@
 		</div>
 
 		<!-- Right Column: Stats, Timers, List of Found Words -->
-		<div class="lg:col-span-5 flex flex-col gap-3 md:gap-6">
+		<div class="lg:col-span-5 flex flex-col gap-4">
 			<!-- Score & Timer Card -->
 			<div
-				class="w-full h-14 bg-slate-900/90 border border-slate-800 rounded-2xl flex items-center justify-between px-6 shadow-xl relative overflow-hidden"
+				class="w-full h-14 bg-neutral border border-base-300 rounded-2xl flex items-center justify-between px-6 shadow-xl relative overflow-hidden"
 			>
 				<div class="flex items-center gap-3">
-					<AwardIcon size="18" class="text-amber-400" />
+					<AwardIcon size="18" class="text-warning" />
 					<div class="flex items-center gap-1.5">
-						<span class="text-xs font-bold text-slate-400 uppercase tracking-wider">คะแนน:</span>
-						<span class="text-xl font-black text-white font-mono">{score}</span>
+						<span class="text-xs font-bold opacity-60 uppercase tracking-wider">คะแนน:</span>
+						<span class="text-xl font-black text-primary font-mono">{score}</span>
 					</div>
 				</div>
 
@@ -720,22 +726,22 @@
 					<div
 						class="w-8 h-8 rounded-lg flex items-center justify-center
 						{timeLeft > 20
-							? 'bg-teal-500/10 border border-teal-500/30 text-teal-400'
-							: 'bg-red-500/10 border border-red-500/30 text-red-400 animate-pulse'}"
+							? 'bg-primary/15 border border-primary/30 text-primary'
+							: 'bg-error/15 border border-error/30 text-error animate-pulse'}"
 					>
 						<span class="font-bold text-sm font-mono">{timeLeft}</span>
 					</div>
 					<div class="flex flex-col">
-						<span class="text-xs font-semibold text-slate-200">
+						<span class="text-xs font-black text-white">
 							{Math.floor(timeLeft / 60)}:{(timeLeft % 60).toString().padStart(2, '0')}
 						</span>
 					</div>
 				</div>
 
 				<!-- Timer Bar absolute at bottom -->
-				<div class="absolute bottom-0 left-0 w-full bg-slate-950 h-1 overflow-hidden">
+				<div class="absolute bottom-0 left-0 w-full bg-base-300/40 h-1 overflow-hidden">
 					<div
-						class="h-full bg-gradient-to-r from-teal-400 to-emerald-500 transition-all duration-1000 ease-linear shadow-[0_0_8px_rgba(45,212,191,0.4)]"
+						class="h-full bg-gradient-to-r from-primary to-secondary transition-all duration-1000 ease-linear shadow-[0_0_8px_rgba(var(--p),0.4)]"
 						style="width: {(timeLeft / 120) * 100}%"
 					/>
 				</div>
@@ -743,42 +749,41 @@
 
 			<!-- Found Words Board -->
 			<div
-				class="bg-slate-900/90 border border-slate-800 p-4 md:p-5 rounded-2xl shadow-xl flex-1 flex flex-col min-h-[180px] md:min-h-[300px] max-h-[280px] md:max-h-[480px]"
+				class="bg-neutral border border-base-300 p-4 md:p-5 rounded-2xl shadow-xl flex-1 flex flex-col min-h-[180px] md:min-h-[300px] max-h-[280px] md:max-h-[480px]"
 			>
 				{#if gameEnded}
 					{@const pct =
 						allPossibleWords.length > 0
 							? Math.round((foundWords.size / allPossibleWords.length) * 100)
 							: 0}
-					<!-- Game ended results view -->
 					<h3
-						class="text-sm font-bold text-white uppercase tracking-widest flex items-center gap-1.5 border-b border-slate-800 pb-3 mb-3"
+						class="text-sm font-bold text-white uppercase tracking-widest flex items-center gap-1.5 border-b border-base-300/60 pb-3 mb-3"
 					>
-						<AwardIcon size="16" class="text-amber-400 animate-bounce" />
-						สรุปผลการเล่น
+						<AwardIcon size="16" class="text-warning animate-bounce" />
+						สรุปผลการเล่น 🎉
 					</h3>
 
 					<div
-						class="grid grid-cols-2 gap-2 bg-slate-950 p-2.5 rounded-xl border border-slate-800/80 shadow-inner text-center mb-3"
+						class="grid grid-cols-2 gap-2 bg-base-100 p-2.5 rounded-xl border border-base-300 shadow-inner text-center mb-3"
 					>
 						<div class="flex flex-col">
-							<span class="text-[9px] text-slate-400 font-bold uppercase tracking-wider"
+							<span class="text-[9px] opacity-60 font-bold uppercase tracking-wider"
 								>คะแนนที่ทำได้</span
 							>
-							<span class="text-lg font-black text-teal-400 font-mono">{score} คะแนน</span>
+							<span class="text-lg font-black text-primary font-mono">{score} คะแนน</span>
 						</div>
 						<div class="flex flex-col">
-							<span class="text-[9px] text-slate-400 font-bold uppercase tracking-wider"
+							<span class="text-[9px] opacity-60 font-bold uppercase tracking-wider"
 								>คำที่พบ</span
 							>
-							<span class="text-lg font-black text-white font-mono">{pct}%</span>
+							<span class="text-lg font-black text-success font-mono">{pct}%</span>
 						</div>
 					</div>
 
 					<div class="flex-1 overflow-y-auto flex flex-col gap-3 pr-1">
 						<!-- List of words player found -->
 						<div class="flex flex-col gap-1">
-							<span class="text-xs font-bold text-emerald-400 flex items-center gap-1">
+							<span class="text-xs font-bold text-success flex items-center gap-1">
 								<CheckCircleIcon size="11" />
 								คำที่คุณพบ ({foundWords.size})
 							</span>
@@ -788,7 +793,7 @@
 								<div class="flex flex-wrap gap-1">
 									{#each Array.from(foundWords) as word}
 										<span
-											class="px-2 py-0.5 text-xs font-semibold bg-emerald-500/10 text-emerald-300 border border-emerald-500/20 rounded-md"
+											class="px-2 py-0.5 text-xs font-semibold bg-success/10 text-success border border-success/20 rounded-md"
 										>
 											{word}
 										</span>
@@ -801,7 +806,7 @@
 
 						<!-- All missed words list -->
 						<div class="flex flex-col gap-1">
-							<span class="text-xs font-bold text-rose-400 flex items-center gap-1">
+							<span class="text-xs font-bold text-error flex items-center gap-1">
 								<XCircleIcon size="11" />
 								คำศัพท์ที่คุณพลาดไป ({missedWords.length})
 							</span>
@@ -811,7 +816,7 @@
 								<div class="flex flex-wrap gap-1">
 									{#each missedWords as word}
 										<span
-											class="px-2 py-0.5 text-xs font-semibold rounded-md border bg-slate-950/60 border-slate-800 text-slate-400"
+											class="px-2 py-0.5 text-xs font-semibold rounded-md border bg-base-100 border-base-300 text-slate-400"
 										>
 											{word}
 										</span>
@@ -823,22 +828,22 @@
 
 					<button
 						on:click={startNewGame}
-						class="py-2.5 bg-teal-500 hover:bg-teal-600 text-slate-950 font-bold rounded-xl shadow-lg hover:shadow-teal-500/20 active:scale-[0.98] transition-all text-center w-full mt-3 text-xs"
+						class="btn btn-primary w-full mt-3 font-bold rounded-xl shadow-lg hover:shadow-primary/20 active:scale-[0.98] transition-all text-sm py-2.5 h-auto"
 					>
 						เริ่มเล่นรอบใหม่
 					</button>
 				{:else}
 					<!-- Normal playing view -->
 					<h3
-						class="text-sm font-bold text-slate-300 uppercase tracking-widest flex items-center justify-between border-b border-slate-800 pb-3 mb-3"
+						class="text-xs sm:text-sm font-bold text-slate-300 uppercase tracking-widest flex items-center justify-between border-b border-base-300/60 pb-3 mb-3"
 					>
-						<span class="flex items-center gap-1.5">
-							<CheckCircleIcon size="15" class="text-teal-400" />
+						<span class="flex items-center gap-1.5 text-white">
+							<CheckCircleIcon size="15" class="text-success" />
 							คำศัพท์ที่พบ ({foundWords.size} คำ)
 						</span>
 						<button
 							on:click={() => (showPossibleCount = !showPossibleCount)}
-							class="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 active:scale-95 transition-all rounded-lg text-[9px] font-bold text-slate-400 hover:text-white shadow-sm"
+							class="btn btn-ghost btn-xs font-bold text-slate-400 hover:text-white shadow-sm bg-base-100/50 rounded-lg text-[9px] px-2"
 						>
 							{showPossibleCount ? 'ซ่อน' : 'แสดง'}จำนวนที่เป็นไปได้
 						</button>
@@ -846,34 +851,34 @@
 
 					{#if showPossibleCount}
 						<div
-							class="mb-3 text-[10px] text-slate-400 flex flex-wrap gap-x-2 gap-y-1 font-semibold items-center bg-slate-950/50 px-2.5 py-1.5 rounded-xl border border-slate-800/50 justify-between"
+							class="mb-3 text-[10px] text-slate-400 flex flex-wrap gap-x-2 gap-y-1 font-semibold items-center bg-base-100/40 px-2.5 py-1.5 rounded-xl border border-slate-800/50 justify-between"
 						>
 							<div>
-								3 ตัว: <span class="text-teal-400 font-mono font-bold"
+								3 ตัว: <span class="text-primary font-mono font-bold"
 									>{possibleCountsByLength['3'] || 0}</span
 								>
 							</div>
-							<div class="w-1 h-1 rounded-full bg-slate-800" />
+							<div class="w-1 h-1 rounded-full bg-base-300" />
 							<div>
-								4 ตัว: <span class="text-teal-400 font-mono font-bold"
+								4 ตัว: <span class="text-primary font-mono font-bold"
 									>{possibleCountsByLength['4'] || 0}</span
 								>
 							</div>
-							<div class="w-1 h-1 rounded-full bg-slate-800" />
+							<div class="w-1 h-1 rounded-full bg-base-300" />
 							<div>
-								5 ตัว: <span class="text-teal-400 font-mono font-bold"
+								5 ตัว: <span class="text-primary font-mono font-bold"
 									>{possibleCountsByLength['5'] || 0}</span
 								>
 							</div>
-							<div class="w-1 h-1 rounded-full bg-slate-800" />
+							<div class="w-1 h-1 rounded-full bg-base-300" />
 							<div>
-								6+ ตัว: <span class="text-teal-400 font-mono font-bold"
+								6+ ตัว: <span class="text-primary font-mono font-bold"
 									>{possibleCountsByLength['6+'] || 0}</span
 								>
 							</div>
-							<div class="w-1 h-1 rounded-full bg-slate-800" />
+							<div class="w-1 h-1 rounded-full bg-base-300" />
 							<div class="text-slate-300">
-								รวม: <span class="text-teal-400 font-mono font-black"
+								รวม: <span class="text-primary font-mono font-black"
 									>{allPossibleWords.length}</span
 								> คำ
 							</div>
@@ -891,10 +896,10 @@
 						{:else}
 							{#each Array.from(foundWords) as word}
 								<span
-									class="px-3 py-1.5 text-sm md:text-base font-bold bg-teal-500/10 text-teal-300 border border-teal-500/20 rounded-xl flex items-center gap-1 shadow-sm transition-all hover:scale-105"
+									class="px-3 py-1.5 text-sm md:text-base font-bold bg-primary/10 text-primary border border-primary/20 rounded-xl flex items-center gap-1 shadow-sm transition-all hover:scale-105"
 								>
 									{word}
-									<span class="text-[10px] text-teal-450 font-mono font-black"
+									<span class="text-[10px] opacity-60 font-mono font-black"
 										>({getWordScore(word)})</span
 									>
 								</span>
@@ -906,7 +911,7 @@
 					{#if isPlaying}
 						<button
 							on:click={endGame}
-							class="btn btn-outline border-slate-800 hover:bg-slate-850 w-full mt-4 gap-1.5 rounded-xl text-xs text-red-400 font-bold"
+							class="btn btn-outline btn-error w-full mt-4 gap-1.5 rounded-xl text-xs font-bold"
 						>
 							<XCircleIcon size="14" />
 							เปิดเฉลย
@@ -923,35 +928,35 @@
 			class="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/85 backdrop-blur-md p-4 transition-all duration-300"
 		>
 			<div
-				class="bg-slate-900 border border-slate-800 rounded-3xl p-6 max-w-md w-full shadow-2xl flex flex-col gap-6 relative animate-in fade-in zoom-in-95 duration-200"
+				class="bg-neutral border border-base-300 rounded-3xl p-6 max-w-md w-full shadow-2xl flex flex-col gap-6 relative animate-in fade-in zoom-in-95 duration-200 text-neutral-content"
 			>
 				<button
 					on:click={() => (showRulesModal = false)}
-					class="absolute top-4 right-4 p-1.5 rounded-xl hover:bg-slate-800 text-slate-400 hover:text-white transition-all"
+					class="absolute top-4 right-4 p-1.5 rounded-xl hover:bg-base-100 text-slate-400 hover:text-white transition-all"
 				>
 					<XIcon size="18" />
 				</button>
 
 				<div class="flex items-center gap-3">
-					<CompassIcon class="text-teal-400" size="24" />
-					<h3 class="text-xl font-bold text-white">วิธีการเล่นเกมเส้นทางศัพท์</h3>
+					<CompassIcon class="text-primary" size="24" />
+					<h3 class="text-xl font-black text-white">วิธีการเล่น</h3>
 				</div>
 
-				<div class="flex flex-col gap-4 text-xs md:text-sm text-slate-300 leading-relaxed">
-					<div class="bg-slate-950 p-4 rounded-xl border border-slate-800/80 flex flex-col gap-2.5">
-						<span class="text-teal-400 font-bold text-xs uppercase tracking-wider">กติกา</span>
-						<ul class="list-disc text-left pl-5 flex flex-col gap-1.5 opacity-90">
+				<div class="flex flex-col gap-4 text-xs md:text-sm text-slate-300 leading-relaxed text-left">
+					<div class="bg-base-100 p-4 rounded-xl border border-base-300 flex flex-col gap-2.5">
+						<span class="text-primary font-bold text-xs uppercase tracking-wider">กติกา</span>
+						<ul class="list-disc text-left pl-5 flex flex-col gap-1.5 opacity-90 text-white/80">
 							<li>คลิกเพื่อเชื่อมตัวอักษรที่ติดกันในแนวตั้ง แนวนอน หรือแนวทแยง</li>
 							<li>ใช้ 3 ช่องหรือมากกว่า</li>
 							<li>ห้ามใช้ช่องเดิมซ้ำ</li>
 						</ul>
 					</div>
 
-					<div class="bg-slate-950 p-4 rounded-xl border border-slate-800/80 flex flex-col gap-2.5">
-						<span class="text-amber-400 font-bold text-xs uppercase tracking-wider"
+					<div class="bg-base-100 p-4 rounded-xl border border-base-300 flex flex-col gap-2.5">
+						<span class="text-warning font-bold text-xs uppercase tracking-wider"
 							>การนับคะแนน</span
 						>
-						<ul class="list-disc text-left pl-5 flex flex-col gap-1.5 opacity-90">
+						<ul class="list-disc text-left pl-5 flex flex-col gap-1.5 opacity-90 text-white/80">
 							<li>3 ตัวอักษร = 1 คะแนน</li>
 							<li>4 ตัวอักษร = 2 คะแนน</li>
 							<li>5 ตัวอักษร = 4 คะแนน</li>
@@ -963,7 +968,7 @@
 
 				<button
 					on:click={() => (showRulesModal = false)}
-					class="w-full py-3 bg-teal-500 hover:bg-teal-600 text-slate-950 font-bold rounded-xl shadow-lg transition-all text-center"
+					class="btn btn-primary w-full font-bold rounded-xl shadow-lg transition-all text-center"
 				>
 					ปิด
 				</button>
@@ -971,9 +976,3 @@
 		</div>
 	{/if}
 </div>
-
-<style>
-	:global(body) {
-		background-color: #0b0f19;
-	}
-</style>

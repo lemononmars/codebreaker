@@ -11,6 +11,7 @@ export async function post({ request }) {
    // check for duplicate
    const { data: duplicateData } = await from('leaderboard')
       .select('*')
+      .eq('puzzle_type', puzzle_type)
       .eq('puzzle_id', puzzle_id)
       .eq('name', name);
 

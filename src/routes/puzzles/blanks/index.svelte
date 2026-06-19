@@ -1,18 +1,61 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import KeyboardLayout from '$lib/components/KeyboardLayout.svelte';
-	import dict from '$lib/utils/dict';
+	import dict from '$lib/dict.json';
 	import {
 		AwardIcon,
 		HeartIcon,
 		ArrowLeftIcon,
 		PlayIcon,
 		RefreshCwIcon,
-		CheckCircleIcon,
 		XCircleIcon,
 		ClockIcon,
-		BookOpenIcon
+		BookOpenIcon,
+		SendIcon
 	} from 'svelte-feather-icons';
+
+	// Global leaderboard submission
+	let submitName = '';
+	let submitStatus: 'idle' | 'loading' | 'success' | 'error' | 'duplicate' = 'idle';
+	let submitError = '';
+
+	function getPuzzleId(mode: string, diff: string): number {
+		if (mode === 'normal' && diff === 'normal') return 0;
+		if (mode === 'normal' && diff === 'difficult') return 1;
+		if (mode === 'timeattack' && diff === 'normal') return 2;
+		if (mode === 'timeattack' && diff === 'difficult') return 3;
+		if (mode === 'endless' && diff === 'normal') return 4;
+		if (mode === 'endless' && diff === 'difficult') return 5;
+		return 0;
+	}
+
+	async function submitToLeaderboard() {
+		const name = submitName.trim();
+		if (!name || score === 0) return;
+		submitStatus = 'loading';
+		try {
+			if (typeof window !== 'undefined') {
+				localStorage.setItem('codebreaker_player_name', name);
+			}
+			const puzzle_id = getPuzzleId(gameMode, difficulty);
+			const res = await fetch('/api/post/leaderboard', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({ name, puzzle_type: 'blanks', puzzle_id, score })
+			});
+			if (res.status === 400) {
+				submitStatus = 'duplicate';
+			} else if (!res.ok) {
+				submitStatus = 'error';
+				submitError = 'เกิดข้อผิดพลาด ลองใหม่อีกครั้ง';
+			} else {
+				submitStatus = 'success';
+			}
+		} catch (e) {
+			submitStatus = 'error';
+			submitError = 'ไม่สามารถเชื่อมต่อได้';
+		}
+	}
 
 	// Game States
 	let currentMode: 'selection' | 'countdown' | 'playing' | 'gameover' = 'selection';
@@ -239,6 +282,8 @@
 					console.error(e);
 				}
 			}
+			// Pre-fill saved player name
+			submitName = localStorage.getItem('codebreaker_player_name') || '';
 		}
 
 		return () => {
@@ -505,6 +550,7 @@
 		stopTimer();
 		stopAttackTimer();
 		currentMode = 'gameover';
+		submitStatus = 'idle';
 
 		const scoreKey = `${gameMode}_${difficulty}` as keyof typeof highScores;
 		if (score > highScores[scoreKey]) {
@@ -752,36 +798,40 @@
 							});
 						})() as item}
 							{@const baseGroupIdx = item.baseIdx !== -1 ? getGroupIndex(item.block.base) : -1}
-							{@const upperGroupIdx = item.upperIndices.length > 0 ? getGroupIndex(item.block.upper[0]) : -1}
 							{@const lowerGroupIdx = item.lowerIndices.length > 0 ? getGroupIndex(item.block.lower[0]) : -1}
 							<div class="relative flex flex-col items-center justify-center w-16 h-36 sm:w-20 sm:h-44 bg-neutral/20 border border-base-300/40 rounded-2xl select-none p-1.5 shadow-inner">
 								<!-- Upper Vowel/Tone Mark Stack -->
-								<div class="h-6 flex items-end justify-center text-2xl sm:text-3xl font-black text-white mb-[-6px]">
-									{#if upperGroupIdx !== -1}
-										{@const group = qWord.blankGroups[upperGroupIdx]}
-										{@const isActive = upperGroupIdx === activeGroupIndex}
-										<button
-											on:click={() => activeGroupIndex = upperGroupIdx}
-											class="relative px-2.5 py-1 rounded-lg border transition-all duration-150 font-mono text-base sm:text-lg font-black
-												{isActive 
-													? upperGroupIdx === 0 
-														? 'border-sky-500 bg-sky-500/20 text-sky-400 scale-105 shadow-[0_0_8px_rgba(14,165,233,0.4)]'
-														: 'border-amber-500 bg-amber-500/20 text-amber-400 scale-105 shadow-[0_0_8px_rgba(245,158,11,0.4)]'
-													: group.value !== '' 
-														? 'border-success/50 bg-success/10 text-success' 
-														: upperGroupIdx === 0 
-															? 'border-sky-500/40 bg-sky-500/5 text-sky-355 hover:border-sky-400'
-															: 'border-amber-500/40 bg-amber-500/5 text-amber-355 hover:border-amber-400'}"
-										>
-											{group.value || '_'}
-											{#if difficulty === 'difficult'}
-												<span class="absolute top-0 right-0.5 text-[7px] leading-none font-black {upperGroupIdx === 0 ? 'text-sky-400/85' : 'text-amber-400/85'}">
-													{upperGroupIdx + 1}
-												</span>
+								<div class="h-10 flex flex-col-reverse items-center justify-end text-xl sm:text-2xl font-black text-white mb-[-4px] gap-0.5">
+									{#if item.block.upper}
+										{#each item.block.upper.split('') as char}
+											{@const upperGroupIdx = getGroupIndex(char)}
+											{#if upperGroupIdx !== -1}
+												{@const group = qWord.blankGroups[upperGroupIdx]}
+												{@const isActive = upperGroupIdx === activeGroupIndex}
+												<button
+													on:click={() => activeGroupIndex = upperGroupIdx}
+													class="relative px-2 py-0.5 rounded-lg border transition-all duration-150 font-mono text-sm sm:text-base font-black
+														{isActive 
+															? upperGroupIdx === 0 
+																? 'border-sky-500 bg-sky-500/20 text-sky-400 scale-105 shadow-[0_0_8px_rgba(14,165,233,0.4)]'
+																: 'border-amber-500 bg-amber-500/20 text-amber-400 scale-105 shadow-[0_0_8px_rgba(245,158,11,0.4)]'
+															: group.value !== '' 
+																? 'border-success/50 bg-success/10 text-success' 
+																: upperGroupIdx === 0 
+																	? 'border-sky-500/40 bg-sky-500/5 text-sky-355 hover:border-sky-400'
+																	: 'border-amber-500/40 bg-amber-500/5 text-amber-355 hover:border-amber-400'}"
+												>
+													{group.value || '_'}
+													{#if difficulty === 'difficult'}
+														<span class="absolute top-0 right-0.5 text-[7px] leading-none font-black {upperGroupIdx === 0 ? 'text-sky-400/85' : 'text-amber-400/85'}">
+															{upperGroupIdx + 1}
+														</span>
+													{/if}
+												</button>
+											{:else}
+												{char}
 											{/if}
-										</button>
-									{:else if item.block.upper}
-										{item.block.upper}
+										{/each}
 									{/if}
 								</div>
 
@@ -944,6 +994,47 @@
 									</div>
 								{/each}
 							</div>
+						</div>
+					</div>
+				{/if}
+
+				<!-- Global Leaderboard Submit -->
+				{#if score > 0}
+					<div class="card bg-neutral border border-base-300 shadow-lg w-full">
+						<div class="card-body p-4 flex flex-col gap-3">
+							<p class="text-sm font-black text-white flex items-center gap-2">
+								<AwardIcon size="16" class="text-warning" />
+								ส่งคะแนนขึ้นกระดานโลก
+							</p>
+							{#if submitStatus === 'success'}
+								<div class="alert alert-success text-sm font-bold py-2 px-3">✅ ส่งคะแนนสำเร็จ! ดูอันดับได้ในตารางคะแนนทั่วโลก</div>
+							{:else if submitStatus === 'duplicate'}
+								<div class="alert alert-warning text-sm font-bold py-2 px-3">⚠️ ชื่อนี้เคยส่งคะแนนไปแล้ว</div>
+							{:else if submitStatus === 'error'}
+								<div class="alert alert-error text-sm font-bold py-2 px-3">❌ {submitError}</div>
+							{:else}
+								<div class="flex gap-2">
+									<input
+										type="text"
+										bind:value={submitName}
+										placeholder="ชื่อของคุณ..."
+										maxlength="20"
+										class="input input-bordered flex-1 bg-base-100 text-sm font-bold focus:border-primary"
+										on:keydown={(e) => e.key === 'Enter' && submitToLeaderboard()}
+									/>
+									<button
+										on:click={submitToLeaderboard}
+										disabled={submitStatus === 'loading' || !submitName.trim()}
+										class="btn btn-warning gap-2 font-black"
+									>
+										{#if submitStatus === 'loading'}
+											<span class="loading loading-spinner loading-sm" />
+										{:else}
+											<SendIcon size="14" /> ส่ง
+										{/if}
+									</button>
+								</div>
+							{/if}
 						</div>
 					</div>
 				{/if}

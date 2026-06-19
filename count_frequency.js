@@ -1,8 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 
-// Read src/lib/utils/dict.ts
-const filePath = path.resolve('src/lib/utils/dict.ts');
+const filePath = path.resolve('src/lib/dict.json');
 const content = fs.readFileSync(filePath, 'utf-8');
 
 // Simple regex parser to extract words

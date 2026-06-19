@@ -12,10 +12,43 @@
 		XCircleIcon,
 		BookOpenIcon,
 		ZapIcon,
-		ClockIcon
+		ClockIcon,
+		SendIcon
 	} from 'svelte-feather-icons';
 
 	import { wordDatabase, type WordItem } from '$lib/data/puzzles/spelling/words';
+
+	// Global leaderboard submission
+	let submitName = '';
+	let submitStatus: 'idle' | 'loading' | 'success' | 'error' | 'duplicate' = 'idle';
+	let submitError = '';
+
+	async function submitToLeaderboard() {
+		const name = submitName.trim();
+		if (!name || score === 0) return;
+		submitStatus = 'loading';
+		try {
+			if (typeof window !== 'undefined') {
+				localStorage.setItem('codebreaker_player_name', name);
+			}
+			const res = await fetch('/api/post/leaderboard', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({ name, puzzle_type: 'spellingquiz', puzzle_id: 0, score })
+			});
+			if (res.status === 400) {
+				submitStatus = 'duplicate';
+			} else if (!res.ok) {
+				submitStatus = 'error';
+				submitError = 'เกิดข้อผิดพลาด ลองใหม่อีกครั้ง';
+			} else {
+				submitStatus = 'success';
+			}
+		} catch (e) {
+			submitStatus = 'error';
+			submitError = 'ไม่สามารถเชื่อมต่อได้';
+		}
+	}
 
 	// Game States
 	let currentMode: 'selection' | 'countdown' | 'playing' | 'gameover' = 'selection';
@@ -217,6 +250,8 @@
 					console.error(e);
 				}
 			}
+			// Pre-fill saved player name
+			submitName = localStorage.getItem('codebreaker_player_name') || '';
 		}
 
 		return () => {
@@ -939,6 +974,47 @@
 									</div>
 								{/each}
 							</div>
+						</div>
+					</div>
+				{/if}
+
+				<!-- Global Leaderboard Submit -->
+				{#if score > 0}
+					<div class="card bg-neutral border border-base-300 shadow-lg w-full">
+						<div class="card-body p-4 flex flex-col gap-3">
+							<p class="text-sm font-black text-white flex items-center gap-2">
+								<AwardIcon size="16" class="text-warning" />
+								ส่งคะแนนขึ้นกระดานโลก
+							</p>
+							{#if submitStatus === 'success'}
+								<div class="alert alert-success text-sm font-bold py-2 px-3">✅ ส่งคะแนนสำเร็จ! ดูอันดับได้ในตารางคะแนนทั่วโลก</div>
+							{:else if submitStatus === 'duplicate'}
+								<div class="alert alert-warning text-sm font-bold py-2 px-3">⚠️ ชื่อนี้เคยส่งคะแนนไปแล้ว</div>
+							{:else if submitStatus === 'error'}
+								<div class="alert alert-error text-sm font-bold py-2 px-3">❌ {submitError}</div>
+							{:else}
+								<div class="flex gap-2">
+									<input
+										type="text"
+										bind:value={submitName}
+										placeholder="ชื่อของคุณ..."
+										maxlength="20"
+										class="input input-bordered flex-1 bg-base-100 text-sm font-bold focus:border-primary"
+										on:keydown={(e) => e.key === 'Enter' && submitToLeaderboard()}
+									/>
+									<button
+										on:click={submitToLeaderboard}
+										disabled={submitStatus === 'loading' || !submitName.trim()}
+										class="btn btn-warning gap-2 font-black"
+									>
+										{#if submitStatus === 'loading'}
+											<span class="loading loading-spinner loading-sm" />
+										{:else}
+											<SendIcon size="14" /> ส่ง
+										{/if}
+									</button>
+								</div>
+							{/if}
 						</div>
 					</div>
 				{/if}

@@ -59,9 +59,46 @@
 	let sessionCorrect: Array<{ target: string, targetTH: string }> = [];
 	let sessionIncorrect: Array<{ target: string, targetTH: string, guessed: string, guessedTH: string }> = [];
 
+	// Global leaderboard submission
+	let submitName = '';
+	let submitStatus: 'idle' | 'loading' | 'success' | 'error' | 'duplicate' = 'idle';
+	let submitError = '';
+
+	async function submitToLeaderboard() {
+		const name = submitName.trim();
+		if (!name || foundProvinces === 0) return;
+		submitStatus = 'loading';
+		try {
+			if (typeof window !== 'undefined') {
+				localStorage.setItem('codebreaker_player_name', name);
+			}
+			const res = await fetch('/api/post/leaderboard', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({ name, puzzle_type: 'thaimapquiz', puzzle_id: 0, score: foundProvinces })
+			});
+			if (res.status === 400) {
+				submitStatus = 'duplicate';
+			} else if (!res.ok) {
+				submitStatus = 'error';
+				submitError = 'เกิดข้อผิดพลาด ลองใหม่อีกครั้ง';
+			} else {
+				submitStatus = 'success';
+			}
+		} catch (e) {
+			submitStatus = 'error';
+			submitError = 'ไม่สามารถเชื่อมต่อได้';
+		}
+	}
+
 	function endSession() {
 		stopHintTimer();
 		sessionEnded = true;
+		submitStatus = 'idle';
+		// Pre-fill saved player name
+		if (typeof window !== 'undefined') {
+			submitName = localStorage.getItem('codebreaker_player_name') || '';
+		}
 	}
 
 	function startGame() {
@@ -587,15 +624,27 @@
 
 		<!-- End Session / Reset Button -->
 		{#if gameStarted}
-			<button on:click={endSession} class="btn btn-outline hover:bg-slate-850 w-full btn-xs sm:btn-sm gap-1.5 rounded-xl border border-slate-800 text-slate-300 font-bold">
-				<XCircleIcon size="12" />
-				จบการทดสอบ (End Session)
-			</button>
+			<div class="flex flex-col gap-2">
+				<button on:click={endSession} class="btn btn-outline hover:bg-slate-850 w-full btn-xs sm:btn-sm gap-1.5 rounded-xl border border-slate-800 text-slate-300 font-bold">
+					<XCircleIcon size="12" />
+					จบการทดสอบ (End Session)
+				</button>
+				<a href="/puzzles/thaimapquiz/leaderboard" class="btn btn-ghost btn-xs gap-1 text-teal-400/70 hover:text-teal-400 w-full justify-center rounded-xl">
+					<AwardIcon size="10" />
+					ตารางคะแนน
+				</a>
+			</div>
 		{:else}
-			<button on:click={resetQuiz} class="btn btn-outline hover:bg-slate-850 w-full btn-xs sm:btn-sm gap-1.5 rounded-xl border border-slate-800 text-slate-300 font-bold">
-				<RotateCcwIcon size="12" />
-				เริ่มเล่นใหม่
-			</button>
+			<div class="flex flex-col gap-2">
+				<button on:click={resetQuiz} class="btn btn-outline hover:bg-slate-850 w-full btn-xs sm:btn-sm gap-1.5 rounded-xl border border-slate-800 text-slate-300 font-bold">
+					<RotateCcwIcon size="12" />
+					เริ่มเล่นใหม่
+				</button>
+				<a href="/puzzles/thaimapquiz/leaderboard" class="btn btn-ghost btn-xs gap-1 text-teal-400/70 hover:text-teal-400 w-full justify-center rounded-xl">
+					<AwardIcon size="10" />
+					ตารางคะแนน
+				</a>
+			</div>
 		{/if}
 	</div>
 
@@ -1161,12 +1210,57 @@
 					</div>
 				</div>
 
+				<!-- Global Leaderboard Submit -->
+				{#if foundProvinces > 0}
+					<div class="bg-slate-950 border border-slate-800 rounded-2xl p-3 flex flex-col gap-2">
+						<p class="text-xs font-bold text-teal-400 flex items-center gap-1.5">
+							<AwardIcon size="12" />
+							ส่งคะแนนขึ้นกระดานโลก ({foundProvinces} จังหวัด)
+						</p>
+						{#if submitStatus === 'success'}
+							<div class="text-xs font-bold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-3 py-2 rounded-xl">✅ ส่งคะแนนสำเร็จ!</div>
+						{:else if submitStatus === 'duplicate'}
+							<div class="text-xs font-bold text-amber-400 bg-amber-500/10 border border-amber-500/20 px-3 py-2 rounded-xl">⚠️ ชื่อนี้เคยส่งไปแล้ว</div>
+						{:else if submitStatus === 'error'}
+							<div class="text-xs font-bold text-red-400 bg-red-500/10 border border-red-500/20 px-3 py-2 rounded-xl">❌ {submitError}</div>
+						{:else}
+							<div class="flex gap-2">
+								<input
+									type="text"
+									bind:value={submitName}
+									placeholder="ชื่อของคุณ..."
+									maxlength="20"
+									class="flex-1 bg-slate-800 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-white font-bold focus:outline-none focus:border-teal-500"
+									on:keydown={(e) => e.key === 'Enter' && submitToLeaderboard()}
+								/>
+								<button
+									on:click={submitToLeaderboard}
+									disabled={submitStatus === 'loading' || !submitName.trim()}
+									class="px-3 py-1.5 bg-teal-500 hover:bg-teal-600 disabled:opacity-50 text-slate-950 font-bold rounded-lg text-xs transition-all flex items-center gap-1"
+								>
+									{#if submitStatus === 'loading'}
+										<span class="loading loading-spinner loading-xs" />
+									{:else}
+										ส่ง
+									{/if}
+								</button>
+							</div>
+						{/if}
+					</div>
+				{/if}
+
 				<button 
 					on:click={resetQuiz} 
 					class="px-8 py-3 bg-teal-500 hover:bg-teal-600 text-slate-950 font-bold rounded-xl shadow-lg hover:shadow-teal-500/20 active:scale-[0.98] transition-all text-center w-full mt-2"
 				>
 					เริ่มเล่นใหม่ (Restart)
 				</button>
+				<a
+					href="/puzzles/thaimapquiz/leaderboard"
+					class="text-center text-xs font-bold text-teal-400/70 hover:text-teal-400 flex items-center justify-center gap-1 transition-all"
+				>
+					<AwardIcon size="12" /> ดูตารางคะแนนทั่วโลก
+				</a>
 			</div>
 		</div>
 	{/if}
