@@ -1,22 +1,28 @@
-import {missingvowels} from '$lib/data/puzzles/missingvowels'
+import { from } from '$lib/supabase';
+import type { RequestHandler } from '@sveltejs/kit';
 
-/** @type {import('./__types/alphabet/[id]').RequestHandler} */
-export async function get({ params }: { params: { id: number } }) {
-   let {id} = params
-   // TODO: make it fetch, await, etc?
-  id = Number(id)
-  const total: number = Object.keys(missingvowels).length
-  id = (id+total-1)%total + 1
-   const content = missingvowels.filter(n => n.id == id)
-  
-   if (content.length > 0) {
-     return {
-       body: { content: content[0]}
-     };
-   }
-  
-   return {
-     status: 404
-   };
- }
+export const get: RequestHandler = async ({ params }) => {
+	const { id } = params;
 
+	const { data, error } = await from('missingvowels')
+		.select('*')
+		.eq('uid', id)
+		.single();
+
+	if (error || !data) {
+		console.error('Supabase error loading missingvowels:', error);
+		return {
+			status: 404
+		};
+	}
+
+	const content = {
+		...data,
+		type: 'missingvowels',
+		date: data.created_at
+	};
+
+	return {
+		body: { content }
+	};
+};

@@ -6,7 +6,8 @@
 		ColumnsIcon,
 		ImageIcon,
 		Edit3Icon,
-		BookOpenIcon
+		BookOpenIcon,
+		TypeIcon
 	} from 'svelte-feather-icons';
 
 	const puzzleBuilders = [
@@ -23,6 +24,20 @@
 			description: 'สร้างตารางหาคำศัพท์ภาษาไทย',
 			icon: Edit3Icon,
 			color: 'text-secondary'
+		},
+		{
+			name: 'Missing Vowels Builder',
+			path: '/tools/missingvowels',
+			description: 'สร้างปริศนาพยัญชนะไม่มีสระ',
+			icon: TypeIcon,
+			color: 'text-primary'
+		},
+		{
+			name: 'Alphabet Builder',
+			path: '/tools/alphabet',
+			description: 'สร้างปริศนาหาคำตามคำใบ้ภาษาไทย',
+			icon: BookOpenIcon,
+			color: 'text-warning'
 		}
 	];
 

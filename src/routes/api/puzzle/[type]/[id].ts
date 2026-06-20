@@ -10,7 +10,7 @@ import { from } from '$lib/supabase';
 export async function get({ params }) {
 
 	const { type, id } = params;
-	const field = type === 'crossword' ? 'uid' : 'id';
+	const field = (type === 'crossword' || type === 'missingvowels' || type === 'alphabet') ? 'uid' : 'id';
 	const { data, error } = await from(type).select('*').eq(field, id);
 
 	console.log(data)

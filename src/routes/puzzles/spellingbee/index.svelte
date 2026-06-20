@@ -204,9 +204,6 @@
          <a href="/puzzles/spellingbee/{Math.floor(Math.random()*numPuzzles)}">
             <div class="btn btn-primary">สุ่มข้อใหม่</div>
          </a>
-         <a href="/puzzles/spellingbee/leaderboard">
-            <div class="btn btn-outline">ดูตารางอันดับของวันนี้</div>
-         </a>
       </div>
    {/if}
 </div>
@@ -218,13 +215,7 @@
    <label class="modal-box relative" for="">
       <h3 class="text-xl font-bold p-2">เจอคำศัพท์ประจำวันแล้ว 🎉</h3>
       <p>ใช้เวลาทั้งหมด {timeString}</p>
-      <div class="divider"></div>
-      <div class="my-4">
-         <p>กรอกชื่อเพื่อบันทึกเวลา</p>
-         <input type="text" class="input input-bordered" bind:value={$username}>
-      </div>
       <div class="flex flex-row justify-center gap-4">
-         <div class="btn btn-wide btn-outline btn-success" on:click={addToLeaderboard} class:loading={isSubmitting}>บันทึก</div>
          <div class="btn btn-outline btn-error" on:click={()=>openModal = false} >ปิด</div>
       </div>
    </label>

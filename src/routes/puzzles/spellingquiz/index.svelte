@@ -13,7 +13,9 @@
 		BookOpenIcon,
 		ZapIcon,
 		ClockIcon,
-		SendIcon
+		SendIcon,
+		Maximize2Icon,
+		Minimize2Icon
 	} from 'svelte-feather-icons';
 
 	import { wordDatabase, type WordItem } from '$lib/data/puzzles/spelling/words';
@@ -54,6 +56,34 @@
 	let currentMode: 'selection' | 'countdown' | 'playing' | 'gameover' = 'selection';
 	let gameMode: 'normal' | 'endless' | 'timeattack' = 'normal';
 	let gameType: 'choices' | 'yesno' = 'choices';
+	let isFullscreen = false;
+	let endlessState: 'playing' | 'revealed' = 'playing';
+
+	function toggleFullscreen() {
+		if (typeof window === 'undefined') return;
+		const elem = document.getElementById('spelling-game-container');
+		if (!elem) return;
+
+		if (!document.fullscreenElement) {
+			elem.requestFullscreen().catch(err => {
+				console.warn(`Error attempting to enable full-screen: ${err.message}`);
+			});
+		} else {
+			document.exitFullscreen().catch(() => {});
+		}
+	}
+
+	function revealAnswer() {
+		if (!currentQuestion) return;
+		answerStatus = 'correct';
+		playSFX('correct');
+		endlessState = 'revealed';
+	}
+
+	function loadNextQuestion() {
+		endlessState = 'playing';
+		getNextQuestion();
+	}
 
 	// Game Statistics
 	let score = 0;
@@ -254,10 +284,20 @@
 			submitName = localStorage.getItem('codebreaker_player_name') || '';
 		}
 
+		const handleFsChange = () => {
+			isFullscreen = !!document.fullscreenElement;
+		};
+		if (typeof document !== 'undefined') {
+			document.addEventListener('fullscreenchange', handleFsChange);
+		}
+
 		return () => {
 			stopTimer();
 			stopAttackTimer();
 			if (countdownInterval) clearInterval(countdownInterval);
+			if (typeof document !== 'undefined') {
+				document.removeEventListener('fullscreenchange', handleFsChange);
+			}
 		};
 	});
 
@@ -265,6 +305,7 @@
 	function getNextQuestion() {
 		answerStatus = 'idle';
 		chosenSide = null;
+		endlessState = 'playing';
 		stopTimer();
 
 		const idx = Math.floor(Math.random() * filteredQuizWords.length);
@@ -308,6 +349,7 @@
 		correctCount = 0;
 		missedWords = [];
 		currentMode = 'playing';
+		endlessState = 'playing';
 		stopAttackTimer();
 
 		if (mode === 'timeattack') {
@@ -325,10 +367,12 @@
 		if (isCorrect) {
 			answerStatus = 'correct';
 			playSFX('correct');
-			score += 10 + Math.min(streak * 2, 20);
-			streak++;
+			if (gameMode !== 'endless') {
+				score += 10 + Math.min(streak * 2, 20);
+				streak++;
+				if (streak > maxStreak) maxStreak = streak;
+			}
 			correctCount++;
-			if (streak > maxStreak) maxStreak = streak;
 
 			// Time Attack: +1 second bonus
 			if (gameMode === 'timeattack') {
@@ -337,19 +381,21 @@
 		} else {
 			answerStatus = 'incorrect';
 			playSFX('incorrect');
-			streak = 0;
+			if (gameMode !== 'endless') {
+				streak = 0;
 
-			// Track missed word
-			if (currentQuestion) {
-				if (!missedWords.some((w) => w.word.correct === currentQuestion!.correct)) {
-					missedWords = [
-						...missedWords,
-						{
-							word: currentQuestion,
-							shownWord: errorDetail?.shownWord || currentQuestion.correct,
-							userWasCorrect: false
-						}
-					];
+				// Track missed word
+				if (currentQuestion) {
+					if (!missedWords.some((w) => w.word.correct === currentQuestion!.correct)) {
+						missedWords = [
+							...missedWords,
+							{
+								word: currentQuestion,
+								shownWord: errorDetail?.shownWord || currentQuestion.correct,
+								userWasCorrect: false
+							}
+						];
+					}
 				}
 			}
 
@@ -362,9 +408,13 @@
 			}
 		}
 
-		setTimeout(() => {
-			if (currentMode === 'playing') getNextQuestion();
-		}, 1200);
+		if (gameMode === 'endless') {
+			endlessState = 'revealed';
+		} else {
+			setTimeout(() => {
+				if (currentMode === 'playing') getNextQuestion();
+			}, 1200);
+		}
 	}
 
 	// ── Answer selection ───────────────────────────────────────────────────────
@@ -390,7 +440,23 @@
 
 	// ── Keyboard shortcuts ─────────────────────────────────────────────────────
 	function handleKeyDown(event: KeyboardEvent) {
-		if (currentMode !== 'playing' || answerStatus !== 'idle') return;
+		if (event.key === ' ') {
+			if (currentMode === 'playing' && gameMode === 'endless') {
+				event.preventDefault();
+				if (endlessState === 'playing') {
+					revealAnswer();
+				} else {
+					loadNextQuestion();
+				}
+			} else {
+				event.preventDefault();
+				toggleFullscreen();
+			}
+			return;
+		}
+
+		if (currentMode !== 'playing') return;
+		if (answerStatus !== 'idle') return;
 		if (event.key === 'ArrowLeft') {
 			activeKey = 'left';
 			if (gameType === 'choices') {
@@ -625,60 +691,96 @@
 
 			<!-- 2. GAME PLAYING SCREEN -->
 		{:else if currentMode === 'playing'}
-			<div class="w-full flex flex-col gap-4">
-				<!-- Score board and stats (Horizontal Compact Row) -->
-				<div
-					class="flex items-center justify-between bg-neutral text-neutral-content rounded-2xl p-4 px-6 shadow-lg text-sm sm:text-lg font-bold border border-base-300"
-				>
-					<div class="flex items-center gap-6">
-						<span
-							>คะแนน: <span class="text-primary font-black font-mono text-lg sm:text-2xl"
-								>{score}</span
-							></span
+			<div id="spelling-game-container" class="w-full flex flex-col gap-4">
+				<!-- Top Bar with Back, Quit and Maximize Toggle -->
+				<div class="flex justify-between items-center px-1">
+					<div class="flex gap-2">
+						<button
+							on:click={goHome}
+							class="btn btn-ghost btn-sm gap-1.5 opacity-60 hover:opacity-100 text-white font-bold"
 						>
-						<span
-							>คอมโบ: <span class="text-accent font-black font-mono text-lg sm:text-2xl"
-								>🔥 {streak}</span
-							></span
+							<ArrowLeftIcon size="14" /> กลับหน้าหลัก
+						</button>
+						<button
+							on:click={triggerGameOver}
+							class="btn btn-ghost btn-sm gap-1.5 text-error font-bold hover:bg-error/10 border-none rounded-xl"
 						>
+							<XCircleIcon size="14" /> จบเกม
+						</button>
 					</div>
-					<div class="flex items-center gap-3">
-						{#if gameMode === 'normal'}
-							<span class="opacity-60 text-xs sm:text-sm font-bold mr-1">ชีวิต:</span>
-							<span class="flex items-center gap-1">
-								{#each Array(3) as _, i}
-									<HeartIcon
-										size="20"
-										class={i < lives ? 'text-error fill-error filter drop-shadow' : 'opacity-20'}
-									/>
-								{/each}
-							</span>
-						{:else if gameMode === 'timeattack'}
-							<ClockIcon
-								size="18"
-								class="opacity-70 {attackUrgent ? 'text-error animate-pulse' : ''}"
-							/>
-							<span
-								class="font-mono font-black {attackUrgent
-									? 'text-error text-xl sm:text-2xl animate-pulse'
-									: 'text-warning text-lg sm:text-2xl'}"
-							>
-								{attackSeconds}s
-							</span>
+					<button
+						on:click={toggleFullscreen}
+						class="btn btn-ghost btn-sm gap-1.5 text-white font-bold bg-neutral/40 hover:bg-neutral/60 border-none rounded-xl"
+					>
+						{#if isFullscreen}
+							<Minimize2Icon size="14" /> ย่อขนาด{#if gameMode !== 'endless'}<span class="opacity-50 text-[10px] ml-1 font-mono">[Space]</span>{/if}
 						{:else}
+							<Maximize2Icon size="14" /> ขยายเต็มจอ{#if gameMode !== 'endless'}<span class="opacity-50 text-[10px] ml-1 font-mono">[Space]</span>{/if}
+						{/if}
+					</button>
+				</div>
+
+				<!-- Score board and stats -->
+				{#if gameMode === 'endless'}
+					<div
+						class="flex items-center justify-center bg-neutral/80 text-neutral-content rounded-2xl border border-base-300 py-3 px-6 shadow text-sm sm:text-base font-bold transition-all duration-300 {isFullscreen ? 'py-1.5 px-3 text-xs sm:text-sm' : ''}"
+					>
+						<span>🎯 โหมดฝึกซ้อมสะกดคำ (ไม่มีการสะสมคะแนน)</span>
+					</div>
+				{:else}
+					<div
+						class="flex items-center justify-between bg-neutral text-neutral-content rounded-2xl border border-base-300 transition-all duration-300 {isFullscreen ? 'p-2 px-4 text-xs sm:text-sm' : 'p-4 px-6 text-sm sm:text-lg font-bold shadow-lg'}"
+					>
+						<div class="flex items-center gap-6">
 							<span
-								>ความแม่นยำ: <span class="text-success font-black font-mono text-lg sm:text-2xl"
-									>{totalAnswered > 0 ? Math.round((correctCount / totalAnswered) * 100) : 0}%</span
+								>คะแนน: <span class="text-primary font-black font-mono transition-all duration-300 {isFullscreen ? 'text-sm sm:text-lg' : 'text-lg sm:text-2xl'}"
+									>{score}</span
 								></span
 							>
-						{/if}
+							<span
+								>คอมโบ: <span class="text-accent font-black font-mono transition-all duration-300 {isFullscreen ? 'text-sm sm:text-lg' : 'text-lg sm:text-2xl'}"
+									>🔥 {streak}</span
+								></span
+							>
+						</div>
+						<div class="flex items-center gap-3">
+							{#if gameMode === 'normal'}
+								<span class="opacity-60 text-xs sm:text-sm font-bold mr-1">ชีวิต:</span>
+								<span class="flex items-center gap-1">
+									{#each Array(3) as _, i}
+										<HeartIcon
+											size={isFullscreen ? "14" : "20"}
+											class={i < lives ? 'text-error fill-error filter drop-shadow' : 'opacity-20'}
+										/>
+									{/each}
+								</span>
+							{:else if gameMode === 'timeattack'}
+								<ClockIcon
+									size={isFullscreen ? "14" : "18"}
+									class="opacity-70 {attackUrgent ? 'text-error animate-pulse' : ''}"
+								/>
+								<span
+									class="font-mono font-black transition-all duration-300 {attackUrgent
+										? 'text-error animate-pulse'
+										: 'text-warning'} {isFullscreen ? 'text-sm sm:text-base' : 'text-lg sm:text-2xl'}"
+								>
+									{attackSeconds}s
+								</span>
+							{:else}
+								<span
+									>ความแม่นยำ: <span class="text-success font-black font-mono transition-all duration-300 {isFullscreen ? 'text-sm sm:text-lg' : 'text-lg sm:text-2xl'}"
+										>{totalAnswered > 0 ? Math.round((correctCount / totalAnswered) * 100) : 0}%</span
+									></span
+								>
+							{/if}
+						</div>
 					</div>
-				</div>
+				{/if}
 
 				<!-- Timer bars (Normal per-question, Time Attack global) -->
 				{#if gameMode === 'normal'}
 					<div
-						class="w-full bg-base-300/40 h-3 sm:h-4 rounded-full overflow-hidden relative border border-base-300 shadow-inner"
+						class="w-full bg-base-300/40 rounded-full overflow-hidden relative border border-base-300 shadow-inner transition-all duration-300 {isFullscreen ? 'h-1.5' : 'h-3 sm:h-4'}"
 					>
 						<div
 							class="h-full rounded-full transition-all duration-100 ease-linear {timeLeft > 2.5
@@ -689,7 +791,7 @@
 					</div>
 				{:else if gameMode === 'timeattack'}
 					<div
-						class="w-full bg-base-300/40 h-3 sm:h-4 rounded-full overflow-hidden relative border border-base-300 shadow-inner"
+						class="w-full bg-base-300/40 rounded-full overflow-hidden relative border border-base-300 shadow-inner transition-all duration-300 {isFullscreen ? 'h-1.5' : 'h-3 sm:h-4'}"
 					>
 						<div
 							class="h-full rounded-full transition-all duration-100 ease-linear {attackUrgent
@@ -720,16 +822,17 @@
 						<!-- Left Choice Card -->
 						<button
 							on:click={() => selectOption('left')}
-							class="card bg-neutral text-neutral-content border-2 shadow-md cursor-pointer hover:scale-[1.03] active:scale-[0.97] transition-all duration-300 h-28 sm:h-44 flex flex-col items-center justify-center p-4 relative overflow-hidden group {chosenSide ===
-							'left'
-								? answerStatus === 'correct'
-									? 'border-success bg-success/20 text-success'
-									: 'border-error bg-error/20 text-error animate-shake'
-								: chosenSide === 'right' && answerStatus !== 'idle'
-								? 'opacity-40 border-base-300 pointer-events-none'
-								: activeKey === 'left'
-								? 'border-primary bg-primary/10'
-								: 'border-base-300 hover:border-primary'}"
+							class="card bg-neutral text-neutral-content border-2 shadow-md cursor-pointer hover:scale-[1.03] active:scale-[0.97] transition-all duration-300 flex flex-col items-center justify-center p-4 relative overflow-hidden group
+								{isFullscreen ? 'h-24 sm:h-32 md:h-40' : 'h-28 sm:h-44'}
+								{(endlessState === 'revealed' || answerStatus !== 'idle')
+									? (leftIsCorrect
+										? 'border-success bg-success/20 text-success pointer-events-none'
+										: (chosenSide === 'left'
+											? 'border-error bg-error/20 text-error animate-shake pointer-events-none'
+											: 'opacity-40 border-base-300 pointer-events-none'))
+									: (activeKey === 'left'
+										? 'border-primary bg-primary/10'
+										: 'border-base-300 hover:border-primary')}"
 						>
 							<!-- Key shortcut indicator -->
 							<div
@@ -739,7 +842,8 @@
 							</div>
 
 							<span
-								class="text-3xl sm:text-5xl font-black tracking-wide filter drop-shadow-md transition-transform group-hover:scale-105"
+								class="font-black tracking-wide filter drop-shadow-md transition-transform group-hover:scale-105
+									{isFullscreen ? 'text-2xl sm:text-4xl md:text-5xl' : 'text-3xl sm:text-5xl'}"
 							>
 								{leftOption}
 							</span>
@@ -748,16 +852,17 @@
 						<!-- Right Choice Card -->
 						<button
 							on:click={() => selectOption('right')}
-							class="card bg-neutral text-neutral-content border-2 shadow-md cursor-pointer hover:scale-[1.03] active:scale-[0.97] transition-all duration-300 h-28 sm:h-44 flex flex-col items-center justify-center p-4 relative overflow-hidden group {chosenSide ===
-							'right'
-								? answerStatus === 'correct'
-									? 'border-success bg-success/20 text-success'
-									: 'border-error bg-error/20 text-error animate-shake'
-								: chosenSide === 'left' && answerStatus !== 'idle'
-								? 'opacity-40 border-base-300 pointer-events-none'
-								: activeKey === 'right'
-								? 'border-primary bg-primary/10'
-								: 'border-base-300 hover:border-primary'}"
+							class="card bg-neutral text-neutral-content border-2 shadow-md cursor-pointer hover:scale-[1.03] active:scale-[0.97] transition-all duration-300 flex flex-col items-center justify-center p-4 relative overflow-hidden group
+								{isFullscreen ? 'h-24 sm:h-32 md:h-40' : 'h-28 sm:h-44'}
+								{(endlessState === 'revealed' || answerStatus !== 'idle')
+									? (!leftIsCorrect
+										? 'border-success bg-success/20 text-success pointer-events-none'
+										: (chosenSide === 'right'
+											? 'border-error bg-error/20 text-error animate-shake pointer-events-none'
+											: 'opacity-40 border-base-300 pointer-events-none'))
+									: (activeKey === 'right'
+										? 'border-primary bg-primary/10'
+										: 'border-base-300 hover:border-primary')}"
 						>
 							<!-- Key shortcut indicator -->
 							<div
@@ -767,7 +872,8 @@
 							</div>
 
 							<span
-								class="text-3xl sm:text-5xl font-black tracking-wide filter drop-shadow-md transition-transform group-hover:scale-105"
+								class="font-black tracking-wide filter drop-shadow-md transition-transform group-hover:scale-105
+									{isFullscreen ? 'text-2xl sm:text-4xl md:text-5xl' : 'text-3xl sm:text-5xl'}"
 							>
 								{rightOption}
 							</span>
@@ -778,10 +884,12 @@
 					<div class="flex flex-col gap-4 w-full">
 						<!-- Giant Word Card -->
 						<div
-							class="card bg-neutral text-neutral-content border-2 border-base-300 shadow-xl p-8 py-10 sm:py-14 flex flex-col items-center justify-center relative overflow-hidden min-h-[160px] sm:min-h-[220px]"
+							class="card bg-neutral text-neutral-content border-2 border-base-300 shadow-xl p-8 py-10 sm:py-14 flex flex-col items-center justify-center relative overflow-hidden transition-all duration-300
+								{isFullscreen ? 'min-h-[120px] sm:min-h-[160px] md:min-h-[200px]' : 'min-h-[160px] sm:min-h-[220px]'}"
 						>
 							<span
-								class="text-4xl sm:text-6xl font-black tracking-tight filter drop-shadow-md text-white select-text"
+								class="font-black tracking-tight filter drop-shadow-md text-white select-text transition-all duration-300
+									{isFullscreen ? 'text-3xl sm:text-5xl md:text-6xl' : 'text-4xl sm:text-6xl'}"
 							>
 								{yesNoWordShown}
 							</span>
@@ -791,16 +899,17 @@
 							<!-- Incorrect Choice Card (Left) -->
 							<button
 								on:click={() => selectYesNo(false)}
-								class="card bg-neutral text-neutral-content border-2 shadow-lg cursor-pointer hover:scale-[1.03] active:scale-[0.97] transition-all duration-300 h-24 sm:h-36 flex flex-col items-center justify-center p-4 relative overflow-hidden group {chosenSide ===
-								'left'
-									? answerStatus === 'correct'
-										? 'border-success bg-success/20 text-success'
-										: 'border-error bg-error/20 text-error animate-shake'
-									: chosenSide === 'right' && answerStatus !== 'idle'
-									? 'opacity-40 border-base-300 pointer-events-none'
-									: activeKey === 'left'
-									? 'border-error bg-error/15 text-error shadow-inner'
-									: 'border-base-300 hover:border-error hover:bg-error/5 hover:text-error'}"
+								class="card bg-neutral text-neutral-content border-2 shadow-lg cursor-pointer hover:scale-[1.03] active:scale-[0.97] transition-all duration-300 flex flex-col items-center justify-center p-4 relative overflow-hidden group
+									{isFullscreen ? 'h-20 sm:h-28 md:h-32' : 'h-24 sm:h-36'}
+									{(endlessState === 'revealed' || answerStatus !== 'idle')
+										? (!yesNoIsCorrect
+											? 'border-success bg-success/20 text-success pointer-events-none'
+											: (chosenSide === 'left'
+												? 'border-error bg-error/20 text-error animate-shake pointer-events-none'
+												: 'opacity-40 border-base-300 pointer-events-none'))
+										: (activeKey === 'left'
+											? 'border-error bg-error/15 text-error shadow-inner'
+											: 'border-base-300 hover:border-error hover:bg-error/5 hover:text-error')}"
 							>
 								<div
 									class="absolute left-6 top-1/2 -translate-y-1/2 hidden md:flex items-center gap-1 opacity-80"
@@ -808,7 +917,8 @@
 									<kbd class="kbd kbd-md font-mono text-sm font-black shadow-lg">◀</kbd>
 								</div>
 								<span
-									class="text-2xl sm:text-4xl font-black tracking-wider flex items-center gap-1 sm:gap-2"
+									class="font-black tracking-wider flex items-center gap-1 sm:gap-2
+										{isFullscreen ? 'text-xl sm:text-3xl' : 'text-2xl sm:text-4xl'}"
 								>
 									❌ ผิด
 								</span>
@@ -817,16 +927,17 @@
 							<!-- Correct Choice Card (Right) -->
 							<button
 								on:click={() => selectYesNo(true)}
-								class="card bg-neutral text-neutral-content border-2 shadow-lg cursor-pointer hover:scale-[1.03] active:scale-[0.97] transition-all duration-300 h-24 sm:h-36 flex flex-col items-center justify-center p-4 relative overflow-hidden group {chosenSide ===
-								'right'
-									? answerStatus === 'correct'
-										? 'border-success bg-success/20 text-success'
-										: 'border-error bg-error/20 text-error animate-shake'
-									: chosenSide === 'left' && answerStatus !== 'idle'
-									? 'opacity-40 border-base-300 pointer-events-none'
-									: activeKey === 'right'
-									? 'border-success bg-success/15 text-success shadow-inner'
-									: 'border-base-300 hover:border-success hover:bg-success/5 hover:text-success'}"
+								class="card bg-neutral text-neutral-content border-2 shadow-lg cursor-pointer hover:scale-[1.03] active:scale-[0.97] transition-all duration-300 flex flex-col items-center justify-center p-4 relative overflow-hidden group
+									{isFullscreen ? 'h-20 sm:h-28 md:h-32' : 'h-24 sm:h-36'}
+									{(endlessState === 'revealed' || answerStatus !== 'idle')
+										? (yesNoIsCorrect
+											? 'border-success bg-success/20 text-success pointer-events-none'
+											: (chosenSide === 'right'
+												? 'border-error bg-error/20 text-error animate-shake pointer-events-none'
+												: 'opacity-40 border-base-300 pointer-events-none'))
+										: (activeKey === 'right'
+											? 'border-success bg-success/15 text-success shadow-inner'
+											: 'border-base-300 hover:border-success hover:bg-success/5 hover:text-success')}"
 							>
 								<div
 									class="absolute right-6 top-1/2 -translate-y-1/2 hidden md:flex items-center gap-1 opacity-80"
@@ -834,12 +945,39 @@
 									<kbd class="kbd kbd-md font-mono text-sm font-black shadow-lg">▶</kbd>
 								</div>
 								<span
-									class="text-2xl sm:text-4xl font-black tracking-wider flex items-center gap-1 sm:gap-2"
+									class="font-black tracking-wider flex items-center gap-1 sm:gap-2
+										{isFullscreen ? 'text-xl sm:text-3xl' : 'text-2xl sm:text-4xl'}"
 								>
 									✔️ ถูก
 								</span>
 							</button>
 						</div>
+					</div>
+				{/if}
+
+				<!-- Endless Mode action buttons -->
+				{#if gameMode === 'endless'}
+					<div class="flex justify-center my-4">
+						<button
+							on:click={endlessState === 'playing' ? revealAnswer : loadNextQuestion}
+							class="btn btn-secondary btn-wide font-black text-lg gap-2 shadow-md rounded-2xl py-3 h-auto"
+						>
+							{#if endlessState === 'playing'}
+								👁️ เฉลย (Space)
+							{:else}
+								➡️ คำถัดไป (Space)
+							{/if}
+						</button>
+					</div>
+				{/if}
+
+				<!-- Word explanation in play zone -->
+				{#if (endlessState === 'revealed' || answerStatus !== 'idle') && currentQuestion && currentQuestion.explanation}
+					<div class="mt-2 p-4 bg-neutral border border-base-300 rounded-2xl text-left max-w-lg mx-auto animate-in fade-in slide-in-from-bottom-2 duration-200">
+						<p class="text-sm text-primary font-black mb-1">💡 คำอธิบาย:</p>
+						<p class="text-xs sm:text-sm text-neutral-content leading-relaxed">
+							{currentQuestion.explanation}
+						</p>
 					</div>
 				{/if}
 
@@ -864,108 +1002,135 @@
 					{/if}
 				</div>
 
-				<!-- Quit Button -->
-				<div class="flex justify-center mt-2 border-t border-base-300/40 pt-4">
-					<button
-						on:click={triggerGameOver}
-						class="btn btn-outline btn-error btn-sm sm:btn-md gap-2 px-8 hover:bg-error hover:text-white transition-all duration-300 font-bold"
-					>
-						<XCircleIcon size="16" />
-						จบเกม
-					</button>
-				</div>
 			</div>
 
 			<!-- 3. GAMEOVER STATS SCREEN -->
 		{:else if currentMode === 'gameover'}
-			<div class="flex flex-col items-center text-center gap-6 max-w-xl mx-auto py-4">
-				<div
-					class="w-16 h-16 rounded-2xl bg-neutral text-warning flex items-center justify-center shadow-lg animate-pulse border border-warning/30"
-				>
-					<AwardIcon size="32" />
-				</div>
-
+			<div class="flex flex-col items-center text-center gap-4 max-w-xl mx-auto py-2">
 				<div class="flex flex-col gap-1">
-					<h2 class="text-3xl sm:text-5xl font-black text-warning">สรุปผลการเล่น 🎉</h2>
-					<p class="text-xs sm:text-sm font-extrabold tracking-wide uppercase opacity-75">
-						รูปแบบ: {gameType === 'choices' ? 'เลือกคำที่สะกดถูก' : 'ถูกหรือผิด?'} • โหมด: {gameMode ===
-						'normal'
-							? 'Normal'
-							: gameMode === 'timeattack'
-							? 'Time Attack ⚡'
-							: 'Endless'}
+					<h2 class="text-2xl sm:text-4xl font-black text-warning">สรุปผล 🎉</h2>
+					<p class="text-xs font-extrabold tracking-wide uppercase opacity-75">
+						รูปแบบ: {gameType === 'choices' ? 'เลือกคำที่สะกดถูก' : 'ถูกหรือผิด?'} • โหมด: {gameMode === 'normal' ? 'Normal' : gameMode === 'timeattack' ? 'Time Attack ⚡' : 'Endless'}
 					</p>
 				</div>
 
-				<!-- Stats card -->
-				<div class="card bg-neutral text-neutral-content shadow-xl w-full border border-base-300">
-					<div class="card-body p-6 grid grid-cols-2 gap-4 text-center">
-						<div class="flex flex-col items-center gap-1 border-r border-base-300">
-							<span class="text-xs opacity-75 font-bold uppercase tracking-wider">คะแนน</span>
-							<span class="text-4xl sm:text-5xl font-black font-mono text-primary">{score}</span>
-						</div>
-						<div class="flex flex-col items-center gap-1">
-							<span class="text-xs opacity-75 font-bold uppercase tracking-wider">ความแม่นยำ</span>
-							<span class="text-3xl sm:text-4xl font-black font-mono text-success">
-								{totalAnswered > 0 ? Math.round((correctCount / totalAnswered) * 100) : 0}%
-							</span>
-						</div>
-
-						<div class="col-span-2 divider my-0" />
-
-						<div class="flex flex-col items-center gap-1 border-r border-base-300">
-							<span class="text-xs opacity-75 font-bold uppercase tracking-wider">ตอบทั้งหมด</span>
-							<span class="text-lg sm:text-xl font-extrabold text-secondary"
-								>{totalAnswered} คำ</span
-							>
-						</div>
-						<div class="flex flex-col items-center gap-1">
-							<span class="text-xs opacity-75 font-bold uppercase tracking-wider">คอมโบสูงสุด</span>
-							<span class="text-lg sm:text-xl font-extrabold text-warning">🔥 {maxStreak} คำ</span>
-						</div>
-					</div>
+				<!-- Stats card (Single Line) -->
+				<div class="flex flex-wrap items-center justify-center gap-x-4 gap-y-1.5 bg-neutral text-neutral-content rounded-xl p-3 px-4 border border-base-300 w-full text-xs sm:text-sm font-extrabold shadow-md">
+					<span>คะแนน: <span class="text-primary font-black font-mono text-base">{score}</span></span>
+					<span class="opacity-30">|</span>
+					<span>ความแม่นยำ: <span class="text-success font-black font-mono text-base">{totalAnswered > 0 ? Math.round((correctCount / totalAnswered) * 100) : 0}%</span></span>
+					<span class="opacity-30">|</span>
+					<span>ตอบทั้งหมด: <span class="text-secondary font-black font-mono text-base">{totalAnswered} คำ</span></span>
+					<span class="opacity-30">|</span>
+					<span>คอมโบสูงสุด: <span class="text-warning font-black font-mono text-base">🔥 {maxStreak}</span></span>
 				</div>
 
 				<!-- High Score celebration -->
 				{#if score >= getHighScore(gameType, gameMode)}
-					<div class="badge badge-warning font-black py-3 px-4 animate-bounce text-sm shadow-md">
+					<div class="badge badge-warning font-black py-1.5 px-3 animate-bounce text-xs shadow-md">
 						👑 New Record!!
 					</div>
 				{/if}
 
+				<!-- Global Leaderboard Submit -->
+				{#if score > 0}
+					<div class="card bg-neutral border border-base-300 shadow-md w-full">
+						<div class="card-body p-3 flex flex-col gap-2.5">
+							<p class="text-xs font-black text-white flex items-center gap-1.5">
+								<AwardIcon size="14" class="text-warning" />
+								ส่งคะแนนขึ้นกระดานโลก
+							</p>
+							{#if submitStatus === 'success'}
+								<div class="alert alert-success text-xs font-bold py-1.5 px-3">✅ ส่งคะแนนสำเร็จ! ดูอันดับได้ในตารางคะแนนทั่วโลก</div>
+							{:else if submitStatus === 'duplicate'}
+								<div class="alert alert-warning text-xs font-bold py-1.5 px-3">⚠️ ชื่อนี้เคยส่งคะแนนไปแล้ว</div>
+							{:else if submitStatus === 'error'}
+								<div class="alert alert-error text-xs font-bold py-1.5 px-3">❌ {submitError}</div>
+							{:else}
+								<div class="flex gap-2">
+									<input
+										type="text"
+										bind:value={submitName}
+										placeholder="ชื่อของคุณ..."
+										maxlength="20"
+										class="input input-bordered input-sm flex-1 bg-base-100 text-xs font-bold focus:border-primary"
+										on:keydown={(e) => e.key === 'Enter' && submitToLeaderboard()}
+									/>
+									<button
+										on:click={submitToLeaderboard}
+										disabled={submitStatus === 'loading' || !submitName.trim()}
+										class="btn btn-warning btn-sm gap-2 font-black"
+									>
+										{#if submitStatus === 'loading'}
+											<span class="loading loading-spinner loading-xs" />
+										{:else}
+											<SendIcon size="12" /> ส่ง
+										{/if}
+									</button>
+								</div>
+							{/if}
+						</div>
+					</div>
+				{/if}
+
+				<!-- Action Buttons -->
+				<div class="flex flex-col sm:flex-row gap-2 w-full mt-1">
+					<button
+						on:click={beginCountdown}
+						class="btn btn-primary flex-1 gap-2 btn-sm sm:btn-md font-black text-xs sm:text-sm shadow-md"
+					>
+						<RefreshCwIcon size="14" />
+						เล่นอีกรอบ!
+					</button>
+					<button
+						on:click={goHome}
+						class="btn btn-outline flex-1 gap-2 btn-sm sm:btn-md font-black text-xs sm:text-sm shadow-md"
+					>
+						<ArrowLeftIcon size="14" />
+						กลับหน้าหลัก
+					</button>
+					<a
+						href="/puzzles/spellingquiz/leaderboard"
+						class="btn btn-outline btn-warning flex-1 gap-2 btn-sm sm:btn-md font-black text-xs sm:text-sm shadow-md"
+					>
+						<AwardIcon size="14" />
+						ตารางคะแนน
+					</a>
+				</div>
+
 				<!-- Missed Words List -->
 				{#if missedWords.length > 0}
 					<div
-						class="card bg-neutral text-neutral-content shadow-lg w-full text-left border border-base-300"
+						class="card bg-neutral text-neutral-content shadow-lg w-full text-left border border-base-300 mt-2"
 					>
-						<div class="card-body p-5 sm:p-6">
-							<h3 class="text-base sm:text-lg font-black text-error flex items-center gap-2 mb-3">
-								<BookOpenIcon size="20" />
+						<div class="card-body p-4 sm:p-5">
+							<h3 class="text-sm sm:text-base font-black text-error flex items-center gap-2 mb-2">
+								<BookOpenIcon size="18" class="hidden sm:inline" />
 								ข้อที่ตอบผิด ({missedWords.length} คำ)
 							</h3>
 
-							<div class="flex flex-col gap-3.5 max-h-[360px] overflow-y-auto pr-1">
+							<div class="flex flex-col gap-2 max-h-[160px] overflow-y-auto pr-1">
 								{#each missedWords as item, idx}
 									<div
-										class="p-3.5 bg-base-100 rounded-xl flex flex-col gap-2 shadow-inner border border-base-300"
+										class="p-2.5 bg-base-100 rounded-xl flex flex-col gap-1.5 shadow-inner border border-base-300"
 									>
-										<div class="flex flex-wrap items-center justify-between gap-2">
-											<div class="flex items-center gap-2.5">
-												<span class="badge badge-error badge-sm text-[10px] font-black"
+										<div class="flex flex-wrap items-center justify-between gap-1">
+											<div class="flex items-center gap-2 text-sm">
+												<span class="badge badge-error badge-sm text-[9px] font-black"
 													># {idx + 1}</span
 												>
-												<span class="text-success font-black text-base flex items-center gap-1">
+												<span class="text-success font-black flex items-center gap-1">
 													✅ {item.word.correct}
 												</span>
 												<span class="text-xs opacity-40 font-bold">VS</span>
-												<span class="text-error font-extrabold line-through text-base">
+												<span class="text-error font-extrabold line-through">
 													{item.word.incorrect[0]}
 												</span>
 											</div>
 										</div>
 										{#if item.word.explanation}
 											<p
-												class="text-xs opacity-90 bg-neutral p-3 rounded-lg border-l-4 border-primary leading-relaxed mt-1"
+												class="text-xs opacity-90 bg-neutral p-2.5 rounded-lg border-l-4 border-primary leading-relaxed mt-1"
 											>
 												💡 <b>คำอธิบาย:</b>
 												{item.word.explanation}
@@ -977,72 +1142,6 @@
 						</div>
 					</div>
 				{/if}
-
-				<!-- Global Leaderboard Submit -->
-				{#if score > 0}
-					<div class="card bg-neutral border border-base-300 shadow-lg w-full">
-						<div class="card-body p-4 flex flex-col gap-3">
-							<p class="text-sm font-black text-white flex items-center gap-2">
-								<AwardIcon size="16" class="text-warning" />
-								ส่งคะแนนขึ้นกระดานโลก
-							</p>
-							{#if submitStatus === 'success'}
-								<div class="alert alert-success text-sm font-bold py-2 px-3">✅ ส่งคะแนนสำเร็จ! ดูอันดับได้ในตารางคะแนนทั่วโลก</div>
-							{:else if submitStatus === 'duplicate'}
-								<div class="alert alert-warning text-sm font-bold py-2 px-3">⚠️ ชื่อนี้เคยส่งคะแนนไปแล้ว</div>
-							{:else if submitStatus === 'error'}
-								<div class="alert alert-error text-sm font-bold py-2 px-3">❌ {submitError}</div>
-							{:else}
-								<div class="flex gap-2">
-									<input
-										type="text"
-										bind:value={submitName}
-										placeholder="ชื่อของคุณ..."
-										maxlength="20"
-										class="input input-bordered flex-1 bg-base-100 text-sm font-bold focus:border-primary"
-										on:keydown={(e) => e.key === 'Enter' && submitToLeaderboard()}
-									/>
-									<button
-										on:click={submitToLeaderboard}
-										disabled={submitStatus === 'loading' || !submitName.trim()}
-										class="btn btn-warning gap-2 font-black"
-									>
-										{#if submitStatus === 'loading'}
-											<span class="loading loading-spinner loading-sm" />
-										{:else}
-											<SendIcon size="14" /> ส่ง
-										{/if}
-									</button>
-								</div>
-							{/if}
-						</div>
-					</div>
-				{/if}
-
-				<!-- Action Buttons -->
-				<div class="flex flex-col sm:flex-row gap-3 w-full mt-3">
-					<button
-						on:click={beginCountdown}
-						class="btn btn-primary flex-1 gap-2 btn-md sm:btn-lg font-black text-sm sm:text-base shadow-md"
-					>
-						<RefreshCwIcon size="16" />
-						เล่นอีกรอบ!
-					</button>
-					<button
-						on:click={goHome}
-						class="btn btn-outline flex-1 gap-2 btn-md sm:btn-lg font-black text-sm sm:text-base shadow-md"
-					>
-						<ArrowLeftIcon size="16" />
-						กลับหน้าหลัก
-					</button>
-					<a
-						href="/puzzles/spellingquiz/leaderboard"
-						class="btn btn-outline btn-warning flex-1 gap-2 btn-md sm:btn-lg font-black text-sm sm:text-base shadow-md"
-					>
-						<AwardIcon size="16" />
-						ตารางคะแนน
-					</a>
-				</div>
 			</div>
 		{/if}
 	</div>
@@ -1083,5 +1182,20 @@
 	}
 	.animate-in {
 		animation: animate-in 0.25s ease both;
+	}
+	#spelling-game-container:fullscreen {
+		width: 100vw !important;
+		height: 100vh !important;
+		max-width: none !important;
+		max-height: none !important;
+		border: none !important;
+		border-radius: 0 !important;
+		background: #0f172a !important; /* slate-900 */
+		padding: 2rem !important;
+		overflow-y: auto;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
 	}
 </style>

@@ -32,8 +32,7 @@
 
 	const modeConfigs = [
 		{ key: 'normal', label: 'Normal', icon: '❤️', color: 'text-error', bg: 'bg-error/10', border: 'border-error/30' },
-		{ key: 'timeattack', label: 'Time Attack', icon: '⚡', color: 'text-warning', bg: 'bg-warning/10', border: 'border-warning/30' },
-		{ key: 'endless', label: 'Endless', icon: '♾️', color: 'text-success', bg: 'bg-success/10', border: 'border-success/30' }
+		{ key: 'timeattack', label: 'Time Attack', icon: '⚡', color: 'text-warning', bg: 'bg-warning/10', border: 'border-warning/30' }
 	];
 
 	const difficultyConfigs = [
@@ -91,8 +90,6 @@
 		if (mode === 'normal' && diff === 'difficult') return 1;
 		if (mode === 'timeattack' && diff === 'normal') return 2;
 		if (mode === 'timeattack' && diff === 'difficult') return 3;
-		if (mode === 'endless' && diff === 'normal') return 4;
-		if (mode === 'endless' && diff === 'difficult') return 5;
 		return 0;
 	}
 
@@ -331,7 +328,6 @@
 					>
 						<option value="normal">❤️ Normal</option>
 						<option value="timeattack">⚡ Time Attack</option>
-						<option value="endless">♾️ Endless</option>
 					</select>
 				</div>
 				<div class="flex flex-col gap-1.5 text-left">

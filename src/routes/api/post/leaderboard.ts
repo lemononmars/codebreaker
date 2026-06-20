@@ -8,18 +8,20 @@ export async function post({ request }) {
    let submission: Leaderboard = await request.json()
    const { name, puzzle_type, puzzle_id, score } = submission
 
-   // check for duplicate
-   const { data: duplicateData } = await from('leaderboard')
-      .select('*')
-      .eq('puzzle_type', puzzle_type)
-      .eq('puzzle_id', puzzle_id)
-      .eq('name', name);
+   // check for duplicate (skip for blanks and spellingquiz)
+   if (puzzle_type !== 'blanks' && puzzle_type !== 'spellingquiz') {
+      const { data: duplicateData } = await from('leaderboard')
+         .select('*')
+         .eq('puzzle_type', puzzle_type)
+         .eq('puzzle_id', puzzle_id)
+         .eq('name', name);
 
-   if (duplicateData && duplicateData.length > 0) {
-      return {
-         status: 400,
-         body: { error: 'You have already submitted a score for this puzzle.' }
-      };
+      if (duplicateData && duplicateData.length > 0) {
+         return {
+            status: 400,
+            body: { error: 'You have already submitted a score for this puzzle.' }
+         };
+      }
    }
 
    // weekly puzzle requires scoring system

@@ -34,8 +34,7 @@
 
 	const modeConfigs = [
 		{ key: 'normal', label: 'Normal', icon: '❤️', color: 'text-error', bg: 'bg-error/10', border: 'border-error/30' },
-		{ key: 'timeattack', label: 'Time Attack', icon: '⚡', color: 'text-warning', bg: 'bg-warning/10', border: 'border-warning/30' },
-		{ key: 'endless', label: 'Endless', icon: '♾️', color: 'text-success', bg: 'bg-success/10', border: 'border-success/30' }
+		{ key: 'timeattack', label: 'Time Attack', icon: '⚡', color: 'text-warning', bg: 'bg-warning/10', border: 'border-warning/30' }
 	];
 
 	onMount(() => {
