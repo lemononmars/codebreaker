@@ -236,18 +236,14 @@
 	function solveBoard(board: string[][]): string[] {
 		const found = new Set<string>();
 
-		function dfs(r: number, c: number, wordOptions: string[], visited: boolean[][]) {
-			for (const w of wordOptions) {
-				if (w.length >= 3) {
-					if (search(w)) {
-						found.add(w);
-					}
+		function dfs(r: number, c: number, prefix: string, visited: boolean[][]) {
+			if (prefix.length >= 3) {
+				if (search(prefix)) {
+					found.add(prefix);
 				}
 			}
 
-			// We only stop if none of the word options have a prefix in the dictionary
-			const anyHasPrefix = wordOptions.some((w) => w.length < 9 && hasPrefix(w));
-			if (!anyHasPrefix) return;
+			if (prefix.length >= 9 || !hasPrefix(prefix)) return;
 
 			for (let dr = -1; dr <= 1; dr++) {
 				for (let dc = -1; dc <= 1; dc++) {
@@ -256,16 +252,15 @@
 					const nc = c + dc;
 					if (nr >= 0 && nr < rows && nc >= 0 && nc < cols && !visited[nr][nc]) {
 						const nextCellVal = board[nr][nc];
-						const nextOptions = nextCellVal.split('/');
-						const nextWordOptions: string[] = [];
-						for (const opt of nextOptions) {
-							for (const w of wordOptions) {
-								nextWordOptions.push(w + opt);
+						visited[nr][nc] = true;
+						let optStart = 0;
+						for (let i = 0; i <= nextCellVal.length; i++) {
+							if (i === nextCellVal.length || nextCellVal[i] === '/') {
+								const opt = nextCellVal.substring(optStart, i);
+								dfs(nr, nc, prefix + opt, visited);
+								optStart = i + 1;
 							}
 						}
-
-						visited[nr][nc] = true;
-						dfs(nr, nc, nextWordOptions, visited);
 						visited[nr][nc] = false;
 					}
 				}
@@ -278,9 +273,15 @@
 		for (let r = 0; r < rows; r++) {
 			for (let c = 0; c < cols; c++) {
 				const cellVal = board[r][c];
-				const initialOptions = cellVal.split('/');
 				visited[r][c] = true;
-				dfs(r, c, initialOptions, visited);
+				let optStart = 0;
+				for (let i = 0; i <= cellVal.length; i++) {
+					if (i === cellVal.length || cellVal[i] === '/') {
+						const opt = cellVal.substring(optStart, i);
+						dfs(r, c, opt, visited);
+						optStart = i + 1;
+					}
+				}
 				visited[r][c] = false;
 			}
 		}
