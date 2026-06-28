@@ -18,7 +18,6 @@ describe('search', () => {
     });
 });
 
-import { appendable } from './thaiwords';
 
 describe('appendable', () => {
     it('should allow consonant followed by upper letter', () => {
