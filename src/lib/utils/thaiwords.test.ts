@@ -15,6 +15,9 @@ describe('search', () => {
 
     it('should return false for empty strings', () => {
         expect(search('')).toBe(false);
+    });
+});
+
 import { appendable } from './thaiwords';
 
 describe('appendable', () => {
