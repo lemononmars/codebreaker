@@ -236,18 +236,14 @@
 	function solveBoard(board: string[][]): string[] {
 		const found = new Set<string>();
 
-		function dfs(r: number, c: number, wordOptions: string[], visited: boolean[][]) {
-			for (const w of wordOptions) {
-				if (w.length >= 3) {
-					if (search(w)) {
-						found.add(w);
-					}
+		function dfs(r: number, c: number, word: string, visited: boolean[][]) {
+			if (word.length >= 3) {
+				if (search(word)) {
+					found.add(word);
 				}
 			}
 
-			// We only stop if none of the word options have a prefix in the dictionary
-			const anyHasPrefix = wordOptions.some((w) => w.length < 9 && hasPrefix(w));
-			if (!anyHasPrefix) return;
+			if (word.length >= 9 || !hasPrefix(word)) return;
 
 			for (let dr = -1; dr <= 1; dr++) {
 				for (let dc = -1; dc <= 1; dc++) {
@@ -257,15 +253,11 @@
 					if (nr >= 0 && nr < rows && nc >= 0 && nc < cols && !visited[nr][nc]) {
 						const nextCellVal = board[nr][nc];
 						const nextOptions = nextCellVal.split('/');
-						const nextWordOptions: string[] = [];
-						for (const opt of nextOptions) {
-							for (const w of wordOptions) {
-								nextWordOptions.push(w + opt);
-							}
-						}
 
 						visited[nr][nc] = true;
-						dfs(nr, nc, nextWordOptions, visited);
+						for (const opt of nextOptions) {
+							dfs(nr, nc, word + opt, visited);
+						}
 						visited[nr][nc] = false;
 					}
 				}
@@ -280,7 +272,9 @@
 				const cellVal = board[r][c];
 				const initialOptions = cellVal.split('/');
 				visited[r][c] = true;
-				dfs(r, c, initialOptions, visited);
+				for (const opt of initialOptions) {
+					dfs(r, c, opt, visited);
+				}
 				visited[r][c] = false;
 			}
 		}
