@@ -45,7 +45,7 @@ export const adventureLevels = [
         `,
       answer: 'debug',
       hint: 'open console (F12 -> Console)',
-      script: 'console.log("Password: debug")'
+      get script() { return `console.log("Password: ${this.answer}")`; }
    },
    {
       level: 5,
@@ -68,7 +68,7 @@ export const adventureLevels = [
         `,
       answer: 'meta',
       hint: 'check the <meta> tags in the head',
-      script: 'const meta = document.createElement("meta"); meta.name = "password"; meta.content = "meta"; document.head.appendChild(meta);',
+      get script() { return `const meta = document.createElement("meta"); meta.name = "password"; meta.content = "${this.answer}"; document.head.appendChild(meta);`; },
       cleanup: 'const meta = document.querySelector("meta[name=\\"password\\"]"); if(meta) meta.remove();'
    },
    {
@@ -80,7 +80,7 @@ export const adventureLevels = [
         `,
       answer: 'biscuit',
       hint: 'check the document cookies',
-      script: 'document.cookie = "password=biscuit; path=/";',
+      get script() { return `document.cookie = "password=${this.answer}; path=/";`; },
       cleanup: 'document.cookie = "password=; path=/; expires=Thu, 01 Jan 1970 00:00:01 GMT;"'
    },
    {
@@ -92,7 +92,7 @@ export const adventureLevels = [
         `,
       answer: 'title',
       hint: 'check the browser tab title',
-      script: 'document.title = "Password: title";',
+      get script() { return `document.title = "Password: ${this.answer}";`; },
       cleanup: 'document.title = "Code Breaker | Adventure";'
    },
    {
