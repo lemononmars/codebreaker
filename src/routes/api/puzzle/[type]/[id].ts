@@ -8,12 +8,11 @@ import { from } from '$lib/supabase';
  */
 /** @type {import('/api/puzzle/[type]/[id].ts').RequestHandler} */
 export async function get({ params }) {
-
 	const { type, id } = params;
-	const field = (type === 'crossword' || type === 'missingvowels' || type === 'alphabet') ? 'uid' : 'id';
+	const field =
+		type === 'crossword' || type === 'missingvowels' || type === 'alphabet' ? 'uid' : 'id';
 	const { data, error } = await from(type).select('*').eq(field, id);
 
-	console.log(data)
 	if (error)
 		return {
 			status: 500,
@@ -28,7 +27,6 @@ export async function get({ params }) {
 	};
 }
 
-
 /**
  * check the answer for the requested puzzle
  *
@@ -37,9 +35,8 @@ export async function get({ params }) {
  */
 /** @type {import('/api/puzzle/[type]/[id].ts').RequestHandler} */
 export async function post({ params }) {
-
 	const { type, id } = params;
-	let data = [{ result: 'incorrect', hint: 'no hint for you' }]
+	const data = [{ result: 'incorrect', hint: 'no hint for you' }];
 
 	return {
 		status: 200,
