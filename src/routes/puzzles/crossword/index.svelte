@@ -1,7 +1,6 @@
 <script context="module" lang="ts">
 	/** @type {import('@sveltejs/kit').Load} */
 	export async function load({ fetch }) {
-		console.log('start fetching');
 		const res = await fetch('/api/puzzle/crossword');
 		const data = await res.json();
 
