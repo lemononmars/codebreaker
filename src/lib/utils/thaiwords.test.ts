@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { search } from './thaiwords';
+import { search, appendable } from './thaiwords';
 
 describe('search', () => {
     it('should return true for words present in the dictionary', () => {
@@ -15,7 +15,8 @@ describe('search', () => {
 
     it('should return false for empty strings', () => {
         expect(search('')).toBe(false);
-import { appendable } from './thaiwords';
+    });
+});
 
 describe('appendable', () => {
     it('should allow consonant followed by upper letter', () => {
