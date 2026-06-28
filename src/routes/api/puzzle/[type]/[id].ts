@@ -13,7 +13,6 @@ export async function get({ params }) {
 	const field = (type === 'crossword' || type === 'missingvowels' || type === 'alphabet') ? 'uid' : 'id';
 	const { data, error } = await from(type).select('*').eq(field, id);
 
-	console.log(data)
 	if (error)
 		return {
 			status: 500,
