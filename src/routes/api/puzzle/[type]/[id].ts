@@ -9,13 +9,17 @@ import { isAllowedTable, PUBLIC_TABLES, publicError } from '$lib/apiGuards';
  */
 /** @type {import('/api/puzzle/[type]/[id].ts').RequestHandler} */
 export async function get({ params }) {
-
 	const { type, id } = params;
+<<<<<<< HEAD
 	if (!isAllowedTable(type, PUBLIC_TABLES)) {
 		return publicError(404, 'Not found');
 	}
 
 	const field = (type === 'crossword' || type === 'missingvowels' || type === 'alphabet') ? 'uid' : 'id';
+=======
+	const field =
+		type === 'crossword' || type === 'missingvowels' || type === 'alphabet' ? 'uid' : 'id';
+>>>>>>> 42220a430d2e5b35a90c69952393aeacd19acfce
 	const { data, error } = await from(type).select('*').eq(field, id);
 
 	if (error)
@@ -28,7 +32,6 @@ export async function get({ params }) {
 	};
 }
 
-
 /**
  * check the answer for the requested puzzle
  *
@@ -37,9 +40,8 @@ export async function get({ params }) {
  */
 /** @type {import('/api/puzzle/[type]/[id].ts').RequestHandler} */
 export async function post({ params }) {
-
 	const { type, id } = params;
-	let data = [{ result: 'incorrect', hint: 'no hint for you' }]
+	const data = [{ result: 'incorrect', hint: 'no hint for you' }];
 
 	return {
 		status: 200,
