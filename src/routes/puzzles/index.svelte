@@ -222,7 +222,7 @@
 						</div>
 						<div class="flex flex-col gap-1 flex-1 items-center">
 							<h2 class="card-title text-2xl font-bold capitalize tracking-wide text-primary justify-center text-center">
-								{p.type === 'spellingquiz' ? 'Spelling Quiz' : p.type === 'blanks' ? 'ซ่อนอักษร' : p.type}
+								{p.type === 'spellingquiz' ? 'Spelling Quiz' : p.type }
 							</h2>
 							<p class="text-base font-medium opacity-80 leading-relaxed">{p.description}</p>
 						</div>
@@ -250,7 +250,7 @@
 						</div>
 						<div class="flex flex-col gap-1 flex-1 items-center">
 							<h2 class="card-title text-2xl font-bold capitalize tracking-wide text-primary justify-center text-center">
-								{p.type === 'spellingquiz' ? 'Spelling Quiz' : p.type === 'blanks' ? 'ซ่อนอักษร' : p.type}
+								{p.type === 'spellingquiz' ? 'Spelling Quiz' : p.type}
 							</h2>
 							<p class="text-base font-medium opacity-80 leading-relaxed">{p.description}</p>
 						</div>

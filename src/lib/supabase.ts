@@ -40,6 +40,11 @@ export function getPuzzleImageURL(type: string, filename: string) {
 
 export async function uploadProfilePicture(userId: string, file: File): Promise<string | null> {
 	try {
+		const allowedTypes = new Set(['image/jpeg', 'image/png', 'image/webp', 'image/gif']);
+		if (!allowedTypes.has(file.type)) {
+			throw new Error('Unsupported image type');
+		}
+
 		const fileExt = file.name.split('.').pop();
 		const fileName = `${userId}-${Date.now()}.${fileExt}`;
 		const filePath = `${userId}/${fileName}`;

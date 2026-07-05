@@ -2,6 +2,7 @@
 	import { auth } from '$lib/supabase';
 	import { user } from '$lib/store';
 	import { goto } from '$app/navigation';
+	import { authRedirectUrl } from '$lib/authRedirect';
 
 	let email = '';
 	let password = '';
@@ -33,7 +34,7 @@
 			const { error } = await auth.signInWithOAuth({
 				provider: provider,
 				options: {
-					redirectTo: window.location.origin + '/profile'
+					redirectTo: authRedirectUrl('/profile')
 				}
 			});
 			if (error) throw error;
