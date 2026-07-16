@@ -387,17 +387,34 @@
 	}
 
 	function getPossibleStrings(path: Array<{ r: number; c: number }>): string[] {
+		if (path.length === 0) return [];
 		let results = [''];
-		for (const p of path) {
+		for (let i = 0; i < path.length; i++) {
+			const p = path[i];
 			const cellVal = grid[p.r][p.c];
-			const options = cellVal.split('/');
-			const nextResults: string[] = [];
-			for (const opt of options) {
-				for (const res of results) {
-					nextResults.push(res + opt);
+
+			if (cellVal.indexOf('/') === -1) {
+				// Fast path: no split needed
+				const resLen = results.length;
+				for (let r = 0; r < resLen; r++) {
+					results[r] += cellVal;
 				}
+			} else {
+				// Slow path: split and pre-allocate
+				const options = cellVal.split('/');
+				const optLen = options.length;
+				const resLen = results.length;
+				const nextResults: string[] = new Array(resLen * optLen);
+				let idx = 0;
+
+				for (let r = 0; r < resLen; r++) {
+					const res = results[r];
+					for (let o = 0; o < optLen; o++) {
+						nextResults[idx++] = res + options[o];
+					}
+				}
+				results = nextResults;
 			}
-			results = nextResults;
 		}
 		return results;
 	}
@@ -500,7 +517,9 @@
 		</a>
 
 		<div class="flex flex-col justify-center py-2">
-			<h1 class="text-2xl md:text-4xl font-black tracking-tight text-white flex items-center justify-center gap-2.5">
+			<h1
+				class="text-2xl md:text-4xl font-black tracking-tight text-white flex items-center justify-center gap-2.5"
+			>
 				เส้นทางศัพท์
 				<button
 					on:click={() => (showRulesModal = true)}
@@ -774,9 +793,7 @@
 							<span class="text-lg font-black text-primary font-mono">{score} คะแนน</span>
 						</div>
 						<div class="flex flex-col">
-							<span class="text-[9px] opacity-60 font-bold uppercase tracking-wider"
-								>คำที่พบ</span
-							>
+							<span class="text-[9px] opacity-60 font-bold uppercase tracking-wider">คำที่พบ</span>
 							<span class="text-lg font-black text-success font-mono">{pct}%</span>
 						</div>
 					</div>
@@ -879,8 +896,7 @@
 							</div>
 							<div class="w-1 h-1 rounded-full bg-base-300" />
 							<div class="text-slate-300">
-								รวม: <span class="text-primary font-mono font-black"
-									>{allPossibleWords.length}</span
+								รวม: <span class="text-primary font-mono font-black">{allPossibleWords.length}</span
 								> คำ
 							</div>
 						</div>
@@ -943,7 +959,9 @@
 					<h3 class="text-xl font-black text-white">วิธีการเล่น</h3>
 				</div>
 
-				<div class="flex flex-col gap-4 text-xs md:text-sm text-slate-300 leading-relaxed text-left">
+				<div
+					class="flex flex-col gap-4 text-xs md:text-sm text-slate-300 leading-relaxed text-left"
+				>
 					<div class="bg-base-100 p-4 rounded-xl border border-base-300 flex flex-col gap-2.5">
 						<span class="text-primary font-bold text-xs uppercase tracking-wider">กติกา</span>
 						<ul class="list-disc text-left pl-5 flex flex-col gap-1.5 opacity-90 text-white/80">
@@ -954,9 +972,7 @@
 					</div>
 
 					<div class="bg-base-100 p-4 rounded-xl border border-base-300 flex flex-col gap-2.5">
-						<span class="text-warning font-bold text-xs uppercase tracking-wider"
-							>การนับคะแนน</span
-						>
+						<span class="text-warning font-bold text-xs uppercase tracking-wider">การนับคะแนน</span>
 						<ul class="list-disc text-left pl-5 flex flex-col gap-1.5 opacity-90 text-white/80">
 							<li>3 ตัวอักษร = 1 คะแนน</li>
 							<li>4 ตัวอักษร = 2 คะแนน</li>
