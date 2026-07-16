@@ -884,7 +884,7 @@
 					</div>
 				{/if}
 
-				<!-- GUESS WORD ZONE (Thai combining characters stacked vertically) -->
+				<!-- Question Zone -->
 				{#if qWord}
 					{@const blocks = parseThaiBlocks(qWord.word)}
 					<div 
@@ -894,7 +894,7 @@
 								: answerStatus === 'incorrect' 
 									? 'border-error/60 shadow-[0_0_20px_rgba(239,68,68,0.15)] bg-error/5 animate-shake' 
 									: 'border-white/5 shadow-inner'}
-							{isFullscreen ? 'gap-x-4 sm:gap-x-6 py-14' : 'gap-x-1.5 sm:gap-x-3 py-6 sm:py-10'}"
+							{isFullscreen ? 'gap-x-1 sm:gap-x-1.5 py-14' : 'gap-x-1 sm:gap-x-1.5 py-6 sm:py-10'}"
 					>
 						{#each (() => {
 							let charIdx = 0;
@@ -913,11 +913,10 @@
 						})() as item}
 							{@const baseGroupIdx = item.baseIdx !== -1 ? getGroupIndex(item.block.base) : -1}
 							{@const lowerGroupIdx = item.lowerIndices.length > 0 ? getGroupIndex(item.block.lower[0]) : -1}
-							<div class="relative flex flex-col items-center justify-center bg-neutral/20 border border-base-300/40 rounded-2xl select-none p-1.5 shadow-inner transition-all duration-300
-								{isFullscreen ? 'w-16 h-40 sm:w-24 sm:h-56 md:w-36 md:h-72' : 'w-10 h-28 sm:w-16 sm:h-36 md:w-20 md:h-44'}">
+							<div class="relative flex flex-col items-center justify-center select-none gap-[2px] transition-all duration-300
+								{isFullscreen ? 'w-18 h-auto min-h-44 sm:w-28 sm:min-h-72 md:w-40 md:min-h-80' : 'w-14 h-auto min-h-32 sm:w-18 sm:min-h-44'}">
 								<!-- Upper Vowel/Tone Mark Stack -->
-								<div class="flex flex-col-reverse items-center justify-end font-black text-white mb-[-12px] sm:mb-[-18px] gap-0.5 transition-all duration-300
-									{isFullscreen ? 'h-10 sm:h-14 text-2xl sm:text-3xl md:text-4xl' : 'h-8 sm:h-10 text-base sm:text-xl md:text-2xl'}">
+								<div class="flex flex-col-reverse items-center justify-start font-black text-white transition-all duration-300 gap-[2px] w-full {isFullscreen ? 'h-14 sm:h-24' : 'h-10 sm:h-14'}">
 									{#if item.block.upper}
 										{#each item.block.upper.split('') as char}
 											{@const upperGroupIdx = getGroupIndex(char)}
@@ -926,7 +925,7 @@
 												{@const isActive = upperGroupIdx === activeGroupIndex}
 												<button
 													on:click={() => activeGroupIndex = upperGroupIdx}
-													class="relative px-2 py-0.5 rounded-lg border transition-all duration-150 font-mono font-black
+													class="relative flex items-center justify-center rounded-xl border transition-all duration-150 font-mono font-black
 														{isActive 
 															? upperGroupIdx === 0 
 																? 'border-sky-500 bg-sky-500/20 text-sky-400 scale-105 shadow-[0_0_8px_rgba(14,165,233,0.4)]'
@@ -936,7 +935,7 @@
 																: upperGroupIdx === 0 
 																	? 'border-sky-500/40 bg-sky-500/5 text-sky-355 hover:border-sky-400'
 																	: 'border-amber-500/40 bg-amber-500/5 text-amber-355 hover:border-amber-400'}
-														{isFullscreen ? 'text-base sm:text-lg md:text-xl' : 'text-xs sm:text-sm md:text-base'}"
+														{isFullscreen ? 'w-14 h-7 sm:w-24 sm:h-12 text-sm sm:text-lg md:text-xl' : 'w-10 h-5 sm:w-14 sm:h-7 text-[11px] sm:text-sm'}"
 												>
 													{#if group.value}
 														<span class="thai-upper">{group.value}</span>
@@ -950,15 +949,19 @@
 													{/if}
 												</button>
 											{:else}
-												<span class="thai-upper">{char}</span>
+												<div
+													class="relative flex items-center justify-center rounded-xl border border-base-300/40 bg-neutral/40 text-white font-mono font-black
+														{isFullscreen ? 'w-14 h-7 sm:w-24 sm:h-12 text-sm sm:text-lg md:text-xl' : 'w-10 h-5 sm:w-14 sm:h-7 text-[11px] sm:text-sm'}"
+												>
+													<span class="thai-upper">{char}</span>
+												</div>
 											{/if}
 										{/each}
 									{/if}
 								</div>
 
 								<!-- Base Consonant -->
-								<div class="flex items-center justify-center font-black text-white transition-all duration-300
-									{isFullscreen ? 'h-14 sm:h-20 text-4xl sm:text-6xl md:text-8xl' : 'h-10 sm:h-14 text-2xl sm:text-4xl md:text-5xl'}">
+								<div class="flex items-center justify-center font-black text-white transition-all duration-300 w-full {isFullscreen ? 'h-16 sm:h-28' : 'h-12 sm:h-16'}">
 									{#if baseGroupIdx !== -1}
 										{@const group = qWord.blankGroups[baseGroupIdx]}
 										{@const isActive = baseGroupIdx === activeGroupIndex}
@@ -974,7 +977,7 @@
 														: baseGroupIdx === 0
 															? 'border-sky-500/40 bg-sky-500/5 text-sky-355 hover:border-sky-400'
 															: 'border-amber-500/40 bg-amber-500/5 text-amber-355 hover:border-amber-400'}
-												{isFullscreen ? 'w-12 h-12 sm:w-20 sm:h-20 text-2xl sm:text-4xl md:text-6xl' : 'w-8 h-8 sm:w-12 sm:h-12 text-base sm:text-2xl md:text-3xl'}"
+												{isFullscreen ? 'w-14 h-16 sm:w-24 sm:h-28 text-3xl sm:text-5xl md:text-7xl' : 'w-10 h-12 sm:w-14 sm:h-16 text-lg sm:text-2xl md:text-3xl'}"
 										>
 											{group.value || '?'}
 											{#if difficulty === 'difficult'}
@@ -984,19 +987,23 @@
 											{/if}
 										</button>
 									{:else if item.block.base}
-										{item.block.base}
+										<div
+											class="relative flex items-center justify-center rounded-xl border border-base-300/40 bg-neutral/40 text-white font-black
+												{isFullscreen ? 'w-14 h-16 sm:w-24 sm:h-28 text-3xl sm:text-5xl md:text-7xl' : 'w-10 h-12 sm:w-14 sm:h-16 text-lg sm:text-2xl md:text-3xl'}"
+										>
+											{item.block.base}
+										</div>
 									{/if}
 								</div>
 
 								<!-- Lower Vowel Stack -->
-								<div class="flex items-start justify-center font-black text-white mt-[-10px] sm:mt-[-16px] transition-all duration-300
-									{isFullscreen ? 'h-6 sm:h-8 text-2xl sm:text-3xl md:text-4xl' : 'h-5 sm:h-6 text-lg sm:text-2xl md:text-3xl'}">
+								<div class="flex items-start justify-center font-black text-white transition-all duration-300 w-full {isFullscreen ? 'h-7 sm:h-12' : 'h-5 sm:h-7'}">
 									{#if lowerGroupIdx !== -1}
 										{@const group = qWord.blankGroups[lowerGroupIdx]}
 										{@const isActive = lowerGroupIdx === activeGroupIndex}
 										<button
 											on:click={() => activeGroupIndex = lowerGroupIdx}
-											class="relative px-2.5 py-1 rounded-lg border transition-all duration-150 font-mono font-black
+											class="relative flex items-center justify-center rounded-xl border transition-all duration-150 font-mono font-black
 												{isActive 
 													? lowerGroupIdx === 0
 														? 'border-sky-500 bg-sky-500/20 text-sky-400 scale-105 shadow-[0_0_8px_rgba(14,165,233,0.4)]'
@@ -1006,7 +1013,7 @@
 														: lowerGroupIdx === 0
 															? 'border-sky-500/40 bg-sky-500/5 text-sky-355 hover:border-sky-400'
 															: 'border-amber-500/40 bg-amber-500/5 text-amber-355 hover:border-amber-400'}
-												{isFullscreen ? 'text-base sm:text-lg md:text-xl' : 'text-xs sm:text-base md:text-lg'}"
+												{isFullscreen ? 'w-14 h-7 sm:w-24 sm:h-12 text-sm sm:text-lg md:text-xl' : 'w-10 h-5 sm:w-14 sm:h-7 text-[11px] sm:text-sm'}"
 										>
 											{#if group.value}
 												<span class="thai-lower">{group.value}</span>
@@ -1020,7 +1027,12 @@
 											{/if}
 										</button>
 									{:else if item.block.lower}
-										<span class="thai-lower">{item.block.lower}</span>
+										<div
+											class="relative flex items-center justify-center rounded-xl border border-base-300/40 bg-neutral/40 text-white font-mono font-black
+												{isFullscreen ? 'w-14 h-7 sm:w-24 sm:h-12 text-sm sm:text-lg md:text-xl' : 'w-10 h-5 sm:w-14 sm:h-7 text-[11px] sm:text-sm'}"
+										>
+											<span class="thai-lower">{item.block.lower}</span>
+										</div>
 									{/if}
 								</div>
 							</div>
@@ -1036,9 +1048,9 @@
 							class="btn btn-secondary btn-wide font-black text-lg gap-2 shadow-md rounded-2xl py-3 h-auto"
 						>
 							{#if endlessState === 'playing'}
-								👁️ เฉลย (Space)
+								เฉลย (Space)
 							{:else}
-								➡️ คำถัดไป (Space)
+								คำถัดไป (Space)
 							{/if}
 						</button>
 					</div>
@@ -1184,13 +1196,13 @@
 <style>
 	.thai-upper {
 		display: inline-block;
-		font-size: 1.35em;
-		transform: translateX(0.18em);
+		font-size: 1.9em;
+		transform: translate(0.18em, 0.28em);
 	}
 	.thai-lower {
 		display: inline-block;
-		font-size: 1.35em;
-		transform: translateX(0.18em);
+		font-size: 1.9em;
+		transform: translate(0.18em, -0.28em);
 	}
 	@keyframes animate-in {
 		from {

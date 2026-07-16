@@ -1,6 +1,6 @@
 import { from } from '$lib/supabase';
 import type { Leaderboard } from '$lib/interfaces'
-import { sendhook } from '$lib/discord'
+import { sendhook } from '$lib/discordServer'
 /**
  * @type {import('@sveltejs/kit').RequestHandler}
  */

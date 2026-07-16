@@ -1,23 +1,39 @@
-import {cryptogram} from '$lib/data/puzzles/cryptogram'
+import { cryptogram } from '$lib/data/puzzles/cryptogram';
+import { from } from '$lib/supabase';
+import type { RequestHandler } from '@sveltejs/kit';
 
-/** @type {import('./__types/alphabet/[id]').RequestHandler} */
-export async function get({ params }: { params: { id: number } }) {
-   let {id} = params
-   // TODO: make it fetch, await, etc?
-  id = Number(id)
-  const total: number = Object.keys(cryptogram).length
-  id = (id+total-1)%total + 1
+export const get: RequestHandler = async ({ params }) => {
+	let id = Number(params.id);
+	const total: number = Object.keys(cryptogram).length;
+	id = ((id + total - 1) % total) + 1;
 
-   const content = cryptogram.filter(n => n.id == id)
-  
-   if (content.length > 0) {
-     return {
-       body: { content: content[0]}
-     };
-   }
-  
-   return {
-     status: 404
-   };
- }
+	try {
+		const { data, error } = await from('cryptogram').select('*').eq('uid', id).single();
 
+		if (!error && data) {
+			const content = {
+				...data,
+				type: 'cryptogram',
+				date: data.created_at
+			};
+			return {
+				body: { content }
+			};
+		}
+	} catch (err) {
+		console.error('Supabase error loading cryptogram puzzle:', err);
+	}
+
+	// Fallback to static data
+	const content = cryptogram.find((n) => n.id === id);
+
+	if (content) {
+		return {
+			body: { content }
+		};
+	}
+
+	return {
+		status: 404
+	};
+};
