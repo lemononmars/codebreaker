@@ -1,81 +1,63 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { uploadProfilePicture } from './supabase';
 
-// Mock the supabase client dependency
 vi.mock('@supabase/supabase-js', () => {
-	const mockUpload = vi.fn().mockResolvedValue({ error: null });
-	const mockGetPublicUrl = vi
-		.fn()
-		.mockReturnValue({ data: { publicUrl: 'https://mock.url/image.jpg' } });
-	const mockFrom = vi.fn().mockReturnValue({
-		upload: mockUpload,
-		getPublicUrl: mockGetPublicUrl
-	});
-	const mockCreateClient = vi.fn().mockReturnValue({
-		storage: {
-			from: mockFrom
-		},
-		auth: {},
-		from: vi.fn()
-	});
-
-	return { createClient: mockCreateClient };
+  return {
+    createClient: vi.fn().mockReturnValue({
+      auth: {},
+      storage: {
+        from: vi.fn()
+      }
+    })
+  };
 });
 
-describe('uploadProfilePicture', () => {
-	const mockConsoleError = vi.spyOn(console, 'error').mockImplementation(() => {
-		// Do nothing
-	});
+import { getImageURL, getPuzzleImageURL, supabaseClient } from './supabase';
 
-	beforeEach(() => {
-		mockConsoleError.mockClear();
-	});
+describe('supabase utils', () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+  });
 
-	it('should return null if file extension is missing', async () => {
-		const file = new File(['dummy content'], 'no-extension');
-		const result = await uploadProfilePicture('user-123', file);
-		expect(result).toBeNull();
-		expect(mockConsoleError).toHaveBeenCalledWith(
-			'Error uploading profile picture:',
-			expect.any(Error)
-		);
-		expect(mockConsoleError.mock.calls[0][1].message).toBe('Invalid file extension');
-	});
+  describe('getImageURL', () => {
+    it('returns the public URL when successful', () => {
+      const getPublicUrlMock = vi.fn().mockReturnValue({ data: { publicUrl: 'https://example.com/mocked_url' } });
+      const fromMock = vi.mocked(supabaseClient.storage.from).mockReturnValue({
+        getPublicUrl: getPublicUrlMock,
+      } as any);
 
-	it('should return null if file extension is invalid', async () => {
-		const file = new File(['dummy content'], 'malicious.php');
-		const result = await uploadProfilePicture('user-123', file);
-		expect(result).toBeNull();
-		expect(mockConsoleError).toHaveBeenCalledWith(
-			'Error uploading profile picture:',
-			expect.any(Error)
-		);
-		expect(mockConsoleError.mock.calls[0][1].message).toBe('Invalid file extension');
-	});
+      const url = getImageURL('puzzles', 'my-image.png');
 
-	it('should return null if userId is empty after sanitization', async () => {
-		const file = new File(['dummy content'], 'image.jpg');
-		const result = await uploadProfilePicture('../..', file); // "../.." sanitizes to ""
-		expect(result).toBeNull();
-		expect(mockConsoleError).toHaveBeenCalledWith(
-			'Error uploading profile picture:',
-			expect.any(Error)
-		);
-		expect(mockConsoleError.mock.calls[0][1].message).toBe('Invalid user ID');
-	});
+      expect(fromMock).toHaveBeenCalledWith('puzzles');
+      expect(getPublicUrlMock).toHaveBeenCalledWith('my-image.png');
+      expect(url).toBe('https://example.com/mocked_url');
+    });
 
-	it('should successfully upload if inputs are valid', async () => {
-		const file = new File(['dummy content'], 'image.png');
-		const result = await uploadProfilePicture('user-123', file);
-		expect(result).toBe('https://mock.url/image.jpg');
-		expect(mockConsoleError).not.toHaveBeenCalled();
-	});
+    it('returns undefined when data is missing', () => {
+      const getPublicUrlMock = vi.fn().mockReturnValue({ data: null });
+      const fromMock = vi.mocked(supabaseClient.storage.from).mockReturnValue({
+        getPublicUrl: getPublicUrlMock,
+      } as any);
 
-	it('should successfully upload if userId contains invalid characters but is still non-empty', async () => {
-		const file = new File(['dummy content'], 'valid.png');
-		// "user/123" sanitizes to "user123"
-		const result = await uploadProfilePicture('user/123', file);
-		expect(result).toBe('https://mock.url/image.jpg');
-		expect(mockConsoleError).not.toHaveBeenCalled();
-	});
+      const url = getImageURL('events', 'missing.png');
+
+      expect(fromMock).toHaveBeenCalledWith('events');
+      expect(getPublicUrlMock).toHaveBeenCalledWith('missing.png');
+      expect(url).toBeUndefined();
+    });
+  });
+
+  describe('getPuzzleImageURL', () => {
+    it('returns the correct public URL for a puzzle image', () => {
+      const getPublicUrlMock = vi.fn().mockReturnValue({ data: { publicUrl: 'https://example.com/mocked_puzzle_url' } });
+      const fromMock = vi.mocked(supabaseClient.storage.from).mockReturnValue({
+        getPublicUrl: getPublicUrlMock,
+      } as any);
+
+      const url = getPuzzleImageURL('typeA', 'fileB.png');
+
+      expect(fromMock).toHaveBeenCalledWith('puzzles');
+      expect(getPublicUrlMock).toHaveBeenCalledWith('typeA/fileB.png');
+      expect(url).toBe('https://example.com/mocked_puzzle_url');
+    });
+  });
 });

@@ -1,4 +1,5 @@
 import { from } from '$lib/supabase';
+import { isAllowedTable, PUBLIC_INSERT_TABLES, publicError } from '$lib/apiGuards';
 import type { RequestHandler } from '@sveltejs/kit';
 
 /**
@@ -11,10 +12,11 @@ export const post: RequestHandler = async ({ request }) => {
 		const { type, data: puzzleData } = body;
 
 		if (!type || !puzzleData) {
-			return {
-				status: 400,
-				body: { error: 'Missing type or data' }
-			};
+			return publicError(400, 'Missing type or data');
+		}
+
+		if (!isAllowedTable(type, PUBLIC_INSERT_TABLES)) {
+			return publicError(404, 'Not found');
 		}
 
 		// Insert into the specified table (e.g. 'crossword', 'wordsearch', etc.)
@@ -22,10 +24,7 @@ export const post: RequestHandler = async ({ request }) => {
 
 		if (error) {
 			console.error(`API Error inserting to ${type}:`, error);
-			return {
-				status: 500,
-				body: error
-			};
+			return publicError();
 		}
 
 		return {
@@ -34,9 +33,6 @@ export const post: RequestHandler = async ({ request }) => {
 		};
 	} catch (error) {
 		console.error('API Error:', error);
-		return {
-			status: 500,
-			body: { error: 'Internal Server Error' }
-		};
+		return publicError();
 	}
 };

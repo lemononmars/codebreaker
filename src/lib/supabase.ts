@@ -45,6 +45,12 @@ export async function uploadProfilePicture(userId: string, file: File): Promise<
 			throw new Error('Invalid user ID');
 		}
 
+		// Validate mime type
+		const allowedTypes = new Set(['image/jpeg', 'image/png', 'image/webp', 'image/gif']);
+		if (!allowedTypes.has(file.type)) {
+			throw new Error('Unsupported image type');
+		}
+
 		// Validate and sanitize file extension
 		const fileExt = file.name.split('.').pop()?.toLowerCase();
 		const allowedExtensions = ['jpg', 'jpeg', 'png', 'gif', 'webp'];

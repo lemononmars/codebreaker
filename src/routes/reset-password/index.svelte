@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { auth } from '$lib/supabase';
+	import { authRedirectUrl } from '$lib/authRedirect';
 
 	let email = '';
 	let loading = false;
@@ -13,7 +14,7 @@
 			success = false;
 
 			const { error } = await auth.resetPasswordForEmail(email, {
-				redirectTo: `${window.location.origin}/update-password`
+				redirectTo: authRedirectUrl('/update-password')
 			});
 
 			if (error) throw error;
