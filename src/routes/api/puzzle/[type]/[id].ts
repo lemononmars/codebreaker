@@ -1,4 +1,5 @@
 import { from } from '$lib/supabase';
+import { isAllowedTable, PUBLIC_TABLES, publicError } from '$lib/apiGuards';
 
 /**
  * Returns tye puzzle package to be displayed
@@ -8,18 +9,16 @@ import { from } from '$lib/supabase';
  */
 /** @type {import('/api/puzzle/[type]/[id].ts').RequestHandler} */
 export async function get({ params }) {
-
 	const { type, id } = params;
+	if (!isAllowedTable(type, PUBLIC_TABLES)) {
+		return publicError(404, 'Not found');
+	}
+
 	const field = (type === 'crossword' || type === 'missingvowels' || type === 'alphabet') ? 'uid' : 'id';
 	const { data, error } = await from(type).select('*').eq(field, id);
 
-	console.log(data)
 	if (error)
-		return {
-			status: 500,
-			headers: { 'Content-Type': 'application/json' },
-			body: error
-		};
+		return publicError();
 
 	return {
 		status: 200,
@@ -27,7 +26,6 @@ export async function get({ params }) {
 		body: data[0]
 	};
 }
-
 
 /**
  * check the answer for the requested puzzle
@@ -37,9 +35,8 @@ export async function get({ params }) {
  */
 /** @type {import('/api/puzzle/[type]/[id].ts').RequestHandler} */
 export async function post({ params }) {
-
 	const { type, id } = params;
-	let data = [{ result: 'incorrect', hint: 'no hint for you' }]
+	const data = [{ result: 'incorrect', hint: 'no hint for you' }];
 
 	return {
 		status: 200,

@@ -1,5 +1,5 @@
 import { from } from '$lib/supabase';
-import { sendhook } from '$lib/discord'
+import { sendhook } from '$lib/discordServer'
 
 /**
  * a simple answer checker
