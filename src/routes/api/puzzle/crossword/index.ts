@@ -1,4 +1,5 @@
 import { from } from '$lib/supabase';
+import { publicError } from '$lib/apiGuards';
 import type { RequestHandler } from '@sveltejs/kit';
 
 /**
@@ -10,10 +11,8 @@ export const get: RequestHandler = async () => {
 		.order('created_at', { ascending: false });
 
 	if (error) {
-		return {
-			status: 500,
-			body: error
-		};
+		console.error('API Error loading crossword puzzles:', error);
+		return publicError();
 	}
 
 	return {
@@ -33,10 +32,7 @@ export const post: RequestHandler = async ({ request }) => {
 
 	if (error) {
 		console.error('API Error:', error);
-		return {
-			status: 500,
-			body: error
-		};
+		return publicError();
 	}
 
 	return {

@@ -1,3 +1,4 @@
+import { cryptogram } from '$lib/data/puzzles/cryptogram';
 import { from } from '$lib/supabase';
 import type { RequestHandler } from '@sveltejs/kit';
 

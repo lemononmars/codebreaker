@@ -1,45 +1,42 @@
 export const adventureLevels = [
-   {
-      level: 1,
-      code: 'start',
-      question: `
+	{
+		level: 1,
+		code: 'start',
+		question: `
             <h1 class="text-4xl mb-4">Level 1</h1>
             <p class="mb-4">Welcome to the Adventure. This is a warm-up.</p>
             <p>The password for the next level is <b>start</b>.</p>
             <p class="text-sm text-gray-500">(Type 'start' in the box below)</p>
         `,
-      answer: 'start',
-      hint: 'read the text carefully',
-      script: ''
-   },
-   {
-      level: 2,
-      code: 'start',
-      question: `
+		answer: 'start',
+		hint: 'read the text carefully'
+	},
+	{
+		level: 2,
+		code: 'start',
+		question: `
             <h1 class="text-4xl mb-4">Level 2</h1>
             <p>Sometimes what you're looking for is right in front of you.</p>
             <p>Password: <span class="bg-black text-black select-all selection:bg-white selection:text-black px-2">invisible</span></p>
         `,
-      answer: 'invisible',
-      hint: 'highlight the text',
-      script: ''
-   },
-   {
-      level: 3,
-      code: 'invisible',
-      question: `
+		answer: 'invisible',
+		hint: 'highlight the text'
+	},
+	{
+		level: 3,
+		code: 'invisible',
+		question: `
             <h1 class="text-4xl mb-4">Level 3</h1>
             <p>Developers often leave notes for themselves.</p>
             <!-- Password: inspector -->
         `,
-      answer: 'inspector',
-      hint: 'inspect element (F12)',
-      script: ''
-   },
-   {
-      level: 4,
-      code: 'inspector',
-      question: `
+		answer: 'inspector',
+		hint: 'inspect element (F12)'
+	},
+	{
+		level: 4,
+		code: 'inspector',
+		question: `
             <h1 class="text-4xl mb-4">Level 4</h1>
             <p>Check the console for errors... or passwords.</p>
         `,
@@ -55,14 +52,13 @@ export const adventureLevels = [
             <p>Can you decode this secret message?</p>
             <p class="font-mono text-xl mt-4">U2VjcmV0</p>
         `,
-      answer: 'Secret',
-      hint: 'it is Base64 encoded',
-      script: ''
-   },
-   {
-      level: 6,
-      code: 'Secret',
-      question: `
+		answer: 'Secret',
+		hint: 'it is Base64 encoded'
+	},
+	{
+		level: 6,
+		code: 'Secret',
+		question: `
             <h1 class="text-4xl mb-4">Level 6</h1>
             <p>I've hidden the password in the metadata.</p>
         `,
@@ -102,32 +98,29 @@ export const adventureLevels = [
             <h1 class="text-4xl mb-4">Level 9</h1>
             <p class="text-xl">.elcitra na ton si sihT</p>
         `,
-      answer: 'reverse',
-      hint: 'reverse the text',
-      script: ''
-   },
-   {
-      level: 10,
-      code: 'reverse',
-      question: `
+		answer: 'reverse',
+		hint: 'reverse the text'
+	},
+	{
+		level: 10,
+		code: 'reverse',
+		question: `
             <h1 class="text-4xl mb-4">Level 10</h1>
             <p>The end is near.</p>
             <p class="text-xs text-base-300">final</p>
         `,
-      answer: 'final',
-      hint: 'it is very small',
-      script: ''
-   },
-   {
-      level: 11,
-      code: 'final',
-      question: `
+		answer: 'final',
+		hint: 'it is very small'
+	},
+	{
+		level: 11,
+		code: 'final',
+		question: `
             <h1 class="text-6xl mb-8 text-primary">Congratulations!</h1>
             <p class="text-2xl">You have completed all available levels.</p>
             <p class="mt-8 text-xl animate-pulse">More levels coming soon...</p>
         `,
-      answer: '', // No answer, end state
-      hint: '',
-      script: ''
-   }
+		answer: '', // No answer, end state
+		hint: ''
+	}
 ];

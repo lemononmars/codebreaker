@@ -1,5 +1,5 @@
 import type {Message} from '@line/bot-sdk'
-import {reply} from '$lib/lineapi'
+import {reply} from '$lib/lineapiServer'
 
 const hints = [
 	`นับว่ามี ม.ม้า กี่ตัว คำตอบอยู่ในรูป "จำนวน + ม"`,
@@ -60,8 +60,12 @@ export async function post({ request }) {
 			}
 		]
 
-		reply(replyToken, replyMessage)
-		return
+		await reply(replyToken, replyMessage)
+		return {
+			status: 200,
+			headers: { 'Content-Type': 'application/json' },
+			body: {}
+		};
 	}
 	
 	if (event.type === "message") {
@@ -113,7 +117,7 @@ export async function post({ request }) {
 					text: `ลองใหม่ พิมพ์ 'ใบ้#' เพื่อขอคำใบ้ของข้อ #`
 				}
 		}
-		reply(replyToken, replyMessage)
+		await reply(replyToken, replyMessage)
 	}
 
 	return {

@@ -1,18 +1,20 @@
-const months = ['มกราคม', 'กุมภาพันธ์', 'มีนาคม', ' เมษายน', 'พฤษภาคม', 'มิถุนายน', 'กรกฎาคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม', 'พฤศจิกายน', 'ธันวาคม']
+const thaiDateFormatter = new Intl.DateTimeFormat('th-TH-u-ca-buddhist', {
+	timeZone: 'Asia/Bangkok',
+	day: 'numeric',
+	month: 'long',
+	year: 'numeric'
+});
 
-/*
-* convert a date string of the form YYYY-MM-DD to Thai date string
-*/
 export function dateToThaiString(date: string) {
-   const year = date.slice(0,4)
-   const month = parseInt(date.slice(5,7))
-   const day = parseInt(date.slice(8,10))
+	const parsed = new Date(date);
 
-   return `${day} ${months[month-1]} ${year}`
+	if (Number.isNaN(parsed.getTime())) {
+		return date;
+	}
+
+	return thaiDateFormatter.format(parsed);
 }
 
 export function todayDateThaiString() {
-   // GMT+7 Bangkok time 
-   const d = new Date( Date.now() + 7 * 60 * 60 * 1000 )
-   return dateToThaiString(d.toISOString())
+	return dateToThaiString(new Date(Date.now()).toISOString());
 }
