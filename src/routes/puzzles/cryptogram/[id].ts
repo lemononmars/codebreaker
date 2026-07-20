@@ -1,23 +1,28 @@
-import {cryptogram} from '$lib/data/puzzles/cryptogram'
+import { from } from '$lib/supabase';
+import type { RequestHandler } from '@sveltejs/kit';
 
-/** @type {import('./__types/alphabet/[id]').RequestHandler} */
-export async function get({ params }: { params: { id: number } }) {
-   let {id} = params
-   // TODO: make it fetch, await, etc?
-  id = Number(id)
-  const total: number = Object.keys(cryptogram).length
-  id = (id+total-1)%total + 1
+export const get: RequestHandler = async ({ params }) => {
+	const { id } = params;
 
-   const content = cryptogram.filter(n => n.id == id)
-  
-   if (content.length > 0) {
-     return {
-       body: { content: content[0]}
-     };
-   }
-  
-   return {
-     status: 404
-   };
- }
+	const { data, error } = await from('cryptogram')
+		.select('*')
+		.eq('id', id)
+		.single();
 
+	if (error || !data) {
+		console.error('Supabase error loading cryptogram puzzle:', error);
+		return {
+			status: 404
+		};
+	}
+
+	const content = {
+		...data,
+		type: 'cryptogram',
+		date: data.created_at
+	};
+
+	return {
+		body: { content }
+	};
+};
