@@ -1,7 +1,7 @@
 import { events } from '$lib/data/events';
+import type { RequestHandler } from '@sveltejs/kit';
 
-/** @type {import('./__types/[id]').RequestHandler} */
-export async function get({ params }) {
+export const get: RequestHandler = async ({ params }) => {
 	const { id } = params;
 	const content = events.find((n) => n.id == id);
 

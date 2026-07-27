@@ -91,6 +91,11 @@
 		}
 	}
 
+	function handleImageLoad(e: Event) {
+		const img = e.currentTarget as HTMLImageElement;
+		imageAspectRatio = img.naturalWidth / img.naturalHeight;
+	}
+
 	function startSetup() {
 		setupMode = true;
 		showResults = false;
@@ -103,7 +108,7 @@
 	}
 
 	let showResults = false;
-	let sessionStats: { topic: string; revealedCount: number; totalCount: number; winner?: string }[] = [];
+	let sessionStats: { topic: string; solution: string; revealedCount: number; totalCount: number; winner?: string }[] = [];
 
 	function startGame() {
 		const invalid = puzzles.find(p => !p.imageSrc);
@@ -517,7 +522,7 @@
 										alt="Quiz" 
 										class="block {isFullscreen ? 'w-full h-full' : 'max-w-full max-h-[70vh] w-auto h-auto'} select-none pointer-events-none" 
 										id="quiz-image" 
-										on:load={(e) => imageAspectRatio = e.currentTarget.naturalWidth / e.currentTarget.naturalHeight}
+										on:load={handleImageLoad}
 									/>
 								{/if}
 								

@@ -1,7 +1,7 @@
 import { adventureLevels } from '$lib/data/adventure_data';
+import type { RequestHandler } from '@sveltejs/kit';
 
-/** @type {import('./[answer]').RequestHandler} */
-export async function get({ params }) {
+export const get: RequestHandler = async ({ params }) => {
 
    const level = parseInt(params.level);
    const answer = params.answer;

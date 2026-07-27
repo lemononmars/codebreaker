@@ -1,10 +1,9 @@
 import { from } from '$lib/supabase';
 import type { Leaderboard } from '$lib/interfaces'
 import { sendhook } from '$lib/discordServer'
-/**
- * @type {import('@sveltejs/kit').RequestHandler}
- */
-export async function post({ request }) {
+import type { RequestHandler } from '@sveltejs/kit';
+
+export const post: RequestHandler = async ({ request }) => {
    let submission: Leaderboard = await request.json()
    const { name, puzzle_type, puzzle_id, score } = submission
 

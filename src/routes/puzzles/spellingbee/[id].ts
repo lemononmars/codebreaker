@@ -1,8 +1,8 @@
 import {getPuzzle, numPuzzles} from '$lib/data/puzzles/spellingbee'
 // import { getPuzzle } from '../../api'
+import type { RequestHandler } from '@sveltejs/kit';
 
-/** @type {import('./__types/[id]').RequestHandler} */
-export async function get({params}) {
+export const get: RequestHandler = async ({params}) => {
   const {id} = params
   if(!id || parseInt(id) > numPuzzles) {    
     const newID = Math.floor(Math.random()*numPuzzles)

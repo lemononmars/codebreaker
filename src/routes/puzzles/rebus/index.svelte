@@ -1,15 +1,15 @@
-<script context=module lang=ts>
-   export async function load({fetch}) {
+<script context="module" lang="ts">
+	import type { Load } from '@sveltejs/kit';
+	export const load: Load = async ({ fetch }) => {
 
-      const res = await fetch('/api/puzzle/rebus')
-      const puzzles = await res.json()
-      return {
-         props: {
-            puzzles
-         }
-      }
-   }
-
+		const res = await fetch('/api/puzzle/rebus')
+		const puzzles = await res.json()
+		return {
+			props: {
+				puzzles
+			}
+		}
+	};
 </script>
 
 <script lang=ts>

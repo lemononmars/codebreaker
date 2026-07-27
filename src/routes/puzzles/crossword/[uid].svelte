@@ -1,6 +1,6 @@
 <script context="module" lang="ts">
-	/** @type {import('@sveltejs/kit').Load} */
-	export async function load({ fetch, params }) {
+	import type { Load } from '@sveltejs/kit';
+	export const load: Load = async ({ fetch, params }) => {
 		const { uid } = params;
 		const res = await fetch(`/api/puzzle/crossword/${uid}`);
 		const data = await res.json();
@@ -14,7 +14,7 @@
 		return {
 			props: { content }
 		};
-	}
+	};
 </script>
 
 <script lang="ts">

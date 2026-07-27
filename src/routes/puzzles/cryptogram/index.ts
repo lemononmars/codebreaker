@@ -1,7 +1,7 @@
 import {cryptogram} from '$lib/data/puzzles/cryptogram'
+import type { RequestHandler } from '@sveltejs/kit';
 
-/** @type {import('./__types/puzzles/rebus/index.ts').RequestHandler} */
-export async function get({ url }) {
+export const get: RequestHandler = async ({ url }) => {
    const tag = url.searchParams.get('tag')
    if(tag) {
       return {

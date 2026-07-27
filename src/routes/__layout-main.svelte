@@ -1,4 +1,5 @@
-<script>
+<script lang="ts">
+	declare let VANTA: any;
    import "../app.css";
    import Navbar from "$lib/components/Navbar.svelte";
    import { navigating } from '$app/stores';

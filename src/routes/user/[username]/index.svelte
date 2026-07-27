@@ -1,5 +1,6 @@
 <script lang="ts" context="module">
-	export async function load({ params, fetch }) {
+	import type { Load } from '@sveltejs/kit';
+	export const load: Load = async ({ params, fetch }) => {
 		const username = params.username;
 
 		try {
@@ -24,8 +25,9 @@
 				error: new Error(`User not found: ${username}`)
 			};
 		}
-	}
+	};
 </script>
+
 
 <script lang="ts">
 	export let userProfile: any;

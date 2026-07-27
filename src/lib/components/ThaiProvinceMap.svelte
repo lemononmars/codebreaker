@@ -180,7 +180,7 @@
 			return;
 		}
 		provinceQuestion = provinceLeft.pop() || '';
-		provinceQuestionTH = provinceDict[provinceQuestion.toLowerCase()] || '';
+		provinceQuestionTH = (provinceDict as any)[provinceQuestion.toLowerCase()] || '';
 		startHintTimer();
 	}
 
@@ -264,7 +264,7 @@
 		} else {
 			// Incorrect!
 			numTries++;
-			const clickedTH = provinceDict[clickedLower] || clickedLower;
+			const clickedTH = (provinceDict as any)[clickedLower] || clickedLower;
 			sessionIncorrect = [...sessionIncorrect, { 
 				target: provinceQuestion, 
 				targetTH: provinceQuestionTH, 
@@ -432,7 +432,7 @@
 				if (center) {
 					return {
 						name: name,
-						nameTH: provinceDict[lower] || name,
+						nameTH: (provinceDict as any)[lower] || name,
 						x: center.x,
 						y: center.y
 					};
@@ -459,7 +459,7 @@
 				if (solvedProvinces.has(clickedLower)) return;
 
 				selectedProvince = nodeID.slice(nodeID.indexOf('_', 6) + 1);
-				selectedProvinceTH = provinceDict[clickedLower] || selectedProvince;
+				selectedProvinceTH = (provinceDict as any)[clickedLower] || selectedProvince;
 				lastClickedProvinceTH = selectedProvinceTH;
 
 				numTotalTries++;

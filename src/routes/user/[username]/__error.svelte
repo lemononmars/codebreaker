@@ -1,18 +1,21 @@
-<script context="module">
-	export function load({ error, status }) {
+<script lang="ts" context="module">
+	import type { Load } from '@sveltejs/kit';
+	export const load: Load = ({ error, status }) => {
 		return {
 			props: {
 				error,
 				status
 			}
 		};
-	}
+	};
 </script>
 
-<script>
+<script lang="ts">
 	import { UserXIcon, SearchIcon } from 'svelte-feather-icons';
-	export let error, status;
+	export let error: Error;
+	export let status: number;
 </script>
+
 
 <svelte:head>
 	<title>User Not Found | Code Breaker</title>

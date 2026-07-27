@@ -1,14 +1,8 @@
 import { from } from '$lib/supabase';
 import { isAllowedTable, PUBLIC_TABLES, publicError } from '$lib/apiGuards';
+import type { RequestHandler } from '@sveltejs/kit';
 
-/**
- * Returns tye puzzle package to be displayed
- *
- * @param {null}
- * @return {object} array of objects
- */
-/** @type {import('/api/puzzle/[type]/[id].ts').RequestHandler} */
-export async function get({ params }) {
+export const get: RequestHandler = async ({ params }) => {
 	const { type, id } = params;
 	if (!isAllowedTable(type, PUBLIC_TABLES)) {
 		return publicError(404, 'Not found');
@@ -33,8 +27,7 @@ export async function get({ params }) {
  * @param {null}
  * @return {object} array of objects
  */
-/** @type {import('/api/puzzle/[type]/[id].ts').RequestHandler} */
-export async function post({ params }) {
+export const post: RequestHandler = async ({ params }) => {
 	const { type, id } = params;
 	const data = [{ result: 'incorrect', hint: 'no hint for you' }];
 

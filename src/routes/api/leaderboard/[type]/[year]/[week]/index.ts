@@ -1,14 +1,7 @@
 import {from} from '$lib/supabase'
+import type { RequestHandler } from '@sveltejs/kit';
 
-/**
- * grab info from leaderboards
- *
- * @param {null}
- * @return {object} array of objects
- */
-/** @type {import('/api/leaderboard/[type].ts').RequestHandler} */
-export async function get({ params }) {
-
+export const get: RequestHandler = async ({ params }) => {
    const {type, year, week} = params
    const puzzle_id = year + (('0' + week).slice(-2))
 	const { data, error } = await from('leaderboard').select('*').eq('puzzle_type', type).eq('puzzle_id', puzzle_id);
@@ -24,7 +17,7 @@ export async function get({ params }) {
 	return {
 		status: 200,
 		headers: { 'Content-Type': 'application/json' },
-		body: data
+		body: data as any
 	};
 }
 

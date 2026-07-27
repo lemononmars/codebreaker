@@ -374,11 +374,17 @@
 
 				acrossResults = aResList.filter((word) => {
 					const chars = splitWord(word);
-					return chars.every((char, i) => !aConstraints[i] || aConstraints[i].has(char));
+					return chars.every((char, i) => {
+						const constraint = aConstraints[i];
+						return !constraint || constraint.has(char);
+					});
 				});
 				downResults = dResList.filter((word) => {
 					const chars = splitWord(word);
-					return chars.every((char, i) => !dConstraints[i] || dConstraints[i].has(char));
+					return chars.every((char, i) => {
+						const constraint = dConstraints[i];
+						return !constraint || constraint.has(char);
+					});
 				});
 			} else {
 				// Simple mode: Only check intersection at current cell

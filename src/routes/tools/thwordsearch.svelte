@@ -58,7 +58,7 @@
 	$: filteredResults =
 		letter === ''
 			? queryResults.results
-			: queryResults.results.filter((r) => getFirstLetter(r) == letter);
+			: queryResults.results.filter((r: string) => getFirstLetter(r) == letter);
 	$: currentQueryResults = filteredResults.slice(
 		start,
 		start + Math.min(100, queryResults.count - start)

@@ -1,13 +1,8 @@
 import { from } from '$lib/supabase';
 import { isAllowedTable, PUBLIC_INSERT_TABLES, PUBLIC_TABLES, publicError } from '$lib/apiGuards';
+import type { RequestHandler } from '@sveltejs/kit';
 
-/**
- *
- * @param {null}
- * @return {object} array of objects
- */
-/** @type {import('/api/puzzle/[type]/[id].ts').RequestHandler} */
-export async function get({ params }) {
+export const get: RequestHandler = async ({ params }) => {
 
 	const { type } = params;
 	if (!isAllowedTable(type, PUBLIC_TABLES)) {
@@ -26,8 +21,7 @@ export async function get({ params }) {
 	};
 }
 
-/** @type {import('@sveltejs/kit').RequestHandler} */
-export async function post({ params, request }) {
+export const post: RequestHandler = async ({ params, request }) => {
 	const { type } = params;
 	const body = await request.json();
 	if (!isAllowedTable(type, PUBLIC_INSERT_TABLES)) {
@@ -43,6 +37,6 @@ export async function post({ params, request }) {
 
 	return {
 		status: 201,
-		body: data[0]
+		body: data ? data[0] : null
 	};
 }

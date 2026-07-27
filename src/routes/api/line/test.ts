@@ -1,5 +1,6 @@
 import type {Message} from '@line/bot-sdk'
 import {reply} from '$lib/lineapiServer'
+import type { RequestHandler } from '@sveltejs/kit';
 
 const hints = [
 	`นับว่ามี ม.ม้า กี่ตัว คำตอบอยู่ในรูป "จำนวน + ม"`,
@@ -21,10 +22,7 @@ const imgUrlPrefix = `https://raw.githubusercontent.com/lemononmars/codebreaker/
  * @param {null}
  * @return {object} array of objects
  */
-/**
- * @type {import('@sveltejs/kit').RequestHandler}
- */
-export async function post({ request }) {
+export const post: RequestHandler = async ({ request }) => {
 
 	let data = await request.json()
 	if(!data || !data.events || data.events.length == 0)

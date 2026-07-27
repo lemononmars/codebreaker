@@ -1,12 +1,12 @@
 <script context="module" lang="ts">
-	/** @type {import('@sveltejs/kit').Load} */
-	export async function load({ fetch }) {
+	import type { Load } from '@sveltejs/kit';
+	export const load: Load = async ({ fetch }) => {
 		const res = await fetch('/api/puzzle/crossword');
 		const data = await res.json();
 
-		const crosswords = data
-			.filter((d) => d.is_public !== false)
-			.map((d) => ({
+		const crosswords = (data || [])
+			.filter((d: any) => d.is_public !== false)
+			.map((d: any) => ({
 				...d,
 				type: 'crossword',
 				date: d.created_at
@@ -15,7 +15,7 @@
 		return {
 			props: { crosswords }
 		};
-	}
+	};
 </script>
 
 <script lang="ts">

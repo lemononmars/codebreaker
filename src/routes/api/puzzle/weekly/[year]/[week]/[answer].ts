@@ -1,15 +1,8 @@
 import { from } from '$lib/supabase';
 import { sendhook } from '$lib/discordServer'
+import type { RequestHandler } from '@sveltejs/kit';
 
-/**
- * a simple answer checker
- * answers are stored in the database
- *
- * @param {null}
- * @return {object} array of objects
- */
-/** @type {import('/api/puzzle/weekly/[year]/[week]/[answer].ts').RequestHandler} */
-export async function get({ params }) {
+export const get: RequestHandler = async ({ params }) => {
 
    const { year, week, answer } = params;
 

@@ -1,7 +1,7 @@
 import {events} from '$lib/data/events'
+import type { RequestHandler } from '@sveltejs/kit';
 
-/** @type {import('./__types/events/index.ts').RequestHandler} */
-export async function get({ url }) {
+export const get: RequestHandler = async ({ url }) => {
    const tag = url.searchParams.get('tag')
    if(tag) {
       return {

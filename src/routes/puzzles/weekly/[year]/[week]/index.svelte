@@ -2,7 +2,7 @@
    import {username} from '$lib/store'
    import {XCircleIcon, KeyIcon, Link2Icon, ChevronLeftIcon, ChevronRightIcon} from 'svelte-feather-icons'
    import { getPuzzleImageURL } from '$lib/supabase';
-   export let year: number, week: number, title: string
+   export let year: number, week: number, title: string, hasAnswer: boolean = true, answerGuide: string = ''
    
    let answer: string = ''
    let logs: string[] = []
@@ -95,7 +95,7 @@
       logs = []
       isFinished = false
    }
-   function focusOnMount(node) {
+   function focusOnMount(node: HTMLElement) {
 		node.focus();
 	}
 </script>
@@ -135,8 +135,14 @@
          {/if}
       {/key}
    </div>
-   <div class="sticky top-0 lg:top-20 flex flex-col z-20 bg-info-content h-1/2 lg:h-auto">
+   {#if hasAnswer}
+   <div class="sticky top-0 lg:top-20 flex flex-col items-center justify-center z-20 bg-info-content h-1/2 lg:h-auto py-1">
       {#if !isFinished}
+         {#if answerGuide}
+            <div class="text-sm font-medium opacity-90 my-1 text-center bg-base-200/90 px-3 py-1 rounded-lg border border-base-300 shadow-sm">
+               {answerGuide}
+            </div>
+         {/if}
          <div class="flex flex-row flex-wrap justify-center my-2 gap-4 w-full px-4">
             <div class="input-group w-80" class:wiggle={isWiggle}>
                <div class="btn btn-accent no-animation"><KeyIcon size=20/></div>
@@ -165,6 +171,7 @@
          {/each}
       </div>
    </div>
+   {/if}
 </div>
 
 <!-- Put this part before </body> tag -->

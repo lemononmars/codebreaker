@@ -46,7 +46,7 @@
       solved = false
    }
 
-   function focusOnMount(node) {
+   function focusOnMount(node: HTMLElement) {
 		node.focus();
 	}
 </script>

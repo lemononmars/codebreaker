@@ -1,7 +1,8 @@
 import { from } from '$lib/supabase';
 import type { Leaderboard } from '$lib/interfaces';
+import type { RequestHandler } from '@sveltejs/kit';
 
-export async function get({ params }) {
+export const get: RequestHandler = async ({ params }) => {
    const { year } = params;
    const y = parseInt(year);
    const { data, error } = await from('leaderboard')

@@ -36,7 +36,7 @@
                {#each puzzles as p}
                   <tr>
                      <td>
-                        <a href="/puzzles/alphabet/{p.uid}">
+                        <a href="/puzzles/alphabet/{p.id}">
                            <p class="text-primary font-bold hover:underline">{p.title}</p>
                         </a>
                      </td>
