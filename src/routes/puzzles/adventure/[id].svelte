@@ -28,18 +28,55 @@
 	let loading = true;
 	let isLocked = false;
 	let showModal = false;
-	let cleanupScript = '';
+
+	// Level-specific setup and cleanup mappings
+	function executeSetup(lvl: number) {
+		if (!browser) return;
+		switch (lvl) {
+			case 4:
+				console.log("Password: debug");
+				break;
+			case 6: {
+				const meta = document.createElement("meta");
+				meta.name = "password";
+				meta.content = "meta";
+				document.head.appendChild(meta);
+				break;
+			}
+			case 7:
+				document.cookie = "password=biscuit; path=/";
+				break;
+			case 8:
+				document.title = "Password: title";
+				break;
+		}
+	}
+
+	function executeCleanup(lvl: number) {
+		if (!browser) return;
+		switch (lvl) {
+			case 6: {
+				const meta = document.querySelector("meta[name=\"password\"]");
+				if (meta) meta.remove();
+				break;
+			}
+			case 7:
+				document.cookie = "password=; path=/; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+				break;
+			case 8:
+				document.title = "Code Breaker | Adventure";
+				break;
+		}
+	}
 
 	// Cleanup on destroy
 	onDestroy(() => {
-		if (browser && cleanupScript) {
-			try {
-				new Function(cleanupScript)();
-			} catch (e) {
-				console.error('Cleanup script error:', e);
-			}
+		if (browser && level) {
+			executeCleanup(level);
 		}
 	});
+
+	let activeLevelForCleanup: number | null = null;
 
 	// Load level data
 	$: if (browser && level && code) {
@@ -55,14 +92,8 @@
 	async function loadLevelData(lvl: number, c: string) {
 		if (!browser) return;
 
-		// Run previous cleanup if exists
-		if (cleanupScript) {
-			try {
-				new Function(cleanupScript)();
-			} catch (e) {
-				console.error('Cleanup script error:', e);
-			}
-			cleanupScript = '';
+		if (activeLevelForCleanup && activeLevelForCleanup !== lvl) {
+			executeCleanup(activeLevelForCleanup);
 		}
 
 		loading = true;
@@ -78,16 +109,8 @@
 		if (data.result !== 'correct') {
 			isLocked = true;
 		} else {
-			if (data.script) {
-				try {
-					new Function(data.script)();
-				} catch (e) {
-					console.error('Puzzle script error:', e);
-				}
-			}
-			if (data.cleanup) {
-				cleanupScript = data.cleanup;
-			}
+			executeSetup(lvl);
+			activeLevelForCleanup = lvl;
 		}
 	}
 
