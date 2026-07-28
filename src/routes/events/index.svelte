@@ -1,48 +1,31 @@
 <script lang="ts">
-	import { getImageURL } from '$lib/supabase';
-	import { dateToThaiString } from '$lib/utils/date';
+	import EventCard from '$lib/components/EventCard.svelte';
 	import type { IEvent } from '$lib/interfaces';
 
-	export let events: IEvent[];
+	export let events: IEvent[] = [];
 </script>
 
 <svelte:head>
 	<title>Code Breaker | Events</title>
 </svelte:head>
 
-<div class="container mx-auto px-4 pt-8">
-	<h1 class="text-4xl font-bold text-center mb-8 tracking-tight">Events</h1>
-</div>
+<div class="container mx-auto px-4 pt-6 sm:pt-12 pb-24 max-w-5xl">
+	<div class="text-center mb-8">
+		<h1 class="text-3xl lg:text-5xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-teal-400">
+			Events & Contests
+		</h1>
+		<p class="text-slate-400 text-sm sm:text-base mt-2">กิจกรรมและการแข่งขันถอดรหัสปริศนาทั้งหมด</p>
+	</div>
 
-<div class="container mx-auto px-4 pb-12">
-	<div class="grid md:grid-cols-2 gap-6">
+	<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
 		{#each events as e}
-			<a
-				href="/events/{e.redirect || e.id}"
-				class="card bg-neutral text-neutral-content shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 block h-full"
-			>
-				<div class="card-body flex flex-row items-center gap-6 p-6">
-					<div class="avatar placeholder">
-						<div class="w-24 h-24 rounded-xl bg-base-100 p-2 mask mask-squircle shadow-inner">
-							<img
-								src={e.image.startsWith('http') ? e.image : getImageURL('events', e.image)}
-								class="object-contain w-full h-full"
-								alt={e.title}
-							/>
-						</div>
-					</div>
-					<div class="flex flex-col gap-1 w-full">
-						<div class="flex justify-between items-baseline">
-							<h2 class="card-title text-2xl font-bold capitalize tracking-wide text-primary">
-								{e.title}
-							</h2>
-						</div>
-						<p class="text-base font-medium opacity-80 leading-relaxed line-clamp-2">
-							{dateToThaiString(e.date)}
-						</p>
-					</div>
-				</div>
-			</a>
+			<EventCard
+				id={e.id}
+				title={e.title}
+				date={e.date}
+				image={e.image}
+				redirect={e.redirect}
+			/>
 		{/each}
 	</div>
 </div>

@@ -1,263 +1,274 @@
-<script lang=ts>
+<script lang="ts">
    import { goto } from '$app/navigation';
+   import type { ISpellingBee } from '$lib/interfaces';
+   import { numPuzzles } from '$lib/data/puzzles/spellingbee';
+   import { search, isUpper, isLower, getSubWords } from '$lib/utils/thaiwords';
+   import { XCircleIcon, RefreshCwIcon, CheckCircleIcon } from 'svelte-feather-icons';
+   import { flip } from 'svelte/animate';
 
-   import type {ISpellingBee} from '$lib/interfaces'
-   import { getRandomPuzzle } from '$lib/data/puzzles/spellingbee';
-   import {search, isUpper, isLower, getSubWords} from '$lib/utils/thaiwords'
-   import {XCircleIcon} from 'svelte-feather-icons'
+   export let content: ISpellingBee;
 
-   import {fly} from 'svelte/transition'
-   import {flip} from 'svelte/animate'
-
-   export let content: ISpellingBee
-
-   let answer: string = ''
-   let pastAnswers: string[] = []
+   let answer: string = '';
+   let pastAnswers: string[] = [];
    interface SubmissionLog {
-      answer: string
-      response: string
+      answer: string;
+      response: string;
    }
-   let logs: SubmissionLog[] = []
+   let logs: SubmissionLog[] = [];
 
-   let solutions: string[] = getSubWords(content.word, false)
-   let letters = content.word.split("")
-   solutions = solutions.filter(s => s.length >= 3)
-   letters = shuffle(letters)
-   let solved = new Array(solutions.length).fill(false)
+   $: currentWord = content?.word || 'กงเกวียน';
+   $: solutions = getSubWords(currentWord, false).filter((s) => s.length >= 3);
+   $: letters = shuffle(currentWord.split(''));
+   $: solved = new Array(solutions.length).fill(false);
 
-   let openModal: boolean = false
+   let openModal: boolean = false;
 
    function checkAnswer() {
-      if(answer.length == 0)
-         return
+      if (answer.length === 0) return;
 
-      if(pastAnswers.includes(answer)) {
-         logs = [{
-            answer, response: 'duplicate'
-         }, ...logs]
-         triggleWiggle()
-         answer = ''
-         return
+      if (pastAnswers.includes(answer)) {
+         logs = [{ answer, response: 'duplicate' }, ...logs];
+         triggleWiggle();
+         answer = '';
+         return;
       }
 
-      if(answer.length < 3) {
-         logs = [{
-            answer, response: 'short'
-         }, ...logs]
-         triggleWiggle()
-         answer = ''
-         return
+      if (answer.length < 3) {
+         logs = [{ answer, response: 'short' }, ...logs];
+         triggleWiggle();
+         answer = '';
+         return;
       }
 
-      if(answer.split("").some(l => !letters.includes(l))) {
-         logs = [{
-            answer, response: 'illegal'
-         }, ...logs]
-         triggleWiggle()
-         answer = ''
-         return
+      if (answer.split('').some((l) => !letters.includes(l))) {
+         logs = [{ answer, response: 'illegal' }, ...logs];
+         triggleWiggle();
+         answer = '';
+         return;
       }
 
       if (!search(answer)) {
-         logs = [{
-            answer, response: 'wordless'
-         }, ...logs]
-         triggleWiggle()
-         answer = ''
-         return
+         logs = [{ answer, response: 'wordless' }, ...logs];
+         triggleWiggle();
+         answer = '';
+         return;
       }
 
-      pastAnswers = [...pastAnswers, answer]
-      if(solutions.includes(answer)) {
-         solved[solutions.indexOf(answer)] = true
-         logs = [{
-            answer, response: 'correct'
-         }, ...logs]
-         triggerFlash()
+      pastAnswers = [...pastAnswers, answer];
+      if (solutions.includes(answer)) {
+         const idx = solutions.indexOf(answer);
+         if (idx !== -1) solved[idx] = true;
+         logs = [{ answer, response: 'correct' }, ...logs];
+      } else {
+         logs = [{ answer, response: 'wordless' }, ...logs];
       }
 
-      if(answer.length == content.word.length) {
-         openModal = true
+      if (answer === currentWord || solved.every(Boolean)) {
+         openModal = true;
       }
 
-      answer = ''
+      answer = '';
    }
 
    function handleKeyPress(event: KeyboardEvent) {
-		if (event.code != "Enter") return;
-      if(openModal) openModal = false
-		checkAnswer()
-	}
-
-   function shuffle(s: string[]) {
-      const l = s.length
-      for(let i = 0; i < l; i ++) {
-         const newIndex = Math.floor(Math.random()*(l-i-1))
-         const temp = s[newIndex]
-         s[newIndex] = s[i]
-         s[i] = temp
+      if (event.code === 'Enter') {
+         checkAnswer();
       }
+   }
 
-      return [...s]
+   function shuffle(arr: string[]) {
+      const s = [...arr];
+      const l = s.length;
+      for (let i = 0; i < l; i++) {
+         const newIndex = Math.floor(Math.random() * (l - i - 1));
+         const temp = s[newIndex];
+         s[newIndex] = s[i];
+         s[i] = temp;
+      }
+      return s;
+   }
+
+   function handleShuffle() {
+      letters = shuffle(letters);
    }
 
    function giveUp() {
-      solved = new Array(solutions.length).fill(true)
-   }
-
-   function newPuzzle() {
-      let {id, word} = getRandomPuzzle()
-      solutions = getSubWords(word, false)
-         .filter(s => s.length >= 3)
-      
-      letters = word.split("")
-      letters = shuffle(letters)
-      
-      solved = new Array(solutions.length).fill(false)
-      logs = []
-
-      pastAnswers = []
-      goto(`/puzzles/spellingbee/${id}`, {replaceState: true})
+      solved = new Array(solutions.length).fill(true);
+      logs = [{ answer: currentWord, response: 'correct' }, ...logs];
    }
 
    function addLetter(l: string) {
-      if(!answer.includes(l))
-         answer += l
-      else if(answer[answer.length-1] === l)
-         answer = answer.slice(0, answer.length - 1)
+      answer += l;
    }
 
-   let isWiggle: boolean = false
-   let isFlashing: boolean = false
-
+   let isWiggle: boolean = false;
    function triggleWiggle() {
-      isWiggle = true
-      setTimeout(()=>isWiggle=false, 1000)
+      isWiggle = true;
+      setTimeout(() => (isWiggle = false), 600);
    }
 
-   function triggerFlash() {
-      isFlashing = true
-      setTimeout(()=>isFlashing=false, 200)
+   function newPuzzle() {
+      const nextId = Math.floor(Math.random() * numPuzzles);
+      goto(`/puzzles/spellingbee/${nextId}`);
    }
 </script>
 
-<svelte:body on:keypress={handleKeyPress}/>
+<svelte:body on:keydown={handleKeyPress} />
 
-<div class="flex flex-col gap-2 h-full lg:h-auto relative overflow-y-clip lg:overflow-y-none">
-   <div class="sticky top-0 lg:top-20 flex flex-col z-20 bg-info-content h-1/2 lg:h-auto">
-      <div class="flex flex-row flex-wrap gap-2 align-center w-full justify-center p-4">
-         {#each letters as l, idx (l)}
-            <div 
-               class="border-2 w-20 h-20 btn btn-outline transition-transform" 
-               class:btn-primary={answer.includes(l)}
-               class:scale-90={answer.includes(l)}
-               on:click={()=>addLetter(l)} 
-               in:fly={{y:10, delay:idx*300}}
-               animate:flip={{duration:500}}
-            >
-               <p class="text-6xl" class:translate-x-4={isUpper(l) || isLower(l)}
-                  class:translate-y-3={!isLower(l)}
-               >{l}</p>
+<div class="max-w-4xl mx-auto px-4 py-6 flex flex-col gap-6">
+   <div class="bg-slate-900/60 backdrop-blur-xl border border-slate-800 rounded-3xl p-6 md:p-8 shadow-2xl flex flex-col gap-6 items-center relative overflow-hidden">
+      <div class="absolute top-0 right-0 w-80 h-80 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+      <!-- Header controls -->
+      <div class="w-full flex justify-between items-center border-b border-slate-800 pb-4">
+         <div>
+            <div class="flex items-center gap-2 mb-1">
+               <span class="h-2 w-2 rounded-full bg-amber-400"></span>
+               <span class="text-xs uppercase tracking-widest text-amber-400 font-bold">Spelling Bee</span>
+            </div>
+            <h1 class="text-xl sm:text-3xl font-extrabold text-white">ปริศนาสะกดศัพท์ (#{content?.id ?? 'Random'})</h1>
+         </div>
+
+         <button
+            on:click={newPuzzle}
+            class="px-4 py-2 rounded-xl font-bold bg-amber-500/20 text-amber-300 border border-amber-500/40 hover:bg-amber-500/30 text-xs sm:text-sm transition-all transform hover:-translate-y-0.5 shadow-md flex items-center gap-1.5"
+         >
+            <span>สุ่มข้อใหม่</span> 🎲
+         </button>
+      </div>
+
+      <!-- Letter Tiles Grid keyed by letter (l) for Svelte FLIP motion animation -->
+      <div class="flex flex-wrap justify-center gap-2.5 sm:gap-3.5 max-w-xl py-3">
+         {#each letters as l (l)}
+            <div animate:flip={{ duration: 300 }}>
+               <button
+                  on:click={() => addLetter(l)}
+                  class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl border-2 font-black text-2xl sm:text-3xl flex items-center justify-center transition-all duration-200 transform hover:scale-105 active:scale-95 shadow-lg
+                  {answer.includes(l)
+                     ? 'bg-amber-400 text-slate-950 border-amber-300 shadow-amber-500/30'
+                     : 'bg-black text-amber-400 border-slate-800 hover:border-amber-400 hover:text-amber-300'}"
+                  style={answer.includes(l) ? 'color: #0f172a;' : ''}
+               >
+                  <span class={isUpper(l) || isLower(l) ? 'translate-x-0.5' : ''}>{l}</span>
+               </button>
             </div>
          {/each}
       </div>
 
-      <div class="flex flex-row flex-wrap justify-center my-2 gap-4 w-full px-4">
-         <div class="input-group w-80" class:wiggle={isWiggle}>
-            <div class="btn btn-warning" on:click={()=>letters = shuffle(letters)}>สลับ</div>
-            <input class="input input-bordered text-3xl w-48 transition-colors" type="text" bind:value={answer} class:bg-primary={isFlashing}>
-            <div class="-translate-x-8 w-0 my-auto" class:hidden={answer === ''} on:click={()=>answer = ''}>
-               <XCircleIcon size=20/>
-            </div>
-            <div class="btn btn-primary" on:click={checkAnswer}>ส่ง</div>
+      <!-- Input controls with pure black textfield background -->
+      <div class="w-full max-w-md flex flex-col sm:flex-row items-center gap-2.5">
+         <button
+            on:click={handleShuffle}
+            class="p-3.5 rounded-2xl bg-black border border-slate-800 text-slate-300 hover:text-amber-400 hover:border-amber-500/40 transition-colors shadow-inner"
+            title="สลับอักษร"
+         >
+            <RefreshCwIcon size="20" />
+         </button>
+
+         <div class="relative flex-1 w-full" class:wiggle={isWiggle}>
+            <input
+               type="text"
+               bind:value={answer}
+               placeholder=""
+               class="w-full px-4 py-3 rounded-2xl bg-black border border-slate-800 text-white text-xl font-black focus:outline-none focus:border-amber-400 focus:bg-black active:bg-black transition-colors shadow-inner"
+            />
+            {#if answer}
+               <button
+                  on:click={() => (answer = '')}
+                  class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-200"
+               >
+                  <XCircleIcon size="18" />
+               </button>
+            {/if}
          </div>
-         <div class="btn btn-error" on:click={giveUp}>เปิดเฉลย</div>
-         <div class="btn btn-info" on:click={newPuzzle}>สุ่มข้อใหม่</div>
+
+         <button
+            on:click={checkAnswer}
+            class="w-full sm:w-auto px-7 py-3 rounded-2xl font-black bg-amber-400 hover:bg-amber-300 text-slate-950 transition-all duration-200 shadow-lg shadow-amber-500/20 text-base"
+            style="color: #0f172a;"
+         >
+            ส่ง
+         </button>
+      </div>
+
+      <div class="flex gap-3 pt-1">
+         <button
+            on:click={giveUp}
+            class="px-4 py-2 rounded-xl text-xs font-bold bg-rose-500/20 text-rose-300 border border-rose-500/40 hover:bg-rose-500/30 transition-colors"
+         >
+            เฉลยทั้งหมด
+         </button>
       </div>
    </div>
 
-   <div class="flex flex-col lg:flex-row w-full items-start text-center">
-      <div class="w-full lg:w-1/2 h-40 lg:h-80 relative">
-         <h2 class="sticky top-0">คำตอบก่อนหน้านี้</h2>
-         <div class="flex flex-col gap-2 content-start h-full overflow-y-scroll"> 
+   <!-- Submissions & Answers grid -->
+   <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div class="bg-slate-900/60 backdrop-blur-xl border border-slate-800 rounded-3xl p-5 h-64 flex flex-col shadow-xl">
+         <h2 class="font-bold text-white mb-3 text-center border-b border-slate-800 pb-2 text-sm tracking-wide">คำตอบก่อนหน้านี้</h2>
+         <div class="flex flex-col gap-2 overflow-y-auto pr-1 flex-1 text-sm">
             {#each logs as l}
                {#if l.response === 'correct'}
-                  <p class="text-success">{l.answer} ✔️</p>
+                  <p class="text-emerald-400 font-semibold">{l.answer} ✔️</p>
                {:else if l.response === 'duplicate'}
-                  <p class="text-warning">{l.answer} เคยตอบไปแล้ว</p> 
+                  <p class="text-amber-400 font-semibold">{l.answer} เคยตอบไปแล้ว</p>
                {:else if l.response === 'illegal'}
-                  <p class="text-error">{l.answer} ❌ มีตัวอักษรที่ห้ามใช้</p>
+                  <p class="text-rose-400 font-semibold">{l.answer} ❌ มีตัวอักษรที่ห้ามใช้</p>
                {:else if l.response === 'wordless'}
-                  <p class="text-error">{l.answer} ❌ ไม่อยู่ในพจนานุกรม</p>
+                  <p class="text-rose-400 font-semibold">{l.answer} ❌ ไม่อยู่ในพจนานุกรม</p>
                {:else if l.response === 'short'}
-                  <p class="text-error">{l.answer} ❌ สั้นกว่า 3 ตัวอักษร</p> 
+                  <p class="text-rose-400 font-semibold">{l.answer} ❌ สั้นกว่า 3 ตัวอักษร</p>
                {/if}
             {/each}
          </div>
       </div>
 
-      <div class="divider"></div>
-
-      <div class="w-full lg:w-1/2 h-1/3 lg:h-80 mx-auto flex flex-col gap-2">
-         <h3>คำที่หาเจอแล้ว (เรียงตามตัวอักษร)</h3>
-         <div class="grid grid-cols-3 lg:grid-cols-4 gap-2 p-2 overflow-y-scroll"> 
-            <p class="text-base lg:text-xs text-info col-span-full">(คลิกในกล่อง เพื่อเปิดเฉลยคำนั้นได้)</p>
+      <div class="bg-slate-900/60 backdrop-blur-xl border border-slate-800 rounded-3xl p-5 h-64 flex flex-col shadow-xl">
+         <h3 class="font-bold text-white mb-3 text-center border-b border-slate-800 pb-2 text-sm tracking-wide">คำที่หาเจอแล้ว ({solved.filter(Boolean).length}/{solutions.length})</h3>
+         <div class="grid grid-cols-3 sm:grid-cols-4 gap-2 p-1 overflow-y-auto flex-1">
             {#each solutions as s, idx}
-               <div 
-                  class="border-2 border-neutral-content transition-colors duration-500 h-8" 
-                  class:bg-neutral-content={!solved[idx]}
-                  on:click={()=>solved[idx] = true}
+               <div
+                  class="rounded-xl border transition-all h-9 flex items-center justify-center cursor-pointer text-xs font-bold
+                  {solved[idx] ? 'bg-emerald-500/20 border-emerald-500/40 text-emerald-300' : 'bg-black border-slate-800 text-slate-400 hover:border-slate-700'}"
+                  on:click={() => (solved[idx] = true)}
                >
                   {#if solved[idx]}
-                     <p class="text-neutral-content">{s}</p>
+                     <span>{s}</span>
                   {:else}
-                     <p class="text-neutral" class:bg-primary={s.length == 7}>{s.length}</p>
+                     <span>{s.length} อักษร</span>
                   {/if}
                </div>
             {/each}
          </div>
       </div>
    </div>
-
-   
 </div>
 
-<!-- Put this part before </body> tag -->
-<input type="checkbox" id="submit-modal" class="modal-toggle"/>
-<!-- svelte-ignore a11y-label-has-associated-control -->
-<label class="modal cursor-pointer w-screen" class:modal-open={openModal} on:click={()=>openModal = false}>
-   <label class="modal-box relative" for="">
-      <h3 class="text-xl font-bold p-2">"ใช้ตัวอักษรครบแล้ว 🎉</h3>
-      <div class="btn btn-block btn-outline" on:click={()=>openModal = false}>เย่!</div>
+<!-- Success Modal -->
+<input type="checkbox" id="submit-modal" class="modal-toggle" />
+<label class="modal cursor-pointer w-screen" class:modal-open={openModal} on:click={() => (openModal = false)}>
+   <label class="modal-box relative bg-slate-900 border border-slate-800 text-white rounded-3xl p-6 shadow-2xl" for="">
+      <h3 class="text-2xl font-black mb-2 text-emerald-400 flex items-center gap-2">
+         <CheckCircleIcon size="24" /> หาคำศัพท์ครบแล้ว! 🎉
+      </h3>
+      <p class="text-slate-300 text-sm mb-6">คุณเฉลยคำศัพท์ครบทุกคำในปริศนานี้สำเร็จแล้ว</p>
+      <div class="flex gap-3">
+         <button class="flex-1 py-3 rounded-2xl font-black bg-amber-400 text-slate-950 hover:bg-amber-300 transition-colors" style="color: #0f172a;" on:click={newPuzzle}>
+            เล่นข้อถัดไป 🎲
+         </button>
+         <button class="px-5 py-3 rounded-2xl font-bold bg-slate-800 text-slate-300 hover:bg-slate-700 transition-colors" on:click={() => (openModal = false)}>
+            ปิด
+         </button>
+      </div>
    </label>
 </label>
 
-
 <style>
-	@keyframes pos-x-wiggle {
-		0% {
-			transform: translateX(0px);
-		}
-		20% {
-			transform: translateX(10px);
-		}
-		40% {
-			transform: translateX(-10px);
-		}
-		60% {
-			transform: translateX(5px);
-		}
-		80% {
-			transform: translateX(-5px);
-		}
-		100% {
-			transform: translateX(0px);
-		}
-	}
-	.wiggle {
-		animation-duration: 0.5s;
-		animation-fill-mode: both;
-		animation-name: pos-x-wiggle;
-		animation-play-state: running;
-	}
+   @keyframes pos-x-wiggle {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-6px); }
+      75% { transform: translateX(6px); }
+   }
+   .wiggle {
+      animation: pos-x-wiggle 0.4s ease-in-out;
+   }
 </style>

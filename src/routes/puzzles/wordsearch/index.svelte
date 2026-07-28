@@ -1,68 +1,73 @@
 <script context="module" lang="ts">
 	/** @type {import('@sveltejs/kit').Load} */
 	export async function load({ fetch }) {
-		const res = await fetch('/api/puzzle/wordsearch');
-		const data = await res.json();
+		try {
+			const res = await fetch('/api/puzzle/wordsearch');
+			const data = await res.json();
 
-		const wordsearches = data
-			.filter((d) => d.is_public !== false)
-			.map((d) => ({
-				...d,
-				type: 'wordsearch',
-				date: d.created_at,
-				difficulty: d.clues?.difficulty || 1
-			}));
+			const wordsearches = (Array.isArray(data) ? data : [])
+				.filter((d) => d.is_public !== false)
+				.map((d) => ({
+					...d,
+					type: 'wordsearch',
+					date: d.created_at,
+					difficulty: d.clues?.difficulty || 1
+				}));
 
-		return {
-			props: { wordsearches }
-		};
+			return {
+				props: { wordsearches }
+			};
+		} catch (e) {
+			return { props: { wordsearches: [] } };
+		}
 	}
 </script>
 
 <script lang="ts">
 	import { dateToThaiString } from '$lib/utils/date';
-	export let wordsearches: any[];
+	export let wordsearches: any[] = [];
 </script>
 
 <svelte:head>
 	<title>Code Breaker | Word Search Puzzles</title>
 </svelte:head>
 
-<div class="max-w-4xl mx-auto py-8 px-4">
-	<h1 class="text-4xl font-black mb-4">ปริศนาหาคำศัพท์ (Word Search)</h1>
+<div class="container mx-auto px-4 py-6 flex flex-col gap-6 max-w-5xl">
+	<div class="text-center mb-2">
+		<h1 class="text-3xl lg:text-4xl font-extrabold tracking-tight text-white">ปริศนาหาคำศัพท์ (Word Search)</h1>
+		<p class="text-xs sm:text-sm text-slate-400 mt-1">รายการปริศนาหาคำศัพท์ทั้งหมด</p>
+	</div>
 
-	<div class="divider" />
-
-	<div class="flex flex-col justify-center">
+	<div class="bg-slate-900/60 backdrop-blur-xl border border-slate-800 rounded-2xl overflow-hidden shadow-xl">
 		<div class="overflow-x-auto">
-			<table class="table table-zebra table-compact w-full mx-auto">
-				<thead>
+			<table class="table w-full text-slate-200">
+				<thead class="bg-slate-950/80 text-slate-400 border-b border-slate-800 text-xs font-bold uppercase">
 					<tr>
-						<th>ชื่อ</th>
-						<th>ระดับความยาก</th>
-						<th>วันที่</th>
-						<th>ผู้แต่ง</th>
+						<th class="py-3.5 px-4 text-left">ชื่อ</th>
+						<th class="py-3.5 px-4 text-left">ระดับความยาก</th>
+						<th class="py-3.5 px-4 text-left">วันที่</th>
+						<th class="py-3.5 px-4 text-left">ผู้แต่ง</th>
 					</tr>
 				</thead>
-				<tbody>
+				<tbody class="divide-y divide-slate-800/60 text-sm">
 					{#each wordsearches as p}
-						<tr>
-							<td>
+						<tr class="hover:bg-slate-800/40 transition-colors">
+							<td class="py-3.5 px-4 font-bold text-emerald-400 hover:text-emerald-300">
 								<a href="/puzzles/wordsearch/{p.uid}">
-									<p class="text-primary font-bold hover:underline">{p.title}</p>
+									{p.title}
 								</a>
 							</td>
-							<td>
+							<td class="py-3.5 px-4">
 								{#if p.difficulty === 1}
-									<span class="badge badge-success">ง่าย</span>
+									<span class="px-2 py-0.5 text-[10px] font-bold rounded-md bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">ง่าย</span>
 								{:else if p.difficulty === 2}
-									<span class="badge badge-warning">ปานกลาง</span>
+									<span class="px-2 py-0.5 text-[10px] font-bold rounded-md bg-amber-500/20 text-amber-300 border border-amber-500/30">ปานกลาง</span>
 								{:else}
-									<span class="badge badge-error">ยาก</span>
+									<span class="px-2 py-0.5 text-[10px] font-bold rounded-md bg-rose-500/20 text-rose-300 border border-rose-500/30">ยาก</span>
 								{/if}
 							</td>
-							<td>{dateToThaiString(p.date)}</td>
-							<td>{p.author || 'ไม่มี'}</td>
+							<td class="py-3.5 px-4 text-slate-400 font-mono text-xs">{dateToThaiString(p.date)}</td>
+							<td class="py-3.5 px-4 text-slate-300">{p.author || 'ไม่มี'}</td>
 						</tr>
 					{/each}
 				</tbody>

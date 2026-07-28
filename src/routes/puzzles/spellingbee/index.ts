@@ -1,9 +1,12 @@
-import {getDailySpellingBee} from '$lib/data/puzzles/spellingbee'
-// import { getPuzzle } from '../../api'
+import { numPuzzles } from '$lib/data/puzzles/spellingbee';
+import type { RequestHandler } from '@sveltejs/kit';
 
-/** @type {import('./__types/[id]').RequestHandler} */
-export async function get({}) {
+export const get: RequestHandler = async () => {
+  const randomId = Math.floor(Math.random() * numPuzzles);
   return {
-    body: { content: getDailySpellingBee() }
+    status: 303,
+    headers: {
+      location: `/puzzles/spellingbee/${randomId}`
+    }
   };
-}
+};

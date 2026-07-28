@@ -14,19 +14,21 @@
 	let floatingGroup: THREE.Group;
 	let rippleRings: THREE.Mesh[] = [];
 
-	let mouse = new THREE.Vector2(-999, -999);
-	let targetMouse = new THREE.Vector2(-999, -999);
+	let hasMouseMoved = false;
+	let mouse = new THREE.Vector2(0, 0);
+	let targetMouse = new THREE.Vector2(0, 0);
 	let raycaster = new THREE.Raycaster();
 	let mousePlane = new THREE.Plane(new THREE.Vector3(0, 0, 1), 0);
-	let intersectionPoint = new THREE.Vector3();
+	let intersectionPoint = new THREE.Vector3(9999, 9999, 9999);
 
 	const handleMouseMove = (event: MouseEvent) => {
+		hasMouseMoved = true;
 		targetMouse.x = (event.clientX / window.innerWidth) * 2 - 1;
 		targetMouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
 	};
 
 	const handleClick = (event: MouseEvent) => {
-		if (!scene || !camera) return;
+		if (!scene || !camera || !hasMouseMoved) return;
 
 		// Create interactive expanding ripple ring at mouse position
 		raycaster.setFromCamera(targetMouse, camera);
@@ -157,17 +159,24 @@
 			animationFrameId = requestAnimationFrame(animate);
 			const elapsedTime = clock.getElapsedTime();
 
-			// Smooth Mouse Interpolation
-			mouse.x += (targetMouse.x - mouse.x) * 0.08;
-			mouse.y += (targetMouse.y - mouse.y) * 0.08;
+			if (hasMouseMoved) {
+				// Smooth Mouse Interpolation
+				mouse.x += (targetMouse.x - mouse.x) * 0.08;
+				mouse.y += (targetMouse.y - mouse.y) * 0.08;
 
-			// Raycast to find 3D mouse position
-			raycaster.setFromCamera(mouse, camera);
-			raycaster.ray.intersectPlane(mousePlane, intersectionPoint);
+				// Raycast to find 3D mouse position
+				raycaster.setFromCamera(mouse, camera);
+				raycaster.ray.intersectPlane(mousePlane, intersectionPoint);
 
-			// Rotate group gently
-			floatingGroup.rotation.y = elapsedTime * 0.02 + mouse.x * 0.3;
-			floatingGroup.rotation.x = Math.sin(elapsedTime * 0.02) * 0.05 - mouse.y * 0.2;
+				// Rotate group gently with mouse offset
+				floatingGroup.rotation.y = elapsedTime * 0.02 + mouse.x * 0.3;
+				floatingGroup.rotation.x = Math.sin(elapsedTime * 0.02) * 0.05 - mouse.y * 0.2;
+			} else {
+				// Calm default ambient rotation when mouse hasn't moved
+				floatingGroup.rotation.y = elapsedTime * 0.02;
+				floatingGroup.rotation.x = Math.sin(elapsedTime * 0.02) * 0.05;
+				intersectionPoint.set(9999, 9999, 9999);
+			}
 
 			// Particle mouse repulsion / attractor physics
 			const posAttr = particleGeometry.attributes.position as THREE.BufferAttribute;
@@ -185,8 +194,8 @@
 				const dy = py - intersectionPoint.y;
 				const distSq = dx * dx + dy * dy;
 
-				// Repulsion force if within radius
-				if (distSq < 64) {
+				// Repulsion force if within radius and mouse has moved
+				if (hasMouseMoved && distSq < 64) {
 					const force = (8 - Math.sqrt(distSq)) * 0.3;
 					posArr[i * 3] = px + (dx / (Math.sqrt(distSq) + 0.1)) * force;
 					posArr[i * 3 + 1] = py + (dy / (Math.sqrt(distSq) + 0.1)) * force;

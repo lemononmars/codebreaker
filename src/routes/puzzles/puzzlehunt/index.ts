@@ -1,11 +1,9 @@
 import { puzzleHunts } from '$lib/data/puzzles/puzzlehunt';
+import type { RequestHandler } from '@sveltejs/kit';
 
-/** @type {import('./__types/index').RequestHandler} */
-export async function get() {
-   return {
-      status: 200,
-      body: { 
-         puzzleHunts
-      }
-   };
-}
+export const get: RequestHandler = async () => {
+  return {
+    status: 200,
+    body: { puzzleHunts }
+  };
+};

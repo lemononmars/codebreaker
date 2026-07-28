@@ -1,5 +1,5 @@
 <script lang="ts">
-   import { CircleBufferGeometry, MeshStandardMaterial, DoubleSide, ExtrudeBufferGeometry, Shape } from 'three';
+   import { MeshStandardMaterial, ExtrudeBufferGeometry, Shape } from 'three';
    import { DEG2RAD } from 'three/src/math/MathUtils';
    import {
      AmbientLight,
@@ -12,8 +12,25 @@
    } from 'threlte';
    import { spring } from 'svelte/motion';
    import { browser } from '$app/env';
- 
+   import { onMount, onDestroy } from 'svelte';
+
    const scale = spring(1);
+   let yRot = 0;
+   let animFrameId: number;
+
+   onMount(() => {
+     const animate = () => {
+       yRot += 0.006;
+       animFrameId = requestAnimationFrame(animate);
+     };
+     animate();
+   });
+
+   onDestroy(() => {
+     if (browser && animFrameId) {
+       cancelAnimationFrame(animFrameId);
+     }
+   });
 
    let outer = new Shape();
    outer.moveTo(0,0)
@@ -49,14 +66,12 @@
       bevelThickness: 0.1
     };
 
-    // Sleek, fixed cyber-emerald metallic material (no rainbow cycling)
     const logoMaterial = new MeshStandardMaterial({
       color: '#10b981',
       metalness: 0.8,
       roughness: 0.25
     });
 
-    // Accent inner material
     const accentMaterial = new MeshStandardMaterial({
       color: '#06b6d4',
       metalness: 0.9,
@@ -64,61 +79,54 @@
     });
  </script>
  
- <div class="w-full h-full min-h-[240px] relative overflow-hidden flex items-center justify-center">
+ <div class="w-full h-full min-h-[260px] relative overflow-hidden flex items-center justify-center mx-auto cursor-grab active:cursor-grabbing pointer-events-auto">
    {#if browser}
      <Canvas>
-       <PerspectiveCamera position={{ x: 12, y: 14, z: 22 }} fov={28}>
+       <PerspectiveCamera position={{ x: 0, y: 1.5, z: 15 }} fov={30}>
          <OrbitControls
-           maxPolarAngle={DEG2RAD * 85}
-           minPolarAngle={DEG2RAD * 20}
+           maxPolarAngle={DEG2RAD * 180}
+           minPolarAngle={0}
+           enableRotate={true}
+           enablePan={true}
+           enableZoom={true}
            autoRotate={false}
-           enableZoom={false}
            enableDamping={true}
            dampingFactor={0.05}
-           target={{ x: 2.5, y: 2.5, z: 0.5 }}
+           target={{ x: 0, y: 0, z: 0 }}
          />
        </PerspectiveCamera>
    
-       <!-- Directional Lights for metallic highlights -->
        <DirectionalLight shadow position={{ x: 10, y: 20, z: 15 }} intensity={1.5} color="#ffffff" />
        <DirectionalLight position={{ x: -10, y: 10, z: -10 }} intensity={0.6} color="#34d399" />
        <DirectionalLight position={{ x: 0, y: -10, z: 10 }} intensity={0.4} color="#06b6d4" />
-       <AmbientLight intensity={0.5} />
+       <AmbientLight intensity={0.6} />
    
-       <!-- 3D Logo Mesh Group -->
-       <Group 
-        scale={$scale}
-        rotation={{ x: DEG2RAD * -15, y: DEG2RAD * 25, z: DEG2RAD * 90 }}
-        position={{ x: 2.5, y: 0.5, z: 0 }}
-      >
-        <Mesh
-          interactive
-          on:pointerenter={() => ($scale = 1.08)}
-          on:pointerleave={() => ($scale = 1)}
-          castShadow
-          geometry={new ExtrudeBufferGeometry(outer, settings)}
-          material={logoMaterial}
-        />
-        <Mesh
-          castShadow
-          geometry={new ExtrudeBufferGeometry(inner, settings)}
-          material={accentMaterial}
-        />
-        <Mesh
-          castShadow
-          geometry={new ExtrudeBufferGeometry(triangle, settings)}
-          material={logoMaterial}
-        />
+       <!-- 3D Logo Group with continuous Y-axis animation & drag interaction -->
+       <Group rotation={{ x: DEG2RAD * 180, y: yRot, z: -DEG2RAD * 90 }}>
+         <Group 
+           scale={$scale}
+           position={{ x: -3, y: -3, z: -0.6 }}
+         >
+           <Mesh
+             interactive
+             on:pointerenter={() => ($scale = 1.08)}
+             on:pointerleave={() => ($scale = 1)}
+             castShadow
+             geometry={new ExtrudeBufferGeometry(outer, settings)}
+             material={logoMaterial}
+           />
+           <Mesh
+             castShadow
+             geometry={new ExtrudeBufferGeometry(inner, settings)}
+             material={accentMaterial}
+           />
+           <Mesh
+             castShadow
+             geometry={new ExtrudeBufferGeometry(triangle, settings)}
+             material={logoMaterial}
+           />
+         </Group>
        </Group>
-   
-       <!-- Dark Mirror Reflection Floor -->
-       <Mesh
-         receiveShadow
-         rotation={{ x: -90 * (Math.PI / 180) }}
-         position={{ x: 2.5, y: -1, z: 0.5 }}
-         geometry={new CircleBufferGeometry(5, 72)}
-         material={new MeshStandardMaterial({ side: DoubleSide, color: '#090d16', metalness: 0.9, roughness: 0.1, transparent: true, opacity: 0.8 })}
-       />
      </Canvas>
    {/if}
  </div>

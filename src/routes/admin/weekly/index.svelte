@@ -7,7 +7,9 @@
 		Edit3Icon,
 		CheckCircleIcon,
 		AlertCircleIcon,
-		LogOutIcon
+		LogOutIcon,
+		UploadIcon,
+		ImageIcon
 	} from 'svelte-feather-icons';
 
 	const DEFAULT_PASSWORD = 'nazo';
@@ -209,35 +211,35 @@
 <div class="container mx-auto px-4 py-8">
 	{#if !isAuthenticated}
 		<!-- Password Form -->
-		<div class="max-w-md mx-auto card bg-neutral text-neutral-content shadow-2xl border border-base-300/30 p-6 my-12">
+		<div class="max-w-md mx-auto card bg-slate-900 border border-slate-800 text-slate-100 shadow-2xl p-6 my-12">
 			<div class="flex flex-col items-center gap-3 text-center">
-				<div class="w-16 h-16 rounded-full bg-primary/20 text-primary flex items-center justify-center">
+				<div class="w-16 h-16 rounded-full bg-blue-500/20 text-blue-400 border border-blue-500/40 flex items-center justify-center">
 					<LockIcon size="32" />
 				</div>
-				<h1 class="text-2xl font-bold text-primary">Weekly Puzzle Admin</h1>
-				<p class="text-xs opacity-75">กรอกรหัสผ่านเพื่อเข้าสู่ระบบจัดการปริศนาประจำสัปดาห์</p>
+				<h1 class="text-2xl font-black text-white">Weekly Puzzle Admin</h1>
+				<p class="text-xs text-slate-400">กรอกรหัสผ่านเพื่อเข้าสู่ระบบจัดการปริศนาประจำสัปดาห์</p>
 			</div>
 
 			<form on:submit|preventDefault={handleLogin} class="flex flex-col gap-4 mt-6">
-				<div class="form-control w-full">
-					<label class="label"><span class="label-text">รหัสผ่าน (Password)</span></label>
+				<div class="flex flex-col gap-1.5">
+					<label class="text-xs font-bold text-slate-400">รหัสผ่าน (Password)</label>
 					<input
 						type="password"
 						bind:value={passwordInput}
 						placeholder="กรอกรหัสผ่าน..."
-						class="input input-bordered w-full"
+						class="w-full px-4 py-3 rounded-2xl bg-black border border-slate-800 text-white font-bold focus:outline-none focus:border-blue-400 text-sm"
 						required
 					/>
 				</div>
 
 				{#if authError}
-					<div class="alert alert-error text-xs p-3">
+					<div class="p-3 rounded-2xl bg-rose-500/20 border border-rose-500/40 text-rose-300 text-xs flex items-center gap-2">
 						<AlertCircleIcon size="16" />
 						<span>{authError}</span>
 					</div>
 				{/if}
 
-				<button type="submit" class="btn btn-primary w-full gap-2 mt-2">
+				<button type="submit" class="w-full py-3.5 rounded-2xl font-black bg-blue-500 hover:bg-blue-400 text-white shadow-lg shadow-blue-500/30 transition-all text-sm flex items-center justify-center gap-2 mt-2">
 					<LockIcon size="18" />
 					เข้าสู่ระบบ
 				</button>
@@ -247,21 +249,21 @@
 		<!-- Admin Dashboard -->
 		<div class="flex flex-col gap-6">
 			<!-- Header Bar -->
-			<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-base-300/30 pb-4">
+			<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-800 pb-4">
 				<div>
-					<h1 class="text-3xl font-bold text-primary flex items-center gap-3">
+					<h1 class="text-3xl font-black text-white flex items-center gap-3">
 						<span>ระบบจัดการปริศนาประจำสัปดาห์</span>
-						<span class="badge badge-primary badge-outline text-xs">Admin</span>
+						<span class="px-3 py-1 rounded-xl bg-blue-500/20 border border-blue-500/40 text-blue-300 font-mono text-xs">Admin</span>
 					</h1>
-					<p class="text-sm opacity-70 mt-1">เพิ่ม แก้ไข และอัปโหลดรูปภาพปริศนาประจำสัปดาห์</p>
+					<p class="text-sm text-slate-400 mt-1">เพิ่ม แก้ไข และอัปโหลดรูปภาพปริศนาประจำสัปดาห์</p>
 				</div>
 
 				<div class="flex items-center gap-3">
-					<button class="btn btn-primary gap-2" on:click={openAddModal}>
+					<button class="px-6 py-3 rounded-2xl font-black bg-blue-500 hover:bg-blue-400 text-white shadow-lg shadow-blue-500/30 transition-all text-sm flex items-center gap-2" on:click={openAddModal}>
 						<PlusIcon size="18" />
 						เพิ่มปริศนาใหม่
 					</button>
-					<button class="btn btn-outline btn-error btn-sm md:btn-md gap-2" on:click={handleLogout}>
+					<button class="px-5 py-3 rounded-2xl font-bold bg-slate-950 border border-slate-800 text-slate-400 hover:text-rose-400 hover:border-rose-500/40 transition-colors text-sm flex items-center gap-2" on:click={handleLogout}>
 						<LogOutIcon size="18" />
 						ออกจากระบบ
 					</button>
@@ -269,20 +271,20 @@
 			</div>
 
 			<!-- Filter and Search Controls -->
-			<div class="flex flex-col md:flex-row gap-4 justify-between items-center bg-base-200/80 border border-base-300/50 p-4 rounded-2xl shadow-inner">
+			<div class="flex flex-col md:flex-row gap-4 justify-between items-center bg-slate-900/60 border border-slate-800 p-4 rounded-2xl shadow-inner">
 				<!-- Year Filter -->
 				<div class="flex items-center gap-2 w-full md:w-auto">
-					<span class="text-xs font-bold uppercase tracking-wider opacity-70 whitespace-nowrap">ปี:</span>
-					<div class="join border border-base-300/80 bg-base-100 shadow-sm rounded-xl p-1 flex-wrap">
+					<span class="text-xs font-bold uppercase tracking-wider text-slate-400 whitespace-nowrap">ปี:</span>
+					<div class="flex rounded-xl bg-slate-950 border border-slate-800 p-1 flex-wrap gap-1">
 						<button
-							class="btn btn-xs sm:btn-sm join-item border-none {selectedYear === 'all' ? 'btn-primary font-bold shadow-md' : 'btn-ghost opacity-60 hover:opacity-100'}"
+							class="px-3 py-1.5 rounded-lg text-xs font-black transition-all {selectedYear === 'all' ? 'bg-blue-500 text-white shadow-md' : 'text-slate-400 hover:text-white'}"
 							on:click={() => (selectedYear = 'all')}
 						>
 							ทั้งหมด
 						</button>
 						{#each availableYears as y}
 							<button
-								class="btn btn-xs sm:btn-sm join-item border-none {selectedYear === y ? 'btn-primary font-bold shadow-md' : 'btn-ghost opacity-60 hover:opacity-100'}"
+								class="px-3 py-1.5 rounded-lg text-xs font-black transition-all {selectedYear === y ? 'bg-blue-500 text-white shadow-md' : 'text-slate-400 hover:text-white'}"
 								on:click={() => (selectedYear = y)}
 							>
 								{y}
@@ -293,25 +295,25 @@
 
 				<!-- Status Filter (Answer missing/present) -->
 				<div class="flex items-center gap-2 w-full md:w-auto">
-					<span class="text-xs font-bold uppercase tracking-wider opacity-70 whitespace-nowrap">เฉลย:</span>
-					<div class="join border border-base-300/80 bg-base-100 shadow-sm rounded-xl p-1 flex-wrap">
+					<span class="text-xs font-bold uppercase tracking-wider text-slate-400 whitespace-nowrap">เฉลย:</span>
+					<div class="flex rounded-xl bg-slate-950 border border-slate-800 p-1 flex-wrap gap-1">
 						<button
-							class="btn btn-xs sm:btn-sm join-item border-none {statusFilter === 'all' ? 'btn-neutral font-bold shadow-md' : 'btn-ghost opacity-60 hover:opacity-100'}"
+							class="px-3 py-1.5 rounded-lg text-xs font-black transition-all {statusFilter === 'all' ? 'bg-blue-500 text-white shadow-md' : 'text-slate-400 hover:text-white'}"
 							on:click={() => (statusFilter = 'all')}
 						>
-							ทั้งหมด
+							ทั้งหมด ({puzzles.length})
 						</button>
 						<button
-							class="btn btn-xs sm:btn-sm join-item border-none {statusFilter === 'missing' ? 'btn-warning font-bold shadow-md' : 'btn-ghost opacity-60 hover:opacity-100'}"
+							class="px-3 py-1.5 rounded-lg text-xs font-black transition-all {statusFilter === 'missing' ? 'bg-amber-500/20 text-amber-300 border border-amber-500/40' : 'text-slate-400 hover:text-white'}"
 							on:click={() => (statusFilter = 'missing')}
 						>
-							ยังไม่ออกเฉลย
+							⚠️ ยังไม่ออกเฉลย ({puzzles.filter((p) => !p.answer || p.answer.trim().length === 0).length})
 						</button>
 						<button
-							class="btn btn-xs sm:btn-sm join-item border-none {statusFilter === 'has_answer' ? 'btn-success font-bold shadow-md' : 'btn-ghost opacity-60 hover:opacity-100'}"
+							class="px-3 py-1.5 rounded-lg text-xs font-black transition-all {statusFilter === 'has_answer' ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40' : 'text-slate-400 hover:text-white'}"
 							on:click={() => (statusFilter = 'has_answer')}
 						>
-							ออกเฉลยแล้ว
+							✔️ มีเฉลยแล้ว ({puzzles.filter((p) => p.answer && p.answer.trim().length > 0).length})
 						</button>
 					</div>
 				</div>
@@ -319,60 +321,68 @@
 
 			<!-- Puzzles Table -->
 			{#if loading}
-				<div class="flex justify-center py-12">
-					<span class="loading loading-spinner loading-lg text-primary" />
+				<div class="flex items-center justify-center py-12 text-slate-500 gap-3 font-bold">
+					<span class="loading loading-spinner loading-md" />
+					<span>กำลังโหลดข้อมูล...</span>
 				</div>
 			{:else if filteredPuzzles.length > 0}
-				<div class="overflow-x-auto bg-base-100 rounded-2xl shadow-xl border border-base-300/30">
-					<table class="table w-full table-fixed">
-						<thead>
-							<tr class="bg-base-200/50">
-								<th class="w-14">รูป</th>
-								<th class="w-28 text-center">ปี / สัปดาห์</th>
-								<th>ชื่อปริศนา</th>
-								<th class="w-44">คำตอบ</th>
-								<th class="w-16 text-center">แก้ไข</th>
+				<div class="w-full overflow-x-auto rounded-2xl border border-slate-800 bg-slate-900/60 shadow-xl">
+					<table class="w-full text-left text-sm text-slate-200">
+						<thead class="bg-slate-950 text-slate-400 text-xs font-bold uppercase border-b border-slate-800">
+							<tr>
+								<th class="px-3 py-3 w-16 text-center">รูปภาพ</th>
+								<th class="px-4 py-3">ปี / สัปดาห์</th>
+								<th class="px-4 py-3">ชื่อปริศนา</th>
+								<th class="px-4 py-3">เฉลย</th>
+								<th class="px-4 py-3 text-center">แก้ไข</th>
 							</tr>
 						</thead>
-						<tbody>
-							{#each filteredPuzzles as p (p.id || `${p.year}-${p.week}`)}
+						<tbody class="divide-y divide-slate-800">
+							{#each filteredPuzzles as p}
 								{@const weekStr = ('0' + p.week).slice(-2)}
 								{@const imgUrl = getPuzzleImageURL('weekly', `${p.year}${weekStr}.jpg`)}
-								<tr class="hover">
-									<td class="w-14">
-										<div class="avatar">
-											<div class="w-10 h-10 rounded-lg bg-base-300 flex items-center justify-center overflow-hidden">
-												<img src={imgUrl} alt="p-{p.week}" on:error={(e) => (e.currentTarget.style.display = 'none')} />
-											</div>
+								<tr class="hover:bg-slate-800/40 transition-colors">
+									<!-- Image Preview Thumbnail on the left -->
+									<td class="px-3 py-2 text-center w-16">
+										<div class="w-12 h-12 rounded-xl bg-slate-950 border border-slate-800 overflow-hidden flex items-center justify-center mx-auto shadow-inner relative group">
+											<img
+												src={imgUrl}
+												alt="thumb"
+												class="w-full h-full object-cover"
+												on:error={(e) => { (e.currentTarget as HTMLElement).style.display = 'none'; }}
+											/>
+											<ImageIcon size="18" class="text-slate-600 absolute pointer-events-none" />
 										</div>
 									</td>
-									<td class="w-28 text-center font-mono text-xs font-semibold whitespace-nowrap">
+									<td class="px-4 py-3.5 font-bold font-mono text-sky-400 whitespace-nowrap">
 										<span>{p.year} / {p.week}</span>
 									</td>
-									<td class="max-w-xs break-words whitespace-normal overflow-hidden">
+									<td class="px-4 py-3.5 max-w-xs break-words">
 										<a
 											href="/puzzles/weekly/{p.year}/{p.week}"
 											target="_blank"
-											class="font-medium text-primary hover:underline block break-words"
+											class="font-bold text-white hover:text-cyan-400 transition-colors block"
 											title="เปิดดูหน้าปริศนา"
 										>
 											{p.title || '<ยังไม่มีชื่อ>'}
 										</a>
 									</td>
-									<td class="w-44 break-all overflow-hidden">
+									<!-- Answer displayed in Uppercase Capital Letters -->
+									<td class="px-4 py-3.5 w-44">
 										{#if p.answer}
-											<code class="bg-base-300 px-2 py-1 rounded text-xs font-mono text-secondary break-all block truncate">{p.answer}</code>
+											<code class="bg-black border border-slate-800 px-2.5 py-1 rounded-xl text-xs font-mono text-emerald-400 block truncate uppercase">{p.answer.toUpperCase()}</code>
 										{:else}
-											<span class="badge badge-warning badge-outline text-xs whitespace-nowrap">ยังไม่ออกเฉลย</span>
+											<span class="px-2.5 py-1 rounded-xl bg-amber-500/20 text-amber-300 border border-amber-500/40 text-xs font-bold whitespace-nowrap">ยังไม่ออกเฉลย</span>
 										{/if}
 									</td>
-									<td class="w-16 text-center">
+									<!-- Edit button displaying ONLY pencil icon -->
+									<td class="px-4 py-3.5 text-center">
 										<button
-											class="btn btn-xs sm:btn-sm btn-outline btn-info btn-square"
-											title="แก้ไข"
+											class="p-2.5 rounded-xl font-bold bg-blue-500/20 hover:bg-blue-500/30 text-blue-300 border border-blue-500/40 text-xs transition-all flex items-center justify-center mx-auto hover:scale-110"
+											title="แก้ไขข้อมูลปริศนา"
 											on:click={() => openEditModal(p)}
 										>
-											<Edit3Icon size="15" />
+											<Edit3Icon size="16" />
 										</button>
 									</td>
 								</tr>
@@ -381,7 +391,7 @@
 					</table>
 				</div>
 			{:else}
-				<div class="text-center py-12 opacity-60">
+				<div class="text-center py-12 text-slate-500 font-bold">
 					<p>ไม่พบข้อมูลปริศนา</p>
 				</div>
 			{/if}
@@ -389,133 +399,160 @@
 	{/if}
 </div>
 
-<!-- Modal for Add / Edit Puzzle -->
+<!-- Modal for Add / Edit Puzzle (Large Image Left Column + Themed File Upload) -->
 <input type="checkbox" class="modal-toggle" checked={showModal} />
 {#if showModal}
-	<div class="modal modal-open">
-		<div class="modal-box max-w-lg relative bg-neutral text-neutral-content border border-base-300/40">
-			<button class="btn btn-sm btn-circle absolute right-2 top-2" on:click={() => (showModal = false)}>✕</button>
+	<div class="fixed inset-0 bg-slate-950/80 backdrop-blur-md z-[10000] flex items-center justify-center p-4 overflow-y-auto">
+		<div class="bg-slate-900 border border-slate-800 text-slate-100 rounded-3xl p-6 sm:p-8 max-w-4xl w-full shadow-2xl relative my-8">
+			<button class="btn btn-sm btn-circle btn-ghost text-slate-400 hover:text-white absolute right-4 top-4" on:click={() => (showModal = false)}>✕</button>
 
-			<h3 class="font-bold text-xl text-primary border-b border-base-300/30 pb-2 mb-4">
-				{isEditMode ? 'แก้ไขปริศนาประจำสัปดาห์' : 'เพิ่มปริศนาใหม่'}
+			<h3 class="font-black text-2xl text-white border-b border-slate-800 pb-3 mb-6 flex items-center gap-2">
+				<Edit3Icon class="text-blue-400" />
+				<span>{isEditMode ? 'แก้ไขปริศนาประจำสัปดาห์' : 'เพิ่มปริศนาใหม่'}</span>
 			</h3>
 
-			<form on:submit|preventDefault={handleSave} class="flex flex-col gap-4">
-				<div class="grid grid-cols-2 gap-4">
-					<div class="form-control w-full">
-						<label class="label"><span class="label-text">ปี (Year)</span></label>
-						<input
-							type="number"
-							bind:value={formYear}
-							class="input input-bordered w-full"
-							required
-							min="2020"
-							max="2099"
-						/>
-					</div>
-
-					<div class="form-control w-full">
-						<label class="label"><span class="label-text">สัปดาห์ที่ (Week 1-52)</span></label>
-						<input
-							type="number"
-							bind:value={formWeek}
-							class="input input-bordered w-full"
-							required
-							min="1"
-							max="53"
-						/>
-					</div>
-				</div>
-
-				<div class="form-control w-full">
-					<label class="label"><span class="label-text">ชื่อปริศนา (Title)</span></label>
-					<input
-						type="text"
-						bind:value={formTitle}
-						placeholder="เช่น ศิลปะ, ดิจิตัล, นับพร้อมกัน..."
-						class="input input-bordered w-full"
-					/>
-				</div>
-
-				<div class="form-control w-full">
-					<label class="label"><span class="label-text">คำตอบ (Answer) — เว้นว่างได้</span></label>
-					<input
-						type="text"
-						bind:value={formAnswer}
-						placeholder="กรอกคำตอบ (ถ้ายังไม่ออกเฉลยให้เว้นว่างไว้)..."
-						class="input input-bordered w-full font-mono text-secondary"
-					/>
-				</div>
-
-				<div class="form-control w-full">
-					<label class="label"><span class="label-text">คำใบ้รูปแบบคำตอบ (Answer Guide) — เว้นว่างได้</span></label>
-					<input
-						type="text"
-						bind:value={formAnswerGuide}
-						placeholder="เช่น ภาษาอังกฤษ 5 ตัวอักษร, คำขึ้นต้นด้วย ก..."
-						class="input input-bordered w-full text-sm"
-					/>
-				</div>
-
-				<!-- Image File Upload -->
-				<div class="form-control w-full">
-					<label class="label">
-						<span class="label-text">รูปภาพปริศนา (.jpg / .png)</span>
-						<span class="label-text-alt opacity-70">
-							ตั้งชื่ออัตโนมัติ: <code class="text-primary">{formYear}{('0' + formWeek).slice(-2)}.jpg</code>
+			<form on:submit|preventDefault={handleSave} class="grid grid-cols-1 md:grid-cols-2 gap-8">
+				<!-- LEFT COLUMN: LARGE IMAGE PREVIEW & THEMED FILE UPLOAD -->
+				<div class="flex flex-col gap-4">
+					<label class="text-sm font-bold text-slate-300 flex items-center justify-between">
+						<span>รูปภาพปริศนา</span>
+						<span class="text-xs font-mono text-slate-500">
+							ไฟล์: <code class="text-sky-400">{formYear}{('0' + formWeek).slice(-2)}.jpg</code>
 						</span>
 					</label>
-					<input
-						type="file"
-						accept="image/*"
-						on:change={handleFileChange}
-						class="file-input file-input-bordered w-full"
-					/>
+
+					<!-- Large Image Preview Box -->
+					<div class="w-full h-72 sm:h-80 rounded-2xl bg-slate-950 border border-slate-800 flex items-center justify-center overflow-hidden relative shadow-inner group">
+						{#if imagePreviewUrl}
+							<img src={imagePreviewUrl} alt="preview" class="w-full h-full object-contain p-2" />
+						{:else}
+							<div class="flex flex-col items-center justify-center text-slate-500 gap-2 p-4 text-center">
+								<ImageIcon size="48" class="text-slate-600" />
+								<span class="text-xs font-semibold">ยังไม่มีรูปภาพปริศนาสำหรับสัปดาห์นี้</span>
+							</div>
+						{/if}
+					</div>
+
+					<!-- Custom Themed File Upload Button / Input -->
+					<div class="flex flex-col gap-1.5">
+						<input
+							type="file"
+							id="admin-puzzle-file-input"
+							accept="image/*"
+							on:change={handleFileChange}
+							class="hidden"
+						/>
+						<label
+							for="admin-puzzle-file-input"
+							class="w-full flex items-center justify-center gap-2 px-5 py-3.5 rounded-2xl bg-blue-600/20 hover:bg-blue-600/30 border border-blue-500/40 text-blue-300 font-black text-sm cursor-pointer transition-all shadow-md hover:scale-[1.01]"
+						>
+							<UploadIcon size="18" />
+							<span class="truncate">{selectedFile ? selectedFile.name : 'เลือกไฟล์รูปภาพอัปโหลด (.jpg/.png)'}</span>
+						</label>
+					</div>
 				</div>
 
-				{#if imagePreviewUrl}
-					<div class="flex flex-col items-center gap-2 p-3 bg-base-300/30 rounded-xl border border-base-300/50">
-						<span class="text-xs opacity-70">ตัวอย่างรูปภาพ:</span>
-						<img src={imagePreviewUrl} alt="preview" class="max-h-40 object-contain rounded-lg shadow" />
-					</div>
-				{/if}
+				<!-- RIGHT COLUMN: FORM INPUTS & SAVE BUTTON -->
+				<div class="flex flex-col justify-between gap-4">
+					<div class="flex flex-col gap-4">
+						<div class="grid grid-cols-2 gap-4">
+							<div class="flex flex-col gap-1.5">
+								<label class="text-xs font-bold text-slate-400">ปี (Year)</label>
+								<input
+									type="number"
+									bind:value={formYear}
+									class="w-full px-4 py-3 rounded-2xl bg-black border border-slate-800 text-white font-bold focus:outline-none focus:border-blue-400 text-sm"
+									required
+									min="2020"
+									max="2099"
+								/>
+							</div>
 
-				{#if saveMessage}
-					<div class="alert alert-success text-xs p-3 flex flex-col items-start gap-1">
-						<div class="flex items-center gap-1.5 font-semibold">
-							<CheckCircleIcon size="16" />
-							<span>{saveMessage}</span>
+							<div class="flex flex-col gap-1.5">
+								<label class="text-xs font-bold text-slate-400">สัปดาห์ที่ (Week 1-53)</label>
+								<input
+									type="number"
+									bind:value={formWeek}
+									class="w-full px-4 py-3 rounded-2xl bg-black border border-slate-800 text-white font-bold focus:outline-none focus:border-blue-400 text-sm"
+									required
+									min="1"
+									max="53"
+								/>
+							</div>
 						</div>
-						{#if newlyCreatedUrl}
-							<a
-								href={newlyCreatedUrl}
-								target="_blank"
-								class="btn btn-xs btn-primary gap-1 mt-1 text-[11px]"
-							>
-								🔗 เปิดดูหน้าปริศนา ({formYear} สัปดาห์ที่ {formWeek}) ↗
-							</a>
-						{/if}
-					</div>
-				{/if}
 
-				{#if saveError}
-					<div class="alert alert-error text-xs p-3">
-						<AlertCircleIcon size="16" />
-						<span>{saveError}</span>
-					</div>
-				{/if}
+						<div class="flex flex-col gap-1.5">
+							<label class="text-xs font-bold text-slate-400">ชื่อปริศนา (Title)</label>
+							<input
+								type="text"
+								bind:value={formTitle}
+								placeholder="เช่น ศิลปะ, ดิจิตัล, นับพร้อมกัน..."
+								class="w-full px-4 py-3 rounded-2xl bg-black border border-slate-800 text-white font-bold focus:outline-none focus:border-blue-400 text-sm"
+							/>
+						</div>
 
-				<div class="flex justify-end gap-3 mt-4">
-					<button type="button" class="btn btn-ghost" on:click={() => (showModal = false)}>ยกเลิก</button>
-					<button type="submit" class="btn btn-primary gap-2" disabled={isSaving}>
-						{#if isSaving}
-							<span class="loading loading-spinner loading-xs" />
-							กำลังบันทึก...
-						{:else}
-							<CheckCircleIcon size="18" />
-							บันทึก
+						<div class="flex flex-col gap-1.5">
+							<label class="text-xs font-bold text-slate-400">คำตอบ (Answer) — เว้นว่างได้</label>
+							<input
+								type="text"
+								bind:value={formAnswer}
+								placeholder="กรอกคำตอบ (ถ้ายังไม่ออกเฉลยให้เว้นว่างไว้)..."
+								class="w-full px-4 py-3 rounded-2xl bg-black border border-slate-800 text-sky-300 font-mono font-bold focus:outline-none focus:border-blue-400 text-sm"
+							/>
+						</div>
+
+						<div class="flex flex-col gap-1.5">
+							<label class="text-xs font-bold text-slate-400">คำใบ้รูปแบบคำตอบ (Answer Guide)</label>
+							<input
+								type="text"
+								bind:value={formAnswerGuide}
+								placeholder="เช่น ภาษาอังกฤษ 5 ตัวอักษร, คำขึ้นต้นด้วย ก..."
+								class="w-full px-4 py-3 rounded-2xl bg-black border border-slate-800 text-white font-bold focus:outline-none focus:border-blue-400 text-sm"
+							/>
+						</div>
+					</div>
+
+					<!-- Feedback Messages & Submit Buttons -->
+					<div class="flex flex-col gap-3 pt-2 border-t border-slate-800">
+						{#if saveMessage}
+							<div class="p-3 rounded-2xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 text-xs flex flex-col items-start gap-1.5">
+								<div class="flex items-center gap-1.5 font-bold">
+									<CheckCircleIcon size="16" />
+									<span>{saveMessage}</span>
+								</div>
+								{#if newlyCreatedUrl}
+									<a
+										href={newlyCreatedUrl}
+										target="_blank"
+										class="px-3 py-1.5 rounded-xl bg-emerald-500 text-slate-950 font-black text-xs hover:bg-emerald-400 transition-colors"
+										style="color: #0f172a;"
+									>
+										🔗 เปิดดูหน้าปริศนา ({formYear} สัปดาห์ที่ {formWeek}) ↗
+									</a>
+								{/if}
+							</div>
 						{/if}
-					</button>
+
+						{#if saveError}
+							<div class="p-3 rounded-2xl bg-rose-500/20 border border-rose-500/40 text-rose-300 text-xs flex items-center gap-1.5 font-bold">
+								<AlertCircleIcon size="16" />
+								<span>{saveError}</span>
+							</div>
+						{/if}
+
+						<div class="flex justify-end gap-3 pt-2">
+							<button type="button" class="px-5 py-3 rounded-2xl font-bold bg-slate-950 border border-slate-800 text-slate-400 hover:text-white text-sm" on:click={() => (showModal = false)}>ยกเลิก</button>
+							<button type="submit" class="px-6 py-3 rounded-2xl font-black bg-blue-500 hover:bg-blue-400 text-white shadow-lg shadow-blue-500/30 text-sm flex items-center gap-2" disabled={isSaving}>
+								{#if isSaving}
+									<span class="loading loading-spinner loading-xs" />
+									กำลังบันทึก...
+								{:else}
+									<CheckCircleIcon size="18" />
+									บันทึก
+								{/if}
+							</button>
+						</div>
+					</div>
 				</div>
 			</form>
 		</div>

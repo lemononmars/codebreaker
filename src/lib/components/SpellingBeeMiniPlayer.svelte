@@ -1,18 +1,21 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
+	import { onMount, onDestroy } from 'svelte';
+	import { goto } from '$app/navigation';
 	import { search, isUpper, isLower } from '$lib/utils/thaiwords';
 	import { todayDateThaiString } from '$lib/utils/date';
-	import { PlayCircleIcon, RefreshCwIcon, CheckCircleIcon, XCircleIcon } from 'svelte-feather-icons';
+	import { numPuzzles } from '$lib/data/puzzles/spellingbee';
+	import { RefreshCwIcon, CheckCircleIcon, XCircleIcon, PauseIcon, PlayIcon } from 'svelte-feather-icons';
 	import { username } from '$lib/store';
+	import { flip } from 'svelte/animate';
 
 	let word = '';
 	let puzzleId: number | string = '';
 	let letters: string[] = [];
 	let answer = '';
 	let isLoading = true;
-	let isPlaying = false;
 	let isFinished = false;
 	let isWiggle = false;
+	let isPaused = false;
 
 	let time = 0;
 	let timer: any;
@@ -23,7 +26,9 @@
 	}
 	let log: LogState = { text: '', type: '' };
 
-	$: timeString = (time < 60000 ? '' : Math.floor(time / 60000) + 'm ') + (Math.floor(time / 1000) % 60) + 's';
+	$: minutes = String(Math.floor(time / 60000)).padStart(2, '0');
+	$: seconds = String(Math.floor((time % 60000) / 1000)).padStart(2, '0');
+	$: timeString = `${minutes}:${seconds}`;
 
 	onMount(async () => {
 		try {
@@ -33,6 +38,7 @@
 				word = data.word;
 				puzzleId = data.id || 'daily';
 				letters = shuffle(data.word.split(''));
+				startTimer();
 			}
 		} catch (e) {
 			console.error('Failed to load daily spelling bee:', e);
@@ -40,6 +46,30 @@
 			isLoading = false;
 		}
 	});
+
+	onDestroy(() => {
+		stopTimer();
+	});
+
+	function startTimer() {
+		stopTimer();
+		timer = setInterval(() => {
+			if (!isPaused && !isFinished) {
+				time += 100;
+			}
+		}, 100);
+	}
+
+	function stopTimer() {
+		if (timer) {
+			clearInterval(timer);
+			timer = null;
+		}
+	}
+
+	function togglePause() {
+		isPaused = !isPaused;
+	}
 
 	function shuffle(arr: string[]) {
 		const result = [...arr];
@@ -50,10 +80,14 @@
 		return result;
 	}
 
-	function startPlay() {
-		isPlaying = true;
-		time = 0;
-		timer = setInterval(() => (time += 100), 100);
+	function handleShuffle() {
+		answer = '';
+		letters = shuffle(letters);
+	}
+
+	function handleRandomNewPuzzle() {
+		const randomId = Math.floor(Math.random() * numPuzzles);
+		goto(`/puzzles/spellingbee/${randomId}`);
 	}
 
 	function addLetter(l: string) {
@@ -95,7 +129,7 @@
 
 		if (answer === word) {
 			log = { text: `ถูกต้องแล้ว! 🎉 ใช้เวลา ${timeString}`, type: 'success' };
-			clearInterval(timer);
+			stopTimer();
 			isFinished = true;
 			submitScore();
 		} else {
@@ -132,91 +166,94 @@
 		<div>
 			<div class="flex items-center gap-2 mb-1">
 				<span class="h-2 w-2 rounded-full bg-amber-400"></span>
-				<span class="text-xs uppercase tracking-widest text-amber-400 font-bold">Daily Mini Game</span>
+				<span class="text-xs uppercase tracking-widest text-amber-400 font-bold">Daily Spelling Bee</span>
 			</div>
 			<h2 class="text-2xl md:text-3xl font-extrabold text-white tracking-tight">
-				สะกดศัพท์ ประจำวัน <span class="text-xs font-normal text-slate-400 font-mono">({todayDateThaiString()})</span>
+				Daily Spelling Bee <span class="text-xs font-normal text-slate-400 font-mono">({todayDateThaiString()})</span>
 			</h2>
 		</div>
-		<a
-			href="/puzzles/spellingbee"
-			class="inline-flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-lg bg-amber-500/10 text-amber-400 border border-amber-500/30 hover:bg-amber-500/20 transition-colors"
+		<button
+			on:click={handleRandomNewPuzzle}
+			class="inline-flex items-center gap-1.5 text-xs font-bold px-4 py-2 rounded-xl bg-amber-500/20 text-amber-300 border border-amber-500/40 hover:bg-amber-500/30 transition-all transform hover:-translate-y-0.5 active:translate-y-0 shadow-md"
 		>
-			เล่นโหมดเต็ม →
-		</a>
+			สุ่มข้อใหม่ 🎲
+		</button>
 	</div>
 
 	<!-- Content Box -->
 	{#if isLoading}
 		<div class="flex items-center justify-center h-48 text-slate-400">
-			<span class="animate-pulse">กำลังโหลด ปริศนาสะกดศัพท์...</span>
-		</div>
-	{:else if !isPlaying}
-		<div class="flex flex-col items-center justify-center py-8 text-center space-y-4">
-			<p class="text-slate-300 text-sm max-w-md">
-				ทายคำศัพท์ 7 ตัวอักษรของวันนี้! กดปุ่มเริ่มเพื่อเริ่มนับเวลาและเรียงคำตอบ
-			</p>
-			<button
-				on:click={startPlay}
-				class="inline-flex items-center gap-3 px-8 py-4 rounded-2xl font-bold text-slate-950 bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 shadow-lg shadow-amber-500/20 text-lg transition-all duration-300 transform hover:scale-105 active:scale-95"
-			>
-				<span>เริ่มเล่นสะกดศัพท์</span>
-				<PlayCircleIcon size={24} />
-			</button>
+			<span class="animate-pulse">Loading Spelling Bee...</span>
 		</div>
 	{:else}
 		<div class="flex flex-col items-center space-y-6">
-			<!-- Timer display -->
-			<div class="flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-950 border border-slate-800 text-amber-400 text-sm font-mono font-bold">
-				<span class="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
-				TIME: {timeString}
-			</div>
-
-			<!-- Letter Tiles Grid -->
+			<!-- Letter Tiles Grid with smooth position reorder animation -->
 			<div class="flex flex-wrap justify-center gap-2 sm:gap-3 max-w-xl">
 				{#each letters as l (l)}
-					<button
-						on:click={() => addLetter(l)}
-						class="w-14 h-14 sm:w-16 sm:h-16 rounded-xl border-2 font-bold text-2xl sm:text-3xl flex items-center justify-center transition-all duration-200 transform hover:scale-105 active:scale-95 shadow-md
-						{answer.includes(l)
-							? 'bg-amber-500 text-slate-950 border-amber-300 shadow-amber-500/30'
-							: 'bg-slate-950 text-slate-100 border-slate-700 hover:border-amber-400 hover:text-amber-400'}"
-					>
-						<span class={isUpper(l) || isLower(l) ? 'translate-x-1' : ''}>{l}</span>
-					</button>
+					<div animate:flip={{ duration: 300 }}>
+						<button
+							on:click={() => addLetter(l)}
+							class="w-14 h-14 sm:w-16 sm:h-16 rounded-xl border-2 font-black text-2xl sm:text-3xl flex items-center justify-center transition-all duration-200 transform hover:scale-105 active:scale-95 shadow-md
+							{answer.includes(l)
+								? 'bg-amber-400 !text-slate-950 border-amber-300 shadow-amber-500/30 font-black'
+								: 'bg-slate-950 text-amber-300 border-slate-700 hover:border-amber-400 hover:text-amber-200'}"
+							style={answer.includes(l) ? 'color: #0f172a;' : ''}
+						>
+							<span class={isUpper(l) || isLower(l) ? 'translate-x-1' : ''}>{l}</span>
+						</button>
+					</div>
 				{/each}
 			</div>
 
 			<!-- Input Display & Controls -->
 			<div class="w-full max-w-md flex flex-col sm:flex-row items-center gap-2">
+				<!-- Merged Pause / Play + Timer Button -->
 				<button
-					on:click={() => (letters = shuffle(letters))}
-					class="p-3 rounded-xl bg-slate-950 border border-slate-800 text-slate-300 hover:text-amber-400 hover:border-amber-500/40 transition-colors"
-					title="สลับอักษร"
+					on:click={togglePause}
+					class="px-3.5 py-3 rounded-xl bg-slate-950 border border-slate-800 text-slate-300 hover:text-amber-400 hover:border-amber-500/40 transition-colors flex items-center gap-2 font-mono font-bold text-sm shadow-inner"
+					title={isPaused ? 'เริ่มเวลาต่อ' : 'หยุดเวลา'}
 				>
-					<RefreshCwIcon size={20} />
+					{#if isPaused}
+						<PlayIcon size="18" class="text-amber-400" />
+					{:else}
+						<PauseIcon size="18" class="text-amber-400" />
+						<span class="text-amber-400">{timeString}</span>
+					{/if}
 				</button>
 
+				<!-- Shuffle Button -->
+				<button
+					on:click={handleShuffle}
+					class="p-3 rounded-xl bg-slate-950 border border-slate-800 text-slate-300 hover:text-amber-400 hover:border-amber-500/40 transition-colors"
+					title="สลับอักษร & ล้างคำตอบ"
+				>
+					<RefreshCwIcon size="20" />
+				</button>
+
+				<!-- Textfield with empty placeholder -->
 				<div class="relative flex-1 w-full" class:wiggle={isWiggle}>
 					<input
 						type="text"
 						bind:value={answer}
-						placeholder="พิมพ์หรือกดเลือกคำ..."
-						class="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-700 text-white text-xl font-semibold focus:outline-none focus:border-amber-400 transition-colors"
+						on:keydown={(e) => { if (e.key === 'Enter') checkAnswer(); }}
+						placeholder=""
+						class="w-full px-4 py-3 rounded-xl !bg-slate-950 !text-white font-bold border border-slate-700 focus:outline-none focus:border-amber-400 transition-colors"
+						style="background-color: #020617; color: #ffffff;"
 					/>
 					{#if answer}
 						<button
 							on:click={() => (answer = '')}
 							class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-200"
 						>
-							<XCircleIcon size={18} />
+							<XCircleIcon size="18" />
 						</button>
 					{/if}
 				</div>
 
 				<button
 					on:click={checkAnswer}
-					class="w-full sm:w-auto px-6 py-3 rounded-xl font-bold bg-amber-400 hover:bg-amber-300 text-slate-950 transition-all duration-200"
+					class="w-full sm:w-auto px-7 py-3 rounded-xl font-black bg-amber-400 hover:bg-amber-300 !text-slate-950 transition-all duration-200 shadow-md shadow-amber-500/20"
+					style="color: #0f172a;"
 				>
 					ส่ง
 				</button>
@@ -233,7 +270,7 @@
 						: 'bg-amber-500/20 text-amber-300 border border-amber-500/30'}"
 				>
 					{#if log.type === 'success'}
-						<CheckCircleIcon size={16} />
+						<CheckCircleIcon size="16" />
 					{/if}
 					<span>{log.text}</span>
 				</div>
@@ -241,12 +278,13 @@
 
 			{#if isFinished}
 				<div class="pt-2">
-					<a
-						href="/puzzles/spellingbee"
-						class="px-6 py-2.5 rounded-xl font-bold bg-emerald-500 hover:bg-emerald-400 text-slate-950 transition-all"
+					<button
+						on:click={handleRandomNewPuzzle}
+						class="px-6 py-2.5 rounded-xl font-bold bg-emerald-500 hover:bg-emerald-400 !text-slate-950 transition-all shadow-lg shadow-emerald-500/20"
+						style="color: #0f172a;"
 					>
-						ดูอันดับ Leaderboard →
-					</a>
+						สุ่มข้อต่อไป 🎲 →
+					</button>
 				</div>
 			{/if}
 		</div>

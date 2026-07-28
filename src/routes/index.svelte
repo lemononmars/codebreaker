@@ -14,29 +14,7 @@
 	import { getPuzzleImageURL } from '$lib/supabase';
 	import { CheckCircleIcon, ImageIcon, ClockIcon, CalendarIcon } from 'svelte-feather-icons';
 
-	function getNthFridayOfYear(year: number, week: number): Date {
-		const y = Number(year) || 2026;
-		const w = Number(week) || 1;
-		const jan1 = new Date(y, 0, 1);
-		const dayOfWeek = jan1.getDay();
-		const daysUntilFirstFriday = (5 - dayOfWeek + 7) % 7;
-		const firstFriday = new Date(y, 0, 1 + daysUntilFirstFriday, 18, 0, 0);
-		return new Date(firstFriday.getTime() + (w - 1) * 7 * 24 * 3600 * 1000);
-	}
-
-	function getWeeklyUploadedDate(year: number, week: number) {
-		try {
-			const nthFriday = getNthFridayOfYear(year, week);
-			return nthFriday.toLocaleDateString('th-TH', {
-				year: 'numeric',
-				month: 'short',
-				day: 'numeric'
-			});
-		} catch (e) {
-			return '';
-		}
-	}
-
+	// SVG Icon map matching Puzzles page
 	const puzzleSvgIcons: Record<string, string> = {
 		rebus: `<svg class="w-10 h-10 text-cyan-400 group-hover:scale-110 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/><path d="M16 13.5l2.5-2.5 2.5 2.5"/><circle cx="16" cy="7" r="2"/></svg>`,
 		wordsearch: `<svg class="w-10 h-10 text-cyan-400 group-hover:scale-110 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="8" y1="8" x2="14" y2="14"/><line x1="14" y1="8" x2="8" y2="14"/></svg>`,
@@ -146,6 +124,29 @@
 			isLoadingSolves = false;
 		}
 	});
+
+	function getNthFridayOfYear(year: number, week: number): Date {
+		const y = Number(year) || 2026;
+		const w = Number(week) || 1;
+		const jan1 = new Date(y, 0, 1);
+		const dayOfWeek = jan1.getDay();
+		const daysUntilFirstFriday = (5 - dayOfWeek + 7) % 7;
+		const firstFriday = new Date(y, 0, 1 + daysUntilFirstFriday, 18, 0, 0);
+		return new Date(firstFriday.getTime() + (w - 1) * 7 * 24 * 3600 * 1000);
+	}
+
+	function getWeeklyUploadedDate(year: number, week: number) {
+		try {
+			const nthFriday = getNthFridayOfYear(year, week);
+			return nthFriday.toLocaleDateString('th-TH', {
+				year: 'numeric',
+				month: 'short',
+				day: 'numeric'
+			});
+		} catch (e) {
+			return '';
+		}
+	}
 
 	function getWeeklyPuzzleImage(year: number, week: number) {
 		const weekStr = String(week).padStart(2, '0');

@@ -1,8 +1,11 @@
 <script lang="ts">
+	import PuzzleCard from '$lib/components/PuzzleCard.svelte';
+
 	const weeklyPuzzle = {
 		type: 'weekly',
+		title: 'Weekly Puzzle',
 		description: 'ปริศนาประจำสัปดาห์บนเพจ fb',
-		icon: `<svg class="w-12 h-12 text-primary transition-all duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+		icon: `<svg class="w-10 h-10 text-emerald-400 transition-all duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 			<rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
 			<line x1="16" y1="2" x2="16" y2="6"/>
 			<line x1="8" y1="2" x2="8" y2="6"/>
@@ -14,8 +17,9 @@
 	const wordPuzzles = [
 		{
 			type: 'rebus',
+			title: 'Rebus',
 			description: 'ทายคำจากภาพ',
-			icon: `<svg class="w-12 h-12 text-primary transition-all duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+			icon: `<svg class="w-10 h-10 text-emerald-400 transition-all duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 				<rect x="3" y="3" width="18" height="18" rx="2" />
 				<circle cx="8.5" cy="8.5" r="1.5" />
 				<path d="M21 15l-5-5L5 21" />
@@ -25,8 +29,9 @@
 		},
 		{
 			type: 'wordsearch',
+			title: 'Word Search',
 			description: 'ปริศนาหาคำศัพท์',
-			icon: `<svg class="w-12 h-12 text-primary transition-all duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+			icon: `<svg class="w-10 h-10 text-emerald-400 transition-all duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 				<circle cx="11" cy="11" r="8" />
 				<line x1="21" y1="21" x2="16.65" y2="16.65" />
 				<line x1="8" y1="8" x2="14" y2="14" />
@@ -35,8 +40,9 @@
 		},
 		{
 			type: 'crossword',
+			title: 'Crossword',
 			description: 'ปริศนาอักษรไขว้',
-			icon: `<svg class="w-12 h-12 text-primary transition-all duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+			icon: `<svg class="w-10 h-10 text-emerald-400 transition-all duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 				<rect x="3" y="3" width="18" height="18" rx="2" />
 				<line x1="3" y1="9" x2="21" y2="9" />
 				<line x1="3" y1="15" x2="21" y2="15" />
@@ -49,8 +55,9 @@
 		},
 		{
 			type: 'alphabet',
+			title: 'Alphabet',
 			description: 'ทายคำจากคำใบ้ โดยเปิดตัวอักษรให้น้อยที่สุด',
-			icon: `<svg class="w-12 h-12 text-primary transition-all duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+			icon: `<svg class="w-10 h-10 text-emerald-400 transition-all duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 				<rect x="3" y="3" width="8" height="8" rx="1" />
 				<rect x="13" y="13" width="8" height="8" rx="1" />
 				<text x="7" y="9" font-size="6" font-family="sans-serif" font-weight="black" text-anchor="middle" fill="currentColor">A</text>
@@ -60,80 +67,60 @@
 		},
 		{
 			type: 'missingvowels',
-			description: 'ทายคำโดยใช้แค่พยัญชนะ',
-			icon: `<svg class="w-12 h-12 text-primary transition-all duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-				<rect x="2" y="4" width="20" height="16" rx="2" />
-				<text x="6" y="14" font-size="8" font-family="sans-serif" font-weight="black" text-anchor="middle" fill="currentColor">B</text>
-				<line x1="10" y1="14" x2="14" y2="14" stroke-width="3" />
-				<text x="18" y="14" font-size="8" font-family="sans-serif" font-weight="black" text-anchor="middle" fill="currentColor">K</text>
+			title: 'Missing Vowels',
+			description: 'ทายคำจากพยัญชนะที่ไม่มีสระ',
+			icon: `<svg class="w-10 h-10 text-emerald-400 transition-all duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+				<line x1="4" y1="9" x2="20" y2="9"/>
+				<line x1="4" y1="15" x2="20" y2="15"/>
+				<line x1="10" y1="3" x2="8" y2="21"/>
+				<line x1="16" y1="3" x2="14" y2="21"/>
 			</svg>`
 		},
 		{
 			type: 'cryptogram',
-			description: 'ทายคำจากรหัสอักษร',
-			icon: `<svg class="w-12 h-12 text-primary transition-all duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-				<rect x="3" y="11" width="18" height="10" rx="2" />
-				<path d="M7 11V7a5 5 0 0 1 10 0v4" />
-				<circle cx="12" cy="16" r="1.5" />
-				<path d="M12 17.5v2" />
+			title: 'Cryptogram',
+			description: 'ถอดรหัสข้อความลับซ่อนคำ',
+			icon: `<svg class="w-10 h-10 text-emerald-400 transition-all duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+				<rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+				<path d="M7 11V7a5 5 0 0 1 10 0v4"/>
 			</svg>`
 		}
 	];
 
 	const generatedWordPuzzles = [
 		{
-			type: 'spellingbee',
-			description: 'หาคำ 7 ตัวอักษร',
-			icon: `<svg class="w-12 h-12 text-primary transition-all duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-				<path d="M12 2l8.66 5v10L12 22l-8.66-5V7z" />
-				<circle cx="12" cy="12" r="3" />
-				<line x1="8" y1="12" x2="5" y2="12" />
-				<line x1="16" y1="12" x2="19" y2="12" />
-				<path d="M12 9c.5-1.5 2-2 2-2M12 15c-.5 1.5-2 2-2 2" />
-			</svg>`
-		},
-		{
 			type: 'crossroad',
-			description: 'เติมคำเพื่อสร้างศัพท์ทั้งสี่ทิศทาง',
-			icon: `<svg class="w-12 h-12 text-primary transition-all duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-				<line x1="12" y1="2" x2="12" y2="22" />
-				<line x1="2" y1="12" x2="22" y2="12" />
-				<polyline points="9 5 12 2 15 5" />
-				<polyline points="9 19 12 22 15 19" />
-				<polyline points="5 9 2 12 5 15" />
-				<polyline points="19 9 22 12 19 15" />
+			title: 'Crossroad',
+			description: 'เติมคำเพื่อสร้างคำทั้งสี่ทิศทาง',
+			icon: `<svg class="w-10 h-10 text-cyan-400 transition-all duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+				<path d="M12 2v20M2 12h20M7 7l10 10M17 7L7 17"/>
 			</svg>`
 		},
 		{
-			type: 'spellingquiz',
-			description: 'หาคำที่สะกดถูกต้อง',
-			icon: `<svg class="w-12 h-12 text-primary transition-all duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-				<path d="M12 20h9" />
-				<path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
-				<path d="M15 5l3 3" />
+			type: 'spellingbee',
+			title: 'Spelling Bee',
+			description: 'ผสมคำจากตัวอักษร 7 ตัวที่กำหนด',
+			icon: `<svg class="w-10 h-10 text-cyan-400 transition-all duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+				<path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
 			</svg>`
 		},
 		{
 			type: 'blanks',
-			description: 'เติมตัวอักษรที่หายไปให้ครบทุกช่องว่าง',
-			icon: `<svg class="w-12 h-12 text-primary transition-all duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-				<rect x="2" y="4" width="20" height="16" rx="2" />
-				<line x1="6" y1="12" x2="8" y2="12" stroke-width="3" />
-				<line x1="11" y1="12" x2="13" y2="12" stroke-dasharray="2,1" stroke-width="2.5" />
-				<line x1="16" y1="12" x2="18" y2="12" stroke-width="3" />
-				<rect x="9.5" y="8.5" width="5" height="7" rx="1" fill="currentColor" fill-opacity="0.15" />
+			title: 'Blanks',
+			description: 'เติมตัวอักษรที่หายไปในคำ',
+			icon: `<svg class="w-10 h-10 text-cyan-400 transition-all duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+				<path d="M12 20h9"/>
+				<path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
 			</svg>`
 		},
 		{
-			type: 'boggle',
-			description: 'ลากเส้นเชื่อมตัวอักษรเพื่อผสมคำภาษาไทยในพจนานุกรม',
-			icon: `<svg class="w-12 h-12 text-primary transition-all duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-				<rect x="3" y="3" width="18" height="18" rx="2" />
-				<line x1="3" y1="9" x2="21" y2="9" />
-				<line x1="3" y1="15" x2="21" y2="15" />
-				<line x1="9" y1="3" x2="9" y2="21" />
-				<line x1="15" y1="3" x2="15" y2="21" />
-				<path d="M7 8l5 5 5-5" stroke-dasharray="2,2" />
+			type: 'spellingquiz',
+			title: 'Spelling Quiz',
+			description: 'ควิซวัดความแม่นยำในการสะกดคำ',
+			icon: `<svg class="w-10 h-10 text-cyan-400 transition-all duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+				<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+				<polyline points="14 2 14 8 20 8"/>
+				<line x1="9" y1="15" x2="15" y2="15"/>
 			</svg>`
 		}
 	];
@@ -141,17 +128,19 @@
 	const nonWordPuzzles = [
 		{
 			type: 'thaimapquiz',
-			description: 'หาจังหวัดบนแผนที่ประเทศไทย',
-			icon: `<svg class="w-12 h-12 text-primary transition-all duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-				<path d="M12 2c-3.8 0-7 3.2-7 7 0 5.2 7 13 7 13s7-7.8 7-7.8c0-3.8-3.2-7-7-7z" />
-				<circle cx="12" cy="9" r="2.5" />
-				<path d="M8 17h8" />
+			title: 'Thai Map Quiz',
+			description: 'ควิซทายชื่อจังหวัดและตำแหน่งบนแผนที่ไทย',
+			icon: `<svg class="w-10 h-10 text-teal-400 transition-all duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+				<polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/>
+				<line x1="8" y1="2" x2="8" y2="18"/>
+				<line x1="16" y1="6" x2="16" y2="22"/>
 			</svg>`
 		},
 		{
 			type: 'puzzlehunt',
+			title: 'Puzzle Hunt',
 			description: 'แก้ชุดปริศนา',
-			icon: `<svg class="w-12 h-12 text-primary transition-all duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+			icon: `<svg class="w-10 h-10 text-teal-400 transition-all duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 				<circle cx="12" cy="12" r="10" />
 				<polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" />
 			</svg>`
@@ -163,128 +152,79 @@
 	<title>Code Breaker | Puzzles</title>
 	<meta
 		name="description"
-		content="ลับสมองด้วยปริศนาหลากรูปแบบ ทั้งอักษรไขว้ ทายศัพท์ เติมคำในช่องว่าง และอื่น ๆ อีกมากมาย"
+		content="ลับสมองด้วยปริศนาหลากรูปแบบ ทั้งอักษรไขว้ Crossroad ทายศัพท์ เติมคำในช่องว่าง และอื่น ๆ อีกมากมาย"
 	/>
-	<meta property="og:title" content="Code Breaker Puzzles" />
-	<meta
-		property="og:description"
-		content="ลับสมองด้วยปริศนาหลากรูปแบบ ทั้งอักษรไขว้ ทายศัพท์ เติมคำในช่องว่าง และอื่น ๆ อีกมากมาย"
-	/>
-	<meta property="og:type" content="website" />
-	<meta property="og:image" content="/og-main.png" />
-	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:image" content="/og-main.png" />
 </svelte:head>
 
-<div class="container mx-auto px-4 pt-8">
-	<h1 class="text-4xl font-bold text-center mb-8 tracking-tight">Puzzles</h1>
-</div>
+<div class="container mx-auto px-4 pt-6 sm:pt-12 pb-24 flex flex-col gap-10 max-w-5xl">
+	<div class="text-center mb-4">
+		<h1 class="text-3xl lg:text-5xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-cyan-400">
+			Puzzles
+		</h1>
+		<p class="text-slate-400 text-sm sm:text-base mt-2">ลับสมองด้วยปริศนาหลากรูปแบบ</p>
+	</div>
 
-<div class="container mx-auto px-4 pb-12 flex flex-col gap-10">
-	
-	<!-- 1. Weekly Puzzle Featured Section -->
+	<!-- 1. Weekly Puzzle Section -->
 	<section class="flex flex-col gap-4">
-		<h2 class="text-2xl font-bold tracking-tight text-primary border-b border-base-300/20 pb-2">
+		<h2 class="text-xl sm:text-2xl font-bold tracking-tight text-emerald-400 border-b border-slate-800 pb-2">
 			🔥 ปริศนาประจำสัปดาห์ (Weekly Puzzle)
 		</h2>
-		<a
-			href="/puzzles/{weeklyPuzzle.type}"
-			class="card bg-neutral text-neutral-content shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 block w-full group"
-		>
-			<div class="card-body flex flex-col items-center text-center gap-4 p-6">
-				<div class="w-20 h-20 rounded-2xl bg-base-300/40 text-primary flex items-center justify-center p-3 shadow-inner border border-base-300/60 group-hover:bg-primary/10 group-hover:text-secondary group-hover:border-secondary/30 transition-all duration-300">
-					{@html weeklyPuzzle.icon}
-				</div>
-				<div class="flex flex-col gap-1 flex-1 items-center">
-					<h2 class="card-title text-2xl font-bold capitalize tracking-wide text-primary justify-center text-center">
-						{weeklyPuzzle.type}
-					</h2>
-					<p class="text-base font-medium opacity-80 leading-relaxed">{weeklyPuzzle.description}</p>
-				</div>
-			</div>
-		</a>
+		<PuzzleCard
+			type={weeklyPuzzle.type}
+			title={weeklyPuzzle.title}
+			description={weeklyPuzzle.description}
+			icon={weeklyPuzzle.icon}
+		/>
 	</section>
 
-	<!-- 2. Word Puzzles Section -->
+	<!-- 2. Crafted Word Puzzles Section (Rebus, Word Search, Crossword, Alphabet, Missing Vowels, Cryptogram) -->
 	<section class="flex flex-col gap-4">
-		<h2 class="text-2xl font-bold tracking-tight text-primary border-b border-base-300/20 pb-2">
+		<h2 class="text-xl sm:text-2xl font-bold tracking-tight text-emerald-400 border-b border-slate-800 pb-2">
 			🔠 ปริศนาภาษาทำมือ (Crafted Word Puzzles)
 		</h2>
-		<div class="grid md:grid-cols-2 gap-6">
+		<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-6">
 			{#each wordPuzzles as p}
-				<a
-					href="/puzzles/{p.type}"
-					class="card bg-neutral text-neutral-content shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 block h-full group"
-				>
-					<div class="card-body flex flex-col items-center text-center gap-4 p-6">
-						<div class="w-20 h-20 rounded-2xl bg-base-300/40 text-primary flex items-center justify-center p-3 shadow-inner border border-base-300/60 group-hover:bg-primary/10 group-hover:text-secondary group-hover:border-secondary/30 transition-all duration-300">
-							{@html p.icon}
-						</div>
-						<div class="flex flex-col gap-1 flex-1 items-center">
-							<h2 class="card-title text-2xl font-bold capitalize tracking-wide text-primary justify-center text-center">
-								{p.type === 'spellingquiz' ? 'Spelling Quiz' : p.type }
-							</h2>
-							<p class="text-base font-medium opacity-80 leading-relaxed">{p.description}</p>
-						</div>
-					</div>
-				</a>
+				<PuzzleCard
+					type={p.type}
+					title={p.title}
+					description={p.description}
+					icon={p.icon}
+				/>
 			{/each}
 		</div>
 	</section>
 
-	
-	<!-- 2. Word Puzzles Section -->
+	<!-- 3. Generated Word Puzzles Section (Crossroad, Spelling Bee, Blanks, Spelling Quiz) -->
 	<section class="flex flex-col gap-4">
-		<h2 class="text-2xl font-bold tracking-tight text-primary border-b border-base-300/20 pb-2">
+		<h2 class="text-xl sm:text-2xl font-bold tracking-tight text-cyan-400 border-b border-slate-800 pb-2">
 			🔠 ปริศนาภาษาสร้างจากพจนานุกรม (Generated Word Puzzles)
 		</h2>
-		<div class="grid md:grid-cols-2 gap-6">
+		<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-6">
 			{#each generatedWordPuzzles as p}
-				<a
-					href="/puzzles/{p.type}"
-					class="card bg-neutral text-neutral-content shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 block h-full group"
-				>
-					<div class="card-body flex flex-col items-center text-center gap-4 p-6">
-						<div class="w-20 h-20 rounded-2xl bg-base-300/40 text-primary flex items-center justify-center p-3 shadow-inner border border-base-300/60 group-hover:bg-primary/10 group-hover:text-secondary group-hover:border-secondary/30 transition-all duration-300">
-							{@html p.icon}
-						</div>
-						<div class="flex flex-col gap-1 flex-1 items-center">
-							<h2 class="card-title text-2xl font-bold capitalize tracking-wide text-primary justify-center text-center">
-								{p.type === 'spellingquiz' ? 'Spelling Quiz' : p.type}
-							</h2>
-							<p class="text-base font-medium opacity-80 leading-relaxed">{p.description}</p>
-						</div>
-					</div>
-				</a>
+				<PuzzleCard
+					type={p.type}
+					title={p.title}
+					description={p.description}
+					icon={p.icon}
+				/>
 			{/each}
 		</div>
 	</section>
 
-	<!-- 3. Non-Word Puzzles Section -->
+	<!-- 4. Non-Word Puzzles Section -->
 	<section class="flex flex-col gap-4">
-		<h2 class="text-2xl font-bold tracking-tight text-primary border-b border-base-300/20 pb-2">
+		<h2 class="text-xl sm:text-2xl font-bold tracking-tight text-teal-400 border-b border-slate-800 pb-2">
 			🧭 ปริศนาทั่วไปและตรรกศาสตร์ (Non-Word Puzzles)
 		</h2>
-		<div class="grid md:grid-cols-2 gap-6">
+		<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-6">
 			{#each nonWordPuzzles as p}
-				<a
-					href="/puzzles/{p.type}"
-					class="card bg-neutral text-neutral-content shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 block h-full group"
-				>
-					<div class="card-body flex flex-col items-center text-center gap-4 p-6">
-						<div class="w-20 h-20 rounded-2xl bg-base-300/40 text-primary flex items-center justify-center p-3 shadow-inner border border-base-300/60 group-hover:bg-primary/10 group-hover:text-secondary group-hover:border-secondary/30 transition-all duration-300">
-							{@html p.icon}
-						</div>
-						<div class="flex flex-col gap-1 flex-1 items-center">
-							<h2 class="card-title text-2xl font-bold capitalize tracking-wide text-primary justify-center text-center">
-								{p.type === 'thaimapquiz' ? 'Thai Map Quiz' : p.type}
-							</h2>
-							<p class="text-base font-medium opacity-80 leading-relaxed">{p.description}</p>
-						</div>
-					</div>
-				</a>
+				<PuzzleCard
+					type={p.type}
+					title={p.title}
+					description={p.description}
+					icon={p.icon}
+				/>
 			{/each}
 		</div>
 	</section>
-
 </div>

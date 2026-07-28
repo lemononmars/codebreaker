@@ -1,8 +1,8 @@
 <script lang="ts">
-	const imgUrlPrefix: string =
-		'https://raw.githubusercontent.com/lemononmars/codebreaker/main/src/lib/images/product/';
+	import ShopCard from '$lib/components/ShopCard.svelte';
+	import { shopProductDescriptions, shopImgUrlPrefix } from '$lib/data/metadata';
 
-	const productDescriptions = [
+	const products = shopProductDescriptions.length > 0 ? shopProductDescriptions : [
 		{
 			url: 'carddeck/vol1',
 			title: 'Puzzle Card Deck Vol.1',
@@ -28,31 +28,23 @@
 	<title>Code Breaker | Shop</title>
 </svelte:head>
 
-<div class="container mx-auto px-4 pt-8">
-	<h1 class="text-4xl font-bold text-center mb-8 tracking-tight">Shop</h1>
-</div>
+<div class="container mx-auto px-4 pt-6 sm:pt-12 pb-24 max-w-5xl">
+	<div class="text-center mb-8">
+		<h1 class="text-3xl lg:text-5xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-teal-400 to-emerald-400">
+			Shop
+		</h1>
+		<p class="text-slate-400 text-sm sm:text-base mt-2">ร้านค้าหนังสือ & การ์ดเกมปริศนาอย่างเป็นทางการ</p>
+	</div>
 
-<div class="container mx-auto px-4 pb-12">
-	<div class="grid md:grid-cols-2 gap-6">
-		{#each productDescriptions as p}
-			<a
-				href="/shop/{p.url}"
-				class="card bg-neutral text-neutral-content shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 block h-full"
-			>
-				<div class="card-body flex flex-row items-center gap-6 p-6">
-					<div class="avatar placeholder">
-						<div class="w-24 h-24 rounded-xl bg-base-100 p-2 mask mask-squircle shadow-inner">
-							<img src={imgUrlPrefix + p.imgUrl} class="object-cover w-full h-full" alt={p.title} />
-						</div>
-					</div>
-					<div class="flex flex-col gap-1">
-						<h2 class="card-title text-xl font-bold capitalize tracking-wide text-primary">
-							{p.title}
-						</h2>
-						<p class="text-base font-medium opacity-80 leading-relaxed">{p.description}</p>
-					</div>
-				</div>
-			</a>
+	<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+		{#each products as p}
+			<ShopCard
+				url={p.url}
+				title={p.title}
+				description={p.description}
+				imgUrl={p.imgUrl}
+				imgUrlPrefix={shopImgUrlPrefix}
+			/>
 		{/each}
 	</div>
 </div>

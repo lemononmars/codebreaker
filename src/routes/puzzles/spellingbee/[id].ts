@@ -1,21 +1,31 @@
-import {getPuzzle, numPuzzles} from '$lib/data/puzzles/spellingbee'
-// import { getPuzzle } from '../../api'
+import { getPuzzle, getDailySpellingBee, numPuzzles } from '$lib/data/puzzles/spellingbee';
 import type { RequestHandler } from '@sveltejs/kit';
 
-export const get: RequestHandler = async ({params}) => {
-  const {id} = params
-  if(!id || parseInt(id) > numPuzzles) {    
-    const newID = Math.floor(Math.random()*numPuzzles)
-    return {
-      status: 303,
-      headers: {
-        location: `/puzzles/spellingbee/${newID}`
-      }
-    };
-  }
+export const get: RequestHandler = async ({ params }) => {
+	const { id } = params;
 
-  let content = getPuzzle(id)
-  return {
-    body: { content }
-  };
- }
+	if (id === 'daily') {
+		const content = getDailySpellingBee();
+		return { body: { content } };
+	}
+
+	const numericId = parseInt(id, 10);
+	if (isNaN(numericId) || numericId < 0 || numericId >= numPuzzles) {
+		const newID = Math.floor(Math.random() * numPuzzles);
+		return {
+			status: 303,
+			headers: {
+				location: `/puzzles/spellingbee/${newID}`
+			}
+		};
+	}
+
+	let content = getPuzzle(numericId);
+	if (!content) {
+		content = getDailySpellingBee();
+	}
+
+	return {
+		body: { content }
+	};
+};

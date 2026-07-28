@@ -440,57 +440,56 @@
 				<span>ลองใหม่นะ</span>
 			{/if}
 		{:else}
-			<div class="border border-base-300 rounded-xl overflow-hidden hidden lg:block shadow-sm">
+			<div class="bg-slate-900/60 backdrop-blur-xl border border-slate-800 rounded-2xl overflow-hidden hidden lg:block shadow-xl">
 				<table
-					class="table table-compact table-zebra w-full lg:table-normal [&_th]:border [&_td]:border [&_th]:border-base-300 [&_td]:border-base-300"
+					class="table w-full text-slate-200 [&_th]:border [&_td]:border [&_th]:border-slate-800 [&_td]:border-slate-800/60"
 				>
-					<thead>
+					<thead class="bg-slate-950/80 text-slate-300">
 						<tr>
-							<th>ถ้าอยากหาคำที่...</th>
-							<th>...ให้ใส่...</th>
-							<th>...จะได้</th>
+							<th class="py-3 px-4 text-left">ถ้าอยากหาคำที่...</th>
+							<th class="py-3 px-4 text-left">...ให้ใส่...</th>
+							<th class="py-3 px-4 text-left">...จะได้</th>
 						</tr>
 					</thead>
-					<tbody>
+					<tbody class="divide-y divide-slate-800/60 text-sm">
 						{#each examples as [desc, ip, result]}
-							<tr>
-								<td>{desc}</td>
-								<td>
+							<tr class="hover:bg-slate-800/40 transition-colors">
+								<td class="py-3 px-4">{desc}</td>
+								<td class="py-3 px-4">
 									<div data-tip="ลองเลย" class="tooltip">
 										<button
-											class="btn btn-info btn-block font-thin text-xl"
+											class="px-4 py-2 rounded-xl bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 hover:bg-cyan-500/30 font-mono text-base transition-colors"
 											on:click={() => loadExample(ip)}>{ip}</button
 										>
 									</div>
 								</td>
-								<td>{result}</td>
+								<td class="py-3 px-4 text-slate-400">{result}</td>
 							</tr>
 						{/each}
 					</tbody>
 				</table>
 			</div>
 			<div
-				class="border border-base-300 rounded-xl overflow-hidden lg:hidden shadow-sm mx-auto w-full max-w-sm"
+				class="bg-slate-900/60 backdrop-blur-xl border border-slate-800 rounded-2xl overflow-hidden lg:hidden shadow-xl mx-auto w-full max-w-sm"
 			>
 				<table
-					class="table table-compact table-zebra w-full [&_th]:border [&_td]:border [&_th]:border-base-300 [&_td]:border-base-300"
+					class="table w-full text-slate-200 [&_th]:border [&_td]:border [&_th]:border-slate-800 [&_td]:border-slate-800/60"
 				>
-					<thead>
+					<thead class="bg-slate-950/80 text-slate-300">
 						<tr>
-							<th>ถ้าอยากหาคำที่...ให้ใส่...</th>
+							<th class="py-3 px-4 text-left">ถ้าอยากหาคำที่...ให้ใส่...</th>
 						</tr>
 					</thead>
-					<tbody>
+					<tbody class="divide-y divide-slate-800/60 text-sm">
 						{#each examples as [desc, ip, result]}
-							<tr>
-								<td>
-									<p>{desc}</p>
+							<tr class="hover:bg-slate-800/40 transition-colors">
+								<td class="py-3 px-4">
+									<p class="font-medium text-slate-200">{desc}</p>
 									<div data-tip="ลองเลย" class="tooltip mt-2">
-										<button class="btn btn-info btn-xs text-sm" on:click={() => loadExample(ip)}
+										<button class="px-3 py-1 rounded-lg bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 font-mono text-xs" on:click={() => loadExample(ip)}
 											>{ip}</button
 										>
 									</div>
-									<br />
 								</td>
 							</tr>
 						{/each}

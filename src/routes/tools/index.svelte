@@ -1,4 +1,5 @@
 <script lang="ts">
+	import ToolCard from '$lib/components/ToolCard.svelte';
 	import {
 		CheckCircleIcon,
 		GridIcon,
@@ -7,7 +8,8 @@
 		ImageIcon,
 		Edit3Icon,
 		BookOpenIcon,
-		TypeIcon
+		TypeIcon,
+		ClockIcon
 	} from 'svelte-feather-icons';
 
 	const puzzleBuilders = [
@@ -42,6 +44,13 @@
 	];
 
 	const utilities = [
+		{
+			name: 'Countdown',
+			path: '/tools/countdown',
+			description: 'สร้างคำที่ใช้ตัวอักษรมากที่สุด',
+			icon: ClockIcon,
+			color: 'text-amber-400'
+		},
 		{
 			name: 'Answer Checker',
 			path: '/tools/check',
@@ -97,62 +106,50 @@
 	<meta name="twitter:image" content="/og-main.png" />
 </svelte:head>
 
-<div class="container mx-auto px-4 pt-12 pb-24">
-	<div class="max-w-3xl mx-auto text-center mb-16">
+<div class="container mx-auto px-4 pt-6 sm:pt-12 pb-24">
+	<div class="max-w-3xl mx-auto text-center mb-10 sm:mb-16">
 		<h1
-			class="text-3xl lg:text-5xl font-extrabold tracking-tight mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary"
+			class="text-3xl lg:text-5xl font-extrabold tracking-tight mb-3 bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary"
 		>
 			Tools & Utilities
 		</h1>
-		<p class="text-lg text-base-content/70">เครื่องมือช่วยสร้างและแก้ปริศนาของคุณ</p>
+		<p class="text-base sm:text-lg text-base-content/70">เครื่องมือช่วยสร้างและแก้ปริศนาของคุณ</p>
 	</div>
 
-	<div class="max-w-4xl mx-auto mb-16">
-		<h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
-			<div class="w-2 h-8 bg-primary rounded-full"></div>
+	<!-- Section 1: Puzzle Builders -->
+	<div class="max-w-4xl mx-auto mb-10 sm:mb-16">
+		<h2 class="text-xl sm:text-2xl font-bold mb-4 flex items-center gap-2 sm:gap-3">
+			<div class="w-2 h-6 sm:h-8 bg-primary rounded-full"></div>
 			Puzzle Builders
 		</h2>
-		<div class="grid md:grid-cols-2 gap-8">
+		<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-6">
 			{#each puzzleBuilders as tool}
-				<a
-					href={tool.path}
-					class="card bg-base-100 hover:bg-base-200 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl group border border-base-200/50 shadow-lg"
-				>
-					<div class="card-body items-center text-center p-8">
-						<div
-							class="w-20 h-20 rounded-2xl bg-base-200/50 shadow-inner flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300"
-						>
-							<svelte:component this={tool.icon} size="40" class={tool.color} />
-						</div>
-						<h2 class="card-title text-3xl font-bold mb-3">{tool.name}</h2>
-						<p class="text-base-content/70 font-medium">{tool.description}</p>
-					</div>
-				</a>
+				<ToolCard
+					name={tool.name}
+					path={tool.path}
+					description={tool.description}
+					icon={tool.icon}
+					color={tool.color}
+				/>
 			{/each}
 		</div>
 	</div>
 
-	<div class="max-w-4xl mx-auto mb-16">
-		<h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
-			<div class="w-2 h-8 bg-secondary rounded-full"></div>
+	<!-- Section 2: Utilities -->
+	<div class="max-w-4xl mx-auto mb-10 sm:mb-16">
+		<h2 class="text-xl sm:text-2xl font-bold mb-4 flex items-center gap-2 sm:gap-3">
+			<div class="w-2 h-6 sm:h-8 bg-secondary rounded-full"></div>
 			Utilities
 		</h2>
-		<div class="grid md:grid-cols-2 gap-8">
+		<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-6">
 			{#each utilities as tool}
-				<a
-					href={tool.path}
-					class="card bg-base-100 hover:bg-base-200 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl group border border-base-200/50 shadow-lg"
-				>
-					<div class="card-body items-center text-center p-8">
-						<div
-							class="w-20 h-20 rounded-2xl bg-base-200/50 shadow-inner flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300"
-						>
-							<svelte:component this={tool.icon} size="40" class={tool.color} />
-						</div>
-						<h2 class="card-title text-3xl font-bold mb-3">{tool.name}</h2>
-						<p class="text-base-content/70 font-medium">{tool.description}</p>
-					</div>
-				</a>
+				<ToolCard
+					name={tool.name}
+					path={tool.path}
+					description={tool.description}
+					icon={tool.icon}
+					color={tool.color}
+				/>
 			{/each}
 		</div>
 	</div>

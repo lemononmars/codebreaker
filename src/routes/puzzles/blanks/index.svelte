@@ -894,7 +894,7 @@
 								: answerStatus === 'incorrect' 
 									? 'border-error/60 shadow-[0_0_20px_rgba(239,68,68,0.15)] bg-error/5 animate-shake' 
 									: 'border-white/5 shadow-inner'}
-							{isFullscreen ? 'gap-x-1 sm:gap-x-1.5 py-14' : 'gap-x-1 sm:gap-x-1.5 py-6 sm:py-10'}"
+							{isFullscreen ? 'gap-x-0.5 sm:gap-x-1.5 py-14' : 'gap-x-0.5 sm:gap-x-1.5 py-4 sm:py-10'}"
 					>
 						{#each (() => {
 							let charIdx = 0;
@@ -913,8 +913,8 @@
 						})() as item}
 							{@const baseGroupIdx = item.baseIdx !== -1 ? getGroupIndex(item.block.base) : -1}
 							{@const lowerGroupIdx = item.lowerIndices.length > 0 ? getGroupIndex(item.block.lower[0]) : -1}
-							<div class="relative flex flex-col items-center justify-center select-none gap-[2px] transition-all duration-300
-								{isFullscreen ? 'w-18 h-auto min-h-44 sm:w-28 sm:min-h-72 md:w-40 md:min-h-80' : 'w-14 h-auto min-h-32 sm:w-18 sm:min-h-44'}">
+							<div class="relative flex flex-col items-center justify-center select-none gap-[1px] transition-all duration-300
+								{isFullscreen ? 'w-12 sm:w-28 sm:min-h-72 md:w-40 md:min-h-80' : 'w-8 sm:w-16 min-h-28 sm:min-h-44'}">
 								<!-- Upper Vowel/Tone Mark Stack -->
 								<div class="flex flex-col-reverse items-center justify-start font-black text-white transition-all duration-300 gap-[2px] w-full {isFullscreen ? 'h-14 sm:h-24' : 'h-10 sm:h-14'}">
 									{#if item.block.upper}
