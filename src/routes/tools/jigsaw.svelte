@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { fade, scale } from 'svelte/transition';
-	import { quintOut } from 'svelte/easing';
 
 	interface Puzzle {
 		imageSrc: string;

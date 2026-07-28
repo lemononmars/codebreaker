@@ -13,7 +13,7 @@
 <script lang="ts">
 	import { UserXIcon, SearchIcon } from 'svelte-feather-icons';
 	export let error: Error;
-	export let status: number;
+	export const status: number = 404;
 </script>
 
 

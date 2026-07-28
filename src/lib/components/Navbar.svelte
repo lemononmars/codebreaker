@@ -170,8 +170,9 @@
 			<h2 class="text-2xl font-black text-white">ตั้งค่าโปรไฟล์</h2>
 			<div class="flex flex-col gap-4">
 				<div class="flex flex-col gap-1.5">
-					<label class="text-xs font-bold text-slate-400">ชื่อที่ใช้แสดง</label>
+					<label for="display-name-input" class="text-xs font-bold text-slate-400">ชื่อที่ใช้แสดง</label>
 					<input
+						id="display-name-input"
 						class="w-full px-4 py-3 rounded-2xl bg-black border border-slate-800 text-white font-bold focus:outline-none focus:border-cyan-400 text-sm"
 						type="text"
 						bind:value={$username}

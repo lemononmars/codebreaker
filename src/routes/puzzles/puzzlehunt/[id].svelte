@@ -35,7 +35,6 @@
 
 	$: title = content?.title || '';
 	$: puzzles = content?.puzzles || [];
-	$: id = content?.id || 1;
 
 	let currentTab: number = 0;
 	$: numPuzzles = puzzles.length;

@@ -11,7 +11,6 @@
 		CheckCircleIcon,
 		XCircleIcon,
 		BookOpenIcon,
-		ZapIcon,
 		ClockIcon,
 		SendIcon,
 		Maximize2Icon,
@@ -236,8 +235,7 @@
 	}
 
 	function getHighScore(type: string, mode: string) {
-		return 0;
-		const highScores = localStorage.getItem('spellingHighScores') || '{}';
+		const highScores = typeof localStorage !== 'undefined' ? localStorage.getItem('spellingHighScores') || '{}' : '{}';
 		return JSON.parse(highScores)[type]?.[mode] || 0;
 	}
 

@@ -211,9 +211,9 @@
 	<!-- Success Modal -->
 	<input type="checkbox" id="success-modal" class="modal-toggle" bind:checked={showModal} />
 	<label for="success-modal" class="modal cursor-pointer">
-		<label class="modal-box relative bg-success text-success-content text-center animate-bounce">
+		<div class="modal-box relative bg-success text-success-content text-center animate-bounce">
 			<h3 class="text-lg font-bold">Correct!</h3>
 			<p class="py-4">Level {level} completed. Teleporting in 2 seconds...</p>
-		</label>
+		</div>
 	</label>
 {/key}

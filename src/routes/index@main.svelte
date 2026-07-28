@@ -12,7 +12,7 @@
 	} from '$lib/data/metadata';
 	import { onMount } from 'svelte';
 	import { getPuzzleImageURL } from '$lib/supabase';
-	import { CheckCircleIcon, ImageIcon, ClockIcon, CalendarIcon } from 'svelte-feather-icons';
+	import { CheckCircleIcon, ImageIcon, CalendarIcon } from 'svelte-feather-icons';
 
 	function getNthFridayOfYear(year: number, week: number): Date {
 		const y = Number(year) || 2026;

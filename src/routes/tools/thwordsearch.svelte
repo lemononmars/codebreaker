@@ -67,8 +67,6 @@
 	const url = 'https://codebreakerth.vercel.app/tool/thwordsearch';
 	const title = 'Thai Word Search';
 	const description = 'Pattern-matching in Thai language';
-	const imageUrl = '';
-	const gtagId = 'G-YTV7TZ3EMC';
 
 	const examples = [
 		['มีตัวอักษรในตำแหน่งที่กำหนด', 'ส..น', 'สงวน, สถาน, สุทัศน์, ...'],
@@ -481,7 +479,7 @@
 						</tr>
 					</thead>
 					<tbody class="divide-y divide-slate-800/60 text-sm">
-						{#each examples as [desc, ip, result]}
+						{#each examples as [desc, ip]}
 							<tr class="hover:bg-slate-800/40 transition-colors">
 								<td class="py-3 px-4">
 									<p class="font-medium text-slate-200">{desc}</p>

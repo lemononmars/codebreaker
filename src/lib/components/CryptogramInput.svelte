@@ -16,7 +16,7 @@
    export let showUsedLetters: boolean = false
 
    const splittedWord = splitWord(word)
-   let splittedIndex = splittedWord.map(s => 0)
+   let splittedIndex = splittedWord.map(_ => 0)
 
    const numBlocks = splittedWord.length
    splittedWord.map(w => w[0])
@@ -34,7 +34,7 @@
    let inputLetters: string[] = word.split("").map((w) => isLower(w) || isUpper(w) ? w:'')
    let letterElement = Array(word.length).fill(null)
    // determine cryptogram indices
-   let cryptogramIndices = splittedWord.map(s => 0)
+   let cryptogramIndices = splittedWord.map(_ => 0)
    let idx = 1
    for(let i=0; i < splittedWord.length; i ++) {
       if(!cryptogramIndices[i]) {

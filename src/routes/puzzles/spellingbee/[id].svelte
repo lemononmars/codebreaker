@@ -245,8 +245,8 @@
 
 <!-- Success Modal -->
 <input type="checkbox" id="submit-modal" class="modal-toggle" />
-<label class="modal cursor-pointer w-screen" class:modal-open={openModal} on:click={() => (openModal = false)}>
-   <label class="modal-box relative bg-slate-900 border border-slate-800 text-white rounded-3xl p-6 shadow-2xl" for="">
+<div class="modal cursor-pointer w-screen" class:modal-open={openModal} on:click={() => (openModal = false)}>
+   <div class="modal-box relative bg-slate-900 border border-slate-800 text-white rounded-3xl p-6 shadow-2xl">
       <h3 class="text-2xl font-black mb-2 text-emerald-400 flex items-center gap-2">
          <CheckCircleIcon size="24" /> หาคำศัพท์ครบแล้ว! 🎉
       </h3>
@@ -259,8 +259,8 @@
             ปิด
          </button>
       </div>
-   </label>
-</label>
+   </div>
+</div>
 
 <style>
    @keyframes pos-x-wiggle {

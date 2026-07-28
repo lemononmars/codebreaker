@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { splitWord } from '$lib/utils/thaiwords';
-	import { SaveIcon, LinkIcon, RefreshCwIcon, EyeIcon } from 'svelte-feather-icons';
+	import { SaveIcon, LinkIcon, EyeIcon } from 'svelte-feather-icons';
 
 	let title = '';
 	let author = '';
@@ -286,8 +286,9 @@
 		<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 			<div class="space-y-4">
 				<div class="form-control">
-					<label class="label"><span class="label-text font-bold">ชื่อปริศนา</span></label>
+					<label for="ws-title" class="label"><span class="label-text font-bold">ชื่อปริศนา</span></label>
 					<input
+						id="ws-title"
 						type="text"
 						bind:value={title}
 						class="input input-bordered w-full"
@@ -296,10 +297,11 @@
 				</div>
 
 				<div class="form-control">
-					<label class="label"
+					<label for="ws-author" class="label"
 						><span class="label-text font-bold">ชื่อผู้สร้าง (ไม่บังคับ)</span></label
 					>
 					<input
+						id="ws-author"
 						type="text"
 						bind:value={author}
 						class="input input-bordered w-full"
@@ -308,9 +310,9 @@
 				</div>
 
 				<div class="form-control">
-					<label class="label">
+					<div class="label">
 						<span class="label-text font-bold">ขนาดตาราง</span>
-					</label>
+					</div>
 					<div class="flex flex-col gap-2">
 						<label class="cursor-pointer flex items-center gap-2">
 							<input type="radio" name="size" value={10} bind:group={gridSize} class="radio radio-primary" />
@@ -328,9 +330,9 @@
 				</div>
 
 				<div class="form-control mt-2">
-					<label class="label">
+					<div class="label">
 						<span class="label-text font-bold">ระดับความยาก (ตัวหลอก)</span>
-					</label>
+					</div>
 					<div class="flex flex-col gap-2">
 						<label class="cursor-pointer flex items-center gap-2">
 							<input type="radio" name="diff" value={1} bind:group={difficulty} class="radio radio-primary" />
@@ -350,10 +352,11 @@
 
 			<div class="space-y-4">
 				<div class="form-control h-full">
-					<label class="label">
+					<label for="wordsearch-textarea" class="label">
 						<span class="label-text font-bold">รายการคำศัพท์ (1 คำต่อบรรทัด)</span>
 					</label>
 					<textarea
+						id="wordsearch-textarea"
 						bind:value={wordsInput}
 						class="textarea textarea-bordered h-48 text-lg font-medium resize-none"
 						placeholder="ส้ม&#10;มะละกอ&#10;กล้วย&#10;สับปะรด"
@@ -395,8 +398,8 @@
 							cellSize}px; grid-template-columns: repeat({grid[0]
 							.length}, 1fr); grid-template-rows: repeat({grid.length}, 1fr);"
 					>
-						{#each grid as row, r}
-							{#each row as cell, c}
+						{#each grid as row}
+							{#each row as cell}
 								<div
 									class="flex items-center justify-center font-bold text-base-content hover:bg-base-content/10 transition-colors cursor-pointer rounded-full"
 									style="font-size: {1.2 * scaleFactor}rem;"

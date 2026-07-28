@@ -27,7 +27,7 @@
 		targetMouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
 	};
 
-	const handleClick = (event: MouseEvent) => {
+	const handleClick = (_event: MouseEvent) => {
 		if (!scene || !camera || !hasMouseMoved) return;
 
 		// Create interactive expanding ripple ring at mouse position
@@ -187,7 +187,7 @@
 			for (let i = 0; i < particleCount; i++) {
 				const px = basePositions[i * 3];
 				const py = basePositions[i * 3 + 1];
-				const pz = basePositions[i * 3 + 2];
+				const _pz = basePositions[i * 3 + 2];
 
 				// Calculate distance to mouse in 3D
 				const dx = px - intersectionPoint.x;

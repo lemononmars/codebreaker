@@ -33,9 +33,11 @@
       {:else}
          <div class="breadcrumbs text-sm m-4 text-wrap">
             <ul>
-               <li><a on:click={resetHint}>เลือกข้ออื่น</a></li>
+               <!-- svelte-ignore a11y-invalid-attribute -->
+               <li><a href="#" on:click|preventDefault={resetHint}>เลือกข้ออื่น</a></li>
                {#each Array(step) as _, idx}
-                  <li><a on:click={()=> {step = idx}}>คำใบ้ที่ {idx+1}</a> </li>
+                  <!-- svelte-ignore a11y-invalid-attribute -->
+                  <li><a href="#" on:click|preventDefault={() => {step = idx}}>คำใบ้ที่ {idx+1}</a> </li>
                {/each}
             </ul>
          </div>

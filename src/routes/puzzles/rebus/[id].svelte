@@ -17,7 +17,6 @@
    import { getPuzzleImageURL } from '$lib/supabase';
    import TitleTab from '$lib/components/TitleTab.svelte';
    export let content: IRebus, id: number
-   const maxNumPuzzles: number = 31 // hard-coded
 
    content.type = 'rebus'
    let solved: boolean = false

@@ -132,8 +132,9 @@
 		<div class="flex flex-col md:flex-row gap-4 items-end mb-6">
 			<!-- Title -->
 			<div class="form-control flex-1 w-full">
-				<label class="label"><span class="label-text font-bold">ชื่อหมวดหมู่</span></label>
+				<label for="mv-title" class="label"><span class="label-text font-bold">ชื่อหมวดหมู่</span></label>
 				<input
+					id="mv-title"
 					type="text"
 					bind:value={title}
 					class="input input-bordered w-full"
@@ -143,8 +144,9 @@
 
 			<!-- Author -->
 			<div class="form-control flex-1 w-full">
-				<label class="label"><span class="label-text font-bold">ชื่อผู้สร้าง (ไม่บังคับ)</span></label>
+				<label for="mv-author" class="label"><span class="label-text font-bold">ชื่อผู้สร้าง (ไม่บังคับ)</span></label>
 				<input
+					id="mv-author"
 					type="text"
 					bind:value={author}
 					class="input input-bordered w-full"
@@ -154,7 +156,7 @@
 
 			<!-- Save buttons in a button group -->
 			<div class="form-control w-full md:w-auto">
-				<label class="label hidden md:block"><span class="label-text font-bold opacity-0">บันทึก</span></label>
+				<div class="label hidden md:block"><span class="label-text font-bold opacity-0">บันทึก</span></div>
 				<div class="btn-group shadow-md w-full flex">
 					<button 
 						class="btn btn-primary flex-1 md:flex-none" 
@@ -199,9 +201,9 @@
 
 		<!-- Row 3: Answers List spanning the full width -->
 		<div class="space-y-3">
-			<label class="label">
+			<div class="label">
 				<span class="label-text font-bold text-lg">โจทย์</span>
-			</label>
+			</div>
 			
 			<div class="bg-base-300 p-4 rounded-3xl shadow-inner border border-base-100/50 space-y-2">
 				<div class="space-y-1.5 max-h-[60vh] overflow-y-auto pr-1">

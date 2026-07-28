@@ -14,12 +14,10 @@
 		ZapIcon,
 		ClipboardIcon,
 		XIcon,
-		TypeIcon,
 		CloudIcon,
 		ExternalLinkIcon,
 		InfoIcon,
 		ChevronRightIcon,
-		ChevronLeftIcon,
 		CheckCircleIcon
 	} from 'svelte-feather-icons';
 
@@ -80,14 +78,6 @@
 
 	// Stepped Workflow
 	let currentStep = 1; // 1: Construct, 2: Clues, 3: Share
-
-	function nextStep() {
-		if (currentStep < 3) currentStep++;
-	}
-
-	function prevStep() {
-		if (currentStep > 1) currentStep--;
-	}
 
 	function goToStep(s: number) {
 		currentStep = s;
@@ -336,7 +326,7 @@
 				const [aConstraints, dConstraints] = await Promise.all([
 					// Constraints for across words (from down slots)
 					Promise.all(
-						aInfo.coords.map(async (coord, i) => {
+						aInfo.coords.map(async (coord) => {
 							if (coord.r === selectedRow && coord.c === selectedCol) {
 								return dInfo.coords.length > 1
 									? new Set(dResList.map((w) => splitWord(w)[dIdx]))
@@ -354,7 +344,7 @@
 					),
 					// Constraints for down words (from across slots)
 					Promise.all(
-						dInfo.coords.map(async (coord, i) => {
+						dInfo.coords.map(async (coord) => {
 							if (coord.r === selectedRow && coord.c === selectedCol) {
 								return aInfo.coords.length > 1
 									? new Set(aResList.map((w) => splitWord(w)[aIdx]))
@@ -567,10 +557,8 @@
 	$: cellNumbers = grid.length > 0 ? getCellNumbers() : new Map<string, number>();
 
 	// ─── Solver ───────────────────────────────────────────
-	let savedGrid: Cell[][] | null = null;
 	let isSolving = false;
 	let solveAbort: AbortController | null = null;
-	let solveMsg = '';
 
 	function getSlots() {
 		const slots: { cells: { r: number; c: number }[]; dir: 'across' | 'down' }[] = [];
@@ -611,9 +599,10 @@
 
 	async function finishGrid() {
 		saveHistory();
-		savedGrid = grid.map((row) => row.map((c) => ({ ...c })));
+		// eslint-disable-next-line @typescript-eslint/no-unused-vars
+		let savedGrid = grid.map((row) => row.map((c) => ({ ...c })));
 		isSolving = true;
-		solveMsg = 'กำลังโหลดคำ...';
+		let solveMsg = 'กำลังโหลดคำ...';
 		if (solveAbort) solveAbort.abort();
 		solveAbort = new AbortController();
 		const sig = solveAbort.signal;
@@ -1046,7 +1035,6 @@
 				const match = line.match(/(".*?"|[^",\s]+)(?=\s*,|\s*$)/g);
 				if (match && match.length >= 4) {
 					const dir = match[1].toLowerCase().trim();
-					const answer = match[2];
 					const hint = match[3].replace(/^"|"$/g, '').replace(/""/g, '"');
 
 					// We need to find the r,c for this clue
@@ -1637,10 +1625,11 @@
 
 					<div class="space-y-4">
 						<div class="form-control">
-							<label class="label pt-0"
+							<label for="cw-title" class="label pt-0"
 								><span class="label-text-alt font-bold">ชื่อปริศนา</span></label
 							>
 							<input
+								id="cw-title"
 								type="text"
 								bind:value={title}
 								class="input input-bordered input-sm focus:input-primary"
@@ -1648,10 +1637,11 @@
 							/>
 						</div>
 						<div class="form-control">
-							<label class="label pt-0"
+							<label for="cw-author" class="label pt-0"
 								><span class="label-text-alt font-bold">ผู้เขียน</span></label
 							>
 							<input
+								id="cw-author"
 								type="text"
 								bind:value={author}
 								class="input input-bordered input-sm focus:input-primary"
@@ -1877,8 +1867,9 @@
 			<p class="text-xs opacity-50 mt-1">ข้อมูลเดิมจะถูกล้างทั้งหมด</p>
 			<div class="grid grid-cols-2 gap-4 mt-6">
 				<div class="form-control">
-					<label class="label pt-0"><span class="label-text-alt font-bold">แถว</span></label>
+					<label for="cw-rows" class="label pt-0"><span class="label-text-alt font-bold">แถว</span></label>
 					<input
+						id="cw-rows"
 						type="number"
 						min="3"
 						max="25"
@@ -1887,8 +1878,9 @@
 					/>
 				</div>
 				<div class="form-control">
-					<label class="label pt-0"><span class="label-text-alt font-bold">คอลัมน์</span></label>
+					<label for="cw-cols" class="label pt-0"><span class="label-text-alt font-bold">คอลัมน์</span></label>
 					<input
+						id="cw-cols"
 						type="number"
 						min="3"
 						max="25"
@@ -1989,7 +1981,7 @@
 	.animate-fade-in {
 		animation: fadeIn 0.3s ease-out forwards;
 	}
-	.animate-spin-slow {
+	:global(.animate-spin-slow) {
 		animation: spin 3s linear infinite;
 	}
 	@keyframes spin {

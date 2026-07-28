@@ -1,6 +1,7 @@
 <script context="module" lang="ts">
-	/** @type {import('@sveltejs/kit').Load} */
-	export async function load({ fetch }) {
+	import type { Load } from '@sveltejs/kit';
+
+	export const load: Load = async ({ fetch }) => {
 		try {
 			const res = await fetch('/api/puzzle/wordsearch');
 			const data = await res.json();

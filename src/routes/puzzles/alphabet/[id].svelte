@@ -78,7 +78,7 @@
    <h2>คำใบ้: {roundHint}</h2>
 
    {#if !loading}
-      {#each Array(numRounds).fill('') as r, idx}
+      {#each Array(numRounds).fill('') as _, idx}
          {#if currentRound == idx}
             <div transition:fly={{x:100, duration: 300}}>
                <LetterInput word={content.answers[idx]} on:togglePlay={togglePlay}/>

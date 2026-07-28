@@ -58,10 +58,11 @@
 	<div class="card bg-base-100 shadow-xl border border-base-200">
 		<div class="card-body gap-6">
 			<div class="form-control">
-				<label class="label">
+				<label class="label" for="check-title-input">
 					<span class="label-text font-bold">ชื่อโจทย์</span>
 				</label>
             <input
+                id="check-title-input"
                 class="input input-bordered input-lg focus:input-primary"
                 type="text"
                 placeholder="เช่น ปริศนาเขาวงกต"
@@ -70,10 +71,11 @@
             />			</div>
 
 			<div class="form-control">
-				<label class="label">
+				<label class="label" for="check-answer-input">
 					<span class="label-text font-bold">คำตอบที่ถูกต้อง</span>
 				</label>
             <input
+                id="check-answer-input"
                 class="input input-bordered input-lg focus:input-primary"
                 type="text"
                 placeholder="พิมพ์คำตอบที่นี่..."

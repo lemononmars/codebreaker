@@ -1,5 +1,5 @@
 <script lang="ts">
-   import {encode, decode} from '../../../helper'
+   import { decode } from '../../../helper'
 
    export let title: string = '';
    export let answer: string = '';

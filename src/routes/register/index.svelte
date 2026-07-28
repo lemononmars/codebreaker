@@ -66,10 +66,11 @@
 			<h2 class="card-title text-3xl font-bold mb-4 text-primary">Create Account</h2>
 
 			<div class="form-control w-full max-w-xs">
-				<label class="label">
+				<label for="reg-username" class="label">
 					<span class="label-text">Username</span>
 				</label>
 				<input
+					id="reg-username"
 					type="text"
 					placeholder="CodeBreaker123"
 					class="input input-bordered w-full max-w-xs text-base-content"
@@ -78,10 +79,11 @@
 			</div>
 
 			<div class="form-control w-full max-w-xs mt-4">
-				<label class="label">
+				<label for="reg-email" class="label">
 					<span class="label-text">Email</span>
 				</label>
 				<input
+					id="reg-email"
 					type="email"
 					placeholder="email@example.com"
 					class="input input-bordered w-full max-w-xs text-base-content"
@@ -90,10 +92,11 @@
 			</div>
 
 			<div class="form-control w-full max-w-xs mt-4">
-				<label class="label">
+				<label for="reg-password" class="label">
 					<span class="label-text">Password</span>
 				</label>
 				<input
+					id="reg-password"
 					type="password"
 					placeholder="********"
 					class="input input-bordered w-full max-w-xs text-base-content"

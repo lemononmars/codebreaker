@@ -20,7 +20,7 @@
 			if (error) throw error;
 
 			success = true;
-			message = 'Password reset email sent! Check your inbox.';
+			message = 'Check your email for the password reset link.';
 		} catch (e: any) {
 			message = e.message;
 		} finally {
@@ -42,10 +42,11 @@
 			</p>
 
 			<div class="form-control w-full max-w-xs">
-				<label class="label">
+				<label for="reset-email" class="label">
 					<span class="label-text">Email</span>
 				</label>
 				<input
+					id="reset-email"
 					type="email"
 					placeholder="email@example.com"
 					class="input input-bordered w-full max-w-xs text-base-content"
@@ -55,7 +56,9 @@
 			</div>
 
 			{#if message}
-				<div class="alert {success ? 'alert-success' : 'alert-error'} shadow-lg mt-4 text-sm">
+				<div
+					class="alert {success ? 'alert-success' : 'alert-error'} shadow-lg mt-4 text-sm"
+				>
 					<div>
 						<span>{message}</span>
 					</div>
@@ -73,7 +76,7 @@
 			</div>
 
 			<div class="mt-4 text-sm opacity-80">
-				<a href="/login" class="link link-primary">← Back to Login</a>
+				Remember your password? <a href="/login" class="link link-primary">Login</a>
 			</div>
 		</div>
 	</div>

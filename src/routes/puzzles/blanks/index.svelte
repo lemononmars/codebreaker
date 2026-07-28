@@ -1214,7 +1214,7 @@
 			transform: translateY(0);
 		}
 	}
-	.animate-in {
+	:global(.animate-in) {
 		animation: animate-in 0.25s ease both;
 	}
 	:global(.animate-shake) {

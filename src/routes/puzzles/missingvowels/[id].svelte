@@ -8,8 +8,8 @@
 
    let solved: boolean = false;
    let submitted: boolean = false;
-   let answer: string = '';
    let duplicate: boolean = false;
+   let answer: string = '';
    let pastAnswers: string[] = [];
 
    const numRounds = content.answers.length;
@@ -141,10 +141,10 @@
 
 <!-- Modal -->
 <input type="checkbox" id="submit-modal" class="modal-toggle" />
-<label class="modal cursor-pointer w-screen" class:modal-open={openModal} on:click={() => (openModal = false)}>
-   <label class="modal-box relative bg-slate-900 border border-slate-800 text-white rounded-3xl" for="">
+<div class="modal cursor-pointer w-screen" class:modal-open={openModal} on:click={() => (openModal = false)}>
+   <div class="modal-box relative bg-slate-900 border border-slate-800 text-white rounded-3xl">
       <h3 class="text-2xl font-black mb-2">แก้ปริศนาครบทั้ง {numRounds} ข้อแล้ว 🎉</h3>
       <p class="text-slate-300">ใช้เวลาทั้งหมด <span class="font-bold text-amber-400">{timeString}</span></p>
       <div class="btn btn-block btn-primary mt-6 font-bold" on:click={() => (openModal = false)}>เย่!</div>
-   </label>
-</label>
+   </div>
+</div>

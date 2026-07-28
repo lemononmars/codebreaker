@@ -56,8 +56,10 @@
 <ul class="menu menu-vertical lg:menu-horizontal bg-base-200 rounded-box">
 	<li>
 		<!-- svelte-ignore a11y-click-events-have-key-events -->
+		<!-- svelte-ignore a11y-invalid-attribute -->
 		<a
-			on:click={() => {
+			href="#"
+			on:click|preventDefault={() => {
 				curseason = 0;
 			}}
 			class={curseason === 0 ? 'active' : ''}>รวม</a
@@ -66,8 +68,10 @@
 	{#each seasons as ss}
 		<li>
 			<!-- svelte-ignore a11y-click-events-have-key-events -->
+			<!-- svelte-ignore a11y-invalid-attribute -->
 			<a
-				on:click={() => {
+				href="#"
+				on:click|preventDefault={() => {
 					curseason = ss;
 				}}
 				class={curseason === ss ? 'active' : ''}>ฤดูกาลที่ {ss}</a

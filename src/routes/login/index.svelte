@@ -54,10 +54,11 @@
 			<h2 class="card-title text-3xl font-bold mb-4 text-primary">Login</h2>
 
 			<div class="form-control w-full max-w-xs">
-				<label class="label">
+				<label for="login-email" class="label">
 					<span class="label-text">Email</span>
 				</label>
 				<input
+					id="login-email"
 					type="email"
 					placeholder="email@example.com"
 					class="input input-bordered w-full max-w-xs text-base-content"
@@ -66,10 +67,11 @@
 			</div>
 
 			<div class="form-control w-full max-w-xs mt-4">
-				<label class="label">
+				<label for="login-password" class="label">
 					<span class="label-text">Password</span>
 				</label>
 				<input
+					id="login-password"
 					type="password"
 					placeholder="********"
 					class="input input-bordered w-full max-w-xs text-base-content"

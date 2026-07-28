@@ -3,11 +3,9 @@
 	import { from, auth, uploadProfilePicture } from '$lib/supabase';
 	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
-	import type { Leaderboard } from '$lib/interfaces';
 	import { Edit2Icon, SaveIcon, XIcon, UploadIcon } from 'svelte-feather-icons';
 
 	let profile: any = null;
-	let solved: Leaderboard[] = [];
 	let solvedIds: Set<string> = new Set();
 	let allWeeklyPuzzles: any[] = [];
 	let puzzlesByYear: Record<number, any[]> = {};
@@ -81,10 +79,9 @@
 		// Query by current username since addToLeaderboard uses $username
 		let queryName = $username;
 
-		const { data: solvedData, error } = await from('leaderboard').select('*').eq('name', queryName);
+		const { data: solvedData } = await from('leaderboard').select('*').eq('name', queryName);
 
 		if (solvedData) {
-			solved = solvedData;
 			solvedIds = new Set(
 				solvedData.filter((s) => s.puzzle_type === 'weekly').map((s) => String(s.puzzle_id))
 			);
@@ -124,7 +121,7 @@
 			return;
 		}
 		isUpdating = true;
-		const { data, error } = await auth.updateUser({
+		const { data } = await auth.updateUser({
 			data: { username: newUsername }
 		});
 

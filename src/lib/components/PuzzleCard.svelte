@@ -4,7 +4,7 @@
 	export let description: string = '';
 	export let icon: string = '';
 	export let href: string = '';
-	export let colorClass: string = 'text-emerald-400';
+	export const colorClass: string = 'text-emerald-400';
 
 	$: targetHref = href || `/puzzles/${type}`;
 	$: displayTitle = title || (type === 'spellingquiz' ? 'Spelling Quiz' : type === 'thaimapquiz' ? 'Thai Map Quiz' : type === 'crossroad' ? 'Crossroad (ศัพท์สี่ทิศ)' : type);

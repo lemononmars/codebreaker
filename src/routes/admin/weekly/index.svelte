@@ -65,7 +65,7 @@
 
 	async function loadPuzzles() {
 		loading = true;
-		const { data, error } = await from('weekly_solution')
+		const { data } = await from('weekly_solution')
 			.select('*')
 			.order('year', { ascending: false })
 			.order('week', { ascending: false });
@@ -222,8 +222,9 @@
 
 			<form on:submit|preventDefault={handleLogin} class="flex flex-col gap-4 mt-6">
 				<div class="flex flex-col gap-1.5">
-					<label class="text-xs font-bold text-slate-400">รหัสผ่าน (Password)</label>
+					<label for="admin-password-input" class="text-xs font-bold text-slate-400">รหัสผ่าน (Password)</label>
 					<input
+						id="admin-password-input"
 						type="password"
 						bind:value={passwordInput}
 						placeholder="กรอกรหัสผ่าน..."
@@ -349,7 +350,7 @@
 												src={imgUrl}
 												alt="thumb"
 												class="w-full h-full object-cover"
-												on:error={(e) => { (e.currentTarget as HTMLElement).style.display = 'none'; }}
+												on:error={(e) => { e.currentTarget.style.display = 'none'; }}
 											/>
 											<ImageIcon size="18" class="text-slate-600 absolute pointer-events-none" />
 										</div>
@@ -414,12 +415,12 @@
 			<form on:submit|preventDefault={handleSave} class="grid grid-cols-1 md:grid-cols-2 gap-8">
 				<!-- LEFT COLUMN: LARGE IMAGE PREVIEW & THEMED FILE UPLOAD -->
 				<div class="flex flex-col gap-4">
-					<label class="text-sm font-bold text-slate-300 flex items-center justify-between">
+					<div class="text-sm font-bold text-slate-300 flex items-center justify-between">
 						<span>รูปภาพปริศนา</span>
 						<span class="text-xs font-mono text-slate-500">
 							ไฟล์: <code class="text-sky-400">{formYear}{('0' + formWeek).slice(-2)}.jpg</code>
 						</span>
-					</label>
+					</div>
 
 					<!-- Large Image Preview Box -->
 					<div class="w-full h-72 sm:h-80 rounded-2xl bg-slate-950 border border-slate-800 flex items-center justify-center overflow-hidden relative shadow-inner group">
@@ -457,20 +458,22 @@
 					<div class="flex flex-col gap-4">
 						<div class="grid grid-cols-2 gap-4">
 							<div class="flex flex-col gap-1.5">
-								<label class="text-xs font-bold text-slate-400">ปี (Year)</label>
+								<label for="admin-year-input" class="text-xs font-bold text-slate-400">ปี (Year)</label>
 								<input
+									id="admin-year-input"
 									type="number"
 									bind:value={formYear}
 									class="w-full px-4 py-3 rounded-2xl bg-black border border-slate-800 text-white font-bold focus:outline-none focus:border-blue-400 text-sm"
 									required
-									min="2020"
+									min="2000"
 									max="2099"
 								/>
 							</div>
 
 							<div class="flex flex-col gap-1.5">
-								<label class="text-xs font-bold text-slate-400">สัปดาห์ที่ (Week 1-53)</label>
+								<label for="admin-week-input" class="text-xs font-bold text-slate-400">สัปดาห์ที่ (Week 1-53)</label>
 								<input
+									id="admin-week-input"
 									type="number"
 									bind:value={formWeek}
 									class="w-full px-4 py-3 rounded-2xl bg-black border border-slate-800 text-white font-bold focus:outline-none focus:border-blue-400 text-sm"
@@ -482,8 +485,9 @@
 						</div>
 
 						<div class="flex flex-col gap-1.5">
-							<label class="text-xs font-bold text-slate-400">ชื่อปริศนา (Title)</label>
+							<label for="admin-title-input" class="text-xs font-bold text-slate-400">ชื่อปริศนา (Title)</label>
 							<input
+								id="admin-title-input"
 								type="text"
 								bind:value={formTitle}
 								placeholder="เช่น ศิลปะ, ดิจิตัล, นับพร้อมกัน..."
@@ -492,8 +496,9 @@
 						</div>
 
 						<div class="flex flex-col gap-1.5">
-							<label class="text-xs font-bold text-slate-400">คำตอบ (Answer) — เว้นว่างได้</label>
+							<label for="admin-answer-input" class="text-xs font-bold text-slate-400">คำตอบ (Answer) — เว้นว่างได้</label>
 							<input
+								id="admin-answer-input"
 								type="text"
 								bind:value={formAnswer}
 								placeholder="กรอกคำตอบ (ถ้ายังไม่ออกเฉลยให้เว้นว่างไว้)..."
@@ -502,8 +507,9 @@
 						</div>
 
 						<div class="flex flex-col gap-1.5">
-							<label class="text-xs font-bold text-slate-400">คำใบ้รูปแบบคำตอบ (Answer Guide)</label>
+							<label for="admin-guide-input" class="text-xs font-bold text-slate-400">คำใบ้รูปแบบคำตอบ (Answer Guide)</label>
 							<input
+								id="admin-guide-input"
 								type="text"
 								bind:value={formAnswerGuide}
 								placeholder="เช่น ภาษาอังกฤษ 5 ตัวอักษร, คำขึ้นต้นด้วย ก..."

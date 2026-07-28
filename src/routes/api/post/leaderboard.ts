@@ -25,9 +25,16 @@ export const post: RequestHandler = async ({ request }) => {
 
    // weekly puzzle requires scoring system
    if (puzzle_type === 'weekly') {
-      const { data, error } = await from('leaderboard').select('*').eq('puzzle_id', puzzle_id)
-      if (data) {
-         submission.score = 10 - Math.min(data.length, 5)
+      const puzzleYear = Number(String(puzzle_id).slice(0, 4));
+      const currentYear = new Date().getFullYear();
+
+      if (puzzleYear !== currentYear) {
+         submission.score = 5;
+      } else {
+         const { data } = await from('leaderboard').select('*').eq('puzzle_id', puzzle_id);
+         if (data) {
+            submission.score = 10 - Math.min(data.length, 5);
+         }
       }
    }
    const { data, error } = await from('leaderboard').insert(submission)

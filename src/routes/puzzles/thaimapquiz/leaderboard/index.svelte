@@ -12,8 +12,6 @@
 	let globalLoaded = false;
 	let globalError = false;
 
-	let activeTab: 'global' = 'global';
-
 	async function fetchGlobal() {
 		globalLoaded = false;
 		globalError = false;

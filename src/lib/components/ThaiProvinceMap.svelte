@@ -1,12 +1,11 @@
 <script lang="ts">
 	import { onMount, onDestroy } from 'svelte';
-	import { provinceDict, numProvinces, provinceEN } from '$lib/data/puzzles/thaimap/provinces';
+	import { provinceDict, provinceEN } from '$lib/data/puzzles/thaimap/provinces';
 	import { 
 		MapPinIcon, 
 		CheckCircleIcon, 
 		AwardIcon, 
 		RotateCcwIcon, 
-		AlertTriangleIcon, 
 		CompassIcon, 
 		PlusIcon, 
 		MinusIcon, 

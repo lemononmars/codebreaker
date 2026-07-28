@@ -1,6 +1,6 @@
 <script lang=ts>
 
-   import {CreditCardIcon, UsersIcon, ClockIcon, ShoppingCartIcon, HomeIcon, GitBranchIcon, PlayCircleIcon, ShuffleIcon, ChevronDownIcon, ChevronUpIcon} from 'svelte-feather-icons'
+   import {CreditCardIcon, UsersIcon, ClockIcon, ShoppingCartIcon, HomeIcon, GitBranchIcon, PlayCircleIcon, ShuffleIcon, ChevronUpIcon} from 'svelte-feather-icons'
    import TrainTrial from '$lib/images/traintrial.png'
    import {onMount} from 'svelte'
    import {fly} from 'svelte/transition'
@@ -80,11 +80,11 @@ Thank you for always riding with us, the Tokyo Metro.
 This year too, we have set puzzles around Tokyo for you.
 
 The puzzles will pull you out into the streets.
-The destinations are places you’ve never been, food you’ve never tried…
-You will encounter lots of “first times”.
+The destinations are places you've never been, food you've never tried…
+You will encounter lots of "first times".
 
 Sometimes, you will have to solve puzzles
-without knowing where you’re headed.
+without knowing where you're headed.
 Will you embark on an adventure of unknown excitement and discovery?
 
 Now then, let's see you solve the puzzles we have set out for you.
@@ -267,7 +267,7 @@ The best way to get around is, of course, with Tokyo Metro.
       margin: top 2rem
    }
 
-   html {
+   :global(html) {
       scroll-behavior: smooth;
    }
 </style>

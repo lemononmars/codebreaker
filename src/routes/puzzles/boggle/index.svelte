@@ -1,11 +1,10 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import dict from '$lib/utils/dict';
-	import { search as originalSearch, isUpper, isLower } from '$lib/utils/thaiwords';
+	import { isUpper, isLower } from '$lib/utils/thaiwords';
 	import {
 		CompassIcon,
 		AwardIcon,
-		RotateCcwIcon,
 		CheckCircleIcon,
 		XCircleIcon,
 		PlayCircleIcon,
@@ -420,7 +419,6 @@
 	}
 
 	$: currentWordOptions = getPossibleStrings(selectedPath);
-	$: currentWord = selectedPath.map((p) => grid[p.r][p.c]).join('');
 	$: currentWordDisplay = selectedPath
 		.map((p) => {
 			const char = grid[p.r][p.c];

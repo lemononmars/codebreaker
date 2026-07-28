@@ -9,7 +9,8 @@
 		Edit3Icon,
 		BookOpenIcon,
 		TypeIcon,
-		ClockIcon
+		ClockIcon,
+		RadioIcon
 	} from 'svelte-feather-icons';
 
 	const puzzleBuilders = [
@@ -78,6 +79,13 @@
 			description: 'ปริศนาเปิดแผ่นป้าย "แฟนพันธุ์แท้"',
 			icon: ImageIcon,
 			color: 'text-info'
+		},
+		{
+			name: 'Quiz Button',
+			path: '/tools/button',
+			description: 'ระบบปุ่มกดแย่งกันตอบสำหรับแข่งตอบคำถาม',
+			icon: RadioIcon,
+			color: 'text-error'
 		},
 		{
 			name: 'Spelling Dictionary',

@@ -55,11 +55,12 @@
 	<div class="grid gap-6 w-full max-w-md">
 		{#each questions as q, i}
 			<div class="form-control w-full relative">
-				<label class="label">
+				<label for="calendar-input-{i}" class="label">
 					<span class="label-text font-bold text-lg">{q.label}</span>
 				</label>
 				<div class="relative">
 					<input
+						id="calendar-input-{i}"
 						type="text"
 						placeholder="Answer..."
 						class="input input-bordered w-full pr-10 transition-colors duration-300

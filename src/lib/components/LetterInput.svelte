@@ -13,7 +13,7 @@
    export let word: string = 'ว่าง'
 
    const splittedWord = splitWord(word)
-   let splittedIndex = splittedWord.map(s => 0)
+   let splittedIndex = splittedWord.map(_ => 0)
    const numLetters = word.length
    const numBlocks = splittedWord.length
 
