@@ -14,14 +14,16 @@
 	import { getPuzzleImageURL } from '$lib/supabase';
 	import { CheckCircleIcon, ImageIcon, CalendarIcon } from 'svelte-feather-icons';
 
+	// Returns the nth Friday of the year at 4:30pm UTC+7 (= 11:30 UTC)
 	function getNthFridayOfYear(year: number, week: number): Date {
 		const y = Number(year) || 2026;
 		const w = Number(week) || 1;
-		const jan1 = new Date(y, 0, 1);
-		const dayOfWeek = jan1.getDay();
+		const jan1Utc = Date.UTC(y, 0, 1);
+		const dayOfWeek = new Date(jan1Utc).getUTCDay();
 		const daysUntilFirstFriday = (5 - dayOfWeek + 7) % 7;
-		const firstFriday = new Date(y, 0, 1 + daysUntilFirstFriday, 18, 0, 0);
-		return new Date(firstFriday.getTime() + (w - 1) * 7 * 24 * 3600 * 1000);
+		// 4:30pm UTC+7 = 11:30 UTC
+		const firstFridayUtc = jan1Utc + daysUntilFirstFriday * 86400000 + 11.5 * 3600000;
+		return new Date(firstFridayUtc + (w - 1) * 7 * 86400000);
 	}
 
 	function getWeeklyUploadedDate(year: number, week: number) {
