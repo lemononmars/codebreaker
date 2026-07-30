@@ -86,79 +86,44 @@
 			description: 'ระบบปุ่มกดแย่งกันตอบสำหรับแข่งตอบคำถาม',
 			icon: RadioIcon,
 			color: 'text-error'
-		},
-		{
-			name: 'Spelling Dictionary',
-			path: '/tools/spellingdictionary',
-			description: 'พจนานุกรมคำศัพท์ที่มักสะกดผิด',
-			icon: BookOpenIcon,
-			color: 'text-warning'
 		}
 	];
 </script>
 
 <svelte:head>
-	<title>Code Breaker | Tools & Utilities</title>
-	<meta
-		name="description"
-		content="A collection of powerful tools for puzzle solvers: Thai Word Search, Crossword Builder, Pentomino Solver, and more."
-	/>
-	<meta property="og:title" content="Code Breaker Tools" />
-	<meta
-		property="og:description"
-		content="A collection of powerful tools for puzzle solvers: Thai Word Search, Crossword Builder, Pentomino Solver, and more."
-	/>
-	<meta property="og:type" content="website" />
-	<meta property="og:image" content="/og-main.png" />
-	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:image" content="/og-main.png" />
+	<title>Code Breaker | เครื่องมือสร้างและช่วยแก้ปริศนา 🛠️</title>
+	<meta name="description" content="รวมเครื่องมือสำหรับสร้างและแก้ปริศนาภาษาไทย ครบครันสำหรับนักสร้างโจทย์และผู้เล่น" />
 </svelte:head>
 
-<div class="container mx-auto px-4 pt-6 sm:pt-12 pb-24">
-	<div class="max-w-3xl mx-auto text-center mb-10 sm:mb-16">
-		<h1
-			class="text-3xl lg:text-5xl font-extrabold tracking-tight mb-3 bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary"
-		>
-			Tools & Utilities
-		</h1>
-		<p class="text-base sm:text-lg text-base-content/70">เครื่องมือช่วยสร้างและแก้ปริศนาของคุณ</p>
+<div class="flex flex-col gap-8 w-full max-w-5xl mx-auto px-4 py-8 select-none">
+	<div class="text-center max-w-2xl mx-auto space-y-2">
+		<h1 class="text-3xl lg:text-4xl font-extrabold tracking-tight">เครื่องมือสร้างและแก้ปริศนา</h1>
+		<p class="text-slate-400 text-sm lg:text-base">
+			เครื่องมือสำเร็จรูปสำหรับครู ผู้สร้างโจทย์ และนักแก้ปริศนา Codebreaker
+		</p>
 	</div>
 
-	<!-- Section 1: Puzzle Builders -->
-	<div class="max-w-4xl mx-auto mb-10 sm:mb-16">
-		<h2 class="text-xl sm:text-2xl font-bold mb-4 flex items-center gap-2 sm:gap-3">
-			<div class="w-2 h-6 sm:h-8 bg-primary rounded-full"></div>
-			Puzzle Builders
-		</h2>
-		<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-6">
+	<!-- Section 1: Builders (2 per row) -->
+	<section class="space-y-4">
+		<div class="flex items-center gap-2 border-b border-base-300 pb-2">
+			<h2 class="text-xl font-extrabold text-primary">เครื่องมือสร้างโจทย์ (Puzzle Builders)</h2>
+		</div>
+		<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 			{#each puzzleBuilders as tool}
-				<ToolCard
-					name={tool.name}
-					path={tool.path}
-					description={tool.description}
-					icon={tool.icon}
-					color={tool.color}
-				/>
+				<ToolCard {...tool} />
 			{/each}
 		</div>
-	</div>
+	</section>
 
-	<!-- Section 2: Utilities -->
-	<div class="max-w-4xl mx-auto mb-10 sm:mb-16">
-		<h2 class="text-xl sm:text-2xl font-bold mb-4 flex items-center gap-2 sm:gap-3">
-			<div class="w-2 h-6 sm:h-8 bg-secondary rounded-full"></div>
-			Utilities
-		</h2>
-		<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-6">
+	<!-- Section 2: Utilities (2 per row, without Spelling Dictionary) -->
+	<section class="space-y-4">
+		<div class="flex items-center gap-2 border-b border-base-300 pb-2">
+			<h2 class="text-xl font-extrabold text-secondary">เครื่องมือช่วยเหลือ & ยูทิลิตี้ (Utilities)</h2>
+		</div>
+		<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 			{#each utilities as tool}
-				<ToolCard
-					name={tool.name}
-					path={tool.path}
-					description={tool.description}
-					icon={tool.icon}
-					color={tool.color}
-				/>
+				<ToolCard {...tool} />
 			{/each}
 		</div>
-	</div>
+	</section>
 </div>

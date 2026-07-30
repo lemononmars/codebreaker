@@ -8,7 +8,8 @@
 		ChevronLeftIcon,
 		ChevronRightIcon,
 		GridIcon,
-		ListIcon
+		ListIcon,
+		ArrowLeftIcon
 	} from 'svelte-feather-icons';
 
 	let searchQuery = '';
@@ -68,37 +69,39 @@
 </script>
 
 <svelte:head>
-	<title>Code Breaker | พจนานุกรมคำสะกด 📚</title>
-	<meta name="description" content="รวมคำที่มักสะกดผิดบ่อยในภาษาไทย พร้อมระบบค้นหาและตัวกรอง" />
+	<title>พจนานุกรมคำสะกด | Codebreaker Resources 📚</title>
+	<meta name="description" content="รวมคำที่มักสะกดผิดบ่อยในภาษาไทย พร้อมระบบค้นหาและตัวกรอง โดย Codebreaker Thailand" />
 </svelte:head>
 
-<div class="flex flex-col gap-0 w-full max-w-5xl mx-auto px-4 pb-12 select-none">
-	<!-- แหล่งความรู้ Navigation Bar -->
-	<nav class="w-full border-b border-base-300 mb-6 pt-2">
-		<div class="flex items-center justify-between py-2 flex-wrap gap-2">
-			<a href="/tools" class="btn btn-ghost btn-xs gap-1.5 font-bold">
-				← กลับไปหน้าเครื่องมือ
-			</a>
-			<a
-				href="/puzzles/spellingquiz"
-				class="btn btn-outline btn-xs gap-1.5 font-bold flex-shrink-0"
-			>
-				ทดสอบการสะกดคำ
-			</a>
-		</div>
-	</nav>
+<div class="flex flex-col gap-0 w-full max-w-5xl mx-auto px-4 py-8 select-none">
+	<!-- Subpage Header Navigation Bar -->
+	<div class="flex items-center justify-between gap-4 mb-6">
+		<a
+			href="/resources"
+			class="btn btn-ghost btn-sm gap-2 text-slate-300 hover:text-white"
+		>
+			<ArrowLeftIcon size="16" />
+			<span>ย้อนกลับไปแหล่งทรัพยากร</span>
+		</a>
+		<a
+			href="/puzzles/spellingquiz"
+			class="btn btn-primary btn-sm gap-2 font-bold shadow-md"
+		>
+			<span>ทดสอบการสะกดคำ ✍️</span>
+		</a>
+	</div>
 
-	<!-- Page Header -->
-	<div class="flex flex-col items-center text-center gap-3 mb-6">
+	<!-- Page Title -->
+	<div class="flex flex-col items-center text-center gap-3 mb-8">
 		<div
 			class="w-16 h-16 rounded-2xl bg-neutral text-primary flex items-center justify-center shadow-xl border border-base-300"
 		>
 			<BookOpenIcon size="28" />
 		</div>
-		<h1 class="text-3xl md:text-4xl font-extrabold tracking-tight">พจนานุกรมคำสะกด</h1>
+		<h1 class="text-3xl md:text-4xl font-extrabold tracking-tight">พจนานุกรมคำสะกดภาษาไทย</h1>
 		<p class="text-sm opacity-80 max-w-2xl leading-relaxed mx-auto">
-			รวบรวม <span class="font-black text-primary">{wordDatabase.length}</span> คำในภาษาไทยที่มักสะกดผิด
-			พร้อมระบบค้นหาและตัวกรอง
+			รวบรวม <span class="font-black text-primary">{wordDatabase.length}</span> คำในภาษาไทยที่มักสะกดผิดบ่อย
+			พร้อมคำอธิบายและตัวกรองตามพยัญชนะ
 		</p>
 	</div>
 
@@ -188,7 +191,7 @@
 		</div>
 	</div>
 
-	<!-- Words Display -->
+	<!-- Words Grid Display -->
 	{#if paginatedWords.length === 0}
 		<div class="bg-base-200 p-12 rounded-2xl border border-base-300 text-center my-6">
 			<XCircleIcon size="48" class="mx-auto text-error/60 mb-3" />
