@@ -1,6 +1,6 @@
 import { createClient } from '@supabase/supabase-js';
 
-type SupaStorageBucket = 'puzzles' | 'events' | 'assets';
+type SupaStorageBucket = 'puzzles' | 'events' | 'assets' | 'hiddenlink';
 const DIR_IMAGE = 'https://ojjggolcfmjnovmipaav.supabase.in/storage/v1/object/';
 export const DEFAULT_WEEKLY_IMAGE_URL = DIR_IMAGE + 'weekly/placeholder.png';
 
@@ -35,6 +35,10 @@ export function getImageURL(type: SupaStorageBucket, url: string) {
 
 export function getPuzzleImageURL(type: string, filename: string) {
 	return getImageURL('puzzles', type + '/' + filename);
+}
+
+export function getHiddenLinkImageURL(filename: string) {
+	return `/puzzles/hiddenlink/${filename}`;
 }
 
 export async function uploadProfilePicture(userId: string, file: File): Promise<string | null> {

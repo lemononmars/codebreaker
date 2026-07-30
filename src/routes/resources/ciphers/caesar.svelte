@@ -1,40 +1,80 @@
 <script lang="ts">
 	import { ArrowLeftIcon, CheckCircleIcon, RepeatIcon, CopyIcon, CheckIcon } from 'svelte-feather-icons';
 
+	let langMode: 'ENG' | 'THAI' = 'ENG';
 	let inputText = 'THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG';
 	let shift = 3;
 	let isSwapped = false; // false = Encode (Plain -> Shift), true = Decode (Shift -> Plain)
 	let isCopied = false;
 
-	const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+	const engAlphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+	const thaiAlphabet = [
+		'ก','ข','ฃ','ค','ฅ','ฆ','ง','จ','ฉ','ช','ซ','ฌ','ญ','ฎ','ฏ','ฐ','ฑ','ฒ','ณ','ด',
+		'ต','ถ','ท','ธ','น','บ','ป','ผ','ฝ','พ','ฟ','ภ','ม','ย','ร','ล','ว','ศ','ษ','ส',
+		'ห','ฬ','อ','ฮ'
+	];
 
-	$: shiftedAlphabet = alphabet.map((ch, idx) => {
-		return String.fromCharCode(((idx + shift) % 26) + 65);
+	$: alphabet = langMode === 'ENG' ? engAlphabet : thaiAlphabet;
+	$: maxShift = alphabet.length - 1;
+
+	$: shiftedAlphabet = alphabet.map((_, idx) => {
+		return alphabet[(idx + shift) % alphabet.length];
 	});
 
-	function caesarCipher(str: string, shiftAmount: number): string {
-		const s = ((shiftAmount % 26) + 26) % 26;
-		return str
-			.toUpperCase()
-			.split('')
-			.map((ch) => {
-				const code = ch.charCodeAt(0);
-				if (code >= 65 && code <= 90) {
-					return String.fromCharCode(((code - 65 + s) % 26) + 65);
-				}
-				return ch;
-			})
-			.join('');
+	function caesarCipher(str: string, shiftAmount: number, mode: 'ENG' | 'THAI'): string {
+		const alpha = mode === 'ENG' ? engAlphabet : thaiAlphabet;
+		const mod = alpha.length;
+		const s = ((shiftAmount % mod) + mod) % mod;
+
+		if (mode === 'ENG') {
+			return str
+				.toUpperCase()
+				.split('')
+				.map((ch) => {
+					const idx = alpha.indexOf(ch);
+					if (idx !== -1) {
+						return alpha[(idx + s) % mod];
+					}
+					return ch;
+				})
+				.join('');
+		} else {
+			return str
+				.split('')
+				.map((ch) => {
+					const idx = alpha.indexOf(ch);
+					if (idx !== -1) {
+						return alpha[(idx + s) % mod];
+					}
+					return ch;
+				})
+				.join('');
+		}
 	}
 
 	$: processedResult = (() => {
+		const mod = alphabet.length;
 		if (!isSwapped) {
-			return caesarCipher(inputText, shift);
+			return caesarCipher(inputText, shift, langMode);
 		} else {
-			// Reverse decode: subtract shift
-			return caesarCipher(inputText, 26 - (shift % 26));
+			return caesarCipher(inputText, mod - (shift % mod), langMode);
 		}
 	})();
+
+	function toggleSwap() {
+		isSwapped = !isSwapped;
+		inputText = processedResult;
+	}
+
+	function toggleLang(mode: 'ENG' | 'THAI') {
+		langMode = mode;
+		shift = 3;
+		if (mode === 'ENG') {
+			inputText = 'THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG';
+		} else {
+			inputText = 'ไข่ในเกล็ดแก้วจงอยู่ถ้วนหน้า';
+		}
+	}
 
 	function copyOutput() {
 		navigator.clipboard.writeText(processedResult);
@@ -42,7 +82,7 @@
 		setTimeout(() => (isCopied = false), 2000);
 	}
 
-	// Practice Exercises (no hints)
+	// Practice Exercises
 	let answers = ['', '', ''];
 	let feedback = ['', '', ''];
 
@@ -63,8 +103,8 @@
 </script>
 
 <svelte:head>
-	<title>Code Breaker | Caesar Cipher (รหัสซีซาร์) 🔐</title>
-	<meta name="description" content="คู่มือ Caesar Cipher & ROT13 พร้อมแอนิเมชันตาราง Shift และแบบฝึกหัด" />
+	<title>Code Breaker | Caesar Cipher (รหัสซีซาร์)</title>
+	<meta name="description" content="คู่มือ Caesar Cipher & ROT13 ภาษาอังกฤษและภาษาไทย พร้อมตาราง Shift และแบบฝึกหัด" />
 </svelte:head>
 
 <div class="flex flex-col gap-8 w-full max-w-5xl mx-auto px-4 py-8 select-none">
@@ -81,124 +121,131 @@
 		</div>
 		<h1 class="text-3xl lg:text-4xl font-black text-white">Caesar Cipher (รหัสซีซาร์)</h1>
 		<p class="text-slate-300 text-sm lg:text-base leading-relaxed">
-			รหัสซีซาร์ใช้เทคนิคขยับตำแหน่งตัวอักษรไปข้างหน้าหรือถอยหลังตามจำนวนช่องที่กำหนด (เช่น Shift +3 หรือ ROT13)
+			รหัสซีซาร์ใช้เทคนิคขยับตำแหน่งตัวอักษรไปข้างหน้าหรือถอยหลังตามจำนวนช่องที่กำหนด (รองรับทั้งภาษาอังกฤษ A-Z และภาษาไทย ก-ฮ)
 		</p>
 	</header>
 
-	<!-- Animated Caesar Shift Pairing Table (Similar to Atbash) -->
+	<!-- Language Toggle & Animated Shift Table -->
 	<section class="bg-base-200 p-6 rounded-3xl border border-base-300 shadow-xl space-y-4">
-		<div class="flex items-center justify-between flex-wrap gap-2">
+		<div class="flex items-center justify-between flex-wrap gap-3">
 			<h2 class="text-xl font-extrabold text-primary flex items-center gap-2">
 				<span>🔄</span> ตารางการจับคู่ตัวอักษร Caesar Shift
 			</h2>
-			<span class="badge badge-primary font-mono text-xs font-bold px-3 py-2">Shift +{shift}</span>
+			<div class="flex items-center gap-2">
+				<!-- Language Mode Selector -->
+				<div class="btn-group">
+					<button
+						class="btn btn-xs font-bold {langMode === 'ENG' ? 'btn-primary' : 'btn-outline'}"
+						on:click={() => toggleLang('ENG')}
+					>
+						English (A-Z)
+					</button>
+					<button
+						class="btn btn-xs font-bold {langMode === 'THAI' ? 'btn-primary' : 'btn-outline'}"
+						on:click={() => toggleLang('THAI')}
+					>
+						ภาษาไทย (ก-ฮ)
+					</button>
+				</div>
+				<span class="badge badge-primary font-mono text-xs font-bold px-3 py-2">Shift +{shift}</span>
+			</div>
 		</div>
 
 		<div class="overflow-x-auto pb-2">
 			<div class="grid grid-rows-2 gap-1 font-mono text-center text-xs min-w-[650px]">
 				<!-- Plaintext Alphabet -->
 				<div class="flex gap-1">
+					<div class="w-16 py-1 font-bold text-slate-400 bg-base-300 rounded">ต้นฉบับ</div>
 					{#each alphabet as char}
-						<div class="flex-1 bg-slate-900 p-2 rounded-t font-bold text-amber-400 border border-slate-800">
-							{char}
-						</div>
+						<div class="w-7 py-1 bg-slate-900 text-slate-300 rounded font-bold">{char}</div>
 					{/each}
 				</div>
-				<!-- Animated Shifted Ciphertext Alphabet -->
+				<!-- Shifted Alphabet -->
 				<div class="flex gap-1">
+					<div class="w-16 py-1 font-bold text-cyan-400 bg-cyan-950/60 rounded">เข้ารหัส</div>
 					{#each shiftedAlphabet as char}
-						<div
-							class="flex-1 bg-slate-950 p-2 rounded-b font-bold text-cyan-400 border border-slate-800 transition-all duration-300 transform scale-105"
-						>
-							{char}
-						</div>
+						<div class="w-7 py-1 bg-cyan-900/40 text-cyan-300 rounded font-bold border border-cyan-500/30">{char}</div>
 					{/each}
 				</div>
 			</div>
 		</div>
 	</section>
 
-	<!-- Converter Tool -->
-	<section class="bg-base-200 p-6 rounded-3xl border border-base-300 shadow-xl space-y-4">
-		<div class="flex items-center justify-between flex-wrap gap-2">
-			<h2 class="text-xl font-extrabold text-accent flex items-center gap-2">
-				<span>⚡</span> เครื่องมือแปลงรหัส (Converter)
-			</h2>
-			<button
-				on:click={() => (isSwapped = !isSwapped)}
-				class="btn btn-outline btn-xs gap-1.5 font-bold"
-			>
-				<RepeatIcon size="14" />
-				<span>{isSwapped ? 'สลับทิศทาง (ถอดรหัส ➔ เข้ารหัส)' : 'สลับทิศทาง (เข้ารหัส ➔ ถอดรหัส)'}</span>
+	<!-- Interactive Converter -->
+	<section class="bg-base-200 p-6 rounded-3xl border border-base-300 shadow-xl space-y-6">
+		<div class="flex items-center justify-between flex-wrap gap-4 border-b border-base-300 pb-4">
+			<div class="space-y-1">
+				<h2 class="text-xl font-bold text-white">เครื่องมือแปลงรหัส Caesar Cipher</h2>
+				<p class="text-xs text-slate-400">เลือกจำนวนช่องขยับ (Shift) เพื่อเข้ารหัสหรือถอดรหัส</p>
+			</div>
+
+			<!-- Left-Right Toggle Button -->
+			<button on:click={toggleSwap} class="btn btn-sm btn-outline gap-2 font-bold">
+				<RepeatIcon size="16" />
+				<span>{isSwapped ? 'โหมด: ถอดรหัส (Shift ←)' : 'โหมด: เข้ารหัส (Shift →)'}</span>
 			</button>
 		</div>
 
-		<div class="grid grid-cols-1 md:grid-cols-2 gap-4 items-stretch">
-			<!-- Input Column -->
-			<div class="bg-slate-900/80 p-5 rounded-2xl border border-slate-800 flex flex-col justify-between space-y-4 {isSwapped ? 'order-2' : 'order-1'}">
-				<div class="space-y-3">
-					<label class="block text-xs font-semibold text-slate-400">
-						{isSwapped ? 'ข้อความ Ciphertext (Input):' : 'ข้อความ Plaintext (Input):'}
-					</label>
-					<textarea
-						bind:value={inputText}
-						rows="3"
-						placeholder="พิมพ์ข้อความภาษาอังกฤษ..."
-						class="textarea textarea-bordered w-full bg-slate-950 font-mono text-sm uppercase focus:textarea-primary"
-					></textarea>
+		<!-- Shift Slider Controller -->
+		<div class="space-y-2 bg-slate-900 p-4 rounded-2xl border border-slate-800">
+			<div class="flex justify-between items-center text-xs font-bold text-slate-300">
+				<span>ค่า Shift Offset:</span>
+				<span class="text-cyan-400 text-sm font-mono font-black">+{shift} ช่อง ({langMode})</span>
+			</div>
+			<input
+				type="range"
+				min="1"
+				max={maxShift}
+				bind:value={shift}
+				class="range range-primary range-xs"
+			/>
+			<div class="flex justify-between text-[10px] text-slate-500 font-mono">
+				<span>1</span>
+				<span>ROT13 ({Math.floor(maxShift / 2)})</span>
+				<span>{maxShift}</span>
+			</div>
+		</div>
 
-					<div class="space-y-1.5">
-						<div class="flex items-center justify-between text-xs">
-							<span class="font-bold text-amber-400">จำนวน Shift:</span>
-							<span class="badge badge-primary font-mono text-xs font-bold">Shift +{shift}</span>
-						</div>
-						<input
-							type="range"
-							min="0"
-							max="25"
-							bind:value={shift}
-							class="range range-primary range-xs"
-						/>
-					</div>
-				</div>
-				<span class="text-[11px] text-slate-500">
-					{isSwapped ? 'โหมดถอดรหัส: ถอยหลังตัวอักษรตามค่า Shift' : 'โหมดเข้ารหัส: ขยับตัวอักษรไปข้างหน้าตามค่า Shift'}
-				</span>
+		<!-- Input / Output Grid -->
+		<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+			<div class="space-y-2">
+				<label class="text-xs font-bold text-slate-400 block" for="caesar-input">
+					{isSwapped ? 'ข้อความเข้ารหัส (Ciphertext):' : 'ข้อความต้นฉบับ (Plaintext):'}
+				</label>
+				<textarea
+					id="caesar-input"
+					bind:value={inputText}
+					rows="4"
+					class="textarea textarea-bordered w-full bg-slate-950 font-mono text-sm leading-relaxed focus:border-cyan-500"
+					placeholder="พิมพ์ข้อความที่ต้องการ..."
+				></textarea>
 			</div>
 
-			<!-- Output Column -->
-			<div class="bg-slate-900/80 p-5 rounded-2xl border border-slate-800 flex flex-col justify-between space-y-3 {isSwapped ? 'order-1' : 'order-2'}">
-				<div>
-					<div class="flex items-center justify-between mb-2">
-						<label class="block text-xs font-semibold text-slate-400">
-							{isSwapped ? 'ผลลัพธ์ Plaintext (Output):' : 'ผลลัพธ์ Ciphertext (Output):'}
-						</label>
-						<button on:click={copyOutput} class="btn btn-ghost btn-xs gap-1 text-slate-400 hover:text-white">
-							{#if isCopied}
-								<CheckIcon size="14" class="text-success" />
-								<span class="text-success">คัดลอกแล้ว</span>
-							{:else}
-								<CopyIcon size="14" />
-								<span>คัดลอกข้อความ</span>
-							{/if}
-						</button>
-					</div>
-
-					<div class="bg-slate-950 p-4 rounded-xl border border-slate-800 min-h-[110px] font-mono text-lg text-primary tracking-widest break-words flex items-center">
-						{processedResult || 'พิมพ์ข้อความเพื่อดูผลลัพธ์...'}
-					</div>
+			<div class="space-y-2">
+				<div class="flex justify-between items-center">
+					<label class="text-xs font-bold text-slate-400 block" for="caesar-output">
+						{isSwapped ? 'ผลลัพธ์ถอดรหัส (Plaintext):' : 'ผลลัพธ์เข้ารหัส (Ciphertext):'}
+					</label>
+					<button on:click={copyOutput} class="btn btn-ghost btn-xs gap-1 font-bold text-cyan-400">
+						{#if isCopied}
+							<CheckIcon size="14" />
+							<span>คัดลอกแล้ว</span>
+						{:else}
+							<CopyIcon size="14" />
+							<span>คัดลอก</span>
+						{/if}
+					</button>
 				</div>
-
-				<span class="text-[11px] text-slate-500">ผลลัพธ์ประมวลผลด้วยค่า Shift +{shift}</span>
+				<div class="bg-slate-950 p-4 rounded-xl border border-slate-800 font-mono text-sm leading-relaxed text-cyan-400 min-h-[105px] break-all">
+					{processedResult}
+				</div>
 			</div>
 		</div>
 	</section>
 
 	<!-- Practice Exercises -->
-	<section class="bg-base-200 p-6 rounded-3xl border border-base-300 shadow-xl space-y-6">
-		<h2 class="text-xl font-extrabold text-warning flex items-center gap-2">
-			<span>✏️</span> แบบฝึกหัดทดลองถอดรหัส (Practice Exercises)
-		</h2>
+	<section class="space-y-4">
+		<h2 class="text-xl font-bold text-white">แบบฝึกหัดถอดรหัส Caesar Cipher</h2>
 
 		<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
 			{#each exercises as ex, idx}
@@ -212,14 +259,15 @@
 					</div>
 
 					<div class="space-y-2 pt-2">
-						<div class="join w-full">
+						<!-- Input Group styled like Weekly puzzle -->
+						<div class="input-group w-full">
 							<input
 								type="text"
 								bind:value={answers[idx]}
 								placeholder="พิมพ์คำตอบ..."
-								class="input input-sm join-item bg-slate-900 border-slate-800 text-white font-mono uppercase w-32 focus:border-cyan-500"
+								class="input input-bordered w-full font-mono uppercase"
 							/>
-							<button on:click={() => checkAnswer(idx)} class="btn btn-primary btn-sm join-item font-bold rounded-r-xl">
+							<button on:click={() => checkAnswer(idx)} class="btn btn-primary font-bold">
 								ตรวจ
 							</button>
 						</div>

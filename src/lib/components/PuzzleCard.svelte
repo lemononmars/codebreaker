@@ -12,6 +12,8 @@
 
 <a
 	href={targetHref}
+	target={href.startsWith('http') ? '_blank' : undefined}
+	rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
 	class="card bg-slate-900/60 hover:bg-slate-900/90 transition-all duration-300 hover:-translate-y-1 block h-full group border border-slate-800 shadow-md rounded-2xl overflow-hidden"
 >
 	<div class="card-body flex flex-row items-center text-left gap-4 p-4 sm:p-6">

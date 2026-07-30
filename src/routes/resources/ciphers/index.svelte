@@ -64,7 +64,7 @@
 		},
 		{
 			id: 'braille',
-			name: 'Braille Code (Eng & Thai)',
+			name: 'Braille Code',
 			path: '/resources/ciphers/braille',
 			difficulty: 'Easy - Medium',
 			badgeColor: 'text-cyan-400',
@@ -104,7 +104,7 @@
 		},
 		{
 			id: 'binary',
-			name: 'Binary Code (0101)',
+			name: 'Binary Code',
 			path: '/resources/ciphers/binary',
 			difficulty: 'Easy',
 			badgeColor: 'text-emerald-400',

@@ -32,7 +32,7 @@
 		'51': 'V', '52': 'W', '53': 'X', '54': 'Y', '55': 'Z'
 	};
 
-	// Thai 8x8 Grid (44 Consonants + ฤ + ฦ + Vowels + Tone Marks = 64 cells)
+	// Thai 8x8 Grid
 	const polybiusGridThai = [
 		['ก', 'ข', 'ค', 'ฆ', 'ง', 'จ', 'ฉ', 'ช'],
 		['ซ', 'ฌ', 'ญ', 'ฎ', 'ฏ', 'ฐ', 'ฑ', 'ฒ'],
@@ -74,6 +74,11 @@
 		}
 	})();
 
+	function toggleSwap() {
+		isSwapped = !isSwapped;
+		inputText = processedResult;
+	}
+
 	function copyOutput() {
 		navigator.clipboard.writeText(processedResult);
 		isCopied = true;
@@ -105,7 +110,7 @@
 </script>
 
 <svelte:head>
-	<title>Code Breaker | Polybius Square Cipher 🔐</title>
+	<title>Code Breaker | Polybius Square Cipher</title>
 	<meta name="description" content="คู่มือและแบบฝึกหัด Polybius Square Cipher ตารางพิกัด 5x5 และตารางภาษาไทย 8x8" />
 </svelte:head>
 
@@ -162,10 +167,7 @@
 				</div>
 			</div>
 
-			<button
-				on:click={() => (isSwapped = !isSwapped)}
-				class="btn btn-outline btn-xs gap-1.5 font-bold border-slate-700 text-slate-300 hover:bg-slate-800"
-			>
+			<button on:click={toggleSwap} class="btn btn-outline btn-xs gap-1.5 font-bold border-slate-700 text-slate-300 hover:bg-slate-800">
 				<RepeatIcon size="14" />
 				<span>{isSwapped ? 'สลับ (ถอดรหัส พิกัด ➔ ข้อความ)' : 'สลับ (เข้ารหัส ข้อความ ➔ พิกัด)'}</span>
 			</button>
@@ -173,10 +175,11 @@
 
 		<div class="grid grid-cols-1 md:grid-cols-2 gap-4 items-stretch">
 			<div class="space-y-2">
-				<label class="text-xs font-bold text-slate-400">
+				<label class="text-xs font-bold text-slate-400 block" for="polybius-input">
 					{isSwapped ? 'พิกัดตัวเลข (Input Coordinates):' : `ข้อความ ${langMode === 'EN' ? 'ภาษาอังกฤษ' : 'ภาษาไทย'} (Input):`}
 				</label>
 				<textarea
+					id="polybius-input"
 					bind:value={inputText}
 					placeholder={isSwapped ? 'เช่น 13 34 14 15...' : 'พิมพ์ข้อความ...'}
 					rows="4"
@@ -195,7 +198,7 @@
 				</div>
 				<button
 					on:click={copyOutput}
-					class="btn btn-sm btn-ghost gap-1.5 text-slate-300 hover:text-white self-end"
+					class="btn btn-sm btn-ghost gap-1.5 text-slate-300 hover:text-white self-end font-bold"
 				>
 					{#if isCopied}
 						<CheckIcon size="14" class="text-emerald-400" />
@@ -207,6 +210,102 @@
 				</button>
 			</div>
 		</div>
+	</section>
+
+	<!-- Interactive Grid Chart Section with Row & Column Highlighting -->
+	<section class="bg-slate-900 border border-slate-800 p-6 rounded-3xl shadow-xl space-y-4">
+		<div class="flex items-center justify-between flex-wrap gap-2 border-b border-slate-800 pb-2">
+			<h2 class="text-xl font-extrabold text-white">
+				📊 ตารางพิกัด Polybius ({langMode === 'EN' ? '5x5 English Grid' : '8x8 Thai Grid'})
+			</h2>
+			<span class="text-xs text-slate-400 font-medium">คลิกที่ตัวอักษรเพื่อไฮไลต์พิกัด แถว และคอลัมน์</span>
+		</div>
+
+		{#if clickedCellInfo}
+			<div class="bg-slate-950 border border-emerald-500/40 p-3 px-5 rounded-2xl flex items-center justify-between text-sm animate-fade-in">
+				<div class="flex items-center gap-3">
+					<span class="text-2xl font-bold text-amber-400 font-mono">"{clickedCellInfo.char}"</span>
+					<span class="text-slate-300">
+						➔ พิกัดคือ <strong class="text-emerald-400 font-mono text-base">{clickedCellInfo.code}</strong> (แถว {clickedCellInfo.row}, คอลัมน์ {clickedCellInfo.col})
+					</span>
+				</div>
+				<button on:click={() => (clickedCellInfo = null)} class="btn btn-ghost btn-xs text-slate-400 hover:text-white font-bold">
+					✕ ล้างไฮไลต์
+				</button>
+			</div>
+		{/if}
+
+		{#if langMode === 'EN'}
+			<!-- 5x5 Grid with Row/Column Highlighting -->
+			<div class="overflow-x-auto">
+				<table class="table table-compact w-full text-center border-collapse font-mono">
+					<thead>
+						<tr>
+							<th class="bg-slate-950 text-slate-500">#</th>
+							{#each [1, 2, 3, 4, 5] as colNum, cIdx}
+								<th class="bg-slate-950 font-bold transition-colors {clickedCellInfo?.col === cIdx + 1 ? 'bg-emerald-900/60 text-amber-300 font-black' : 'text-amber-400'}">
+									{colNum}
+								</th>
+							{/each}
+						</tr>
+					</thead>
+					<tbody>
+						{#each polybiusGridEng as row, rIdx}
+							<tr>
+								<th class="bg-slate-950 font-bold transition-colors {clickedCellInfo?.row === rIdx + 1 ? 'bg-emerald-900/60 text-amber-300 font-black' : 'text-amber-400'}">
+									{rIdx + 1}
+								</th>
+								{#each row as cell, cIdx}
+									{@const isSelected = clickedCellInfo?.row === rIdx + 1 && clickedCellInfo?.col === cIdx + 1}
+									{@const isHighlightedRowOrCol = clickedCellInfo && (clickedCellInfo.row === rIdx + 1 || clickedCellInfo.col === cIdx + 1)}
+									<td
+										on:click={() => handleCellClick(cell, rIdx + 1, cIdx + 1)}
+										class="border border-slate-800 text-base p-3 cursor-pointer transition-all duration-200 {isSelected ? 'bg-emerald-500 text-slate-950 font-black scale-105 shadow-xl rounded-xl z-10' : isHighlightedRowOrCol ? 'bg-emerald-950/60 text-emerald-300 font-bold border-emerald-500/40' : 'bg-slate-900 text-white font-bold hover:bg-emerald-500/20 hover:text-emerald-300'}"
+									>
+										{cell}
+									</td>
+								{/each}
+							</tr>
+						{/each}
+					</tbody>
+				</table>
+			</div>
+		{:else}
+			<!-- 8x8 Thai Grid with Row/Column Highlighting -->
+			<div class="overflow-x-auto">
+				<table class="table table-compact w-full text-center border-collapse font-mono text-xs">
+					<thead>
+						<tr>
+							<th class="bg-slate-950 text-slate-500">#</th>
+							{#each [1, 2, 3, 4, 5, 6, 7, 8] as colNum, cIdx}
+								<th class="bg-slate-950 font-bold transition-colors {clickedCellInfo?.col === cIdx + 1 ? 'bg-emerald-900/60 text-emerald-300 font-black' : 'text-emerald-400'}">
+									{colNum}
+								</th>
+							{/each}
+						</tr>
+					</thead>
+					<tbody>
+						{#each polybiusGridThai as row, rIdx}
+							<tr>
+								<th class="bg-slate-950 font-bold transition-colors {clickedCellInfo?.row === rIdx + 1 ? 'bg-emerald-900/60 text-emerald-300 font-black' : 'text-emerald-400'}">
+									{rIdx + 1}
+								</th>
+								{#each row as cell, cIdx}
+									{@const isSelected = clickedCellInfo?.row === rIdx + 1 && clickedCellInfo?.col === cIdx + 1}
+									{@const isHighlightedRowOrCol = clickedCellInfo && (clickedCellInfo.row === rIdx + 1 || clickedCellInfo.col === cIdx + 1)}
+									<td
+										on:click={() => handleCellClick(cell, rIdx + 1, cIdx + 1)}
+										class="border border-slate-800 text-sm p-3 cursor-pointer transition-all duration-200 {isSelected ? 'bg-emerald-500 text-slate-950 font-black scale-105 shadow-xl rounded-xl z-10' : isHighlightedRowOrCol ? 'bg-emerald-950/60 text-emerald-300 font-bold border-emerald-500/40' : 'bg-slate-900 text-white font-bold hover:bg-emerald-500/20 hover:text-emerald-300'}"
+									>
+										{cell}
+									</td>
+								{/each}
+							</tr>
+						{/each}
+					</tbody>
+				</table>
+			</div>
+		{/if}
 	</section>
 
 	<!-- Practice Exercises -->
@@ -226,17 +325,14 @@
 					</div>
 
 					<div class="space-y-2 pt-2">
-						<div class="join w-full">
+						<div class="input-group w-full">
 							<input
 								type="text"
 								bind:value={answers[idx]}
 								placeholder="พิมพ์คำตอบ..."
-								class="input input-sm join-item bg-slate-900 border-slate-800 text-white font-mono uppercase w-32 focus:border-emerald-500"
+								class="input input-bordered w-full font-mono uppercase"
 							/>
-							<button
-								on:click={() => checkAnswer(idx)}
-								class="btn btn-primary btn-sm join-item font-bold rounded-r-xl"
-							>
+							<button on:click={() => checkAnswer(idx)} class="btn btn-primary font-bold">
 								ตรวจ
 							</button>
 						</div>
@@ -248,99 +344,12 @@
 							</div>
 						{:else if feedback[idx] === 'incorrect'}
 							<div class="text-xs font-bold text-rose-400">
-								✕ ยังไม่ถูกต้อง ลองใหม่อีกครั้ง
+								✕ ยังไม่ถูกต้อง
 							</div>
 						{/if}
 					</div>
 				</div>
 			{/each}
 		</div>
-	</section>
-
-	<!-- Interactive Grid Chart Section (Click cell to inspect code) -->
-	<section class="bg-slate-900 border border-slate-800 p-6 rounded-3xl shadow-xl space-y-4">
-		<div class="flex items-center justify-between flex-wrap gap-2 border-b border-slate-800 pb-2">
-			<h2 class="text-xl font-extrabold text-white">
-				📊 ตารางพิกัด Polybius ({langMode === 'EN' ? '5x5 English Grid' : '8x8 Thai Grid'})
-			</h2>
-			<span class="text-xs text-slate-400 font-medium">คลิกที่ช่องตัวอักษรเพื่อดูพิกัดตัวเลข</span>
-		</div>
-
-		<!-- Click Code Display Inspector Banner -->
-		{#if clickedCellInfo}
-			<div class="bg-slate-950 border border-emerald-500/40 p-3 px-5 rounded-2xl flex items-center justify-between text-sm animate-fade-in">
-				<div class="flex items-center gap-3">
-					<span class="text-2xl font-bold text-amber-400 font-mono">"{clickedCellInfo.char}"</span>
-					<span class="text-slate-300">
-						➔ พิกัดคือ <strong class="text-emerald-400 font-mono text-base">{clickedCellInfo.code}</strong> (แถว {clickedCellInfo.row}, คอลัมน์ {clickedCellInfo.col})
-					</span>
-				</div>
-				<button on:click={() => (clickedCellInfo = null)} class="btn btn-ghost btn-xs text-slate-400 hover:text-white">
-					✕ ปิด
-				</button>
-			</div>
-		{/if}
-
-		{#if langMode === 'EN'}
-			<!-- 5x5 Grid -->
-			<div class="overflow-x-auto">
-				<table class="table table-compact w-full text-center border-collapse font-mono">
-					<thead>
-						<tr>
-							<th class="bg-slate-950 text-slate-500">#</th>
-							<th class="bg-slate-950 text-amber-400 font-bold">1</th>
-							<th class="bg-slate-950 text-amber-400 font-bold">2</th>
-							<th class="bg-slate-950 text-amber-400 font-bold">3</th>
-							<th class="bg-slate-950 text-amber-400 font-bold">4</th>
-							<th class="bg-slate-950 text-amber-400 font-bold">5</th>
-						</tr>
-					</thead>
-					<tbody>
-						{#each polybiusGridEng as row, rIdx}
-							<tr>
-								<th class="bg-slate-950 text-amber-400 font-bold">{rIdx + 1}</th>
-								{#each row as cell, cIdx}
-									<td
-										on:click={() => handleCellClick(cell, rIdx + 1, cIdx + 1)}
-										class="bg-slate-900 border border-slate-800 text-white font-bold text-base p-3 cursor-pointer hover:bg-emerald-500/20 hover:text-emerald-300 transition-colors"
-									>
-										{cell}
-									</td>
-								{/each}
-							</tr>
-						{/each}
-					</tbody>
-				</table>
-			</div>
-		{:else}
-			<!-- 8x8 Thai Grid -->
-			<div class="overflow-x-auto">
-				<table class="table table-compact w-full text-center border-collapse font-mono text-xs">
-					<thead>
-						<tr>
-							<th class="bg-slate-950 text-slate-500">#</th>
-							{#each [1, 2, 3, 4, 5, 6, 7, 8] as colNum}
-								<th class="bg-slate-950 text-emerald-400 font-bold">{colNum}</th>
-							{/each}
-						</tr>
-					</thead>
-					<tbody>
-						{#each polybiusGridThai as row, rIdx}
-							<tr>
-								<th class="bg-slate-950 text-emerald-400 font-bold">{rIdx + 1}</th>
-								{#each row as cell, cIdx}
-									<td
-										on:click={() => handleCellClick(cell, rIdx + 1, cIdx + 1)}
-										class="bg-slate-900 border border-slate-800 text-white font-bold text-sm p-3 cursor-pointer hover:bg-emerald-500/20 hover:text-emerald-300 transition-colors"
-									>
-										{cell}
-									</td>
-								{/each}
-							</tr>
-						{/each}
-					</tbody>
-				</table>
-			</div>
-		{/if}
 	</section>
 </div>

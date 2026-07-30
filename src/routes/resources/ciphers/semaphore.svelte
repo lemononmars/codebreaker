@@ -168,13 +168,13 @@
 								type="text"
 								bind:value={answers[idx]}
 								placeholder="พิมพ์คำตอบภาษาอังกฤษ..."
-								class="input input-sm join-item bg-slate-900 border-slate-800 text-white font-mono uppercase flex-1 rounded-l-xl focus:border-amber-500"
+								class="input input-sm input-bordered join-item grow font-mono uppercase"
 							/>
 							<button
 								on:click={() => checkAnswer(idx)}
-								class="btn btn-primary btn-sm join-item font-bold rounded-r-xl"
+								class="btn btn-primary btn-sm join-item font-bold"
 							>
-								ตรวจคำตอบ
+								ตรวจ
 							</button>
 						</div>
 

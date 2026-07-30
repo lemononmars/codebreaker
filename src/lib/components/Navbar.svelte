@@ -42,6 +42,7 @@
 		if (p.startsWith('/puzzles/wordsearch')) return 'Word Search';
 		if (p.startsWith('/puzzles/crossword')) return 'Crossword';
 		if (p.startsWith('/puzzles/rebus')) return 'Rebus';
+		if (p.startsWith('/puzzles/hiddenlink')) return 'Hidden Link';
 		if (p.startsWith('/puzzles/cryptogram')) return 'Cryptogram';
 		if (p.startsWith('/puzzles/alphabet')) return 'Alphabet';
 		if (p.startsWith('/puzzles/puzzlehunt')) return 'Puzzle Hunt';

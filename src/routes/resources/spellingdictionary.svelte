@@ -205,20 +205,20 @@
 				<div class="card bg-base-200 border border-base-300 hover:border-primary/40 transition shadow-lg p-5 rounded-2xl flex flex-col justify-between">
 					<div>
 						<div class="flex items-center justify-between gap-2 mb-2">
-							<span class="badge badge-success gap-1 font-bold text-xs py-2 px-3">
-								<CheckCircleIcon size="12" />
+							<span class="badge badge-success gap-1 text-sm font-normal py-2.5 px-3">
+								<CheckCircleIcon size="14" />
 								{item.correct}
 							</span>
 							{#if item.isLoanWord}
-								<span class="badge badge-ghost text-[10px] text-slate-400">คำยืม</span>
+								<span class="badge badge-ghost text-xs text-slate-400 font-normal">คำยืม</span>
 							{/if}
 						</div>
 
-						<div class="text-xs text-slate-400 mt-2">
-							<span class="font-semibold text-error/80">มักเขียนผิดเป็น:</span>
+						<div class="text-sm text-slate-400 font-normal mt-2">
+							<span class="text-error/80 font-normal">มักเขียนผิดเป็น:</span>
 							<div class="flex flex-wrap gap-1 mt-1">
 								{#each item.incorrect as wrong}
-									<span class="px-2 py-0.5 rounded bg-error/10 text-error font-mono border border-error/20">
+									<span class="px-2 py-0.5 rounded bg-error/10 text-error font-mono text-sm font-normal border border-error/20">
 										{wrong}
 									</span>
 								{/each}
@@ -227,7 +227,7 @@
 					</div>
 
 					{#if showExplanations && item.explanation}
-						<div class="mt-3 pt-3 border-t border-base-300 text-xs text-slate-300 leading-relaxed italic bg-base-300/40 p-2.5 rounded-lg">
+						<div class="mt-3 pt-3 border-t border-base-300 text-sm text-slate-300 font-normal leading-relaxed italic bg-base-300/40 p-2.5 rounded-lg">
 							💡 {item.explanation}
 						</div>
 					{/if}
@@ -236,36 +236,36 @@
 		</div>
 	{:else}
 		<div class="overflow-x-auto bg-base-200 rounded-2xl border border-base-300 shadow-xl">
-			<table class="table w-full text-sm">
+			<table class="table w-full text-sm font-normal">
 				<thead>
-					<tr class="bg-base-300/50 text-slate-300">
-						<th>คำที่ถูกต้อง</th>
-						<th>มักสะกดผิดเป็น</th>
-						<th>ประเภท</th>
-						{#if showExplanations}<th>คำอธิบาย</th>{/if}
+					<tr class="bg-base-300/50 text-slate-300 font-normal">
+						<th class="font-normal">คำที่ถูกต้อง</th>
+						<th class="font-normal">มักสะกดผิดเป็น</th>
+						<th class="font-normal">ประเภท</th>
+						{#if showExplanations}<th class="font-normal">คำอธิบาย</th>{/if}
 					</tr>
 				</thead>
 				<tbody>
 					{#each paginatedWords as item}
-						<tr class="hover:bg-base-300/30 border-b border-base-300">
-							<td class="font-bold text-success flex items-center gap-1.5">
+						<tr class="hover:bg-base-300/30 border-b border-base-300 font-normal">
+							<td class="text-success font-normal flex items-center gap-1.5 text-sm">
 								<CheckCircleIcon size="14" />
 								{item.correct}
 							</td>
 							<td>
 								<div class="flex flex-wrap gap-1">
 									{#each item.incorrect as wrong}
-										<span class="px-2 py-0.5 rounded bg-error/10 text-error font-mono text-xs">
+										<span class="px-2 py-0.5 rounded bg-error/10 text-error font-mono text-sm font-normal">
 											{wrong}
 										</span>
 									{/each}
 								</div>
 							</td>
 							<td>
-								<span class="text-xs text-slate-400">{item.isLoanWord ? 'คำยืม' : 'คำไทย'}</span>
+								<span class="text-sm text-slate-400 font-normal">{item.isLoanWord ? 'คำยืม' : 'คำไทย'}</span>
 							</td>
 							{#if showExplanations}
-								<td class="text-xs text-slate-300">{item.explanation || '-'}</td>
+								<td class="text-sm text-slate-300 font-normal">{item.explanation || '-'}</td>
 							{/if}
 						</tr>
 					{/each}

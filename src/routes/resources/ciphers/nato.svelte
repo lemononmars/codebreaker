@@ -126,13 +126,6 @@
 			<h2 class="text-xl font-extrabold text-emerald-400 flex items-center gap-2">
 				<span>⚡</span> เครื่องมือแปลงรหัส NATO
 			</h2>
-			<button
-				on:click={() => (isSwapped = !isSwapped)}
-				class="btn btn-outline btn-xs gap-1.5 font-bold border-slate-700 text-slate-300 hover:bg-slate-800"
-			>
-				<RepeatIcon size="14" />
-				<span>{isSwapped ? 'สลับ (ถอดรหัส NATO ➔ ข้อความ)' : 'สลับ (เข้ารหัส ข้อความ ➔ NATO)'}</span>
-			</button>
 		</div>
 
 		<div class="grid grid-cols-1 md:grid-cols-2 gap-5 items-stretch">
@@ -197,11 +190,11 @@
 								type="text"
 								bind:value={answers[idx]}
 								placeholder="พิมพ์คำตอบ..."
-								class="input input-sm join-item bg-slate-900 border-slate-800 text-white font-mono uppercase w-32 focus:border-emerald-500"
+								class="input input-sm input-bordered join-item grow font-mono uppercase"
 							/>
 							<button
 								on:click={() => checkAnswer(idx)}
-								class="btn btn-primary btn-sm join-item font-bold rounded-r-xl"
+								class="btn btn-primary btn-sm join-item font-bold"
 							>
 								ตรวจ
 							</button>

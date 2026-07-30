@@ -17,6 +17,7 @@
 			'/',
 			'/puzzles',
 			'/puzzles/weekly',
+			'/resources',
 			'/tools',
 			'/events',
 			'/shop',
@@ -25,7 +26,7 @@
 			'/register'
 		];
 
-		if (listPages.includes(cleanPath)) return true;
+		if (listPages.includes(cleanPath) || cleanPath.startsWith('/resources')) return true;
 
 		// Match year list view e.g. /puzzles/weekly/2026
 		if (/^\/puzzles\/weekly\/\d{4}$/.test(cleanPath)) return true;

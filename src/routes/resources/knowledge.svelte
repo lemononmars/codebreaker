@@ -149,7 +149,7 @@
 				</h2>
 				<div class="flex flex-wrap gap-2 pt-1">
 					{#each cat.badges as badge}
-						<span class="inline-flex items-center px-3 py-1.5 rounded-xl bg-slate-950 border border-slate-800 text-xs font-semibold text-slate-200 hover:border-emerald-500/50 hover:text-emerald-300 transition-all">
+						<span class="inline-flex items-center px-3.5 py-1.5 rounded-xl bg-slate-950 border border-slate-800 text-sm font-normal text-slate-200 hover:border-emerald-500/50 hover:text-emerald-300 transition-all">
 							{badge}
 						</span>
 					{/each}

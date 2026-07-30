@@ -173,11 +173,11 @@
 								type="text"
 								bind:value={answers[idx]}
 								placeholder="พิมพ์คำตอบ..."
-								class="input input-sm join-item bg-slate-900 border-slate-800 text-white font-mono uppercase w-32 focus:border-amber-500"
+								class="input input-sm input-bordered join-item grow font-mono uppercase"
 							/>
 							<button
 								on:click={() => checkAnswer(idx)}
-								class="btn btn-primary btn-sm join-item font-bold rounded-r-xl"
+								class="btn btn-primary btn-sm join-item font-bold"
 							>
 								ตรวจ
 							</button>

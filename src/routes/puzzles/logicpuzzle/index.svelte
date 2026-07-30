@@ -1,73 +1,32 @@
+<script context="module" lang="ts">
+	import type { Load } from '@sveltejs/kit';
+	export const load: Load = async ({ fetch }) => {
+		try {
+			const res = await fetch('/api/puzzle/logicpuzzle');
+			if (res.ok) {
+				const data = await res.json();
+				return {
+					props: {
+						initialPuzzles: Array.isArray(data) ? data : []
+					}
+				};
+			}
+		} catch (e) {}
+		return {
+			props: {
+				initialPuzzles: []
+			}
+		};
+	};
+</script>
+
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { ArrowLeftIcon, BookOpenIcon, ExternalLinkIcon, GridIcon, PlayIcon, RefreshCwIcon, SearchIcon, SlidersIcon, XIcon } from 'svelte-feather-icons';
 	import type { ILogicPuzzle } from '$lib/interfaces';
 	import LogicPuzzleThumbnail from '$lib/components/LogicPuzzleThumbnail.svelte';
 
-	// Initial fallback puzzle list (including the required first puzzle)
-	const initialPuzzles: (ILogicPuzzle & { thumbnail?: string })[] = [
-		{
-			id: 1,
-			title: 'Slitherlink 5x5 #1',
-			genre: 'slither',
-			genre_title: 'Slitherlink',
-			url: 'https://pzprxs.vercel.app/p?slither/5/5/1aj2ai1dj2d',
-			width: 5,
-			height: 5,
-			difficulty: 'Easy',
-			author: 'Codebreaker',
-			created_at: new Date().toISOString()
-		},
-		{
-			id: 2,
-			title: 'Slitherlink 6x6 #2',
-			genre: 'slither',
-			genre_title: 'Slitherlink',
-			url: 'https://pzprxs.vercel.app/p?slither/6/6/n3g2g3g1n',
-			width: 6,
-			height: 6,
-			difficulty: 'Medium',
-			author: 'Codebreaker',
-			created_at: new Date(Date.now() - 86400000).toISOString()
-		},
-		{
-			id: 3,
-			title: 'Sudoku Classic 9x9 #1',
-			genre: 'sudoku',
-			genre_title: 'Sudoku',
-			url: 'https://pzprxs.vercel.app/p?sudoku/9/9/m3o4m1g5m9g2m8o7m',
-			width: 9,
-			height: 9,
-			difficulty: 'Easy',
-			author: 'Nikoli Standard',
-			created_at: new Date(Date.now() - 172800000).toISOString()
-		},
-		{
-			id: 4,
-			title: 'Masyu 6x6 #1',
-			genre: 'masyu',
-			genre_title: 'Masyu',
-			url: 'https://pzprxs.vercel.app/p?masyu/6/6/100010002000200',
-			width: 6,
-			height: 6,
-			difficulty: 'Medium',
-			author: 'Codebreaker',
-			created_at: new Date(Date.now() - 259200000).toISOString()
-		},
-		{
-			id: 5,
-			title: 'Akari 7x7 #1',
-			genre: 'akari',
-			genre_title: 'Akari',
-			url: 'https://pzprxs.vercel.app/p?akari/7/7/a2a3b1a',
-			width: 7,
-			height: 7,
-			difficulty: 'Easy',
-			author: 'Codebreaker',
-			created_at: new Date(Date.now() - 345600000).toISOString()
-		}
-	];
-
+	export let initialPuzzles: (ILogicPuzzle & { thumbnail?: string })[] = [];
 	let puzzles: (ILogicPuzzle & { thumbnail?: string })[] = initialPuzzles;
 	let loading = false;
 
@@ -82,19 +41,21 @@
 	let activePuzzleModal: (ILogicPuzzle & { thumbnail?: string }) | null = null;
 
 	onMount(async () => {
-		try {
-			loading = true;
-			const res = await fetch('/api/puzzle/logicpuzzle');
-			if (res.ok) {
-				const data = await res.json();
-				if (Array.isArray(data) && data.length > 0) {
-					puzzles = data;
+		if (puzzles.length === 0) {
+			try {
+				loading = true;
+				const res = await fetch('/api/puzzle/logicpuzzle');
+				if (res.ok) {
+					const data = await res.json();
+					if (Array.isArray(data)) {
+						puzzles = data;
+					}
 				}
+			} catch (err) {
+				console.warn('Error loading logic puzzles:', err);
+			} finally {
+				loading = false;
 			}
-		} catch (err) {
-			console.warn('Using initial logic puzzle list fallback:', err);
-		} finally {
-			loading = false;
 		}
 	});
 
@@ -348,12 +309,15 @@
 								<h3 class="text-lg font-bold text-white group-hover:text-purple-300 transition-colors">
 									{puzzle.title}
 								</h3>
-								<!-- Size Only -->
-								{#if puzzle.width && puzzle.height}
-									<p class="text-xs font-semibold text-slate-400">
-										Size: {puzzle.width} × {puzzle.height}
-									</p>
-								{/if}
+								<!-- Size & Author -->
+								<div class="flex items-center justify-between text-xs font-semibold text-slate-400">
+									{#if puzzle.width && puzzle.height}
+										<span>Size: {puzzle.width} × {puzzle.height}</span>
+									{/if}
+									{#if puzzle.author}
+										<span>By: {puzzle.author}</span>
+									{/if}
+								</div>
 							</div>
 
 							<!-- Action Buttons -->

@@ -2,35 +2,69 @@
 	import { ArrowLeftIcon, CheckCircleIcon, RepeatIcon, CopyIcon, CheckIcon } from 'svelte-feather-icons';
 
 	let inputText = 'CODE';
+	let bitMode: '8BIT' | '5BIT' = '8BIT';
 	let isSwapped = false;
 	let isCopied = false;
 
 	const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
-	const binaryTable: Record<string, string> = {};
-	alphabet.forEach((ch) => {
-		binaryTable[ch] = ch.charCodeAt(0).toString(2).padStart(8, '0');
-	});
 
-	function textToBinary(text: string): string {
+	function charToBinary(ch: string, mode: '8BIT' | '5BIT'): string {
+		const upper = ch.toUpperCase();
+		const code = upper.charCodeAt(0);
+		if (mode === '8BIT') {
+			return code.toString(2).padStart(8, '0');
+		} else {
+			// 5-Bit Index: A=1 (00001), B=2 (00010) ... Z=26 (11010)
+			if (code >= 65 && code <= 90) {
+				const idx = code - 64;
+				return idx.toString(2).padStart(5, '0');
+			}
+			return ch;
+		}
+	}
+
+	function binaryToChar(binStr: string, mode: '8BIT' | '5BIT'): string {
+		const num = parseInt(binStr, 2);
+		if (isNaN(num)) return binStr;
+		if (mode === '8BIT') {
+			return String.fromCharCode(num);
+		} else {
+			if (num >= 1 && num <= 26) {
+				return String.fromCharCode(num + 64);
+			}
+			return binStr;
+		}
+	}
+
+	$: binaryTable = (() => {
+		const table: Record<string, string> = {};
+		alphabet.forEach((ch) => {
+			table[ch] = charToBinary(ch, bitMode);
+		});
+		return table;
+	})();
+
+	function textToBinary(text: string, mode: '8BIT' | '5BIT'): string {
 		return text
 			.split('')
-			.map((ch) => ch.charCodeAt(0).toString(2).padStart(8, '0'))
+			.map((ch) => charToBinary(ch, mode))
 			.join(' ');
 	}
 
-	function binaryToText(binStr: string): string {
+	function binaryToText(binStr: string, mode: '8BIT' | '5BIT'): string {
 		return binStr
 			.trim()
 			.split(/\s+/)
-			.map((b) => {
-				const num = parseInt(b, 2);
-				if (!isNaN(num)) return String.fromCharCode(num);
-				return b;
-			})
+			.map((b) => binaryToChar(b, mode))
 			.join('');
 	}
 
-	$: processedResult = isSwapped ? binaryToText(inputText) : textToBinary(inputText);
+	$: processedResult = isSwapped ? binaryToText(inputText, bitMode) : textToBinary(inputText, bitMode);
+
+	function toggleSwap() {
+		isSwapped = !isSwapped;
+		inputText = processedResult;
+	}
 
 	function copyOutput() {
 		navigator.clipboard.writeText(processedResult);
@@ -58,8 +92,8 @@
 </script>
 
 <svelte:head>
-	<title>Code Breaker | Binary Code Cipher 🔐</title>
-	<meta name="description" content="คู่มือและแบบฝึกหัด Binary Code รหัสเลขฐานสอง 0 และ 1" />
+	<title>Code Breaker | Binary Code Cipher</title>
+	<meta name="description" content="คู่มือและแบบฝึกหัด Binary Code รหัสเลขฐานสอง (8-Bit ASCII และ 5-Bit Index)" />
 </svelte:head>
 
 <div class="flex flex-col gap-8 w-full max-w-5xl mx-auto px-4 py-8 select-none">
@@ -74,17 +108,34 @@
 			<span class="badge badge-success font-bold text-xs py-2 px-3">EASY</span>
 			<span class="text-xs text-slate-400 font-mono uppercase tracking-wider">Binary System</span>
 		</div>
-		<h1 class="text-3xl lg:text-4xl font-black text-white">Binary Code (รหัสเลขฐานสอง 0101)</h1>
+		<h1 class="text-3xl lg:text-4xl font-black text-white">Binary Code (รหัสเลขฐานสอง)</h1>
 		<p class="text-slate-300 text-sm lg:text-base leading-relaxed">
-			รหัสคอมพิวเตอร์พื้นฐาน โดยแทนแต่ละตัวอักษรด้วยรหัสตัวเลขฐานสองขนาด 8 บิต (Byte)
+			รหัสคอมพิวเตอร์พื้นฐาน โดยแทนแต่ละตัวอักษรด้วยรหัสตัวเลขฐานสอง 8 บิต (ASCII) หรือ 5 บิต (Alphabet Index A=00001..Z=11010)
 		</p>
 	</header>
 
 	<!-- Visual Reference Table (ASCII A-Z to Binary) -->
 	<section class="bg-base-200 p-6 rounded-3xl border border-base-300 shadow-xl space-y-4">
-		<h2 class="text-xl font-extrabold text-primary flex items-center gap-2">
-			<span>💻</span> ตารางอ้างอิง ASCII Binary (A - Z)
-		</h2>
+		<div class="flex items-center justify-between flex-wrap gap-3">
+			<h2 class="text-xl font-extrabold text-primary flex items-center gap-2">
+				<span>💻</span> ตารางอ้างอิง Binary ({bitMode === '8BIT' ? '8-Bit ASCII' : '5-Bit Last Bits'})
+			</h2>
+			<!-- Bit Mode Switcher -->
+			<div class="btn-group">
+				<button
+					class="btn btn-xs font-bold {bitMode === '8BIT' ? 'btn-primary' : 'btn-outline'}"
+					on:click={() => (bitMode = '8BIT')}
+				>
+					8-Bit ASCII
+				</button>
+				<button
+					class="btn btn-xs font-bold {bitMode === '5BIT' ? 'btn-primary' : 'btn-outline'}"
+					on:click={() => (bitMode = '5BIT')}
+				>
+					5-Bit (Last 5 Bits)
+				</button>
+			</div>
+		</div>
 
 		<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2 font-mono text-xs">
 			{#each alphabet as letter}
@@ -98,68 +149,54 @@
 
 	<!-- Converter Tool -->
 	<section class="bg-base-200 p-6 rounded-3xl border border-base-300 shadow-xl space-y-4">
-		<div class="flex items-center justify-between flex-wrap gap-2">
-			<h2 class="text-xl font-extrabold text-accent flex items-center gap-2">
-				<span>⚡</span> เครื่องมือแปลงรหัส (Converter)
-			</h2>
-			<button
-				on:click={() => {
-					isSwapped = !isSwapped;
-					inputText = isSwapped ? '01000011 01001111 01000100 01000101' : 'CODE';
-				}}
-				class="btn btn-outline btn-xs gap-1.5 font-bold"
-			>
-				<RepeatIcon size="14" />
-				<span>{isSwapped ? 'สลับทิศทาง (ถอด Binary ➔ ข้อความ)' : 'สลับทิศทาง (ข้อความ ➔ Binary)'}</span>
+		<div class="flex items-center justify-between flex-wrap gap-2 border-b border-base-300 pb-3">
+			<h2 class="text-xl font-bold text-white">เครื่องมือแปลงรหัส Binary</h2>
+			<!-- Left-Right Swap Button -->
+			<button on:click={toggleSwap} class="btn btn-sm btn-outline gap-2 font-bold">
+				<RepeatIcon size="16" />
+				<span>{isSwapped ? 'โหมด: ถอดรหัส (Binary → ข้อความ)' : 'โหมด: เข้ารหัส (ข้อความ → Binary)'}</span>
 			</button>
 		</div>
 
-		<div class="grid grid-cols-1 md:grid-cols-2 gap-4 items-stretch">
-			<div class="bg-slate-900/80 p-5 rounded-2xl border border-slate-800 flex flex-col justify-between space-y-3 {isSwapped ? 'order-2' : 'order-1'}">
-				<div>
-					<label class="block text-xs font-semibold text-slate-400 mb-2">
-						{isSwapped ? 'Binary Code (Input):' : 'ข้อความ (Input):'}
-					</label>
-					<textarea
-						bind:value={inputText}
-						rows="4"
-						placeholder={isSwapped ? 'วางเลขฐานสอง เช่น 01000011...' : 'พิมพ์ข้อความ...'}
-						class="textarea textarea-bordered w-full bg-slate-950 font-mono text-sm uppercase focus:textarea-primary"
-					></textarea>
-				</div>
-				<span class="text-[11px] text-slate-500">แปลงข้อความและเลขฐานสอง (8-bit)</span>
+		<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+			<div class="space-y-2">
+				<label class="text-xs font-bold text-slate-400 block" for="binary-input">
+					{isSwapped ? 'ชุดเลขฐานสอง (คั่นด้วยเว้นวรรค):' : 'ข้อความต้นฉบับ:'}
+				</label>
+				<textarea
+					id="binary-input"
+					bind:value={inputText}
+					rows="4"
+					class="textarea textarea-bordered w-full bg-slate-950 font-mono text-sm leading-relaxed focus:border-emerald-500"
+					placeholder="พิมพ์ข้อความที่นี่..."
+				></textarea>
 			</div>
 
-			<div class="bg-slate-900/80 p-5 rounded-2xl border border-slate-800 flex flex-col justify-between space-y-3 {isSwapped ? 'order-1' : 'order-2'}">
-				<div>
-					<div class="flex items-center justify-between mb-2">
-						<label class="block text-xs font-semibold text-slate-400">ผลลัพธ์ (Output):</label>
-						<button on:click={copyOutput} class="btn btn-ghost btn-xs gap-1 text-slate-400 hover:text-white">
-							{#if isCopied}
-								<CheckIcon size="14" class="text-success" />
-								<span class="text-success">คัดลอกแล้ว</span>
-							{:else}
-								<CopyIcon size="14" />
-								<span>คัดลอกข้อความ</span>
-							{/if}
-						</button>
-					</div>
-
-					<div class="bg-slate-950 p-4 rounded-xl border border-slate-800 min-h-[110px] font-mono text-base text-primary tracking-wider break-words flex items-center">
-						{processedResult || 'พิมพ์หรือวางเพื่อดูผลลัพธ์...'}
-					</div>
+			<div class="space-y-2">
+				<div class="flex justify-between items-center">
+					<label class="text-xs font-bold text-slate-400 block" for="binary-output">
+						{isSwapped ? 'ผลลัพธ์ถอดรหัส (ข้อความ):' : 'ผลลัพธ์เข้ารหัส (Binary):'}
+					</label>
+					<button on:click={copyOutput} class="btn btn-ghost btn-xs gap-1 font-bold text-emerald-400">
+						{#if isCopied}
+							<CheckIcon size="14" />
+							<span>คัดลอกแล้ว</span>
+						{:else}
+							<CopyIcon size="14" />
+							<span>คัดลอก</span>
+						{/if}
+					</button>
 				</div>
-
-				<span class="text-[11px] text-slate-500">ผลลัพธ์เลขฐานสองคั่นด้วยเว้นวรรค</span>
+				<div class="bg-slate-950 p-4 rounded-xl border border-slate-800 font-mono text-sm leading-relaxed text-emerald-400 min-h-[105px] break-all">
+					{processedResult}
+				</div>
 			</div>
 		</div>
 	</section>
 
-	<!-- Exercises -->
-	<section class="bg-base-200 p-6 rounded-3xl border border-base-300 shadow-xl space-y-6">
-		<h2 class="text-xl font-extrabold text-warning flex items-center gap-2">
-			<span>✏️</span> แบบฝึกหัด (Exercises)
-		</h2>
+	<!-- Practice Exercises -->
+	<section class="space-y-4">
+		<h2 class="text-xl font-bold text-white">แบบฝึกหัดถอดรหัส Binary Code</h2>
 
 		<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
 			{#each exercises as ex, idx}
@@ -167,21 +204,21 @@
 					<div class="space-y-3">
 						<span class="font-bold text-xs text-slate-300">ข้อที่ {ex.id}</span>
 
-						<div class="bg-slate-950 p-3 rounded-xl border border-slate-800 font-mono text-xs text-primary tracking-wide text-center min-h-[60px] flex items-center justify-center break-all">
+						<div class="bg-slate-950 p-3 rounded-xl border border-slate-800 font-mono text-xs text-primary tracking-wider text-center min-h-[60px] flex items-center justify-center break-all">
 							{ex.cipherText}
 						</div>
 					</div>
 
 					<div class="space-y-2 pt-2">
-						<div class="join w-full">
+						<div class="input-group w-full">
 							<input
 								type="text"
 								bind:value={answers[idx]}
 								placeholder="พิมพ์คำตอบ..."
-								class="input input-sm join-item bg-slate-900 border-slate-800 text-white font-mono uppercase flex-1 rounded-l-xl focus:border-emerald-500"
+								class="input input-bordered w-full font-mono uppercase"
 							/>
-							<button on:click={() => checkAnswer(idx)} class="btn btn-primary btn-sm join-item font-bold rounded-r-xl">
-								ตรวจคำตอบ
+							<button on:click={() => checkAnswer(idx)} class="btn btn-primary font-bold">
+								ตรวจ
 							</button>
 						</div>
 

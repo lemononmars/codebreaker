@@ -251,12 +251,21 @@
 		<div class="flex flex-col gap-6">
 			<!-- Header Bar -->
 			<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-800 pb-4">
-				<div>
+				<div class="space-y-2">
+					<div class="flex items-center gap-2 bg-slate-950 p-1 rounded-2xl border border-slate-800 w-fit">
+						<a href="/admin/weekly" class="px-4 py-2 rounded-xl text-xs font-bold bg-blue-500 text-white hover:text-white shadow-md">
+							Weekly
+						</a>
+						<a href="/admin/logic" class="px-4 py-2 rounded-xl text-xs font-bold text-slate-400 hover:text-white transition-colors">
+							Logic
+						</a>
+					</div>
+
 					<h1 class="text-3xl font-black text-white flex items-center gap-3">
 						<span>ระบบจัดการปริศนาประจำสัปดาห์</span>
 						<span class="px-3 py-1 rounded-xl bg-blue-500/20 border border-blue-500/40 text-blue-300 font-mono text-xs">Admin</span>
 					</h1>
-					<p class="text-sm text-slate-400 mt-1">เพิ่ม แก้ไข และอัปโหลดรูปภาพปริศนาประจำสัปดาห์</p>
+					<p class="text-sm text-slate-400">เพิ่ม แก้ไข และอัปโหลดรูปภาพปริศนาประจำสัปดาห์</p>
 				</div>
 
 				<div class="flex items-center gap-3">
@@ -308,13 +317,13 @@
 							class="px-3 py-1.5 rounded-lg text-xs font-black transition-all {statusFilter === 'missing' ? 'bg-amber-500/20 text-amber-300 border border-amber-500/40' : 'text-slate-400 hover:text-white'}"
 							on:click={() => (statusFilter = 'missing')}
 						>
-							⚠️ ยังไม่ออกเฉลย ({puzzles.filter((p) => !p.answer || p.answer.trim().length === 0).length})
+							⚠️ ไม่มี ({puzzles.filter((p) => !p.answer || p.answer.trim().length === 0).length})
 						</button>
 						<button
 							class="px-3 py-1.5 rounded-lg text-xs font-black transition-all {statusFilter === 'has_answer' ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40' : 'text-slate-400 hover:text-white'}"
 							on:click={() => (statusFilter = 'has_answer')}
 						>
-							✔️ มีเฉลยแล้ว ({puzzles.filter((p) => p.answer && p.answer.trim().length > 0).length})
+							✔️ มี ({puzzles.filter((p) => p.answer && p.answer.trim().length > 0).length})
 						</button>
 					</div>
 				</div>
@@ -373,7 +382,7 @@
 										{#if p.answer}
 											<code class="bg-black border border-slate-800 px-2.5 py-1 rounded-xl text-xs font-mono text-emerald-400 block truncate uppercase">{p.answer.toUpperCase()}</code>
 										{:else}
-											<span class="px-2.5 py-1 rounded-xl bg-amber-500/20 text-amber-300 border border-amber-500/40 text-xs font-bold whitespace-nowrap">ยังไม่ออกเฉลย</span>
+											<span class="px-2.5 py-1 rounded-xl bg-amber-500/20 text-amber-300 border border-amber-500/40 text-xs font-bold whitespace-nowrap">ไม่มี</span>
 										{/if}
 									</td>
 									<!-- Edit button displaying ONLY pencil icon -->

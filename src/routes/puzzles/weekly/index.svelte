@@ -181,10 +181,15 @@
 
 						<!-- Card Footer / Stats -->
 						<div class="flex items-center justify-between border-t border-slate-800/80 pt-2.5 mt-auto text-xs">
-							<div class="flex items-center gap-1.5 font-bold text-emerald-400">
+							<a
+								href="/puzzles/weekly/{p.year}/{p.week}/leaderboard"
+								on:click|stopPropagation
+								class="flex items-center gap-1.5 font-bold text-emerald-400 hover:text-emerald-300 hover:underline transition-colors z-10"
+								title="ดูตารางอันดับข้อนี้"
+							>
 								<CheckCircleIcon size="15" />
 								<span>ตอบถูก {p.solves || 0} คน</span>
-							</div>
+							</a>
 
 							{#if !p.hasAnswer}
 								<span class="px-2 py-0.5 rounded-md bg-amber-500/20 text-amber-300 border border-amber-500/30 text-[10px] font-semibold">

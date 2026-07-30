@@ -7,22 +7,18 @@
   <meta name="description" content="รายการพอดแคสต์เกี่ยวกับเกมไขปริศนา Escape Rooms บอร์ดเกม และการแก้รหัส โดย Codebreaker Thailand" />
 </svelte:head>
 
-<div class="px-4 py-8 max-w-4xl mx-auto">
+<div class="px-4 py-8 max-w-6xl mx-auto">
   <header class="mb-8 text-center">
-    <span class="badge badge-primary font-bold uppercase tracking-wider mb-2">
-      Codebreaker Media
-    </span>
-    <h1 class="text-3xl lg:text-4xl font-extrabold text-primary my-2">Codebreaker Podcast</h1>
-    <p class="text-slate-400 text-sm lg:text-base">พอดแคสต์รวมทุกเรื่องราวเกี่ยวกับเกมไขปริศนา บอร์ดเกม Escape Rooms และ Logic Challenges</p>
+    <h1 class="text-3xl lg:text-4xl font-extrabold text-white my-2">Codebreaker Podcast</h1>
   </header>
 
-  <div class="grid gap-6 text-left">
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
     {#each podcasts as item}
       <a 
         href="/resources/podcast/{item.id}"
-        class="card bg-base-200 hover:bg-base-300 border border-base-300 hover:border-primary/50 transition duration-200 shadow-xl group overflow-hidden md:flex-row rounded-2xl"
+        class="bg-slate-900 border border-slate-800 hover:border-emerald-500/50 rounded-3xl overflow-hidden shadow-xl flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl group"
       >
-        <figure class="md:w-1/3 aspect-video md:aspect-auto shrink-0 bg-slate-950 overflow-hidden">
+        <figure class="w-full aspect-video shrink-0 bg-slate-950 overflow-hidden border-b border-slate-800/80">
           <img 
             src={item.thumbnail || `https://img.youtube.com/vi/${item.youtubeId}/hqdefault.jpg`} 
             alt={item.title} 
@@ -30,24 +26,18 @@
           />
         </figure>
 
-        <div class="card-body p-6 md:w-2/3">
-          <div class="flex items-center justify-between gap-4 mb-2">
-            <span class="badge badge-accent font-semibold text-xs">
-              EPISODE {item.epNumber}
-            </span>
-            <span class="text-xs text-slate-400 font-mono">{item.duration} นาที</span>
-          </div>
+        <div class="p-5 flex-1 flex flex-col justify-between space-y-3">
+          <div class="space-y-2">
+            <div class="flex items-center justify-between gap-4">
+              <span class="badge badge-accent font-semibold text-xs">
+                EPISODE {item.epNumber}
+              </span>
+              <span class="text-xs text-slate-400 font-mono">{item.duration} นาที</span>
+            </div>
 
-          <h2 class="text-xl font-bold text-slate-100 group-hover:text-primary transition my-1">
-            {item.title}
-          </h2>
-
-          <p class="text-sm text-slate-300 mb-4 line-clamp-2">
-            {item.summaryText}
-          </p>
-
-          <div class="flex items-center justify-between text-xs text-slate-400 pt-3 border-t border-base-300">
-            <span>🎙️ {item.hosts}</span>
+            <h2 class="text-base font-bold text-slate-100 group-hover:text-emerald-400 transition leading-snug">
+              {item.title}
+            </h2>
           </div>
         </div>
       </a>

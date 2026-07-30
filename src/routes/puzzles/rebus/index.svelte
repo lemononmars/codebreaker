@@ -12,55 +12,54 @@
 </script>
 
 <script lang="ts">
-	import { dateToThaiString } from '$lib/utils/date';
+	import { getPuzzleImageURL } from '$lib/supabase';
 	import type { IRebus } from '$lib/interfaces';
 	export let puzzles: IRebus[] = [];
 </script>
 
 <svelte:head>
 	<title>Code Breaker | Rebus</title>
+	<meta name="description" content="ทายคำจากภาพแทนคำ (Rebus Puzzles) โดย Codebreaker Thailand" />
 </svelte:head>
 
-<div class="container mx-auto px-4 py-6 flex flex-col gap-6 max-w-5xl">
+<div class="container mx-auto px-4 py-6 flex flex-col gap-6 max-w-6xl select-none">
 	<div class="text-center mb-2">
 		<h1 class="text-3xl lg:text-4xl font-extrabold tracking-tight text-white">Rebus</h1>
-		<p class="text-xs sm:text-sm text-slate-400 mt-1">ทายคำจากภาพแทนคำ</p>
+		<p class="text-xs sm:text-sm text-slate-400 mt-1">ทายคำจากภาพแทนคำ ฝึกไหวพริบและความคิดสร้างสรรค์</p>
 	</div>
 
-	<div class="bg-slate-900/60 backdrop-blur-xl border border-slate-800 rounded-2xl overflow-hidden shadow-xl">
-		<div class="overflow-x-auto">
-			<table class="table w-full text-slate-200">
-				<thead class="bg-slate-950/80 text-slate-400 border-b border-slate-800 text-xs font-bold uppercase">
-					<tr>
-						<th class="py-3.5 px-4 text-left">ชื่อ</th>
-						<th class="py-3.5 px-4 text-left">วันที่</th>
-						<th class="py-3.5 px-4 text-left">ผู้แต่ง</th>
-						<th class="py-3.5 px-4 text-left">แท็ก</th>
-					</tr>
-				</thead>
-				<tbody class="divide-y divide-slate-800/60 text-sm">
-					{#each puzzles as p}
-						<tr class="hover:bg-slate-800/40 transition-colors">
-							<td class="py-3.5 px-4 font-bold text-emerald-400 hover:text-emerald-300">
-								<a href="/puzzles/rebus/{p.id}">
-									{p.title}
-								</a>
-							</td>
-							<td class="py-3.5 px-4 text-slate-400 font-mono text-xs">{dateToThaiString(p.date)}</td>
-							<td class="py-3.5 px-4 text-slate-300">{p.author || 'ไม่มี'}</td>
-							<td class="py-3.5 px-4">
-								<div class="flex flex-wrap gap-1">
-									{#each p.tags || [] as t}
-										<span class="px-2 py-0.5 text-[10px] rounded-md bg-slate-950 text-slate-300 border border-slate-800 font-mono">
-											{t}
-										</span>
-									{/each}
-								</div>
-							</td>
-						</tr>
-					{/each}
-				</tbody>
-			</table>
-		</div>
+	<!-- Rebus Cards Grid with Image Thumbnails -->
+	<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+		{#each puzzles as p}
+			{@const imgFilename = 'rebus' + ('0' + p.id).slice(-2) + '.png'}
+			<a
+				href="/puzzles/rebus/{p.id}"
+				class="bg-slate-900 border border-slate-800 hover:border-emerald-500/50 rounded-3xl overflow-hidden shadow-xl flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl group"
+			>
+				<!-- Card Top: Rebus Image Thumbnail Preview -->
+				<div class="relative w-full h-44 bg-slate-950 flex items-center justify-center p-3 overflow-hidden border-b border-slate-800/80">
+					<img
+						src={getPuzzleImageURL('rebus', imgFilename)}
+						alt={p.title}
+						on:error={(e) => {
+							e.currentTarget.style.display = 'none';
+						}}
+						class="w-full h-full object-contain mx-auto group-hover:scale-105 transition-transform duration-300"
+					/>
+				</div>
+
+				<!-- Card Content -->
+				<div class="p-4 flex-1 flex flex-col justify-between">
+					<div class="space-y-1">
+						<h3 class="text-base font-bold text-white group-hover:text-emerald-400 transition-colors">
+							{p.title}
+						</h3>
+						{#if p.author}
+							<p class="text-xs text-slate-400">ผู้แต่ง: {p.author}</p>
+						{/if}
+					</div>
+				</div>
+			</a>
+		{/each}
 	</div>
 </div>

@@ -1,40 +1,75 @@
 <script lang="ts">
 	import { ArrowLeftIcon, CheckCircleIcon, RepeatIcon, CopyIcon, CheckIcon } from 'svelte-feather-icons';
 
+	let langMode: 'ENG' | 'THAI' = 'ENG';
 	let inputText = 'CODEBREAKER';
 	let isSwapped = false; // false = Encode (Text -> Numbers), true = Decode (Numbers -> Text)
 	let isCopied = false;
 
-	function textToA1Z26(text: string): string {
-		return text
-			.toUpperCase()
-			.split('')
-			.map((ch) => {
-				const code = ch.charCodeAt(0);
-				if (code >= 65 && code <= 90) {
-					return (code - 64).toString();
-				}
-				return ch;
-			})
-			.filter(Boolean)
-			.join('-');
+	const engAlphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+	const thaiAlphabet = [
+		'ก','ข','ฃ','ค','ฅ','ฆ','ง','จ','ฉ','ช','ซ','ฌ','ญ','ฎ','ฏ','ฐ','ฑ','ฒ','ณ','ด',
+		'ต','ถ','ท','ธ','น','บ','ป','ผ','ฝ','พ','ฟ','ภ','ม','ย','ร','ล','ว','ศ','ษ','ส',
+		'ห','ฬ','อ','ฮ'
+	];
+
+	$: alphabet = langMode === 'ENG' ? engAlphabet : thaiAlphabet;
+
+	function textToA1Z26(text: string, mode: 'ENG' | 'THAI'): string {
+		const alpha = mode === 'ENG' ? engAlphabet : thaiAlphabet;
+		if (mode === 'ENG') {
+			return text
+				.toUpperCase()
+				.split('')
+				.map((ch) => {
+					const idx = alpha.indexOf(ch);
+					return idx !== -1 ? (idx + 1).toString() : ch;
+				})
+				.filter(Boolean)
+				.join('-');
+		} else {
+			return text
+				.split('')
+				.map((ch) => {
+					const idx = alpha.indexOf(ch);
+					return idx !== -1 ? (idx + 1).toString() : ch;
+				})
+				.filter(Boolean)
+				.join('-');
+		}
 	}
 
-	function a1z26ToText(numStr: string): string {
+	function a1z26ToText(numStr: string, mode: 'ENG' | 'THAI'): string {
+		const alpha = mode === 'ENG' ? engAlphabet : thaiAlphabet;
+		const max = alpha.length;
 		return numStr
 			.trim()
 			.split(/[-,\s]+/)
 			.map((n) => {
 				const val = parseInt(n, 10);
-				if (!isNaN(val) && val >= 1 && val <= 26) {
-					return String.fromCharCode(val + 64);
+				if (!isNaN(val) && val >= 1 && val <= max) {
+					return alpha[val - 1];
 				}
 				return n;
 			})
 			.join('');
 	}
 
-	$: processedResult = isSwapped ? a1z26ToText(inputText) : textToA1Z26(inputText);
+	$: processedResult = isSwapped ? a1z26ToText(inputText, langMode) : textToA1Z26(inputText, langMode);
+
+	function toggleSwap() {
+		isSwapped = !isSwapped;
+		inputText = processedResult;
+	}
+
+	function toggleLang(mode: 'ENG' | 'THAI') {
+		langMode = mode;
+		if (mode === 'ENG') {
+			inputText = 'CODEBREAKER';
+		} else {
+			inputText = 'สวัสดี';
+		}
+	}
 
 	function copyOutput() {
 		navigator.clipboard.writeText(processedResult);
@@ -42,7 +77,7 @@
 		setTimeout(() => (isCopied = false), 2000);
 	}
 
-	// Practice Exercises (no hints)
+	// Practice Exercises
 	let answers = ['', '', ''];
 	let feedback = ['', '', ''];
 
@@ -60,13 +95,11 @@
 			feedback[idx] = 'incorrect';
 		}
 	}
-
-	const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 </script>
 
 <svelte:head>
-	<title>Code Breaker | A1Z26 Cipher (รหัสตัวเลขแทนอักษร) 🔐</title>
-	<meta name="description" content="คู่มือ A1Z26 Cipher รหัสตัวเลขแทนตัวอักษร A=1 Z=26 พร้อมเครื่องมือแปลงสดและแบบฝึกหัด" />
+	<title>Code Breaker | A1Z26 Cipher (รหัสตัวเลขแทนอักษร)</title>
+	<meta name="description" content="คู่มือ A1Z26 Cipher รหัสตัวเลขแทนตัวอักษร A=1 Z=26 และ ก=1 ฮ=44 พร้อมเครื่องมือแปลงสด" />
 </svelte:head>
 
 <div class="flex flex-col gap-8 w-full max-w-5xl mx-auto px-4 py-8 select-none">
@@ -83,15 +116,32 @@
 		</div>
 		<h1 class="text-3xl lg:text-4xl font-black text-white">A1Z26 Cipher (รหัสตัวเลขแทนอักษร)</h1>
 		<p class="text-slate-300 text-sm lg:text-base leading-relaxed">
-			A1Z26 เป็นรหัสลับทดตัวอักษรตรงตามลำดับดรรชนีของตัวอักษรในภาษาอังกฤษ โดยกำหนดให้ A=1, B=2, C=3 ไปจนถึง Z=26
+			A1Z26 เป็นรหัสลับทดตัวอักษรตรงตามลำดับดรรชนีของตัวอักษร โดยกำหนดให้ A=1..Z=26 หรือ ก=1..ฮ=44
 		</p>
 	</header>
 
-	<!-- Chart -->
+	<!-- Chart with Language Switcher -->
 	<section class="bg-base-200 p-6 rounded-3xl border border-base-300 shadow-xl space-y-4">
-		<h2 class="text-xl font-extrabold text-primary flex items-center gap-2">
-			<span>🔢</span> ตารางเทียบดรรชนีตัวเลข A1Z26
-		</h2>
+		<div class="flex items-center justify-between flex-wrap gap-3">
+			<h2 class="text-xl font-extrabold text-primary flex items-center gap-2">
+				<span>🔢</span> ตารางเทียบดรรชนีตัวเลข A1Z26 ({langMode})
+			</h2>
+			<!-- Language Mode Selector -->
+			<div class="btn-group">
+				<button
+					class="btn btn-xs font-bold {langMode === 'ENG' ? 'btn-primary' : 'btn-outline'}"
+					on:click={() => toggleLang('ENG')}
+				>
+					English (A=1..Z=26)
+				</button>
+				<button
+					class="btn btn-xs font-bold {langMode === 'THAI' ? 'btn-primary' : 'btn-outline'}"
+					on:click={() => toggleLang('THAI')}
+				>
+					ภาษาไทย (ก=1..ฮ=44)
+				</button>
+			</div>
+		</div>
 
 		<div class="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-9 lg:grid-cols-13 gap-2 font-mono text-center text-xs">
 			{#each alphabet as letter, i}
@@ -103,78 +153,61 @@
 		</div>
 	</section>
 
-	<!-- Converter Tool -->
-	<section class="bg-base-200 p-6 rounded-3xl border border-base-300 shadow-xl space-y-4">
-		<div class="flex items-center justify-between flex-wrap gap-2">
-			<h2 class="text-xl font-extrabold text-accent flex items-center gap-2">
-				<span>⚡</span> เครื่องมือแปลงรหัส (Converter)
-			</h2>
-			<button
-				on:click={() => {
-					isSwapped = !isSwapped;
-					inputText = isSwapped ? '3-15-4-5' : 'CODEBREAKER';
-				}}
-				class="btn btn-outline btn-xs gap-1.5 font-bold"
-			>
-				<RepeatIcon size="14" />
-				<span>{isSwapped ? 'สลับทิศทาง (ถอดรหัสตัวเลข ➔ ข้อความ)' : 'สลับทิศทาง (ข้อความ ➔ ตัวเลข)'}</span>
+	<!-- Interactive Converter -->
+	<section class="bg-base-200 p-6 rounded-3xl border border-base-300 shadow-xl space-y-6">
+		<div class="flex items-center justify-between flex-wrap gap-4 border-b border-base-300 pb-4">
+			<div class="space-y-1">
+				<h2 class="text-xl font-bold text-white">เครื่องมือแปลงรหัส A1Z26</h2>
+				<p class="text-xs text-slate-400">แปลงข้อความเป็นดรรชนีตัวเลขหรือถอดรหัสตัวเลขเป็นข้อความ</p>
+			</div>
+
+			<!-- Left-Right Toggle Button -->
+			<button on:click={toggleSwap} class="btn btn-sm btn-outline gap-2 font-bold">
+				<RepeatIcon size="16" />
+				<span>{isSwapped ? 'โหมด: ถอดรหัส (ตัวเลข → ตัวอักษร)' : 'โหมด: เข้ารหัส (ตัวอักษร → ตัวเลข)'}</span>
 			</button>
 		</div>
 
-		<div class="grid grid-cols-1 md:grid-cols-2 gap-4 items-stretch">
-			<!-- Input Column -->
-			<div class="bg-slate-900/80 p-5 rounded-2xl border border-slate-800 flex flex-col justify-between space-y-3 {isSwapped ? 'order-2' : 'order-1'}">
-				<div>
-					<label class="block text-xs font-semibold text-slate-400 mb-2">
-						{isSwapped ? 'ตัวเลข A1Z26 (Input):' : 'ข้อความภาษาอังกฤษ (Input):'}
-					</label>
-					<textarea
-						bind:value={inputText}
-						rows="4"
-						placeholder={isSwapped ? 'วางตัวเลข เช่น 3-15-4-5...' : 'พิมพ์ข้อความ...'}
-						class="textarea textarea-bordered w-full bg-slate-950 font-mono text-sm uppercase focus:textarea-primary"
-					></textarea>
-				</div>
-				<span class="text-[11px] text-slate-500">
-					{isSwapped ? 'โหมดถอดรหัส: แปลงตัวเลขดรรชนี (คั่นด้วย - หรือ เว้นวรรค) กลับเป็นตัวอักษร' : 'โหมดเข้ารหัส: แปลงตัวอักษร A-Z เป็นลำดับตัวเลข 1-26'}
-				</span>
+		<!-- Input / Output Grid -->
+		<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+			<div class="space-y-2">
+				<label class="text-xs font-bold text-slate-400 block" for="a1z26-input">
+					{isSwapped ? 'ชุดตัวเลข (คั่นด้วย - หรือ เว้นวรรค):' : 'ข้อความต้นฉบับ:'}
+				</label>
+				<textarea
+					id="a1z26-input"
+					bind:value={inputText}
+					rows="4"
+					class="textarea textarea-bordered w-full bg-slate-950 font-mono text-sm leading-relaxed focus:border-emerald-500"
+					placeholder={isSwapped ? 'เช่น 3-15-4-5' : 'พิมพ์ข้อความที่นี่...'}
+				></textarea>
 			</div>
 
-			<!-- Output Column -->
-			<div class="bg-slate-900/80 p-5 rounded-2xl border border-slate-800 flex flex-col justify-between space-y-3 {isSwapped ? 'order-1' : 'order-2'}">
-				<div>
-					<div class="flex items-center justify-between mb-2">
-						<label class="block text-xs font-semibold text-slate-400">
-							{isSwapped ? 'ผลลัพธ์ข้อความ (Output):' : 'ผลลัพธ์ตัวเลข (Output):'}
-						</label>
-						<button on:click={copyOutput} class="btn btn-ghost btn-xs gap-1 text-slate-400 hover:text-white">
-							{#if isCopied}
-								<CheckIcon size="14" class="text-success" />
-								<span class="text-success">คัดลอกแล้ว</span>
-							{:else}
-								<CopyIcon size="14" />
-								<span>คัดลอกข้อความ</span>
-							{/if}
-						</button>
-					</div>
-
-					<div class="bg-slate-950 p-4 rounded-xl border border-slate-800 min-h-[110px] font-mono text-lg text-primary tracking-widest break-words flex items-center">
-						{processedResult || 'พิมพ์หรือวางเพื่อดูผลลัพธ์...'}
-					</div>
+			<div class="space-y-2">
+				<div class="flex justify-between items-center">
+					<label class="text-xs font-bold text-slate-400 block" for="a1z26-output">
+						{isSwapped ? 'ผลลัพธ์ถอดรหัส (ข้อความ):' : 'ผลลัพธ์เข้ารหัส (ชุดตัวเลข):'}
+					</label>
+					<button on:click={copyOutput} class="btn btn-ghost btn-xs gap-1 font-bold text-emerald-400">
+						{#if isCopied}
+							<CheckIcon size="14" />
+							<span>คัดลอกแล้ว</span>
+						{:else}
+							<CopyIcon size="14" />
+							<span>คัดลอก</span>
+						{/if}
+					</button>
 				</div>
-
-				<span class="text-[11px] text-slate-500">
-					{isSwapped ? 'ผลลัพธ์การแปลงตัวเลขกลับเป็นข้อความ' : 'คั่นแต่ละตัวเลขด้วยเครื่องหมายยัติภังค์ (-)'}
-				</span>
+				<div class="bg-slate-950 p-4 rounded-xl border border-slate-800 font-mono text-sm leading-relaxed text-emerald-400 min-h-[105px] break-all">
+					{processedResult}
+				</div>
 			</div>
 		</div>
 	</section>
 
 	<!-- Practice Exercises -->
-	<section class="bg-base-200 p-6 rounded-3xl border border-base-300 shadow-xl space-y-6">
-		<h2 class="text-xl font-extrabold text-warning flex items-center gap-2">
-			<span>✏️</span> แบบฝึกหัดทดลองถอดรหัส (Practice Exercises)
-		</h2>
+	<section class="space-y-4">
+		<h2 class="text-xl font-bold text-white">แบบฝึกหัดถอดรหัส A1Z26</h2>
 
 		<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
 			{#each exercises as ex, idx}
@@ -188,15 +221,15 @@
 					</div>
 
 					<div class="space-y-2 pt-2">
-						<div class="join w-full">
+						<div class="input-group w-full">
 							<input
 								type="text"
 								bind:value={answers[idx]}
 								placeholder="พิมพ์คำตอบ..."
-								class="input input-sm join-item bg-slate-900 border-slate-800 text-white font-mono uppercase flex-1 rounded-l-xl focus:border-emerald-500"
+								class="input input-bordered w-full font-mono uppercase"
 							/>
-							<button on:click={() => checkAnswer(idx)} class="btn btn-primary btn-sm join-item font-bold rounded-r-xl">
-								ตรวจคำตอบ
+							<button on:click={() => checkAnswer(idx)} class="btn btn-primary font-bold">
+								ตรวจ
 							</button>
 						</div>
 

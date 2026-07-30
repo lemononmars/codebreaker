@@ -53,17 +53,22 @@
 				.join(' ');
 		} else {
 			// Decode Morse -> Text
-			const reverseMap = langMode === 'EN' ? reverseMorseEng : reverseMorseThai;
+			const revMap = langMode === 'EN' ? reverseMorseEng : reverseMorseThai;
 			return inputText
 				.trim()
 				.split(/\s+/)
 				.map((code) => {
 					if (code === '/') return ' ';
-					return reverseMap[code] || code;
+					return revMap[code] || code;
 				})
 				.join('');
 		}
 	})();
+
+	function toggleSwap() {
+		isSwapped = !isSwapped;
+		inputText = processedResult;
+	}
 
 	function copyOutput() {
 		navigator.clipboard.writeText(processedResult);
@@ -92,8 +97,8 @@
 </script>
 
 <svelte:head>
-	<title>Code Breaker | Morse Code (รหัสมอร์ส) 🔐</title>
-	<meta name="description" content="คู่มือรหัสมอร์สภาษาอังกฤษ ภาษาไทย และตัวเลข พร้อมเครื่องมือแปลงสดและแบบฝึกหัด" />
+	<title>Code Breaker | Morse Code (รหัสมอร์ส)</title>
+	<meta name="description" content="คู่มือรหัสมอร์สภาษาอังกฤษ ภาษาไทย และตัวเลข พร้อมตารางอ้างอิงสดและแบบฝึกหัด" />
 </svelte:head>
 
 <div class="flex flex-col gap-8 w-full max-w-5xl mx-auto px-4 py-8 select-none">
@@ -118,7 +123,6 @@
 	<!-- Converter Tool -->
 	<section class="bg-slate-900 p-6 rounded-3xl border border-slate-800 shadow-xl space-y-4">
 		<div class="flex items-center justify-between flex-wrap gap-2 border-b border-slate-800 pb-3">
-			<!-- Language Switcher -->
 			<div class="flex items-center gap-2">
 				<span class="text-xs font-bold text-slate-400 flex items-center gap-1">
 					<GlobeIcon size="14" class="text-amber-400" />
@@ -150,45 +154,35 @@
 				</div>
 			</div>
 
-			<button
-				on:click={() => {
-					isSwapped = !isSwapped;
-					inputText = isSwapped ? '... --- ...' : (langMode === 'EN' ? 'SOS CODEBREAKER' : 'สวัสดี');
-				}}
-				class="btn btn-outline btn-xs gap-1.5 font-bold border-slate-700 text-slate-300 hover:bg-slate-800"
-			>
+			<button on:click={toggleSwap} class="btn btn-outline btn-xs gap-1.5 font-bold border-slate-700 text-slate-300 hover:bg-slate-800">
 				<RepeatIcon size="14" />
-				<span>{isSwapped ? 'สลับทิศทาง (ถอดรหัส Morse ➔ ข้อความ)' : 'สลับทิศทาง (ข้อความ ➔ เข้ารหัส Morse)'}</span>
+				<span>{isSwapped ? 'สลับ (ถอดรหัส Morse ➔ ข้อความ)' : 'สลับ (ข้อความ ➔ เข้ารหัส Morse)'}</span>
 			</button>
 		</div>
 
 		<div class="grid grid-cols-1 md:grid-cols-2 gap-4 items-stretch">
-			<!-- Input Column -->
-			<div class="bg-slate-950 p-5 rounded-2xl border border-slate-800 flex flex-col justify-between space-y-3 {isSwapped ? 'order-2' : 'order-1'}">
+			<div class="bg-slate-950 p-5 rounded-2xl border border-slate-800 flex flex-col justify-between space-y-3">
 				<div>
-					<label class="block text-xs font-semibold text-slate-400 mb-2">
+					<label class="block text-xs font-semibold text-slate-400 mb-2 font-bold" for="morse-input">
 						{isSwapped ? 'Morse Code (Input):' : `ข้อความ ${langMode === 'EN' ? 'ภาษาอังกฤษ' : 'ภาษาไทย'} (Input):`}
 					</label>
 					<textarea
+						id="morse-input"
 						bind:value={inputText}
 						rows="4"
 						placeholder={isSwapped ? 'วางรหัสมอร์ส เช่น ... --- ...' : 'พิมพ์ข้อความ...'}
 						class="textarea textarea-bordered w-full bg-slate-900 border-slate-800 text-white font-mono text-sm uppercase focus:border-amber-500"
 					></textarea>
 				</div>
-				<span class="text-[11px] text-slate-500">
-					{isSwapped ? 'โหมดถอดรหัส: วางจุด (.) และขีด (-) เพื่อแปลงกลับเป็นข้อความ' : 'โหมดเข้ารหัส: แปลงข้อความและตัวเลขเป็น Morse Code'}
-				</span>
 			</div>
 
-			<!-- Output Column -->
-			<div class="bg-slate-950 p-5 rounded-2xl border border-slate-800 flex flex-col justify-between space-y-3 {isSwapped ? 'order-1' : 'order-2'}">
+			<div class="bg-slate-950 p-5 rounded-2xl border border-slate-800 flex flex-col justify-between space-y-3">
 				<div>
 					<div class="flex items-center justify-between mb-2">
-						<label class="block text-xs font-semibold text-slate-400">
+						<label class="block text-xs font-semibold text-slate-400 font-bold" for="morse-output">
 							{isSwapped ? 'ผลลัพธ์ข้อความ (Output):' : 'ผลลัพธ์ Morse Code (Output):'}
 						</label>
-						<button on:click={copyOutput} class="btn btn-ghost btn-xs gap-1 text-slate-400 hover:text-white">
+						<button on:click={copyOutput} class="btn btn-ghost btn-xs gap-1 text-slate-400 hover:text-white font-bold">
 							{#if isCopied}
 								<CheckIcon size="14" class="text-emerald-400" />
 								<span class="text-emerald-400 font-bold">คัดลอกแล้ว</span>
@@ -203,10 +197,58 @@
 						{processedResult || 'พิมพ์ข้อความเพื่อดูผลลัพธ์...'}
 					</div>
 				</div>
+			</div>
+		</div>
+	</section>
 
-				<span class="text-[11px] text-slate-500">
-					{isSwapped ? 'ผลลัพธ์การถอดรหัสข้อความ' : 'แสดงจุด (.) ขีด (-) และสแลช (/) สำหรับเว้นวรรค'}
-				</span>
+	<!-- Recovered Reference Tables Section -->
+	<section class="bg-slate-900 p-6 rounded-3xl border border-slate-800 shadow-xl space-y-5">
+		<h2 class="text-xl font-extrabold text-amber-400 flex items-center gap-2 border-b border-slate-800 pb-3">
+			<span>📜</span> ตารางอ้างอิงรหัสมอร์ส (Morse Code Reference Tables)
+		</h2>
+
+		<!-- English Alphabet Table -->
+		<div class="space-y-2">
+			<h3 class="text-sm font-bold text-white flex items-center gap-2">
+				<span>🔤</span> ภาษาอังกฤษ (A - Z)
+			</h3>
+			<div class="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-9 lg:grid-cols-13 gap-2 text-center text-xs font-mono">
+				{#each Object.entries(englishMorse) as [char, code]}
+					<div class="bg-slate-950 p-2.5 rounded-xl border border-slate-800">
+						<div class="font-bold text-white text-sm">{char}</div>
+						<div class="text-amber-400 font-extrabold text-xs mt-1">{code}</div>
+					</div>
+				{/each}
+			</div>
+		</div>
+
+		<!-- Numbers Table -->
+		<div class="space-y-2 pt-3">
+			<h3 class="text-sm font-bold text-white flex items-center gap-2">
+				<span>🔢</span> ตัวเลข (0 - 9)
+			</h3>
+			<div class="grid grid-cols-5 sm:grid-cols-10 gap-2 text-center text-xs font-mono">
+				{#each Object.entries(numberMorse) as [num, code]}
+					<div class="bg-slate-950 p-2.5 rounded-xl border border-slate-800">
+						<div class="font-bold text-white text-sm">{num}</div>
+						<div class="text-amber-400 font-extrabold text-xs mt-1">{code}</div>
+					</div>
+				{/each}
+			</div>
+		</div>
+
+		<!-- Thai Morse Table -->
+		<div class="space-y-2 pt-3">
+			<h3 class="text-sm font-bold text-white flex items-center gap-2">
+				<span>🇹🇭</span> ภาษาไทย (ก-ฮ & สระ)
+			</h3>
+			<div class="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-12 gap-2 text-center text-xs font-mono">
+				{#each Object.entries(thaiMorse) as [char, code]}
+					<div class="bg-slate-950 p-2.5 rounded-xl border border-slate-800">
+						<div class="font-bold text-white text-sm">{char}</div>
+						<div class="text-cyan-400 font-extrabold text-xs mt-1">{code}</div>
+					</div>
+				{/each}
 			</div>
 		</div>
 	</section>
@@ -229,14 +271,14 @@
 					</div>
 
 					<div class="space-y-2 pt-2">
-						<div class="join w-full">
+						<div class="input-group w-full">
 							<input
 								type="text"
 								bind:value={answers[idx]}
 								placeholder="พิมพ์คำตอบ..."
-								class="input input-sm join-item bg-slate-900 border-slate-800 text-white font-mono uppercase w-32 focus:border-amber-500"
+								class="input input-bordered w-full font-mono uppercase"
 							/>
-							<button on:click={() => checkAnswer(idx)} class="btn btn-primary btn-sm join-item font-bold rounded-r-xl">
+							<button on:click={() => checkAnswer(idx)} class="btn btn-primary font-bold">
 								ตรวจ
 							</button>
 						</div>
@@ -248,7 +290,7 @@
 							</div>
 						{:else if feedback[idx] === 'incorrect'}
 							<div class="text-xs font-bold text-rose-400">
-								✕ ยังไม่ถูกต้อง ลองใหม่อีกครั้ง
+								✕ ยังไม่ถูกต้อง
 							</div>
 						{/if}
 					</div>
