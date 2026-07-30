@@ -143,7 +143,7 @@
 		</div>
 
 		<!-- Alphabet Filter Chips -->
-		<div class="flex items-center gap-1.5 overflow-x-auto pb-2 scrollbar-thin">
+		<div class="flex flex-wrap items-center gap-1.5 pt-1">
 			<button
 				on:click={() => (letterFilter = '')}
 				class="badge badge-lg cursor-pointer transition {letterFilter === '' ? 'badge-primary font-bold' : 'badge-ghost hover:bg-base-300'}"

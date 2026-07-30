@@ -40,4 +40,13 @@ export interface PodcastEpisodeData {
   summaryTable: SummaryTableRow[];
   references: ReferenceCategory[];
   transcript: TranscriptLine[];
+  puzzleCards?: PuzzleGenreCard[];
 }
+
+export interface PuzzleGenreCard {
+  name: string;
+  title: string;
+  url: string;
+  thumbnail: string;
+}
+

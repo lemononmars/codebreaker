@@ -18,7 +18,7 @@
 	import { page } from '$app/stores';
 
 	const icons = [HomeIcon, CalendarIcon, PlayCircleIcon, ToolIcon, BookOpenIcon, ShoppingCartIcon, InfoIcon];
-	const menus = ['หน้าแรก', 'กิจกรรม', 'ปริศนา', 'เครื่องมือ', 'ทรัพยากร', 'ร้านค้า', 'เกี่ยวกับ'];
+	const menus = ['หน้าแรก', 'กิจกรรม', 'ปริศนา', 'เครื่องมือ', 'ข้อมูล', 'ร้านค้า', 'เกี่ยวกับ'];
 	const links = ['', 'events', 'puzzles', 'tools', 'resources', 'shop', 'about'];
 
 	let hideBar = false;
@@ -51,7 +51,7 @@
 		if (p.startsWith('/resources/ciphers')) return 'คลังรหัสลับ (Ciphers)';
 		if (p.startsWith('/resources/spellingdictionary')) return 'พจนานุกรมคำสะกด';
 		if (p.startsWith('/resources/podcast')) return 'Codebreaker Podcast';
-		if (p.startsWith('/resources')) return 'ทรัพยากร';
+		if (p.startsWith('/resources')) return 'ข้อมูล';
 		if (p.startsWith('/shop')) return 'ร้านค้า';
 		if (p.startsWith('/about')) return 'เกี่ยวกับ';
 		if (p.startsWith('/profile')) return 'โปรไฟล์';

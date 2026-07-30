@@ -183,7 +183,7 @@
 						<div class="flex items-center justify-between border-t border-slate-800/80 pt-2.5 mt-auto text-xs">
 							<div class="flex items-center gap-1.5 font-bold text-emerald-400">
 								<CheckCircleIcon size="15" />
-								<span>{p.solves || 0} คนตอบได้</span>
+								<span>ตอบถูก {p.solves || 0} คน</span>
 							</div>
 
 							{#if !p.hasAnswer}

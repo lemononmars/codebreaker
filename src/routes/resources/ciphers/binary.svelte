@@ -173,15 +173,15 @@
 					</div>
 
 					<div class="space-y-2 pt-2">
-						<div class="flex flex-col sm:flex-row gap-2 w-full">
+						<div class="join w-full">
 							<input
 								type="text"
 								bind:value={answers[idx]}
-								placeholder="คำตอบ..."
-								class="input input-bordered input-sm flex-1 bg-slate-950 font-mono text-sm uppercase min-w-0"
+								placeholder="พิมพ์คำตอบ..."
+								class="input input-sm join-item bg-slate-900 border-slate-800 text-white font-mono uppercase flex-1 rounded-l-xl focus:border-emerald-500"
 							/>
-							<button on:click={() => checkAnswer(idx)} class="btn btn-primary btn-sm font-bold shrink-0">
-								ตรวจ
+							<button on:click={() => checkAnswer(idx)} class="btn btn-primary btn-sm join-item font-bold rounded-r-xl">
+								ตรวจคำตอบ
 							</button>
 						</div>
 

@@ -127,6 +127,15 @@
 
 	const nonWordPuzzles = [
 		{
+			type: 'logicpuzzle',
+			title: 'Logic Puzzles',
+			description: 'คลังโจทย์พัซเซิลตรรกะ (Slitherlink, Sudoku, Masyu, Akari)',
+			icon: `<svg class="w-10 h-10 text-teal-400 transition-all duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+				<rect x="3" y="3" width="18" height="18" rx="2" />
+				<path d="M3 9h18M3 15h18M9 3v18M15 3v18" />
+			</svg>`
+		},
+		{
 			type: 'thaimapquiz',
 			title: 'Thai Map Quiz',
 			description: 'ควิซทายชื่อจังหวัดและตำแหน่งบนแผนที่ไทย',

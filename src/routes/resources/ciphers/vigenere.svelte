@@ -1,11 +1,14 @@
 <script lang="ts">
-	import { ArrowLeftIcon, CheckCircleIcon, RepeatIcon, CopyIcon, CheckIcon } from 'svelte-feather-icons';
+	import { ArrowLeftIcon, CheckCircleIcon, RepeatIcon, CopyIcon, CheckIcon, ChevronLeftIcon, ChevronRightIcon } from 'svelte-feather-icons';
 
 	let inputText = 'ATTACKATDAWN';
 	let key = 'LEMON';
 	let isEncodeMode = true;
 	let isSwapped = false;
 	let isCopied = false;
+	let currentStep = 0;
+
+	const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 
 	function vigenereCipher(text: string, keyword: string, encode: boolean): string {
 		if (!keyword) return text;
@@ -33,13 +36,29 @@
 	$: effectiveEncode = isSwapped ? !isEncodeMode : isEncodeMode;
 	$: resultText = vigenereCipher(inputText, key, effectiveEncode);
 
+	// Derived step-by-step state for Interactive Vigenère Table
+	$: cleanInput = inputText.toUpperCase().replace(/[^A-Z]/g, '');
+	$: cleanKey = key.toUpperCase().replace(/[^A-Z]/g, '') || 'A';
+	$: maxSteps = Math.max(1, cleanInput.length);
+	$: safeStep = Math.min(currentStep, maxSteps - 1);
+
+	$: activeTextChar = cleanInput[safeStep] || 'A';
+	$: activeKeyChar = cleanKey[safeStep % cleanKey.length] || 'A';
+	$: activeTextVal = activeTextChar.charCodeAt(0) - 65;
+	$: activeKeyVal = activeKeyChar.charCodeAt(0) - 65;
+
+	$: activeResultVal = effectiveEncode
+		? (activeTextVal + activeKeyVal) % 26
+		: (activeTextVal - activeKeyVal + 26) % 26;
+	$: activeResultChar = String.fromCharCode(activeResultVal + 65);
+
 	function copyOutput() {
 		navigator.clipboard.writeText(resultText);
 		isCopied = true;
 		setTimeout(() => (isCopied = false), 2000);
 	}
 
-	// Practice Exercises (no hints)
+	// Practice Exercises
 	let answers = ['', '', ''];
 	let feedback = ['', '', ''];
 
@@ -61,13 +80,14 @@
 
 <svelte:head>
 	<title>Code Breaker | Vigenère Cipher (รหัสวีเชอแนร์) 🔐</title>
-	<meta name="description" content="คู่มือ Vigenère Cipher รหัสลับใช้ Keyword พร้อมเครื่องมือแปลงสดและแบบฝึกหัด" />
+	<meta name="description" content="คู่มือ Vigenère Cipher รหัสลับใช้ Keyword พร้อมเครื่องมือแปลงสด ตารางโต้ตอบ Tabula Recta และแบบฝึกหัด" />
 </svelte:head>
 
 <div class="flex flex-col gap-8 w-full max-w-5xl mx-auto px-4 py-8 select-none">
 	<div class="flex items-center justify-between">
-		<a href="/resources/ciphers" class="btn btn-ghost btn-xs gap-1.5 font-bold">
-			← กลับไปคลังรหัสลับ
+		<a href="/resources/ciphers" class="btn btn-ghost btn-xs gap-1.5 font-bold text-slate-400 hover:text-white">
+			<ArrowLeftIcon size="14" />
+			<span>กลับไปคลังรหัสลับ</span>
 		</a>
 	</div>
 
@@ -83,14 +103,14 @@
 	</header>
 
 	<!-- Converter Tool -->
-	<section class="bg-base-200 p-6 rounded-3xl border border-base-300 shadow-xl space-y-4">
+	<section class="bg-slate-900 p-6 rounded-3xl border border-slate-800 shadow-xl space-y-4">
 		<div class="flex items-center justify-between flex-wrap gap-2">
-			<h2 class="text-xl font-extrabold text-accent flex items-center gap-2">
+			<h2 class="text-xl font-extrabold text-amber-400 flex items-center gap-2">
 				<span>🔑</span> เครื่องมือแปลงรหัส (Converter)
 			</h2>
 			<button
 				on:click={() => (isSwapped = !isSwapped)}
-				class="btn btn-outline btn-xs gap-1.5 font-bold"
+				class="btn btn-outline btn-xs gap-1.5 font-bold border-slate-700 text-slate-300 hover:bg-slate-800"
 			>
 				<RepeatIcon size="14" />
 				<span>{isSwapped ? 'สลับทิศทาง (ถอดรหัส ➔ เข้ารหัส)' : 'สลับทิศทาง (เข้ารหัส ➔ ถอดรหัส)'}</span>
@@ -98,115 +118,174 @@
 		</div>
 
 		<div class="grid grid-cols-1 md:grid-cols-2 gap-4 items-stretch">
-			<!-- Input Column -->
-			<div class="bg-slate-900/80 p-5 rounded-2xl border border-slate-800 flex flex-col justify-between space-y-4 {isSwapped ? 'order-2' : 'order-1'}">
-				<div class="space-y-3">
-					<div class="flex items-center gap-2">
-						<button
-							on:click={() => (isEncodeMode = true)}
-							class="btn btn-xs flex-1 {isEncodeMode ? 'btn-primary font-bold' : 'btn-outline'}"
-						>
-							เข้ารหัส
-						</button>
-						<button
-							on:click={() => (isEncodeMode = false)}
-							class="btn btn-xs flex-1 {!isEncodeMode ? 'btn-primary font-bold' : 'btn-outline'}"
-						>
-							ถอดรหัส
-						</button>
-					</div>
-
-					<div>
-						<label class="block text-xs font-semibold text-slate-400 mb-1">ข้อความ (Input):</label>
-						<input
-							type="text"
-							bind:value={inputText}
-							placeholder="พิมพ์ข้อความ..."
-							class="input input-bordered w-full bg-slate-950 font-mono text-sm uppercase focus:input-primary"
-						/>
-					</div>
-
-					<div>
-						<label class="block text-xs font-semibold text-slate-400 mb-1">คำสำคัญ (Keyword):</label>
-						<input
-							type="text"
-							bind:value={key}
-							placeholder="พิมพ์ Keyword..."
-							class="input input-bordered w-full bg-slate-950 font-mono text-sm uppercase focus:input-primary"
-						/>
-					</div>
-				</div>
-				<span class="text-[11px] text-slate-500">เลือกโหมดและใส่ Keyword ในการประมวลผล</span>
+			<div class="space-y-2">
+				<label class="text-xs font-bold text-slate-400">ข้อความต้นทาง (Input Text):</label>
+				<input
+					type="text"
+					bind:value={inputText}
+					placeholder="พิมพ์ข้อความ..."
+					class="input input-bordered w-full bg-slate-950 border-slate-800 text-white font-mono uppercase text-sm rounded-xl focus:border-amber-500"
+				/>
+				<label class="text-xs font-bold text-slate-400 pt-2 block">คำสำคัญ (Keyword):</label>
+				<input
+					type="text"
+					bind:value={key}
+					placeholder="คำสำคัญ..."
+					class="input input-bordered w-full bg-slate-950 border-slate-800 text-amber-400 font-mono uppercase text-sm rounded-xl focus:border-amber-500"
+				/>
 			</div>
 
-			<!-- Output Column -->
-			<div class="bg-slate-900/80 p-5 rounded-2xl border border-slate-800 flex flex-col justify-between space-y-3 {isSwapped ? 'order-1' : 'order-2'}">
+			<div class="space-y-2 bg-slate-950 p-4 rounded-2xl border border-slate-800 flex flex-col justify-between">
 				<div>
-					<div class="flex items-center justify-between mb-2">
-						<label class="block text-xs font-semibold text-slate-400">
-							ผลลัพธ์ ({effectiveEncode ? 'Ciphertext' : 'Plaintext'}):
-						</label>
-						<button on:click={copyOutput} class="btn btn-ghost btn-xs gap-1 text-slate-400 hover:text-white">
-							{#if isCopied}
-								<CheckIcon size="14" class="text-success" />
-								<span class="text-success">คัดลอกแล้ว</span>
-							{:else}
-								<CopyIcon size="14" />
-								<span>คัดลอกข้อความ</span>
-							{/if}
-						</button>
-					</div>
-
-					<div class="bg-slate-950 p-4 rounded-xl border border-slate-800 min-h-[110px] font-mono text-lg text-primary tracking-widest break-words flex items-center">
-						{resultText || 'พิมพ์ข้อความและ Keyword เพื่อดูผลลัพธ์...'}
+					<span class="text-xs font-bold text-slate-400">ผลลัพธ์ (Output Text):</span>
+					<div class="text-xl font-mono font-bold text-amber-400 break-all mt-1">
+						{resultText || '---'}
 					</div>
 				</div>
-
-				<span class="text-[11px] text-slate-500">ประมวลผลด้วย Vigenère Polyalphabetic Shift</span>
+				<button
+					on:click={copyOutput}
+					class="btn btn-sm btn-ghost gap-1.5 text-slate-300 hover:text-white self-end"
+				>
+					{#if isCopied}
+						<CheckIcon size="14" class="text-emerald-400" />
+						<span class="text-emerald-400 font-bold">คัดลอกแล้ว</span>
+					{:else}
+						<CopyIcon size="14" />
+						<span>คัดลอกข้อความ</span>
+					{/if}
+				</button>
 			</div>
 		</div>
 	</section>
 
+	<!-- Interactive Tabula Recta Grid Explanation -->
+	<section class="bg-slate-900 border border-slate-800 rounded-3xl p-6 shadow-xl space-y-5">
+		<div class="flex items-center justify-between flex-wrap gap-3 border-b border-slate-800 pb-3">
+			<div>
+				<h2 class="text-lg font-bold text-white flex items-center gap-2">
+					<span>📊</span> ตารางวีเชอแนร์โต้ตอบ (Interactive Tabula Recta)
+				</h2>
+				<p class="text-xs text-slate-400">เลื่อนดูการตัดกันของอักษรแถวและคอลัมน์ทีละตัวอักษร</p>
+			</div>
+
+			<!-- Step Controls -->
+			<div class="flex items-center gap-2 bg-slate-950 px-3 py-1.5 rounded-xl border border-slate-800">
+				<button
+					disabled={safeStep <= 0}
+					on:click={() => currentStep--}
+					class="btn btn-ghost btn-xs text-slate-300 disabled:text-slate-600"
+				>
+					<ChevronLeftIcon size="16" />
+				</button>
+				<span class="text-xs font-mono font-bold text-amber-400">
+					Step {safeStep + 1} / {maxSteps}
+				</span>
+				<button
+					disabled={safeStep >= maxSteps - 1}
+					on:click={() => currentStep++}
+					class="btn btn-ghost btn-xs text-slate-300 disabled:text-slate-600"
+				>
+					<ChevronRightIcon size="16" />
+				</button>
+			</div>
+		</div>
+
+		<!-- Step Info Card -->
+		<div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-center">
+			<div class="bg-slate-950 p-3 rounded-2xl border border-slate-800">
+				<div class="text-[11px] text-slate-400">Plaintext (คอลัมน์)</div>
+				<div class="text-2xl font-black font-mono text-cyan-400">{activeTextChar}</div>
+			</div>
+			<div class="bg-slate-950 p-3 rounded-2xl border border-slate-800">
+				<div class="text-[11px] text-slate-400">Key (แถว)</div>
+				<div class="text-2xl font-black font-mono text-amber-400">{activeKeyChar}</div>
+			</div>
+			<div class="bg-slate-950 p-3 rounded-2xl border border-slate-800">
+				<div class="text-[11px] text-slate-400">Cipher Result (จุดตัด)</div>
+				<div class="text-2xl font-black font-mono text-emerald-400">{activeResultChar}</div>
+			</div>
+		</div>
+
+		<!-- Tabula Recta 26x26 Scrollable Table -->
+		<div class="overflow-x-auto bg-slate-950 p-3 rounded-2xl border border-slate-800">
+			<table class="w-full text-center border-collapse font-mono text-[10px] sm:text-xs">
+				<thead>
+					<tr>
+						<th class="p-1 bg-slate-900 text-slate-500"></th>
+						{#each alphabet as colChar, colIdx}
+							<th
+								class="p-1 font-bold {colIdx === activeTextVal
+									? 'bg-cyan-500/20 text-cyan-400 border-b-2 border-cyan-400'
+									: 'text-slate-400'}"
+							>
+								{colChar}
+							</th>
+						{/each}
+					</tr>
+				</thead>
+				<tbody>
+					{#each alphabet as rowChar, rowIdx}
+						<tr class={rowIdx === activeKeyVal ? 'bg-amber-500/10' : ''}>
+							<th
+								class="p-1 font-bold {rowIdx === activeKeyVal
+									? 'bg-amber-500/20 text-amber-400 border-r-2 border-amber-400'
+									: 'text-slate-400 bg-slate-900'}"
+							>
+								{rowChar}
+							</th>
+							{#each alphabet as _, colIdx}
+								{@const cellVal = (rowIdx + colIdx) % 26}
+								{@const cellChar = String.fromCharCode(cellVal + 65)}
+								{@const isSelectedCell = rowIdx === activeKeyVal && colIdx === activeTextVal}
+								<td
+									class="p-1 transition-all {isSelectedCell
+										? 'bg-emerald-500 text-slate-950 font-black text-sm rounded shadow-lg scale-110'
+										: rowIdx === activeKeyVal || colIdx === activeTextVal
+										? 'text-white font-bold bg-slate-800/60'
+										: 'text-slate-500'}"
+								>
+									{cellChar}
+								</td>
+							{/each}
+						</tr>
+					{/each}
+				</tbody>
+			</table>
+		</div>
+	</section>
+
 	<!-- Practice Exercises -->
-	<section class="bg-base-200 p-6 rounded-3xl border border-base-300 shadow-xl space-y-6">
-		<h2 class="text-xl font-extrabold text-warning flex items-center gap-2">
-			<span>✏️</span> แบบฝึกหัดทดลองถอดรหัส (Practice Exercises)
+	<section class="bg-slate-900 p-6 rounded-3xl border border-slate-800 shadow-xl space-y-4">
+		<h2 class="text-lg font-bold text-white border-b border-slate-800 pb-2">
+			📝 แบบฝึกหัดถอดรหัส Vigenère
 		</h2>
-
-		<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+		<div class="space-y-3">
 			{#each exercises as ex, idx}
-				<div class="bg-slate-900/80 p-5 rounded-2xl border border-slate-800 space-y-3 flex flex-col justify-between">
-					<div class="space-y-3">
-						<span class="font-bold text-xs text-slate-300">ข้อที่ {ex.id}</span>
-
-						<div class="bg-slate-950 p-3 rounded-xl border border-slate-800 font-mono text-lg text-primary tracking-widest text-center min-h-[60px] flex items-center justify-center">
-							{ex.cipherText}
-						</div>
-					</div>
-
-					<div class="space-y-2 pt-2">
-						<div class="flex items-center gap-2">
-							<input
-								type="text"
-								bind:value={answers[idx]}
-								placeholder="คำตอบ..."
-								class="input input-bordered input-sm flex-1 bg-slate-950 font-mono text-sm uppercase"
-							/>
-							<button on:click={() => checkAnswer(idx)} class="btn btn-primary btn-sm font-bold">
-								ตรวจ
-							</button>
-						</div>
-
+				<div class="bg-slate-950 p-4 rounded-2xl border border-slate-800 space-y-2">
+					<div class="flex items-center justify-between">
+						<span class="text-xs font-bold text-amber-400">ข้อที่ {ex.id}: {ex.cipherText}</span>
 						{#if feedback[idx] === 'correct'}
-							<div class="flex items-center gap-1 text-xs font-bold text-success">
+							<span class="text-xs font-bold text-emerald-400 flex items-center gap-1">
 								<CheckCircleIcon size="14" />
 								<span>ถูกต้อง!</span>
-							</div>
+							</span>
 						{:else if feedback[idx] === 'incorrect'}
-							<div class="text-xs font-bold text-error">
-								✕ ยังไม่ถูกต้อง
-							</div>
+							<span class="text-xs font-bold text-rose-400">ยังไม่ถูกต้อง ลองใหม่อีกครั้ง</span>
 						{/if}
+					</div>
+					<div class="join w-full">
+						<input
+							type="text"
+							bind:value={answers[idx]}
+							placeholder="พิมพ์คำตอบ..."
+							class="input input-sm join-item bg-slate-900 border-slate-800 text-white font-mono uppercase w-32 focus:border-amber-500"
+						/>
+						<button
+							on:click={() => checkAnswer(idx)}
+							class="btn btn-primary btn-sm join-item font-bold rounded-r-xl"
+						>
+							ตรวจ
+						</button>
 					</div>
 				</div>
 			{/each}

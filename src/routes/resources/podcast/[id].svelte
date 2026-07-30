@@ -3,6 +3,7 @@
 
   export let episode: PodcastEpisodeData;
   let showTimestamps = false;
+  let showSidebar = true;
 </script>
 
 <svelte:head>
@@ -31,32 +32,64 @@
   </header>
 
   <!-- Floating Side Navigation (Visible on lg screens, hidden on phones) -->
-  <aside class="fixed hidden lg:block left-4 xl:left-8 top-28 z-30 bg-base-200/95 backdrop-blur-md border border-base-300/90 rounded-2xl p-4 shadow-2xl w-48 xl:w-56 text-left">
-    <h3 class="text-xs font-bold uppercase tracking-wider text-primary mb-3 flex items-center gap-2">
-      <span>📌</span> สารบัญเนื้อหา
-    </h3>
-    <nav class="flex flex-col gap-2 text-xs xl:text-sm font-medium">
-      <a href="#video-clip" class="hover:text-primary transition-colors flex items-center gap-2 py-1 text-slate-300 hover:no-underline">
-        <span>🎥</span> คลิปวิดีโอ
-      </a>
-      <a href="#summary" class="hover:text-primary transition-colors flex items-center gap-2 py-1 text-slate-300 hover:no-underline">
-        <span>💡</span> สรุปภาพรวม
-      </a>
-      <a href="#transcript" class="hover:text-primary transition-colors flex items-center gap-2 py-1 text-slate-300 hover:no-underline">
-        <span>📝</span> บทถอดข้อความ
-      </a>
-      {#if episode.summaryTable && episode.summaryTable.length > 0}
-        <a href="#summary-table" class="hover:text-primary transition-colors flex items-center gap-2 py-1 text-slate-300 hover:no-underline">
-          <span>📊</span> ตารางสรุปประเภทเกม
+  {#if showSidebar}
+    <aside class="fixed hidden lg:block left-4 xl:left-8 top-28 z-30 bg-base-200/95 backdrop-blur-md border border-base-300/90 rounded-2xl p-4 shadow-2xl w-48 xl:w-56 text-left">
+      <div class="flex items-center justify-between mb-3">
+        <h3 class="text-xs font-bold uppercase tracking-wider text-primary flex items-center gap-2">
+          <span>📌</span> สารบัญเนื้อหา
+        </h3>
+        <button 
+          on:click={() => (showSidebar = false)}
+          class="btn btn-ghost btn-xs text-slate-400 hover:text-white p-0 h-auto min-h-0 w-5 h-5 flex items-center justify-center rounded-full"
+          title="ซ่อนสารบัญ"
+        >
+          ✕
+        </button>
+      </div>
+      <nav class="flex flex-col gap-2 text-xs xl:text-sm font-medium">
+        <a href="#video-clip" class="hover:text-primary transition-colors flex items-center gap-2 py-1 text-slate-300 hover:no-underline">
+          <span>🎥</span> คลิปวิดีโอ
         </a>
-      {/if}
-      {#if episode.references && episode.references.length > 0}
-        <a href="#references" class="hover:text-primary transition-colors flex items-center gap-2 py-1 text-slate-300 hover:no-underline">
-          <span>🔗</span> แหล่งอ้างอิงภายนอก
+        <a href="#summary" class="hover:text-primary transition-colors flex items-center gap-2 py-1 text-slate-300 hover:no-underline">
+          <span>💡</span> สรุปภาพรวม
         </a>
-      {/if}
-    </nav>
-  </aside>
+        <a href="#transcript" class="hover:text-primary transition-colors flex items-center gap-2 py-1 text-slate-300 hover:no-underline">
+          <span>📝</span> บทถอดข้อความ
+        </a>
+        {#if episode.summaryTable && episode.summaryTable.length > 0}
+          <a href="#summary-table" class="hover:text-primary transition-colors flex items-center gap-2 py-1 text-slate-300 hover:no-underline">
+            <span>📊</span> ตารางสรุปประเภทเกม
+          </a>
+        {/if}
+        {#if episode.puzzleCards && episode.puzzleCards.length > 0}
+          <a href="#puzzle-genres" class="hover:text-primary transition-colors flex items-center gap-2 py-1 text-slate-300 hover:no-underline">
+            <span>🧩</span> 21 ปริศนา Logic Puzzle
+          </a>
+        {/if}
+        {#if episode.references && episode.references.length > 0}
+          <a href="#references" class="hover:text-primary transition-colors flex items-center gap-2 py-1 text-slate-300 hover:no-underline">
+            <span>🔗</span> แหล่งอ้างอิงภายนอก
+          </a>
+        {/if}
+
+        <div class="mt-3 pt-3 border-t border-base-300">
+          <label class="label cursor-pointer p-0 flex items-center justify-between text-xs font-semibold text-slate-300">
+            <span class="flex items-center gap-1.5">⏱️ แสดงเวลา</span>
+            <input type="checkbox" bind:checked={showTimestamps} class="toggle toggle-primary toggle-xs" />
+          </label>
+        </div>
+      </nav>
+    </aside>
+  {:else}
+    <button 
+      on:click={() => (showSidebar = true)}
+      class="fixed hidden lg:flex left-4 xl:left-8 top-28 z-30 bg-base-200/95 backdrop-blur-md border border-base-300/90 rounded-xl p-2.5 shadow-2xl text-xs font-bold text-slate-300 hover:text-primary items-center gap-2 transition-all"
+      title="แสดงสารบัญ"
+    >
+      <span>📌</span>
+      <span>แสดงสารบัญ</span>
+    </button>
+  {/if}
 
   <!-- Main Article Content Mobile-Friendly Layout -->
   <div class="space-y-8 text-left my-6">
@@ -166,6 +199,61 @@
               {/each}
             </tbody>
           </table>
+        </div>
+      </section>
+    {/if}
+
+    <!-- 21 Logic Puzzle Genres Cards -->
+    {#if episode.puzzleCards && episode.puzzleCards.length > 0}
+      <hr class="border-base-300" />
+      <section id="puzzle-genres" class="scroll-mt-24">
+        <h2 class="text-xl md:text-2xl font-bold text-secondary mb-2 flex items-center gap-2">
+          <span>🧩</span> 21 ประเภท Logic Puzzle (Pencil & Paper)
+        </h2>
+        <p class="text-slate-300 text-sm md:text-base mb-6">
+          รวมประเภท logic puzzle ในรูปแบบ Pencil & Paper พร้อมคลิปวิดีโอแนะนำวิธีเล่นจาก Codebreaker Thailand
+        </p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {#each episode.puzzleCards as card, index}
+            <a 
+              href={card.url} 
+              target="_blank" 
+              rel="noopener" 
+              class="group block bg-base-200 hover:bg-base-300 border border-base-300 hover:border-primary/50 rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1"
+            >
+              {#if card.thumbnail}
+                <div class="relative aspect-video w-full overflow-hidden bg-base-300">
+                  <img 
+                    src={card.thumbnail} 
+                    alt={card.name} 
+                    loading="lazy"
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" 
+                  />
+                  <div class="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors flex items-center justify-center">
+                    <span class="w-10 h-10 rounded-full bg-primary/90 text-primary-content flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform">
+                      ▶
+                    </span>
+                  </div>
+                  <span class="absolute top-2 left-2 bg-slate-900/90 backdrop-blur-md text-amber-400 text-xs font-bold px-2 py-0.5 rounded-md border border-amber-400/20">
+                    #{index + 1}
+                  </span>
+                </div>
+              {/if}
+              <div class="p-4">
+                <h3 class="font-bold text-base text-slate-100 group-hover:text-primary transition-colors line-clamp-1">
+                  {card.name}
+                </h3>
+                <p class="text-xs text-slate-400 mt-1 line-clamp-2 leading-relaxed">
+                  {card.title}
+                </p>
+                <div class="mt-3 flex items-center text-xs font-semibold text-primary gap-1">
+                  <span>ดูคลิปวิดีโอ</span>
+                  <span class="group-hover:translate-x-1 transition-transform">→</span>
+                </div>
+              </div>
+            </a>
+          {/each}
         </div>
       </section>
     {/if}
