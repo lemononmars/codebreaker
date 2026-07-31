@@ -1,13 +1,23 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { ArrowLeftIcon, PlusIcon, ExternalLinkIcon, CheckCircleIcon, GridIcon, EyeIcon } from 'svelte-feather-icons';
+	import { ArrowLeftIcon, PlusIcon, ExternalLinkIcon, CheckCircleIcon, GridIcon, EyeIcon, EditIcon, XIcon, Trash2Icon, ChevronLeftIcon, ChevronRightIcon } from 'svelte-feather-icons';
 	import type { ILogicPuzzle } from '$lib/interfaces';
+	import LogicPuzzleThumbnail from '$lib/components/LogicPuzzleThumbnail.svelte';
 
 	let puzzles: ILogicPuzzle[] = [];
 	let loading = false;
 	let isSubmitting = false;
+	let isDeleting = false;
 	let successMsg = '';
 	let errorMsg = '';
+	let editingId: number | null = null;
+	let isModalOpen = false;
+
+	// Pagination state
+	let currentPage = 1;
+	let pageSize = 10;
+	$: totalPages = Math.max(1, Math.ceil(puzzles.length / pageSize));
+	$: paginatedPuzzles = puzzles.slice((currentPage - 1) * pageSize, currentPage * pageSize);
 
 	// Form fields
 	let url = '';
@@ -41,9 +51,51 @@
 	}
 
 	function autoGenerateTitle() {
-		if (isUserEditedTitle) return;
+		if (isUserEditedTitle || editingId) return;
 		const count = puzzles.filter((p) => (p.genre_title || p.genre || '').toLowerCase() === (genreTitle || genre).toLowerCase()).length;
 		title = `${genreTitle} ${width}x${height} #${count + 1}`;
+	}
+
+	function openAddModal() {
+		resetForm();
+		errorMsg = '';
+		successMsg = '';
+		isModalOpen = true;
+	}
+
+	function handleEdit(p: ILogicPuzzle) {
+		editingId = p.id;
+		title = p.title;
+		genre = p.genre;
+		genreTitle = p.genre_title || p.genre;
+		url = p.url;
+		width = p.width || 5;
+		height = p.height || 5;
+		difficulty = p.difficulty || 'Easy';
+		author = p.author || 'Codebreaker';
+		isUserEditedTitle = true;
+		errorMsg = '';
+		successMsg = '';
+		isModalOpen = true;
+	}
+
+	function closeModal() {
+		isModalOpen = false;
+		resetForm();
+	}
+
+	function resetForm() {
+		editingId = null;
+		title = '';
+		url = '';
+		genre = 'slither';
+		genreTitle = 'Slitherlink';
+		width = 5;
+		height = 5;
+		difficulty = 'Easy';
+		author = 'Codebreaker';
+		isUserEditedTitle = false;
+		autoGenerateTitle();
 	}
 
 	function handleUrlInput() {
@@ -117,7 +169,7 @@
 			errorMsg = '';
 			successMsg = '';
 
-			const body = {
+			const body: any = {
 				title: title.trim(),
 				genre,
 				genre_title: genreTitle.trim(),
@@ -128,25 +180,62 @@
 				author: author.trim() || 'Codebreaker'
 			};
 
-			const res = await fetch('/api/puzzle/logicpuzzle', {
-				method: 'POST',
-				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify(body)
-			});
+			let res: Response;
+			if (editingId) {
+				body.id = editingId;
+				res = await fetch('/api/puzzle/logicpuzzle', {
+					method: 'PUT',
+					headers: { 'Content-Type': 'application/json' },
+					body: JSON.stringify(body)
+				});
+			} else {
+				res = await fetch('/api/puzzle/logicpuzzle', {
+					method: 'POST',
+					headers: { 'Content-Type': 'application/json' },
+					body: JSON.stringify(body)
+				});
+			}
 
 			if (res.ok) {
-				successMsg = `เพิ่ม ${title.trim()} เรียบร้อยแล้ว!`;
-				url = '';
-				title = '';
-				isUserEditedTitle = false;
+				successMsg = editingId ? `แก้ไข ${title.trim()} เรียบร้อยแล้ว!` : `เพิ่ม ${title.trim()} เรียบร้อยแล้ว!`;
+				closeModal();
 				await fetchPuzzles();
 			} else {
-				errorMsg = 'เกิดข้อผิดพลาดในการบันทึกข้อมูล';
+				const errData = await res.json().catch(() => null);
+				errorMsg = errData?.error || 'เกิดข้อผิดพลาดในการบันทึกข้อมูล';
 			}
 		} catch (err: any) {
 			errorMsg = err.message || 'เกิดข้อผิดพลาดในการเชื่อมต่อเซิร์ฟเวอร์';
 		} finally {
 			isSubmitting = false;
+		}
+	}
+
+	async function handleDelete() {
+		if (!editingId) return;
+		if (!confirm(`คุณต้องการลบ "${title}" ใช่หรือไม่?`)) return;
+
+		try {
+			isDeleting = true;
+			errorMsg = '';
+			successMsg = '';
+
+			const res = await fetch(`/api/puzzle/logicpuzzle?id=${editingId}`, {
+				method: 'DELETE'
+			});
+
+			if (res.ok) {
+				successMsg = `ลบ ${title} เรียบร้อยแล้ว!`;
+				closeModal();
+				await fetchPuzzles();
+			} else {
+				const errData = await res.json().catch(() => null);
+				errorMsg = errData?.error || 'เกิดข้อผิดพลาดในการลบข้อมูล';
+			}
+		} catch (err: any) {
+			errorMsg = err.message || 'เกิดข้อผิดพลาดในการเชื่อมต่อเซิร์ฟเวอร์';
+		} finally {
+			isDeleting = false;
 		}
 	}
 
@@ -176,185 +265,69 @@
 			</h1>
 			<p class="text-sm text-slate-400">เพิ่มและจัดการปริศนาตรรกศาสตร์ (Slitherlink, Sudoku, Masyu ฯลฯ)</p>
 		</div>
+
+		<button
+			on:click={openAddModal}
+			class="btn bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 font-bold border-none px-5 rounded-2xl shadow-lg flex items-center gap-2 self-start md:self-auto"
+		>
+			<PlusIcon size="18" />
+			<span>เพิ่ม Logic Puzzle</span>
+		</button>
 	</header>
 
-	<!-- Add New Puzzle Form -->
-	<section class="bg-slate-900 border border-slate-800 rounded-3xl p-6 shadow-xl space-y-5">
-		<h2 class="text-xl font-bold text-emerald-400 flex items-center gap-2 border-b border-slate-800 pb-3">
-			<PlusIcon size="20" />
-			<span>เพิ่ม Logic Puzzle ใหม่</span>
-		</h2>
-
-		{#if successMsg}
-			<div class="alert alert-success text-sm font-bold rounded-2xl">
-				<CheckCircleIcon size="18" />
-				<span>{successMsg}</span>
-			</div>
-		{/if}
-
-		{#if errorMsg}
-			<div class="alert alert-error text-sm font-bold rounded-2xl">
-				<span>✕ {errorMsg}</span>
-			</div>
-		{/if}
-
-		<form on:submit|preventDefault={handleSubmit} class="space-y-5">
-			<!-- 1. URL Input (Infers Genre, Width, Height automatically) -->
-			<div class="space-y-2">
-				<label class="text-xs font-bold text-slate-300 flex items-center justify-between" for="puzzle-url">
-					<span>1. วาง URL ปริศนา (pzpr / pzprxs / puzz.link URL) *</span>
-					<span class="text-emerald-400 font-normal">ระบบจะดึงประเภท ขนาด และตัวอย่างอัตโนมัติ</span>
-				</label>
-				<input
-					id="puzzle-url"
-					type="url"
-					bind:value={url}
-					on:input={handleUrlInput}
-					on:change={handleUrlInput}
-					placeholder="https://pzprxs.vercel.app/p?slither/5/5/..."
-					class="input input-bordered w-full bg-slate-950 text-sm font-mono focus:border-emerald-500"
-					required
-				/>
-			</div>
-
-			<!-- Live Preview Iframe (Shown once URL is entered) -->
-			{#if url.trim()}
-				<div class="space-y-2 bg-slate-950 p-4 rounded-2xl border border-slate-800">
-					<div class="flex items-center gap-2 text-xs font-bold text-slate-300">
-						<EyeIcon size="16" class="text-emerald-400" />
-						<span>ตัวอย่างปริศนา (Live Preview)</span>
-					</div>
-					<div class="w-full h-64 bg-white rounded-xl overflow-hidden border border-slate-700 shadow-inner">
-						<iframe
-							src={getPreviewUrl(url)}
-							title="Logic Puzzle Live Preview"
-							class="w-full h-full border-0 pointer-events-none"
-						></iframe>
-					</div>
-				</div>
-			{/if}
-
-			<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-				<!-- 2. Searchable Genre Input with Datalist (allows custom new genre) -->
-				<div class="space-y-1">
-					<label class="text-xs font-bold text-slate-400" for="puzzle-genre">2. ประเภทปริศนา (Genre)</label>
-					<input
-						id="puzzle-genre"
-						type="text"
-						list="genre-datalist"
-						bind:value={genreTitle}
-						on:input={handleGenreTitleInput}
-						placeholder="ค้นหา หรือ พิมพ์ชื่อประเภทใหม่..."
-						class="input input-bordered w-full bg-slate-950 text-sm font-bold focus:border-emerald-500"
-					/>
-					<datalist id="genre-datalist">
-						{#each genreOptions as opt}
-							<option value={opt.label}></option>
-						{/each}
-					</datalist>
-				</div>
-
-				<!-- 3. Width & Height -->
-				<div class="grid grid-cols-2 gap-2">
-					<div class="space-y-1">
-						<label class="text-xs font-bold text-slate-400" for="puzzle-width">กว้าง (Width)</label>
-						<input
-							id="puzzle-width"
-							type="number"
-							bind:value={width}
-							on:input={handleDimensionInput}
-							min="3"
-							max="30"
-							class="input input-bordered w-full bg-slate-950 text-sm font-mono"
-						/>
-					</div>
-					<div class="space-y-1">
-						<label class="text-xs font-bold text-slate-400" for="puzzle-height">สูง (Height)</label>
-						<input
-							id="puzzle-height"
-							type="number"
-							bind:value={height}
-							on:input={handleDimensionInput}
-							min="3"
-							max="30"
-							class="input input-bordered w-full bg-slate-950 text-sm font-mono"
-						/>
-					</div>
-				</div>
-
-				<!-- 4. Difficulty & Author -->
-				<div class="space-y-1">
-					<label class="text-xs font-bold text-slate-400" for="puzzle-difficulty">ระดับความยาก (Difficulty)</label>
-					<select id="puzzle-difficulty" bind:value={difficulty} class="select select-bordered w-full bg-slate-950 text-sm font-bold">
-						<option value="Easy">Easy</option>
-						<option value="Medium">Medium</option>
-						<option value="Hard">Hard</option>
-					</select>
-				</div>
-
-				<div class="space-y-1">
-					<label class="text-xs font-bold text-slate-400" for="puzzle-author">ผู้แต่ง (Author)</label>
-					<input
-						id="puzzle-author"
-						type="text"
-						bind:value={author}
-						placeholder="Codebreaker"
-						class="input input-bordered w-full bg-slate-950 text-sm font-bold"
-					/>
-				</div>
-			</div>
-
-			<!-- 5. Title Input (LAST input, auto-generated while allowing editing) -->
-			<div class="space-y-1 pt-2 border-t border-slate-800">
-				<label class="text-xs font-bold text-slate-300 flex items-center justify-between" for="puzzle-title">
-					<span>3. ชื่อปริศนา (Puzzle Title) *</span>
-					<span class="text-xs text-slate-500 font-normal">สร้างให้อัตโนมัติ ปรับแต่งชื่อได้ตามต้องการ</span>
-				</label>
-				<input
-					id="puzzle-title"
-					type="text"
-					bind:value={title}
-					on:input={() => (isUserEditedTitle = true)}
-					placeholder="เช่น Slitherlink 5x5 #1"
-					class="input input-bordered w-full bg-slate-950 text-sm font-extrabold text-emerald-400 focus:border-emerald-500"
-					required
-				/>
-			</div>
-
-			<button type="submit" class="btn btn-primary font-bold px-8 rounded-xl w-full sm:w-auto" disabled={isSubmitting}>
-				{isSubmitting ? 'กำลังบันทึก...' : 'บันทึก Logic Puzzle'}
-			</button>
-		</form>
-	</section>
+	{#if successMsg}
+		<div class="alert alert-success text-sm font-bold rounded-2xl shadow-lg">
+			<CheckCircleIcon size="18" />
+			<span>{successMsg}</span>
+		</div>
+	{/if}
 
 	<!-- Existing Puzzles Table -->
 	<section class="bg-slate-900 border border-slate-800 rounded-3xl p-6 shadow-xl space-y-4">
-		<h2 class="text-xl font-bold text-white border-b border-slate-800 pb-3">
-			รายการ Logic Puzzles ในระบบ ({puzzles.length})
-		</h2>
+		<div class="flex items-center justify-between border-b border-slate-800 pb-3 flex-wrap gap-2">
+			<h2 class="text-xl font-bold text-white">
+				รายการ Logic Puzzles ในระบบ ({puzzles.length})
+			</h2>
+			<div class="text-xs text-slate-400 font-mono">
+				แสดง {(currentPage - 1) * pageSize + 1} - {Math.min(currentPage * pageSize, puzzles.length)} จาก {puzzles.length}
+			</div>
+		</div>
 
 		{#if loading}
-			<div class="text-center py-8 text-slate-500 font-bold">กำลังโหลดรายการ...</div>
+			<div class="text-center py-12 text-slate-500 font-bold">กำลังโหลดรายการ...</div>
 		{:else if puzzles.length === 0}
-			<div class="text-center py-8 text-slate-500 font-bold">ยังไม่มีข้อมูล Logic Puzzle ในระบบ</div>
+			<div class="text-center py-12 text-slate-500 font-bold">ยังไม่มีข้อมูล Logic Puzzle ในระบบ</div>
 		{:else}
 			<div class="overflow-x-auto">
 				<table class="table w-full text-sm">
 					<thead>
 						<tr class="bg-slate-950 text-slate-400 text-xs font-bold uppercase">
-							<th>ID</th>
+							<th class="w-12">ID</th>
+							<th class="w-24 text-center">รูปตัวอย่าง</th>
 							<th>ชื่อ</th>
 							<th>ประเภท</th>
 							<th>ขนาด</th>
 							<th>ความยาก</th>
 							<th>ผู้แต่ง</th>
-							<th>ลิงก์</th>
+							<th class="text-right">จัดการ</th>
 						</tr>
 					</thead>
 					<tbody class="divide-y divide-slate-800">
-						{#each puzzles as p}
-							<tr class="hover:bg-slate-800/40">
+						{#each paginatedPuzzles as p (p.id)}
+							<tr class="hover:bg-slate-800/40 transition-colors">
 								<td class="font-mono text-xs text-slate-500">{p.id}</td>
+								<td>
+									<div class="w-16 h-12 bg-slate-950 rounded-xl overflow-hidden border border-slate-800 mx-auto shrink-0 shadow-inner">
+										<LogicPuzzleThumbnail
+											genre={p.genre}
+											width={p.width}
+											height={p.height}
+											title={p.title}
+											thumbnail={p.thumbnail}
+											url={p.url}
+										/>
+									</div>
+								</td>
 								<td class="font-bold text-emerald-400">{p.title}</td>
 								<td class="font-mono text-xs text-slate-300">{p.genre_title || p.genre}</td>
 								<td class="font-mono text-xs text-slate-400">{p.width} x {p.height}</td>
@@ -362,17 +335,237 @@
 									<span class="badge badge-sm badge-outline text-xs font-bold">{p.difficulty || 'Easy'}</span>
 								</td>
 								<td class="text-slate-300 text-xs">{p.author || 'Codebreaker'}</td>
-								<td>
-									<a href={p.url} target="_blank" class="btn btn-ghost btn-xs text-cyan-400 gap-1 font-bold">
-										<span>เปิด</span>
-										<ExternalLinkIcon size="12" />
-									</a>
+								<td class="text-right">
+									<button
+										on:click={() => handleEdit(p)}
+										class="btn btn-ghost btn-xs text-amber-400 hover:bg-amber-500/10 gap-1 font-bold rounded-lg"
+									>
+										<EditIcon size="12" />
+										<span>แก้ไข</span>
+									</button>
 								</td>
 							</tr>
 						{/each}
 					</tbody>
 				</table>
 			</div>
+
+			<!-- Pagination Bar -->
+			{#if totalPages > 1}
+				<div class="flex items-center justify-between pt-4 border-t border-slate-800 text-xs font-medium text-slate-400 flex-wrap gap-3">
+					<span>หน้า {currentPage} จาก {totalPages} (ทั้งหมด {puzzles.length} รายการ)</span>
+					<div class="flex items-center gap-2">
+						<button
+							class="btn btn-xs bg-slate-950 border-slate-800 text-slate-300 hover:border-emerald-500 disabled:opacity-40 rounded-lg"
+							disabled={currentPage === 1}
+							on:click={() => (currentPage -= 1)}
+						>
+							<ChevronLeftIcon size="14" />
+							<span>ก่อนหน้า</span>
+						</button>
+						<span class="px-3 py-1 bg-slate-950 border border-slate-800 rounded-lg font-mono font-bold text-emerald-400">
+							{currentPage} / {totalPages}
+						</span>
+						<button
+							class="btn btn-xs bg-slate-950 border-slate-800 text-slate-300 hover:border-emerald-500 disabled:opacity-40 rounded-lg"
+							disabled={currentPage >= totalPages}
+							on:click={() => (currentPage += 1)}
+						>
+							<span>ถัดไป</span>
+							<ChevronRightIcon size="14" />
+						</button>
+					</div>
+				</div>
+			{/if}
 		{/if}
 	</section>
 </div>
+
+<!-- Add / Edit Modal Overlay (Image / Live Preview on Left, Form on Right) -->
+{#if isModalOpen}
+	<div class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-slate-950/85 backdrop-blur-md animate-fade-in select-none">
+		<div class="bg-slate-900 border border-slate-800 rounded-3xl shadow-2xl w-full max-w-5xl h-[85vh] lg:h-[80vh] flex flex-col lg:flex-row overflow-hidden relative">
+			<!-- Close Button (Mobile & Desktop) -->
+			<button
+				on:click={closeModal}
+				class="absolute top-3 right-3 z-20 btn btn-circle btn-sm bg-slate-950/80 text-slate-300 hover:text-white border-slate-800 hover:bg-slate-800"
+			>
+				<XIcon size="18" />
+			</button>
+
+			<!-- LEFT COLUMN: Live Preview / Image -->
+			<div class="w-full lg:w-1/2 h-48 sm:h-64 lg:h-full bg-slate-950 relative overflow-hidden border-b lg:border-b-0 lg:border-r border-slate-800 shrink-0 flex flex-col justify-center items-center">
+				{#if url.trim()}
+					<div class="w-full h-full bg-white relative">
+						<iframe
+							src={getPreviewUrl(url)}
+							title="Logic Puzzle Live Preview"
+							class="w-full h-full border-0 pointer-events-none"
+						></iframe>
+					</div>
+				{:else}
+					<div class="flex flex-col items-center justify-center text-center p-6 space-y-3 text-slate-500">
+						<div class="w-16 h-16 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center text-purple-400 shadow-inner">
+							<EyeIcon size="28" />
+						</div>
+						<h4 class="font-bold text-slate-300 text-sm">ตัวอย่างปริศนา (Live Preview)</h4>
+						<p class="text-xs text-slate-500 max-w-xs font-light">
+							วาง URL ปริศนาทางด้านขวาเพื่อแสดงตัวอย่างรูปภาพ/พัซเซิลแบบสดที่นี่
+						</p>
+					</div>
+				{/if}
+			</div>
+
+			<!-- RIGHT COLUMN: Form Inputs & Info -->
+			<div class="w-full lg:w-1/2 p-6 sm:p-8 flex flex-col justify-between overflow-y-auto bg-slate-900 text-slate-100 space-y-5">
+				<!-- Header -->
+				<div class="border-b border-slate-800 pb-3 pr-8">
+					<h2 class="text-xl font-bold flex items-center gap-2">
+						{#if editingId}
+							<EditIcon size="20" class="text-amber-400" />
+							<span class="text-amber-400">แก้ไข Logic Puzzle #{editingId}</span>
+						{:else}
+							<PlusIcon size="20" class="text-emerald-400" />
+							<span class="text-emerald-400">เพิ่ม Logic Puzzle ใหม่</span>
+						{/if}
+					</h2>
+				</div>
+
+				{#if errorMsg}
+					<div class="alert alert-error text-xs font-bold rounded-xl py-2 px-3">
+						<span>✕ {errorMsg}</span>
+					</div>
+				{/if}
+
+				<form id="logic-form" on:submit|preventDefault={handleSubmit} class="space-y-4 flex-1">
+					<!-- 1. URL Input -->
+					<div class="space-y-1">
+						<label class="text-xs font-bold text-slate-300 flex items-center justify-between" for="modal-url">
+							<span>1. URL ปริศนา (pzpr / pzprxs / puzz.link) *</span>
+						</label>
+						<input
+							id="modal-url"
+							type="url"
+							bind:value={url}
+							on:input={handleUrlInput}
+							on:change={handleUrlInput}
+							placeholder="https://pzprxs.vercel.app/p?slither/5/5/..."
+							class="input input-bordered input-sm w-full bg-slate-950 text-xs font-mono focus:border-emerald-500 rounded-xl"
+							required
+						/>
+					</div>
+
+					<!-- 2. Genre Input -->
+					<div class="space-y-1">
+						<label class="text-xs font-bold text-slate-400" for="modal-genre">2. ประเภทปริศนา (Genre)</label>
+						<input
+							id="modal-genre"
+							type="text"
+							list="genre-datalist-modal"
+							bind:value={genreTitle}
+							on:input={handleGenreTitleInput}
+							placeholder="ค้นหา หรือ พิมพ์ชื่อประเภทใหม่..."
+							class="input input-bordered input-sm w-full bg-slate-950 text-xs font-bold focus:border-emerald-500 rounded-xl"
+						/>
+						<datalist id="genre-datalist-modal">
+							{#each genreOptions as opt}
+								<option value={opt.label}></option>
+							{/each}
+						</datalist>
+					</div>
+
+					<!-- 3. Width & Height -->
+					<div class="grid grid-cols-2 gap-2">
+						<div class="space-y-1">
+							<label class="text-xs font-bold text-slate-400" for="modal-width">กว้าง (Width)</label>
+							<input
+								id="modal-width"
+								type="number"
+								bind:value={width}
+								on:input={handleDimensionInput}
+								min="3"
+								max="30"
+								class="input input-bordered input-sm w-full bg-slate-950 text-xs font-mono rounded-xl"
+							/>
+						</div>
+						<div class="space-y-1">
+							<label class="text-xs font-bold text-slate-400" for="modal-height">สูง (Height)</label>
+							<input
+								id="modal-height"
+								type="number"
+								bind:value={height}
+								on:input={handleDimensionInput}
+								min="3"
+								max="30"
+								class="input input-bordered input-sm w-full bg-slate-950 text-xs font-mono rounded-xl"
+							/>
+						</div>
+					</div>
+
+					<!-- 4. Difficulty & Author -->
+					<div class="grid grid-cols-2 gap-2">
+						<div class="space-y-1">
+							<label class="text-xs font-bold text-slate-400" for="modal-difficulty">ระดับความยาก</label>
+							<select id="modal-difficulty" bind:value={difficulty} class="select select-bordered select-sm w-full bg-slate-950 text-xs font-bold rounded-xl">
+								<option value="Easy">Easy</option>
+								<option value="Medium">Medium</option>
+								<option value="Hard">Hard</option>
+							</select>
+						</div>
+
+						<div class="space-y-1">
+							<label class="text-xs font-bold text-slate-400" for="modal-author">ผู้แต่ง (Author)</label>
+							<input
+								id="modal-author"
+								type="text"
+								bind:value={author}
+								placeholder="Codebreaker"
+								class="input input-bordered input-sm w-full bg-slate-950 text-xs font-bold rounded-xl"
+							/>
+						</div>
+					</div>
+
+					<!-- 5. Title Input -->
+					<div class="space-y-1 pt-1 border-t border-slate-800">
+						<label class="text-xs font-bold text-slate-300 flex items-center justify-between" for="modal-title">
+							<span>3. ชื่อปริศนา (Puzzle Title) *</span>
+						</label>
+						<input
+							id="modal-title"
+							type="text"
+							bind:value={title}
+							on:input={() => (isUserEditedTitle = true)}
+							placeholder="เช่น Slitherlink 5x5 #1"
+							class="input input-bordered input-sm w-full bg-slate-950 text-xs font-extrabold text-emerald-400 focus:border-emerald-500 rounded-xl"
+							required
+						/>
+					</div>
+				</form>
+
+				<!-- Modal Actions (Bottom Row) -->
+				<div class="flex items-center justify-between gap-2 pt-3 border-t border-slate-800 flex-wrap">
+					<div class="flex items-center gap-2">
+						<button form="logic-form" type="submit" class="btn btn-primary btn-sm font-bold px-6 rounded-xl" disabled={isSubmitting}>
+							{isSubmitting ? 'กำลังบันทึก...' : editingId ? 'บันทึกการแก้ไข' : 'บันทึก Logic Puzzle'}
+						</button>
+						<button type="button" on:click={closeModal} class="btn btn-ghost btn-sm text-slate-400 hover:text-white font-bold rounded-xl">
+							ยกเลิก
+						</button>
+					</div>
+
+					{#if editingId}
+						<button
+							type="button"
+							on:click={handleDelete}
+							class="btn btn-error btn-outline btn-sm font-bold gap-1 rounded-xl text-rose-400 border-rose-500/40 hover:bg-rose-500/20"
+							disabled={isDeleting}
+						>
+							<Trash2Icon size="14" />
+							<span>{isDeleting ? 'กำลังลบ...' : 'ลบปริศนา'}</span>
+						</button>
+					{/if}
+				</div>
+			</div>
+		</div>
+	</div>
+{/if}

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import AnswerChecker from '$lib/components/AnswerChecker.svelte';
 	import { ArrowLeftIcon, RepeatIcon, CopyIcon, CheckIcon, GlobeIcon, CheckCircleIcon } from 'svelte-feather-icons';
 
 	// Helper to convert 6-dot array to Unicode Braille pattern character
@@ -293,20 +294,14 @@
 					</div>
 
 					<div class="space-y-2 pt-2">
-						<div class="join w-full">
-							<input
-								type="text"
-								bind:value={answers[idx]}
-								placeholder="พิมพ์คำตอบ..."
-								class="input input-sm input-bordered join-item grow font-mono uppercase"
-							/>
-							<button
-								on:click={() => checkAnswer(idx)}
-								class="btn btn-primary btn-sm join-item font-bold"
-							>
-								ตรวจ
-							</button>
-						</div>
+						<AnswerChecker
+							bind:value={answers[idx]}
+							placeholder="พิมพ์คำตอบ..."
+							buttonText="ตรวจ"
+							btnClass="bg-cyan-500 hover:bg-cyan-400 text-slate-950"
+							size="sm"
+							on:submit={() => checkAnswer(idx)}
+						/>
 
 						{#if feedback[idx] === 'correct'}
 							<div class="flex items-center gap-1 text-xs font-bold text-emerald-400">

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import AnswerChecker from '$lib/components/AnswerChecker.svelte';
 	import { ArrowLeftIcon, CheckCircleIcon, RepeatIcon, CopyIcon, CheckIcon, ChevronLeftIcon, ChevronRightIcon } from 'svelte-feather-icons';
 
 	let inputText = 'ATTACKATDAWN';
@@ -266,20 +267,14 @@
 							<span class="text-xs font-bold text-rose-400">ยังไม่ถูกต้อง ลองใหม่อีกครั้ง</span>
 						{/if}
 					</div>
-					<div class="join w-full">
-						<input
-							type="text"
-							bind:value={answers[idx]}
-							placeholder="พิมพ์คำตอบ..."
-							class="input input-sm input-bordered join-item grow font-mono uppercase"
-						/>
-						<button
-							on:click={() => checkAnswer(idx)}
-							class="btn btn-primary btn-sm join-item font-bold"
-						>
-							ตรวจ
-						</button>
-					</div>
+					<AnswerChecker
+						bind:value={answers[idx]}
+						placeholder="พิมพ์คำตอบ..."
+						buttonText="ตรวจ"
+						btnClass="bg-amber-500 hover:bg-amber-400 text-slate-950"
+						size="sm"
+						on:submit={() => checkAnswer(idx)}
+					/>
 				</div>
 			{/each}
 		</div>

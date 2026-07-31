@@ -1,21 +1,72 @@
 <script lang="ts">
-	import { BookOpenIcon, ArrowLeftIcon } from 'svelte-feather-icons';
+	import { onMount } from 'svelte';
+	import { BookOpenIcon, ArrowLeftIcon, HashIcon, ChevronUpIcon } from 'svelte-feather-icons';
+
+	let showScrollTop = false;
+
+	function scrollToTop() {
+		window.scrollTo({ top: 0, behavior: 'smooth' });
+	}
+
+	onMount(() => {
+		const handleScroll = () => {
+			showScrollTop = window.scrollY > 250;
+		};
+		window.addEventListener('scroll', handleScroll, { passive: true });
+		return () => window.removeEventListener('scroll', handleScroll);
+	});
 
 	const categories = [
 		{
-			title: '🗓️ วันในสัปดาห์ & ธาตุธรรมชาติ (Days of the Week & Elements)',
+			id: 'days-colors',
+			title: '🗓️ วันในสัปดาห์ & สีประจำวัน (Days of the Week & Daily Colors)',
+			shortTitle: '🗓️ วันในสัปดาห์ & สี',
 			badges: [
-				'อาทิตย์ (Sunday) • Sun / สุริยะ',
-				'จันทร์ (Monday) • Moon / จันทรา',
-				'อังคาร (Tuesday) • Mars / Fire (ไฟ)',
-				'พุธ (Wednesday) • Mercury / Water (น้ำ)',
-				'พฤหัสบดี (Thursday) • Jupiter / Wood (ไม้)',
-				'ศุกร์ (Friday) • Venus / Gold-Metal (ทอง/โลหะ)',
-				'เสาร์ (Saturday) • Saturn / Earth (ดิน)'
+				'อาทิตย์ (Sunday) • สีแดง (Red)',
+				'จันทร์ (Monday) • สีเหลือง (Yellow)',
+				'อังคาร (Tuesday) • สีชมพู (Pink)',
+				'พุธ (Wednesday) • สีเขียว (Green)',
+				'พฤหัสบดี (Thursday) • สีแสด/ส้ม (Orange)',
+				'ศุกร์ (Friday) • สีฟ้า (Blue)',
+				'เสาร์ (Saturday) • สีม่วง (Purple)'
 			]
 		},
 		{
+			id: 'balisanskrit-numerals',
+			title: '🔢 ตัวเลขบาลี-สันสกฤต (Bali-Sanskrit Numerals)',
+			shortTitle: '🔢 ตัวเลขบาลี-สันสกฤต',
+			badges: [
+				'1 = เอก (Eka)',
+				'2 = ทวิ / โท (Dwi)',
+				'3 = ตรี (Tri)',
+				'4 = จตุ (Chatu)',
+				'5 = ปัญจ (Pancha)',
+				'6 = ฉ / สัฑ (Cha)',
+				'7 = สัปต / สัตต (Sapta)',
+				'8 = อัษฎ / อัฏฐ (Ashta)',
+				'9 = นพ (Nawa)',
+				'10 = ทศ (Dasa)'
+			]
+		},
+		{
+			id: 'compass-directions',
+			title: '🧭 ทิศทั้ง 8 & ชื่อทิศภาษาไทย (8 Compass Directions & Thai Directional Names)',
+			shortTitle: '🧭 ทิศทั้ง 8 (อุดร, อีสาน...)',
+			badges: [
+				'อุดร (เหนือ - North / N)',
+				'อีสาน (ตะวันออกเฉียงเหนือ - North-East / NE)',
+				'บูรพา (ตะวันออก - East / E)',
+				'อาคเนย์ (ตะวันออกเฉียงใต้ - South-East / SE)',
+				'ทักษิณ (ใต้ - South / S)',
+				'หรดี (ตะวันตกเฉียงใต้ - South-West / SW)',
+				'ประจิม (ตะวันตก - West / W)',
+				'พายัพ (ตะวันตกเฉียงเหนือ - North-West / NW)'
+			]
+		},
+		{
+			id: 'zodiac-signs',
 			title: '♈ 12 จักรราศี (12 Zodiac Signs & Symbols)',
+			shortTitle: '♈ 12 จักรราศี',
 			badges: [
 				'1. เมษ (Aries) ♈',
 				'2. พฤษภ (Taurus) ♉',
@@ -32,7 +83,9 @@
 			]
 		},
 		{
+			id: 'solar-system',
 			title: '🪐 ระบบสุริยะ (Solar System Planets Order)',
+			shortTitle: '🪐 ระบบสุริยะ',
 			badges: [
 				'1. พุธ (Mercury)',
 				'2. ศุกร์ (Venus)',
@@ -45,20 +98,9 @@
 			]
 		},
 		{
-			title: '🧭 ทิศทั้ง 8 (8 Compass Directions)',
-			badges: [
-				'เหนือ (North - N)',
-				'ตะวันออกเฉียงเหนือ (North-East - NE)',
-				'ตะวันออก (East - E)',
-				'ตะวันออกเฉียงใต้ (South-East - SE)',
-				'ใต้ (South - S)',
-				'ตะวันตกเฉียงใต้ (South-West - SW)',
-				'ตะวันตก (West - W)',
-				'ตะวันตกเฉียงเหนือ (North-West - NW)'
-			]
-		},
-		{
+			id: 'rainbow-colors',
 			title: '🌈 ลำดับสีรุ้ง (7 Rainbow Colors - ROYGBIV)',
+			shortTitle: '🌈 ลำดับสีรุ้ง',
 			badges: [
 				'1. ม่วง (Violet)',
 				'2. คราม (Indigo)',
@@ -70,7 +112,9 @@
 			]
 		},
 		{
+			id: 'playing-cards',
 			title: '🃏 สัญลักษณ์ไพ่ป๊อก (Playing Card Suits)',
+			shortTitle: '🃏 สัญลักษณ์ไพ่ป๊อก',
 			badges: [
 				'♠ โพดำ (Spades - Black)',
 				'♥ โพแดง (Hearts - Red)',
@@ -79,7 +123,9 @@
 			]
 		},
 		{
+			id: 'music-notes',
 			title: '🎵 ตัวโน้ตดนตรี & Solfège (Musical Notes)',
+			shortTitle: '🎵 โน้ตดนตรี',
 			badges: [
 				'C = โด (Do)',
 				'D = เร (Re)',
@@ -91,7 +137,9 @@
 			]
 		},
 		{
+			id: 'zodiac-animals',
 			title: '🐀 12 นักษัตร & สัตว์ประจำปี (12 Zodiac Animals)',
+			shortTitle: '🐀 12 นักษัตร',
 			badges: [
 				'1. ชวด (Rat / หนู)',
 				'2. ฉลู (Ox / วัว)',
@@ -108,6 +156,15 @@
 			]
 		}
 	];
+
+	function scrollToSection(id: string) {
+		const el = document.getElementById(id);
+		if (el) {
+			const yOffset = -80; // Offset for top header navbar
+			const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+			window.scrollTo({ top: y, behavior: 'smooth' });
+		}
+	}
 </script>
 
 <svelte:head>
@@ -140,12 +197,30 @@
 		</p>
 	</header>
 
+	<!-- Quick Navigation Category Badges Bar at Page Top -->
+	<div class="bg-slate-900/90 border border-slate-800 rounded-3xl p-4 sm:p-5 shadow-xl space-y-3">
+		<div class="flex items-center gap-2 text-xs font-bold text-slate-400 uppercase tracking-wider">
+			<HashIcon size="14" class="text-emerald-400" />
+			<span>หมวดหมู่ข้อมูล (Quick Jump):</span>
+		</div>
+		<div class="flex flex-wrap gap-2">
+			{#each categories as cat}
+				<button
+					on:click={() => scrollToSection(cat.id)}
+					class="btn btn-xs rounded-xl bg-slate-950 border border-slate-800 text-slate-300 hover:bg-emerald-500/20 hover:text-emerald-300 hover:border-emerald-500/40 font-semibold transition-all"
+				>
+					{cat.shortTitle || cat.title}
+				</button>
+			{/each}
+		</div>
+	</div>
+
 	<!-- Compact Badge Grid per Category -->
 	<div class="space-y-6">
-		{#each categories as cat}
-			<section class="bg-slate-900 border border-slate-800 rounded-3xl p-5 shadow-xl space-y-3">
-				<h2 class="text-base font-bold text-emerald-400 border-b border-slate-800/80 pb-2">
-					{cat.title}
+		{#each categories as cat (cat.id)}
+			<section id={cat.id} class="bg-slate-900 border border-slate-800 rounded-3xl p-5 shadow-xl space-y-3 scroll-mt-24">
+				<h2 class="text-base font-bold text-emerald-400 border-b border-slate-800/80 pb-2 flex items-center gap-2">
+					<span>{cat.title}</span>
 				</h2>
 				<div class="flex flex-wrap gap-2 pt-1">
 					{#each cat.badges as badge}
@@ -158,3 +233,14 @@
 		{/each}
 	</div>
 </div>
+
+<!-- Floating Scroll to Top Button -->
+{#if showScrollTop}
+	<button
+		on:click={scrollToTop}
+		class="fixed bottom-6 right-6 z-50 btn btn-circle bg-emerald-500 hover:bg-emerald-400 text-slate-950 border-none shadow-2xl transition-all duration-300"
+		title="Scroll to Top"
+	>
+		<ChevronUpIcon size="22" />
+	</button>
+{/if}

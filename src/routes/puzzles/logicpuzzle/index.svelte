@@ -1,5 +1,7 @@
 <script context="module" lang="ts">
 	import type { Load } from '@sveltejs/kit';
+	import { staticLogicPuzzles } from '$lib/data/puzzles/logicpuzzle';
+
 	export const load: Load = async ({ fetch }) => {
 		try {
 			const res = await fetch('/api/puzzle/logicpuzzle');
@@ -7,14 +9,14 @@
 				const data = await res.json();
 				return {
 					props: {
-						initialPuzzles: Array.isArray(data) ? data : []
+						initialPuzzles: Array.isArray(data) && data.length > 0 ? data : staticLogicPuzzles
 					}
 				};
 			}
 		} catch (e) {}
 		return {
 			props: {
-				initialPuzzles: []
+				initialPuzzles: staticLogicPuzzles
 			}
 		};
 	};
@@ -22,11 +24,11 @@
 
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { ArrowLeftIcon, BookOpenIcon, ExternalLinkIcon, GridIcon, PlayIcon, RefreshCwIcon, SearchIcon, SlidersIcon, XIcon } from 'svelte-feather-icons';
+	import { ArrowLeftIcon, BookOpenIcon, ExternalLinkIcon, GridIcon, PlayIcon, RefreshCwIcon, SearchIcon, SlidersIcon, XIcon, ChevronLeftIcon, ChevronRightIcon } from 'svelte-feather-icons';
 	import type { ILogicPuzzle } from '$lib/interfaces';
 	import LogicPuzzleThumbnail from '$lib/components/LogicPuzzleThumbnail.svelte';
 
-	export let initialPuzzles: (ILogicPuzzle & { thumbnail?: string })[] = [];
+	export let initialPuzzles: (ILogicPuzzle & { thumbnail?: string })[] = staticLogicPuzzles;
 	let puzzles: (ILogicPuzzle & { thumbnail?: string })[] = initialPuzzles;
 	let loading = false;
 
@@ -36,6 +38,16 @@
 	let selectedDifficulty = 'all';
 	let selectedSize = 'all';
 	let sortBy = 'newest';
+
+	// Pagination state
+	let currentPage = 1;
+	let pageSize = 12;
+	$: totalPages = Math.max(1, Math.ceil(filteredPuzzles.length / pageSize));
+	$: paginatedPuzzles = filteredPuzzles.slice((currentPage - 1) * pageSize, currentPage * pageSize);
+
+	$: if (searchQuery || selectedGenre || selectedDifficulty || selectedSize || sortBy) {
+		currentPage = 1;
+	}
 
 	// Interactive Player Modal State
 	let activePuzzleModal: (ILogicPuzzle & { thumbnail?: string }) | null = null;
@@ -47,12 +59,17 @@
 				const res = await fetch('/api/puzzle/logicpuzzle');
 				if (res.ok) {
 					const data = await res.json();
-					if (Array.isArray(data)) {
+					if (Array.isArray(data) && data.length > 0) {
 						puzzles = data;
+					} else {
+						puzzles = staticLogicPuzzles;
 					}
+				} else {
+					puzzles = staticLogicPuzzles;
 				}
 			} catch (err) {
 				console.warn('Error loading logic puzzles:', err);
+				puzzles = staticLogicPuzzles;
 			} finally {
 				loading = false;
 			}
@@ -278,28 +295,20 @@
 			</div>
 		{:else}
 			<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-				{#each filteredPuzzles as puzzle (puzzle.id)}
+				{#each paginatedPuzzles as puzzle (puzzle.id)}
 					<div
 						class="bg-slate-900 border border-slate-800 hover:border-purple-500/50 rounded-3xl overflow-hidden shadow-xl flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl group"
 					>
-						<!-- Card Top: Extracted Live Preview from Link (Right-Justified) -->
-						<div class="relative w-full h-48 bg-white flex items-center justify-end overflow-hidden border-b border-slate-800/80">
-							{#if puzzle.thumbnail}
-								<img
-									src={puzzle.thumbnail}
-									alt={puzzle.title}
-									class="h-full object-contain ml-auto group-hover:scale-105 transition-transform duration-300"
-								/>
-							{:else}
-								<!-- Extracted live SVG/Canvas preview iframe from link, right-aligned -->
-								<iframe
-									src={getPreviewUrl(puzzle.url)}
-									title={puzzle.title}
-									class="w-full h-full border-0 pointer-events-none bg-white float-right"
-									tabindex="-1"
-									loading="lazy"
-								></iframe>
-							{/if}
+						<!-- Card Top: Extracted Live Preview from Link -->
+						<div class="relative w-full h-48 bg-slate-950 flex items-center justify-center overflow-hidden border-b border-slate-800/80">
+							<LogicPuzzleThumbnail
+								genre={puzzle.genre}
+								width={puzzle.width}
+								height={puzzle.height}
+								title={puzzle.title}
+								thumbnail={puzzle.thumbnail}
+								url={puzzle.url}
+							/>
 						</div>
 
 						<!-- Card Content: ONLY Title and Size (NO tags / subtitles) -->
@@ -343,11 +352,39 @@
 					</div>
 				{/each}
 			</div>
+
+			<!-- Pagination Bar -->
+			{#if totalPages > 1}
+				<div class="flex items-center justify-between pt-6 border-t border-slate-800/80 text-xs sm:text-sm font-medium text-slate-400 flex-wrap gap-4">
+					<span>Showing {(currentPage - 1) * pageSize + 1} - {Math.min(currentPage * pageSize, filteredPuzzles.length)} of {filteredPuzzles.length} puzzles</span>
+					<div class="flex items-center gap-2">
+						<button
+							class="btn btn-sm bg-slate-900 border-slate-800 text-slate-300 hover:border-purple-500 disabled:opacity-40 rounded-xl"
+							disabled={currentPage === 1}
+							on:click={() => (currentPage -= 1)}
+						>
+							<ChevronLeftIcon size="16" />
+							<span>Previous</span>
+						</button>
+						<span class="px-3.5 py-1.5 bg-slate-950 border border-slate-800 rounded-xl font-mono font-bold text-purple-400 text-xs">
+							{currentPage} / {totalPages}
+						</span>
+						<button
+							class="btn btn-sm bg-slate-900 border-slate-800 text-slate-300 hover:border-purple-500 disabled:opacity-40 rounded-xl"
+							disabled={currentPage >= totalPages}
+							on:click={() => (currentPage += 1)}
+						>
+							<span>Next</span>
+							<ChevronRightIcon size="16" />
+						</button>
+					</div>
+				</div>
+			{/if}
 		{/if}
 	</section>
 </div>
 
-<!-- Interactive Puzzle Player Modal (positioned below top navbar with pt-16 lg:pt-20, bottom part removed) -->
+<!-- Interactive Puzzle Player Modal -->
 {#if activePuzzleModal}
 	<div class="fixed inset-0 z-[9999] pt-16 lg:pt-20 flex items-center justify-center p-2 sm:p-4 bg-slate-950/90 backdrop-blur-md animate-fade-in select-none">
 		<div class="bg-slate-900 border border-slate-800 rounded-3xl shadow-2xl w-full max-w-5xl h-[85vh] flex flex-col overflow-hidden">
@@ -385,7 +422,7 @@
 				</div>
 			</div>
 
-			<!-- Modal Body (Iframe Player only - Bottom part removed) -->
+			<!-- Modal Body (Iframe Player) -->
 			<div class="flex-1 bg-white relative w-full h-full overflow-hidden">
 				<iframe
 					src={activePuzzleModal.url}

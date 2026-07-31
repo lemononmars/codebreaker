@@ -4,16 +4,32 @@
 	export let height: number = 5;
 	export let title: string = '';
 	export let thumbnail: string | undefined = undefined;
+	export let url: string = '';
 
 	$: cleanGenre = (genre || '').toLowerCase();
+
+	function getPreviewUrl(urlStr: string): string {
+		if (!urlStr) return '';
+		if (urlStr.includes('/p?')) {
+			return urlStr.replace('/p?', '/pv?');
+		}
+		return urlStr;
+	}
 </script>
 
-<div class="relative w-full h-full bg-slate-950 flex items-center justify-center p-3 select-none overflow-hidden">
+<div class="relative w-full h-full bg-slate-950 flex items-center justify-center select-none overflow-hidden">
 	{#if thumbnail}
 		<img
 			src={thumbnail}
 			alt={title}
 			class="w-full h-full object-contain mx-auto group-hover:scale-105 transition-transform duration-300"
+		/>
+	{:else if url}
+		<img
+			src={getPreviewUrl(url)}
+			alt={title}
+			class="w-full h-full object-contain bg-white mx-auto group-hover:scale-105 transition-transform duration-300"
+			loading="lazy"
 		/>
 	{:else if cleanGenre === 'slither'}
 		<!-- Slitherlink Centered SVG Thumbnail -->

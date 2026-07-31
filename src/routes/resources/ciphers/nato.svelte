@@ -1,4 +1,5 @@
 <script lang="ts">
+	import AnswerChecker from '$lib/components/AnswerChecker.svelte';
 	import { ArrowLeftIcon, RadioIcon, RepeatIcon, CopyIcon, CheckIcon, CheckCircleIcon } from 'svelte-feather-icons';
 
 	let inputText = 'CODEBREAKER';
@@ -185,20 +186,14 @@
 					</div>
 
 					<div class="space-y-2 pt-2">
-						<div class="join w-full">
-							<input
-								type="text"
-								bind:value={answers[idx]}
-								placeholder="พิมพ์คำตอบ..."
-								class="input input-sm input-bordered join-item grow font-mono uppercase"
-							/>
-							<button
-								on:click={() => checkAnswer(idx)}
-								class="btn btn-primary btn-sm join-item font-bold"
-							>
-								ตรวจ
-							</button>
-						</div>
+						<AnswerChecker
+							bind:value={answers[idx]}
+							placeholder="พิมพ์คำตอบ..."
+							buttonText="ตรวจ"
+							btnClass="bg-emerald-500 hover:bg-emerald-400 text-slate-950"
+							size="sm"
+							on:submit={() => checkAnswer(idx)}
+						/>
 
 						{#if feedback[idx] === 'correct'}
 							<div class="flex items-center gap-1 text-xs font-bold text-emerald-400">

@@ -43,29 +43,46 @@
 </script>
 
 <svelte:head>
-	<title>Calendar 2026 Postcard Puzzles</title>
+	<title>Code Breaker | Calendar 2026 Puzzles</title>
 </svelte:head>
 
-<div class="container mx-auto px-4 py-12 flex flex-col items-center min-h-screen">
-	<div class="text-center mb-12">
-		<h1 class="text-4xl font-bold text-primary mb-4 tracking-wider">Calendar 2026</h1>
-		<h2 class="text-2xl opacity-75">Postcard Puzzles</h2>
+<div class="container mx-auto px-4 py-8 sm:py-12 flex flex-col items-center min-h-screen max-w-3xl">
+	<!-- Warning Banner -->
+	<div class="w-full max-w-xl bg-amber-500/10 border border-amber-500/30 text-amber-300 rounded-2xl p-4 sm:p-5 shadow-lg backdrop-blur-md flex items-center justify-center gap-3 text-center mb-8">
+		<svg class="w-6 h-6 shrink-0 text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+			<path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/>
+			<line x1="12" y1="9" x2="12" y2="13"/>
+			<line x1="12" y1="17" x2="12.01" y2="17"/>
+		</svg>
+		<span class="font-bold text-sm sm:text-base">ต้องใช้ปฏิทิน Code Breaker 2026 ในการเล่น</span>
 	</div>
 
-	<div class="grid gap-6 w-full max-w-md">
+	<div class="text-center mb-8">
+		<h1 class="text-3xl sm:text-5xl font-black tracking-tight bg-gradient-to-r from-amber-400 via-emerald-400 to-cyan-400 bg-clip-text text-transparent mb-2">
+			Calendar 2026
+		</h1>
+		<h2 class="text-lg sm:text-xl text-slate-400 font-medium">Postcard Puzzles</h2>
+	</div>
+
+	<div class="grid gap-4 sm:gap-6 w-full max-w-xl">
 		{#each questions as q, i}
-			<div class="form-control w-full relative">
-				<label for="calendar-input-{i}" class="label">
-					<span class="label-text font-bold text-lg">{q.label}</span>
+			<div class="bg-slate-900/60 backdrop-blur-xl border border-slate-800 rounded-2xl p-5 sm:p-6 shadow-xl transition-all duration-300 hover:border-slate-700">
+				<label for="calendar-input-{i}" class="block font-bold text-base sm:text-lg text-slate-200 mb-3 flex items-center gap-2">
+					{#if i === 4}
+						<span class="badge bg-amber-500/20 text-amber-300 border border-amber-500/40 text-xs px-2.5 py-1 font-semibold rounded-lg">META</span>
+					{/if}
+					<span>{q.label}</span>
 				</label>
 				<div class="relative">
 					<input
 						id="calendar-input-{i}"
 						type="text"
-						placeholder="Answer..."
-						class="input input-bordered w-full pr-10 transition-colors duration-300
-              {status[i] === 'correct' ? 'input-success text-success' : ''}
-              {status[i] === 'incorrect' ? 'input-error text-error' : ''}"
+						placeholder="พิมพ์คำตอบที่นี่..."
+						style="background-color: #020617 !important; color: #f8fafc !important;"
+						class="w-full placeholder-slate-500 rounded-xl px-4 py-3 text-base focus:outline-none transition-all duration-200 shadow-inner pr-12 border
+              {status[i] === 'correct' ? 'border-emerald-500/80 ring-2 ring-emerald-500/20 !text-emerald-300' : ''}
+              {status[i] === 'incorrect' ? 'border-rose-500/80 ring-2 ring-rose-500/20 !text-rose-300' : ''}
+              {status[i] === 'neutral' ? 'border-slate-700/60 focus:border-amber-400 focus:ring-2 focus:ring-amber-400/20' : ''}"
 						bind:value={inputs[i]}
 						on:input={() => (status[i] = 'neutral')}
 						on:change={() => checkAnswer(i)}
@@ -73,36 +90,16 @@
 					/>
 
 					{#if status[i] === 'correct'}
-						<div class="absolute right-3 top-1/2 -translate-y-1/2 text-success" transition:fade>
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								class="h-6 w-6"
-								fill="none"
-								viewBox="0 0 24 24"
-								stroke="currentColor"
-								><path
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									stroke-width="2"
-									d="M5 13l4 4L19 7"
-								/></svg
-							>
+						<div class="absolute right-3.5 top-1/2 -translate-y-1/2 text-emerald-400" transition:fade>
+							<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+							</svg>
 						</div>
 					{:else if status[i] === 'incorrect'}
-						<div class="absolute right-3 top-1/2 -translate-y-1/2 text-error" transition:fade>
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								class="h-6 w-6"
-								fill="none"
-								viewBox="0 0 24 24"
-								stroke="currentColor"
-								><path
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									stroke-width="2"
-									d="M6 18L18 6M6 6l12 12"
-								/></svg
-							>
+						<div class="absolute right-3.5 top-1/2 -translate-y-1/2 text-rose-400" transition:fade>
+							<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+							</svg>
 						</div>
 					{/if}
 				</div>
@@ -114,12 +111,21 @@
 <!-- Congratulations Modal -->
 <input type="checkbox" id="success-modal" class="modal-toggle" bind:checked={showModal} />
 <!-- svelte-ignore a11y-label-has-associated-control -->
-<label class="modal cursor-pointer" for="success-modal">
-	<label class="modal-box relative" for="">
-		<h3 class="text-3xl font-bold text-center mb-4">🎉 Congratulations! 🎉</h3>
-		<p class="text-center text-lg mb-6">สวัสดีปีใหม่ 2026! ขอให้เป็นปีม้าที่ฮึกเหิมนะครับ</p>
-		<div class="modal-action justify-center">
-			<label for="success-modal" class="btn btn-primary">Close</label>
+<label class="modal cursor-pointer bg-slate-950/80 backdrop-blur-md" for="success-modal">
+	<label class="modal-box relative bg-slate-900 border border-slate-800 text-slate-100 rounded-3xl p-8 shadow-2xl max-w-md" for="">
+		<div class="text-center">
+			<div class="text-5xl mb-4">🎉</div>
+			<h3 class="text-3xl font-extrabold bg-gradient-to-r from-amber-400 to-emerald-400 bg-clip-text text-transparent mb-3">
+				Congratulations!
+			</h3>
+			<p class="text-slate-300 text-base leading-relaxed mb-6">
+				สวัสดีปีใหม่ 2026! ขอให้เป็นปีม้าที่ฮึกเหิมนะครับ
+			</p>
+			<div class="flex justify-center">
+				<label for="success-modal" class="btn bg-gradient-to-r from-amber-500 to-emerald-500 hover:from-amber-400 hover:to-emerald-400 text-slate-950 font-bold border-none px-8 rounded-xl shadow-lg transition-all">
+					ปิดหน้าต่าง
+				</label>
+			</div>
 		</div>
 	</label>
 </label>
