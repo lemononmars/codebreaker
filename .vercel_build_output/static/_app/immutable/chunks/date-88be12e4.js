@@ -1,1 +1,0 @@
-const n=new Intl.DateTimeFormat("th-TH-u-ca-buddhist",{timeZone:"Asia/Bangkok",day:"numeric",month:"long",year:"numeric"});function a(t){const e=new Date(t);return Number.isNaN(e.getTime())?t:n.format(e)}function r(){return a(new Date(Date.now()).toISOString())}export{a as d,r as t};

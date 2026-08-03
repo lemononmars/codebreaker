@@ -1,1 +1,0 @@
-import{S as e,i as o,s as n}from"../../../chunks/index-cbc61548.js";function a(s){return window.location.href="/resources/podcast",[]}class c extends e{constructor(t){super(),o(this,t,a,null,n,{})}}export{c as default};

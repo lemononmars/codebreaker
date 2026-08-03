@@ -1,1 +1,0 @@
-import{S as t,i as e,s as n}from"../../chunks/index-cbc61548.js";const o=async()=>({status:302,redirect:"/admin/weekly"});class r extends t{constructor(s){super(),e(this,s,null,null,n,{})}}export{r as default,o as load};
