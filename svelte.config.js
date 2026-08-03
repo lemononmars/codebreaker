@@ -2,7 +2,7 @@ import vercel from '@sveltejs/adapter-vercel';
 import preprocess from 'svelte-preprocess';
 import { resolve } from 'path';
 
-import { mdsvex } from 'mdsvex'
+import { mdsvex } from 'mdsvex';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {

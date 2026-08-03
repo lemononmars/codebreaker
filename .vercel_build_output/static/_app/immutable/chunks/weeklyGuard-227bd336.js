@@ -1,0 +1,1 @@
+function c(t,e){const n=Number(t)||2026,r=Number(e)||1,a=Date.UTC(n,0,1),i=(5-new Date(a).getUTCDay()+7)%7;return a+i*864e5+9.5*36e5+(r-1)*7*864e5}function y(t,e){return new Date(c(t,e))}export{y as g};

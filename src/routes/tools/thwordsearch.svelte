@@ -13,7 +13,7 @@
 		Maximize2Icon,
 		TrendingUpIcon
 	} from 'svelte-feather-icons';
-	import { getWordFrequency } from '$lib/utils/dict_freq';
+	import { getWordFrequency } from '$lib/utils/dict_pythainlp';
 
 	let input: string = $page.url.searchParams.get('q') || '';
 	let query: string = input;
