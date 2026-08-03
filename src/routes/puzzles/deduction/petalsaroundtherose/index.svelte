@@ -117,7 +117,7 @@
 	<title>Code Breaker | Petals Around the Rose 🌹</title>
 	<meta
 		name="description"
-		content="เกมสืบหาสัจจะลูกเต๋า 5 ลูก Petals Around the Rose"
+		content="เกมกลีบรอบกุหลาบ"
 	/>
 </svelte:head>
 

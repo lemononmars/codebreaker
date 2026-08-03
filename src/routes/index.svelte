@@ -256,7 +256,7 @@
 	<!-- Interactive Daily Mini Players Section with Anchor IDs -->
 	<section class="max-w-7xl mx-auto px-4 space-y-8">
 		<div id="daily-spelling-bee" class="scroll-mt-24">
-			<SpellingBeeMiniPlayer />
+			<SpellingBeeMiniPlayer solvers={latestSolves} />
 		</div>
 		<div id="daily-blanks" class="scroll-mt-24">
 			<BlanksMiniPlayer />

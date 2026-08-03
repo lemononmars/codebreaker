@@ -1,0 +1,24 @@
+{
+	"1_stick_0_19": [
+		{ "equation": "6+4=4", "moves": 1, "solutions": ["0+4=4", "8-4=4"] },
+		{ "equation": "5+7=2", "moves": 1, "solutions": ["9-7=2"] },
+		{ "equation": "9-5=6", "moves": 1, "solutions": ["9-3=6", "8-5=3"] },
+		{ "equation": "3+3=8", "moves": 1, "solutions": ["3+5=8", "5+3=8"] }
+	],
+	"1_stick_2_digits": [
+		{ "equation": "64-15=40", "moves": 1, "solutions": ["64-15=49"] },
+		{ "equation": "52+24=77", "moves": 1, "solutions": ["53+24=77"] },
+		{ "equation": "85+14=96", "moves": 1, "solutions": ["85+14=99"] }
+	],
+	"2_sticks_0_19": [
+		{ "equation": "6+4=4", "moves": 2, "solutions": ["0+4=4", "8-4=4"] },
+		{ "equation": "8+8=6", "moves": 2, "solutions": ["8-0=8"] },
+		{ "equation": "16-9=6", "moves": 2, "solutions": ["15-9=6"] },
+		{ "equation": "19-8=9", "moves": 2, "solutions": ["17-8=9"] }
+	],
+	"2_sticks_2_digits": [
+		{ "equation": "34-29=58", "moves": 2, "solutions": ["84-29=55"] },
+		{ "equation": "83+23=89", "moves": 2, "solutions": ["65+23=88"] },
+		{ "equation": "70-42=27", "moves": 2, "solutions": ["79-42=37"] }
+	]
+}

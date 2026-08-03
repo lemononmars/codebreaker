@@ -8,14 +8,26 @@
 	import { username } from '$lib/store';
 	import { flip } from 'svelte/animate';
 
+	export let solvers: Array<{
+		name?: string;
+		username?: string;
+		puzzle_type?: string;
+		puzzle_id?: string;
+		created_at?: string;
+		score?: number;
+	}> = [];
+
 	let word = '';
 	let puzzleId: number | string = '';
 	let letters: string[] = [];
 	let answer = '';
 	let isLoading = true;
+	let isStarted = false;
 	let isFinished = false;
 	let isWiggle = false;
 	let isPaused = false;
+	let showNameInput = false;
+	let playerNameInput = '';
 
 	let time = 0;
 	let timer: any;
@@ -30,6 +42,37 @@
 	$: seconds = String(Math.floor((time % 60000) / 1000)).padStart(2, '0');
 	$: timeString = `${minutes}:${seconds}`;
 
+	$: top3Solvers = (() => {
+		if (!isFinished) return [];
+		const currentName = $username || 'คุณ';
+
+		const list: Array<{ name: string; score: number | null; isPlayer: boolean }> = (solvers || [])
+			.filter((s) => !s.puzzle_type || s.puzzle_type === 'spellingbee')
+			.map((s) => ({
+				name: s.name || s.username || 'ผู้เล่น',
+				score: typeof s.score === 'number' ? s.score : null,
+				isPlayer: false
+			}));
+
+		const playerIdx = list.findIndex(
+			(s) => s.name.trim().toLowerCase() === currentName.trim().toLowerCase()
+		);
+		if (playerIdx >= 0) {
+			list[playerIdx] = { name: currentName, score: time, isPlayer: true };
+		} else {
+			list.push({ name: currentName, score: time, isPlayer: true });
+		}
+
+		list.sort((a, b) => {
+			if (a.score !== null && b.score !== null) return a.score - b.score;
+			if (a.score !== null) return -1;
+			if (b.score !== null) return 1;
+			return 0;
+		});
+
+		return list.slice(0, 3);
+	})();
+
 	onMount(async () => {
 		try {
 			const res = await fetch('/api/puzzle/spellingbee/daily');
@@ -38,7 +81,6 @@
 				word = data.word;
 				puzzleId = data.id || 'daily';
 				letters = shuffle(data.word.split(''));
-				startTimer();
 			}
 		} catch (e) {
 			console.error('Failed to load daily spelling bee:', e);
@@ -50,6 +92,11 @@
 	onDestroy(() => {
 		stopTimer();
 	});
+
+	function handleStartGame() {
+		isStarted = true;
+		startTimer();
+	}
 
 	function startTimer() {
 		stopTimer();
@@ -103,6 +150,12 @@
 		setTimeout(() => (isWiggle = false), 600);
 	}
 
+	function isDefaultName(name: string | null | undefined): boolean {
+		if (!name) return true;
+		const clean = name.trim().toLowerCase();
+		return clean === '' || clean === 'code breaker' || clean === 'codebreaker' || clean === 'guest';
+	}
+
 	function checkAnswer() {
 		if (!answer) return;
 
@@ -128,15 +181,33 @@
 		}
 
 		if (answer === word) {
-			log = { text: `ถูกต้องแล้ว! 🎉 ใช้เวลา ${timeString}`, type: 'success' };
 			stopTimer();
-			isFinished = true;
-			submitScore();
+			if (isDefaultName($username)) {
+				showNameInput = true;
+				log = { text: '🎉 ถูกต้องแล้ว! กรุณากำหนดชื่อของคุณเพื่อบันทึกผลงาน', type: 'success' };
+			} else {
+				isFinished = true;
+				log = { text: `ถูกต้องแล้ว! 🎉 ใช้เวลา ${timeString}`, type: 'success' };
+				submitScore();
+			}
 		} else {
 			log = { text: `'${answer}' ยังไม่ใช่คำตอบประจำวัน`, type: 'info' };
 			triggerWiggle();
 			answer = '';
 		}
+	}
+
+	function handleSaveName() {
+		const trimmed = playerNameInput.trim();
+		if (trimmed) {
+			username.set(trimmed);
+		} else {
+			username.set('Guest');
+		}
+		showNameInput = false;
+		isFinished = true;
+		log = { text: `ถูกต้องแล้ว! 🎉 ใช้เวลา ${timeString}`, type: 'success' };
+		submitScore();
 	}
 
 	async function submitScore() {
@@ -184,6 +255,19 @@
 	{#if isLoading}
 		<div class="flex items-center justify-center h-48 text-slate-400">
 			<span class="animate-pulse">Loading Spelling Bee...</span>
+		</div>
+	{:else if !isStarted}
+		<div class="flex flex-col items-center justify-center py-10 px-4 space-y-5 text-center">
+			<p class="text-slate-300 text-sm sm:text-base max-w-md font-medium">
+				สะกดคำไทย 7 ตัวอักษรให้ถูกต้องที่สุดสำหรับวันนี้! พร้อมเริ่มทำเวลาหรือยัง?
+			</p>
+			<button
+				on:click={handleStartGame}
+				class="px-8 py-3.5 rounded-2xl font-black text-lg sm:text-xl bg-gradient-to-r from-amber-400 via-amber-300 to-yellow-400 text-slate-950 hover:from-amber-300 hover:to-yellow-300 transition-all duration-300 shadow-xl shadow-amber-500/20 transform hover:scale-105 active:scale-95 flex items-center gap-2"
+				style="color: #0f172a;"
+			>
+				<span>เริ่มเล่น 🐝</span>
+			</button>
 		</div>
 	{:else}
 		<div class="flex flex-col items-center space-y-6">
@@ -276,7 +360,47 @@
 				</div>
 			{/if}
 
+			<!-- Name Input before revealing solution -->
+			{#if showNameInput}
+				<div class="w-full max-w-md bg-slate-950/90 border border-amber-500/40 rounded-2xl p-4 flex flex-col items-center space-y-3 shadow-xl">
+					<span class="text-sm font-bold text-amber-300">กรอกชื่อของคุณเพื่อบันทึกคะแนนและดูอันดับ</span>
+					<div class="flex w-full gap-2">
+						<input
+							type="text"
+							bind:value={playerNameInput}
+							on:keydown={(e) => { if (e.key === 'Enter') handleSaveName(); }}
+							placeholder="พิมพ์ชื่อของคุณที่นี่..."
+							class="flex-1 px-4 py-2.5 rounded-xl !bg-slate-900 !text-white font-bold border border-slate-700 focus:outline-none focus:border-amber-400 text-sm"
+						/>
+						<button
+							on:click={handleSaveName}
+							class="px-5 py-2.5 rounded-xl font-black bg-amber-400 hover:bg-amber-300 text-slate-950 transition-all text-sm"
+							style="color: #0f172a;"
+						>
+							บันทึก
+						</button>
+					</div>
+				</div>
+			{/if}
+
+			<!-- Finished Solution & Single Line Ranking -->
 			{#if isFinished}
+				<div class="w-full bg-slate-950/90 border border-amber-500/30 rounded-2xl p-3.5 flex flex-wrap items-center justify-center gap-2 sm:gap-3 text-xs sm:text-sm shadow-inner font-mono">
+					<span class="font-bold text-amber-400 font-sans flex items-center gap-1">
+						🏆 อันดับวันนี้:
+					</span>
+					{#each top3Solvers as item, index}
+						{@const medal = index === 0 ? '🥇' : index === 1 ? '🥈' : '🥉'}
+						{@const formatTime = item.score ? `${String(Math.floor(item.score / 60000)).padStart(2, '0')}:${String(Math.floor((item.score % 60000) / 1000)).padStart(2, '0')}` : ''}
+						<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg {item.isPlayer ? 'bg-amber-400/20 border border-amber-400/50 font-bold text-amber-300' : 'bg-slate-900 text-slate-300 border border-slate-800'}">
+							<span>{medal} {index + 1}.</span>
+							<span class="font-bold">{item.name}</span>
+							{#if formatTime}
+								<span class="text-slate-400 text-[11px]">({formatTime})</span>
+							{/if}
+						</div>
+					{/each}
+				</div>
 				<div class="pt-2">
 					<button
 						on:click={handleRandomNewPuzzle}

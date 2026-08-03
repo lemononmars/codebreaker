@@ -6,7 +6,7 @@
 	<title>Code Breaker | Deduction Games 🧩</title>
 	<meta
 		name="description"
-		content="คลังเกมสืบหาสัจจะและไขความลับจากกฎซ่อนแอบ: Petals Around the Rose & หมู ไก่ ปลา กุ้ง"
+		content="เกมนิรนัยทายกฎลับ"
 	/>
 </svelte:head>
 
@@ -28,12 +28,12 @@
 			Deduction Games
 		</h1>
 		<p class="text-slate-400 text-sm lg:text-base leading-relaxed">
-			สืบหาความลับและถอดรหัสกฎซ่อนแอบ ตอบถูกติดต่อกัน 5 ครั้งเพื่อปลดล็อกคำใบ้และเฉลยความจริง!
+			สังเกตรูปแบบเพื่อสืบหากฎลับ
 		</p>
 	</header>
 
 	<!-- Game Selection Cards -->
-	<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+	<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
 		<!-- Petals Around the Rose -->
 		<a
 			href="/puzzles/deduction/petalsaroundtherose"
@@ -48,10 +48,10 @@
 						GAME 1
 					</span>
 					<h2 class="text-xl font-black text-white group-hover:text-rose-300 transition-colors">
-						Petals Around the Rose
+						กลีบรอบกุหลาบ
 					</h2>
 					<p class="text-xs text-slate-400 font-light leading-relaxed">
-						เกมสืบหาสัจจะลูกเต๋า 5 ลูก ชื่อเกมคือความลับของกฎ!
+						ทายตัวเลขจากหน้าลูกเต๋า
 					</p>
 				</div>
 			</div>
@@ -77,7 +77,7 @@
 						หมู ไก่ ปลา กุ้ง
 					</h2>
 					<p class="text-xs text-slate-400 font-light leading-relaxed">
-						เกมไขความลับราคาสินค้าจากรูปคำภาษาไทย
+						ทายราคาสินค้า
 					</p>
 				</div>
 			</div>
@@ -103,11 +103,37 @@
 						Around the World
 					</h2>
 					<p class="text-xs text-slate-400 font-light leading-relaxed">
-						เกมสืบหาสัจจะการเดินทางรอบโลก สะสมเส้นทางให้ครบ 14 สถานที่!
+						เดินทางรอบโลก
 					</p>
 				</div>
 			</div>
 			<div class="btn btn-cyan btn-sm bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold rounded-xl border-none w-full shadow-lg">
+				เล่นเลย →
+			</div>
+		</a>
+
+		<!-- Back to the Future -->
+		<a
+			href="/puzzles/deduction/backtothefuture"
+			class="bg-slate-900 border border-slate-800 hover:border-amber-500/50 rounded-3xl p-6 shadow-xl flex flex-col justify-between space-y-6 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl group"
+		>
+			<div class="space-y-4">
+				<div class="w-12 h-12 rounded-2xl bg-amber-500/10 text-amber-400 flex items-center justify-center border border-amber-500/20 shadow-md">
+					<ZapIcon size="24" />
+				</div>
+				<div class="space-y-1">
+					<span class="badge bg-amber-500/20 text-amber-300 border border-amber-500/40 text-xs px-2.5 py-0.5 font-bold rounded-lg">
+						GAME 4
+					</span>
+					<h2 class="text-xl font-black text-white group-hover:text-amber-300 transition-colors">
+						Back to the Future
+					</h2>
+					<p class="text-xs text-slate-400 font-light leading-relaxed">
+						นิ้วนี้เลขอะไร
+					</p>
+				</div>
+			</div>
+			<div class="btn btn-amber btn-sm bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold rounded-xl border-none w-full shadow-lg">
 				เล่นเลย →
 			</div>
 		</a>

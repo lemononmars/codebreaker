@@ -167,6 +167,26 @@
 
 	const otherPuzzles = [
 		{
+			type: 'mathsticks',
+			title: 'Mathsticks',
+			description: 'ปริศนาย้ายไม้ขีดไฟเพื่อแก้สมการคณิตศาสตร์',
+			icon: `<svg class="w-10 h-10 text-yellow-400 transition-all duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+				<path d="M12 2v20M2 12h20"/>
+				<circle cx="12" cy="4" r="1.5" fill="currentColor"/>
+			</svg>`
+		},
+		{
+			type: 'mathdle',
+			title: 'Mathdle',
+			description: 'เกมนิรนัยทายสมการคณิตศาสตร์ประจำวัน',
+			icon: `<svg class="w-10 h-10 text-amber-400 transition-all duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+				<rect x="4" y="4" width="16" height="16" rx="2"/>
+				<line x1="8" y1="10" x2="16" y2="10"/>
+				<line x1="8" y1="14" x2="16" y2="14"/>
+				<line x1="12" y1="8" x2="12" y2="16"/>
+			</svg>`
+		},
+		{
 			type: 'calendar2026',
 			title: 'Calendar 2026',
 			description: 'ปริศนาไปรษณียบัตรจากปฏิทิน Code Breaker 2026',
@@ -181,7 +201,7 @@
 		{
 			type: 'deduction',
 			title: 'Deduction Games',
-			description: 'เกมสืบหาสัจจะและไขความลับจากกฎซ่อนแอบ (Petals Around the Rose, หมู ไก่ ปลา กุ้ง & Around the World)',
+			description: 'เกมนิรนัยทายกฎลับ',
 			icon: `<svg class="w-10 h-10 text-purple-400 transition-all duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 				<path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
 				<polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
@@ -191,7 +211,7 @@
 		{
 			type: 'thaipuzzleline',
 			title: 'ปริศนาภาษาไทย',
-			description: 'ติดตามและร่วมสนุกกับปริศนาภาษาไทยผ่าน LINE Official Account',
+			description: 'แก้ปริศนาภาษาไทยผ่าน Line',
 			href: 'https://line.me/R/ti/p/@231qozuo',
 			icon: `<svg class="w-10 h-10 text-green-400 transition-all duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 				<path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>

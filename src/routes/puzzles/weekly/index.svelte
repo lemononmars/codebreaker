@@ -14,6 +14,7 @@
 
 <script lang="ts">
 	import { getPuzzleImageURL } from '$lib/supabase';
+	import { getNthFridayOfYear } from '$lib/weeklyGuard';
 	import { AwardIcon, CheckCircleIcon, CalendarIcon, ImageIcon, ArrowUpIcon, ArrowDownIcon } from 'svelte-feather-icons';
 
 	export let content: any[] = [];
@@ -43,19 +44,6 @@
 
 	function weekStr(n: number) {
 		return ('0' + n).slice(-2);
-	}
-
-	// Returns the nth Friday of the year at 4:30pm UTC+7 (= 11:30 UTC)
-	function getNthFridayOfYear(year: number, week: number): Date {
-		const y = Number(year) || 2026;
-		const w = Number(week) || 1;
-		// Find Jan 1 in UTC
-		const jan1Utc = Date.UTC(y, 0, 1);
-		const dayOfWeek = new Date(jan1Utc).getUTCDay();
-		const daysUntilFirstFriday = (5 - dayOfWeek + 7) % 7;
-		// 4:30pm UTC+7 = 11:30 UTC
-		const firstFridayUtc = jan1Utc + daysUntilFirstFriday * 86400000 + 11.5 * 3600000;
-		return new Date(firstFridayUtc + (w - 1) * 7 * 86400000);
 	}
 
 	function getWeeklyUploadedDate(year: number, week: number) {
@@ -102,108 +90,107 @@
 		{/if}
 	</div>
 
-	<!-- Year & Sort Filter Bar -->
-	<div class="flex flex-wrap items-center justify-between gap-4 bg-slate-900/60 p-4 rounded-2xl border border-slate-800">
-		{#if years.length > 0}
-			<div class="flex flex-wrap gap-2 items-center">
-				<span class="text-sm font-semibold text-slate-300 mr-2">เลือกปี:</span>
-				{#each years as y}
+	{#if years.length > 0}
+		<!-- Controls Bar: Year Selection & Sort -->
+		<div class="flex flex-wrap items-center justify-between gap-4 bg-slate-900/60 p-4 rounded-2xl border border-slate-800">
+			<!-- Year Tabs -->
+			<div class="flex flex-wrap items-center gap-2">
+				<span class="text-xs font-bold text-slate-400 uppercase tracking-wider mr-2">ปี:</span>
+				{#each years as yr}
 					<button
-						class="btn btn-sm transition-all duration-200 {selectedYear === y ? 'bg-emerald-500 text-slate-950 font-bold shadow-lg scale-105' : 'bg-slate-950 text-slate-300 border-slate-800 hover:border-emerald-500/40'}"
-						style={selectedYear === y ? 'color: #0f172a;' : ''}
-						on:click={() => (selectedYear = y)}
+						on:click={() => (selectedYear = yr)}
+						class="btn btn-sm rounded-xl font-bold transition-all {selectedYear === yr
+							? 'btn-emerald bg-emerald-500 text-slate-950 border-none shadow-md shadow-emerald-500/20'
+							: 'btn-ghost text-slate-400 hover:text-white hover:bg-slate-800'}"
 					>
-						ปี {y}
+						ปี {yr}
 					</button>
 				{/each}
 			</div>
-		{/if}
 
-		<!-- Sort direction filter button -->
-		<button
-			on:click={() => (sortDirection = sortDirection === 'desc' ? 'asc' : 'desc')}
-			class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-950 border border-slate-800 text-xs font-bold text-slate-300 hover:border-emerald-500/40 transition-all"
-		>
-			<span>เรียงตามวันที่: {sortDirection === 'desc' ? 'ล่าสุดก่อน (Desc)' : 'เก่าสุดก่อน (Asc)'}</span>
-			{#if sortDirection === 'desc'}
-				<ArrowDownIcon size="16" class="text-emerald-400" />
-			{:else}
-				<ArrowUpIcon size="16" class="text-emerald-400" />
-			{/if}
-		</button>
-	</div>
+			<!-- Sort Toggle -->
+			<button
+				on:click={() => (sortDirection = sortDirection === 'desc' ? 'asc' : 'desc')}
+				class="btn btn-ghost btn-xs gap-1.5 font-bold text-slate-400 hover:text-white"
+			>
+				<span>เรียงตามสัปดาห์ ({sortDirection === 'desc' ? 'ล่าสุดก่อน' : 'เก่าสุดก่อน'})</span>
+				{#if sortDirection === 'desc'}
+					<ArrowDownIcon size="14" />
+				{:else}
+					<ArrowUpIcon size="14" />
+				{/if}
+			</button>
+		</div>
 
-	<!-- Puzzles Grid Cards -->
-	{#if filteredPuzzles.length > 0}
-		<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
-			{#each filteredPuzzles as p (p.year + '-' + p.week)}
-				{@const cardId = `${p.year}-${p.week}`}
-				{@const imgFilename = `${p.year}${weekStr(p.week)}.jpg`}
-				{@const imgUrl = getPuzzleImageURL('weekly', imgFilename)}
-				
-				<a
-					href="/puzzles/weekly/{p.year}/{p.week}"
-					class="card bg-slate-900/60 text-slate-100 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 overflow-hidden border border-slate-800 group flex flex-col justify-between rounded-2xl"
-				>
-					<!-- Thumbnail Container -->
-					<div class="relative w-full h-36 sm:h-48 bg-slate-950 flex items-center justify-center overflow-hidden">
-						{#if !imageErrors[cardId] && imgUrl}
-							<img
-								src={imgUrl}
-								alt="สัปดาห์ที่ {p.week}"
-								class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-								on:error={() => handleImageError(cardId)}
-							/>
-						{:else}
-							<div class="flex flex-col items-center justify-center text-center p-4 text-slate-500">
-								<ImageIcon size="32" />
-								<span class="text-xs mt-1">ไม่มีรูปภาพ</span>
+		<!-- Puzzle Grid -->
+		{#if filteredPuzzles.length > 0}
+			<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+				{#each filteredPuzzles as puzzle}
+					{@const imgUrl = getPuzzleImageURL(puzzle.year, puzzle.week)}
+					{@const pid = `${puzzle.year}-${puzzle.week}`}
+
+					<a
+						href="/puzzles/weekly/{puzzle.year}/{puzzle.week}"
+						class="group bg-slate-900 border border-slate-800 hover:border-emerald-500/50 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 flex flex-col hover:-translate-y-1.5"
+					>
+						<!-- Image Preview Header -->
+						<div class="relative w-full aspect-video bg-slate-950 overflow-hidden flex items-center justify-center border-b border-slate-800">
+							{#if imgUrl && !imageErrors[pid]}
+								<img
+									src={imgUrl}
+									alt="Weekly {puzzle.year} Week {puzzle.week}"
+									class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+									on:error={() => handleImageError(pid)}
+								/>
+							{:else}
+								<div class="flex flex-col items-center gap-2 text-slate-600">
+									<ImageIcon size="32" />
+									<span class="text-xs font-mono">Week {weekStr(puzzle.week)}</span>
+								</div>
+							{/if}
+
+							<!-- Week Badge Overlay -->
+							<div class="absolute top-2 left-2 badge bg-slate-950/80 backdrop-blur-md border-slate-700 text-emerald-400 font-mono text-xs font-bold px-2.5 py-1">
+								Week {weekStr(puzzle.week)}
 							</div>
-						{/if}
 
-						<div class="absolute top-2 right-2 px-2.5 py-1 rounded-lg bg-slate-950/80 backdrop-blur-md text-[10px] sm:text-xs font-extrabold text-emerald-600 border border-emerald-600/40">
-							สัปดาห์ที่ {p.week}
-						</div>
-					</div>
-
-					<!-- Card Body -->
-					<div class="card-body p-3 sm:p-5 flex flex-col justify-between gap-2.5 flex-1">
-						<div>
-							<h2 class="card-title text-sm sm:text-lg font-bold text-white group-hover:text-emerald-400 transition-colors line-clamp-1">
-								{p.title ? p.title : `ปริศนาสัปดาห์ที่ ${p.week}`}
-							</h2>
-							
-							<div class="flex items-center gap-1.5 text-xs text-slate-400 mt-1">
-								<CalendarIcon size="14" />
-								<span>{getWeeklyUploadedDate(p.year, p.week)}</span>
-							</div>
-						</div>
-
-						<!-- Card Footer / Stats -->
-						<div class="flex items-center justify-between border-t border-slate-800/80 pt-2.5 mt-auto text-xs">
-							<a
-								href="/puzzles/weekly/{p.year}/{p.week}/leaderboard"
-								on:click|stopPropagation
-								class="flex items-center gap-1.5 font-bold text-emerald-400 hover:text-emerald-300 hover:underline transition-colors z-10"
-								title="ดูตารางอันดับข้อนี้"
-							>
-								<CheckCircleIcon size="15" />
-								<span>ตอบถูก {p.solves || 0} คน</span>
-							</a>
-
-							{#if !p.hasAnswer}
-								<span class="px-2 py-0.5 rounded-md bg-amber-500/20 text-amber-300 border border-amber-500/30 text-[10px] font-semibold">
-									ยังไม่ออกเฉลย
-								</span>
+							<!-- Solved Indicator -->
+							{#if puzzle.hasAnswer}
+								<div class="absolute top-2 right-2 badge bg-emerald-500/20 backdrop-blur-md border-emerald-500/40 text-emerald-300 font-bold text-xs px-2 py-0.5 gap-1">
+									<CheckCircleIcon size="12" />
+									<span>มีเฉลย</span>
+								</div>
 							{/if}
 						</div>
-					</div>
-				</a>
-			{/each}
-		</div>
+
+						<!-- Card Details -->
+						<div class="p-4 flex-1 flex flex-col justify-between space-y-3">
+							<div class="space-y-1">
+								<h2 class="text-base font-extrabold text-white group-hover:text-emerald-400 transition-colors line-clamp-2">
+									{puzzle.title || `สัปดาห์ที่ ${puzzle.week}`}
+								</h2>
+								<div class="flex items-center gap-1.5 text-xs text-slate-400">
+									<CalendarIcon size="12" />
+									<span>{getWeeklyUploadedDate(puzzle.year, puzzle.week)}</span>
+								</div>
+							</div>
+
+							<div class="flex items-center justify-between text-xs pt-2 border-t border-slate-800/80">
+								<span class="text-slate-400 font-medium">ผู้ตอบถูก:</span>
+								<span class="font-mono font-bold text-emerald-400">{puzzle.solves || 0} คน</span>
+							</div>
+						</div>
+					</a>
+				{/each}
+			</div>
+		{:else}
+			<div class="text-center py-16 bg-slate-900/40 border border-slate-800 rounded-2xl text-slate-400 space-y-2">
+				<p class="text-lg font-bold">ไม่พบรายการปริศนาในปี {selectedYear}</p>
+			</div>
+		{/if}
 	{:else}
-		<div class="text-center py-12 text-slate-400">
-			<p>ไม่พบข้อมูลปริศนาสำหรับปีนี้</p>
+		<div class="text-center py-16 bg-slate-900/40 border border-slate-800 rounded-2xl text-slate-400 space-y-2">
+			<p class="text-lg font-bold">กำลังโหลดรายการปริศนา...</p>
 		</div>
 	{/if}
 </div>

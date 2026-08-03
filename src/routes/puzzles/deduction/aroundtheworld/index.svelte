@@ -91,7 +91,7 @@
 	<title>Code Breaker | Around the World 🌍</title>
 	<meta
 		name="description"
-		content="เกมสืบหาสัจจะการเดินทางรอบโลก A-R-O-U-N-D-T-H-E-W-O-R-L-D"
+		content="เกมเดินทางรอบโลก"
 	/>
 </svelte:head>
 

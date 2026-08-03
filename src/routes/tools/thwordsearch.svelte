@@ -10,8 +10,10 @@
 		Share2Icon,
 		BookIcon,
 		ClockIcon,
-		Maximize2Icon
+		Maximize2Icon,
+		TrendingUpIcon
 	} from 'svelte-feather-icons';
+	import { getWordFrequency } from '$lib/utils/dict_freq';
 
 	let input: string = $page.url.searchParams.get('q') || '';
 	let query: string = input;
@@ -22,6 +24,7 @@
 	let loading: boolean = !!input;
 	let revealHistory: boolean = false;
 	let strict: boolean = true;
+	let sortByFreq: boolean = false;
 	let history: string[] = [];
 
 	let activeWord = '';
@@ -59,9 +62,17 @@
 		letter === ''
 			? queryResults.results
 			: queryResults.results.filter((r: string) => getFirstLetter(r) == letter);
-	$: currentQueryResults = filteredResults.slice(
+	$: sortedResults = sortByFreq
+		? [...filteredResults].sort((a: string, b: string) => {
+				const freqA = getWordFrequency(a);
+				const freqB = getWordFrequency(b);
+				if (freqB !== freqA) return freqB - freqA;
+				return a.localeCompare(b, 'th');
+			})
+		: filteredResults;
+	$: currentQueryResults = sortedResults.slice(
 		start,
-		start + Math.min(100, queryResults.count - start)
+		start + Math.min(100, sortedResults.length - start)
 	);
 
 	const url = 'https://codebreakerth.vercel.app/tool/thwordsearch';
@@ -270,6 +281,20 @@
 					</span>
 				</label>
 			</div>
+			<div class="tooltip tooltip-bottom" data-tip="เรียงตามความนิยม (PyThaiNLP)">
+				<label class="cursor-pointer flex items-center gap-1">
+					<input
+						type="checkbox"
+						class="checkbox checkbox-sm checkbox-secondary"
+						bind:checked={sortByFreq}
+					/>
+					<span
+						class="{sortByFreq ? 'text-secondary' : 'opacity-50'} transition-colors font-bold text-lg"
+					>
+						<TrendingUpIcon size="24" />
+					</span>
+				</label>
+			</div>
 			<div class="tooltip tooltip-bottom" data-tip="แสดงประวัติการค้นหา">
 				<label class="cursor-pointer flex items-center gap-1">
 					<input type="checkbox" class="checkbox checkbox-sm" bind:checked={revealHistory} />
@@ -395,9 +420,16 @@
 				{#each currentQueryResults as qr}
 					<div class="relative inline-block m-0.5">
 						<button
-							class="btn btn-outline btn-sm lg:btn-md lg:text-xl font-thin w-full"
-							on:click={() => copyWord(qr)}>{qr}</button
+							class="btn btn-outline btn-sm lg:btn-md lg:text-xl font-thin w-full gap-1"
+							on:click={() => copyWord(qr)}
 						>
+							<span>{qr}</span>
+							{#if sortByFreq && getWordFrequency(qr) > 0}
+								<span class="badge badge-secondary badge-sm opacity-80 text-xs font-normal">
+									{getWordFrequency(qr).toLocaleString()}
+								</span>
+							{/if}
+						</button>
 						{#if activeWord === qr}
 							<div
 								class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 p-2 bg-neutral text-neutral-content rounded-lg shadow-xl flex items-center gap-3 z-50 whitespace-nowrap"
