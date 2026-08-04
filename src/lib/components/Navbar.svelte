@@ -17,9 +17,9 @@
 	import { username } from '$lib/store';
 	import { page } from '$app/stores';
 
-	const icons = [HomeIcon, CalendarIcon, PlayCircleIcon, ToolIcon, BookOpenIcon, ShoppingCartIcon, InfoIcon];
-	const menus = ['หน้าแรก', 'กิจกรรม', 'ปริศนา', 'เครื่องมือ', 'ข้อมูล', 'ร้านค้า', 'เกี่ยวกับ'];
-	const links = ['', 'events', 'puzzles', 'tools', 'resources', 'shop', 'about'];
+	const icons = [HomeIcon, CalendarIcon, PlayCircleIcon, ToolIcon, BookOpenIcon, ShoppingCartIcon];
+	const menus = ['หน้าแรก', 'กิจกรรม', 'ปริศนา', 'เครื่องมือ', 'ข้อมูล', 'ร้านค้า'];
+	const links = ['', 'events', 'puzzles', 'tools', 'resources', 'shop'];
 
 	let hideBar = false;
 	let openModal = false;

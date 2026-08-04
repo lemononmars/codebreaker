@@ -16,13 +16,16 @@
 		'บ', 'ป', 'ผ', 'ฝ', 'พ', 'ฟ', 'ม', 'ย', 'ร', 'ล', 'ว', 'ส', 'ห', 'อ'
 	];
 
+	import dictPythaiRaw from '$lib/utils/dict_pythainlp.json?raw';
+	const pythaiMap: Record<string, number> = JSON.parse(dictPythaiRaw);
+
 	function loadNewQuestion() {
 		isSolved = false;
 		wrongChoice = '';
 		selectedChoice = '';
 
 		const eligibleWords = dict.filter(
-			(w) => w.length >= 4 && w.length <= 7 && /^[ก-ฮ]+$/.test(w)
+			(w) => w.length >= 4 && w.length <= 7 && /^[ก-ฮ]+$/.test(w) && (pythaiMap[w] ?? 0) >= 1
 		);
 
 		let foundWord = '';

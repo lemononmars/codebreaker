@@ -51,6 +51,7 @@
 	let loadingSuggestions = false;
 	let strict = false;
 	let smartMode = false;
+	let includeWiki = true;
 	let showResizeControls = false;
 	let showImportModal = false;
 	let importText = '';
@@ -311,10 +312,10 @@
 		try {
 			const [aRes, dRes] = await Promise.all([
 				aInfo.coords.length > 1
-					? search(acrossPattern, false, sig, undefined, strict)
+					? search(acrossPattern, includeWiki, sig, undefined, strict)
 					: Promise.resolve({ results: [], valid: false, count: 0 }),
 				dInfo.coords.length > 1
-					? search(downPattern, false, sig, undefined, strict)
+					? search(downPattern, includeWiki, sig, undefined, strict)
 					: Promise.resolve({ results: [], valid: false, count: 0 })
 			]);
 
@@ -338,7 +339,7 @@
 							let startR = coord.r;
 							while (startR > 0 && !grid[startR - 1][coord.c].black) startR--;
 							const intersectIdx = coord.r - startR;
-							const res = await search(pattern, false, sig, undefined, strict);
+							const res = await search(pattern, includeWiki, sig, undefined, strict);
 							return new Set((res?.results ?? []).map((w) => splitWord(w)[intersectIdx]));
 						})
 					),
@@ -356,7 +357,7 @@
 							let startC = coord.c;
 							while (startC > 0 && !grid[coord.r][startC - 1].black) startC--;
 							const intersectIdx = coord.c - startC;
-							const res = await search(pattern, false, sig, undefined, strict);
+							const res = await search(pattern, includeWiki, sig, undefined, strict);
 							return new Set((res?.results ?? []).map((w) => splitWord(w)[intersectIdx]));
 						})
 					)
@@ -620,7 +621,7 @@
 			const wordLists: string[][] = [];
 			for (const slot of slots) {
 				if (sig.aborted) return;
-				const res = await search(slotPattern(slot, tempGrid), false, sig, undefined, strict);
+				const res = await search(slotPattern(slot, tempGrid), includeWiki, sig, undefined, strict);
 				wordLists.push(res?.results ?? []);
 			}
 			if (sig.aborted) return;

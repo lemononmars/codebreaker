@@ -295,6 +295,9 @@
 		}
 	}
 
+	import dictPythaiRaw from '$lib/utils/dict_pythainlp.json?raw';
+	const pythaiMap: Record<string, number> = JSON.parse(dictPythaiRaw);
+
 	function initPlayableWords() {
 		const thaiRegex = /^[ก-ฮะ-์]+$/;
 		playableWords = dict.filter(w => 
@@ -302,7 +305,8 @@
 			w.length <= 8 && 
 			thaiRegex.test(w) &&
 			!w.startsWith('การ') &&
-			!w.startsWith('ความ')
+			!w.startsWith('ความ') &&
+			(pythaiMap[w] ?? 0) >= 1
 		);
 	}
 

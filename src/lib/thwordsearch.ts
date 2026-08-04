@@ -1,5 +1,20 @@
 import dict from '$lib/dict.json'
 import wiki from '$lib/wiki.json'
+import abbrRaw from '$lib/data/thai_abbreviations.csv?raw'
+
+function parseAbbrWords(raw: string): string[] {
+  if (!raw) return [];
+  const lines = raw.split('\n').slice(1);
+  const set = new Set<string>();
+  for (const line of lines) {
+    const parts = line.split(',');
+    if (parts[0]) set.add(parts[0].trim());
+    if (parts[1]) set.add(parts[1].trim());
+  }
+  return Array.from(set).filter(w => w.length > 0);
+}
+
+const abbrWords = parseAbbrWords(abbrRaw);
 
 // --- Trie Implementation for Thai Crossword Optimization ---
 let dictTrie: any = null;
@@ -99,7 +114,7 @@ export async function search(query: string, includeWiki: boolean, abortSignal?: 
   const isSimplePattern = !query.match(/[\&\|\^\:\/\!\{\}\*\[\]\~A-Z0-9]/);
   if (isSimplePattern) {
     if (includeWiki) {
-      if (!combinedTrie) combinedTrie = buildThaiTrie([...dict, ...(wiki as string[])]);
+      if (!combinedTrie) combinedTrie = buildThaiTrie([...dict, ...(wiki as string[]), ...abbrWords]);
     } else {
       if (!dictTrie) dictTrie = buildThaiTrie(dict);
     }
@@ -175,7 +190,7 @@ export async function search(query: string, includeWiki: boolean, abortSignal?: 
   }
 
   if(includeWiki) {
-    let wikiList = wiki as string[];
+    let wikiList = [...(wiki as string[]), ...abbrWords];
     for (let i = 0; i < wikiList.length; i++) {
       if (abortSignal?.aborted) return {valid: true, count: results.length, results: results, aborted: true};
       if (i % 5000 === 0) await new Promise(r => setTimeout(r, 0));

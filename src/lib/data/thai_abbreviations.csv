@@ -1,0 +1,198 @@
+abbreviation,full_word,category,source
+รร.,โรงเรียน,สถานศึกษา,KhamYo / PyThaiNLP
+รร.,โรงแรม,สถานที่,KhamYo / PyThaiNLP
+ร.ร.,โรงเรียน,สถานศึกษา,KhamYo / PyThaiNLP
+ผอ.,ผู้อำนวยการ,ตำแหน่ง/อาชีพ,KhamYo / PyThaiNLP
+นร.,นักเรียน,สถานภาพ,KhamYo / PyThaiNLP
+นร,สำนักนายกรัฐมนตรี,หน่วยงานราชการ,KhamYo / PyThaiNLP
+นสพ.,หนังสือพิมพ์,สื่อ/เอกสาร,KhamYo / PyThaiNLP
+นสพ.,นายสัตวแพทย์,ตำแหน่ง/อาชีพ,KhamYo / PyThaiNLP
+ป.ล.,ปัจฉิมลิขิต,ภาษา/การเขียน,KhamYo / PyThaiNLP
+พ.ศ.,พุทธศักราช,ศักราช/เวลา,KhamYo / PyThaiNLP
+ค.ศ.,คริสต์ศักราช,ศักราช/เวลา,KhamYo / PyThaiNLP
+ม.ศ.,มหาศักราช,ศักราช/เวลา,KhamYo / PyThaiNLP
+ร.ศ.,รัตนโกสินทร์ศก,ศักราช/เวลา,KhamYo / PyThaiNLP
+รศ.,รองศาสตราจารย์,ตำแหน่งวิชาการ,KhamYo / PyThaiNLP
+ผศ.,ผู้ช่วยศาสตราจารย์,ตำแหน่งวิชาการ,KhamYo / PyThaiNLP
+ศจ.,ศาสตราจารย์,ตำแหน่งวิชาการ,KhamYo / PyThaiNLP
+ดร.,ด็อกเตอร์,ตำแหน่งวิชาการ,KhamYo / PyThaiNLP
+อ.ศ.,อาจารย์พิเศษ,ตำแหน่งวิชาการ,ORST / Thai Wikipedia
+อ.,อาจารย์,ตำแหน่งวิชาการ,KhamYo / PyThaiNLP
+อ.,อำเภอ,การปกครอง,KhamYo / PyThaiNLP
+อ.,วันอังคาร,วัน/เวลา,KhamYo / PyThaiNLP
+ต.,ตำบล,การปกครอง,KhamYo / PyThaiNLP
+ต.,เมตริกตัน,หน่วยวัด,KhamYo / PyThaiNLP
+จ.,จังหวัด,การปกครอง,KhamYo / PyThaiNLP
+ร.พ.,โรงพยาบาล,การแพทย์,KhamYo / PyThaiNLP
+ร.พ.,โรงพิมพ์,ธุรกิจ/อุตสาหกรรม,KhamYo / PyThaiNLP
+น.พ.,นายแพทย์,การแพทย์,KhamYo / PyThaiNLP
+พ.ญ.,แพทย์หญิง,การแพทย์,KhamYo / PyThaiNLP
+ท.พ.,ทันตแพทย์,การแพทย์,KhamYo / PyThaiNLP
+ท.ญ.,ทันตแพทย์หญิง,การแพทย์,KhamYo / PyThaiNLP
+อสม.,อาสาสมัครสาธารณสุข,การแพทย์,KhamYo / PyThaiNLP
+สธ.,กระทรวงสาธารณสุข,หน่วยงานราชการ,KhamYo / PyThaiNLP
+ศธ.,กระทรวงศึกษาธิการ,หน่วยงานราชการ,KhamYo / PyThaiNLP
+มท.,กระทรวงมหาดไทย,หน่วยงานราชการ,ORST / Thai Wikipedia
+กค.,กระทรวงการคลัง,หน่วยงานราชการ,ORST / Thai Wikipedia
+พณ.,กระทรวงพาณิชย์,หน่วยงานราชการ,ORST / Thai Wikipedia
+กต.,กระทรวงการต่างประเทศ,หน่วยงานราชการ,ORST / Thai Wikipedia
+กษ.,กระทรวงเกษตรและสหกรณ์,หน่วยงานราชการ,ORST / Thai Wikipedia
+คค.,กระทรวงคมนาคม,หน่วยงานราชการ,ORST / Thai Wikipedia
+ทส.,กระทรวงทรัพยากรธรรมชาติและสิ่งแวดล้อม,หน่วยงานราชการ,ORST / Thai Wikipedia
+ดศ.,กระทรวงดิจิทัลเพื่อเศรษฐกิจและสังคม,หน่วยงานราชการ,ORST / Thai Wikipedia
+พน.,กระทรวงพลังงาน,หน่วยงานราชการ,ORST / Thai Wikipedia
+รง.,กระทรวงแรงงาน,หน่วยงานราชการ,ORST / Thai Wikipedia
+วธ.,กระทรวงวัฒนธรรม,หน่วยงานราชการ,ORST / Thai Wikipedia
+อว.,กระทรวงการอุดมศึกษา วิทยาศาสตร์ วิจัยและนวัตกรรม,หน่วยงานราชการ,ORST / Thai Wikipedia
+อก.,กระทรวงอุตสาหกรรม,หน่วยงานราชการ,ORST / Thai Wikipedia
+กล.,กระทรวงกลาโหม,หน่วยงานราชการ,ORST / Thai Wikipedia
+ยธ.,กระทรวงยุติธรรม,หน่วยงานราชการ,ORST / Thai Wikipedia
+ตร.,ตำรวจ,หน่วยงานราชการ,KhamYo / PyThaiNLP
+ตร.,ตาราง,หน่วยวัด,KhamYo / PyThaiNLP
+ก.ตร.,กรมตำรวจ,หน่วยงานราชการ,KhamYo / PyThaiNLP
+สน.,สถานีตำรวจนครบาล,หน่วยงานราชการ,KhamYo / PyThaiNLP
+สน.ภ.,สถานีตำรวจภูธร,หน่วยงานราชการ,KhamYo / PyThaiNLP
+ต.ช.ด.,ตำรวจตระเวนชายแดน,หน่วยงานราชการ,KhamYo / PyThaiNLP
+สวญ.,สารวัตรใหญ่,ตำแหน่ง/อาชีพ,KhamYo / PyThaiNLP
+ครม.,คณะรัฐมนตรี,หน่วยงานราชการ,KhamYo / PyThaiNLP
+รมว.,รัฐมนตรีว่าการ,ตำแหน่ง/การเมือง,KhamYo / PyThaiNLP
+รมต.,รัฐมนตรี,ตำแหน่ง/การเมือง,KhamYo / PyThaiNLP
+ปธน.,ประธานาธิบดี,ตำแหน่ง/การเมือง,KhamYo / PyThaiNLP
+ส.ส.,สมาชิกสภาผู้แทนราษฎร,ตำแหน่ง/การเมือง,KhamYo / PyThaiNLP
+ส.ว.,สมาชิกวุฒิสภา,ตำแหน่ง/การเมือง,ORST / Thai Wikipedia
+สจ.,สมาชิกสภาจังหวัด,ตำแหน่ง/การเมือง,KhamYo / PyThaiNLP
+ส.จ.,สมาชิกสภาจังหวัด,ตำแหน่ง/การเมือง,KhamYo / PyThaiNLP
+คสช.,คณะรักษาความสงบแห่งชาติ,การเมือง,KhamYo / PyThaiNLP
+คสช.,โครงการส่งเสริมการศึกษาชุมชน,การศึกษา,KhamYo / PyThaiNLP
+กทม,กรุงเทพมหานคร,การปกครอง,KhamYo / PyThaiNLP
+กทม.,กรุงเทพมหานคร,การปกครอง,ORST / Thai Wikipedia
+ขรก,ข้าราชการ,ตำแหน่ง/อาชีพ,KhamYo / PyThaiNLP
+จนท.,เจ้าหน้าที่,ตำแหน่ง/อาชีพ,KhamYo / PyThaiNLP
+หน.,หัวหน้า,ตำแหน่ง/อาชีพ,KhamYo / PyThaiNLP
+จขกท,เจ้าของกระทู้,อินเทอร์เน็ต/สื่อสังคม,KhamYo / PyThaiNLP
+ปชส.,ประชาสัมพันธ์,สื่อ/สื่อสาร,KhamYo / PyThaiNLP
+ปชช.,ประชาชน,สังคม,KhamYo / PyThaiNLP
+ฉ.,ฉบับ,ลักษณนาม,KhamYo / PyThaiNLP
+โทร.,โทรศัพท์,อุปกรณ์/สื่อสาร,KhamYo / PyThaiNLP
+ม.,มัธยมศึกษา,การศึกษา,KhamYo / PyThaiNLP
+ม.,มหาวิทยาลัย,สถานศึกษา,KhamYo / PyThaiNLP
+ม.,เมตร,หน่วยวัด,KhamYo / PyThaiNLP
+ม.,หมู่บ้าน,การปกครอง,KhamYo / PyThaiNLP
+ร.,รัชกาล,ราชาศัพท์/ประวัติศาสตร์,KhamYo / PyThaiNLP
+นศ.,นักศึกษา,สถานภาพ,KhamYo / PyThaiNLP
+มธ.,มหาวิทยาลัยธรรมศาสตร์,สถานศึกษา,KhamYo / PyThaiNLP
+มช.,มหาวิทยาลัยเชียงใหม่,สถานศึกษา,KhamYo / PyThaiNLP
+มข.,มหาวิทยาลัยขอนแก่น,สถานศึกษา,KhamYo / PyThaiNLP
+มมส,มหาวิทยาลัยมหาสารคาม,สถานศึกษา,KhamYo / PyThaiNLP
+มศว,มหาวิทยาลัยศรีนครินทรวิโรฒ,สถานศึกษา,KhamYo / PyThaiNLP
+มทส.,มหาวิทยาลัยเทคโนโลยีสุรนารี,สถานศึกษา,KhamYo / PyThaiNLP
+มรภ.,มหาวิทยาลัยราชภัฏ,สถานศึกษา,KhamYo / PyThaiNLP
+สพฐ.,สำนักงานคณะกรรมการการศึกษาขั้นพื้นฐาน,หน่วยงานราชการ,KhamYo / PyThaiNLP
+สพม.,สำนักงานเขตพื้นที่การศึกษามัธยมศึกษา,หน่วยงานราชการ,KhamYo / PyThaiNLP
+สช.,สำนักงานคณะกรรมการการศึกษาเอกชน,หน่วยงานราชการ,KhamYo / PyThaiNLP
+สปช.,สำนักงานการประถมศึกษาแห่งชาติ,หน่วยงานราชการ,KhamYo / PyThaiNLP
+สปจ.,สำนักงานการประถมศึกษาจังหวัด,หน่วยงานราชการ,KhamYo / PyThaiNLP
+สปอ.,สำนักงานการประถมศึกษาอำเภอ,หน่วยงานราชการ,KhamYo / PyThaiNLP
+วปอ.,วิทยาลัยป้องกันราชอาณาจักร,สถานศึกษา,KhamYo / PyThaiNLP
+วค.,วิทยาลัยครู,สถานศึกษา,KhamYo / PyThaiNLP
+กลต.,สำนักงานคณะกรรมการกำกับหลักทรัพย์และตลาดหลักทรัพย์,หน่วยงานราชการ,KhamYo / PyThaiNLP
+คคบ.,คณะกรรมการคุ้มครองผู้บริโภค,หน่วยงานราชการ,KhamYo / PyThaiNLP
+สมอ.,สำนักงานมาตรฐานผลิตภัณฑ์อุตสาหกรรม,หน่วยงานราชการ,KhamYo / PyThaiNLP
+ธอส.,ธนาคารอาคารสงเคราะห์,การเงิน/ธนาคาร,KhamYo / PyThaiNLP
+ธกส.,ธนาคารเพื่อการเกษตรและสหกรณ์การเกษตร,การเงิน/ธนาคาร,ORST / Thai Wikipedia
+ออมสิน,ธนาคารออมสิน,การเงิน/ธนาคาร,ORST / Thai Wikipedia
+พปชร.,พรรคพลังประชารัฐ,การเมือง,KhamYo / PyThaiNLP
+พท.,พรรคเพื่อไทย,การเมือง,KhamYo / PyThaiNLP
+พท.,พื้นที่,ภูมิศาสตร์,KhamYo / PyThaiNLP
+ภ.พ.,ภาษีมูลค่าเพิ่ม,การเงิน/ภาษี,KhamYo / PyThaiNLP
+ครน.,คูณร่วมน้อย,คณิตศาสตร์,KhamYo / PyThaiNLP
+ห.ร.ม.,หารร่วมมาก,คณิตศาสตร์,ORST / Thai Wikipedia
+รัฐฯ,รัฐบาล,การเมือง,KhamYo / PyThaiNLP
+ปท.,ไปรษณีย์โทรเลข,สื่อสาร/ขนส่ง,KhamYo / PyThaiNLP
+ก.พ.,กุมภาพันธ์,เดือน/เวลา,ORST / Thai Wikipedia
+ก.พ.,สำนักงานคณะกรรมการข้าราชการพลเรือน,หน่วยงานราชการ,ORST / Thai Wikipedia
+มี.ค.,มีนาคม,เดือน/เวลา,ORST / Thai Wikipedia
+เม.ย.,เมษายน,เดือน/เวลา,ORST / Thai Wikipedia
+พ.ค.,พฤษภาคม,เดือน/เวลา,ORST / Thai Wikipedia
+มิ.ย.,มิถุนายน,เดือน/เวลา,ORST / Thai Wikipedia
+ก.ค.,กรกฎาคม,เดือน/เวลา,ORST / Thai Wikipedia
+ส.ค.,สิงหาคม,เดือน/เวลา,ORST / Thai Wikipedia
+ก.ย.,กันยายน,เดือน/เวลา,ORST / Thai Wikipedia
+ต.ค.,ตุลาคม,เดือน/เวลา,ORST / Thai Wikipedia
+พ.ย.,พฤศจิกายน,เดือน/เวลา,ORST / Thai Wikipedia
+ธ.ค.,ธันวาคม,เดือน/เวลา,ORST / Thai Wikipedia
+ม.ค.,มกราคม,เดือน/เวลา,ORST / Thai Wikipedia
+กม.,กิโลเมตร,หน่วยวัด,ORST / Thai Wikipedia
+กก.,กิโลกรัม,หน่วยวัด,ORST / Thai Wikipedia
+ซม.,เซนติเมตร,หน่วยวัด,ORST / Thai Wikipedia
+มม.,มิลลิเมตร,หน่วยวัด,ORST / Thai Wikipedia
+ล.,ลิตร,หน่วยวัด,ORST / Thai Wikipedia
+มล.,มิลลิลิตร,หน่วยวัด,ORST / Thai Wikipedia
+ลบ.ม.,ลูกบาศก์เมตร,หน่วยวัด,ORST / Thai Wikipedia
+ลบ.ซม.,ลูกบาศก์เซนติเมตร,หน่วยวัด,ORST / Thai Wikipedia
+ตร.ม.,ตารางเมตร,หน่วยวัด,ORST / Thai Wikipedia
+ตร.กม.,ตารางกิโลเมตร,หน่วยวัด,ORST / Thai Wikipedia
+ตร.วา,ตารางวา,หน่วยวัด,ORST / Thai Wikipedia
+บ.,บาท,การเงิน,ORST / Thai Wikipedia
+สต.,สตางค์,การเงิน,ORST / Thai Wikipedia
+ชม.,ชั่วโมง,เวลา,ORST / Thai Wikipedia
+น.,นาที,เวลา,ORST / Thai Wikipedia
+น.,นาฬิกา,เวลา,ORST / Thai Wikipedia
+วิน.,วินาที,เวลา,ORST / Thai Wikipedia
+กท.,กระทู้,อินเทอร์เน็ต,ORST / Thai Wikipedia
+ภก.,เภสัชกร,การแพทย์,ORST / Thai Wikipedia
+ภก.หญิง,เภสัชกรหญิง,การแพทย์,ORST / Thai Wikipedia
+สพ.บ.,สัตวแพทยศาสตร์บัณฑิต,คุณวุฒิการศึกษา,ORST / Thai Wikipedia
+พ.บ.,แพทยศาสตร์บัณฑิต,คุณวุฒิการศึกษา,ORST / Thai Wikipedia
+น.บ.,นิติศาสตร์บัณฑิต,คุณวุฒิการศึกษา,ORST / Thai Wikipedia
+วท.บ.,วิทยาศาสตร์บัณฑิต,คุณวุฒิการศึกษา,ORST / Thai Wikipedia
+วิศ.บ.,วิศวกรรมศาสตร์บัณฑิต,คุณวุฒิการศึกษา,ORST / Thai Wikipedia
+ค.บ.,ครุศาสตร์บัณฑิต,คุณวุฒิการศึกษา,ORST / Thai Wikipedia
+ศศ.บ.,ศิลปศาสตร์บัณฑิต,คุณวุฒิการศึกษา,ORST / Thai Wikipedia
+สถ.บ.,สถาปัตยกรรมศาสตร์บัณฑิต,คุณวุฒิการศึกษา,ORST / Thai Wikipedia
+บธ.บ.,บริหารธุรกิจบัณฑิต,คุณวุฒิการศึกษา,ORST / Thai Wikipedia
+นิเทศ.บ.,นิเทศศาสตร์บัณฑิต,คุณวุฒิการศึกษา,ORST / Thai Wikipedia
+อส.บ.,อุตสาหกรรมศาสตร์บัณฑิต,คุณวุฒิการศึกษา,ORST / Thai Wikipedia
+พ.ต.ต.,พันตำรวจตรี,ยศตำรวจ,Thai Wikipedia
+พ.ต.ท.,พันตำรวจโท,ยศตำรวจ,Thai Wikipedia
+พ.ต.อ.,พันตำรวจเอก,ยศตำรวจ,Thai Wikipedia
+ร.ต.ต.,ร้อยตำรวจตรี,ยศตำรวจ,Thai Wikipedia
+ร.ต.ท.,ร้อยตำรวจโท,ยศตำรวจ,Thai Wikipedia
+ร.ต.อ.,ร้อยตำรวจเอก,ยศตำรวจ,Thai Wikipedia
+พล.ต.ต.,พลตำรวจตรี,ยศตำรวจ,Thai Wikipedia
+พล.ต.ท.,พลตำรวจโท,ยศตำรวจ,Thai Wikipedia
+พล.ต.อ.,พลตำรวจเอก,ยศตำรวจ,Thai Wikipedia
+พล.อ.,พลเอก,ยศทหาร,Thai Wikipedia
+พล.ท.,พลโท,ยศทหาร,Thai Wikipedia
+พล.ต.,พลตรี,ยศทหาร,Thai Wikipedia
+พ.อ.,พันเอก,ยศทหาร,Thai Wikipedia
+พ.ท.,พันโท,ยศทหาร,Thai Wikipedia
+พ.ต.,พันตรี,ยศทหาร,Thai Wikipedia
+ร.อ.,ร้อยเอก,ยศทหาร,Thai Wikipedia
+ร.ท.,ร้อยโท,ยศทหาร,Thai Wikipedia
+ร.ต.,ร้อยตรี,ยศทหาร,Thai Wikipedia
+กท.,กรุงเทพฯ,การปกครอง,Thai Wikipedia
+ขก.,ขอนแก่น,การปกครอง,Thai Wikipedia
+ชบ.,ชลบุรี,การปกครอง,Thai Wikipedia
+ชม.,เชียงใหม่,การปกครอง,Thai Wikipedia
+นศ.,นครศรีธรรมราช,การปกครอง,Thai Wikipedia
+นบ.,นนทบุรี,การปกครอง,Thai Wikipedia
+ปท.,ปทุมธานี,การปกครอง,Thai Wikipedia
+รบ.,ราชบุรี,การปกครอง,Thai Wikipedia
+สพ.,สุพรรณบุรี,การปกครอง,Thai Wikipedia
+สส.,สมุทรสงคราม,การปกครอง,Thai Wikipedia
+สค.,สมุทรสาคร,การปกครอง,Thai Wikipedia
+สป.,สมุทรปราการ,การปกครอง,Thai Wikipedia
+สง.,สงขลา,การปกครอง,Thai Wikipedia
+สฎ.,สุราษฎร์ธานี,การปกครอง,Thai Wikipedia
+อุดร,อุดรธานี,การปกครอง,Thai Wikipedia
+อุบล,อุบลราชธานี,การปกครอง,Thai Wikipedia
+กบ.,กระบี่,การปกครอง,Thai Wikipedia
+ตง.,ตรัง,การปกครอง,Thai Wikipedia
+พง.,พังงา,การปกครอง,Thai Wikipedia
+พัทลุง,พัทลุง,การปกครอง,Thai Wikipedia
+ภูเก็ต,ภูเก็ต,การปกครอง,Thai Wikipedia
+สตูล,สตูล,การปกครอง,Thai Wikipedia
+ยล.,ยะลา,การปกครอง,Thai Wikipedia
+ปน.,ปัตตานี,การปกครอง,Thai Wikipedia
+นธ.,นราธิวาส,การปกครอง,Thai Wikipedia

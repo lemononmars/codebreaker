@@ -1,42 +1,33 @@
-import fs from 'fs';
-import path from 'path';
+import freqMapRaw from './dict_pythainlp.json?raw';
 
-const tncPath = 'C:\\Users\\sakul_bp6myy0\\.gemini\\antigravity-ide\\brain\\370baa26-4230-4352-b754-5b041d74c689\\.system_generated\\steps\\53\\content.md';
-const jsonPath = path.resolve('src/lib/utils/dict_pythainlp.json');
+const freqMap: Record<string, number> = JSON.parse(freqMapRaw);
 
-if (!fs.existsSync(jsonPath) && fs.existsSync(tncPath)) {
-	try {
-		const content = fs.readFileSync(tncPath, 'utf-8');
-		const lines = content.split('\n');
-		const map: Record<string, number> = {};
-		for (const line of lines) {
-			const parts = line.trim().split('\t');
-			if (parts.length === 2) {
-				const word = parts[0];
-				const freq = parseInt(parts[1], 10);
-				if (word && !isNaN(freq) && freq > 0) {
-					map[word] = freq;
-				}
-			}
-		}
-		fs.writeFileSync(jsonPath, JSON.stringify(map));
-		console.log(`[CONVERTED] Generated dict_pythainlp.json (${Object.keys(map).length} entries)`);
-	} catch (e) {
-		console.error('Failed to generate dict_pythainlp.json:', e);
-	}
-}
+// Calculate Quartile Cutoffs (Q1, Q2, Q3) from frequency dataset
+const freqs = Object.values(freqMap)
+	.filter((v): v is number => typeof v === 'number' && v > 0)
+	.sort((a, b) => a - b);
 
-let freqMap: Record<string, number> = {};
-if (fs.existsSync(jsonPath)) {
-	try {
-		freqMap = JSON.parse(fs.readFileSync(jsonPath, 'utf-8'));
-	} catch {
-		freqMap = {};
-	}
-}
+export const Q1 = freqs.length > 0 ? freqs[Math.floor(freqs.length * 0.25)] : 0;
+export const Q2 = freqs.length > 0 ? freqs[Math.floor(freqs.length * 0.50)] : 0;
+export const Q3 = freqs.length > 0 ? freqs[Math.floor(freqs.length * 0.75)] : 0;
 
 export function getWordFrequency(word: string): number {
 	if (!word) return 0;
 	const clean = word.split(' ')[0];
-	return freqMap[clean] ?? freqMap[word] ?? 0;
+	const val = freqMap[clean] ?? freqMap[word];
+	return typeof val === 'number' ? val : 0;
+}
+
+export type FreqTier = {
+	label: string;
+	color: string;
+	icon: string;
+};
+
+export function getWordFrequencyTier(freq: number): FreqTier | null {
+	if (freq >= Q3) return { label: `ใช้บ่อยมาก (≥ ${Q3.toLocaleString()})`, color: 'bg-error', icon: '🔥🔥🔥' };
+	if (freq >= Q2) return { label: `ใช้บ่อย (≥ ${Q2.toLocaleString()})`, color: 'bg-warning', icon: '🔥🔥' };
+	if (freq >= Q1) return { label: `ปานกลาง (≥ ${Q1.toLocaleString()})`, color: 'bg-info', icon: '🔥' };
+	if (freq > 0) return { label: `พบน้อย (< ${Q1.toLocaleString()})`, color: 'bg-base-content/20', icon: '' };
+	return null;
 }

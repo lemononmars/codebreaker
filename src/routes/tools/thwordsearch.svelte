@@ -11,9 +11,12 @@
 		BookIcon,
 		ClockIcon,
 		Maximize2Icon,
-		TrendingUpIcon
+		TrendingUpIcon,
+		BookOpenIcon,
+		Trash2Icon,
+		XIcon
 	} from 'svelte-feather-icons';
-	import { getWordFrequency } from '$lib/utils/dict_pythainlp';
+	import { getWordFrequency, getWordFrequencyTier } from '$lib/utils/dict_pythainlp';
 
 	let input: string = $page.url.searchParams.get('q') || '';
 	let query: string = input;
@@ -60,8 +63,8 @@
 	let allFirstLetters: string[] = [];
 	$: filteredResults =
 		letter === ''
-			? queryResults.results
-			: queryResults.results.filter((r: string) => getFirstLetter(r) == letter);
+			? (queryResults?.results || [])
+			: (queryResults?.results || []).filter((r: string) => getFirstLetter(r) == letter);
 	$: sortedResults = sortByFreq
 		? [...filteredResults].sort((a: string, b: string) => {
 				const freqA = getWordFrequency(a);
@@ -123,6 +126,28 @@
 		submit();
 	}
 
+	function saveHistory(q: string) {
+		if (!q) return;
+		history = [q, ...history.filter((item) => item !== q)].slice(0, 20);
+		try {
+			localStorage.setItem('thwordsearch_history', JSON.stringify(history));
+		} catch (e) {}
+	}
+
+	function removeHistoryItem(q: string) {
+		history = history.filter((item) => item !== q);
+		try {
+			localStorage.setItem('thwordsearch_history', JSON.stringify(history));
+		} catch (e) {}
+	}
+
+	function clearHistory() {
+		history = [];
+		try {
+			localStorage.removeItem('thwordsearch_history');
+		} catch (e) {}
+	}
+
 	async function submit() {
 		if (!input) alert('ใส่คำก่อนสิเอ้อ!');
 		else {
@@ -132,7 +157,7 @@
 			loading = true;
 			searchTime = 0;
 			searchProgress.count = 0;
-			if (!history.includes(query)) history = [...history, query];
+			saveHistory(query);
 
 			// Update the URL without reloading the page
 			const url = new URL(window.location.href);
@@ -179,6 +204,11 @@
 	}
 
 	onMount(() => {
+		try {
+			const saved = localStorage.getItem('thwordsearch_history');
+			if (saved) history = JSON.parse(saved);
+		} catch (e) {}
+
 		if (input) {
 			submit();
 		}
@@ -198,7 +228,22 @@
 </svelte:head>
 
 <div class="flex flex-col justify-items-center text-center gap-2">
-	<h1 class="text-2xl lg:text-3xl font-extrabold mb-2">Thai Word Search</h1>
+	<div class="flex items-center justify-center gap-2 mb-2">
+		<h1 class="text-2xl lg:text-3xl font-extrabold">Thai Word Search</h1>
+		<a
+			href="/tools/thwordsearch/guide"
+			class="tooltip tooltip-right flex items-center"
+			data-tip="คู่มือการใช้งานอย่างละเอียด"
+		>
+			<span
+				class="cursor-pointer text-primary hover:bg-primary/15 p-1.5 rounded-lg transition-all"
+				role="button"
+				tabindex="0"
+			>
+				<BookOpenIcon size="26" />
+			</span>
+		</a>
+	</div>
 	<div class="flex flex-col lg:flex-row m-auto">
 		<div class="flex flex-row justify-center items-center gap-4">
 			<input
@@ -281,7 +326,7 @@
 					</span>
 				</label>
 			</div>
-			<div class="tooltip tooltip-bottom" data-tip="เรียงตามความนิยม (PyThaiNLP)">
+			<div class="tooltip tooltip-bottom" data-tip="เรียงตามความนิยม">
 				<label class="cursor-pointer flex items-center gap-1">
 					<input
 						type="checkbox"
@@ -307,35 +352,57 @@
 	</div>
 	{#if revealHistory}
 		<div
-			class="flex flex-row-reverse flex-wrap-reverse border border-base-300 bg-base-100 rounded-box my-2 p-4 gap-2 justify-center w-full"
-			in:slide={{ duration: 300 }}
-			out:slide={{ duration: 300 }}
+			class="bg-base-200/40 backdrop-blur-md border border-base-300 rounded-2xl my-3 p-4 shadow-lg w-full max-w-4xl mx-auto"
+			in:slide={{ duration: 250 }}
+			out:slide={{ duration: 200 }}
 		>
-			{#key history}
+			<div class="flex items-center justify-between pb-3 mb-3 border-b border-base-300/60">
+				<div class="flex items-center gap-2">
+					<ClockIcon size="18" class="text-primary" />
+					<span class="font-bold text-sm text-base-content/90">ประวัติการค้นหา</span>
+					<span class="badge badge-sm badge-primary badge-outline font-mono">{history.length}</span>
+				</div>
 				{#if history.length > 0}
-					<div>
-						<button
-							class="btn btn-sm btn-primary text-sm flex-auto"
-							on:click={() => {
-								history = [];
-							}}>reset</button
+					<button
+						class="btn btn-xs btn-ghost text-error hover:bg-error/15 gap-1 transition-colors"
+						on:click={clearHistory}
+					>
+						<Trash2Icon size="14" />
+						<span>ล้างประวัติ</span>
+					</button>
+				{/if}
+			</div>
+
+			{#if history.length > 0}
+				<div class="flex flex-wrap gap-2 justify-start items-center">
+					{#each history as h (h)}
+						<div
+							class="group flex items-center bg-base-100 hover:bg-primary/10 border border-base-300 hover:border-primary/40 rounded-xl px-3 py-1.5 transition-all shadow-sm"
 						>
-					</div>
-					{#each history as h}
-						<div>
 							<button
-								class="btn btn-secondary btn-outline text-xl flex-auto"
+								class="font-mono text-sm font-medium text-base-content hover:text-primary transition-colors pr-1.5"
 								on:click={() => {
 									input = h;
 									submit();
-								}}>{h}</button
+								}}
 							>
+								{h}
+							</button>
+							<button
+								class="text-base-content/40 hover:text-error p-0.5 rounded-md transition-colors"
+								title="ลบรายการนี้"
+								on:click={() => removeHistoryItem(h)}
+							>
+								<XIcon size="14" />
+							</button>
 						</div>
 					{/each}
-				{:else}
-					<span class="text-sm">ยังไม่มีประวัติการค้นหา</span>
-				{/if}
-			{/key}
+				</div>
+			{:else}
+				<div class="text-center py-4 text-sm text-base-content/50 italic">
+					ยังไม่มีประวัติการค้นหา
+				</div>
+			{/if}
 		</div>
 	{/if}
 
@@ -424,10 +491,17 @@
 							on:click={() => copyWord(qr)}
 						>
 							<span>{qr}</span>
-							{#if sortByFreq && getWordFrequency(qr) > 0}
-								<span class="badge badge-secondary badge-sm opacity-80 text-xs font-normal">
-									{getWordFrequency(qr).toLocaleString()}
-								</span>
+							{#if sortByFreq}
+								{@const tier = getWordFrequencyTier(getWordFrequency(qr))}
+								{#if tier}
+									<span class="tooltip tooltip-top" data-tip={tier.label}>
+										{#if tier.icon}
+											<span class="text-xs">{tier.icon}</span>
+										{:else}
+											<span class="inline-block w-2 h-2 rounded-full {tier.color} opacity-60"></span>
+										{/if}
+									</span>
+								{/if}
 							{/if}
 						</button>
 						{#if activeWord === qr}

@@ -126,7 +126,7 @@
 		{#if filteredPuzzles.length > 0}
 			<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
 				{#each filteredPuzzles as puzzle}
-					{@const imgUrl = getPuzzleImageURL(puzzle.year, puzzle.week)}
+					{@const imgUrl = getPuzzleImageURL('weekly', `${puzzle.year}${weekStr(puzzle.week)}.jpg`)}
 					{@const pid = `${puzzle.year}-${puzzle.week}`}
 
 					<a
@@ -134,7 +134,7 @@
 						class="group bg-slate-900 border border-slate-800 hover:border-emerald-500/50 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 flex flex-col hover:-translate-y-1.5"
 					>
 						<!-- Image Preview Header -->
-						<div class="relative w-full aspect-video bg-slate-950 overflow-hidden flex items-center justify-center border-b border-slate-800">
+						<div class="relative w-full aspect-square bg-slate-950 overflow-hidden flex items-center justify-center border-b border-slate-800">
 							{#if imgUrl && !imageErrors[pid]}
 								<img
 									src={imgUrl}
