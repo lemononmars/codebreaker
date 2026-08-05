@@ -78,14 +78,14 @@
 	<div class="flex items-center justify-between gap-4 mb-6">
 		<a
 			href="/resources"
-			class="btn btn-ghost btn-sm gap-2 text-slate-300 hover:text-white"
+			class="btn btn-ghost btn-sm gap-2 text-base-content/80 hover:text-base-content"
 		>
 			<ArrowLeftIcon size="16" />
 			<span>ย้อนกลับไปแหล่งทรัพยากร</span>
 		</a>
 		<a
 			href="/puzzles/spellingquiz"
-			class="btn btn-primary btn-sm gap-2 font-bold shadow-md"
+			class="btn btn-primary text-primary-content btn-sm gap-2 font-bold shadow-md"
 		>
 			<span>ทดสอบการสะกดคำ ✍️</span>
 		</a>
@@ -106,10 +106,10 @@
 	</div>
 
 	<!-- Search & Filters -->
-	<div class="bg-base-200 p-4 md:p-6 rounded-2xl border border-base-300 shadow-xl mb-6 flex flex-col gap-4">
+	<div class="bg-base-200 text-base-content p-4 md:p-6 rounded-2xl border border-base-300 shadow-xl mb-6 flex flex-col gap-4">
 		<div class="flex flex-col md:flex-row gap-3">
 			<div class="relative flex-1">
-				<SearchIcon size="18" class="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
+				<SearchIcon size="18" class="absolute left-3.5 top-1/2 -translate-y-1/2 text-base-content/50" />
 				<input
 					type="text"
 					bind:value={searchQuery}
@@ -119,7 +119,7 @@
 				{#if searchQuery}
 					<button
 						on:click={() => (searchQuery = '')}
-						class="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-400 hover:text-white"
+						class="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-base-content/60 hover:text-base-content"
 					>
 						✕ Clear
 					</button>
@@ -135,7 +135,7 @@
 
 				<button
 					on:click={() => (showExplanations = !showExplanations)}
-					class="btn btn-sm {showExplanations ? 'btn-accent' : 'btn-outline'} gap-1 text-xs"
+					class="btn btn-sm {showExplanations ? 'btn-accent text-accent-content' : 'btn-outline'} gap-1 text-xs"
 				>
 					{showExplanations ? 'ซ่อนคำอธิบาย' : 'แสดงคำอธิบาย'}
 				</button>
@@ -146,14 +146,14 @@
 		<div class="flex flex-wrap items-center gap-1.5 pt-1">
 			<button
 				on:click={() => (letterFilter = '')}
-				class="badge badge-lg cursor-pointer transition {letterFilter === '' ? 'badge-primary font-bold' : 'badge-ghost hover:bg-base-300'}"
+				class="badge badge-lg cursor-pointer transition {letterFilter === '' ? 'badge-primary text-primary-content font-bold' : 'badge-ghost text-base-content/70 hover:bg-base-300'}"
 			>
 				ทั้งหมด
 			</button>
 			{#each startingLetters as char}
 				<button
 					on:click={() => (letterFilter = char)}
-					class="badge badge-lg cursor-pointer transition font-mono {letterFilter === char ? 'badge-primary font-bold' : 'badge-ghost hover:bg-base-300'}"
+					class="badge badge-lg cursor-pointer transition font-mono {letterFilter === char ? 'badge-primary text-primary-content font-bold' : 'badge-ghost text-base-content/70 hover:bg-base-300'}"
 				>
 					{char}
 				</button>
@@ -162,12 +162,12 @@
 	</div>
 
 	<!-- Results Info & View Toggle -->
-	<div class="flex items-center justify-between mb-4 text-xs text-slate-400">
+	<div class="flex items-center justify-between mb-4 text-xs text-base-content/70">
 		<div>
 			พบ <span class="font-bold text-primary">{filteredWords.length}</span> คำ
 			{#if filteredWords.length !== wordDatabase.length}
 				(จากทั้งหมด {wordDatabase.length} คำ)
-				<button on:click={clearFilters} class="text-accent underline ml-2 hover:text-white">
+				<button on:click={clearFilters} class="text-accent underline ml-2 hover:text-base-content">
 					ล้างตัวกรอง
 				</button>
 			{/if}
@@ -202,23 +202,24 @@
 	{:else if viewMode === 'card'}
 		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
 			{#each paginatedWords as item}
-				<div class="card bg-base-200 border border-base-300 hover:border-primary/40 transition shadow-lg p-5 rounded-2xl flex flex-col justify-between">
+				<div class="card bg-base-200 text-base-content border border-base-300 hover:border-primary/40 transition shadow-lg p-5 rounded-2xl flex flex-col justify-between">
 					<div>
-						<div class="flex items-center justify-between gap-2 mb-2">
-							<span class="badge badge-success gap-1 text-sm font-normal py-2.5 px-3">
-								<CheckCircleIcon size="14" />
+						<div class="flex items-center justify-between gap-2 mb-3">
+							<span class="badge badge-success text-success-content gap-1.5 text-base font-bold py-3 px-3.5">
+								<CheckCircleIcon size="16" />
 								{item.correct}
 							</span>
 							{#if item.isLoanWord}
-								<span class="badge badge-ghost text-xs text-slate-400 font-normal">คำยืม</span>
+								<span class="badge badge-ghost text-xs text-base-content/70">คำยืม</span>
 							{/if}
 						</div>
 
-						<div class="text-sm text-slate-400 font-normal mt-2">
-							<span class="text-error/80 font-normal">มักเขียนผิดเป็น:</span>
-							<div class="flex flex-wrap gap-1 mt-1">
+						<!-- Incorrect spellings with XCircleIcon instead of text -->
+						<div class="flex items-start gap-2 text-base mt-3">
+							<XCircleIcon size="18" class="text-error flex-shrink-0 mt-1" />
+							<div class="flex flex-wrap gap-1.5">
 								{#each item.incorrect as wrong}
-									<span class="px-2 py-0.5 rounded bg-error/10 text-error font-mono text-sm font-normal border border-error/20">
+									<span class="badge badge-error badge-outline gap-1 text-base font-mono font-medium py-2.5 px-3">
 										{wrong}
 									</span>
 								{/each}
@@ -227,7 +228,7 @@
 					</div>
 
 					{#if showExplanations && item.explanation}
-						<div class="mt-3 pt-3 border-t border-base-300 text-sm text-slate-300 font-normal leading-relaxed italic bg-base-300/40 p-2.5 rounded-lg">
+						<div class="mt-4 pt-3 border-t border-base-300 text-sm text-base-content/80 leading-relaxed italic bg-base-300/40 p-3 rounded-lg">
 							💡 {item.explanation}
 						</div>
 					{/if}
@@ -235,37 +236,37 @@
 			{/each}
 		</div>
 	{:else}
-		<div class="overflow-x-auto bg-base-200 rounded-2xl border border-base-300 shadow-xl">
-			<table class="table w-full text-sm font-normal">
+		<div class="overflow-x-auto bg-base-200 text-base-content rounded-2xl border border-base-300 shadow-xl">
+			<table class="table w-full text-base">
 				<thead>
-					<tr class="bg-base-300/50 text-slate-300 font-normal">
-						<th class="font-normal">คำที่ถูกต้อง</th>
-						<th class="font-normal">มักสะกดผิดเป็น</th>
-						<th class="font-normal">ประเภท</th>
-						{#if showExplanations}<th class="font-normal">คำอธิบาย</th>{/if}
+					<tr class="bg-base-300/50 text-base-content font-bold text-base">
+						<th>คำที่ถูกต้อง</th>
+						<th>มักสะกดผิดเป็น</th>
+						<th>ประเภท</th>
+						{#if showExplanations}<th>คำอธิบาย</th>{/if}
 					</tr>
 				</thead>
 				<tbody>
 					{#each paginatedWords as item}
-						<tr class="hover:bg-base-300/30 border-b border-base-300 font-normal">
-							<td class="text-success font-normal flex items-center gap-1.5 text-sm">
-								<CheckCircleIcon size="14" />
+						<tr class="hover:bg-base-300/30 border-b border-base-300">
+							<td class="font-bold text-success flex items-center gap-1.5 text-base">
+								<CheckCircleIcon size="16" />
 								{item.correct}
 							</td>
 							<td>
-								<div class="flex flex-wrap gap-1">
+								<div class="flex flex-wrap gap-1.5">
 									{#each item.incorrect as wrong}
-										<span class="px-2 py-0.5 rounded bg-error/10 text-error font-mono text-sm font-normal">
+										<span class="badge badge-error badge-outline gap-1 text-base font-mono">
 											{wrong}
 										</span>
 									{/each}
 								</div>
 							</td>
 							<td>
-								<span class="text-sm text-slate-400 font-normal">{item.isLoanWord ? 'คำยืม' : 'คำไทย'}</span>
+								<span class="text-sm text-base-content/70">{item.isLoanWord ? 'คำยืม' : 'คำไทย'}</span>
 							</td>
 							{#if showExplanations}
-								<td class="text-sm text-slate-300 font-normal">{item.explanation || '-'}</td>
+								<td class="text-sm text-base-content/80">{item.explanation || '-'}</td>
 							{/if}
 						</tr>
 					{/each}
@@ -284,7 +285,7 @@
 			>
 				<ChevronLeftIcon size="16" />
 			</button>
-			<span class="text-xs text-slate-400 font-mono px-3">
+			<span class="text-xs text-base-content/70 font-mono px-3">
 				หน้า {currentPage} / {totalPages}
 			</span>
 			<button

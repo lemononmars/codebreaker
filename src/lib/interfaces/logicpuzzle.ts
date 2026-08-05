@@ -10,4 +10,5 @@ export interface ILogicPuzzle {
 	author?: string;
 	created_at?: string;
 	description?: string;
+	thumbnail?: string;
 }

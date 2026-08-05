@@ -1,6 +1,6 @@
 <script lang="ts">
 	import AnswerChecker from '$lib/components/AnswerChecker.svelte';
-	import { ArrowLeftIcon, CheckCircleIcon, RepeatIcon, CopyIcon, CheckIcon } from 'svelte-feather-icons';
+	import { CheckCircleIcon, RepeatIcon, CopyIcon, CheckIcon } from 'svelte-feather-icons';
 
 	let inputText = 'WE ARE DISCOVERED FLEE AT ONCE';
 	let rails = 3;

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import AnswerChecker from '$lib/components/AnswerChecker.svelte';
-	import { ArrowLeftIcon, RadioIcon, RepeatIcon, CopyIcon, CheckIcon, CheckCircleIcon } from 'svelte-feather-icons';
+	import { ArrowLeftIcon, RadioIcon, CopyIcon, CheckIcon, CheckCircleIcon } from 'svelte-feather-icons';
 
 	let inputText = 'CODEBREAKER';
 	let isSwapped = false; // false = Text -> NATO | true = NATO -> Text

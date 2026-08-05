@@ -96,32 +96,32 @@
 	<meta name="description" content="ปริศนาย้ายไม้ขีดไฟเพื่อแก้สมการคณิตศาสตร์ (Mathsticks)" />
 </svelte:head>
 
-<div class="container mx-auto px-4 py-8 max-w-4xl flex flex-col items-center gap-8 min-h-[85vh]">
+<div class="container mx-auto px-2 sm:px-4 py-3 sm:py-6 max-w-4xl flex flex-col items-center gap-4 sm:gap-6 min-h-[85vh]">
 	<!-- Header & Info Button -->
-	<div class="text-center flex flex-col items-center gap-2 relative w-full">
+	<div class="text-center flex flex-col items-center gap-1 relative w-full">
 		<button
 			on:click={() => (showInfoModal = true)}
-			class="absolute top-0 right-2 px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl border border-slate-700 text-xs font-bold transition-colors flex items-center gap-1 shadow"
+			class="absolute top-0 right-2 px-2.5 py-1 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl border border-slate-700 text-[11px] sm:text-xs font-bold transition-colors flex items-center gap-1 shadow"
 			title="ดูสัญลักษณ์กติกา"
 		>
 			ℹ️ กติกา
 		</button>
 
-		<h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500">
+		<h1 class="text-2xl sm:text-4xl md:text-5xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 !my-0">
 			Mathsticks 🔥
 		</h1>
-		<p class="text-slate-400 text-sm font-medium">ย้ายไม้ขีดไฟเพื่อให้ได้สมการคณิตศาสตร์ที่ถูกต้อง</p>
+		<p class="text-slate-400 text-xs sm:text-sm font-medium">ย้ายไม้ขีดไฟเพื่อให้ได้สมการคณิตศาสตร์ที่ถูกต้อง</p>
 	</div>
 
 	<!-- Category Selection (ง่าย, กลาง, ยาก, ยากสัส) -->
-	<div class="flex flex-wrap justify-center gap-2">
+	<div class="flex flex-wrap justify-center gap-1.5 sm:gap-2">
 		{#each CATEGORIES as cat, idx}
 			<button
 				on:click={() => selectCategory(idx)}
-				class={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold border transition-all duration-200 ${
+				class={`btn btn-sm rounded-xl font-bold transition-all ${
 					activeCategoryIdx === idx
-						? 'bg-amber-500 border-amber-400 text-slate-950 shadow-lg shadow-amber-500/20'
-						: 'bg-slate-800 border-slate-700 text-slate-300 hover:bg-slate-700'
+						? 'btn-warning shadow-lg shadow-warning/20'
+						: 'btn-ghost bg-base-200 text-base-content hover:bg-base-300'
 				}`}
 			>
 				{cat.name}
@@ -130,13 +130,13 @@
 	</div>
 
 	<!-- Constraint Banner & Move Counter -->
-	<div class="flex items-center gap-4 bg-slate-900 border border-slate-800 px-6 py-2.5 rounded-2xl shadow">
-		<div class="text-sm font-bold text-amber-400 flex items-center gap-1.5">
+	<div class="flex items-center gap-3 sm:gap-4 bg-slate-900 border border-slate-800 px-4 py-1.5 sm:px-6 sm:py-2.5 rounded-2xl shadow text-xs sm:text-sm">
+		<div class="font-bold text-amber-400 flex items-center gap-1">
 			<span>🎯 เงื่อนไข:</span>
 			<span class="text-slate-100 font-extrabold">ย้าย {activeCategory.moves} ก้าน</span>
 		</div>
 		<div class="h-4 w-px bg-slate-800" />
-		<div class="text-sm font-bold text-slate-300 flex items-center gap-1.5">
+		<div class="font-bold text-slate-300 flex items-center gap-1">
 			<span>ย้ายแล้ว:</span>
 			<span class={`font-extrabold font-mono ${movesCount > activeCategory.moves ? 'text-red-400' : 'text-emerald-400'}`}>
 				{movesCount} / {activeCategory.moves}
@@ -156,7 +156,7 @@
 		/>
 
 		<!-- Controls -->
-		<div class="flex items-center gap-4">
+		<div class="flex items-center gap-3 sm:gap-4">
 			{#if solved}
 				<!-- Player solved by themselves -->
 				<span class="text-emerald-400 font-extrabold text-xl sm:text-2xl flex items-center gap-1.5 animate-bounce">
@@ -165,7 +165,7 @@
 
 				<button
 					on:click={nextPuzzle}
-					class="px-6 py-3 bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold rounded-2xl transition-all shadow-xl shadow-amber-500/25 text-base"
+					class="btn btn-warning rounded-2xl font-bold shadow-xl shadow-warning/20 text-base px-6"
 				>
 					🎲 ข้อใหม่
 				</button>
@@ -173,7 +173,7 @@
 				<!-- Player clicked "เปิดเฉลย" -->
 				<button
 					on:click={nextPuzzle}
-					class="px-6 py-3 bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold rounded-2xl transition-all shadow-xl shadow-amber-500/25 text-base"
+					class="btn btn-warning rounded-2xl font-bold shadow-xl shadow-warning/20 text-base px-6"
 				>
 					🎲 ข้อใหม่
 				</button>
@@ -181,21 +181,21 @@
 				<!-- Normal game state -->
 				<button
 					on:click={resetPuzzle}
-					class="px-5 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold rounded-xl border border-slate-700 transition-colors text-sm"
+					class="btn btn-ghost btn-sm bg-base-200 text-base-content border border-base-300 rounded-xl font-bold px-4"
 				>
 					🔄 รีเซ็ต
 				</button>
 
 				<button
 					on:click={nextPuzzle}
-					class="px-5 py-2.5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold rounded-xl transition-all shadow-lg shadow-amber-500/20 text-sm"
+					class="btn btn-warning btn-sm rounded-xl font-bold shadow-md shadow-warning/20 px-5"
 				>
 					🎲 ข้อใหม่
 				</button>
 
 				<button
 					on:click={() => (revealed = true)}
-					class="px-5 py-2.5 bg-slate-800 hover:bg-slate-700 text-purple-300 font-bold rounded-xl border border-slate-700 transition-colors text-sm"
+					class="btn btn-secondary btn-sm rounded-xl font-bold px-4"
 				>
 					💡 เปิดเฉลย
 				</button>
@@ -203,7 +203,7 @@
 		</div>
 	</div>
 
-	<!-- Solutions Panel when "เปิดเฉลย" is active (Read directly from pre-built static JSON) -->
+	<!-- Solutions Panel when "เปิดเฉลย" is active -->
 	{#if revealed}
 		<div in:fade class="w-full max-w-4xl bg-slate-900 border border-slate-800 rounded-3xl p-6 flex flex-col gap-4 shadow-2xl">
 			<div class="flex justify-between items-center border-b border-slate-800 pb-3">
@@ -227,7 +227,7 @@
 
 			<button
 				on:click={nextPuzzle}
-				class="w-full py-3 bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold rounded-2xl text-base transition-all shadow-lg shadow-amber-500/20 mt-2"
+				class="btn btn-warning rounded-2xl font-bold shadow-lg shadow-warning/20 w-full py-3 mt-2"
 			>
 				🎲 สุ่มข้อใหม่ (Next Puzzle)
 			</button>
@@ -238,35 +238,24 @@
 <!-- Rules & Symbol Legend Modal -->
 {#if showInfoModal}
 	<div
-		class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto"
+		class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4 pt-16 sm:pt-20 overflow-y-auto"
 		on:click={() => (showInfoModal = false)}
 	>
 		<div
-			class="bg-slate-900 border border-slate-800 rounded-2xl p-6 max-w-xl w-full text-slate-200 flex flex-col gap-5 shadow-2xl my-8"
+			class="bg-slate-900 border border-slate-800 rounded-2xl p-4 sm:p-6 max-w-xl w-full text-slate-200 flex flex-col gap-4 shadow-2xl my-auto"
 			on:click|stopPropagation
 		>
 			<div class="flex justify-between items-center border-b border-slate-800 pb-3">
-				<h2 class="text-2xl font-bold text-amber-400">ℹ️ กติกาและรูปแบบไม้ขีดไฟ</h2>
+				<h2 class="text-xl sm:text-2xl font-bold text-amber-400">ℹ️ รูปแบบตัวเลขและเครื่องหมาย</h2>
 				<button
 					on:click={() => (showInfoModal = false)}
-					class="text-slate-400 hover:text-slate-100 text-xl font-bold px-2"
+					class="btn btn-ghost btn-xs btn-circle text-slate-400 hover:text-white"
 				>
 					✕
 				</button>
 			</div>
 
-			<ul class="list-disc list-inside flex flex-col gap-1.5 text-xs sm:text-sm text-slate-300">
-				<li>ย้ายไม้ขีดไฟตามจำนวนก้านที่กำหนดเพื่อทำให้สมการเป็นจริง</li>
-				<li><span class="text-amber-400 font-bold">ก้านสีส้ม</span> = ไม้ขีดตำแหน่งเดิม</li>
-				<li><span class="text-purple-400 font-bold">ก้านสีม่วง</span> = ไม้ขีดที่เพิ่มเข้ามาใหม่ (Moved to)</li>
-				<li><span class="text-rose-400 font-bold">เส้นประสีแดง</span> = ตำแหน่งที่ดึงไม้ขีดออกไป (Moved from)</li>
-			</ul>
-
-			<h3 class="text-sm font-bold text-slate-100 border-b border-slate-800 pb-1 mt-2">
-				รูปแบบตัวเลข 0-9 และเครื่องหมาย (+, -, =):
-			</h3>
-
-			<div class="grid grid-cols-4 sm:grid-cols-7 gap-2">
+			<div class="grid grid-cols-4 sm:grid-cols-7 gap-1.5 overflow-x-hidden my-2">
 				{#each ALL_LEGEND_SYMBOLS as item}
 					<div class="flex flex-col items-center p-1">
 						<MathstickBoard
@@ -274,6 +263,7 @@
 							initialTokens={item.tokens}
 							showHelperText={false}
 							showParsedLabels={true}
+							showBorder={false}
 						/>
 					</div>
 				{/each}
@@ -281,7 +271,7 @@
 
 			<button
 				on:click={() => (showInfoModal = false)}
-				class="w-full py-2.5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold rounded-xl text-sm transition-colors mt-2"
+				class="btn btn-warning rounded-xl font-bold w-full mt-1"
 			>
 				เข้าใจแล้ว
 			</button>

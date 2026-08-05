@@ -9,6 +9,7 @@ export interface IHiddenLink {
 	image: string;
 	tags: string[];
 	hints?: string[];
+	type?: string;
 }
 
 export const staticHiddenLinkPuzzles: IHiddenLink[] = [

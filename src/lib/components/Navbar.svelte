@@ -31,54 +31,23 @@
 		return false;
 	};
 
-	$: pageTitle = (() => {
-		const p = currentPath;
-		if (p === '/') return 'หน้าแรก';
-		if (p.startsWith('/puzzles/weekly')) return 'ปริศนารายสัปดาห์';
-		if (p.startsWith('/puzzles/spellingbee')) return 'สะกดศัพท์';
-		if (p.startsWith('/puzzles/blanks')) return 'ซ่อนอักษร';
-		if (p.startsWith('/puzzles/spellingquiz')) return 'ปริศนาสะกดศัพท์';
-		if (p.startsWith('/puzzles/missingvowels')) return 'Missing Vowels';
-		if (p.startsWith('/puzzles/wordsearch')) return 'Word Search';
-		if (p.startsWith('/puzzles/crossword')) return 'Crossword';
-		if (p.startsWith('/puzzles/rebus')) return 'Rebus';
-		if (p.startsWith('/puzzles/hiddenlink')) return 'Hidden Link';
-		if (p.startsWith('/puzzles/cryptogram')) return 'Cryptogram';
-		if (p.startsWith('/puzzles/alphabet')) return 'Alphabet';
-		if (p.startsWith('/puzzles/puzzlehunt')) return 'Puzzle Hunt';
-		if (p.startsWith('/puzzles')) return 'ปริศนา';
-		if (p.startsWith('/events')) return 'กิจกรรม';
-		if (p.startsWith('/tools')) return 'เครื่องมือ';
-		if (p.startsWith('/resources/ciphers')) return 'คลังรหัสลับ (Ciphers)';
-		if (p.startsWith('/resources/spellingdictionary')) return 'พจนานุกรมคำสะกด';
-		if (p.startsWith('/resources/podcast')) return 'Codebreaker Podcast';
-		if (p.startsWith('/resources')) return 'ข้อมูล';
-		if (p.startsWith('/shop')) return 'ร้านค้า';
-		if (p.startsWith('/about')) return 'เกี่ยวกับ';
-		if (p.startsWith('/profile')) return 'โปรไฟล์';
-		if (p.startsWith('/login')) return 'เข้าสู่ระบบ';
-		if (p.startsWith('/register')) return 'สมัครสมาชิก';
-		return 'Code Breaker';
-	})();
+
 </script>
 
-<!-- Mobile header title bar -->
-<div class="navbar bg-base-100/90 backdrop-blur border-b border-base-300 lg:hidden flex justify-between px-4 py-2">
-	<div class="flex items-center gap-2">
-		<a href="/" class="btn btn-ghost btn-sm btn-square p-0">
-			<img src={logo} alt="Code Breaker" class="w-8 h-8 rounded-lg" />
+<!-- Mobile Navigation Bar -->
+<div class="flex lg:hidden w-full bg-base-100/90 backdrop-blur border-t border-base-300 justify-around items-center py-2 px-1 overflow-x-auto no-scrollbar z-50">
+	{#each menus as menu, i}
+		{@const Icon = icons[i]}
+		<a
+			href="/{links[i]}"
+			class="flex flex-row items-center gap-1 px-1.5 py-1 rounded-lg text-xs whitespace-nowrap transition duration-150 {isActive(links[i])
+				? 'bg-primary/20 text-primary font-bold'
+				: 'text-slate-400 hover:text-white'}"
+		>
+			<Icon size="15" />
+			<span class="text-[11px]">{menu}</span>
 		</a>
-		<span class="font-bold text-lg text-primary">{pageTitle}</span>
-	</div>
-	<div class="flex items-center gap-2">
-		{#if $username}
-			<a href="/profile" class="btn btn-ghost btn-sm btn-circle">
-				<UserIcon size="18" />
-			</a>
-		{:else}
-			<a href="/login" class="btn btn-primary btn-sm rounded-lg font-bold">เข้าสู่ระบบ</a>
-		{/if}
-	</div>
+	{/each}
 </div>
 
 <!-- Desktop & Main Navbar -->

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import AnswerChecker from '$lib/components/AnswerChecker.svelte';
-	import { ArrowLeftIcon, CheckCircleIcon, RepeatIcon, CopyIcon, CheckIcon, ChevronLeftIcon, ChevronRightIcon } from 'svelte-feather-icons';
+	import { ArrowLeftIcon, CheckCircleIcon, CopyIcon, CheckIcon, ChevronLeftIcon, ChevronRightIcon } from 'svelte-feather-icons';
 
 	let inputText = 'ATTACKATDAWN';
 	let key = 'LEMON';

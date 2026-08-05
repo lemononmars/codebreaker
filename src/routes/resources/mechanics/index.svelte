@@ -1,15 +1,5 @@
 <script lang="ts">
-	import {
-		LayersIcon,
-		HelpCircleIcon,
-		CheckCircleIcon,
-		FileTextIcon,
-		GridIcon,
-		Maximize2Icon,
-		CompassIcon,
-		TagIcon,
-		ArrowLeftIcon
-	} from 'svelte-feather-icons';
+	import { LayersIcon } from 'svelte-feather-icons';
 
 	const mechanicsList = [
 		{

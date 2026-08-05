@@ -124,7 +124,7 @@
 
 		<!-- Puzzle Grid -->
 		{#if filteredPuzzles.length > 0}
-			<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+			<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6">
 				{#each filteredPuzzles as puzzle}
 					{@const imgUrl = getPuzzleImageURL('weekly', `${puzzle.year}${weekStr(puzzle.week)}.jpg`)}
 					{@const pid = `${puzzle.year}-${puzzle.week}`}

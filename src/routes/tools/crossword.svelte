@@ -600,10 +600,7 @@
 
 	async function finishGrid() {
 		saveHistory();
-		// eslint-disable-next-line @typescript-eslint/no-unused-vars
-		let savedGrid = grid.map((row) => row.map((c) => ({ ...c })));
 		isSolving = true;
-		let solveMsg = 'กำลังโหลดคำ...';
 		if (solveAbort) solveAbort.abort();
 		solveAbort = new AbortController();
 		const sig = solveAbort.signal;
@@ -611,7 +608,6 @@
 		const timeoutId = setTimeout(() => {
 			if (isSolving) {
 				solveAbort?.abort();
-				solveMsg = 'หมดเวลา (60s)';
 			}
 		}, 60000);
 
@@ -638,7 +634,6 @@
 			const sortedSlots = combined.map((c) => c.slot);
 			const sortedWordLists = combined.map((c) => c.list);
 
-			solveMsg = 'กำลังแก้...';
 			const ok = await solveBacktrack(tempGrid, sortedSlots, sortedWordLists, 0, sig, new Set());
 			if (!sig.aborted) {
 				if (ok) {
