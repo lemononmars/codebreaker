@@ -131,6 +131,21 @@
 				<polyline points="14 2 14 8 20 8"/>
 				<line x1="9" y1="15" x2="15" y2="15"/>
 			</svg>`
+		},
+		{
+			type: 'wordladder',
+			title: 'Word Ladder',
+			description: 'เปลี่ยนคำทีละหนึ่งช่องเพื่อไปให้ถึงคำปลายทาง',
+			icon: `<svg class="w-10 h-10 text-cyan-400 transition-all duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+				<line x1="4" y1="5" x2="20" y2="5"/>
+				<line x1="4" y1="5" x2="4" y2="19"/>
+				<line x1="20" y1="5" x2="20" y2="19"/>
+				<line x1="4" y1="10" x2="20" y2="10"/>
+				<line x1="4" y1="15" x2="20" y2="15"/>
+				<line x1="4" y1="19" x2="20" y2="19"/>
+				<circle cx="12" cy="7.5" r="1" fill="currentColor"/>
+				<circle cx="12" cy="12.5" r="1" fill="currentColor"/>
+			</svg>`
 		}
 	];
 

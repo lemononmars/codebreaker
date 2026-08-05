@@ -1,13 +1,13 @@
 import dict from '$lib/utils/dict'
 
 export function splitWord(word: string) {
-   var alphas = word.split("");
-   var out: string[] = [];
+   const alphas = word.split("");
+   let out: string[] = [];
    alphas.forEach(function (a) {
        if (a.match(/[ก-ฮ]/) || a.match(/[ใเแโไาำะๆฯฤา]/) || a.match(/[\.\*\/]/)) {
            out.push(a);
        }
-       else {
+       else {   
            out[out.length - 1] += a;
        }
    });
@@ -43,7 +43,7 @@ export function wordLength(word: string) {
 }
 
 export function getFirstLetter(word: string) {
-  for(var l of word.split(""))
+  for(const l of word.split(""))
     if(l.match(/[ก-ฮ]/)) return l
   return ""
 }
@@ -56,7 +56,7 @@ export function search(word: string) {
     return dict.includes(word)
 }
 
-export function getSubWords(word: string, allowRepeat: boolean = true) {
+export function getSubWords(word: string, allowRepeat = true) {
     let subWords: string[] = []
 
     if(allowRepeat)
