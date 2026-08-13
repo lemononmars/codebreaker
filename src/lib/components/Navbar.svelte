@@ -35,19 +35,28 @@
 </script>
 
 <!-- Mobile Navigation Bar -->
-<div class="flex lg:hidden w-full bg-base-100/90 backdrop-blur border-t border-base-300 justify-around items-center py-2 px-1 overflow-x-auto no-scrollbar z-50">
+<div class="flex lg:hidden w-full bg-base-100/95 backdrop-blur-md border-t border-base-300 justify-between items-center py-1.5 px-0.5 z-50">
 	{#each menus as menu, i}
 		{@const Icon = icons[i]}
 		<a
 			href="/{links[i]}"
-			class="flex flex-row items-center gap-1 px-1.5 py-1 rounded-lg text-xs whitespace-nowrap transition duration-150 {isActive(links[i])
+			class="flex-1 min-w-0 flex flex-col items-center justify-center gap-0.5 py-1 px-0.5 rounded-lg transition duration-150 {isActive(links[i])
 				? 'bg-primary/20 text-primary font-bold'
 				: 'text-slate-400 hover:text-white'}"
 		>
-			<Icon size="15" />
-			<span class="text-[11px]">{menu}</span>
+			<Icon size="16" />
+			<span class="text-[10px] leading-tight truncate max-w-full">{menu}</span>
 		</a>
 	{/each}
+	<a
+		href={$username ? '/profile' : '/login'}
+		class="flex-1 min-w-0 flex flex-col items-center justify-center gap-0.5 py-1 px-0.5 rounded-lg transition duration-150 {isActive($username ? 'profile' : 'login')
+			? 'bg-primary/20 text-primary font-bold'
+			: 'text-slate-400 hover:text-white'}"
+	>
+		<svelte:component this={$username ? SettingsIcon : UserIcon} size="16" />
+		<span class="text-[10px] leading-tight truncate max-w-full">{$username ? 'ตั้งค่า' : 'เข้าสู่ระบบ'}</span>
+	</a>
 </div>
 
 <!-- Desktop & Main Navbar -->

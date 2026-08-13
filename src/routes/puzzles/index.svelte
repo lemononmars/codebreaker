@@ -146,6 +146,19 @@
 				<circle cx="12" cy="7.5" r="1" fill="currentColor"/>
 				<circle cx="12" cy="12.5" r="1" fill="currentColor"/>
 			</svg>`
+		},
+		{
+			type: 'boggle',
+			title: 'Boggle (เส้นทางศัพท์)',
+			description: 'ลากเส้นเชื่อมตัวอักษรเพื่อผสมคำภาษาไทยในพจนานุกรม',
+			icon: `<svg class="w-10 h-10 text-cyan-400 transition-all duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+				<rect x="3" y="3" width="18" height="18" rx="2" />
+				<circle cx="8" cy="8" r="1.5" />
+				<circle cx="16" cy="8" r="1.5" />
+				<circle cx="8" cy="16" r="1.5" />
+				<circle cx="16" cy="16" r="1.5" />
+				<path d="M8 8l8 8" />
+			</svg>`
 		}
 	];
 
