@@ -6,6 +6,7 @@
 		HeartIcon,
 		HelpCircleIcon,
 		ArrowLeftIcon,
+		ChevronLeftIcon,
 		PlayIcon,
 		RefreshCwIcon,
 		CheckCircleIcon,
@@ -527,24 +528,48 @@
 	<meta name="description" content="เกมประลองคำสะกดภาษาไทย ค้นหาคำที่เขียนถูกต้องตามพจนานุกรม" />
 </svelte:head>
 
-<div class="flex flex-col gap-6 w-full max-w-4xl mx-auto px-4 select-none pb-12 text-center">
-	<div class="flex flex-col justify-center py-2 sm:py-4">
+<div id="spellingquiz-game-container" class="max-w-4xl mx-auto px-2 sm:px-4 py-2 sm:py-4 flex flex-col gap-3 select-none">
+	<div class="bg-neutral text-neutral-content border border-base-300 rounded-3xl p-3 sm:p-6 shadow-2xl flex flex-col gap-3 relative overflow-hidden text-center">
+		<div class="absolute -top-20 -right-20 w-80 h-80 bg-primary/10 rounded-full blur-3xl pointer-events-none"></div>
+
 		<!-- 1. SELECT GAME MODE SCREEN -->
 		{#if currentMode === 'selection'}
-			<div class="flex flex-col gap-1 mb-2">
-				<h1 class="text-2xl md:text-4xl font-black tracking-tight text-white">เกมสะกดศัพท์</h1>
-				<p class="text-xs md:text-sm opacity-90 max-w-lg mx-auto leading-relaxed">
-					"กะเพรา" หรือ "กระเพรา"? ทดสอบคลังศัพท์กับคำที่คนมักสะกดผิด
-				</p>
+			<div class="flex items-center justify-between gap-2 border-b border-base-300/80 pb-2 text-left">
+				<div class="flex items-center gap-2 overflow-hidden">
+					<span class="h-2 w-2 rounded-full bg-primary animate-pulse shrink-0"></span>
+					<h1 class="text-base sm:text-xl font-extrabold text-neutral-content tracking-tight truncate">
+						ควิซสะกดคำ <span class="text-xs text-neutral-content/70 font-medium hidden sm:inline">(Spelling Quiz)</span>
+					</h1>
+				</div>
+
+				<div class="flex items-center gap-1 shrink-0">
+					<button
+						on:click={toggleFullscreen}
+						class="btn btn-ghost btn-xs sm:btn-sm gap-1 text-primary hover:bg-primary/20"
+						title={isFullscreen ? 'ออกจากเต็มจอ' : 'เต็มจอ'}
+					>
+						{#if isFullscreen}
+							<Minimize2Icon size="16" />
+							<span class="hidden sm:inline">ออกจากเต็มจอ</span>
+						{:else}
+							<Maximize2Icon size="16" />
+							<span class="hidden sm:inline">เต็มจอ</span>
+						{/if}
+					</button>
+					<a href="/puzzles/spellingquiz/leaderboard" class="btn btn-ghost btn-xs sm:btn-sm gap-1 text-base-content hover:bg-base-200">
+						<AwardIcon size="16" />
+						<span class="hidden sm:inline">ตารางคะแนน</span>
+					</a>
+				</div>
 			</div>
 
 			<!-- New Game Button -->
-			<div class="w-full my-4">
+			<div class="w-full my-2">
 				<button
 					on:click={beginCountdown}
-					class="btn btn-primary w-full gap-3 font-black text-2xl sm:text-3xl shadow-2xl hover:shadow-primary/45 hover:scale-[1.03] active:scale-[0.98] transition-all duration-200 py-6 sm:py-8 h-auto rounded-3xl"
+					class="btn btn-primary text-primary-content w-full py-4 rounded-2xl font-black text-xl sm:text-2xl shadow-lg active:scale-95 transition-all flex items-center justify-center gap-3"
 				>
-					<PlayIcon size="28" class="sm:w-8 sm:h-8" />
+					<PlayIcon size="28" />
 					เริ่มเล่นเกมใหม่ 🚀
 				</button>
 			</div>
@@ -553,13 +578,13 @@
 			<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full text-left my-2">
 				<!-- Game Type Select -->
 				<div class="flex flex-col gap-2">
-					<label for="gameType" class="text-sm font-extrabold text-white/80 flex items-center gap-1.5 px-1">
+					<label for="gameType" class="text-sm font-extrabold text-neutral-content flex items-center gap-1.5 px-1">
 						✏️ วิธีเล่น
 					</label>
 					<select
 						id="gameType"
 						bind:value={gameType}
-						class="select select-bordered w-full bg-neutral text-neutral-content border-base-300 font-extrabold focus:border-primary text-sm sm:text-base py-2.5 h-auto rounded-2xl cursor-pointer"
+						class="select select-bordered w-full bg-base-300 text-base-content border-base-300 font-extrabold focus:border-primary text-sm sm:text-base py-2.5 h-auto rounded-2xl cursor-pointer"
 					>
 						<option value="choices">เลือกคำที่ถูก (2 ตัวเลือก)</option>
 						<option value="yesno">ถูกหรือผิด? ❓</option>
@@ -568,13 +593,13 @@
 
 				<!-- Game Mode Select -->
 				<div class="flex flex-col gap-2">
-					<label for="gameMode" class="text-sm font-extrabold text-white/80 flex items-center gap-1.5 px-1">
+					<label for="gameMode" class="text-sm font-extrabold text-neutral-content flex items-center gap-1.5 px-1">
 						🏆 รูปแบบการเล่น
 					</label>
 					<select
 						id="gameMode"
 						bind:value={gameMode}
-						class="select select-bordered w-full bg-neutral text-neutral-content border-base-300 font-extrabold focus:border-primary text-sm sm:text-base py-2.5 h-auto rounded-2xl cursor-pointer"
+						class="select select-bordered w-full bg-base-300 text-base-content border-base-300 font-extrabold focus:border-primary text-sm sm:text-base py-2.5 h-auto rounded-2xl cursor-pointer"
 					>
 						<option value="normal">Normal (❤️ 3 ชีวิต)</option>
 						<option value="timeattack">Time Attack (⚡ 60 วินาที)</option>
@@ -583,19 +608,12 @@
 				</div>
 			</div>
 
-			<!-- High Score Info + Leaderboard link -->
-			<div class="flex items-center justify-between px-1 my-1">
-				{#if currentHighScore > 0}
-					<span class="text-xs sm:text-sm font-bold text-accent">
-						👑 คะแนนสูงสุดในโหมดนี้: <span class="font-mono font-extrabold">{currentHighScore}</span> คะแนน
-					</span>
-				{:else}
-					<span></span>
-				{/if}
-				<a href="/puzzles/spellingquiz/leaderboard" class="btn btn-ghost btn-xs gap-1 opacity-60 hover:opacity-100">
-					<AwardIcon size="12" /> ตารางคะแนน
-				</a>
-			</div>
+			<!-- High Score Info -->
+			{#if currentHighScore > 0}
+				<div class="text-xs sm:text-sm font-bold text-cyan-400 bg-slate-950/60 p-3 rounded-2xl border border-slate-800 my-1">
+					👑 คะแนนสูงสุดในโหมดนี้: <span class="font-mono font-extrabold text-white">{currentHighScore}</span> คะแนน
+				</div>
+			{/if}
 
 			<!-- Options Toggle -->
 			<div
