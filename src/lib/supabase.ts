@@ -4,10 +4,20 @@ type SupaStorageBucket = 'puzzles' | 'events' | 'assets' | 'hiddenlink';
 const DIR_IMAGE = 'https://ojjggolcfmjnovmipaav.supabase.in/storage/v1/object/';
 export const DEFAULT_WEEKLY_IMAGE_URL = DIR_IMAGE + 'weekly/placeholder.png';
 
-export const supabaseClient = createClient(
-	String(import.meta.env.VITE_SUPABASE_URL),
-	String(import.meta.env.VITE_SUPABASE_ANON_KEY)
-);
+const rawUrl = import.meta.env.VITE_SUPABASE_URL;
+const rawKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+
+const supabaseUrl =
+	typeof rawUrl === 'string' && rawUrl.length > 0 && rawUrl !== 'undefined'
+		? rawUrl
+		: 'https://ojjggolcfmjnovmipaav.supabase.co';
+
+const supabaseKey =
+	typeof rawKey === 'string' && rawKey.length > 0 && rawKey !== 'undefined'
+		? rawKey
+		: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.e30.placeholder';
+
+export const supabaseClient = createClient(supabaseUrl, supabaseKey);
 
 /**
  * Convenience re-exports for typed selections
@@ -30,7 +40,11 @@ export const from = (table: string) => supabaseClient.from(table);
 export const fromBucket = (bucket: SupaStorageBucket) => supabaseClient.storage.from(bucket);
 
 export function getImageURL(type: SupaStorageBucket, url: string) {
-	return fromBucket(type).getPublicUrl(url).data?.publicUrl;
+	try {
+		return fromBucket(type).getPublicUrl(url).data?.publicUrl;
+	} catch {
+		return undefined;
+	}
 }
 
 export function getPuzzleImageURL(type: string, filename: string) {

@@ -3,6 +3,28 @@
 	import { fade, scale, fly } from 'svelte/transition';
 	import { buildWordList, generatePuzzle, bfsPath, splitSlots, diffSlots } from '$lib/wordladder/wordladder';
 	import dictJson from '$lib/dict.json';
+	import { HelpCircleIcon, Maximize2Icon, Minimize2Icon } from 'svelte-feather-icons';
+
+	let isFullscreen = false;
+	function toggleFullscreen() {
+		const elem = document.getElementById('wordladder-game-container');
+		if (!elem) return;
+		if (!document.fullscreenElement) {
+			elem.requestFullscreen().catch((err) => console.error(err));
+		} else {
+			document.exitFullscreen().catch(() => {});
+		}
+	}
+
+	onMount(() => {
+		const handleFsChange = () => {
+			isFullscreen = !!document.fullscreenElement;
+		};
+		document.addEventListener('fullscreenchange', handleFsChange);
+		return () => {
+			document.removeEventListener('fullscreenchange', handleFsChange);
+		};
+	});
 
 	// ─── State ────────────────────────────────────────────────────────────────
 	let slotSize: 3 | 4 | 5 | 6 = 3;
@@ -85,11 +107,12 @@
 		if (scrollEl) scrollEl.scrollTop = scrollEl.scrollHeight;
 	});
 
-	function changeSlotSize(n: typeof slotSize) {
-		if (n === slotSize && !loading) return;
-		slotSize = n;
+	function changeSlotSize(n: number) {
+		const s = n as 3 | 4 | 5 | 6;
+		if (s === slotSize && !loading) return;
+		slotSize = s;
 		randomSeed = undefined;
-		initPuzzle(n);
+		initPuzzle(s);
 	}
 
 	// ─── Input & submission ───────────────────────────────────────────────────
@@ -220,55 +243,70 @@
 	<meta name="description" content="ปริศนาบันไดคำ (Word Ladder) เปลี่ยนคำภาษาไทยทีละหนึ่งช่องเพื่อไปให้ถึงคำปลายทาง" />
 </svelte:head>
 
-<!-- Full-viewport layout, no scroll -->
-<div class="flex flex-col w-full max-w-lg mx-auto px-3 py-3 gap-2 select-none" style="height:calc(100svh - 4rem); max-height:calc(100svh - 4rem);">
+<div id="wordladder-game-container" class="max-w-4xl mx-auto px-2 sm:px-4 py-2 sm:py-4 flex flex-col gap-3 select-none">
+	<div class="bg-neutral text-neutral-content border border-base-300 rounded-3xl p-3 sm:p-6 shadow-2xl flex flex-col gap-3 relative overflow-hidden">
+		<div class="absolute -top-20 -right-20 w-80 h-80 bg-primary/10 rounded-full blur-3xl pointer-events-none"></div>
 
-	<!-- ── Header row ─────────────────────────────────────────────────── -->
-	<div class="flex items-center justify-between shrink-0">
-		<div>
-			<h1 class="text-2xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-cyan-400 leading-none">
-				Word Ladder
-			</h1>
-			<p class="text-slate-500 text-xs mt-0.5">บันไดคำ · เปลี่ยนทีละหนึ่งช่อง</p>
-		</div>
-		<div class="flex gap-1.5 items-center">
-			<a
-				href="/puzzles/wordladder/graph"
-				class="h-9 px-2.5 rounded-lg text-xs font-bold bg-slate-800 border border-slate-700 text-slate-300 hover:bg-slate-700 transition-colors flex items-center gap-1"
-				title="ดู Connected Components"
-			>
-				📊 กราฟ
-			</a>
-			<button
-				on:click={newRandom}
-				class="h-9 px-3 rounded-lg text-xs font-bold bg-slate-800 border border-slate-700 text-slate-300 hover:bg-slate-700 transition-colors"
-			>
-				🎲 สุ่มข้อใหม่
-			</button>
-			<button
-				on:click={() => (showRules = true)}
-				class="w-9 h-9 rounded-lg font-bold text-sm bg-slate-800 border border-slate-700 text-slate-400 hover:bg-slate-700 transition-colors flex items-center justify-center"
-			>
-				?
-			</button>
-		</div>
-	</div>
+		<!-- ── Header row ─────────────────────────────────────────────────── -->
+		<div class="flex items-center justify-between gap-2 border-b border-base-300/80 pb-2">
+			<div class="flex items-center gap-2 overflow-hidden">
+				<span class="h-2 w-2 rounded-full bg-primary animate-pulse shrink-0"></span>
+				<h1 class="text-base sm:text-xl font-extrabold text-neutral-content tracking-tight truncate">
+					Word Ladder <span class="text-xs text-neutral-content/70 font-medium hidden sm:inline">(บันไดคำ)</span>
+				</h1>
+			</div>
 
-	<!-- ── Slot-size selector ─────────────────────────────────────────── -->
-	<div class="flex gap-1.5 justify-center shrink-0">
-		{#each [3, 4, 5, 6] as n}
-			<button
-				on:click={() => changeSlotSize(n)}
-				class={`flex-1 h-9 rounded-lg font-bold text-sm transition-all duration-200 border-2 ${
-					slotSize === n
-						? 'bg-emerald-500 border-emerald-400 text-slate-950'
-						: 'bg-slate-800 border-slate-700 text-slate-300 hover:bg-slate-700'
-				}`}
-			>
-				{n} ช่อง
-			</button>
-		{/each}
-	</div>
+			<div class="flex items-center gap-1 shrink-0">
+				<button
+					on:click={toggleFullscreen}
+					class="btn btn-ghost btn-xs sm:btn-sm gap-1 text-primary hover:bg-primary/20"
+					title={isFullscreen ? 'ออกจากเต็มจอ' : 'เต็มจอ'}
+				>
+					{#if isFullscreen}
+						<Minimize2Icon size="16" />
+						<span class="hidden sm:inline">ออกจากเต็มจอ</span>
+					{:else}
+						<Maximize2Icon size="16" />
+						<span class="hidden sm:inline">เต็มจอ</span>
+					{/if}
+				</button>
+				<a
+					href="/puzzles/wordladder/graph"
+					class="btn btn-ghost btn-xs sm:btn-sm gap-1 text-base-content hover:bg-base-200"
+					title="ดู Connected Components"
+				>
+					<span>📊 กราฟ</span>
+				</a>
+				<button
+					on:click={newRandom}
+					class="btn btn-ghost btn-xs sm:btn-sm gap-1 text-primary hover:bg-primary/20"
+				>
+					<span>🎲 สุ่มใหม่</span>
+				</button>
+				<button
+					on:click={() => (showRules = true)}
+					class="btn btn-ghost btn-xs sm:btn-sm text-base-content hover:bg-base-200"
+				>
+					?
+				</button>
+			</div>
+		</div>
+
+		<!-- ── Slot-size selector ─────────────────────────────────────────── -->
+		<div class="flex gap-2 justify-center">
+			{#each [3, 4, 5, 6] as n}
+				<button
+					on:click={() => changeSlotSize(n)}
+					class={`btn flex-1 max-w-[100px] h-10 rounded-xl font-bold text-sm transition-all duration-200 ${
+						slotSize === n
+							? 'btn-primary text-primary-content shadow-lg'
+							: 'btn-outline border-base-300 text-base-content hover:bg-base-200'
+					}`}
+				>
+					{n} ช่อง
+				</button>
+			{/each}
+		</div>
 
 	<!-- ── Main content ───────────────────────────────────────────────── -->
 	{#if loading}
@@ -360,14 +398,13 @@
 					on:input={() => (errorMsg = '')}
 					type="text"
 					placeholder="พิมพ์คำถัดไป..."
-					class="flex-1 rounded-xl border-2 border-slate-700 bg-slate-900 text-slate-100 px-3 py-2.5 font-bold focus:outline-none focus:border-emerald-500 transition-colors"
-					style="background-color:#0f172a!important;color:#f8fafc!important;font-size:16px;"
+					class="input input-bordered flex-1 rounded-xl border-2 border-base-300 bg-base-300 text-base-content px-3 py-2.5 font-bold focus:outline-none focus:border-primary transition-colors"
 					autocomplete="off"
 					spellcheck="false"
 				/>
 				<button
 					type="submit"
-					class="min-w-[56px] px-4 rounded-xl bg-emerald-500 hover:bg-emerald-400 active:bg-emerald-600 text-slate-950 font-bold text-sm transition-all"
+					class="btn btn-primary text-primary-content min-w-[56px] px-4 rounded-xl font-bold text-sm transition-all"
 				>
 					ส่ง
 				</button>
@@ -377,29 +414,29 @@
 				<button
 					on:click={undoLast}
 					disabled={chain.length <= 1}
-					class="flex-1 h-11 rounded-lg text-xs font-bold bg-slate-800 border border-slate-700 text-slate-300 hover:bg-slate-700 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+					class="btn btn-outline border-base-300 text-base-content hover:bg-base-200 flex-1 h-11 rounded-lg text-xs font-bold disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
 				>
 					↩ ย้อน
 				</button>
 				<button
 					on:click={newRandom}
-					class="flex-1 h-11 rounded-lg text-xs font-bold bg-slate-800 border border-slate-700 text-slate-300 hover:bg-slate-700 transition-colors"
+					class="btn btn-outline border-base-300 text-base-content hover:bg-base-200 flex-1 h-11 rounded-lg text-xs font-bold transition-colors"
 				>
 					🎲 ข้อใหม่
 				</button>
 				<button
 					on:click={requestHint}
-					class="flex-1 h-11 rounded-lg text-xs font-bold bg-slate-800 border border-slate-700 text-slate-300 hover:bg-slate-700 transition-colors"
+					class="btn btn-secondary text-secondary-content flex-1 h-11 rounded-lg text-xs font-bold transition-colors"
 				>
 					💡 ใบ้
 				</button>
 				<button
 					on:click={revealSolution}
 					disabled={revealingSolution}
-					class="flex-1 h-11 rounded-lg text-xs font-bold bg-slate-800 border border-slate-700 text-slate-300 hover:bg-slate-700 disabled:opacity-50 transition-colors flex items-center justify-center gap-1.5"
+					class="btn btn-error text-error-content flex-1 h-11 rounded-lg text-xs font-bold disabled:opacity-50 transition-colors flex items-center justify-center gap-1.5"
 				>
 					{#if revealingSolution}
-						<div class="w-4 h-4 rounded-full border-2 border-emerald-400 border-t-transparent animate-spin"></div>
+						<div class="w-4 h-4 rounded-full border-2 border-error-content border-t-transparent animate-spin"></div>
 					{:else}
 						📖 เฉลย
 					{/if}
@@ -444,6 +481,7 @@
 		{/if}
 	{/if}
 </div>
+</div>
 
 <!-- ── Rules Modal ─────────────────────────────────────────────────────────── -->
 {#if showRules}
@@ -452,15 +490,15 @@
 		on:click={() => (showRules = false)}
 	>
 		<div
-			class="bg-slate-900 border border-slate-800 rounded-xl p-6 max-w-sm w-full text-slate-200 flex flex-col gap-4 shadow-2xl"
+			class="bg-slate-900 border border-slate-800 rounded-3xl p-6 max-w-sm w-full text-slate-200 flex flex-col gap-4 shadow-2xl"
 			on:click|stopPropagation
 		>
-			<h2 class="text-xl font-bold text-emerald-400 border-b border-slate-800 pb-2">กติกา Word Ladder</h2>
+			<h2 class="text-xl font-bold text-cyan-400 border-b border-slate-800 pb-2">กติกา Word Ladder</h2>
 			<ul class="list-disc list-inside flex flex-col gap-2 text-sm text-slate-300">
 				<li>โจทย์จะให้คำ <strong class="text-white">เริ่มต้น</strong> และ <strong class="text-white">ปลายทาง</strong></li>
 				<li>เปลี่ยน <strong class="text-white">หนึ่งช่อง</strong> ต่อก้าว</li>
 				<li>หนึ่งช่อง = พยัญชนะ + สระ + วรรณยุกต์ รวมกัน</li>
-				<li>ตัวอย่าง: <span class="text-emerald-300 font-bold">เก่ง → เจ๊ง → เจ้ง</span></li>
+				<li>ตัวอย่าง: <span class="text-cyan-300 font-bold">เก่ง → เจ๊ง → เจ้ง</span></li>
 				<li>คำทุกคำต้องอยู่ในพจนานุกรม</li>
 				<li>พยายามถึงปลายทางด้วยก้าวน้อยที่สุด!</li>
 			</ul>
@@ -474,13 +512,13 @@
 					<span>ช่องที่เปลี่ยนจากขั้นก่อน</span>
 				</div>
 				<div class="flex items-center gap-2">
-					<span class="w-6 h-6 rounded bg-emerald-500 border-2 border-emerald-400 flex items-center justify-center font-bold text-slate-950">ค</span>
+					<span class="w-6 h-6 rounded bg-cyan-500 border-2 border-cyan-400 flex items-center justify-center font-bold text-slate-950">ค</span>
 					<span>ถึงปลายทางแล้ว!</span>
 				</div>
 			</div>
 			<button
 				on:click={() => (showRules = false)}
-				class="mt-1 w-full py-2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold rounded-lg transition-colors"
+				class="mt-1 w-full py-2.5 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold rounded-2xl transition-colors"
 			>
 				เข้าใจแล้ว
 			</button>

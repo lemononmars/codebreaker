@@ -10,9 +10,31 @@
 		PlayCircleIcon,
 		InfoIcon,
 		XIcon,
-		ChevronLeftIcon
+		Maximize2Icon,
+		Minimize2Icon
 	} from 'svelte-feather-icons';
 	import { fly } from 'svelte/transition';
+
+	let isFullscreen = false;
+	function toggleFullscreen() {
+		const elem = document.getElementById('boggle-game-container');
+		if (!elem) return;
+		if (!document.fullscreenElement) {
+			elem.requestFullscreen().catch((err) => console.error(err));
+		} else {
+			document.exitFullscreen().catch(() => {});
+		}
+	}
+
+	onMount(() => {
+		const handleFsChange = () => {
+			isFullscreen = !!document.fullscreenElement;
+		};
+		document.addEventListener('fullscreenchange', handleFsChange);
+		return () => {
+			document.removeEventListener('fullscreenchange', handleFsChange);
+		};
+	});
 
 	// Board configurations
 	const rows = 4;
@@ -503,39 +525,46 @@
 
 <svelte:window on:mouseup={handleGlobalMouseUp} on:touchend={handleGlobalMouseUp} />
 
-<div class="flex flex-col gap-6 w-full max-w-4xl mx-auto px-4 select-none pb-12 text-center pt-4">
-	<!-- Header / Back button -->
-	<div class="flex flex-col gap-3">
-		<a
-			href="/puzzles"
-			class="inline-flex items-center gap-2 text-sm font-bold opacity-60 hover:opacity-100 transition-opacity w-fit self-start"
-		>
-			<ChevronLeftIcon size="16" />
-			กลับไปหน้าปริศนา
-		</a>
+<div id="boggle-game-container" class="max-w-4xl mx-auto px-2 sm:px-4 py-2 sm:py-4 flex flex-col gap-3 select-none">
+	<div class="bg-neutral text-neutral-content border border-base-300 rounded-3xl p-3 sm:p-6 shadow-2xl flex flex-col gap-3 relative overflow-hidden">
+		<div class="absolute -top-20 -right-20 w-80 h-80 bg-primary/10 rounded-full blur-3xl pointer-events-none"></div>
 
-		<div class="flex flex-col justify-center py-2">
-			<h1
-				class="text-2xl md:text-4xl font-black tracking-tight text-white flex items-center justify-center gap-2.5"
-			>
-				เส้นทางศัพท์
+		<!-- Compact Header -->
+		<div class="flex items-center justify-between gap-2 border-b border-base-300/80 pb-2">
+			<div class="flex items-center gap-2 overflow-hidden">
+				<span class="h-2 w-2 rounded-full bg-primary animate-pulse shrink-0"></span>
+				<h1 class="text-base sm:text-xl font-extrabold text-neutral-content tracking-tight truncate">
+					เส้นทางศัพท์ <span class="text-xs text-neutral-content/70 font-medium hidden sm:inline">(Boggle)</span>
+				</h1>
+			</div>
+
+			<div class="flex items-center gap-1 shrink-0">
+				<button
+					on:click={toggleFullscreen}
+					class="btn btn-ghost btn-xs sm:btn-sm gap-1 text-primary hover:bg-primary/20"
+					title={isFullscreen ? 'ออกจากเต็มจอ' : 'เต็มจอ'}
+				>
+					{#if isFullscreen}
+						<Minimize2Icon size="16" />
+						<span class="hidden sm:inline">ออกจากเต็มจอ</span>
+					{:else}
+						<Maximize2Icon size="16" />
+						<span class="hidden sm:inline">เต็มจอ</span>
+					{/if}
+				</button>
 				<button
 					on:click={() => (showRulesModal = true)}
-					class="p-1.5 bg-neutral hover:bg-base-300/60 border border-base-300/40 rounded-xl text-slate-400 hover:text-white transition-all shadow-sm"
-					title="วิธีเล่น"
+					class="btn btn-ghost btn-xs sm:btn-sm gap-1 text-base-content hover:bg-base-200"
 				>
 					<InfoIcon size="16" />
+					<span class="hidden sm:inline">วิธีเล่น</span>
 				</button>
-			</h1>
-			<p class="text-xs md:text-sm opacity-90 max-w-lg mx-auto leading-relaxed mt-1">
-				ลากเส้นเชื่อมตัวอักษรที่อยู่ติดกันต่อเนื่องเพื่อผสมคำภาษาไทยในพจนานุกรม
-			</p>
+			</div>
 		</div>
-	</div>
 
-	<!-- Main Layout -->
-	<div class="w-full grid lg:grid-cols-12 gap-4 items-start text-left mt-2">
-		<!-- Left Column: The Interactive Board -->
+		<!-- Main Layout -->
+		<div class="w-full grid lg:grid-cols-12 gap-6 items-start text-left">
+			<!-- Left Column: The Interactive Board -->
 		<div class="lg:col-span-7 flex flex-col gap-4 items-center w-full">
 			<!-- Current Word Drag preview bar -->
 			<div
@@ -936,6 +965,7 @@
 			</div>
 		</div>
 	</div>
+</div>
 
 	<!-- How to play Modal -->
 	{#if showRulesModal}
