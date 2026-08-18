@@ -237,6 +237,15 @@
 			</svg>`
 		},
 		{
+			type: 'tbs2021',
+			title: 'TBS 2021 Puzzles',
+			description: 'ปริศนาจากงาน Thailand Board Game Show 2021',
+			icon: `<svg class="w-10 h-10 text-emerald-400 transition-all duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+				<rect x="3" y="3" width="18" height="18" rx="2" />
+				<path d="M7 7h3v3H7zM14 7h3v3h-3zM7 14h3v3H7zM14 14h3v3h-3z"/>
+			</svg>`
+		},
+		{
 			type: 'thaipuzzleline',
 			title: 'ปริศนาภาษาไทย',
 			description: 'แก้ปริศนาภาษาไทยผ่าน Line',
