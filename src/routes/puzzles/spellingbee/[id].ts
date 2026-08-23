@@ -6,7 +6,7 @@ export const get: RequestHandler = async ({ params }) => {
 
 	if (id === 'daily') {
 		const content = getDailySpellingBee();
-		return { body: { content } };
+		return { body: { content } as any };
 	}
 
 	const numericId = parseInt(id, 10);
@@ -20,12 +20,12 @@ export const get: RequestHandler = async ({ params }) => {
 		};
 	}
 
-	let content = getPuzzle(numericId);
+	let content: any = getPuzzle(numericId);
 	if (!content) {
 		content = getDailySpellingBee();
 	}
 
 	return {
-		body: { content }
+		body: { content } as any
 	};
 };

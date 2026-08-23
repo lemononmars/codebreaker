@@ -14,6 +14,18 @@
 		</svg>`
 	};
 
+	const battlePuzzle = {
+		type: 'battle',
+		title: 'Puzzle Battle Arena',
+		description: 'สังเวียนประลองปริศนาสด แข่งขันแบบเรียลไทม์ (Multiplayer)',
+		icon: `<svg class="w-10 h-10 text-emerald-400 transition-all duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+			<path d="M14.5 17.5L3 6V3h3l11.5 11.5"/>
+			<path d="M13 19l6 2 3-3-2-6"/>
+			<path d="M9.5 14.5L21 3h-3L6.5 14.5"/>
+			<path d="M5 19l-2 3 3-2"/>
+		</svg>`
+	};
+
 	const wordPuzzles = [
 		{
 			type: 'rebus',
@@ -149,7 +161,7 @@
 		},
 		{
 			type: 'boggle',
-			title: 'Boggle (เส้นทางศัพท์)',
+			title: 'Boggle',
 			description: 'ลากเส้นเชื่อมตัวอักษรเพื่อผสมคำภาษาไทยในพจนานุกรม',
 			icon: `<svg class="w-10 h-10 text-cyan-400 transition-all duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 				<rect x="3" y="3" width="18" height="18" rx="2" />
@@ -158,6 +170,24 @@
 				<circle cx="8" cy="16" r="1.5" />
 				<circle cx="16" cy="16" r="1.5" />
 				<path d="M8 8l8 8" />
+			</svg>`
+		},
+		{
+			type: 'thaiquiz',
+			title: 'Thai Quiz Arena',
+			description: 'ควิซความรู้รอบตัวไทย & ป๊อปคัลเจอร์ สไตล์ Japanese Quiz Show (早押し 800 ข้อ) พร้อมเสียงอ่าน TTS',
+			icon: `<svg class="w-10 h-10 text-amber-400 transition-all duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+				<circle cx="12" cy="12" r="10"/>
+				<path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+				<line x1="12" y1="17" x2="12.01" y2="17"/>
+			</svg>`
+		},
+		{
+			type: 'thechase',
+			title: 'The Chase (ผู้ล่าท้าดวล)',
+			description: 'เกมโชว์ตอบคำถาม UK Quiz Show 500 ข้อ 3 ตัวเลือก ประลองความไวบนบอร์ด 7 ขั้น และรอบ Final Chase กับ AI Chaser',
+			icon: `<svg class="w-10 h-10 text-yellow-400 transition-all duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+				<polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
 			</svg>`
 		}
 	];
@@ -283,6 +313,19 @@
 			title={weeklyPuzzle.title}
 			description={weeklyPuzzle.description}
 			icon={weeklyPuzzle.icon}
+		/>
+	</section>
+
+	<!-- 2. Battle Arena Section -->
+	<section class="flex flex-col gap-4">
+		<h2 class="text-xl sm:text-2xl font-bold tracking-tight text-emerald-400 border-b border-slate-800 pb-2">
+			⚔️ สังเวียนประลองสด (Puzzle Battle)
+		</h2>
+		<PuzzleCard
+			type={battlePuzzle.type}
+			title={battlePuzzle.title}
+			description={battlePuzzle.description}
+			icon={battlePuzzle.icon}
 		/>
 	</section>
 

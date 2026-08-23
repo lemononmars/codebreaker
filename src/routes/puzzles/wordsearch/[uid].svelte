@@ -165,40 +165,54 @@
 		currentSelection = getLine(dragStart[0], dragStart[1], dragCurrent[0], dragCurrent[1]);
 	}
 
-	function endDrag() {
+	async function endDrag() {
 		if (!isDragging) return;
 		isDragging = false;
 		
 		let foundOne = false;
 		if (currentSelection.length > 0) {
-			const selectedText = currentSelection.map(([r, c]) => grid[r][c]).join('');
-			const reversedText = selectedText.split('').reverse().join('');
-			const cleanSel = selectedText.normalize('NFC').trim();
-			const cleanRev = reversedText.normalize('NFC').trim();
-
-			for (let w of wordsData) {
-				const cleanW = (w.word || '').normalize('NFC').trim();
-				const charsStr = Array.isArray(w.chars) ? w.chars.join('').normalize('NFC').trim() : '';
-
-				const matches =
-					w.word === selectedText ||
-					w.word === reversedText ||
-					cleanW === cleanSel ||
-					cleanW === cleanRev ||
-					(charsStr && (charsStr === cleanSel || charsStr === cleanRev));
-
-				if (!w.found && matches) {
-					w.found = true;
+			try {
+				const res = await fetch('/api/wordsearch/verify', {
+					method: 'POST',
+					headers: { 'Content-Type': 'application/json' },
+					body: JSON.stringify({ grid, words: wordsData, selectionCoords: currentSelection })
+				});
+				const data = await res.json();
+				if (data.matched && typeof data.index === 'number' && wordsData[data.index] && !wordsData[data.index].found) {
+					wordsData[data.index].found = true;
 					foundOne = true;
-					foundWordsLines = [
-						...foundWordsLines,
-						{
-							startR: currentSelection[0][0],
-							startC: currentSelection[0][1],
-							endR: currentSelection[currentSelection.length - 1][0],
-							endC: currentSelection[currentSelection.length - 1][1]
-						}
-					];
+					foundWordsLines = [...foundWordsLines, data.line];
+				}
+			} catch {
+				const selectedText = currentSelection.map(([r, c]) => grid[r][c]).join('');
+				const reversedText = selectedText.split('').reverse().join('');
+				const cleanSel = selectedText.normalize('NFC').trim();
+				const cleanRev = reversedText.normalize('NFC').trim();
+
+				for (let w of wordsData) {
+					const cleanW = (w.word || '').normalize('NFC').trim();
+					const charsStr = Array.isArray(w.chars) ? w.chars.join('').normalize('NFC').trim() : '';
+
+					const matches =
+						w.word === selectedText ||
+						w.word === reversedText ||
+						cleanW === cleanSel ||
+						cleanW === cleanRev ||
+						(charsStr && (charsStr === cleanSel || charsStr === cleanRev));
+
+					if (!w.found && matches) {
+						w.found = true;
+						foundOne = true;
+						foundWordsLines = [
+							...foundWordsLines,
+							{
+								startR: currentSelection[0][0],
+								startC: currentSelection[0][1],
+								endR: currentSelection[currentSelection.length - 1][0],
+								endC: currentSelection[currentSelection.length - 1][1]
+							}
+						];
+					}
 				}
 			}
 		}

@@ -1,11 +1,23 @@
 import { from } from '$lib/supabase';
-import type { Leaderboard } from '$lib/interfaces'
-import { sendhook } from '$lib/discordServer'
+import type { Leaderboard } from '$lib/interfaces';
+import { sendhook } from '$lib/discordServer';
+import { verifyWeeklyToken } from '$lib/verification';
 import type { RequestHandler } from '@sveltejs/kit';
 
 export const post: RequestHandler = async ({ request }) => {
-   let submission: Leaderboard = await request.json()
-   const { name, puzzle_type, puzzle_id, score } = submission
+   let submission: Leaderboard & { verification_token?: string } = await request.json();
+   const { name, puzzle_type, puzzle_id, verification_token } = submission;
+
+   // verify solution token for weekly puzzles
+   if (puzzle_type === 'weekly') {
+      const isValid = verifyWeeklyToken(verification_token, puzzle_id);
+      if (!isValid) {
+         return {
+            status: 403,
+            body: { error: 'Invalid or expired solution verification token.' }
+         };
+      }
+   }
 
    // check for duplicate (skip for blanks and spellingquiz)
    if (puzzle_type !== 'blanks' && puzzle_type !== 'spellingquiz') {
@@ -23,21 +35,33 @@ export const post: RequestHandler = async ({ request }) => {
       }
    }
 
+   let finalScore = submission.score;
+
    // weekly puzzle requires scoring system
    if (puzzle_type === 'weekly') {
       const puzzleYear = Number(String(puzzle_id).slice(0, 4));
       const currentYear = new Date().getFullYear();
 
       if (puzzleYear !== currentYear) {
-         submission.score = 5;
+         finalScore = 5;
       } else {
          const { data } = await from('leaderboard').select('*').eq('puzzle_id', puzzle_id);
          if (data) {
-            submission.score = 10 - Math.min(data.length, 5);
+            finalScore = 10 - Math.min(data.length, 5);
+         } else {
+            finalScore = 10;
          }
       }
    }
-   const { data, error } = await from('leaderboard').insert(submission)
+
+   const recordToInsert = {
+      name,
+      puzzle_type,
+      puzzle_id,
+      score: finalScore
+   };
+
+   const { data, error } = await from('leaderboard').insert(recordToInsert);
 
    if (error) {
       sendhook(

@@ -18,6 +18,7 @@
 	let openModal: boolean = false;
 	let isFinished: boolean = false;
 	let imageError = false;
+	let verificationToken: string = '';
 
 	$: if (year || week) {
 		clearAns();
@@ -40,14 +41,17 @@
 
    async function checkAnswer() {
       isSubmitting = true
-      if(answer.length == 0)
-         return
+      if(answer.trim().length == 0) {
+         isSubmitting = false;
+         return;
+      }
 
-      const res = await fetch(`/api/puzzle/weekly/${year}/${week}/${answer}`)
+      const res = await fetch(`/api/puzzle/weekly/${year}/${week}/${encodeURIComponent(answer.trim())}`)
       const data = await res.json()
 
       if(data) {
          if(data.result) {
+            verificationToken = data.token || '';
             openModal = true;
          }
          else {
@@ -61,15 +65,7 @@
    }
 
    async function addToLeaderboard() {
-      // check your answer again, just in case 0_0
-      let res = await fetch(`/api/puzzle/weekly/${year}/${week}/${answer}`)
-      let data = await res.json()
-
-      if(data) {
-         if(!data.result) {
-            return
-         }
-      }
+      if (!verificationToken) return;
 
       isSubmitting = true
 		await fetch('/api/post/leaderboard', {
@@ -83,16 +79,18 @@
 				puzzle_type: 'weekly',
             puzzle_id: year + ('0' + week).slice(-2),
             name: $username,
-            score: 5
+            verification_token: verificationToken
 			})
       })
       isSubmitting = false
       openModal = false
+      verificationToken = ''
       isFinished = true
 	}
    function clearAns(){
       answer = ''
       logs = []
+      verificationToken = ''
       isFinished = false
    }
    function focusOnMount(node: HTMLElement) {

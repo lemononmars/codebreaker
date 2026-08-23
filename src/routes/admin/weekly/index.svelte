@@ -117,7 +117,7 @@
 		formAnswerGuide = puzzle.answer_guide || '';
 		selectedFile = null;
 		const weekStr = ('0' + formWeek).slice(-2);
-		imagePreviewUrl = getPuzzleImageURL('weekly', `${formYear}${weekStr}.jpg`);
+		imagePreviewUrl = getPuzzleImageURL('weekly', `${formYear}${weekStr}.jpg`) || null;
 		newlyCreatedUrl = null;
 		saveMessage = '';
 		saveError = '';

@@ -50,7 +50,23 @@
 
    })
 
-   function getNewAnswer() {
+   let currentPuzzleToken = '';
+
+   async function getNewAnswer() {
+      try {
+         const res = await fetch(`/api/crossroad/puzzle?length=${answerLength}`);
+         const data = await res.json();
+         if (data.token && data.clues) {
+            currentPuzzleToken = data.token;
+            currentPostClues = [data.clues.top, data.clues.left];
+            currentPreClues = [data.clues.right, data.clues.bottom];
+            answer = '';
+            return;
+         }
+      } catch {
+         // Offline fallback
+      }
+
       // search until we get a word with the desired length
       do {
          currentAnswerIndex = Math.floor(Math.random()*wordListLength)
@@ -98,14 +114,28 @@
             play()
       if(event.code == "Space")
          openModal = !openModal
-      else
-         return
-	}
+   }
 
-   function handleAnswer (event: KeyboardEvent) {
+   async function handleAnswer (event: KeyboardEvent) {
       if(isCoolingDown) return
 
-      if(answer === currentAnswer) {
+      let isCorrect = answer === currentAnswer;
+
+      if (currentPuzzleToken) {
+         try {
+            const res = await fetch('/api/crossroad/verify', {
+               method: 'POST',
+               headers: { 'Content-Type': 'application/json' },
+               body: JSON.stringify({ token: currentPuzzleToken, answer })
+            });
+            const data = await res.json();
+            if (data.isCorrect) isCorrect = true;
+         } catch {
+            // fallback
+         }
+      }
+
+      if(isCorrect) {
          isWiggle = true
          isCoolingDown = true
          correctHistory.push(true)
@@ -416,8 +446,8 @@
 </div>
 
 <input type="checkbox" id="submit-modal" class="modal-toggle"/>
-<label class="modal cursor-pointer w-screen" class:modal-open={openModal} on:click={()=>openModal = false} on:keypress={()=>{}}>
-   <label class="modal-box relative bg-slate-900 border border-slate-800 text-slate-200 rounded-3xl" for="">
+<label class="modal cursor-pointer w-screen" for="submit-modal" class:modal-open={openModal} on:click={()=>openModal = false} on:keypress={()=>{}}>
+   <div class="modal-box relative bg-slate-900 border border-slate-800 text-slate-200 rounded-3xl">
       <div class="text m-2">
          <h1 class="text-xl font-bold text-white mb-2">วิธีเล่น Crossroad</h1>
          พิมพ์คำลงในช่องตรงกลาง เพื่อให้ช่องที่ติดกันอ่านตามลูกศรได้คำ 4 คำ เช่น
@@ -449,7 +479,7 @@
             </button>
          </div>
       </div>
-   </label>
+   </div>
 </label>
 
 <style>

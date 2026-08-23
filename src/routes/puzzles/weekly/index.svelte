@@ -154,11 +154,10 @@
 								Week {weekStr(puzzle.week)}
 							</div>
 
-							<!-- Solved Indicator -->
-							{#if puzzle.hasAnswer}
-								<div class="absolute top-2 right-2 badge bg-emerald-500/20 backdrop-blur-md border-emerald-500/40 text-emerald-300 font-bold text-xs px-2 py-0.5 gap-1">
-									<CheckCircleIcon size="12" />
-									<span>มีเฉลย</span>
+							<!-- No Answer Indicator -->
+							{#if !puzzle.hasAnswer}
+								<div class="absolute top-2 right-2 badge bg-slate-950/80 backdrop-blur-md border-slate-700 text-slate-400 font-medium text-xs px-2 py-0.5">
+									ไม่มีเฉลย
 								</div>
 							{/if}
 						</div>

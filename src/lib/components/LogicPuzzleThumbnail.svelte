@@ -1,7 +1,7 @@
 <script lang="ts">
 	export let genre: string = 'slither';
-	export let width: number = 5;
-	export let height: number = 5;
+	export const width: number = 5;
+	export const height: number = 5;
 	export let title: string = '';
 	export let thumbnail: string | undefined = undefined;
 	export let url: string = '';

@@ -1,6 +1,7 @@
 import { from } from '$lib/supabase';
 import { sendhook } from '$lib/discordServer';
 import { isWeeklyPuzzleReleased } from '$lib/weeklyGuard';
+import { generateWeeklyToken } from '$lib/verification';
 import type { RequestHandler } from '@sveltejs/kit';
 
 export const get: RequestHandler = async ({ params }) => {
@@ -23,14 +24,17 @@ export const get: RequestHandler = async ({ params }) => {
 
 		sendhook('submitting ' + answer + ' for ' + year + '/' + week);
 
-		if (answer.toUpperCase() === ans.toUpperCase())
+		if (answer.toUpperCase() === ans.toUpperCase()) {
+			const token = generateWeeklyToken(year, week);
 			return {
 				status: 200,
 				headers: { 'Content-Type': 'application/json' },
 				body: {
-					result: true
+					result: true,
+					token
 				}
 			};
+		}
 	}
 
 	return {

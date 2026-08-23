@@ -219,8 +219,9 @@
 		<div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2 border-t border-slate-800/80">
 			<!-- Genre Filter -->
 			<div class="space-y-1">
-				<label class="text-xs font-bold text-slate-400">Genre</label>
+				<label for="genre-filter-select" class="text-xs font-bold text-slate-400">Genre</label>
 				<select
+					id="genre-filter-select"
 					bind:value={selectedGenre}
 					class="select select-sm w-full bg-slate-950 border-slate-800 text-xs font-medium text-white rounded-xl focus:border-purple-500"
 				>
@@ -236,8 +237,9 @@
 
 			<!-- Difficulty Filter -->
 			<div class="space-y-1">
-				<label class="text-xs font-bold text-slate-400">Difficulty</label>
+				<label for="difficulty-filter-select" class="text-xs font-bold text-slate-400">Difficulty</label>
 				<select
+					id="difficulty-filter-select"
 					bind:value={selectedDifficulty}
 					class="select select-sm w-full bg-slate-950 border-slate-800 text-xs font-medium text-white rounded-xl focus:border-purple-500"
 				>
@@ -251,8 +253,9 @@
 
 			<!-- Size Filter -->
 			<div class="space-y-1">
-				<label class="text-xs font-bold text-slate-400">Grid Size</label>
+				<label for="size-filter-select" class="text-xs font-bold text-slate-400">Grid Size</label>
 				<select
+					id="size-filter-select"
 					bind:value={selectedSize}
 					class="select select-sm w-full bg-slate-950 border-slate-800 text-xs font-medium text-white rounded-xl focus:border-purple-500"
 				>

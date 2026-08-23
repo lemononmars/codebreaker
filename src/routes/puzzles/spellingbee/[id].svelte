@@ -45,7 +45,7 @@
 
    let openModal: boolean = false;
 
-   function checkAnswer() {
+   async function checkAnswer() {
       if (answer.length === 0) return;
 
       if (pastAnswers.includes(answer)) {
@@ -69,24 +69,36 @@
          return;
       }
 
-      if (!search(answer)) {
-         logs = [{ answer, response: 'wordless' }, ...logs];
-         triggleWiggle();
-         answer = '';
-         return;
-      }
+      try {
+         const res = await fetch('/api/spellingbee/verify', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ puzzleWord: currentWord, guess: answer })
+         });
+         const data = await res.json();
+         if (data.isValid) {
+            pastAnswers = [...pastAnswers, answer];
+            const idx = solutions.indexOf(answer);
+            if (idx !== -1) solved[idx] = true;
+            logs = [{ answer, response: 'correct' }, ...logs];
 
-      pastAnswers = [...pastAnswers, answer];
-      if (solutions.includes(answer)) {
-         const idx = solutions.indexOf(answer);
-         if (idx !== -1) solved[idx] = true;
-         logs = [{ answer, response: 'correct' }, ...logs];
-      } else {
-         logs = [{ answer, response: 'wordless' }, ...logs];
-      }
-
-      if (answer === currentWord || solved.every(Boolean)) {
-         openModal = true;
+            if (answer === currentWord || (solved.length > 0 && solved.every(Boolean))) {
+               openModal = true;
+            }
+         } else {
+            logs = [{ answer, response: data.reason === 'not_in_dictionary' ? 'wordless' : (data.reason || 'wordless') }, ...logs];
+            triggleWiggle();
+         }
+      } catch {
+         if (search(answer)) {
+            pastAnswers = [...pastAnswers, answer];
+            const idx = solutions.indexOf(answer);
+            if (idx !== -1) solved[idx] = true;
+            logs = [{ answer, response: 'correct' }, ...logs];
+         } else {
+            logs = [{ answer, response: 'wordless' }, ...logs];
+            triggleWiggle();
+         }
       }
 
       answer = '';

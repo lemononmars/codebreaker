@@ -113,15 +113,17 @@
 
 		<div class="grid grid-cols-1 md:grid-cols-2 gap-4 items-stretch">
 			<div class="space-y-2">
-				<label class="text-xs font-bold text-slate-400">ข้อความต้นทาง (Input Text):</label>
+				<label for="vigenere-input-text" class="text-xs font-bold text-slate-400">ข้อความต้นทาง (Input Text):</label>
 				<input
+					id="vigenere-input-text"
 					type="text"
 					bind:value={inputText}
 					placeholder="พิมพ์ข้อความ..."
 					class="input input-bordered w-full bg-slate-950 border-slate-800 text-white font-mono uppercase text-sm rounded-xl focus:border-amber-500"
 				/>
-				<label class="text-xs font-bold text-slate-400 pt-2 block">คำสำคัญ (Keyword):</label>
+				<label for="vigenere-key-text" class="text-xs font-bold text-slate-400 pt-2 block">คำสำคัญ (Keyword):</label>
 				<input
+					id="vigenere-key-text"
 					type="text"
 					bind:value={key}
 					placeholder="คำสำคัญ..."

@@ -25,14 +25,14 @@ export function evaluate(expr: string): number {
 }
 
 export function validateEquation(word: string, solution: string, difficulty: number) {
-	const inputSplitted = word.split('');
+	const inputSplitted: Array<string | null> = word.split('');
 	const forbiddenIndices = word
 		.replace(/[\+\-\*\/\=]/g, '')
 		.split('')
 		.map((c) => parseInt(c) - 1);
-	const solutionSplitted = solution.split('');
+	const solutionSplitted: Array<string | null> = solution.split('');
 
-	let output = inputSplitted.map((char) => ({ correct: CharState.Wrong, char }));
+	const output: Array<{ correct: CharState; char: string }> = word.split('').map((char) => ({ correct: CharState.Wrong, char }));
 	if (difficulty === DIFFICULTY_HARD)
 		output.forEach(
 			(op, idx) =>
@@ -78,7 +78,7 @@ export function layout(
 	alphabetRows: string[],
 	validations: Array<{ correct: CharState; char: string }> = []
 ): Array<Record<string, CharState>> {
-	const layoutRows = [];
+	const layoutRows: Array<Record<string, CharState>> = [];
 
 	alphabetRows.forEach((alphabets) => {
 		const layout: Record<string, CharState> = {};

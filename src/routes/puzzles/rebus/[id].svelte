@@ -33,7 +33,7 @@
 
    let openModal: boolean = false
 
-   function checkAnswer() {
+   async function checkAnswer() {
       if(solved) return
 
       submitted = true
@@ -43,12 +43,27 @@
          return 
       }
 
-      pastAnswers = [...pastAnswers, answer]
-      if(answer === content.answer) {
-         solved = true
-         openModal = true
+      const guess = answer;
+      pastAnswers = [...pastAnswers, guess];
+      answer = '';
+
+      try {
+         const res = await fetch('/api/puzzle/verify', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ type: 'rebus', id, answer: guess })
+         });
+         const data = await res.json();
+         if (data.isCorrect) {
+            solved = true;
+            openModal = true;
+         }
+      } catch {
+         if(content.answer && guess === content.answer) {
+            solved = true;
+            openModal = true;
+         }
       }
-      answer = ''
    }
 
    function handleKeyPress(event: KeyboardEvent) {

@@ -115,8 +115,9 @@
 			<!-- Input Column -->
 			<div class="bg-slate-900/80 p-5 rounded-2xl border border-slate-800 flex flex-col justify-between space-y-3 {isSwapped ? 'order-2' : 'order-1'}">
 				<div>
-					<label class="block text-xs font-semibold text-slate-400 mb-2">ข้อความ (Input):</label>
+					<label for="atbash-input-text" class="block text-xs font-semibold text-slate-400 mb-2">ข้อความ (Input):</label>
 					<textarea
+						id="atbash-input-text"
 						bind:value={inputText}
 						rows="4"
 						placeholder="พิมพ์ข้อความภาษาอังกฤษ..."
@@ -130,7 +131,7 @@
 			<div class="bg-slate-900/80 p-5 rounded-2xl border border-slate-800 flex flex-col justify-between space-y-3 {isSwapped ? 'order-1' : 'order-2'}">
 				<div>
 					<div class="flex items-center justify-between mb-2">
-						<label class="block text-xs font-semibold text-slate-400">ผลลัพธ์ (Output):</label>
+						<span class="block text-xs font-semibold text-slate-400">ผลลัพธ์ (Output):</span>
 						<button on:click={copyOutput} class="btn btn-ghost btn-xs gap-1 text-slate-400 hover:text-white">
 							{#if isCopied}
 								<CheckIcon size="14" class="text-success" />

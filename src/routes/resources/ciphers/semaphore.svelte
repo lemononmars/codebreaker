@@ -96,8 +96,9 @@
 	<!-- Interactive Converter Section -->
 	<section class="bg-slate-900 border border-slate-800 rounded-3xl p-6 shadow-xl space-y-6">
 		<div class="space-y-2">
-			<label class="text-sm font-bold text-slate-300">ใส่ข้อความภาษาอังกฤษ (A-Z):</label>
+			<label for="semaphore-input-text" class="text-sm font-bold text-slate-300">ใส่ข้อความภาษาอังกฤษ (A-Z):</label>
 			<input
+				id="semaphore-input-text"
 				type="text"
 				bind:value={inputText}
 				placeholder="พิมพ์ข้อความที่ต้องการแปลงเป็นรหัสธง..."

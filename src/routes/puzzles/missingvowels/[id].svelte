@@ -49,7 +49,7 @@
       return shuffle;
    }
 
-   function checkAnswer() {
+   async function checkAnswer() {
       if (solved) return;
       submitted = true;
       duplicate = false;
@@ -57,12 +57,33 @@
          duplicate = true;
          return;
       }
-      pastAnswers = [...pastAnswers, answer];
-      if (answer === roundAnswer) {
-         solved = true;
-         nextRound();
-      }
+
+      const guess = answer;
+      pastAnswers = [...pastAnswers, guess];
       answer = '';
+
+      try {
+         const res = await fetch('/api/puzzle/verify', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+               type: 'missingvowels',
+               uid: content.uid || (content as any).id,
+               answer: guess,
+               roundIndex: currentRound
+            })
+         });
+         const data = await res.json();
+         if (data.isCorrect) {
+            solved = true;
+            nextRound();
+         }
+      } catch {
+         if (roundAnswer && guess === roundAnswer) {
+            solved = true;
+            nextRound();
+         }
+      }
    }
 
    function nextRound() {

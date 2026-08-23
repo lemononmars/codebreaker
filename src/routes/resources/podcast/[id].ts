@@ -7,7 +7,7 @@ export const get: RequestHandler = async ({ params }) => {
 
 	if (episode) {
 		return {
-			body: { episode }
+			body: { episode } as any
 		};
 	}
 

@@ -172,10 +172,11 @@
 		<div class="grid grid-cols-1 md:grid-cols-2 gap-4 items-stretch">
 			<div class="bg-slate-900/80 p-5 rounded-2xl border border-slate-800 flex flex-col justify-between space-y-4 {isSwapped ? 'order-2' : 'order-1'}">
 				<div class="space-y-3">
-					<label class="block text-xs font-semibold text-slate-400">
+					<label for="railfence-input-text" class="block text-xs font-semibold text-slate-400">
 						{isSwapped ? 'ข้อความ Ciphertext (Input):' : 'ข้อความ Plaintext (Input):'}
 					</label>
 					<textarea
+						id="railfence-input-text"
 						bind:value={inputText}
 						rows="3"
 						placeholder="พิมพ์ข้อความ..."
@@ -196,7 +197,7 @@
 			<div class="bg-slate-900/80 p-5 rounded-2xl border border-slate-800 flex flex-col justify-between space-y-3 {isSwapped ? 'order-1' : 'order-2'}">
 				<div>
 					<div class="flex items-center justify-between mb-2">
-						<label class="block text-xs font-semibold text-slate-400">ผลลัพธ์ (Output):</label>
+						<span class="block text-xs font-semibold text-slate-400">ผลลัพธ์ (Output):</span>
 						<button on:click={copyOutput} class="btn btn-ghost btn-xs gap-1 text-slate-400 hover:text-white">
 							{#if isCopied}
 								<CheckIcon size="14" class="text-success" />

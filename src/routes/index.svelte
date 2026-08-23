@@ -4,6 +4,7 @@
 	import SpellingBeeMiniPlayer from '$lib/components/SpellingBeeMiniPlayer.svelte';
 	import BlanksMiniPlayer from '$lib/components/BlanksMiniPlayer.svelte';
 	import SpellingQuizMiniPlayer from '$lib/components/SpellingQuizMiniPlayer.svelte';
+	import ThaiQuizMiniPlayer from '$lib/components/ThaiQuizMiniPlayer.svelte';
 	import ShopCard from '$lib/components/ShopCard.svelte';
 	import {
 		puzzleDescriptions,
@@ -13,6 +14,8 @@
 	import { onMount } from 'svelte';
 	import { getPuzzleImageURL } from '$lib/supabase';
 	import { CheckCircleIcon, ImageIcon, CalendarIcon } from 'svelte-feather-icons';
+
+	let activeMiniPlayerTab: 'spellingbee' | 'thaiquiz' | 'blanks' | 'spellingquiz' = 'spellingbee';
 
 	// SVG Icon map matching Puzzles page
 	const puzzleSvgIcons: Record<string, string> = {
@@ -189,25 +192,44 @@
 			</h1>
 
 			<!-- Hero CTA Buttons: Transparent background, white text, accent border -->
-			<div class="flex flex-wrap gap-3 justify-center pt-2">
+			<div class="flex flex-wrap gap-2.5 justify-center pt-2">
 				<a
-					href="#daily-spelling-bee"
-					on:click={(e) => scrollToElement(e, 'daily-spelling-bee')}
-					class="px-5 py-2.5 rounded-xl font-bold text-white bg-slate-900/60 hover:bg-slate-900/90 border border-amber-500/50 hover:border-amber-400 shadow-lg shadow-amber-500/10 transition-all duration-300 transform hover:-translate-y-0.5 text-xs sm:text-sm flex items-center gap-1.5 backdrop-blur-md"
+					href="#mini-players"
+					on:click={(e) => {
+						activeMiniPlayerTab = 'spellingbee';
+						scrollToElement(e, 'mini-players');
+					}}
+					class="px-4 py-2.5 rounded-xl font-bold text-white bg-slate-900/60 hover:bg-slate-900/90 border border-amber-500/50 hover:border-amber-400 shadow-lg shadow-amber-500/10 transition-all duration-300 transform hover:-translate-y-0.5 text-xs sm:text-sm flex items-center gap-1.5 backdrop-blur-md"
 				>
 					<span>เล่นสะกดศัพท์ 🐝</span>
 				</a>
 				<a
-					href="#daily-blanks"
-					on:click={(e) => scrollToElement(e, 'daily-blanks')}
-					class="px-5 py-2.5 rounded-xl font-bold text-white bg-slate-900/60 hover:bg-slate-900/90 border border-sky-500/50 hover:border-sky-400 shadow-lg shadow-sky-500/10 transition-all duration-300 transform hover:-translate-y-0.5 text-xs sm:text-sm flex items-center gap-1.5 backdrop-blur-md"
+					href="#mini-players"
+					on:click={(e) => {
+						activeMiniPlayerTab = 'thaiquiz';
+						scrollToElement(e, 'mini-players');
+					}}
+					class="px-4 py-2.5 rounded-xl font-bold text-white bg-slate-900/60 hover:bg-slate-900/90 border border-yellow-500/50 hover:border-yellow-400 shadow-lg shadow-yellow-500/10 transition-all duration-300 transform hover:-translate-y-0.5 text-xs sm:text-sm flex items-center gap-1.5 backdrop-blur-md"
+				>
+					<span>ควิซความรู้ไทย 🇹🇭</span>
+				</a>
+				<a
+					href="#mini-players"
+					on:click={(e) => {
+						activeMiniPlayerTab = 'blanks';
+						scrollToElement(e, 'mini-players');
+					}}
+					class="px-4 py-2.5 rounded-xl font-bold text-white bg-slate-900/60 hover:bg-slate-900/90 border border-sky-500/50 hover:border-sky-400 shadow-lg shadow-sky-500/10 transition-all duration-300 transform hover:-translate-y-0.5 text-xs sm:text-sm flex items-center gap-1.5 backdrop-blur-md"
 				>
 					<span>เล่นซ่อนอักษร ✏️</span>
 				</a>
 				<a
-					href="#daily-spelling-quiz"
-					on:click={(e) => scrollToElement(e, 'daily-spelling-quiz')}
-					class="px-5 py-2.5 rounded-xl font-bold text-white bg-slate-900/60 hover:bg-slate-900/90 border border-teal-500/50 hover:border-teal-400 shadow-lg shadow-teal-500/10 transition-all duration-300 transform hover:-translate-y-0.5 text-xs sm:text-sm flex items-center gap-1.5 backdrop-blur-md"
+					href="#mini-players"
+					on:click={(e) => {
+						activeMiniPlayerTab = 'spellingquiz';
+						scrollToElement(e, 'mini-players');
+					}}
+					class="px-4 py-2.5 rounded-xl font-bold text-white bg-slate-900/60 hover:bg-slate-900/90 border border-teal-500/50 hover:border-teal-400 shadow-lg shadow-teal-500/10 transition-all duration-300 transform hover:-translate-y-0.5 text-xs sm:text-sm flex items-center gap-1.5 backdrop-blur-md"
 				>
 					<span>เล่นปริศนาสะกดศัพท์ 📝</span>
 				</a>
@@ -253,16 +275,62 @@
 		</div>
 	</section>
 
-	<!-- Interactive Daily Mini Players Section with Anchor IDs -->
-	<section class="max-w-7xl mx-auto px-4 space-y-8">
-		<div id="daily-spelling-bee" class="scroll-mt-24">
-			<SpellingBeeMiniPlayer solvers={latestSolves} />
+	<!-- Consolidated Interactive Daily Mini Players Section with Tabs -->
+	<section id="mini-players" class="max-w-7xl mx-auto px-4 scroll-mt-24 space-y-4">
+		<!-- Tab Switcher Bar -->
+		<div class="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none bg-slate-900/60 backdrop-blur-md p-1.5 rounded-2xl border border-slate-800/90 shadow-xl">
+			<button
+				on:click={() => (activeMiniPlayerTab = 'spellingbee')}
+				class="px-4 py-2.5 rounded-xl font-extrabold text-xs sm:text-sm flex items-center gap-2 transition-all whitespace-nowrap {activeMiniPlayerTab === 'spellingbee' ? 'bg-amber-500 text-slate-950 shadow-lg shadow-amber-500/20' : 'text-slate-400 hover:text-white hover:bg-slate-800/60'}"
+			>
+				<span>🐝</span>
+				<span>Spelling Bee (รวงผึ้งผสมคำ)</span>
+			</button>
+
+			<button
+				on:click={() => (activeMiniPlayerTab = 'thaiquiz')}
+				class="px-4 py-2.5 rounded-xl font-extrabold text-xs sm:text-sm flex items-center gap-2 transition-all whitespace-nowrap {activeMiniPlayerTab === 'thaiquiz' ? 'bg-amber-500 text-slate-950 shadow-lg shadow-amber-500/20' : 'text-slate-400 hover:text-white hover:bg-slate-800/60'}"
+			>
+				<span>🇹🇭</span>
+				<span>Thai Quiz (ความรู้รอบตัวไทย)</span>
+			</button>
+
+			<button
+				on:click={() => (activeMiniPlayerTab = 'blanks')}
+				class="px-4 py-2.5 rounded-xl font-extrabold text-xs sm:text-sm flex items-center gap-2 transition-all whitespace-nowrap {activeMiniPlayerTab === 'blanks' ? 'bg-sky-500 text-slate-950 shadow-lg shadow-sky-500/20' : 'text-slate-400 hover:text-white hover:bg-slate-800/60'}"
+			>
+				<span>🕳️</span>
+				<span>Blanks (เติมอักษร)</span>
+			</button>
+
+			<button
+				on:click={() => (activeMiniPlayerTab = 'spellingquiz')}
+				class="px-4 py-2.5 rounded-xl font-extrabold text-xs sm:text-sm flex items-center gap-2 transition-all whitespace-nowrap {activeMiniPlayerTab === 'spellingquiz' ? 'bg-teal-500 text-slate-950 shadow-lg shadow-teal-500/20' : 'text-slate-400 hover:text-white hover:bg-slate-800/60'}"
+			>
+				<span>📝</span>
+				<span>Spelling Quiz (สะกดคำ)</span>
+			</button>
 		</div>
-		<div id="daily-blanks" class="scroll-mt-24">
-			<BlanksMiniPlayer />
-		</div>
-		<div id="daily-spelling-quiz" class="scroll-mt-24">
-			<SpellingQuizMiniPlayer />
+
+		<!-- Single Consolidated Mini Player Container -->
+		<div class="transition-all duration-300">
+			{#if activeMiniPlayerTab === 'spellingbee'}
+				<div id="daily-spelling-bee">
+					<SpellingBeeMiniPlayer solvers={latestSolves} />
+				</div>
+			{:else if activeMiniPlayerTab === 'thaiquiz'}
+				<div id="daily-thai-quiz">
+					<ThaiQuizMiniPlayer />
+				</div>
+			{:else if activeMiniPlayerTab === 'blanks'}
+				<div id="daily-blanks">
+					<BlanksMiniPlayer />
+				</div>
+			{:else if activeMiniPlayerTab === 'spellingquiz'}
+				<div id="daily-spelling-quiz">
+					<SpellingQuizMiniPlayer />
+				</div>
+			{/if}
 		</div>
 	</section>
 

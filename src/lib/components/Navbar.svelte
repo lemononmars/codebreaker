@@ -19,9 +19,9 @@
 	import { user, username } from '$lib/store';
 	import { page } from '$app/stores';
 
-	const icons = [HomeIcon, CalendarIcon, PlayCircleIcon, ToolIcon, BookOpenIcon, ShoppingCartIcon];
-	const menus = ['หน้าแรก', 'กิจกรรม', 'ปริศนา', 'เครื่องมือ', 'ข้อมูล', 'ร้านค้า'];
-	const links = ['', 'events', 'puzzles', 'tools', 'resources', 'shop'];
+	const icons = [HomeIcon, PlayCircleIcon, ToolIcon, BookOpenIcon, CalendarIcon, ShoppingCartIcon];
+	const menus = ['หน้าแรก', 'ปริศนา', 'เครื่องมือ', 'ข้อมูล', 'กิจกรรม', 'ร้านค้า'];
+	const links = ['', 'puzzles', 'tools', 'resources', 'events', 'shop'];
 
 	let openNameModal = false;
 	let tempName = '';
@@ -150,10 +150,11 @@
 
 			<form on:submit|preventDefault={handleSaveName} class="flex flex-col gap-4 mt-2">
 				<div class="form-control w-full">
-					<label class="label text-xs font-bold text-base-content px-0">
+					<label for="guest-name-input" class="label text-xs font-bold text-base-content px-0">
 						<span>ชื่อที่ต้องการแสดง:</span>
 					</label>
 					<input
+						id="guest-name-input"
 						type="text"
 						bind:value={tempName}
 						placeholder="ใส่ชื่อผู้เล่น..."

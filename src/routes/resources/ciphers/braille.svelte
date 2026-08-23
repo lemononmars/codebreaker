@@ -239,10 +239,11 @@
 		<!-- Left-Right Side-by-Side Converter Layout -->
 		<div class="grid grid-cols-1 md:grid-cols-2 gap-5 items-stretch">
 			<div class="space-y-2 flex flex-col justify-between">
-				<label class="text-xs font-bold text-slate-400">
+				<label for="braille-input-text" class="text-xs font-bold text-slate-400">
 					{isSwapped ? 'ใส่อักษรเบรลล์ยูนิโค้ด (Braille Input):' : `ข้อความต้นทาง (${langMode}):`}
 				</label>
 				<textarea
+					id="braille-input-text"
 					bind:value={inputText}
 					placeholder={isSwapped ? 'วางอักษรเบรลล์ ⠃⠗⠁...' : 'พิมพ์ข้อความที่ต้องการแปลง...'}
 					rows="4"

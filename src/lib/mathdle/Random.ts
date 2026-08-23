@@ -11,7 +11,7 @@ export default class Random {
 	mt = new Array(Random.N);
 	mti = Random.N + 1;
 
-	constructor(seed: number = null) {
+	constructor(seed: number | null = null) {
 		if (seed == null) {
 			seed = new Date().getTime();
 		}
@@ -61,7 +61,7 @@ export default class Random {
 		return y >>> 0;
 	}
 
-	nextInt32(range: [number, number] = null): number {
+	nextInt32(range: [number, number] | null = null): number {
 		var result = this._nextInt32();
 		if (range == null) {
 			return result;

@@ -3,9 +3,15 @@
 	import dict from '$lib/dict.json';
 	import { CheckCircleIcon } from 'svelte-feather-icons';
 
+	interface ThaiBlock {
+		base: string;
+		upper: string;
+		lower: string;
+	}
+
 	let word = '';
+	let blocks: ThaiBlock[] = [];
 	let targetChar = '';
-	let blankIndices: number[] = [];
 	let choices: string[] = [];
 	let selectedChoice = '';
 	let wrongChoice = '';
@@ -16,6 +22,36 @@
 		'บ', 'ป', 'ผ', 'ฝ', 'พ', 'ฟ', 'ม', 'ย', 'ร', 'ล', 'ว', 'ส', 'ห', 'อ'
 	];
 
+	function isUpperChar(c: string): boolean {
+		return ['ั', 'ิ', 'ี', 'ึ', 'ื', '็', '่', '้', '๊', '๋', '์', 'ํ'].includes(c);
+	}
+
+	function isLowerChar(c: string): boolean {
+		return ['ุ', 'ู', 'ฺ'].includes(c);
+	}
+
+	function parseThaiBlocks(w: string): ThaiBlock[] {
+		const result: ThaiBlock[] = [];
+		for (const char of w) {
+			if (isUpperChar(char)) {
+				if (result.length > 0) {
+					result[result.length - 1].upper += char;
+				} else {
+					result.push({ base: '', upper: char, lower: '' });
+				}
+			} else if (isLowerChar(char)) {
+				if (result.length > 0) {
+					result[result.length - 1].lower += char;
+				} else {
+					result.push({ base: '', upper: '', lower: char });
+				}
+			} else {
+				result.push({ base: char, upper: '', lower: '' });
+			}
+		}
+		return result;
+	}
+
 	import dictPythaiRaw from '$lib/utils/dict_pythainlp.json?raw';
 	const pythaiMap: Record<string, number> = JSON.parse(dictPythaiRaw);
 
@@ -24,26 +60,32 @@
 		wrongChoice = '';
 		selectedChoice = '';
 
-		const eligibleWords = dict.filter(
-			(w) => w.length >= 4 && w.length <= 7 && /^[ก-ฮ]+$/.test(w) && (pythaiMap[w] ?? 0) >= 1
-		);
+		const eligibleWords = dict.filter((w) => {
+			const bList = parseThaiBlocks(w);
+			if (bList.length < 3 || bList.length > 7) return false;
+			if ((pythaiMap[w] ?? 0) < 1) return false;
+			const baseChars = bList.map((b) => b.base).filter((b) => allThaiLetters.includes(b));
+			const uniqueBases = Array.from(new Set(baseChars));
+			return uniqueBases.some((c) => baseChars.filter((x) => x === c).length >= 2);
+		});
 
 		let foundWord = '';
 		let foundChar = '';
-		let foundIndices: number[] = [];
+		let foundBlocks: ThaiBlock[] = [];
 
 		let attempts = 0;
-		while (attempts < 500) {
+		while (attempts < 500 && eligibleWords.length > 0) {
 			attempts++;
 			const randomW = eligibleWords[Math.floor(Math.random() * eligibleWords.length)];
-			const chars = randomW.split('');
-			const uniqueChars = Array.from(new Set(chars));
-			const multiples = uniqueChars.filter((c) => chars.filter((x) => x === c).length >= 2);
+			const bList = parseThaiBlocks(randomW);
+			const baseChars = bList.map((b) => b.base).filter((b) => allThaiLetters.includes(b));
+			const uniqueBases = Array.from(new Set(baseChars));
+			const multiples = uniqueBases.filter((c) => baseChars.filter((x) => x === c).length >= 2);
 
 			if (multiples.length > 0) {
 				foundChar = multiples[Math.floor(Math.random() * multiples.length)];
 				foundWord = randomW;
-				foundIndices = chars.map((c, i) => (c === foundChar ? i : -1)).filter((i) => i !== -1);
+				foundBlocks = bList;
 				break;
 			}
 		}
@@ -51,12 +93,12 @@
 		if (!foundWord) {
 			foundWord = 'กงเกวียน';
 			foundChar = 'ก';
-			foundIndices = [0, 4];
+			foundBlocks = parseThaiBlocks('กงเกวียน');
 		}
 
 		word = foundWord;
+		blocks = foundBlocks;
 		targetChar = foundChar;
-		blankIndices = foundIndices;
 
 		const distractors = allThaiLetters.filter((c) => c !== targetChar);
 		const shuffledDistractors = [...distractors].sort(() => 0.5 - Math.random()).slice(0, 3);
@@ -80,7 +122,7 @@
 	}
 </script>
 
-<div class="bg-slate-900/50 backdrop-blur-xl border border-slate-800/90 rounded-3xl p-6 md:p-8 shadow-2xl relative overflow-hidden">
+<div class="bg-slate-900/50 backdrop-blur-xl border border-slate-800/90 rounded-3xl p-4 sm:p-6 md:p-8 shadow-2xl relative overflow-hidden">
 	<div class="absolute top-0 right-0 w-80 h-80 bg-sky-500/10 rounded-full blur-3xl pointer-events-none"></div>
 
 	<!-- Header -->
@@ -105,22 +147,30 @@
 	<!-- Content Box -->
 	<div class="flex flex-col items-center space-y-6">
 		<!-- Word Display with Blanks -->
-		<div class="flex items-center justify-center gap-1.5 sm:gap-3 py-6 px-4 bg-slate-950/70 border border-slate-800 rounded-2xl w-full max-w-lg shadow-inner">
-			{#each word.split('') as char, idx}
-				{#if blankIndices.includes(idx)}
+		<div class="flex items-center justify-center gap-1 sm:gap-2 py-4 px-2 sm:px-4 bg-slate-950/70 border border-slate-800 rounded-2xl w-full max-w-lg shadow-inner overflow-x-auto">
+			{#each blocks as b}
+				{@const isBlank = b.base === targetChar}
+				<div class="flex flex-col items-center justify-center select-none min-w-[28px] max-w-[44px] flex-1">
+					<!-- Upper mark -->
+					<div class="h-6 sm:h-8 font-black text-xl sm:text-3xl text-sky-400 flex items-center justify-center leading-none">
+						{b.upper || ''}
+					</div>
+					<!-- Base box -->
 					<div
-						class="w-10 h-12 sm:w-14 sm:h-16 rounded-xl border-2 flex items-center justify-center font-black text-xl sm:text-3xl transition-all
-						{isSolved
-							? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/50'
-							: 'bg-sky-500/10 text-sky-300 border-sky-500/40'}"
+						class="w-full aspect-square max-h-11 sm:max-h-14 rounded-xl border-2 flex items-center justify-center font-black text-base sm:text-2xl transition-all
+						{isBlank
+							? isSolved
+								? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/50'
+								: 'bg-sky-500/10 text-sky-300 border-sky-500/40 shadow-sm'
+							: 'border-slate-800/80 bg-slate-900/60 text-white'}"
 					>
-						{isSolved ? targetChar : '_'}
+						{isBlank ? (isSolved ? targetChar : '_') : b.base}
 					</div>
-				{:else}
-					<div class="w-10 h-12 sm:w-14 sm:h-16 flex items-center justify-center font-black text-xl sm:text-3xl text-white">
-						{char}
+					<!-- Lower mark -->
+					<div class="h-6 sm:h-8 font-black text-xl sm:text-3xl text-sky-400 flex items-center justify-center leading-none">
+						{b.lower || ''}
 					</div>
-				{/if}
+				</div>
 			{/each}
 		</div>
 

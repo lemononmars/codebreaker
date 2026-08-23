@@ -4,6 +4,8 @@
 	import { navigating, page } from '$app/stores';
 	import PageNavIndicator from '$lib/components/PageNavIndicator.svelte';
 	import Background3D from '$lib/components/Background3D.svelte';
+	import PWAInstallBanner from '$lib/components/PWAInstallBanner.svelte';
+	import OfflineIndicator from '$lib/components/OfflineIndicator.svelte';
 
 	$: currentPath = $page?.url?.pathname || '/';
 
@@ -51,3 +53,6 @@
 		<slot />
 	</div>
 </main>
+
+<OfflineIndicator />
+<PWAInstallBanner />

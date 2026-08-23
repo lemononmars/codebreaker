@@ -110,10 +110,11 @@
 
 		<div class="space-y-4">
 			<div class="space-y-2">
-				<label class="block text-xs font-semibold text-slate-400">
+				<label for="pigpen-input-text" class="block text-xs font-semibold text-slate-400">
 					ข้อความภาษาอังกฤษ (A-Z Input):
 				</label>
 				<input
+					id="pigpen-input-text"
 					type="text"
 					bind:value={inputText}
 					placeholder="พิมพ์ข้อความภาษาอังกฤษ..."
@@ -123,9 +124,9 @@
 
 			<!-- Output Box -->
 			<div class="space-y-2">
-				<label class="block text-xs font-semibold text-slate-400">
+				<span class="block text-xs font-semibold text-slate-400">
 					ผลลัพธ์สัญลักษณ์ Pigpen:
-				</label>
+				</span>
 				<div class="pigpen-output-container bg-slate-950 p-5 rounded-2xl border border-slate-800 min-h-[120px] flex flex-wrap items-center gap-2 font-mono text-lg text-primary">
 					{#if charArray.length > 0}
 						{#each charArray as ch}

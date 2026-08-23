@@ -131,10 +131,11 @@
 
 		<div class="grid grid-cols-1 md:grid-cols-2 gap-5 items-stretch">
 			<div class="space-y-2 flex flex-col justify-between">
-				<label class="text-xs font-bold text-slate-400">
+				<label for="nato-input-text" class="text-xs font-bold text-slate-400">
 					{isSwapped ? 'คำรหัส NATO (Input):' : 'ข้อความต้นทาง (Input):'}
 				</label>
 				<textarea
+					id="nato-input-text"
 					bind:value={inputText}
 					placeholder={isSwapped ? 'เช่น Charlie Oscar Delta Echo...' : 'พิมพ์ข้อความ...'}
 					rows="4"
