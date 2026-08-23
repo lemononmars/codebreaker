@@ -29,6 +29,23 @@ export function parseRoomMeta(gameTitle: string): BattleRoomMeta | null {
 	return null;
 }
 
+async function compareAndSwapRoom(
+	roomId: string,
+	expectedGameTitle: string,
+	updates: Record<string, unknown>
+): Promise<{ updated: boolean; error?: string }> {
+	const { data, error } = await supabaseClient
+		.from('rooms')
+		.update(updates)
+		.eq('room_id', roomId)
+		.eq('game_title', expectedGameTitle)
+		.select('room_id')
+		.maybeSingle();
+
+	if (error) return { updated: false, error: error.message };
+	return { updated: !!data };
+}
+
 // Clean up stale, abandoned or expired rooms
 export async function cleanupStaleRooms(): Promise<void> {
 	try {
@@ -125,7 +142,7 @@ export async function spectateBattleRoom(
 			return { room: null, error: 'ไม่พบห้องที่ระบุ' };
 		}
 
-		const players = currentRoom.players || [];
+		const players = [...(currentRoom.players || [])];
 		const existingIndex = players.findIndex((p) => p.id === spectator.id);
 
 		if (existingIndex < 0) {
@@ -141,13 +158,19 @@ export async function spectateBattleRoom(
 				lastSeen: Date.now()
 			});
 
-			await supabaseClient
-				.from('rooms')
-				.update({ players })
-				.eq('room_id', cleanCode);
+		} else {
+			players[existingIndex] = { ...players[existingIndex], lastSeen: Date.now() };
 		}
 
-		return { room: currentRoom, error: null };
+		const { data, error } = await supabaseClient
+			.from('rooms')
+			.update({ players })
+			.eq('room_id', cleanCode)
+			.select('*')
+			.single();
+		if (error || !data) return { room: null, error: error?.message || 'Failed to spectate' };
+
+		return { room: data as SupabaseRoomRow, error: null };
 	} catch (e: any) {
 		return { room: null, error: e?.message || 'Failed to spectate' };
 	}
@@ -472,7 +495,7 @@ export async function updateBattleRoomConfig(
 export async function startBattleMatch(roomId: string): Promise<SupabaseRoomRow | null> {
 	try {
 		const currentRoom = await fetchRoomById(roomId);
-		if (!currentRoom) return null;
+		if (!currentRoom || currentRoom.status !== 0) return null;
 
 		const meta = parseRoomMeta(currentRoom.game_title);
 		if (!meta) return null;
@@ -502,8 +525,9 @@ export async function startBattleMatch(roomId: string): Promise<SupabaseRoomRow 
 				players
 			})
 			.eq('room_id', roomId)
+			.eq('game_title', currentRoom.game_title)
 			.select('*')
-			.single();
+			.maybeSingle();
 
 		if (error) return null;
 		return data as SupabaseRoomRow;
@@ -522,44 +546,44 @@ export async function submitPlayerProgress(
 	actionDetail?: string
 ): Promise<void> {
 	try {
-		const currentRoom = await fetchRoomById(roomId);
-		if (!currentRoom) return;
+		for (let attempt = 0; attempt < 3; attempt++) {
+			const currentRoom = await fetchRoomById(roomId);
+			if (!currentRoom || currentRoom.status !== 1) return;
 
-		const meta = parseRoomMeta(currentRoom.game_title);
+			const meta = parseRoomMeta(currentRoom.game_title);
+			const player = (currentRoom.players || []).find((candidate) => candidate.id === playerId);
+			if (!meta || !player || player.isSpectator) return;
 
-		const players = (currentRoom.players || []).map((p) => {
-			if (p.id === playerId) {
-				const newScore = Math.max(0, p.score + scoreDelta);
-				return {
-					...p,
-					score: newScore,
-					currentRoundScore: p.currentRoundScore + scoreDelta,
-					solvedCount: p.solvedCount + solvedIncrement,
-					progress: Math.min(100, Math.max(0, progress)),
-					lastSeen: Date.now()
+			const players = currentRoom.players.map((candidate) =>
+				candidate.id === playerId
+					? {
+							...candidate,
+							score: Math.max(0, candidate.score + scoreDelta),
+							currentRoundScore: candidate.currentRoundScore + scoreDelta,
+							solvedCount: candidate.solvedCount + solvedIncrement,
+							progress: Math.min(100, Math.max(0, progress)),
+							lastSeen: Date.now()
+						}
+					: candidate
+			);
+
+			meta.revision = (meta.revision || 0) + 1;
+			if (actionDetail) {
+				meta.lastAction = {
+					type: 'score',
+					playerId,
+					playerName: player.name,
+					detail: actionDetail,
+					timestamp: Date.now()
 				};
 			}
-			return p;
-		});
 
-		if (meta && actionDetail) {
-			const playerObj = players.find((p) => p.id === playerId);
-			meta.lastAction = {
-				type: 'score',
-				playerId,
-				playerName: playerObj?.name || 'Player',
-				detail: actionDetail,
-				timestamp: Date.now()
-			};
-		}
-
-		await supabaseClient
-			.from('rooms')
-			.update({
+			const result = await compareAndSwapRoom(roomId, currentRoom.game_title, {
 				players,
-				...(meta ? { game_title: JSON.stringify(meta) } : {})
-			})
-			.eq('room_id', roomId);
+				game_title: JSON.stringify(meta)
+			});
+			if (result.updated || result.error) return;
+		}
 	} catch (e) {
 		console.error('Error submitting player progress:', e);
 	}
@@ -575,59 +599,53 @@ export async function submitSharedWord(
 	actionDetail?: string
 ): Promise<{ success: boolean; reason?: string }> {
 	try {
-		const currentRoom = await fetchRoomById(roomId);
-		if (!currentRoom) return { success: false, reason: 'Room not found' };
+		for (let attempt = 0; attempt < 3; attempt++) {
+			const currentRoom = await fetchRoomById(roomId);
+			if (!currentRoom || currentRoom.status !== 1) return { success: false, reason: 'Room not active' };
 
-		const meta = parseRoomMeta(currentRoom.game_title);
-		if (!meta) return { success: false };
+			const meta = parseRoomMeta(currentRoom.game_title);
+			const playerObj = currentRoom.players.find((player) => player.id === playerId);
+			if (!meta || !playerObj || playerObj.isSpectator) return { success: false, reason: 'Player not active' };
 
-		const shared = meta.sharedFoundWords || {};
-		if (shared[word]) {
-			return { success: false, reason: `คำนี้ถูก ${shared[word].playerName} ตอบไปแล้ว!` };
-		}
+			const shared = { ...(meta.sharedFoundWords || {}) };
+			if (shared[word]) {
+				return { success: false, reason: `คำนี้ถูก ${shared[word].playerName} ตอบไปแล้ว!` };
+			}
 
-		const playerObj = (currentRoom.players || []).find((p) => p.id === playerId);
-		shared[word] = {
-			playerId,
-			playerName: playerObj?.name || 'Player',
-			avatar: playerObj?.avatar || '🧙‍♂️'
-		};
-		meta.sharedFoundWords = shared;
+			shared[word] = { playerId, playerName: playerObj.name, avatar: playerObj.avatar };
+			meta.sharedFoundWords = shared;
+			meta.revision = (meta.revision || 0) + 1;
+			const players = currentRoom.players.map((player) =>
+				player.id === playerId
+					? {
+							...player,
+							score: Math.max(0, player.score + scoreDelta),
+							currentRoundScore: player.currentRoundScore + scoreDelta,
+							solvedCount: player.solvedCount + 1,
+							progress: Math.min(100, Math.max(0, progress)),
+							lastSeen: Date.now()
+						}
+					: player
+			);
 
-		const players = (currentRoom.players || []).map((p) => {
-			if (p.id === playerId) {
-				const newScore = Math.max(0, p.score + scoreDelta);
-				return {
-					...p,
-					score: newScore,
-					currentRoundScore: p.currentRoundScore + scoreDelta,
-					solvedCount: p.solvedCount + 1,
-					progress: Math.min(100, Math.max(0, progress)),
-					lastSeen: Date.now()
+			if (actionDetail) {
+				meta.lastAction = {
+					type: 'score',
+					playerId,
+					playerName: playerObj.name,
+					detail: actionDetail,
+					timestamp: Date.now()
 				};
 			}
-			return p;
-		});
 
-		if (actionDetail) {
-			meta.lastAction = {
-				type: 'score',
-				playerId,
-				playerName: playerObj?.name || 'Player',
-				detail: actionDetail,
-				timestamp: Date.now()
-			};
-		}
-
-		await supabaseClient
-			.from('rooms')
-			.update({
+			const result = await compareAndSwapRoom(roomId, currentRoom.game_title, {
 				players,
 				game_title: JSON.stringify(meta)
-			})
-			.eq('room_id', roomId);
-
-		return { success: true };
+			});
+			if (result.updated) return { success: true };
+			if (result.error) return { success: false, reason: result.error };
+		}
+		return { success: false, reason: 'ห้องมีการเปลี่ยนแปลง กรุณาลองอีกครั้ง' };
 	} catch (e: any) {
 		return { success: false, reason: e?.message };
 	}
@@ -643,61 +661,59 @@ export async function submitQuizClaim(
 	actionDetail?: string
 ): Promise<{ success: boolean; reason?: string }> {
 	try {
-		const currentRoom = await fetchRoomById(roomId);
-		if (!currentRoom) return { success: false, reason: 'Room not found' };
+		for (let attempt = 0; attempt < 3; attempt++) {
+			const currentRoom = await fetchRoomById(roomId);
+			if (!currentRoom || currentRoom.status !== 1) return { success: false, reason: 'Room not active' };
 
-		const meta = parseRoomMeta(currentRoom.game_title);
-		if (!meta) return { success: false };
+			const meta = parseRoomMeta(currentRoom.game_title);
+			const playerObj = currentRoom.players.find((player) => player.id === playerId);
+			if (!meta || !playerObj || playerObj.isSpectator) return { success: false, reason: 'Player not active' };
 
-		const claims = meta.quizClaims || {};
-		if (claims[claimKey]) {
-			return { success: false, reason: `ข้อนี้ถูก ${claims[claimKey].playerName} ชิงตอบไปแล้ว!` };
-		}
+			const claims = { ...(meta.quizClaims || {}) };
+			if (claims[claimKey]) {
+				return { success: false, reason: `ข้อนี้ถูก ${claims[claimKey].playerName} ชิงตอบไปแล้ว!` };
+			}
 
-		const playerObj = (currentRoom.players || []).find((p) => p.id === playerId);
-		claims[claimKey] = {
-			playerId,
-			playerName: playerObj?.name || 'Player',
-			avatar: playerObj?.avatar || '🧙‍♂️',
-			score: scoreDelta
-		};
-		meta.quizClaims = claims;
-		meta.currentQuestionIndex = (meta.currentQuestionIndex || 0) + 1;
+			claims[claimKey] = {
+				playerId,
+				playerName: playerObj.name,
+				avatar: playerObj.avatar,
+				score: scoreDelta
+			};
+			meta.quizClaims = claims;
+			meta.currentQuestionIndex = (meta.currentQuestionIndex || 0) + 1;
+			meta.revision = (meta.revision || 0) + 1;
+			const players = currentRoom.players.map((player) =>
+				player.id === playerId
+					? {
+							...player,
+							score: Math.max(0, player.score + scoreDelta),
+							currentRoundScore: player.currentRoundScore + scoreDelta,
+							solvedCount: player.solvedCount + 1,
+							progress: Math.min(100, Math.max(0, progress)),
+							lastSeen: Date.now()
+						}
+					: player
+			);
 
-		const players = (currentRoom.players || []).map((p) => {
-			if (p.id === playerId) {
-				const newScore = Math.max(0, p.score + scoreDelta);
-				return {
-					...p,
-					score: newScore,
-					currentRoundScore: p.currentRoundScore + scoreDelta,
-					solvedCount: p.solvedCount + 1,
-					progress: Math.min(100, Math.max(0, progress)),
-					lastSeen: Date.now()
+			if (actionDetail) {
+				meta.lastAction = {
+					type: 'claim',
+					playerId,
+					playerName: playerObj.name,
+					detail: actionDetail,
+					timestamp: Date.now()
 				};
 			}
-			return p;
-		});
 
-		if (actionDetail) {
-			meta.lastAction = {
-				type: 'claim',
-				playerId,
-				playerName: playerObj?.name || 'Player',
-				detail: actionDetail,
-				timestamp: Date.now()
-			};
-		}
-
-		await supabaseClient
-			.from('rooms')
-			.update({
+			const result = await compareAndSwapRoom(roomId, currentRoom.game_title, {
 				players,
 				game_title: JSON.stringify(meta)
-			})
-			.eq('room_id', roomId);
-
-		return { success: true };
+			});
+			if (result.updated) return { success: true };
+			if (result.error) return { success: false, reason: result.error };
+		}
+		return { success: false, reason: 'ห้องมีการเปลี่ยนแปลง กรุณาลองอีกครั้ง' };
 	} catch (e: any) {
 		return { success: false, reason: e?.message };
 	}
@@ -707,7 +723,7 @@ export async function submitQuizClaim(
 export async function finishOrNextRound(roomId: string): Promise<SupabaseRoomRow | null> {
 	try {
 		const currentRoom = await fetchRoomById(roomId);
-		if (!currentRoom) return null;
+		if (!currentRoom || currentRoom.status !== 1) return null;
 
 		const meta = parseRoomMeta(currentRoom.game_title);
 		if (!meta) return null;
@@ -738,8 +754,9 @@ export async function finishOrNextRound(roomId: string): Promise<SupabaseRoomRow
 					players
 				})
 				.eq('room_id', roomId)
+				.eq('game_title', currentRoom.game_title)
 				.select('*')
-				.single();
+				.maybeSingle();
 
 			return data as SupabaseRoomRow;
 		} else {
@@ -750,8 +767,9 @@ export async function finishOrNextRound(roomId: string): Promise<SupabaseRoomRow
 					status: 2 // Finished
 				})
 				.eq('room_id', roomId)
+				.eq('status', 1)
 				.select('*')
-				.single();
+				.maybeSingle();
 
 			return data as SupabaseRoomRow;
 		}

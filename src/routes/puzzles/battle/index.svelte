@@ -16,9 +16,6 @@
 		ArrowDownIcon,
 		ArrowRightIcon,
 		RefreshCwIcon as ShuffleIcon,
-		CheckCircleIcon,
-		XCircleIcon,
-		CornerDownLeftIcon,
 		RotateCcwIcon,
 		EyeIcon,
 		RadioIcon
@@ -53,6 +50,7 @@
 	} from '$lib/battle/roomService';
 	import { search, isUpper, isLower } from '$lib/utils/thaiwords';
 	import { splitSlots, diffSlots } from '$lib/wordladder/wordladder';
+	import { canBuildWordFromLetters, getBogglePathWord } from '$lib/battle/rules';
 	import KeyboardLayout from '$lib/components/KeyboardLayout.svelte';
 
 	// Available Avatars
@@ -158,6 +156,8 @@
 	let matchTimeRemaining = 0;
 	let matchTimerInterval: any = null;
 	let countdownInterval: any = null;
+	let activeRoundStartTime: number | null = null;
+	let advancingRoundStartTime: number | null = null;
 	let scoreFeed: Array<{ id: string; text: string; color: string }> = [];
 
 	// Active Round Gameplay State
@@ -368,6 +368,10 @@
 			clearInterval(matchTimerInterval);
 			clearInterval(countdownInterval);
 			countdownNumber = null;
+			activeRoundData = null;
+			activeRoundStartTime = null;
+			advancingRoundStartTime = null;
+			resetRoundState();
 		} else if (room.status === 1) {
 			currentView = 'battle';
 			handleBattleSync(meta);
@@ -378,28 +382,47 @@
 		}
 	}
 
+	function resetRoundState() {
+		playerInput = '';
+		crossroadSolved = false;
+		crossroadWiggle = false;
+		blanksQuestionIdx = 0;
+		spellingQuizIdx = 0;
+		thaiQuizIdx = 0;
+		spellingBeeFound = [];
+		boggleFound = [];
+		boggleSelectedPath = [];
+		boggleIsDragging = false;
+		ladderChain = [];
+		ladderSolved = false;
+		currentTopClue = '';
+		currentBottomClue = '';
+		currentLeftClue = '';
+		currentRightClue = '';
+	}
+
 	function handleBattleSync(meta: BattleRoomMeta | null) {
 		if (!meta) return;
 
-		if (meta.currentRound !== currentRoundIndex) {
-			playerInput = '';
-			crossroadSolved = false;
-			blanksQuestionIdx = 0;
-			spellingQuizIdx = 0;
-			spellingBeeFound = [];
-			boggleFound = [];
-			boggleSelectedPath = [];
-			ladderSolved = false;
+		if (meta.currentRound !== currentRoundIndex || meta.roundStartTime !== activeRoundStartTime) {
+			resetRoundState();
+			advancingRoundStartTime = null;
 		}
 
-		currentRoundIndex = meta.currentRound || 0;
+		currentRoundIndex = meta.currentRound;
+		activeRoundStartTime = meta.roundStartTime;
 		activeRoundData = meta.rounds[currentRoundIndex] || null;
 
 		// In Quiz mode, sync question index across all players
 		if (meta.config?.mode === 'quiz' && typeof meta.currentQuestionIndex === 'number') {
-			if (blanksQuestionIdx !== meta.currentQuestionIndex || spellingQuizIdx !== meta.currentQuestionIndex) {
+			if (
+				blanksQuestionIdx !== meta.currentQuestionIndex ||
+				spellingQuizIdx !== meta.currentQuestionIndex ||
+				thaiQuizIdx !== meta.currentQuestionIndex
+			) {
 				blanksQuestionIdx = meta.currentQuestionIndex;
 				spellingQuizIdx = meta.currentQuestionIndex;
+				thaiQuizIdx = meta.currentQuestionIndex;
 				if (meta.lastAction && meta.lastAction.playerId !== localPlayer.id && Date.now() - meta.lastAction.timestamp < 3000) {
 					addScoreToast(`${meta.lastAction.playerName}: ${meta.lastAction.detail}`, 'text-amber-300');
 				}
@@ -455,9 +478,14 @@
 
 			if (remaining <= 0) {
 				clearInterval(matchTimerInterval);
+				matchTimerInterval = null;
 				const me = currentRoom?.players.find((p) => p.id === localPlayer.id);
-				if (me?.isHost && currentRoom) {
-					finishOrNextRound(currentRoom.room_id);
+				const roundStartTime = roomMeta?.roundStartTime || null;
+				if (me?.isHost && currentRoom && advancingRoundStartTime !== roundStartTime) {
+					advancingRoundStartTime = roundStartTime;
+					finishOrNextRound(currentRoom.room_id).then((room) => {
+						if (!room) advancingRoundStartTime = null;
+					});
 				}
 			}
 		};
@@ -550,13 +578,25 @@
 		}
 
 		if (input === target) {
+			if (isQuiz) {
+				const result = await submitQuizClaim(
+					currentRoom.room_id,
+					localPlayer.id,
+					claimKey,
+					100,
+					100,
+					`ชิงตอบ Crossroad สำเร็จ: "${target}"`
+				);
+				if (!result.success) {
+					addScoreToast(result.reason || 'มีผู้เล่นชิงตอบข้อนี้ไปแล้ว', 'text-rose-400');
+					return;
+				}
+			}
 			crossroadSolved = true;
 			playerInput = target;
 			addScoreToast('+100 ตอบถูกเป้าหมาย!', 'text-emerald-400');
 
-			if (isQuiz) {
-				await submitQuizClaim(currentRoom.room_id, localPlayer.id, claimKey, 100, 100, `ชิงตอบ Crossroad สำเร็จ: "${target}"`);
-			} else {
+			if (!isQuiz) {
 				await submitPlayerProgress(currentRoom.room_id, localPlayer.id, 100, 100, 1, `แก้ Crossroad สำเร็จ: "${target}"`);
 			}
 		} else {
@@ -588,19 +628,22 @@
 			return;
 		}
 
-		if (solutions.includes(word) || search(word)) {
-			spellingBeeFound = [...spellingBeeFound, word];
+		if (canBuildWordFromLetters(word, activeRoundData.payload.letters || []) && (solutions.includes(word) || search(word))) {
 			const points = word.length >= 6 ? 120 : word.length * 20;
 			const totalSols = Math.max(1, solutions.length);
-			const progress = Math.min(100, Math.round((spellingBeeFound.length / totalSols) * 100));
-
-			addScoreToast(`+${points} พบคำว่า "${word}"`, 'text-amber-400');
+			const progress = Math.min(100, Math.round(((spellingBeeFound.length + 1) / totalSols) * 100));
 
 			if (isQuiz) {
-				await submitSharedWord(currentRoom.room_id, localPlayer.id, word, points, progress, `ชิงพบคำว่า "${word}"`);
+				const result = await submitSharedWord(currentRoom.room_id, localPlayer.id, word, points, progress, `ชิงพบคำว่า "${word}"`);
+				if (!result.success) {
+					addScoreToast(result.reason || 'มีผู้เล่นชิงคำนี้ไปแล้ว', 'text-yellow-400');
+					return;
+				}
 			} else {
 				await submitPlayerProgress(currentRoom.room_id, localPlayer.id, points, progress, 1, `พบคำว่า "${word}"`);
 			}
+			spellingBeeFound = [...spellingBeeFound, word];
+			addScoreToast(`+${points} พบคำว่า "${word}"`, 'text-amber-400');
 		} else {
 			addScoreToast('ไม่อยู่ในพจนานุกรม', 'text-rose-400');
 		}
@@ -627,16 +670,20 @@
 		}
 
 		if (letter === currentQ.targetChar) {
-			addScoreToast('+50 เติมถูกต้อง!', 'text-teal-400');
 			const nextIdx = blanksQuestionIdx + 1;
-			blanksQuestionIdx = nextIdx;
 			const progress = Math.min(100, Math.round((nextIdx / questions.length) * 100));
 
 			if (isQuiz) {
-				await submitQuizClaim(currentRoom.room_id, localPlayer.id, claimKey, 50, progress, `ชิงตอบถูก ${currentQ.word}`);
+				const result = await submitQuizClaim(currentRoom.room_id, localPlayer.id, claimKey, 50, progress, `ชิงตอบถูก ${currentQ.word}`);
+				if (!result.success) {
+					addScoreToast(result.reason || 'มีผู้เล่นชิงตอบข้อนี้ไปแล้ว', 'text-rose-400');
+					return;
+				}
 			} else {
 				await submitPlayerProgress(currentRoom.room_id, localPlayer.id, 50, progress, 1, `ตอบถูก ${currentQ.word}`);
 			}
+			blanksQuestionIdx = nextIdx;
+			addScoreToast('+50 เติมถูกต้อง!', 'text-teal-400');
 
 			if (nextIdx >= questions.length) {
 				addScoreToast('🎉 ผ่านทุกข้อในรอบนี้!', 'text-emerald-400');
@@ -669,22 +716,26 @@
 		const isCorrect = (side === 'left' && currentQ.leftIsCorrect) || (side === 'right' && !currentQ.leftIsCorrect);
 
 		if (isCorrect) {
-			addScoreToast(`+50 สะกดถูกต้อง! (${currentQ.correct})`, 'text-info');
 			const nextIdx = spellingQuizIdx + 1;
-			spellingQuizIdx = nextIdx;
 			const progress = Math.min(100, Math.round((nextIdx / questions.length) * 100));
 
 			if (isQuiz) {
-				await submitQuizClaim(currentRoom.room_id, localPlayer.id, claimKey, 50, progress, `ชิงตอบถูก: "${currentQ.correct}"`);
+				const result = await submitQuizClaim(currentRoom.room_id, localPlayer.id, claimKey, 50, progress, `ชิงตอบถูก: "${currentQ.correct}"`);
+				if (!result.success) {
+					addScoreToast(result.reason || 'มีผู้เล่นชิงตอบข้อนี้ไปแล้ว', 'text-rose-400');
+					return;
+				}
 			} else {
 				await submitPlayerProgress(currentRoom.room_id, localPlayer.id, 50, progress, 1, `สะกดถูก: "${currentQ.correct}"`);
 			}
+			spellingQuizIdx = nextIdx;
+			addScoreToast(`+50 สะกดถูกต้อง! (${currentQ.correct})`, 'text-info');
 		} else {
 			addScoreToast(`-20 สะกดผิด! คำที่ถูกคือ "${currentQ.correct}"`, 'text-rose-400');
-			const nextIdx = spellingQuizIdx + 1;
-			spellingQuizIdx = nextIdx;
 			if (!isQuiz) {
-				await submitPlayerProgress(currentRoom.room_id, localPlayer.id, -20, 0, 0);
+				const nextIdx = spellingQuizIdx + 1;
+				spellingQuizIdx = nextIdx;
+				await submitPlayerProgress(currentRoom.room_id, localPlayer.id, -20, Math.min(100, Math.round((nextIdx / questions.length) * 100)), 0);
 			}
 		}
 	}
@@ -707,22 +758,26 @@
 		const isCorrect = choiceIdx === currentQ.correctIndex;
 
 		if (isCorrect) {
-			addScoreToast(`+60 ตอบถูกต้อง! (${currentQ.choices[currentQ.correctIndex]})`, 'text-amber-400');
 			const nextIdx = thaiQuizIdx + 1;
-			thaiQuizIdx = nextIdx;
 			const progress = Math.min(100, Math.round((nextIdx / questions.length) * 100));
 
 			if (isQuiz) {
-				await submitQuizClaim(currentRoom.room_id, localPlayer.id, claimKey, 60, progress, `ชิงตอบถูกข้อ ${nextIdx}`);
+				const result = await submitQuizClaim(currentRoom.room_id, localPlayer.id, claimKey, 60, progress, `ชิงตอบถูกข้อ ${nextIdx}`);
+				if (!result.success) {
+					addScoreToast(result.reason || 'มีผู้เล่นชิงตอบข้อนี้ไปแล้ว', 'text-rose-400');
+					return;
+				}
 			} else {
 				await submitPlayerProgress(currentRoom.room_id, localPlayer.id, 60, progress, 1, `ตอบถูกข้อ ${nextIdx}`);
 			}
+			thaiQuizIdx = nextIdx;
+			addScoreToast(`+60 ตอบถูกต้อง! (${currentQ.choices[currentQ.correctIndex]})`, 'text-amber-400');
 		} else {
 			addScoreToast(`-20 ตอบผิด! คำตอบที่ถูกคือ "${currentQ.choices[currentQ.correctIndex]}"`, 'text-rose-400');
-			const nextIdx = thaiQuizIdx + 1;
-			thaiQuizIdx = nextIdx;
 			if (!isQuiz) {
-				await submitPlayerProgress(currentRoom.room_id, localPlayer.id, -20, 0, 0);
+				const nextIdx = thaiQuizIdx + 1;
+				thaiQuizIdx = nextIdx;
+				await submitPlayerProgress(currentRoom.room_id, localPlayer.id, -20, Math.min(100, Math.round((nextIdx / questions.length) * 100)), 0);
 			}
 		}
 	}
@@ -772,40 +827,26 @@
 	function handleBoggleCellEnd() {
 		if (myPlayer?.isSpectator || !boggleIsDragging) return;
 		boggleIsDragging = false;
-		if (playerInput.trim().length >= 3) {
+		if (boggleSelectedPath.length >= 3) {
 			handleBoggleSubmit();
 		}
-	}
-
-	function handleBoggleCellClick(r: number, c: number, char: string) {
-		if (myPlayer?.isSpectator) return;
-		const existingIdx = boggleSelectedPath.findIndex((p) => p.r === r && p.c === c);
-		if (existingIdx >= 0) {
-			boggleSelectedPath = boggleSelectedPath.slice(0, existingIdx + 1);
-		} else {
-			if (boggleSelectedPath.length > 0) {
-				const last = boggleSelectedPath[boggleSelectedPath.length - 1];
-				const isAdjacent = Math.abs(last.r - r) <= 1 && Math.abs(last.c - c) <= 1;
-				if (!isAdjacent) {
-					boggleSelectedPath = [{ r, c }];
-					playerInput = char;
-					return;
-				}
-			}
-			boggleSelectedPath = [...boggleSelectedPath, { r, c }];
-		}
-		playerInput = boggleSelectedPath.map((p) => activeRoundData.payload.grid[p.r][p.c]).join('');
 	}
 
 	async function handleBoggleSubmit() {
 		if (myPlayer?.isSpectator || !playerInput.trim() || !activeRoundData || !currentRoom) return;
 		const word = playerInput.trim();
+		const pathLength = boggleSelectedPath.length;
+		const pathWord = getBogglePathWord(activeRoundData.payload.grid || [], boggleSelectedPath);
 		playerInput = '';
 		boggleSelectedPath = [];
 		boggleIsDragging = false;
 
-		if (word.length < 3) {
+		if (pathLength < 3) {
 			addScoreToast('ต้องมีอย่างน้อย 3 ตัวอักษร', 'text-rose-400');
+			return;
+		}
+		if (!pathWord || pathWord !== word) {
+			addScoreToast('ต้องลากอักษรที่อยู่ติดกันโดยไม่ใช้ช่องซ้ำ', 'text-rose-400');
 			return;
 		}
 
@@ -821,16 +862,20 @@
 		}
 
 		if (search(word)) {
-			boggleFound = [...boggleFound, word];
-			const points = word.length >= 5 ? 100 : word.length * 20;
-			const progress = Math.min(100, boggleFound.length * 15);
-			addScoreToast(`+${points} พบคำว่า "${word}"`, 'text-secondary');
+			const points = pathLength >= 5 ? 100 : pathLength * 20;
+			const progress = Math.min(100, (boggleFound.length + 1) * 15);
 
 			if (isQuiz) {
-				await submitSharedWord(currentRoom.room_id, localPlayer.id, word, points, progress, `ชิงพบคำว่า "${word}"`);
+				const result = await submitSharedWord(currentRoom.room_id, localPlayer.id, word, points, progress, `ชิงพบคำว่า "${word}"`);
+				if (!result.success) {
+					addScoreToast(result.reason || 'มีผู้เล่นชิงคำนี้ไปแล้ว', 'text-yellow-400');
+					return;
+				}
 			} else {
 				await submitPlayerProgress(currentRoom.room_id, localPlayer.id, points, progress, 1, `พบคำว่า "${word}"`);
 			}
+			boggleFound = [...boggleFound, word];
+			addScoreToast(`+${points} พบคำว่า "${word}"`, 'text-secondary');
 		} else {
 			addScoreToast('ไม่อยู่ในพจนานุกรม', 'text-rose-400');
 		}
@@ -922,8 +967,6 @@
 			} else if (e.key === 'Backspace') {
 				playerInput = playerInput.slice(0, -1);
 				boggleSelectedPath = boggleSelectedPath.slice(0, -1);
-			} else if (/^[ก-ฮ\u0E30-\u0E39\u0E47-\u0E4C]$/.test(e.key)) {
-				playerInput += e.key;
 			}
 		} else if (activeRoundData.puzzleType === 'thaiquiz') {
 			if (e.key === '1' || e.key === 'a' || e.key === 'A') handleThaiQuizChoice(0);

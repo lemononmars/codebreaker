@@ -60,6 +60,18 @@ export function parseThaiBlocks(w: string): ThaiBlock[] {
 	return result;
 }
 
+export function splitThaiCells(word: string): string[] {
+	const cells: string[] = [];
+	for (const char of word) {
+		if ((isUpperChar(char) || isLowerChar(char)) && cells.length > 0) {
+			cells[cells.length - 1] += char;
+		} else {
+			cells.push(char);
+		}
+	}
+	return cells;
+}
+
 // 1. Crossroad Generator (with full clue lists for rerolling)
 export function generateCrossroadRound(roundIndex: number): BattleRoundData {
 	const entries = Object.entries(crossroadData as Record<string, { pre: string[]; post: string[] }>);
@@ -197,8 +209,10 @@ export function generateSpellingQuizRound(roundIndex: number): BattleRoundData {
 
 // 5. Boggle Generator (4x4 grid with Thai words)
 export function generateBoggleRound(roundIndex: number): BattleRoundData {
-	const commonWords = dict.filter((w) => w.length >= 3 && w.length <= 6 && (pythaiMap[w] ?? 0) >= 3);
-	const selectedWords = shuffleArray(commonWords).slice(0, 6);
+	const commonWords = dict.filter((word) => {
+		const length = splitThaiCells(word).length;
+		return length >= 3 && length <= 6 && (pythaiMap[word] ?? 0) >= 3;
+	});
 
 	const grid: string[][] = [
 		['', '', '', ''],
@@ -206,23 +220,57 @@ export function generateBoggleRound(roundIndex: number): BattleRoundData {
 		['', '', '', ''],
 		['', '', '', '']
 	];
+	const selectedWords: string[] = [];
+	const positions = Array.from({ length: 16 }, (_, index) => ({
+		r: Math.floor(index / 4),
+		c: index % 4
+	}));
 
-	const lettersPool: string[] = [];
-	for (const w of selectedWords) {
-		lettersPool.push(...w.split(''));
+	const tryPlaceWord = (word: string): boolean => {
+		const cells = splitThaiCells(word);
+		const placeFrom = (index: number, r: number, c: number, used: Set<string>): boolean => {
+			const existing = grid[r][c];
+			if (existing && existing !== cells[index]) return false;
+
+			const key = `${r},${c}`;
+			if (used.has(key)) return false;
+			const wasEmpty = !existing;
+			grid[r][c] = cells[index];
+			if (index === cells.length - 1) return true;
+
+			const nextUsed = new Set(used).add(key);
+			const neighbours = shuffleArray(
+				positions.filter(
+					(pos) =>
+						Math.abs(pos.r - r) <= 1 &&
+						Math.abs(pos.c - c) <= 1 &&
+						(pos.r !== r || pos.c !== c)
+				)
+			);
+			for (const neighbour of neighbours) {
+				if (placeFrom(index + 1, neighbour.r, neighbour.c, nextUsed)) return true;
+			}
+
+			if (wasEmpty) grid[r][c] = '';
+			return false;
+		};
+
+		for (const start of shuffleArray(positions)) {
+			if (placeFrom(0, start.r, start.c, new Set())) return true;
+		}
+		return false;
+	};
+
+	for (const word of shuffleArray(commonWords).slice(0, 80)) {
+		if (tryPlaceWord(word)) selectedWords.push(word);
+		if (selectedWords.length >= 4) break;
 	}
 
 	const extraLetters = shuffleArray(allThaiConsonants);
-	let poolIdx = 0;
-	let extraIdx = 0;
-
+	let extraIndex = 0;
 	for (let r = 0; r < 4; r++) {
 		for (let c = 0; c < 4; c++) {
-			if (poolIdx < lettersPool.length) {
-				grid[r][c] = lettersPool[poolIdx++];
-			} else {
-				grid[r][c] = extraLetters[extraIdx++ % extraLetters.length];
-			}
+			if (!grid[r][c]) grid[r][c] = extraLetters[extraIndex++ % extraLetters.length];
 		}
 	}
 

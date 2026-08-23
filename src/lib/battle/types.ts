@@ -71,6 +71,7 @@ export interface BattleRoomMeta {
 	currentQuestionIndex?: number;
 	roundStartTime: number | null;
 	roundEndTime: number | null;
+	revision?: number;
 	sharedFoundWords?: Record<string, { playerId: string; playerName: string; avatar: string }>;
 	quizClaims?: Record<string, { playerId: string; playerName: string; avatar: string; score: number }>;
 	lastAction?: {
