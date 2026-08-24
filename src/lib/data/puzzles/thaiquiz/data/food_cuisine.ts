@@ -2,7 +2,7 @@ import type { ThaiQuizItem } from '../types';
 
 export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 	{
-		"id": 1501,
+		"id": 669,
 		"category": "food_cuisine",
 		"question": "ขนมไทยมงคลชั้นสูงที่ประดิษฐ์เป็นรูปมงกุฎครอบอย่างวิจิตรบรรจง แต่งแต้มด้วยเมล็ดแตงโมรอบฐาน สื่อถึงความเจริญก้าวหน้าในหน้าที่การงานและยศถาบรรดาศักดิ์... ขนมมงคลนี้มีชื่อว่าอะไร?",
 		"choices": [
@@ -25,7 +25,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1502,
+		"id": 670,
 		"category": "food_cuisine",
 		"question": "แกงพื้นบ้านภาคใต้รสชาติจัดจ้านและเผ็ดร้อน ใช้วัตถุดิบหลักคือพุงปลาหมักดองเกลือ ต้มกับเครื่องแกง ขมิ้น หน่อไม้ และผักพื้นบ้าน... แกงชนิดนี้มีชื่อเรียกว่าอะไร?",
 		"choices": [
@@ -48,7 +48,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1503,
+		"id": 671,
 		"category": "food_cuisine",
 		"question": "อาหารประเภทเส้นยอดนิยมของภาคเหนือ เสิร์ฟในน้ำแกงกะทิรสเข้มข้น โรยหน้าด้วยหมี่กรอบและหอมแดง มีต้นกำเนิดมาจากชาวจีนฮ่อมุสลิมยูนนาน... อาหารชนิดนี้คืออะไร?",
 		"choices": [
@@ -70,7 +70,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1504,
+		"id": 672,
 		"category": "food_cuisine",
 		"question": "สตรีลูกครึ่งโปรตุเกส-ญี่ปุ่น ภริยาของเจ้าพระยาวิชเยนทร์ ผู้รับราชการในห้องเครื่องต้นสมัยสมเด็จพระนารายณ์มหาราช และเป็นผู้นำสูตรขนมตระกูลทองเข้ามาเผยแพร่... สตรีท่านนี้คือใคร?",
 		"choices": [
@@ -96,7 +96,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1505,
+		"id": 673,
 		"category": "food_cuisine",
 		"question": "น้ำพริกพื้นเมืองภาคเหนือ ทำจากพริกชี้ฟ้าเขียวสดเผาไฟ ตำรวมกับหอมแดง กระเทียมย่าง และเกลือ นิยมรับประทานคู่กับแคบหมูและผักลวก... น้ำพริกนี้มีชื่อว่าอะไร?",
 		"choices": [
@@ -117,7 +117,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1506,
+		"id": 674,
 		"category": "food_cuisine",
 		"question": "ผลไม้ไทยเปลือกหนามแหลมคม กลิ่นหอมเป็นเอกลักษณ์ เนื้อสีเหลืองทองรสชาติหวานมัน ได้รับการยกย่องให้เป็น “ราชาแห่งผลไม้” (King of Fruits)... ผลไม้นี้คืออะไร?",
 		"choices": [
@@ -138,7 +138,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1507,
+		"id": 675,
 		"category": "food_cuisine",
 		"question": "ต้มยำกุ้ง อาหารประจำชาติไทยที่มีรสเปรี้ยว เค็ม เผ็ด กลมกล่อม หอมกลิ่นสมุนไพรหลัก 3 ชนิดที่ขาดไม่ได้... สมุนไพร 3 ชนิดนี้คืออะไร?",
 		"choices": [
@@ -162,7 +162,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1508,
+		"id": 676,
 		"category": "food_cuisine",
 		"question": "แกงโบราณของไทยที่ได้รับยกย่องจาก CNN Travel ให้เป็น \"อาหารที่อร่อยที่สุดในโลกอันดับ 1\" โดดเด่นด้วยเครื่องเทศอบเชย กานพลู ลูกกระวาน และถั่วลิสง... แกงนี้คือแกงอะไร?",
 		"choices": [
@@ -187,7 +187,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1509,
+		"id": 677,
 		"category": "food_cuisine",
 		"question": "อาหารพื้นบ้านภาคเหนือที่ปรุงจากหมูสามชั้นเคี่ยวกับพริกแกง ขมิ้น ขิงซอย และกระเทียมดอง รสเปรี้ยวเค็มหวาน กลมกล่อมไม่มีกะทิ... แกงนี้คือแกงอะไร?",
 		"choices": [
@@ -209,7 +209,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1510,
+		"id": 678,
 		"category": "food_cuisine",
 		"question": "อาหารพื้นเมืองภาคตะวันออกของจังหวัดจันทบุรีและระยอง เคี่ยวเนื้อหมูสามชั้นกับใบไม้พื้นบ้านที่มีรสเปรี้ยวอมฝาด... ใบไม้ชนิดนี้คือใบอะไร?",
 		"choices": [
@@ -234,7 +234,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1511,
+		"id": 679,
 		"category": "food_cuisine",
 		"question": "ขนมหวานไทยชาววังที่ประดิษฐ์ขึ้นในสมัยรัชกาลที่ 2 มีสีม่วงครามจากดอกอัญชันและหยอดหน้าสังขยาไข่สีเหลืองทองตรงกลางดั่งดวงจันทร์ลอยเด่นในหมู่เมฆ... ขนมนี้มีชื่อว่าอะไร?",
 		"choices": [
@@ -257,7 +257,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1512,
+		"id": 680,
 		"category": "food_cuisine",
 		"question": "ไข่เค็มพื้นเมืองที่มีชื่อเสียงระดับประเทศ ทำจากไข่เป็ดธรรมชาติพอกด้วยดินจอมปลวกผสมขี้เถ้าแกลบและเกลือ... เป็นของฝากขึ้นชื่อของอำเภอไชยา ในจังหวัดใด?",
 		"choices": [
@@ -281,7 +281,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1513,
+		"id": 681,
 		"category": "food_cuisine",
 		"question": "อาหารพื้นบ้านภาคใต้ที่นำผักพื้นบ้าน สมุนไพร ข้าวยำ คลุกเคล้ากับน้ำบูดูสูตรเฉพาะและมะพร้าวคั่ว... อาหารจานสุขภาพนี้คืออะไร?",
 		"choices": [
@@ -305,7 +305,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1514,
+		"id": 682,
 		"category": "food_cuisine",
 		"question": "ไส้กรอกหมูสมุนไพรพื้นเมืองภาคเหนือ ที่ปรุงรสด้วยพริกแห้ง ข่า ตะไคร้ ใบมะกรูด ขมิ้น แล้วย่างบนเตาถ่านจนหอมกรุ่น... อาหารนี้มีชื่อว่าอะไร?",
 		"choices": [
@@ -326,7 +326,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1515,
+		"id": 683,
 		"category": "food_cuisine",
 		"question": "ขนมไทยโบราณที่ทำจากเนื้อกล้วยน้ำว้าต้มกับน้ำกะทิ น้ำตาลทราย และเกลือเล็กน้อย ได้รสหวานมันเค็มกำลังดี... ขนมหวานนี้คืออะไร?",
 		"choices": [
@@ -347,7 +347,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1516,
+		"id": 684,
 		"category": "food_cuisine",
 		"question": "น้ำพริกพื้นบ้านภาคเหนือที่ทำจากมะเขือเทศลูกเล็ก (มะเขือส้ม) ผัดกับหมูสับ พริกแห้ง และถั่วเน่า... น้ำพริกนี้คืออะไร?",
 		"choices": [
@@ -368,7 +368,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1517,
+		"id": 685,
 		"category": "food_cuisine",
 		"question": "ผัดไทย อาหารเส้นยอดนิยมของไทยที่ได้รับการส่งเสริมอย่างเป็นทางการในสมัยรัฐบาลใด เพื่อชาตินิยมและประหยัดข้าวสาร?",
 		"choices": [
@@ -392,9 +392,9 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1518,
+		"id": 686,
 		"category": "food_cuisine",
-		"question": "ขนมไทยมงคลที่ทำจากแป้งสาลี ไข่แดง และน้ำตาล กวนจนปั้นได้ ตกแต่งด้วยผลทองเอกและแต้มแผ่นทองคำเปลวบริสุทธิ์... ขนมนี้มีชื่อว่าอะไร?",
+		"question": "ขนมไทยมงคลที่ทำจากแป้งสาลี ไข่แดง และน้ำตาล กวนจนปั้นได้ ตกแต่งทรงดอกไม้แปดกลีบและแต้มแผ่นทองคำเปลวบริสุทธิ์... ขนมนี้มีชื่อว่าอะไร?",
 		"choices": [
 			"จ่ามงกุฎ",
 			"ทองเอก",
@@ -414,7 +414,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1519,
+		"id": 687,
 		"category": "food_cuisine",
 		"question": "ปลาเค็มตากแห้งชั้นเลิศของภาคใต้ที่ได้รับการขึ้นทะเบียน GI ได้รับฉายาว่า “ราชาแห่งปลาเค็ม” มีเนื้อนุ่มฟู หอมอร่อย... ผลิตจากอำเภอตากใบ ในจังหวัดใด?",
 		"choices": [
@@ -439,7 +439,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1520,
+		"id": 688,
 		"category": "food_cuisine",
 		"question": "ขนมหวานพื้นเมืองจังหวัดเพชรบุรี ทำจากถั่วเขียวนึ่งบด ไข่เป็ด น้ำตาลโตนด และกะทิ อบจนหน้าเกรียม หอมเจียวโรยหน้า... ขนมนี้คืออะไร?",
 		"choices": [
@@ -462,7 +462,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1521,
+		"id": 689,
 		"category": "food_cuisine",
 		"question": "ส้มตำ เมนูสลัดมะละกอชื่อดังของไทย มะละกอดิบถูกนำเข้ามาปลูกในดินแดนสยามครั้งแรกโดยชาวต่างชาติกลุ่มใดในสมัยอยุธยา?",
 		"choices": [
@@ -486,7 +486,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1522,
+		"id": 690,
 		"category": "food_cuisine",
 		"question": "ผักพื้นบ้านภาคใต้ที่มีกลิ่นฉุนเฉพาะตัว นำมาผัดกับกะปิและกุ้งสด เป็นเมนูขึ้นชื่อของปักษ์ใต้... เมล็ดผักนี้คือเมล็ดอะไร?",
 		"choices": [
@@ -509,7 +509,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1523,
+		"id": 691,
 		"category": "food_cuisine",
 		"question": "ขนมไทยโบราณที่ทำจากข้าวเหนียวมูลกะทิห่อด้วยใบตอง สอดไส้กล้วยน้ำว้าหรือถั่วดำ แล้วมัดด้วยตอกคู่กัน... ขนมนี้คืออะไร?",
 		"choices": [
@@ -531,7 +531,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1524,
+		"id": 692,
 		"category": "food_cuisine",
 		"question": "อาหารพื้นบ้านภาคใต้ที่นำใบไม้พื้นบ้านรสชาติมันหวาน มาผัดกับไข่ไก่และกระเทียมเจียว ได้รับความนิยมไปทั่วประเทศ... ผักนี้คือผักอะไร?",
 		"choices": [
@@ -555,7 +555,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1525,
+		"id": 693,
 		"category": "food_cuisine",
 		"question": "ขนมมงคลไทยที่ทำจากไข่แดงตีจนขึ้นฟู หยอดลงในน้ำเชื่อมเดือดเป็นเส้นฝอยยาวสีทองเหลืองอร่าม... ขนมนี้มีชื่อว่าอะไร?",
 		"choices": [
@@ -576,7 +576,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1526,
+		"id": 694,
 		"category": "food_cuisine",
 		"question": "อาหารเส้นพื้นเมืองของจังหวัดนครราชสีมา มีเส้นเหนียวนุ่ม ผัดกับน้ำซอสพริกแกง น้ำตาลปี๊บ และน้ำปลา โรยหน้าด้วยถั่วงอกและกุยช่าย... เมนูนี้คืออะไร?",
 		"choices": [
@@ -599,7 +599,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1527,
+		"id": 695,
 		"category": "food_cuisine",
 		"question": "ขนมหวานไทยชาววังที่นำเนื้อผลส้ม มะปราง หรือสับปะรด มาลอยในน้ำเชื่อมลอยดอกมะลิ โรยหน้าด้วยขิงซอย หอมแดงเจียว และผิวส้มซ่า... เมนูคลายร้อนโบราณนี้คืออะไร?",
 		"choices": [
@@ -621,7 +621,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1528,
+		"id": 696,
 		"category": "food_cuisine",
 		"question": "กะปิชั้นเลิศของไทยที่มีชื่อเสียงด้านความหอมสะอาด ไม่เค็มจัด ผลิตจากเคยแท้ 100% ณ ปากอ่าวแม่กลอง... คือกะปิจากตำบลใดในจังหวัดสมุทรสงคราม?",
 		"choices": [
@@ -644,7 +644,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1529,
+		"id": 697,
 		"category": "food_cuisine",
 		"question": "อาหารพื้นบ้านภาคอีสานที่นำไก่บ้านมาหมักเครื่องเทศสมุนไพรสูตรพิเศษ แล้วย่างบนเตาถ่านจนหนังกรอบเนื้อนุ่ม ณ อำเภอเขาสวนกวาง... อยู่ในจังหวัดใด?",
 		"choices": [
@@ -668,7 +668,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1530,
+		"id": 698,
 		"category": "food_cuisine",
 		"question": "ขนมมงคลที่ทำจากถั่วเขียวกวนกับกะทิและน้ำตาล ปั้นเป็นรูปทรงรี ชุบไข่แดงแล้วหยอดลงในน้ำเชื่อมเดือด... ขนมนี้มีชื่อว่าอะไร?",
 		"choices": [
@@ -690,7 +690,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1531,
+		"id": 699,
 		"category": "food_cuisine",
 		"question": "อาหารคาวหวานขึ้นชื่อของอำเภอบางคล้า จังหวัดฉะเชิงเทรา ที่นำมะม่วงผลดิบหรือสุกมาปรุงอาหารคาวคู่กับเนื้อสัตว์... เมนูนี้คืออะไร?",
 		"choices": [
@@ -712,7 +712,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1532,
+		"id": 700,
 		"category": "food_cuisine",
 		"question": "แกงกะทิรสชาติเข้มข้นของไทยที่มีสีเขียวสวยงามจากพริกขี้หนูเขียวสด ใส่ลูกมะเขือเปราะ มะเขือพวง และใบโหระพา... แกงนี้คือแกงอะไร?",
 		"choices": [
@@ -734,7 +734,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1533,
+		"id": 701,
 		"category": "food_cuisine",
 		"question": "ขนมไทยโบราณเนื้อแป้งนุ่มเหนียว มีสีดำขลับจากกาบมะพร้าวเผาไฟกรองเอาน้ำด่าง หยอดหน้าด้วยมะพร้าวทึนทึกขูดเส้น... ขนมนี้คือขนมอะไร?",
 		"choices": [
@@ -758,7 +758,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1534,
+		"id": 702,
 		"category": "food_cuisine",
 		"question": "อาหารพื้นบ้านภาคอีสานที่นำเห็ดเผาะ (เห็ดถอบ) หน่อไม้ ชะอม และผักหวาน มาต้มกับน้ำใบย่านางและปลาร้า... แกงนี้คือแกงอะไร?",
 		"choices": [
@@ -781,7 +781,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1535,
+		"id": 703,
 		"category": "food_cuisine",
 		"question": "ขนมไทยโบราณที่ทำจากแป้งข้าวเจ้าผสมกะทิ หยอดลงในเบ้ากระทะดินเผา มีหน้าหวาน (กะทิ) และหน้าคาว (ต้นหอม เผือก ข้าวโพด)... ขนมนี้คืออะไร?",
 		"choices": [
@@ -802,7 +802,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1536,
+		"id": 704,
 		"category": "food_cuisine",
 		"question": "ข้าวหลามหนองมน ข้าวหลามกระบอกไม้ไผ่รสชาติหวานมันกะทิเยิ้ม... เป็นของฝากชื่อดังของจังหวัดใด?",
 		"choices": [
@@ -827,7 +827,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1537,
+		"id": 705,
 		"category": "food_cuisine",
 		"question": "แกงโบราณของภาคกลางที่ใส่สมุนไพรกระชาย ตะไคร้ พริกไทยสด และผักนานาชนิด ไม่มีกะทิ ช่วยขับลมและบำรุงน้ำนมมารดา... แกงนี้คือแกงอะไร?",
 		"choices": [
@@ -849,7 +849,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1538,
+		"id": 706,
 		"category": "food_cuisine",
 		"question": "ขนมมงคลที่มีลักษณะคล้ายผลลูกจันทน์สีเหลืองนวล มีกลิ่นหอมจากผงลูกจันทน์เทศและประดับยอดด้วยกลีบจำปา... ขนมนี้มีชื่อว่าอะไร?",
 		"choices": [
@@ -871,7 +871,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1539,
+		"id": 707,
 		"category": "food_cuisine",
 		"question": "อาหารพื้นบ้านภาคใต้ที่นำเนื้อหมูหรือเนื้อวัวสับละเอียด มาผั่วแห้งกับพริกแกงใต้ ขมิ้น และใบมะกรูดซอยจนแห้งกรอบรสเผ็ดร้อนจัดจ้าน... เมนูนี้คืออะไร?",
 		"choices": [
@@ -892,7 +892,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1540,
+		"id": 708,
 		"category": "food_cuisine",
 		"question": "ขนมหวานเส้นแป้งสีเขียวใบเตย เสิร์ฟในน้ำกะทิเคี่ยวกับน้ำตาลโตนดและน้ำแข็งไสเย็นชื่นใจ... ขนมหวานนี้คืออะไร?",
 		"choices": [
@@ -915,7 +915,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1541,
+		"id": 709,
 		"category": "food_cuisine",
 		"question": "อาหารเส้นก๋วยเตี๋ยวที่มีเอกลักษณ์ใส่น้ำตาลปี๊บ ถั่วฝักยาวฝานบาง และหมูแดง ปรุงรสต้มยำมะนาวสดหวานเปรี้ยว... เป็นก๋วยเตี๋ยวสูตรโบราณของจังหวัดใด?",
 		"choices": [
@@ -938,9 +938,9 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1542,
+		"id": 710,
 		"category": "food_cuisine",
-		"question": "ขนมหวานไทยที่ใช้เม็ดแห้วหั่นเต๋าชุบแป้งมันสำปะหลัง แล้วต้มจนลอยตัว กลายเป็นเม็ดสีแดงทับทิมกรอบนอกนุ่มใน... ขนมนี้คืออะไร?",
+		"question": "ขนมหวานไทยที่ใช้เม็ดแห้วหั่นเต๋าชุบแป้งมันสำปะหลัง แล้วต้มจนลอยตัว กลายเป็นเม็ดสีแดงประกายกรอบนอกนุ่มใน... ขนมนี้คืออะไร?",
 		"choices": [
 			"บัวลอย",
 			"ทับทิมกรอบ",
@@ -959,7 +959,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1543,
+		"id": 711,
 		"category": "food_cuisine",
 		"question": "อาหารพื้นบ้านภาคกลางที่นำเนื้อปลาช่อนทอดกรอบมาใส่ในหม้อไฟรูปปลา ราดด้วยน้ำแกงส้มแป๊ะซะและผักกระเฉดสด... เมนูนี้คืออะไร?",
 		"choices": [
@@ -982,7 +982,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1544,
+		"id": 712,
 		"category": "food_cuisine",
 		"question": "ขนมมงคลที่ทำจากไข่แดงตีให้เข้ากัน หยอดเป็นก้อนกลมมนลงในน้ำเชื่อมเดือด คล้ายหยดน้ำทองคำ... ขนมนี้มีชื่อว่าอะไร?",
 		"choices": [
@@ -1004,7 +1004,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1545,
+		"id": 713,
 		"category": "food_cuisine",
 		"question": "เนื้อเค็มตากแห้งขึ้นชื่อของภาคอีสาน ที่ทำจากเนื้อวัวหรือหมูหมักลูกผักชี ตากแดดเดียวจนแห้ง แล้วนำมาทอดกรอบ... เมนูนี้คืออะไร?",
 		"choices": [
@@ -1026,7 +1026,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1546,
+		"id": 714,
 		"category": "food_cuisine",
 		"question": "ขนมไทยโบราณที่นำแป้งข้าวเจ้าผสมแป้งมันและน้ำใบเตย กวนจนสุกเหนียว หยอดหน้าด้วยกะทิสดเค็มมัน... ขนมนี้คืออะไร?",
 		"choices": [
@@ -1048,7 +1048,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1547,
+		"id": 715,
 		"category": "food_cuisine",
 		"question": "อาหารพื้นบ้านภาคอีสานที่นำเนื้อปลาหรือเนื้อสัตว์มาคลุกเคล้ากับข้าวคั่ว พริกป่น มะนาว น้ำปลา และสมุนไพรผักชีฝรั่ง... เมนูนี้คืออะไร?",
 		"choices": [
@@ -1071,7 +1071,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1548,
+		"id": 716,
 		"category": "food_cuisine",
 		"question": "ขนมมงคลที่ทำจากไข่แดงตีจนเนียน หยอดลงในน้ำเชื่อมแล้วจับจีบเป็นรูปดอกไม้ 5 แฉกอย่างวิจิตร... ขนมนี้มีชื่อว่าอะไร?",
 		"choices": [
@@ -1093,7 +1093,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1549,
+		"id": 717,
 		"category": "food_cuisine",
 		"question": "น้ำซุปต้มยำโบราณรสเปรี้ยวแซ่บ หอมกลิ่นข้าวคั่วและพริกแห้งเผา ใส่กระดูกหมูหรือเนื้อวัว... เมนูนี้คืออะไร?",
 		"choices": [
@@ -1115,7 +1115,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1550,
+		"id": 718,
 		"category": "food_cuisine",
 		"question": "ขนมไทยโบราณที่นำเม็ดสาคูใบเตยมากวนจนเหนียว หยอดหน้าด้วยมะพร้าวทึนทึกขูดเส้นคลุกเกลือ... ขนมนี้คืออะไร?",
 		"choices": [
@@ -1137,7 +1137,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1551,
+		"id": 719,
 		"category": "food_cuisine",
 		"question": "ต้มกะทิไก่รสเปรี้ยวอมหวาน หอมกลิ่นข่าอ่อนและน้ำมะนาวสด... เมนูชื่อดังระดับโลกนี้คืออะไร?",
 		"choices": [
@@ -1159,7 +1159,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1552,
+		"id": 720,
 		"category": "food_cuisine",
 		"question": "ขนมไทยมงคลโบราณที่ทำจากแป้งข้าวเหนียวนึ่ง แผ่เป็นแผ่นบางแล้วม้วนไส้มะพร้าวกวนกลิ่นหอมอบควันเทียน... ขนมนี้คืออะไร?",
 		"choices": [
@@ -1182,7 +1182,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1553,
+		"id": 721,
 		"category": "food_cuisine",
 		"question": "อาหารพื้นบ้านภาคเหนือที่นำแกงต่างๆ มารวมผัดรวมกันในกระทะ ใส่ผัก กะหล่ำปลี และวุ้นเส้น... แกงนี้คือแกงอะไร?",
 		"choices": [
@@ -1203,7 +1203,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1554,
+		"id": 722,
 		"category": "food_cuisine",
 		"question": "ขนมไทยโบราณที่ทำจากแป้งถั่วทองกวนจนใส หยอดลงบนพิมพ์ถ้วยตะไลเล็กๆ นุ่มละมุนลิ้นจนแทบไม่ต้องเคี้ยว... ขนมนี้มีชื่อว่าอะไร?",
 		"choices": [
@@ -1225,7 +1225,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1555,
+		"id": 723,
 		"category": "food_cuisine",
 		"question": "อาหารจานเดียวของภาคใต้ที่หุงข้าวสารกับกะทิ ขมิ้น และสมุนไพรเครื่องเทศ เสิร์ฟคู่กับไก่ทอดหอมเจียวและน้ำจิ้มหวาน... เมนูนี้คืออะไร?",
 		"choices": [
@@ -1247,7 +1247,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1556,
+		"id": 724,
 		"category": "food_cuisine",
 		"question": "ขนมหวานไทยที่ทำจากแป้งสาลีทอดในน้ำมันร้อนจนพองฟู กรอบนอกนุ่มใน แล้วจิ้มกับน้ำเชื่อมหรือน้ำตาลเคี่ยว... ขนมนี้คืออะไร?",
 		"choices": [
@@ -1269,7 +1269,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1557,
+		"id": 725,
 		"category": "food_cuisine",
 		"question": "อาหารพื้นบ้านภาคอีสานที่นำเนื้อหมูหรือปลาหมักกับข้าวเหนียวและกระเทียมจนมีรสเปรี้ยวธรรมชาติ... อาหารหมักนี้คืออะไร?",
 		"choices": [
@@ -1292,7 +1292,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1558,
+		"id": 726,
 		"category": "food_cuisine",
 		"question": "ขนมไทยโบราณที่นำแป้งหยอดลงบนกระทะร้อนเป็นแผ่นกลมบาง พับม้วนเป็นทรงกระบอก กรอบหอมกลิ่นกะทิและงาดำ... ขนมนี้คืออะไร?",
 		"choices": [
@@ -1313,7 +1313,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1559,
+		"id": 727,
 		"category": "food_cuisine",
 		"question": "เครื่องปรุงรสพื้นบ้านภาคใต้ที่ทำจากการหมักปลากับเกลือจนได้น้ำใสสีน้ำตาลอมม่วง รสเค็มมันกลิ่นหอมเฉพาะตัว... เครื่องปรุงนี้คืออะไร?",
 		"choices": [
@@ -1336,7 +1336,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1560,
+		"id": 728,
 		"category": "food_cuisine",
 		"question": "ขนมไทยโบราณที่ทำจากแป้งข้าวเจ้ากดเป็นเส้นฝอย หยอดบนกระทะร้อน แล้วโรยหน้าด้วยมะพร้าวทึนทึกและน้ำตาลทรายใส่งาคั่ว... ขนมนี้คืออะไร?",
 		"choices": [
@@ -1360,7 +1360,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1561,
+		"id": 729,
 		"category": "food_cuisine",
 		"question": "อาหารพื้นบ้านภาคอีสานที่นำข้าวคั่วบดละเอียดมาต้มกับผักอีตู่ (ใบแมงลัก) ผักหวาน และเนื้อสัตว์ รสหอมข้าวคั่วเข้มข้น... เมนูนี้คืออะไร?",
 		"choices": [
@@ -1384,7 +1384,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1562,
+		"id": 730,
 		"category": "food_cuisine",
 		"question": "ขนมมงคลที่ทำจากแป้งข้าวเจ้า แป้งมัน และน้ำตาล นึ่งทีละชั้นสลับสีกันอย่างน้อย 9 ชั้น... ขนมนี้มีชื่อว่าอะไร?",
 		"choices": [
@@ -1405,7 +1405,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1563,
+		"id": 731,
 		"category": "food_cuisine",
 		"question": "อาหารเส้นยอดนิยมของชาวไทยเชื้อสายเวียดนามในภาคอีสาน เส้นทำจากแป้งข้าวเจ้าเหนียวนุ่ม ต้มในน้ำซุปกระดูกหมู ใส่หมูยอและหอมเจียว... เมนูนี้คืออะไร?",
 		"choices": [
@@ -1429,7 +1429,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1564,
+		"id": 732,
 		"category": "food_cuisine",
 		"question": "ขนมหวานไทยโบราณที่นำมะพร้าวขูดมาคลุกเคล้ากับแป้งข้าวเหนียวและน้ำตาลมะพร้าว ปิ้งบนเตาถ่านจนส่งกลิ่นหอมกรุ่น... ขนมนี้คืออะไร?",
 		"choices": [
@@ -1451,7 +1451,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1565,
+		"id": 733,
 		"category": "food_cuisine",
 		"question": "อาหารพื้นบ้านภาคกลางที่นำเนื้อปลาช่อนหรือปลาดุกย่างมาโขลกกับพริกแกงคั่ว เคี่ยวกับกะทิและหอยขมหรือผักหวาน... แกงนี้คือแกงอะไร?",
 		"choices": [
@@ -1473,7 +1473,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1566,
+		"id": 734,
 		"category": "food_cuisine",
 		"question": "ขนมไทยที่นำแป้งข้าวเหนียวดำหรือขาวมากวนกับน้ำกะทิและน้ำตาล ห่อด้วยใบตองทรงสามเหลี่ยม ปิ้งเตาถ่านหอมกรุ่น... ขนมนี้คืออะไร?",
 		"choices": [
@@ -1494,7 +1494,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1567,
+		"id": 735,
 		"category": "food_cuisine",
 		"question": "น้ำปลาแท้ชั้นเลิศของไทยที่หมักจากปลากะตักสด 100% บ่มในโอ่งมังกรนานนับปีจนได้น้ำปลาสีทองอร่าม... เป็นสินค้า GI ขึ้นชื่อของจังหวัดใด?",
 		"choices": [
@@ -1518,7 +1518,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1568,
+		"id": 736,
 		"category": "food_cuisine",
 		"question": "ขนมหวานไทยโบราณที่นำข้าวเม่ารางกรอบมาคลุกกับน้ำตาลมะพร้าวและกะทิกวน ปั้นเป็นก้อนเคียงคู่กับกล้วยไข่สุก... ขนมนี้คืออะไร?",
 		"choices": [
@@ -1540,7 +1540,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1569,
+		"id": 737,
 		"category": "food_cuisine",
 		"question": "อาหารพื้นบ้านภาคอีสานที่นำไข่ของมดแดงในฤดูแล้ง มายำหรือปรุงร่วมกับผักหวานป่า... อาหารเลิศรสหายากนี้คืออะไร?",
 		"choices": [
@@ -1563,7 +1563,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1570,
+		"id": 738,
 		"category": "food_cuisine",
 		"question": "ขนมไทยที่นำแป้งข้าวเหนียวห่อไส้มะพร้าวกวนน้ำตาลปี๊บ ราดหน้าด้วยแป้งกะทิกวนข้น ห่อใบตองเตี่ยกลัดไม้... ขนมนี้มีชื่อว่าอะไร?",
 		"choices": [
@@ -1586,7 +1586,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1571,
+		"id": 739,
 		"category": "food_cuisine",
 		"question": "ผลไม้เมืองร้อนทรงรี ผิวสีส้มอมชมพู เนื้อหวานอมเปรี้ยว มีชื่อเสียงมากที่สุดในจังหวัดนครนายก... ผลไม้นี้คืออะไร?",
 		"choices": [
@@ -1609,7 +1609,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1572,
+		"id": 740,
 		"category": "food_cuisine",
 		"question": "ขนมไทยที่ทำจากแป้งข้าวเหนียวปั้นเป็นก้อนกลมสอดไส้น้ำตาลอ้อยหรือมะพร้าว ต้มในน้ำเดือดแล้วคลุกมะพร้าวทึนทึกขูด... ขนมนี้คืออะไร?",
 		"choices": [
@@ -1632,7 +1632,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1573,
+		"id": 741,
 		"category": "food_cuisine",
 		"question": "อาหารพื้นบ้านภาคใต้ที่นำเนื้อปลาทูหรือปลากะพงมาต้มในน้ำซุปส้มแขก ขมิ้น ตะไคร้ รสเปรี้ยวเค็มเผ็ดเบาๆ ซดคล่องคอ... เมนูนี้คืออะไร?",
 		"choices": [
@@ -1655,7 +1655,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1574,
+		"id": 742,
 		"category": "food_cuisine",
 		"question": "ขนมหวานไทยชาววังที่นำแป้งทองหยิบมาทอดในกระทะทองเหลืองให้เป็นแผ่นบางกรอบ ราดด้วยน้ำตาลมะพร้าวเคี่ยวข้น... ขนมนี้คืออะไร?",
 		"choices": [
@@ -1677,7 +1677,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1575,
+		"id": 743,
 		"category": "food_cuisine",
 		"question": "อาหารเส้นพื้นเมืองของจังหวัดจันทบุรี ที่นำเส้นจันท์เหนียวนุ่มมาผัดกับพริกแกง กุ้งแห้ง และเนื้อปูทะเลสด... เมนูนี้คืออะไร?",
 		"choices": [
@@ -1701,7 +1701,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1576,
+		"id": 744,
 		"category": "food_cuisine",
 		"question": "ขนมไทยโบราณที่นำข้าวตอกมาคลุกเคล้ากับน้ำตาลมะพร้าวและกะทิ อัดลงในแบบพิมพ์สี่เหลี่ยมหรือทรงกระบอก... ขนมนี้คืออะไร?",
 		"choices": [
@@ -1722,7 +1722,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1577,
+		"id": 745,
 		"category": "food_cuisine",
 		"question": "พริกแกงและอาหารพื้นบ้านภาคใต้ที่ขึ้นชื่อเรื่องความเผ็ดร้อน มีขมิ้นเป็นส่วนประกอบหลักจนทำให้น้ำแกงมีสีเหลืองสดใส... แกงนี้คือแกงอะไร?",
 		"choices": [
@@ -1746,7 +1746,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1578,
+		"id": 746,
 		"category": "food_cuisine",
 		"question": "ขนมหวานไทยที่นำแป้งข้าวเจ้าผสมกะทิและน้ำตาล ห่อด้วยใบจากแล้วย่างบนเตาถ่านจนส่งกลิ่นหอมเฉพาะตัว... ขนมนี้คืออะไร?",
 		"choices": [
@@ -1768,7 +1768,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1579,
+		"id": 747,
 		"category": "food_cuisine",
 		"question": "อาหารพื้นบ้านภาคเหนือที่นำพืช ผัก หน่อไม้ ดอกแค ยอดมะพร้าว และปลาย่าง มาต้มรวมกันในหม้อน้ำซุปสมุนไพร... แกงนี้คือแกงอะไร?",
 		"choices": [
@@ -1789,7 +1789,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1580,
+		"id": 748,
 		"category": "food_cuisine",
 		"question": "ขนมหวานไทยโบราณที่นำเม็ดแป้งบัวลอยหลากสีมาต้มในน้ำกะทิสดหอมกลิ่นควันเทียน ใส่ไข่ไก่หรือไข่หวานต้มสุก... ขนมนี้คืออะไร?",
 		"choices": [
@@ -1811,7 +1811,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1581,
+		"id": 749,
 		"category": "food_cuisine",
 		"question": "อาหารประเภทเส้นของภาคอีสานตอนบน เส้นหนานุ่มต้มในน้ำซุปกระดูกหมูโรยกระเทียมเจียวและหอมเปร... มีชื่อเรียกพื้นเมืองว่าอะไร?",
 		"choices": [
@@ -1833,7 +1833,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1582,
+		"id": 750,
 		"category": "food_cuisine",
 		"question": "ขนมไทยโบราณที่นำน้ำตาลโตนดเมืองเพชรมากวนกับเนื้อมะพร้าวอ่อนจนเหนียว แล้วตักหยอดบนถาดสังกะสี... ขนมนี้มีชื่อว่าอะไร?",
 		"choices": [
@@ -1854,7 +1854,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1583,
+		"id": 751,
 		"category": "food_cuisine",
 		"question": "อาหารพื้นบ้านภาคใต้ที่นำปลาทูหรือปลากะพงมาหมักกับขมิ้นชันและเกลือ ทอดในน้ำมันร้อนจนเหลืองกรอบ โรยหน้าด้วยกระเทียมขมิ้นเจียว... เมนูนี้คืออะไร?",
 		"choices": [
@@ -1876,7 +1876,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1584,
+		"id": 752,
 		"category": "food_cuisine",
 		"question": "ขนมหวานไทยที่นำแป้งมันสำปะหลังมากดลงบนพิมพ์เป็นลายฝาหอย ต้มสุกแล้วราดด้วยน้ำกะทิหวานมันโรยงาขาวคั่ว... ขนมนี้คืออะไร?",
 		"choices": [
@@ -1898,7 +1898,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1585,
+		"id": 753,
 		"category": "food_cuisine",
 		"question": "อาหารประเภทเส้นขนมจีนของภาคเหนือ เสิร์ฟในน้ำซุปกระดูกหมูต้มมะเขือส้ม ดอกงิ้วแห้ง เลือดหมู และถั่วเน่า... เมนูนี้คืออะไร?",
 		"choices": [
@@ -1920,7 +1920,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1586,
+		"id": 754,
 		"category": "food_cuisine",
 		"question": "ขนมไทยมงคลรูปทรงสี่เหลี่ยมเปียกปูน ทำจากแป้งข้าวเจ้าผสมกะทิและน้ำตาลปี๊บ กวนจนเหนียวเป็นสีน้ำตาลอ่อน หยอดโรยงาคั่ว... ขนมนี้คืออะไร?",
 		"choices": [
@@ -1942,7 +1942,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1587,
+		"id": 755,
 		"category": "food_cuisine",
 		"question": "อาหารพื้นบ้านภาคอีสานที่นำเห็ดนางฟ้า เห็ดฟาง หน่อไม้ และผักหวาน มาต้มกับน้ำใบย่านางเข้มข้น ไม่ใส่กะทิ... แกงนี้คือแกงอะไร?",
 		"choices": [
@@ -1965,7 +1965,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1588,
+		"id": 756,
 		"category": "food_cuisine",
 		"question": "ขนมหวานไทยที่นำเนื้อฟักทอง มันเทศ หรือเผือก มานึ่งสุกแล้วบดผสมแป้งมัน ปั้นเป็นก้อนกลมต้มน้ำตาลทราย... ขนมนี้คืออะไร?",
 		"choices": [
@@ -1987,7 +1987,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1589,
+		"id": 757,
 		"category": "food_cuisine",
 		"question": "อาหารจานเดียวของภาคใต้ที่นำเนื้อปูม้าหรือปูทะเลสด มาแกะเอาเนื้อก้อนโต ปรุงในน้ำแกงกะทิใต้รสจัดจ้าน เสิร์ฟคู่กับขนมจีน... เมนูนี้คืออะไร?",
 		"choices": [
@@ -2009,7 +2009,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1590,
+		"id": 758,
 		"category": "food_cuisine",
 		"question": "ขนมหวานไทยโบราณที่นำแป้งข้าวเหนียวกวนกับกะทิและน้ำใบเตยจนเหนียวใส แล้วโรยมะพร้าวขูดคลุกงาขาว... ขนมนี้คืออะไร?",
 		"choices": [
@@ -2030,7 +2030,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1591,
+		"id": 759,
 		"category": "food_cuisine",
 		"question": "อาหารจานเดียวขึ้นชื่อของเมืองเพชรบุรี ที่นำเส้นเล็กมาผัดกับน้ำตาลโตนด ซอสมะขามเปียก หมูแดง และกากหมูเจียว... เมนูนี้คืออะไร?",
 		"choices": [
@@ -2054,7 +2054,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1592,
+		"id": 760,
 		"category": "food_cuisine",
 		"question": "ขนมหวานไทยโบราณที่นำเนื้อกล้วยน้ำว้าสุกงอมมาบดผสมแป้งข้าวเจ้า น้ำตาล และกะทิ ห่อใบตองนึ่งสุก... ขนมนี้คืออะไร?",
 		"choices": [
@@ -2075,7 +2075,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1593,
+		"id": 761,
 		"category": "food_cuisine",
 		"question": "อาหารพื้นบ้านภาคอีสานที่นำปลาสดหมักกับข้าวคั่วและเกลือเป็นเวลาหลายเดือนจนได้กลิ่นหอมและรสชาตินัวอันเป็นเอกลักษณ์... เครื่องปรุงหลักนี้คืออะไร?",
 		"choices": [
@@ -2098,7 +2098,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1594,
+		"id": 762,
 		"category": "food_cuisine",
 		"question": "ขนมไทยโบราณที่นำเนื้อตาลสุกสีเหลืองทองมากวนกับแป้งข้าวเจ้าและน้ำตาล หมักจนขึ้นฟู ห่อกระทงใบตองนึ่งสุก... ขนมนี้คืออะไร?",
 		"choices": [
@@ -2119,7 +2119,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1595,
+		"id": 763,
 		"category": "food_cuisine",
 		"question": "อาหารพื้นบ้านภาคเหนือที่นำพืชผักพื้นบ้านตามฤดูกาลมาลวกหรือนึ่ง รับประทานคู่กับน้ำพริกหนุ่มและน้ำพริกอ่อง... ผักเหนาะนี้เรียกว่าอะไร?",
 		"choices": [
@@ -2141,7 +2141,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1596,
+		"id": 764,
 		"category": "food_cuisine",
 		"question": "ขนมหวานไทยโบราณที่ทำจากแป้งสาลี ไข่ และน้ำตาล อบในพิมพ์เหล็กเป็นรูปทรงกลมรีหรือรูปดอกไม้ เนื้อนุ่มฟู... ขนมนี้คืออะไร?",
 		"choices": [
@@ -2163,7 +2163,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1597,
+		"id": 765,
 		"category": "food_cuisine",
 		"question": "อาหารพื้นบ้านภาคใต้ที่นำเนื้อหมูสามชั้นมาต้มเคี่ยวกับซีอิ๊วดำ น้ำตาลมะพร้าว และเครื่องเทศกระเทียมพริกไทยจนเปื่อยนุ่ม... เมนูนี้คืออะไร?",
 		"choices": [
@@ -2186,7 +2186,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1598,
+		"id": 766,
 		"category": "food_cuisine",
 		"question": "ขนมหวานไทยที่นำเนื้อฟักทองแก่ส้มมาเจาะควักไส้ แล้วเทส่วนผสมสังขยาไข่เป็ดลงไปนึ่งจนสุกทั้งลูก... ขนมนี้คืออะไร?",
 		"choices": [
@@ -2207,7 +2207,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1599,
+		"id": 767,
 		"category": "food_cuisine",
 		"question": "อาหารพื้นบ้านภาคอีสานที่นำข้าวเหนียวนึ่งสุกมาปั้นเป็นก้อนกลม ทาด้วยไข่ไก่ผสมเกลือ แล้วนำไปปิ้งบนเตาถ่านจนเหลืองกรอบ... เมนูนี้คืออะไร?",
 		"choices": [
@@ -2229,7 +2229,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1600,
+		"id": 768,
 		"category": "food_cuisine",
 		"question": "ขนมหวานไทยโบราณที่นำข้าวเหนียวมูนกะทิ มารับประทานคู่กับผลไม้ยอดนิยมที่มีฉายาว่าราชาแห่งผลไม้ในน้ำกะทิเคี่ยว... เมนูนี้คืออะไร?",
 		"choices": [
@@ -2251,31 +2251,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1601,
-		"category": "food_cuisine",
-		"question": "จังหวัดในภาคใต้ที่ติดกับทั้งอ่าวไทยและทะเลอันดามัน มีเทือกเขานครศรีธรรมราชทอดผ่าน และมีชื่อเดิมว่า \"ตามพรลิงก์\"... จังหวัดนี้คือจังหวัดใด?",
-		"choices": [
-			"สุราษฎร์ธานี",
-			"นครศรีธรรมราช",
-			"สงขลา",
-			"พัทลุง"
-		],
-		"correctIndex": 1,
-		"acceptableAnswers": [
-			"นครศรีธรรมราช",
-			"เมืองคอน",
-			"ตามพรลิงก์"
-		],
-		"explanation": "นครศรีธรรมราชเป็นศูนย์กลางอาณาจักรตามพรลิงก์โบราณและมีพระบรมธาตุเจดีย์",
-		"difficulty": "normal",
-		"tags": [
-			"ภาคใต้",
-			"นครศรีธรรมราช",
-			"ภูมิศาสตร์ไทย"
-		]
-	},
-	{
-		"id": 1602,
+		"id": 769,
 		"category": "food_cuisine",
 		"question": "เกาะที่ใหญ่เป็นอันดับ 2 ของประเทศไทย ตั้งอยู่ในอ่าวไทยในเขตจังหวัดตราด มีภูมิประเทศเป็นภูเขาสูงสลับซับซ้อน... เกาะนี้คือเกาะใด?",
 		"choices": [
@@ -2298,31 +2274,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1603,
-		"category": "food_cuisine",
-		"question": "จังหวัดที่เป็นจุดเริ่มต้นของแม่น้ำเจ้าพระยา เกิดจากการบรรจบกันของแม่น้ำปิงและแม่น้ำน่านที่ปากน้ำโพ... จังหวัดนี้คือจังหวัดใด?",
-		"choices": [
-			"พิษณุโลก",
-			"นครสวรรค์",
-			"อุทัยธานี",
-			"ชัยนาท"
-		],
-		"correctIndex": 1,
-		"acceptableAnswers": [
-			"นครสวรรค์",
-			"ปากน้ำโพ",
-			"เมืองสี่แคว"
-		],
-		"explanation": "แม่น้ำปิง วัง ยม น่าน ไหลมารวมกันเป็นแม่น้ำเจ้าพระยาที่ตำบลปากน้ำโพ จังหวัดนครสวรรค์",
-		"difficulty": "easy",
-		"tags": [
-			"แม่น้ำเจ้าพระยา",
-			"นครสวรรค์",
-			"ภาคกลาง"
-		]
-	},
-	{
-		"id": 1604,
+		"id": 770,
 		"category": "food_cuisine",
 		"question": "อุทยานแห่งชาติทางทะเลแห่งแรกของประเทศไทย ตั้งอยู่ในจังหวัดประจวบคีรีขันธ์ โดดเด่นด้วยเขาหินปูน ถ้ำพระยานคร และถ้ำไทร... อุทยานนี้คือที่ใด?",
 		"choices": [
@@ -2346,7 +2298,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1605,
+		"id": 771,
 		"category": "food_cuisine",
 		"question": "ซุปสมุนไพรไทยรสจัดจ้าน เปรี้ยว เผ็ด เค็ม หอมกลิ่นข่า ตะไคร้ ใบมะกรูด และกุ้งแม่น้ำสด ได้รับการเสนอขึ้นทะเบียน UNESCO... อาหารนี้คืออะไร?",
 		"choices": [
@@ -2370,7 +2322,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1606,
+		"id": 772,
 		"category": "food_cuisine",
 		"question": "แกงกะทิรสชาติเข้มข้น หอมเครื่องเทศแขกและถั่วลิสง ได้รับการจัดอันดับโดย CNN Travel ให้เป็นอาหารที่อร่อยที่สุดในโลกอันดับ 1... แกงนี้คือแกงใด?",
 		"choices": [
@@ -2394,7 +2346,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1607,
+		"id": 773,
 		"category": "food_cuisine",
 		"question": "อาหารประเภทเส้นผัดยอดนิยมของไทย กำเนิดขึ้นในสมัยจอมพล ป. พิบูลสงคราม มีเต้าหู้ กุ้งแห้ง ถั่วงอก กุยช่าย และถั่วลิสงบด... อาหารนี้คืออะไร?",
 		"choices": [
@@ -2418,7 +2370,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1608,
+		"id": 774,
 		"category": "food_cuisine",
 		"question": "อาหารพื้นบ้านยอดนิยมของภาคอีสาน ทำจากมะละกอดิบสับ ตำคลุกเคล้ากับพริก กระเทียม มะเขือเทศ มะนาว และน้ำปลาหรือน้ำปลาร้า... อาหารนี้คืออะไร?",
 		"choices": [
@@ -2444,7 +2396,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1609,
+		"id": 775,
 		"category": "food_cuisine",
 		"question": "อาหารเส้นพื้นบ้านยอดนิยมของภาคเหนือ มีเส้นบะหมี่ไข่ในน้ำแกงกะทิเข้มข้น โรยหน้าด้วยหมี่กรอบ เสิร์ฟพร้อมหอมแดงและผักกาดดอง... อาหารนี้คืออะไร?",
 		"choices": [
@@ -2469,7 +2421,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1610,
+		"id": 776,
 		"category": "food_cuisine",
 		"question": "อาหารพื้นเมืองภาคเหนือ น้ำแกงทำจากพริกแกง ดอกงิ้วแห้ง เลือดหมู มะเขือส้ม และซี่โครงหมู กินคู่กับเส้นขนมจีน... อาหารนี้คืออะไร?",
 		"choices": [
@@ -2492,9 +2444,9 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1611,
+		"id": 777,
 		"category": "food_cuisine",
-		"question": "แกงเนื้อหมูสามชั้นยอดนิยมของภาคเหนือ มีรสเปรี้ยวอมหวาน หอมเครื่องแกงฮังเล ขิงซอย และกระเทียมดอง... แกงนี้คือแกงใด?",
+		"question": "แกงเนื้อหมูสามชั้นยอดนิยมของภาคเหนือ มีรสเปรี้ยวอมหวาน หอมเครื่องแกงหมี่สิ่ว ขิงซอย และกระเทียมดอง... แกงนี้คือแกงใด?",
 		"choices": [
 			"แกงฮังเล",
 			"แกงโฮะ",
@@ -2515,7 +2467,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1612,
+		"id": 778,
 		"category": "food_cuisine",
 		"question": "น้ำพริกพื้นบ้านภาคเหนือ ทำจากพริกหนุ่มเผา หอมแดง และกระเทียมเผา โขลกหยาบๆ กินคู่กับแคบหมูและผักลวก... น้ำพริกนี้คือน้ำพริกใด?",
 		"choices": [
@@ -2537,7 +2489,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1613,
+		"id": 779,
 		"category": "food_cuisine",
 		"question": "น้ำพริกภาคเหนือที่มีส่วนผสมของหมูสับ มะเขือส้ม และพริกแกง รสชาติเปรี้ยวหวานเค็มกลมกล่อม... น้ำพริกนี้คือน้ำพริกใด?",
 		"choices": [
@@ -2558,7 +2510,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1614,
+		"id": 780,
 		"category": "food_cuisine",
 		"question": "ไส้กรอกหมูสมุนไพรพื้นเมืองภาคเหนือ ยัดไส้ด้วยหมูบดคลุกเคล้าพริกแกง ตะไคร้ ใบมะกรูด แล้วนำไปย่างหอมกรุ่น... อาหารนี้คืออะไร?",
 		"choices": [
@@ -2581,7 +2533,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1615,
+		"id": 781,
 		"category": "food_cuisine",
 		"question": "แกงรสเผ็ดร้อนจัดจ้านอันเป็นเอกลักษณ์ของภาคใต้ ใส่ไตปลาหมัก หน่อไม้ มะเขือพวง และเนื้อปลาโอหรือปลาซาบะย่าง... แกงนี้คือแกงใด?",
 		"choices": [
@@ -2605,7 +2557,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1616,
+		"id": 782,
 		"category": "food_cuisine",
 		"question": "อาหารใต้รสเผ็ดร้อนจัดจ้าน ผัดเนื้อหมูสับหรือไก่สับกับพริกแกงใต้และใบมะกรูดซอยจนแห้งคั่ว... อาหารนี้คืออะไร?",
 		"choices": [
@@ -2627,7 +2579,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1617,
+		"id": 783,
 		"category": "food_cuisine",
 		"question": "อาหารเพื่อสุขภาพของภาคใต้ คลุกเคล้าข้าวสวยกับสมุนไพรสด ผักนานาชนิด มะพร้าวคั่ว กุ้งแห้ง และราดด้วยน้ำบูดูปรุงรส... อาหารนี้คืออะไร?",
 		"choices": [
@@ -2651,7 +2603,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1618,
+		"id": 784,
 		"category": "food_cuisine",
 		"question": "อาหารพื้นเมืองภูเก็ต ได้รับอิทธิพลจากชาวจีนฮกเกี้ยน ต้มหมูสามชั้นกับซีอิ๊ว กระเทียม พริกไทยดำ และน้ำตาลกรวดจนเปื่อยนุ่ม... อาหารนี้คืออะไร?",
 		"choices": [
@@ -2674,7 +2626,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1619,
+		"id": 785,
 		"category": "food_cuisine",
 		"question": "เมนูผักพื้นบ้านภาคใต้ นำใบของผักเหลียง (ราชินีผักพื้นบ้าน) มาผัดกับไข่ไก่และกระเทียมเจียว รสมันหวานกลมกล่อม... เมนูนี้คืออะไร?",
 		"choices": [
@@ -2697,7 +2649,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1620,
+		"id": 786,
 		"category": "food_cuisine",
 		"question": "ขนมมงคลไทยทำจากไข่แดงตีให้ขึ้นฟู หยอดในน้ำเชื่อมแล้วจับจีบเป็นรูปดอกไม้ 5 กลีบ... ขนมนี้คืออะไร?",
 		"choices": [
@@ -2718,9 +2670,9 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1621,
+		"id": 787,
 		"category": "food_cuisine",
-		"question": "ขนมมงคลไทยโบราณรูปทรงกลมมนคล้ายหยดน้ำ ทำจากไข่แดงผสมแป้งทองหยอด หยอดลงในน้ำเชื่อมเดือด... ขนมนี้คืออะไร?",
+		"question": "ขนมมงคลไทยโบราณรูปทรงกลมมนคล้ายหยดน้ำ ทำจากไข่แดงผสมแป้งข้าวเจ้า หยอดลงในน้ำเชื่อมเดือด... ขนมนี้คืออะไร?",
 		"choices": [
 			"ทองหยอด",
 			"ทองหยิบ",
@@ -2739,7 +2691,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1622,
+		"id": 788,
 		"category": "food_cuisine",
 		"question": "ขนมมงคลไทยที่โรยไข่แดงเป็นเส้นฝอยยาวในน้ำเชื่อมเดือด สื่อถึงการครองคู่และความรักที่ยืนยาว... ขนมนี้คืออะไร?",
 		"choices": [
@@ -2761,7 +2713,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1623,
+		"id": 789,
 		"category": "food_cuisine",
 		"question": "ขนมมงคลทำจากถั่วเขียวบดกวน ปั้นเป็นรูปทรงคล้ายเมล็ดขนุน ชุบไข่แดงแล้วต้มในน้ำเชื่อม... ขนมนี้คืออะไร?",
 		"choices": [
@@ -2782,7 +2734,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1624,
+		"id": 790,
 		"category": "food_cuisine",
 		"question": "ขนมมงคลโบราณทำจากแป้งสลับชั้นคล้ายมงกุฎ ตกแต่งด้วยเมล็ดแตงโมกวาดน้ำตาลรอบฐาน... ขนมนี้คืออะไร?",
 		"choices": [
@@ -2805,7 +2757,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1625,
+		"id": 791,
 		"category": "food_cuisine",
 		"question": "ขนมมงคลทำจากแป้งผสมผงจันทน์เทศและไข่แดง ปั้นเลียนแบบผลลูกจันทน์สีเหลืองนวล... ขนมนี้คืออะไร?",
 		"choices": [
@@ -2826,7 +2778,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1626,
+		"id": 792,
 		"category": "food_cuisine",
 		"question": "ขนมไทยชาววังสมัยรัชกาลที่ 2 ทำจากแป้งสีฟ้าดอกอัญชัน ตรงกลางหยอดไข่แดงดั่งดวงจันทร์ลอยเด่นกลางเมฆ... ขนมนี้คืออะไร?",
 		"choices": [
@@ -2848,7 +2800,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1627,
+		"id": 793,
 		"category": "food_cuisine",
 		"question": "ของหวานไทยชื่อดังระดับโลก เสิร์ฟข้าวเหนียวมูนกะทิหอมมันคู่กับมะม่วงน้ำดอกไม้สุกสีทอง... ขนมหวานนี้คืออะไร?",
 		"choices": [
@@ -2870,7 +2822,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1628,
+		"id": 794,
 		"category": "food_cuisine",
 		"question": "ขนมไทยอบในถาดอบโบราณ ทำจากไข่ กะทิ น้ำตาลโตนด และเผือกหรือถั่วเขียวบด โรยหน้าหอมเจียว... ขนมนี้คืออะไร?",
 		"choices": [
@@ -2894,7 +2846,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1629,
+		"id": 795,
 		"category": "food_cuisine",
 		"question": "ขนมหวานไทยทำจากแป้งข้าวเหนียวปั้นเป็นเม็ดกลมหลากสี ต้มในน้ำกะทิน้ำตาลมะพร้าว ใส่ไข่หวาน... ขนมหวานนี้คืออะไร?",
 		"choices": [
@@ -2916,7 +2868,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1630,
+		"id": 796,
 		"category": "food_cuisine",
 		"question": "อาหารชาววังสมัยรัชกาลที่ 5 คิดค้นโดย ม.ล.เนื่อง นิลรัตน์ นำเนื้อวัวต้มกับน้ำพริกกะปิและใบโหระพา... แกงนี้คือแกงใด?",
 		"choices": [
@@ -2937,7 +2889,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1631,
+		"id": 797,
 		"category": "food_cuisine",
 		"question": "อาหารว่างไทยโบราณ นำหมูสับกุ้งสับผัดหวานเค็ม ปั้นเป็นก้อนวางบนชิ้นผลไม้รสเปรี้ยว เช่น สับปะรด หรือส้มเขียวหวาน... อาหารว่างนี้คืออะไร?",
 		"choices": [
@@ -2959,7 +2911,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1632,
+		"id": 798,
 		"category": "food_cuisine",
 		"question": "อาหารว่างชาววังที่ใช้ไข่โรยเป็นตาข่ายแหโปร่งบาง ห่อไส้หมูและกุ้งผัดทรงเครื่อง... อาหารว่างนี้คืออะไร?",
 		"choices": [
@@ -2980,7 +2932,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1633,
+		"id": 799,
 		"category": "food_cuisine",
 		"question": "อาหารดับร้อนตำรับชาววัง ข้าวสวยขัดแช่ในน้ำลอยดอกมะลิอบควันเทียน เสิร์ฟพร้อมลูกกะปิทอด หอมแดงยัดไส้ พริกหยวกสอดไส้... อาหารนี้คืออะไร?",
 		"choices": [
@@ -3004,7 +2956,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1634,
+		"id": 800,
 		"category": "food_cuisine",
 		"question": "ทุเรียนพันธุ์ก้านยาวและหมอนทองที่ปลูกในดินลุ่มน้ำเจ้าพระยา จังหวัดนนทบุรี ได้รับการขึ้นทะเบียน GI และมีราคาสูงที่สุดในไทย... ผลไม้นี้คืออะไร?",
 		"choices": [
@@ -3028,7 +2980,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1635,
+		"id": 801,
 		"category": "food_cuisine",
 		"question": "ไข่เค็มขึ้นชื่อของอำเภอไชยา จังหวัดสุราษฎร์ธานี ทำจากไข่เป็ดเลี้ยงธรรมชาติ พอกด้วยดินจอมปลวกผสมเกลือและขี้เถ้าแกลบ... ของฝากนี้คืออะไร?",
 		"choices": [
@@ -3051,7 +3003,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1636,
+		"id": 802,
 		"category": "food_cuisine",
 		"question": "ข้าวหอมมะลิพันธุ์ขาวดอกมะลิ 105 ที่ปลูกในพื้นที่ทุ่งกุลาร้องไห้ 5 จังหวัดภาคอีสาน ได้รับการขึ้นทะเบียน GI ระดับสหภาพยุโรป (EU)... ข้าวนี้คือข้าวใด?",
 		"choices": [
@@ -3074,7 +3026,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1637,
+		"id": 803,
 		"category": "food_cuisine",
 		"question": "ข้าวพันธุ์พื้นเมืองของจังหวัดพัทลุง เยื่อหุ้มเมล็ดมีสีแดงอมชมพูถึงแดงเข้ม เป็นข้าว GI ชนิดแรกของประเทศไทย... ข้าวนี้คือข้าวใด?",
 		"choices": [
@@ -3097,7 +3049,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1638,
+		"id": 804,
 		"category": "food_cuisine",
 		"question": "ส้มโอพันธุ์พิเศษของอำเภอปากพนัง จังหวัดนครศรีธรรมราช เนื้อกุ้งสีชมพูแดงเข้มดั่งทับทิม หวานฉ่ำ ไร้รสขม... ผลไม้นี้คืออะไร?",
 		"choices": [
@@ -3120,7 +3072,7 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 1639,
+		"id": 805,
 		"category": "food_cuisine",
 		"question": "ทุเรียนที่ปลูกบนดินภูเขาไฟโบราณในจังหวัดศรีสะเกษ เนื้อเนียนนุ่ม กลิ่นไม่ฉุนจัด เมล็ดลีบ... ทุเรียนนี้คืออะไร?",
 		"choices": [
@@ -3140,7948 +3092,6 @@ export const FOOD_CUISINE_QUESTIONS: ThaiQuizItem[] = [
 			"ทุเรียน",
 			"ศรีสะเกษ",
 			"GI"
-		]
-	},
-	{
-		"id": 1640,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 1 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 1",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 1",
-			"ขนมไทยโบราณลำดับที่ 1",
-			"กรรมวิธีการปรุงลำดับที่ 1"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 1"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"ขนมไทยโบราณ",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1641,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 2 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 2",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 2",
-			"ขนมไทยโบราณลำดับที่ 2",
-			"กรรมวิธีการปรุงลำดับที่ 2"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 2"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารชาววัง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1642,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 3 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 3",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 3",
-			"ขนมไทยโบราณลำดับที่ 3",
-			"กรรมวิธีการปรุงลำดับที่ 3"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 3"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สมุนไพรเครื่องแกง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1643,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 4 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 4",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 4",
-			"ขนมไทยโบราณลำดับที่ 4",
-			"กรรมวิธีการปรุงลำดับที่ 4"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 4"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สินค้าสิ่งบ่งชี้ทางภูมิศาสตร์ (GI)",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1644,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 5 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 5",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 5",
-			"ขนมไทยโบราณลำดับที่ 5",
-			"กรรมวิธีการปรุงลำดับที่ 5"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 5"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารไทย 4 ภาค",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1645,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 6 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 6",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 6",
-			"ขนมไทยโบราณลำดับที่ 6",
-			"กรรมวิธีการปรุงลำดับที่ 6"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 6"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"ขนมไทยโบราณ",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1646,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 7 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 7",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 7",
-			"ขนมไทยโบราณลำดับที่ 7",
-			"กรรมวิธีการปรุงลำดับที่ 7"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 7"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารชาววัง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1647,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 8 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 8",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 8",
-			"ขนมไทยโบราณลำดับที่ 8",
-			"กรรมวิธีการปรุงลำดับที่ 8"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 8"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สมุนไพรเครื่องแกง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1648,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 9 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 9",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 9",
-			"ขนมไทยโบราณลำดับที่ 9",
-			"กรรมวิธีการปรุงลำดับที่ 9"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 9"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สินค้าสิ่งบ่งชี้ทางภูมิศาสตร์ (GI)",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1649,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 10 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 10",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 10",
-			"ขนมไทยโบราณลำดับที่ 10",
-			"กรรมวิธีการปรุงลำดับที่ 10"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 10"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารไทย 4 ภาค",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1650,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 11 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 11",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 11",
-			"ขนมไทยโบราณลำดับที่ 11",
-			"กรรมวิธีการปรุงลำดับที่ 11"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 11"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"ขนมไทยโบราณ",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1651,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 12 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 12",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 12",
-			"ขนมไทยโบราณลำดับที่ 12",
-			"กรรมวิธีการปรุงลำดับที่ 12"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 12"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารชาววัง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1652,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 13 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 13",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 13",
-			"ขนมไทยโบราณลำดับที่ 13",
-			"กรรมวิธีการปรุงลำดับที่ 13"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 13"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สมุนไพรเครื่องแกง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1653,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 14 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 14",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 14",
-			"ขนมไทยโบราณลำดับที่ 14",
-			"กรรมวิธีการปรุงลำดับที่ 14"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 14"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สินค้าสิ่งบ่งชี้ทางภูมิศาสตร์ (GI)",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1654,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 15 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 15",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 15",
-			"ขนมไทยโบราณลำดับที่ 15",
-			"กรรมวิธีการปรุงลำดับที่ 15"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 15"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารไทย 4 ภาค",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1655,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 16 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 16",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 16",
-			"ขนมไทยโบราณลำดับที่ 16",
-			"กรรมวิธีการปรุงลำดับที่ 16"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 16"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"ขนมไทยโบราณ",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1656,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 17 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 17",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 17",
-			"ขนมไทยโบราณลำดับที่ 17",
-			"กรรมวิธีการปรุงลำดับที่ 17"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 17"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารชาววัง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1657,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 18 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 18",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 18",
-			"ขนมไทยโบราณลำดับที่ 18",
-			"กรรมวิธีการปรุงลำดับที่ 18"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 18"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สมุนไพรเครื่องแกง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1658,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 19 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 19",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 19",
-			"ขนมไทยโบราณลำดับที่ 19",
-			"กรรมวิธีการปรุงลำดับที่ 19"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 19"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สินค้าสิ่งบ่งชี้ทางภูมิศาสตร์ (GI)",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1659,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 20 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 20",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 20",
-			"ขนมไทยโบราณลำดับที่ 20",
-			"กรรมวิธีการปรุงลำดับที่ 20"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 20"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารไทย 4 ภาค",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1660,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 21 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 21",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 21",
-			"ขนมไทยโบราณลำดับที่ 21",
-			"กรรมวิธีการปรุงลำดับที่ 21"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 21"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"ขนมไทยโบราณ",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1661,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 22 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 22",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 22",
-			"ขนมไทยโบราณลำดับที่ 22",
-			"กรรมวิธีการปรุงลำดับที่ 22"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 22"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารชาววัง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1662,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 23 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 23",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 23",
-			"ขนมไทยโบราณลำดับที่ 23",
-			"กรรมวิธีการปรุงลำดับที่ 23"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 23"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สมุนไพรเครื่องแกง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1663,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 24 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 24",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 24",
-			"ขนมไทยโบราณลำดับที่ 24",
-			"กรรมวิธีการปรุงลำดับที่ 24"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 24"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สินค้าสิ่งบ่งชี้ทางภูมิศาสตร์ (GI)",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1664,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 25 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 25",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 25",
-			"ขนมไทยโบราณลำดับที่ 25",
-			"กรรมวิธีการปรุงลำดับที่ 25"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 25"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารไทย 4 ภาค",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1665,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 26 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 26",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 26",
-			"ขนมไทยโบราณลำดับที่ 26",
-			"กรรมวิธีการปรุงลำดับที่ 26"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 26"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"ขนมไทยโบราณ",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1666,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 27 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 27",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 27",
-			"ขนมไทยโบราณลำดับที่ 27",
-			"กรรมวิธีการปรุงลำดับที่ 27"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 27"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารชาววัง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1667,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 28 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 28",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 28",
-			"ขนมไทยโบราณลำดับที่ 28",
-			"กรรมวิธีการปรุงลำดับที่ 28"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 28"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สมุนไพรเครื่องแกง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1668,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 29 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 29",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 29",
-			"ขนมไทยโบราณลำดับที่ 29",
-			"กรรมวิธีการปรุงลำดับที่ 29"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 29"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สินค้าสิ่งบ่งชี้ทางภูมิศาสตร์ (GI)",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1669,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 30 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 30",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 30",
-			"ขนมไทยโบราณลำดับที่ 30",
-			"กรรมวิธีการปรุงลำดับที่ 30"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 30"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารไทย 4 ภาค",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1670,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 31 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 31",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 31",
-			"ขนมไทยโบราณลำดับที่ 31",
-			"กรรมวิธีการปรุงลำดับที่ 31"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 31"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"ขนมไทยโบราณ",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1671,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 32 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 32",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 32",
-			"ขนมไทยโบราณลำดับที่ 32",
-			"กรรมวิธีการปรุงลำดับที่ 32"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 32"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารชาววัง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1672,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 33 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 33",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 33",
-			"ขนมไทยโบราณลำดับที่ 33",
-			"กรรมวิธีการปรุงลำดับที่ 33"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 33"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สมุนไพรเครื่องแกง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1673,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 34 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 34",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 34",
-			"ขนมไทยโบราณลำดับที่ 34",
-			"กรรมวิธีการปรุงลำดับที่ 34"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 34"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สินค้าสิ่งบ่งชี้ทางภูมิศาสตร์ (GI)",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1674,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 35 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 35",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 35",
-			"ขนมไทยโบราณลำดับที่ 35",
-			"กรรมวิธีการปรุงลำดับที่ 35"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 35"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารไทย 4 ภาค",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1675,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 36 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 36",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 36",
-			"ขนมไทยโบราณลำดับที่ 36",
-			"กรรมวิธีการปรุงลำดับที่ 36"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 36"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"ขนมไทยโบราณ",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1676,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 37 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 37",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 37",
-			"ขนมไทยโบราณลำดับที่ 37",
-			"กรรมวิธีการปรุงลำดับที่ 37"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 37"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารชาววัง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1677,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 38 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 38",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 38",
-			"ขนมไทยโบราณลำดับที่ 38",
-			"กรรมวิธีการปรุงลำดับที่ 38"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 38"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สมุนไพรเครื่องแกง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1678,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 39 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 39",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 39",
-			"ขนมไทยโบราณลำดับที่ 39",
-			"กรรมวิธีการปรุงลำดับที่ 39"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 39"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สินค้าสิ่งบ่งชี้ทางภูมิศาสตร์ (GI)",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1679,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 40 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 40",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 40",
-			"ขนมไทยโบราณลำดับที่ 40",
-			"กรรมวิธีการปรุงลำดับที่ 40"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 40"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารไทย 4 ภาค",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1680,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 41 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 41",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 41",
-			"ขนมไทยโบราณลำดับที่ 41",
-			"กรรมวิธีการปรุงลำดับที่ 41"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 41"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"ขนมไทยโบราณ",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1681,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 42 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 42",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 42",
-			"ขนมไทยโบราณลำดับที่ 42",
-			"กรรมวิธีการปรุงลำดับที่ 42"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 42"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารชาววัง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1682,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 43 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 43",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 43",
-			"ขนมไทยโบราณลำดับที่ 43",
-			"กรรมวิธีการปรุงลำดับที่ 43"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 43"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สมุนไพรเครื่องแกง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1683,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 44 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 44",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 44",
-			"ขนมไทยโบราณลำดับที่ 44",
-			"กรรมวิธีการปรุงลำดับที่ 44"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 44"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สินค้าสิ่งบ่งชี้ทางภูมิศาสตร์ (GI)",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1684,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 45 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 45",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 45",
-			"ขนมไทยโบราณลำดับที่ 45",
-			"กรรมวิธีการปรุงลำดับที่ 45"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 45"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารไทย 4 ภาค",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1685,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 46 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 46",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 46",
-			"ขนมไทยโบราณลำดับที่ 46",
-			"กรรมวิธีการปรุงลำดับที่ 46"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 46"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"ขนมไทยโบราณ",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1686,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 47 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 47",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 47",
-			"ขนมไทยโบราณลำดับที่ 47",
-			"กรรมวิธีการปรุงลำดับที่ 47"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 47"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารชาววัง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1687,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 48 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 48",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 48",
-			"ขนมไทยโบราณลำดับที่ 48",
-			"กรรมวิธีการปรุงลำดับที่ 48"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 48"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สมุนไพรเครื่องแกง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1688,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 49 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 49",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 49",
-			"ขนมไทยโบราณลำดับที่ 49",
-			"กรรมวิธีการปรุงลำดับที่ 49"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 49"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สินค้าสิ่งบ่งชี้ทางภูมิศาสตร์ (GI)",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1689,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 50 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 50",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 50",
-			"ขนมไทยโบราณลำดับที่ 50",
-			"กรรมวิธีการปรุงลำดับที่ 50"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 50"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารไทย 4 ภาค",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1690,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 51 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 51",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 51",
-			"ขนมไทยโบราณลำดับที่ 51",
-			"กรรมวิธีการปรุงลำดับที่ 51"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 51"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"ขนมไทยโบราณ",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1691,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 52 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 52",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 52",
-			"ขนมไทยโบราณลำดับที่ 52",
-			"กรรมวิธีการปรุงลำดับที่ 52"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 52"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารชาววัง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1692,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 53 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 53",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 53",
-			"ขนมไทยโบราณลำดับที่ 53",
-			"กรรมวิธีการปรุงลำดับที่ 53"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 53"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สมุนไพรเครื่องแกง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1693,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 54 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 54",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 54",
-			"ขนมไทยโบราณลำดับที่ 54",
-			"กรรมวิธีการปรุงลำดับที่ 54"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 54"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สินค้าสิ่งบ่งชี้ทางภูมิศาสตร์ (GI)",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1694,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 55 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 55",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 55",
-			"ขนมไทยโบราณลำดับที่ 55",
-			"กรรมวิธีการปรุงลำดับที่ 55"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 55"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารไทย 4 ภาค",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1695,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 56 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 56",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 56",
-			"ขนมไทยโบราณลำดับที่ 56",
-			"กรรมวิธีการปรุงลำดับที่ 56"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 56"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"ขนมไทยโบราณ",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1696,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 57 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 57",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 57",
-			"ขนมไทยโบราณลำดับที่ 57",
-			"กรรมวิธีการปรุงลำดับที่ 57"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 57"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารชาววัง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1697,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 58 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 58",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 58",
-			"ขนมไทยโบราณลำดับที่ 58",
-			"กรรมวิธีการปรุงลำดับที่ 58"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 58"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สมุนไพรเครื่องแกง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1698,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 59 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 59",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 59",
-			"ขนมไทยโบราณลำดับที่ 59",
-			"กรรมวิธีการปรุงลำดับที่ 59"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 59"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สินค้าสิ่งบ่งชี้ทางภูมิศาสตร์ (GI)",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1699,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 60 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 60",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 60",
-			"ขนมไทยโบราณลำดับที่ 60",
-			"กรรมวิธีการปรุงลำดับที่ 60"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 60"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารไทย 4 ภาค",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1700,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 61 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 61",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 61",
-			"ขนมไทยโบราณลำดับที่ 61",
-			"กรรมวิธีการปรุงลำดับที่ 61"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 61"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"ขนมไทยโบราณ",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1701,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 62 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 62",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 62",
-			"ขนมไทยโบราณลำดับที่ 62",
-			"กรรมวิธีการปรุงลำดับที่ 62"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 62"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารชาววัง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1702,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 63 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 63",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 63",
-			"ขนมไทยโบราณลำดับที่ 63",
-			"กรรมวิธีการปรุงลำดับที่ 63"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 63"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สมุนไพรเครื่องแกง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1703,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 64 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 64",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 64",
-			"ขนมไทยโบราณลำดับที่ 64",
-			"กรรมวิธีการปรุงลำดับที่ 64"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 64"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สินค้าสิ่งบ่งชี้ทางภูมิศาสตร์ (GI)",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1704,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 65 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 65",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 65",
-			"ขนมไทยโบราณลำดับที่ 65",
-			"กรรมวิธีการปรุงลำดับที่ 65"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 65"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารไทย 4 ภาค",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1705,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 66 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 66",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 66",
-			"ขนมไทยโบราณลำดับที่ 66",
-			"กรรมวิธีการปรุงลำดับที่ 66"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 66"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"ขนมไทยโบราณ",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1706,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 67 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 67",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 67",
-			"ขนมไทยโบราณลำดับที่ 67",
-			"กรรมวิธีการปรุงลำดับที่ 67"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 67"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารชาววัง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1707,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 68 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 68",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 68",
-			"ขนมไทยโบราณลำดับที่ 68",
-			"กรรมวิธีการปรุงลำดับที่ 68"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 68"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สมุนไพรเครื่องแกง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1708,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 69 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 69",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 69",
-			"ขนมไทยโบราณลำดับที่ 69",
-			"กรรมวิธีการปรุงลำดับที่ 69"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 69"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สินค้าสิ่งบ่งชี้ทางภูมิศาสตร์ (GI)",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1709,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 70 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 70",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 70",
-			"ขนมไทยโบราณลำดับที่ 70",
-			"กรรมวิธีการปรุงลำดับที่ 70"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 70"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารไทย 4 ภาค",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1710,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 71 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 71",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 71",
-			"ขนมไทยโบราณลำดับที่ 71",
-			"กรรมวิธีการปรุงลำดับที่ 71"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 71"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"ขนมไทยโบราณ",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1711,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 72 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 72",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 72",
-			"ขนมไทยโบราณลำดับที่ 72",
-			"กรรมวิธีการปรุงลำดับที่ 72"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 72"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารชาววัง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1712,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 73 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 73",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 73",
-			"ขนมไทยโบราณลำดับที่ 73",
-			"กรรมวิธีการปรุงลำดับที่ 73"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 73"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สมุนไพรเครื่องแกง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1713,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 74 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 74",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 74",
-			"ขนมไทยโบราณลำดับที่ 74",
-			"กรรมวิธีการปรุงลำดับที่ 74"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 74"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สินค้าสิ่งบ่งชี้ทางภูมิศาสตร์ (GI)",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1714,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 75 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 75",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 75",
-			"ขนมไทยโบราณลำดับที่ 75",
-			"กรรมวิธีการปรุงลำดับที่ 75"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 75"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารไทย 4 ภาค",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1715,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 76 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 76",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 76",
-			"ขนมไทยโบราณลำดับที่ 76",
-			"กรรมวิธีการปรุงลำดับที่ 76"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 76"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"ขนมไทยโบราณ",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1716,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 77 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 77",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 77",
-			"ขนมไทยโบราณลำดับที่ 77",
-			"กรรมวิธีการปรุงลำดับที่ 77"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 77"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารชาววัง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1717,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 78 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 78",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 78",
-			"ขนมไทยโบราณลำดับที่ 78",
-			"กรรมวิธีการปรุงลำดับที่ 78"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 78"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สมุนไพรเครื่องแกง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1718,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 79 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 79",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 79",
-			"ขนมไทยโบราณลำดับที่ 79",
-			"กรรมวิธีการปรุงลำดับที่ 79"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 79"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สินค้าสิ่งบ่งชี้ทางภูมิศาสตร์ (GI)",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1719,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 80 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 80",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 80",
-			"ขนมไทยโบราณลำดับที่ 80",
-			"กรรมวิธีการปรุงลำดับที่ 80"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 80"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารไทย 4 ภาค",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1720,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 81 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 81",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 81",
-			"ขนมไทยโบราณลำดับที่ 81",
-			"กรรมวิธีการปรุงลำดับที่ 81"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 81"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"ขนมไทยโบราณ",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1721,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 82 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 82",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 82",
-			"ขนมไทยโบราณลำดับที่ 82",
-			"กรรมวิธีการปรุงลำดับที่ 82"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 82"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารชาววัง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1722,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 83 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 83",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 83",
-			"ขนมไทยโบราณลำดับที่ 83",
-			"กรรมวิธีการปรุงลำดับที่ 83"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 83"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สมุนไพรเครื่องแกง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1723,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 84 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 84",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 84",
-			"ขนมไทยโบราณลำดับที่ 84",
-			"กรรมวิธีการปรุงลำดับที่ 84"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 84"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สินค้าสิ่งบ่งชี้ทางภูมิศาสตร์ (GI)",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1724,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 85 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 85",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 85",
-			"ขนมไทยโบราณลำดับที่ 85",
-			"กรรมวิธีการปรุงลำดับที่ 85"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 85"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารไทย 4 ภาค",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1725,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 86 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 86",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 86",
-			"ขนมไทยโบราณลำดับที่ 86",
-			"กรรมวิธีการปรุงลำดับที่ 86"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 86"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"ขนมไทยโบราณ",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1726,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 87 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 87",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 87",
-			"ขนมไทยโบราณลำดับที่ 87",
-			"กรรมวิธีการปรุงลำดับที่ 87"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 87"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารชาววัง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1727,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 88 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 88",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 88",
-			"ขนมไทยโบราณลำดับที่ 88",
-			"กรรมวิธีการปรุงลำดับที่ 88"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 88"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สมุนไพรเครื่องแกง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1728,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 89 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 89",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 89",
-			"ขนมไทยโบราณลำดับที่ 89",
-			"กรรมวิธีการปรุงลำดับที่ 89"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 89"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สินค้าสิ่งบ่งชี้ทางภูมิศาสตร์ (GI)",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1729,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 90 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 90",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 90",
-			"ขนมไทยโบราณลำดับที่ 90",
-			"กรรมวิธีการปรุงลำดับที่ 90"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 90"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารไทย 4 ภาค",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1730,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 91 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 91",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 91",
-			"ขนมไทยโบราณลำดับที่ 91",
-			"กรรมวิธีการปรุงลำดับที่ 91"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 91"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"ขนมไทยโบราณ",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1731,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 92 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 92",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 92",
-			"ขนมไทยโบราณลำดับที่ 92",
-			"กรรมวิธีการปรุงลำดับที่ 92"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 92"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารชาววัง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1732,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 93 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 93",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 93",
-			"ขนมไทยโบราณลำดับที่ 93",
-			"กรรมวิธีการปรุงลำดับที่ 93"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 93"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สมุนไพรเครื่องแกง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1733,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 94 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 94",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 94",
-			"ขนมไทยโบราณลำดับที่ 94",
-			"กรรมวิธีการปรุงลำดับที่ 94"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 94"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สินค้าสิ่งบ่งชี้ทางภูมิศาสตร์ (GI)",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1734,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 95 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 95",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 95",
-			"ขนมไทยโบราณลำดับที่ 95",
-			"กรรมวิธีการปรุงลำดับที่ 95"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 95"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารไทย 4 ภาค",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1735,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 96 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 96",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 96",
-			"ขนมไทยโบราณลำดับที่ 96",
-			"กรรมวิธีการปรุงลำดับที่ 96"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 96"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"ขนมไทยโบราณ",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1736,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 97 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 97",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 97",
-			"ขนมไทยโบราณลำดับที่ 97",
-			"กรรมวิธีการปรุงลำดับที่ 97"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 97"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารชาววัง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1737,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 98 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 98",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 98",
-			"ขนมไทยโบราณลำดับที่ 98",
-			"กรรมวิธีการปรุงลำดับที่ 98"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 98"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สมุนไพรเครื่องแกง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1738,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 99 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 99",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 99",
-			"ขนมไทยโบราณลำดับที่ 99",
-			"กรรมวิธีการปรุงลำดับที่ 99"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 99"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สินค้าสิ่งบ่งชี้ทางภูมิศาสตร์ (GI)",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1739,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 100 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 100",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 100",
-			"ขนมไทยโบราณลำดับที่ 100",
-			"กรรมวิธีการปรุงลำดับที่ 100"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 100"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารไทย 4 ภาค",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1740,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 101 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 101",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 101",
-			"ขนมไทยโบราณลำดับที่ 101",
-			"กรรมวิธีการปรุงลำดับที่ 101"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 101"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"ขนมไทยโบราณ",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1741,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 102 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 102",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 102",
-			"ขนมไทยโบราณลำดับที่ 102",
-			"กรรมวิธีการปรุงลำดับที่ 102"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 102"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารชาววัง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1742,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 103 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 103",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 103",
-			"ขนมไทยโบราณลำดับที่ 103",
-			"กรรมวิธีการปรุงลำดับที่ 103"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 103"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สมุนไพรเครื่องแกง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1743,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 104 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 104",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 104",
-			"ขนมไทยโบราณลำดับที่ 104",
-			"กรรมวิธีการปรุงลำดับที่ 104"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 104"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สินค้าสิ่งบ่งชี้ทางภูมิศาสตร์ (GI)",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1744,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 105 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 105",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 105",
-			"ขนมไทยโบราณลำดับที่ 105",
-			"กรรมวิธีการปรุงลำดับที่ 105"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 105"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารไทย 4 ภาค",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1745,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 106 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 106",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 106",
-			"ขนมไทยโบราณลำดับที่ 106",
-			"กรรมวิธีการปรุงลำดับที่ 106"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 106"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"ขนมไทยโบราณ",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1746,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 107 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 107",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 107",
-			"ขนมไทยโบราณลำดับที่ 107",
-			"กรรมวิธีการปรุงลำดับที่ 107"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 107"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารชาววัง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1747,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 108 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 108",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 108",
-			"ขนมไทยโบราณลำดับที่ 108",
-			"กรรมวิธีการปรุงลำดับที่ 108"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 108"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สมุนไพรเครื่องแกง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1748,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 109 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 109",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 109",
-			"ขนมไทยโบราณลำดับที่ 109",
-			"กรรมวิธีการปรุงลำดับที่ 109"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 109"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สินค้าสิ่งบ่งชี้ทางภูมิศาสตร์ (GI)",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1749,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 110 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 110",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 110",
-			"ขนมไทยโบราณลำดับที่ 110",
-			"กรรมวิธีการปรุงลำดับที่ 110"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 110"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารไทย 4 ภาค",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1750,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 111 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 111",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 111",
-			"ขนมไทยโบราณลำดับที่ 111",
-			"กรรมวิธีการปรุงลำดับที่ 111"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 111"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"ขนมไทยโบราณ",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1751,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 112 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 112",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 112",
-			"ขนมไทยโบราณลำดับที่ 112",
-			"กรรมวิธีการปรุงลำดับที่ 112"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 112"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารชาววัง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1752,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 113 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 113",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 113",
-			"ขนมไทยโบราณลำดับที่ 113",
-			"กรรมวิธีการปรุงลำดับที่ 113"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 113"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สมุนไพรเครื่องแกง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1753,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 114 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 114",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 114",
-			"ขนมไทยโบราณลำดับที่ 114",
-			"กรรมวิธีการปรุงลำดับที่ 114"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 114"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สินค้าสิ่งบ่งชี้ทางภูมิศาสตร์ (GI)",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1754,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 115 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 115",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 115",
-			"ขนมไทยโบราณลำดับที่ 115",
-			"กรรมวิธีการปรุงลำดับที่ 115"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 115"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารไทย 4 ภาค",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1755,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 116 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 116",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 116",
-			"ขนมไทยโบราณลำดับที่ 116",
-			"กรรมวิธีการปรุงลำดับที่ 116"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 116"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"ขนมไทยโบราณ",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1756,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 117 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 117",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 117",
-			"ขนมไทยโบราณลำดับที่ 117",
-			"กรรมวิธีการปรุงลำดับที่ 117"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 117"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารชาววัง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1757,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 118 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 118",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 118",
-			"ขนมไทยโบราณลำดับที่ 118",
-			"กรรมวิธีการปรุงลำดับที่ 118"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 118"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สมุนไพรเครื่องแกง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1758,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 119 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 119",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 119",
-			"ขนมไทยโบราณลำดับที่ 119",
-			"กรรมวิธีการปรุงลำดับที่ 119"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 119"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สินค้าสิ่งบ่งชี้ทางภูมิศาสตร์ (GI)",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1759,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 120 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 120",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 120",
-			"ขนมไทยโบราณลำดับที่ 120",
-			"กรรมวิธีการปรุงลำดับที่ 120"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 120"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารไทย 4 ภาค",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1760,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 121 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 121",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 121",
-			"ขนมไทยโบราณลำดับที่ 121",
-			"กรรมวิธีการปรุงลำดับที่ 121"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 121"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"ขนมไทยโบราณ",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1761,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 122 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 122",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 122",
-			"ขนมไทยโบราณลำดับที่ 122",
-			"กรรมวิธีการปรุงลำดับที่ 122"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 122"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารชาววัง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1762,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 123 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 123",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 123",
-			"ขนมไทยโบราณลำดับที่ 123",
-			"กรรมวิธีการปรุงลำดับที่ 123"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 123"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สมุนไพรเครื่องแกง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1763,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 124 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 124",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 124",
-			"ขนมไทยโบราณลำดับที่ 124",
-			"กรรมวิธีการปรุงลำดับที่ 124"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 124"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สินค้าสิ่งบ่งชี้ทางภูมิศาสตร์ (GI)",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1764,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 125 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 125",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 125",
-			"ขนมไทยโบราณลำดับที่ 125",
-			"กรรมวิธีการปรุงลำดับที่ 125"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 125"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารไทย 4 ภาค",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1765,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 126 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 126",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 126",
-			"ขนมไทยโบราณลำดับที่ 126",
-			"กรรมวิธีการปรุงลำดับที่ 126"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 126"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"ขนมไทยโบราณ",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1766,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 127 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 127",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 127",
-			"ขนมไทยโบราณลำดับที่ 127",
-			"กรรมวิธีการปรุงลำดับที่ 127"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 127"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารชาววัง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1767,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 128 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 128",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 128",
-			"ขนมไทยโบราณลำดับที่ 128",
-			"กรรมวิธีการปรุงลำดับที่ 128"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 128"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สมุนไพรเครื่องแกง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1768,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 129 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 129",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 129",
-			"ขนมไทยโบราณลำดับที่ 129",
-			"กรรมวิธีการปรุงลำดับที่ 129"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 129"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สินค้าสิ่งบ่งชี้ทางภูมิศาสตร์ (GI)",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1769,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 130 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 130",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 130",
-			"ขนมไทยโบราณลำดับที่ 130",
-			"กรรมวิธีการปรุงลำดับที่ 130"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 130"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารไทย 4 ภาค",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1770,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 131 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 131",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 131",
-			"ขนมไทยโบราณลำดับที่ 131",
-			"กรรมวิธีการปรุงลำดับที่ 131"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 131"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"ขนมไทยโบราณ",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1771,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 132 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 132",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 132",
-			"ขนมไทยโบราณลำดับที่ 132",
-			"กรรมวิธีการปรุงลำดับที่ 132"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 132"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารชาววัง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1772,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 133 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 133",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 133",
-			"ขนมไทยโบราณลำดับที่ 133",
-			"กรรมวิธีการปรุงลำดับที่ 133"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 133"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สมุนไพรเครื่องแกง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1773,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 134 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 134",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 134",
-			"ขนมไทยโบราณลำดับที่ 134",
-			"กรรมวิธีการปรุงลำดับที่ 134"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 134"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สินค้าสิ่งบ่งชี้ทางภูมิศาสตร์ (GI)",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1774,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 135 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 135",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 135",
-			"ขนมไทยโบราณลำดับที่ 135",
-			"กรรมวิธีการปรุงลำดับที่ 135"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 135"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารไทย 4 ภาค",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1775,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 136 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 136",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 136",
-			"ขนมไทยโบราณลำดับที่ 136",
-			"กรรมวิธีการปรุงลำดับที่ 136"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 136"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"ขนมไทยโบราณ",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1776,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 137 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 137",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 137",
-			"ขนมไทยโบราณลำดับที่ 137",
-			"กรรมวิธีการปรุงลำดับที่ 137"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 137"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารชาววัง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1777,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 138 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 138",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 138",
-			"ขนมไทยโบราณลำดับที่ 138",
-			"กรรมวิธีการปรุงลำดับที่ 138"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 138"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สมุนไพรเครื่องแกง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1778,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 139 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 139",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 139",
-			"ขนมไทยโบราณลำดับที่ 139",
-			"กรรมวิธีการปรุงลำดับที่ 139"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 139"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สินค้าสิ่งบ่งชี้ทางภูมิศาสตร์ (GI)",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1779,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 140 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 140",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 140",
-			"ขนมไทยโบราณลำดับที่ 140",
-			"กรรมวิธีการปรุงลำดับที่ 140"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 140"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารไทย 4 ภาค",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1780,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 141 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 141",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 141",
-			"ขนมไทยโบราณลำดับที่ 141",
-			"กรรมวิธีการปรุงลำดับที่ 141"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 141"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"ขนมไทยโบราณ",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1781,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 142 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 142",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 142",
-			"ขนมไทยโบราณลำดับที่ 142",
-			"กรรมวิธีการปรุงลำดับที่ 142"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 142"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารชาววัง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1782,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 143 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 143",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 143",
-			"ขนมไทยโบราณลำดับที่ 143",
-			"กรรมวิธีการปรุงลำดับที่ 143"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 143"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สมุนไพรเครื่องแกง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1783,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 144 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 144",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 144",
-			"ขนมไทยโบราณลำดับที่ 144",
-			"กรรมวิธีการปรุงลำดับที่ 144"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 144"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สินค้าสิ่งบ่งชี้ทางภูมิศาสตร์ (GI)",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1784,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 145 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 145",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 145",
-			"ขนมไทยโบราณลำดับที่ 145",
-			"กรรมวิธีการปรุงลำดับที่ 145"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 145"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารไทย 4 ภาค",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1785,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 146 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 146",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 146",
-			"ขนมไทยโบราณลำดับที่ 146",
-			"กรรมวิธีการปรุงลำดับที่ 146"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 146"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"ขนมไทยโบราณ",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1786,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 147 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 147",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 147",
-			"ขนมไทยโบราณลำดับที่ 147",
-			"กรรมวิธีการปรุงลำดับที่ 147"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 147"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารชาววัง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1787,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 148 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 148",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 148",
-			"ขนมไทยโบราณลำดับที่ 148",
-			"กรรมวิธีการปรุงลำดับที่ 148"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 148"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สมุนไพรเครื่องแกง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1788,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 149 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 149",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 149",
-			"ขนมไทยโบราณลำดับที่ 149",
-			"กรรมวิธีการปรุงลำดับที่ 149"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 149"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สินค้าสิ่งบ่งชี้ทางภูมิศาสตร์ (GI)",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1789,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 150 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 150",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 150",
-			"ขนมไทยโบราณลำดับที่ 150",
-			"กรรมวิธีการปรุงลำดับที่ 150"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 150"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารไทย 4 ภาค",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1790,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 151 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 151",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 151",
-			"ขนมไทยโบราณลำดับที่ 151",
-			"กรรมวิธีการปรุงลำดับที่ 151"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 151"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"ขนมไทยโบราณ",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1791,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 152 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 152",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 152",
-			"ขนมไทยโบราณลำดับที่ 152",
-			"กรรมวิธีการปรุงลำดับที่ 152"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 152"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารชาววัง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1792,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 153 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 153",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 153",
-			"ขนมไทยโบราณลำดับที่ 153",
-			"กรรมวิธีการปรุงลำดับที่ 153"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 153"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สมุนไพรเครื่องแกง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1793,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 154 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 154",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 154",
-			"ขนมไทยโบราณลำดับที่ 154",
-			"กรรมวิธีการปรุงลำดับที่ 154"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 154"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สินค้าสิ่งบ่งชี้ทางภูมิศาสตร์ (GI)",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1794,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 155 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 155",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 155",
-			"ขนมไทยโบราณลำดับที่ 155",
-			"กรรมวิธีการปรุงลำดับที่ 155"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 155"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารไทย 4 ภาค",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1795,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 156 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 156",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 156",
-			"ขนมไทยโบราณลำดับที่ 156",
-			"กรรมวิธีการปรุงลำดับที่ 156"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 156"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"ขนมไทยโบราณ",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1796,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 157 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 157",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 157",
-			"ขนมไทยโบราณลำดับที่ 157",
-			"กรรมวิธีการปรุงลำดับที่ 157"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 157"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารชาววัง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1797,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 158 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 158",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 158",
-			"ขนมไทยโบราณลำดับที่ 158",
-			"กรรมวิธีการปรุงลำดับที่ 158"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 158"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สมุนไพรเครื่องแกง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1798,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 159 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 159",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 159",
-			"ขนมไทยโบราณลำดับที่ 159",
-			"กรรมวิธีการปรุงลำดับที่ 159"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 159"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สินค้าสิ่งบ่งชี้ทางภูมิศาสตร์ (GI)",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1799,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 160 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 160",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 160",
-			"ขนมไทยโบราณลำดับที่ 160",
-			"กรรมวิธีการปรุงลำดับที่ 160"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 160"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารไทย 4 ภาค",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1800,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 161 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 161",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 161",
-			"ขนมไทยโบราณลำดับที่ 161",
-			"กรรมวิธีการปรุงลำดับที่ 161"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 161"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"ขนมไทยโบราณ",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1801,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 162 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 162",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 162",
-			"ขนมไทยโบราณลำดับที่ 162",
-			"กรรมวิธีการปรุงลำดับที่ 162"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 162"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารชาววัง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1802,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 163 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 163",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 163",
-			"ขนมไทยโบราณลำดับที่ 163",
-			"กรรมวิธีการปรุงลำดับที่ 163"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 163"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สมุนไพรเครื่องแกง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1803,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 164 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 164",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 164",
-			"ขนมไทยโบราณลำดับที่ 164",
-			"กรรมวิธีการปรุงลำดับที่ 164"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 164"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สินค้าสิ่งบ่งชี้ทางภูมิศาสตร์ (GI)",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1804,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 165 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 165",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 165",
-			"ขนมไทยโบราณลำดับที่ 165",
-			"กรรมวิธีการปรุงลำดับที่ 165"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 165"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารไทย 4 ภาค",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1805,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 166 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 166",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 166",
-			"ขนมไทยโบราณลำดับที่ 166",
-			"กรรมวิธีการปรุงลำดับที่ 166"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 166"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"ขนมไทยโบราณ",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1806,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 167 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 167",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 167",
-			"ขนมไทยโบราณลำดับที่ 167",
-			"กรรมวิธีการปรุงลำดับที่ 167"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 167"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารชาววัง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1807,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 168 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 168",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 168",
-			"ขนมไทยโบราณลำดับที่ 168",
-			"กรรมวิธีการปรุงลำดับที่ 168"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 168"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สมุนไพรเครื่องแกง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1808,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 169 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 169",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 169",
-			"ขนมไทยโบราณลำดับที่ 169",
-			"กรรมวิธีการปรุงลำดับที่ 169"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 169"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สินค้าสิ่งบ่งชี้ทางภูมิศาสตร์ (GI)",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1809,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 170 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 170",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 170",
-			"ขนมไทยโบราณลำดับที่ 170",
-			"กรรมวิธีการปรุงลำดับที่ 170"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 170"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารไทย 4 ภาค",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1810,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 171 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 171",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 171",
-			"ขนมไทยโบราณลำดับที่ 171",
-			"กรรมวิธีการปรุงลำดับที่ 171"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 171"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"ขนมไทยโบราณ",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1811,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 172 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 172",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 172",
-			"ขนมไทยโบราณลำดับที่ 172",
-			"กรรมวิธีการปรุงลำดับที่ 172"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 172"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารชาววัง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1812,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 173 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 173",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 173",
-			"ขนมไทยโบราณลำดับที่ 173",
-			"กรรมวิธีการปรุงลำดับที่ 173"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 173"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สมุนไพรเครื่องแกง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1813,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 174 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 174",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 174",
-			"ขนมไทยโบราณลำดับที่ 174",
-			"กรรมวิธีการปรุงลำดับที่ 174"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 174"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สินค้าสิ่งบ่งชี้ทางภูมิศาสตร์ (GI)",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1814,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 175 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 175",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 175",
-			"ขนมไทยโบราณลำดับที่ 175",
-			"กรรมวิธีการปรุงลำดับที่ 175"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 175"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารไทย 4 ภาค",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1815,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 176 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 176",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 176",
-			"ขนมไทยโบราณลำดับที่ 176",
-			"กรรมวิธีการปรุงลำดับที่ 176"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 176"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"ขนมไทยโบราณ",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1816,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 177 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 177",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 177",
-			"ขนมไทยโบราณลำดับที่ 177",
-			"กรรมวิธีการปรุงลำดับที่ 177"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 177"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารชาววัง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1817,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 178 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 178",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 178",
-			"ขนมไทยโบราณลำดับที่ 178",
-			"กรรมวิธีการปรุงลำดับที่ 178"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 178"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สมุนไพรเครื่องแกง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1818,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 179 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 179",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 179",
-			"ขนมไทยโบราณลำดับที่ 179",
-			"กรรมวิธีการปรุงลำดับที่ 179"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 179"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สินค้าสิ่งบ่งชี้ทางภูมิศาสตร์ (GI)",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1819,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 180 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 180",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 180",
-			"ขนมไทยโบราณลำดับที่ 180",
-			"กรรมวิธีการปรุงลำดับที่ 180"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 180"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารไทย 4 ภาค",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1820,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 181 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 181",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 181",
-			"ขนมไทยโบราณลำดับที่ 181",
-			"กรรมวิธีการปรุงลำดับที่ 181"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 181"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"ขนมไทยโบราณ",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1821,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 182 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 182",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 182",
-			"ขนมไทยโบราณลำดับที่ 182",
-			"กรรมวิธีการปรุงลำดับที่ 182"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 182"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารชาววัง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1822,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 183 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 183",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 183",
-			"ขนมไทยโบราณลำดับที่ 183",
-			"กรรมวิธีการปรุงลำดับที่ 183"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 183"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สมุนไพรเครื่องแกง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1823,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 184 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 184",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 184",
-			"ขนมไทยโบราณลำดับที่ 184",
-			"กรรมวิธีการปรุงลำดับที่ 184"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 184"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สินค้าสิ่งบ่งชี้ทางภูมิศาสตร์ (GI)",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1824,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 185 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 185",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 185",
-			"ขนมไทยโบราณลำดับที่ 185",
-			"กรรมวิธีการปรุงลำดับที่ 185"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 185"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารไทย 4 ภาค",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1825,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 186 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 186",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 186",
-			"ขนมไทยโบราณลำดับที่ 186",
-			"กรรมวิธีการปรุงลำดับที่ 186"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 186"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"ขนมไทยโบราณ",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1826,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 187 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 187",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 187",
-			"ขนมไทยโบราณลำดับที่ 187",
-			"กรรมวิธีการปรุงลำดับที่ 187"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 187"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารชาววัง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1827,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 188 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 188",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 188",
-			"ขนมไทยโบราณลำดับที่ 188",
-			"กรรมวิธีการปรุงลำดับที่ 188"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 188"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สมุนไพรเครื่องแกง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1828,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 189 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 189",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 189",
-			"ขนมไทยโบราณลำดับที่ 189",
-			"กรรมวิธีการปรุงลำดับที่ 189"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 189"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สินค้าสิ่งบ่งชี้ทางภูมิศาสตร์ (GI)",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1829,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 190 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 190",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 190",
-			"ขนมไทยโบราณลำดับที่ 190",
-			"กรรมวิธีการปรุงลำดับที่ 190"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 190"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารไทย 4 ภาค",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1830,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 191 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 191",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 191",
-			"ขนมไทยโบราณลำดับที่ 191",
-			"กรรมวิธีการปรุงลำดับที่ 191"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 191"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"ขนมไทยโบราณ",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1831,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 192 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 192",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 192",
-			"ขนมไทยโบราณลำดับที่ 192",
-			"กรรมวิธีการปรุงลำดับที่ 192"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 192"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารชาววัง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1832,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 193 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 193",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 193",
-			"ขนมไทยโบราณลำดับที่ 193",
-			"กรรมวิธีการปรุงลำดับที่ 193"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 193"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สมุนไพรเครื่องแกง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1833,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 194 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 194",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 194",
-			"ขนมไทยโบราณลำดับที่ 194",
-			"กรรมวิธีการปรุงลำดับที่ 194"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 194"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สินค้าสิ่งบ่งชี้ทางภูมิศาสตร์ (GI)",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1834,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 195 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 195",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 195",
-			"ขนมไทยโบราณลำดับที่ 195",
-			"กรรมวิธีการปรุงลำดับที่ 195"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 195"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารไทย 4 ภาค",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1835,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 196 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 196",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 196",
-			"ขนมไทยโบราณลำดับที่ 196",
-			"กรรมวิธีการปรุงลำดับที่ 196"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 196"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"ขนมไทยโบราณ",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1836,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 197 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 197",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 197",
-			"ขนมไทยโบราณลำดับที่ 197",
-			"กรรมวิธีการปรุงลำดับที่ 197"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 197"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารชาววัง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1837,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 198 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 198",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 198",
-			"ขนมไทยโบราณลำดับที่ 198",
-			"กรรมวิธีการปรุงลำดับที่ 198"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 198"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สมุนไพรเครื่องแกง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1838,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 199 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 199",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 199",
-			"ขนมไทยโบราณลำดับที่ 199",
-			"กรรมวิธีการปรุงลำดับที่ 199"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 199"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สินค้าสิ่งบ่งชี้ทางภูมิศาสตร์ (GI)",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1839,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 200 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 200",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 200",
-			"ขนมไทยโบราณลำดับที่ 200",
-			"กรรมวิธีการปรุงลำดับที่ 200"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 200"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารไทย 4 ภาค",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1840,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 201 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 201",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 201",
-			"ขนมไทยโบราณลำดับที่ 201",
-			"กรรมวิธีการปรุงลำดับที่ 201"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 201"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"ขนมไทยโบราณ",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1841,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 202 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 202",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 202",
-			"ขนมไทยโบราณลำดับที่ 202",
-			"กรรมวิธีการปรุงลำดับที่ 202"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 202"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารชาววัง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1842,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 203 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 203",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 203",
-			"ขนมไทยโบราณลำดับที่ 203",
-			"กรรมวิธีการปรุงลำดับที่ 203"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 203"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สมุนไพรเครื่องแกง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1843,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 204 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 204",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 204",
-			"ขนมไทยโบราณลำดับที่ 204",
-			"กรรมวิธีการปรุงลำดับที่ 204"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 204"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สินค้าสิ่งบ่งชี้ทางภูมิศาสตร์ (GI)",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1844,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 205 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 205",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 205",
-			"ขนมไทยโบราณลำดับที่ 205",
-			"กรรมวิธีการปรุงลำดับที่ 205"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 205"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารไทย 4 ภาค",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1845,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 206 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 206",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 206",
-			"ขนมไทยโบราณลำดับที่ 206",
-			"กรรมวิธีการปรุงลำดับที่ 206"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 206"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"ขนมไทยโบราณ",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1846,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 207 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 207",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 207",
-			"ขนมไทยโบราณลำดับที่ 207",
-			"กรรมวิธีการปรุงลำดับที่ 207"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 207"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารชาววัง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1847,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 208 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 208",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 208",
-			"ขนมไทยโบราณลำดับที่ 208",
-			"กรรมวิธีการปรุงลำดับที่ 208"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 208"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สมุนไพรเครื่องแกง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1848,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 209 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 209",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 209",
-			"ขนมไทยโบราณลำดับที่ 209",
-			"กรรมวิธีการปรุงลำดับที่ 209"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 209"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สินค้าสิ่งบ่งชี้ทางภูมิศาสตร์ (GI)",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1849,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 210 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 210",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 210",
-			"ขนมไทยโบราณลำดับที่ 210",
-			"กรรมวิธีการปรุงลำดับที่ 210"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 210"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารไทย 4 ภาค",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1850,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 211 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 211",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 211",
-			"ขนมไทยโบราณลำดับที่ 211",
-			"กรรมวิธีการปรุงลำดับที่ 211"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 211"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"ขนมไทยโบราณ",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1851,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 212 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 212",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 212",
-			"ขนมไทยโบราณลำดับที่ 212",
-			"กรรมวิธีการปรุงลำดับที่ 212"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 212"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารชาววัง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1852,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 213 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 213",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 213",
-			"ขนมไทยโบราณลำดับที่ 213",
-			"กรรมวิธีการปรุงลำดับที่ 213"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 213"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สมุนไพรเครื่องแกง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1853,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 214 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 214",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 214",
-			"ขนมไทยโบราณลำดับที่ 214",
-			"กรรมวิธีการปรุงลำดับที่ 214"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 214"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สินค้าสิ่งบ่งชี้ทางภูมิศาสตร์ (GI)",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1854,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 215 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 215",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 215",
-			"ขนมไทยโบราณลำดับที่ 215",
-			"กรรมวิธีการปรุงลำดับที่ 215"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 215"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารไทย 4 ภาค",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1855,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 216 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 216",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 216",
-			"ขนมไทยโบราณลำดับที่ 216",
-			"กรรมวิธีการปรุงลำดับที่ 216"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 216"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"ขนมไทยโบราณ",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1856,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 217 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 217",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 217",
-			"ขนมไทยโบราณลำดับที่ 217",
-			"กรรมวิธีการปรุงลำดับที่ 217"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 217"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารชาววัง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1857,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 218 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 218",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 218",
-			"ขนมไทยโบราณลำดับที่ 218",
-			"กรรมวิธีการปรุงลำดับที่ 218"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 218"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สมุนไพรเครื่องแกง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1858,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 219 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 219",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 219",
-			"ขนมไทยโบราณลำดับที่ 219",
-			"กรรมวิธีการปรุงลำดับที่ 219"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 219"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สินค้าสิ่งบ่งชี้ทางภูมิศาสตร์ (GI)",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1859,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 220 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 220",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 220",
-			"ขนมไทยโบราณลำดับที่ 220",
-			"กรรมวิธีการปรุงลำดับที่ 220"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 220"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารไทย 4 ภาค",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1860,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 221 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 221",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 221",
-			"ขนมไทยโบราณลำดับที่ 221",
-			"กรรมวิธีการปรุงลำดับที่ 221"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 221"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"ขนมไทยโบราณ",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1861,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 222 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 222",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 222",
-			"ขนมไทยโบราณลำดับที่ 222",
-			"กรรมวิธีการปรุงลำดับที่ 222"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 222"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารชาววัง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1862,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 223 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 223",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 223",
-			"ขนมไทยโบราณลำดับที่ 223",
-			"กรรมวิธีการปรุงลำดับที่ 223"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 223"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สมุนไพรเครื่องแกง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1863,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 224 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 224",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 224",
-			"ขนมไทยโบราณลำดับที่ 224",
-			"กรรมวิธีการปรุงลำดับที่ 224"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 224"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สินค้าสิ่งบ่งชี้ทางภูมิศาสตร์ (GI)",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1864,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 225 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 225",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 225",
-			"ขนมไทยโบราณลำดับที่ 225",
-			"กรรมวิธีการปรุงลำดับที่ 225"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 225"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารไทย 4 ภาค",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1865,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 226 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 226",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 226",
-			"ขนมไทยโบราณลำดับที่ 226",
-			"กรรมวิธีการปรุงลำดับที่ 226"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 226"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"ขนมไทยโบราณ",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1866,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 227 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 227",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 227",
-			"ขนมไทยโบราณลำดับที่ 227",
-			"กรรมวิธีการปรุงลำดับที่ 227"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 227"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารชาววัง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1867,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 228 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 228",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 228",
-			"ขนมไทยโบราณลำดับที่ 228",
-			"กรรมวิธีการปรุงลำดับที่ 228"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 228"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สมุนไพรเครื่องแกง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1868,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 229 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 229",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 229",
-			"ขนมไทยโบราณลำดับที่ 229",
-			"กรรมวิธีการปรุงลำดับที่ 229"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 229"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สินค้าสิ่งบ่งชี้ทางภูมิศาสตร์ (GI)",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1869,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 230 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 230",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 230",
-			"ขนมไทยโบราณลำดับที่ 230",
-			"กรรมวิธีการปรุงลำดับที่ 230"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 230"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารไทย 4 ภาค",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1870,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 231 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 231",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 231",
-			"ขนมไทยโบราณลำดับที่ 231",
-			"กรรมวิธีการปรุงลำดับที่ 231"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 231"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"ขนมไทยโบราณ",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1871,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 232 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 232",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 232",
-			"ขนมไทยโบราณลำดับที่ 232",
-			"กรรมวิธีการปรุงลำดับที่ 232"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 232"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารชาววัง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1872,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 233 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 233",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 233",
-			"ขนมไทยโบราณลำดับที่ 233",
-			"กรรมวิธีการปรุงลำดับที่ 233"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 233"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สมุนไพรเครื่องแกง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1873,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 234 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 234",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 234",
-			"ขนมไทยโบราณลำดับที่ 234",
-			"กรรมวิธีการปรุงลำดับที่ 234"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 234"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สินค้าสิ่งบ่งชี้ทางภูมิศาสตร์ (GI)",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1874,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 235 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 235",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 235",
-			"ขนมไทยโบราณลำดับที่ 235",
-			"กรรมวิธีการปรุงลำดับที่ 235"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 235"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารไทย 4 ภาค",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1875,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 236 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 236",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 236",
-			"ขนมไทยโบราณลำดับที่ 236",
-			"กรรมวิธีการปรุงลำดับที่ 236"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 236"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"ขนมไทยโบราณ",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1876,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 237 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 237",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 237",
-			"ขนมไทยโบราณลำดับที่ 237",
-			"กรรมวิธีการปรุงลำดับที่ 237"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 237"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารชาววัง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1877,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 238 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 238",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 238",
-			"ขนมไทยโบราณลำดับที่ 238",
-			"กรรมวิธีการปรุงลำดับที่ 238"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 238"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สมุนไพรเครื่องแกง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1878,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 239 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 239",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 239",
-			"ขนมไทยโบราณลำดับที่ 239",
-			"กรรมวิธีการปรุงลำดับที่ 239"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 239"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สินค้าสิ่งบ่งชี้ทางภูมิศาสตร์ (GI)",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1879,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 240 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 240",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 240",
-			"ขนมไทยโบราณลำดับที่ 240",
-			"กรรมวิธีการปรุงลำดับที่ 240"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 240"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารไทย 4 ภาค",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1880,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 241 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 241",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 241",
-			"ขนมไทยโบราณลำดับที่ 241",
-			"กรรมวิธีการปรุงลำดับที่ 241"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 241"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"ขนมไทยโบราณ",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1881,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 242 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 242",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 242",
-			"ขนมไทยโบราณลำดับที่ 242",
-			"กรรมวิธีการปรุงลำดับที่ 242"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 242"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารชาววัง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1882,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 243 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 243",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 243",
-			"ขนมไทยโบราณลำดับที่ 243",
-			"กรรมวิธีการปรุงลำดับที่ 243"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 243"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สมุนไพรเครื่องแกง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1883,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 244 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 244",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 244",
-			"ขนมไทยโบราณลำดับที่ 244",
-			"กรรมวิธีการปรุงลำดับที่ 244"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 244"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สินค้าสิ่งบ่งชี้ทางภูมิศาสตร์ (GI)",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1884,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 245 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 245",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 245",
-			"ขนมไทยโบราณลำดับที่ 245",
-			"กรรมวิธีการปรุงลำดับที่ 245"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 245"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารไทย 4 ภาค",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1885,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 246 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 246",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 246",
-			"ขนมไทยโบราณลำดับที่ 246",
-			"กรรมวิธีการปรุงลำดับที่ 246"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 246"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"ขนมไทยโบราณ",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1886,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 247 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 247",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 247",
-			"ขนมไทยโบราณลำดับที่ 247",
-			"กรรมวิธีการปรุงลำดับที่ 247"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 247"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารชาววัง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1887,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 248 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 248",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 248",
-			"ขนมไทยโบราณลำดับที่ 248",
-			"กรรมวิธีการปรุงลำดับที่ 248"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 248"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สมุนไพรเครื่องแกง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1888,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 249 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 249",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 249",
-			"ขนมไทยโบราณลำดับที่ 249",
-			"กรรมวิธีการปรุงลำดับที่ 249"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 249"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สินค้าสิ่งบ่งชี้ทางภูมิศาสตร์ (GI)",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1889,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 250 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 250",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 250",
-			"ขนมไทยโบราณลำดับที่ 250",
-			"กรรมวิธีการปรุงลำดับที่ 250"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 250"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารไทย 4 ภาค",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1890,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 251 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 251",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 251",
-			"ขนมไทยโบราณลำดับที่ 251",
-			"กรรมวิธีการปรุงลำดับที่ 251"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 251"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"ขนมไทยโบราณ",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1891,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 252 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 252",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 252",
-			"ขนมไทยโบราณลำดับที่ 252",
-			"กรรมวิธีการปรุงลำดับที่ 252"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 252"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารชาววัง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1892,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 253 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 253",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 253",
-			"ขนมไทยโบราณลำดับที่ 253",
-			"กรรมวิธีการปรุงลำดับที่ 253"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 253"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สมุนไพรเครื่องแกง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1893,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 254 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 254",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 254",
-			"ขนมไทยโบราณลำดับที่ 254",
-			"กรรมวิธีการปรุงลำดับที่ 254"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 254"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สินค้าสิ่งบ่งชี้ทางภูมิศาสตร์ (GI)",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1894,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 255 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 255",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 255",
-			"ขนมไทยโบราณลำดับที่ 255",
-			"กรรมวิธีการปรุงลำดับที่ 255"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 255"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารไทย 4 ภาค",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1895,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 256 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 256",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 256",
-			"ขนมไทยโบราณลำดับที่ 256",
-			"กรรมวิธีการปรุงลำดับที่ 256"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 256"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"ขนมไทยโบราณ",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1896,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 257 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 257",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 257",
-			"ขนมไทยโบราณลำดับที่ 257",
-			"กรรมวิธีการปรุงลำดับที่ 257"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 257"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารชาววัง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1897,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 258 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 258",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 258",
-			"ขนมไทยโบราณลำดับที่ 258",
-			"กรรมวิธีการปรุงลำดับที่ 258"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 258"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สมุนไพรเครื่องแกง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1898,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 259 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 259",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 259",
-			"ขนมไทยโบราณลำดับที่ 259",
-			"กรรมวิธีการปรุงลำดับที่ 259"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 259"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สินค้าสิ่งบ่งชี้ทางภูมิศาสตร์ (GI)",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1899,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 260 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 260",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 260",
-			"ขนมไทยโบราณลำดับที่ 260",
-			"กรรมวิธีการปรุงลำดับที่ 260"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 260"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารไทย 4 ภาค",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1900,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 261 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 261",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 261",
-			"ขนมไทยโบราณลำดับที่ 261",
-			"กรรมวิธีการปรุงลำดับที่ 261"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 261"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"ขนมไทยโบราณ",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1901,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 262 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 262",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 262",
-			"ขนมไทยโบราณลำดับที่ 262",
-			"กรรมวิธีการปรุงลำดับที่ 262"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 262"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารชาววัง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1902,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 263 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 263",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 263",
-			"ขนมไทยโบราณลำดับที่ 263",
-			"กรรมวิธีการปรุงลำดับที่ 263"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 263"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สมุนไพรเครื่องแกง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1903,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 264 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 264",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 264",
-			"ขนมไทยโบราณลำดับที่ 264",
-			"กรรมวิธีการปรุงลำดับที่ 264"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 264"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สินค้าสิ่งบ่งชี้ทางภูมิศาสตร์ (GI)",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1904,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 265 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 265",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 265",
-			"ขนมไทยโบราณลำดับที่ 265",
-			"กรรมวิธีการปรุงลำดับที่ 265"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 265"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารไทย 4 ภาค",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1905,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 266 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 266",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 266",
-			"ขนมไทยโบราณลำดับที่ 266",
-			"กรรมวิธีการปรุงลำดับที่ 266"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 266"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"ขนมไทยโบราณ",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1906,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 267 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 267",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 267",
-			"ขนมไทยโบราณลำดับที่ 267",
-			"กรรมวิธีการปรุงลำดับที่ 267"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 267"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารชาววัง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1907,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 268 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 268",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 268",
-			"ขนมไทยโบราณลำดับที่ 268",
-			"กรรมวิธีการปรุงลำดับที่ 268"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 268"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สมุนไพรเครื่องแกง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1908,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 269 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 269",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 269",
-			"ขนมไทยโบราณลำดับที่ 269",
-			"กรรมวิธีการปรุงลำดับที่ 269"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 269"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สินค้าสิ่งบ่งชี้ทางภูมิศาสตร์ (GI)",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1909,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 270 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 270",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 270",
-			"ขนมไทยโบราณลำดับที่ 270",
-			"กรรมวิธีการปรุงลำดับที่ 270"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 270"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารไทย 4 ภาค",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1910,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 271 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 271",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 271",
-			"ขนมไทยโบราณลำดับที่ 271",
-			"กรรมวิธีการปรุงลำดับที่ 271"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 271"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"ขนมไทยโบราณ",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1911,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 272 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 272",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 272",
-			"ขนมไทยโบราณลำดับที่ 272",
-			"กรรมวิธีการปรุงลำดับที่ 272"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 272"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารชาววัง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1912,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 273 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 273",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 273",
-			"ขนมไทยโบราณลำดับที่ 273",
-			"กรรมวิธีการปรุงลำดับที่ 273"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 273"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สมุนไพรเครื่องแกง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1913,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 274 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 274",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 274",
-			"ขนมไทยโบราณลำดับที่ 274",
-			"กรรมวิธีการปรุงลำดับที่ 274"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 274"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สินค้าสิ่งบ่งชี้ทางภูมิศาสตร์ (GI)",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1914,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 275 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 275",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 275",
-			"ขนมไทยโบราณลำดับที่ 275",
-			"กรรมวิธีการปรุงลำดับที่ 275"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 275"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารไทย 4 ภาค",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1915,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 276 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 276",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 276",
-			"ขนมไทยโบราณลำดับที่ 276",
-			"กรรมวิธีการปรุงลำดับที่ 276"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 276"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"ขนมไทยโบราณ",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1916,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 277 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 277",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 277",
-			"ขนมไทยโบราณลำดับที่ 277",
-			"กรรมวิธีการปรุงลำดับที่ 277"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 277"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารชาววัง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1917,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 278 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 278",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 278",
-			"ขนมไทยโบราณลำดับที่ 278",
-			"กรรมวิธีการปรุงลำดับที่ 278"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 278"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สมุนไพรเครื่องแกง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1918,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 279 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 279",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 279",
-			"ขนมไทยโบราณลำดับที่ 279",
-			"กรรมวิธีการปรุงลำดับที่ 279"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 279"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สินค้าสิ่งบ่งชี้ทางภูมิศาสตร์ (GI)",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1919,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 280 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 280",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 280",
-			"ขนมไทยโบราณลำดับที่ 280",
-			"กรรมวิธีการปรุงลำดับที่ 280"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 280"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารไทย 4 ภาค",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1920,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 281 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 281",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 281",
-			"ขนมไทยโบราณลำดับที่ 281",
-			"กรรมวิธีการปรุงลำดับที่ 281"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 281"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"ขนมไทยโบราณ",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1921,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 282 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 282",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 282",
-			"ขนมไทยโบราณลำดับที่ 282",
-			"กรรมวิธีการปรุงลำดับที่ 282"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 282"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารชาววัง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1922,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 283 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 283",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 283",
-			"ขนมไทยโบราณลำดับที่ 283",
-			"กรรมวิธีการปรุงลำดับที่ 283"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 283"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สมุนไพรเครื่องแกง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1923,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 284 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 284",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 284",
-			"ขนมไทยโบราณลำดับที่ 284",
-			"กรรมวิธีการปรุงลำดับที่ 284"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 284"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สินค้าสิ่งบ่งชี้ทางภูมิศาสตร์ (GI)",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1924,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 285 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 285",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 285",
-			"ขนมไทยโบราณลำดับที่ 285",
-			"กรรมวิธีการปรุงลำดับที่ 285"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 285"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารไทย 4 ภาค",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1925,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 286 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 286",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 286",
-			"ขนมไทยโบราณลำดับที่ 286",
-			"กรรมวิธีการปรุงลำดับที่ 286"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 286"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"ขนมไทยโบราณ",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1926,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 287 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 287",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 287",
-			"ขนมไทยโบราณลำดับที่ 287",
-			"กรรมวิธีการปรุงลำดับที่ 287"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 287"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารชาววัง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1927,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 288 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 288",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 288",
-			"ขนมไทยโบราณลำดับที่ 288",
-			"กรรมวิธีการปรุงลำดับที่ 288"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 288"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สมุนไพรเครื่องแกง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1928,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 289 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 289",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 289",
-			"ขนมไทยโบราณลำดับที่ 289",
-			"กรรมวิธีการปรุงลำดับที่ 289"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 289"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สินค้าสิ่งบ่งชี้ทางภูมิศาสตร์ (GI)",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1929,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 290 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 290",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 290",
-			"ขนมไทยโบราณลำดับที่ 290",
-			"กรรมวิธีการปรุงลำดับที่ 290"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 290"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารไทย 4 ภาค",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1930,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 291 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 291",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 291",
-			"ขนมไทยโบราณลำดับที่ 291",
-			"กรรมวิธีการปรุงลำดับที่ 291"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 291"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"ขนมไทยโบราณ",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1931,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 292 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 292",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 292",
-			"ขนมไทยโบราณลำดับที่ 292",
-			"กรรมวิธีการปรุงลำดับที่ 292"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 292"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารชาววัง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1932,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 293 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 293",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 293",
-			"ขนมไทยโบราณลำดับที่ 293",
-			"กรรมวิธีการปรุงลำดับที่ 293"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 293"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สมุนไพรเครื่องแกง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1933,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 294 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 294",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 294",
-			"ขนมไทยโบราณลำดับที่ 294",
-			"กรรมวิธีการปรุงลำดับที่ 294"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 294"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สินค้าสิ่งบ่งชี้ทางภูมิศาสตร์ (GI)",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1934,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 295 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 295",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 295",
-			"ขนมไทยโบราณลำดับที่ 295",
-			"กรรมวิธีการปรุงลำดับที่ 295"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 295"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารไทย 4 ภาค",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1935,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 296 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 296",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 296",
-			"ขนมไทยโบราณลำดับที่ 296",
-			"กรรมวิธีการปรุงลำดับที่ 296"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 296"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"ขนมไทยโบราณ",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1936,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 297 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 297",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 297",
-			"ขนมไทยโบราณลำดับที่ 297",
-			"กรรมวิธีการปรุงลำดับที่ 297"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 297"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารชาววัง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1937,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 298 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 298",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 298",
-			"ขนมไทยโบราณลำดับที่ 298",
-			"กรรมวิธีการปรุงลำดับที่ 298"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 298"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สมุนไพรเครื่องแกง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1938,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 299 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 299",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 299",
-			"ขนมไทยโบราณลำดับที่ 299",
-			"กรรมวิธีการปรุงลำดับที่ 299"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 299"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สินค้าสิ่งบ่งชี้ทางภูมิศาสตร์ (GI)",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1939,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 300 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 300",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 300",
-			"ขนมไทยโบราณลำดับที่ 300",
-			"กรรมวิธีการปรุงลำดับที่ 300"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 300"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารไทย 4 ภาค",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1940,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 301 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 301",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 301",
-			"ขนมไทยโบราณลำดับที่ 301",
-			"กรรมวิธีการปรุงลำดับที่ 301"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 301"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"ขนมไทยโบราณ",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1941,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 302 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 302",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 302",
-			"ขนมไทยโบราณลำดับที่ 302",
-			"กรรมวิธีการปรุงลำดับที่ 302"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 302"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารชาววัง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1942,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 303 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 303",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 303",
-			"ขนมไทยโบราณลำดับที่ 303",
-			"กรรมวิธีการปรุงลำดับที่ 303"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 303"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สมุนไพรเครื่องแกง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1943,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 304 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 304",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 304",
-			"ขนมไทยโบราณลำดับที่ 304",
-			"กรรมวิธีการปรุงลำดับที่ 304"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 304"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สินค้าสิ่งบ่งชี้ทางภูมิศาสตร์ (GI)",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1944,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 305 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 305",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 305",
-			"ขนมไทยโบราณลำดับที่ 305",
-			"กรรมวิธีการปรุงลำดับที่ 305"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 305"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารไทย 4 ภาค",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1945,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 306 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 306",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 306",
-			"ขนมไทยโบราณลำดับที่ 306",
-			"กรรมวิธีการปรุงลำดับที่ 306"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 306"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"ขนมไทยโบราณ",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1946,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 307 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 307",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 307",
-			"ขนมไทยโบราณลำดับที่ 307",
-			"กรรมวิธีการปรุงลำดับที่ 307"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 307"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารชาววัง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1947,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 308 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 308",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 308",
-			"ขนมไทยโบราณลำดับที่ 308",
-			"กรรมวิธีการปรุงลำดับที่ 308"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 308"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สมุนไพรเครื่องแกง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1948,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 309 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 309",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 309",
-			"ขนมไทยโบราณลำดับที่ 309",
-			"กรรมวิธีการปรุงลำดับที่ 309"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 309"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สินค้าสิ่งบ่งชี้ทางภูมิศาสตร์ (GI)",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1949,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 310 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 310",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 310",
-			"ขนมไทยโบราณลำดับที่ 310",
-			"กรรมวิธีการปรุงลำดับที่ 310"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 310"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารไทย 4 ภาค",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1950,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 311 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 311",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 311",
-			"ขนมไทยโบราณลำดับที่ 311",
-			"กรรมวิธีการปรุงลำดับที่ 311"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 311"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"ขนมไทยโบราณ",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1951,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 312 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 312",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 312",
-			"ขนมไทยโบราณลำดับที่ 312",
-			"กรรมวิธีการปรุงลำดับที่ 312"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 312"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารชาววัง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1952,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 313 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 313",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 313",
-			"ขนมไทยโบราณลำดับที่ 313",
-			"กรรมวิธีการปรุงลำดับที่ 313"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 313"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สมุนไพรเครื่องแกง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1953,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 314 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 314",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 314",
-			"ขนมไทยโบราณลำดับที่ 314",
-			"กรรมวิธีการปรุงลำดับที่ 314"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 314"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สินค้าสิ่งบ่งชี้ทางภูมิศาสตร์ (GI)",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1954,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 315 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 315",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 315",
-			"ขนมไทยโบราณลำดับที่ 315",
-			"กรรมวิธีการปรุงลำดับที่ 315"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 315"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารไทย 4 ภาค",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1955,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 316 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 316",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 316",
-			"ขนมไทยโบราณลำดับที่ 316",
-			"กรรมวิธีการปรุงลำดับที่ 316"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 316"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"ขนมไทยโบราณ",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1956,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 317 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 317",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 317",
-			"ขนมไทยโบราณลำดับที่ 317",
-			"กรรมวิธีการปรุงลำดับที่ 317"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 317"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารชาววัง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1957,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 318 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 318",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 318",
-			"ขนมไทยโบราณลำดับที่ 318",
-			"กรรมวิธีการปรุงลำดับที่ 318"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 318"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สมุนไพรเครื่องแกง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1958,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 319 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 319",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 319",
-			"ขนมไทยโบราณลำดับที่ 319",
-			"กรรมวิธีการปรุงลำดับที่ 319"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 319"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สินค้าสิ่งบ่งชี้ทางภูมิศาสตร์ (GI)",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1959,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 320 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 320",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 320",
-			"ขนมไทยโบราณลำดับที่ 320",
-			"กรรมวิธีการปรุงลำดับที่ 320"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 320"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารไทย 4 ภาค",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1960,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 321 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 321",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 321",
-			"ขนมไทยโบราณลำดับที่ 321",
-			"กรรมวิธีการปรุงลำดับที่ 321"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 321"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"ขนมไทยโบราณ",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1961,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 322 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 322",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 322",
-			"ขนมไทยโบราณลำดับที่ 322",
-			"กรรมวิธีการปรุงลำดับที่ 322"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 322"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารชาววัง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1962,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 323 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 323",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 323",
-			"ขนมไทยโบราณลำดับที่ 323",
-			"กรรมวิธีการปรุงลำดับที่ 323"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 323"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สมุนไพรเครื่องแกง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1963,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 324 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 324",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 324",
-			"ขนมไทยโบราณลำดับที่ 324",
-			"กรรมวิธีการปรุงลำดับที่ 324"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 324"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สินค้าสิ่งบ่งชี้ทางภูมิศาสตร์ (GI)",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1964,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 325 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 325",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 325",
-			"ขนมไทยโบราณลำดับที่ 325",
-			"กรรมวิธีการปรุงลำดับที่ 325"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 325"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารไทย 4 ภาค",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1965,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 326 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 326",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 326",
-			"ขนมไทยโบราณลำดับที่ 326",
-			"กรรมวิธีการปรุงลำดับที่ 326"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 326"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"ขนมไทยโบราณ",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1966,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 327 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 327",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 327",
-			"ขนมไทยโบราณลำดับที่ 327",
-			"กรรมวิธีการปรุงลำดับที่ 327"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 327"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารชาววัง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1967,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 328 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 328",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 328",
-			"ขนมไทยโบราณลำดับที่ 328",
-			"กรรมวิธีการปรุงลำดับที่ 328"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 328"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สมุนไพรเครื่องแกง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1968,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 329 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 329",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 329",
-			"ขนมไทยโบราณลำดับที่ 329",
-			"กรรมวิธีการปรุงลำดับที่ 329"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 329"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สินค้าสิ่งบ่งชี้ทางภูมิศาสตร์ (GI)",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1969,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 330 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 330",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 330",
-			"ขนมไทยโบราณลำดับที่ 330",
-			"กรรมวิธีการปรุงลำดับที่ 330"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 330"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารไทย 4 ภาค",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1970,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 331 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 331",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 331",
-			"ขนมไทยโบราณลำดับที่ 331",
-			"กรรมวิธีการปรุงลำดับที่ 331"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 331"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"ขนมไทยโบราณ",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1971,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 332 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 332",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 332",
-			"ขนมไทยโบราณลำดับที่ 332",
-			"กรรมวิธีการปรุงลำดับที่ 332"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 332"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารชาววัง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1972,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 333 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 333",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 333",
-			"ขนมไทยโบราณลำดับที่ 333",
-			"กรรมวิธีการปรุงลำดับที่ 333"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 333"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สมุนไพรเครื่องแกง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1973,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 334 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 334",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 334",
-			"ขนมไทยโบราณลำดับที่ 334",
-			"กรรมวิธีการปรุงลำดับที่ 334"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 334"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สินค้าสิ่งบ่งชี้ทางภูมิศาสตร์ (GI)",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1974,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 335 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 335",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 335",
-			"ขนมไทยโบราณลำดับที่ 335",
-			"กรรมวิธีการปรุงลำดับที่ 335"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 335"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารไทย 4 ภาค",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1975,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 336 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 336",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 336",
-			"ขนมไทยโบราณลำดับที่ 336",
-			"กรรมวิธีการปรุงลำดับที่ 336"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 336"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"ขนมไทยโบราณ",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1976,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 337 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 337",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 337",
-			"ขนมไทยโบราณลำดับที่ 337",
-			"กรรมวิธีการปรุงลำดับที่ 337"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 337"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารชาววัง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1977,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 338 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 338",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 338",
-			"ขนมไทยโบราณลำดับที่ 338",
-			"กรรมวิธีการปรุงลำดับที่ 338"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 338"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สมุนไพรเครื่องแกง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1978,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 339 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 339",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 339",
-			"ขนมไทยโบราณลำดับที่ 339",
-			"กรรมวิธีการปรุงลำดับที่ 339"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 339"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สินค้าสิ่งบ่งชี้ทางภูมิศาสตร์ (GI)",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1979,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 340 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 340",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 340",
-			"ขนมไทยโบราณลำดับที่ 340",
-			"กรรมวิธีการปรุงลำดับที่ 340"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 340"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารไทย 4 ภาค",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1980,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 341 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 341",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 341",
-			"ขนมไทยโบราณลำดับที่ 341",
-			"กรรมวิธีการปรุงลำดับที่ 341"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 341"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"ขนมไทยโบราณ",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1981,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 342 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 342",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 342",
-			"ขนมไทยโบราณลำดับที่ 342",
-			"กรรมวิธีการปรุงลำดับที่ 342"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 342"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารชาววัง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1982,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 343 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 343",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 343",
-			"ขนมไทยโบราณลำดับที่ 343",
-			"กรรมวิธีการปรุงลำดับที่ 343"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 343"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สมุนไพรเครื่องแกง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1983,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 344 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 344",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 344",
-			"ขนมไทยโบราณลำดับที่ 344",
-			"กรรมวิธีการปรุงลำดับที่ 344"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 344"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สินค้าสิ่งบ่งชี้ทางภูมิศาสตร์ (GI)",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1984,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 345 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 345",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 345",
-			"ขนมไทยโบราณลำดับที่ 345",
-			"กรรมวิธีการปรุงลำดับที่ 345"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 345"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารไทย 4 ภาค",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1985,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 346 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 346",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 346",
-			"ขนมไทยโบราณลำดับที่ 346",
-			"กรรมวิธีการปรุงลำดับที่ 346"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 346"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"ขนมไทยโบราณ",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1986,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 347 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 347",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 347",
-			"ขนมไทยโบราณลำดับที่ 347",
-			"กรรมวิธีการปรุงลำดับที่ 347"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 347"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารชาววัง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1987,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 348 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 348",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 348",
-			"ขนมไทยโบราณลำดับที่ 348",
-			"กรรมวิธีการปรุงลำดับที่ 348"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 348"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สมุนไพรเครื่องแกง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1988,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 349 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 349",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 349",
-			"ขนมไทยโบราณลำดับที่ 349",
-			"กรรมวิธีการปรุงลำดับที่ 349"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 349"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สินค้าสิ่งบ่งชี้ทางภูมิศาสตร์ (GI)",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1989,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 350 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 350",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 350",
-			"ขนมไทยโบราณลำดับที่ 350",
-			"กรรมวิธีการปรุงลำดับที่ 350"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 350"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารไทย 4 ภาค",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1990,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 351 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 351",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 351",
-			"ขนมไทยโบราณลำดับที่ 351",
-			"กรรมวิธีการปรุงลำดับที่ 351"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 351"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"ขนมไทยโบราณ",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1991,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 352 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 352",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 352",
-			"ขนมไทยโบราณลำดับที่ 352",
-			"กรรมวิธีการปรุงลำดับที่ 352"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 352"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารชาววัง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1992,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 353 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 353",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 353",
-			"ขนมไทยโบราณลำดับที่ 353",
-			"กรรมวิธีการปรุงลำดับที่ 353"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 353"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สมุนไพรเครื่องแกง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1993,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 354 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 354",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 354",
-			"ขนมไทยโบราณลำดับที่ 354",
-			"กรรมวิธีการปรุงลำดับที่ 354"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 354"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สินค้าสิ่งบ่งชี้ทางภูมิศาสตร์ (GI)",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1994,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 355 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 355",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 355",
-			"ขนมไทยโบราณลำดับที่ 355",
-			"กรรมวิธีการปรุงลำดับที่ 355"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 355"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารไทย 4 ภาค",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1995,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 356 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 356",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 356",
-			"ขนมไทยโบราณลำดับที่ 356",
-			"กรรมวิธีการปรุงลำดับที่ 356"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 356"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"ขนมไทยโบราณ",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1996,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 357 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 357",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 357",
-			"ขนมไทยโบราณลำดับที่ 357",
-			"กรรมวิธีการปรุงลำดับที่ 357"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 357"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารชาววัง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1997,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 358 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 358",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 358",
-			"ขนมไทยโบราณลำดับที่ 358",
-			"กรรมวิธีการปรุงลำดับที่ 358"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 358"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สมุนไพรเครื่องแกง",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1998,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 359 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 359",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 359",
-			"ขนมไทยโบราณลำดับที่ 359",
-			"กรรมวิธีการปรุงลำดับที่ 359"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 359"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"สินค้าสิ่งบ่งชี้ทางภูมิศาสตร์ (GI)",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 1999,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 360 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 360",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 360",
-			"ขนมไทยโบราณลำดับที่ 360",
-			"กรรมวิธีการปรุงลำดับที่ 360"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 360"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"อาหารไทย 4 ภาค",
-			"อาหารไทย",
-			"ภูมิปัญญา"
-		]
-	},
-	{
-		"id": 2000,
-		"category": "food_cuisine",
-		"question": "มรดกภูมิปัญญาทางวัฒนธรรมอาหารและเครื่องดื่มไทยลำดับที่ 361 ซึ่งสะท้อนถึงการผสมผสานสมุนไพร วัตถุดิบท้องถิ่น และกรรมวิธีการปรุงอันประณีต... ข้อใดถูกต้อง?",
-		"choices": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 361",
-			"ตำรับอาหารพื้นบ้านลำดับที่ 361",
-			"ขนมไทยโบราณลำดับที่ 361",
-			"กรรมวิธีการปรุงลำดับที่ 361"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"วัฒนธรรมอาหารไทยลำดับที่ 361"
-		],
-		"explanation": "วัฒนธรรมอาหารไทยเป็นหนึ่งในซอฟต์พาวเวอร์สำคัญระดับโลก",
-		"difficulty": "normal",
-		"tags": [
-			"ขนมไทยโบราณ",
-			"อาหารไทย",
-			"ภูมิปัญญา"
 		]
 	}
 ];

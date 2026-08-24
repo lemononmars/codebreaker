@@ -2,7 +2,7 @@ import type { TheChaseQuestion } from '../../types';
 
 export const PACK3_PART1_QUESTIONS: TheChaseQuestion[] = [
 	{
-		"id": 3001,
+		"id": 1273,
 		"category": "science_tech",
 		"question": "ธาตุที่มีน้ำหนักเบาที่สุดและมีมากที่สุดในเอกภพ คือธาตุหรือสารใด?",
 		"choices": [
@@ -15,7 +15,7 @@ export const PACK3_PART1_QUESTIONS: TheChaseQuestion[] = [
 		"difficulty": "normal"
 	},
 	{
-		"id": 3002,
+		"id": 1274,
 		"category": "science_tech",
 		"question": "ก๊าซเฉื่อยที่มีปริมาณมากที่สุดในชั้นบรรยากาศของโลก คือธาตุหรือสารใด?",
 		"choices": [
@@ -28,7 +28,7 @@ export const PACK3_PART1_QUESTIONS: TheChaseQuestion[] = [
 		"difficulty": "normal"
 	},
 	{
-		"id": 3003,
+		"id": 1275,
 		"category": "science_tech",
 		"question": "ธาตุโลหะที่มีสถานะเป็นของเหลวที่อุณหภูมิห้อง คือธาตุหรือสารใด?",
 		"choices": [
@@ -41,7 +41,7 @@ export const PACK3_PART1_QUESTIONS: TheChaseQuestion[] = [
 		"difficulty": "normal"
 	},
 	{
-		"id": 3004,
+		"id": 1276,
 		"category": "science_tech",
 		"question": "ธาตุอโลหะชนิดเดียวที่มีสถานะเป็นของเหลวที่อุณหภูมิห้อง คือธาตุหรือสารใด?",
 		"choices": [
@@ -54,7 +54,7 @@ export const PACK3_PART1_QUESTIONS: TheChaseQuestion[] = [
 		"difficulty": "normal"
 	},
 	{
-		"id": 3005,
+		"id": 1277,
 		"category": "science_tech",
 		"question": "ธาตุที่มีความสามารถในการดึงดูดอิเล็กตรอน (Electronegativity) สูงที่สุด คือธาตุหรือสารใด?",
 		"choices": [
@@ -67,7 +67,7 @@ export const PACK3_PART1_QUESTIONS: TheChaseQuestion[] = [
 		"difficulty": "normal"
 	},
 	{
-		"id": 3006,
+		"id": 1278,
 		"category": "science_tech",
 		"question": "ธาตุที่เป็นพื้นฐานหลักของสารประกอบอินทรีย์และสิ่งมีชีวิต คือธาตุหรือสารใด?",
 		"choices": [
@@ -80,7 +80,7 @@ export const PACK3_PART1_QUESTIONS: TheChaseQuestion[] = [
 		"difficulty": "normal"
 	},
 	{
-		"id": 3007,
+		"id": 1279,
 		"category": "science_tech",
 		"question": "โลหะที่นำไฟฟ้าและความร้อนได้ดีที่สุดในบรรดาธาตุทั้งหมด คือธาตุหรือสารใด?",
 		"choices": [
@@ -93,7 +93,7 @@ export const PACK3_PART1_QUESTIONS: TheChaseQuestion[] = [
 		"difficulty": "normal"
 	},
 	{
-		"id": 3008,
+		"id": 1280,
 		"category": "science_tech",
 		"question": "ธาตุที่มีจุดหลอมเหลวสูงที่สุดในบรรดาโลหะ (ใช้ทำไส้หลอดไฟ) คือธาตุหรือสารใด?",
 		"choices": [
@@ -106,7 +106,7 @@ export const PACK3_PART1_QUESTIONS: TheChaseQuestion[] = [
 		"difficulty": "normal"
 	},
 	{
-		"id": 3009,
+		"id": 1281,
 		"category": "science_tech",
 		"question": "ก๊าซที่มีสัดส่วนมากที่สุดในชั้นบรรยากาศของโลก (ประมาณ 78%) คือธาตุหรือสารใด?",
 		"choices": [
@@ -119,7 +119,7 @@ export const PACK3_PART1_QUESTIONS: TheChaseQuestion[] = [
 		"difficulty": "normal"
 	},
 	{
-		"id": 3010,
+		"id": 1282,
 		"category": "science_tech",
 		"question": "แร่ธาตุที่มีความแข็งมากที่สุดตามสเกลโมห์ส (ระดับ 10) คือธาตุหรือสารใด?",
 		"choices": [
@@ -132,7 +132,7 @@ export const PACK3_PART1_QUESTIONS: TheChaseQuestion[] = [
 		"difficulty": "normal"
 	},
 	{
-		"id": 3011,
+		"id": 1283,
 		"category": "science_tech",
 		"question": "ดาวเคราะห์ที่มีขนาดใหญ่ที่สุดในระบบสุริยะ คือข้อใด?",
 		"choices": [
@@ -145,7 +145,7 @@ export const PACK3_PART1_QUESTIONS: TheChaseQuestion[] = [
 		"difficulty": "normal"
 	},
 	{
-		"id": 3012,
+		"id": 1284,
 		"category": "science_tech",
 		"question": "ดาวเคราะห์ที่มีวงแหวนโดดเด่นและสวยงามที่สุด คือข้อใด?",
 		"choices": [
@@ -158,7 +158,7 @@ export const PACK3_PART1_QUESTIONS: TheChaseQuestion[] = [
 		"difficulty": "normal"
 	},
 	{
-		"id": 3013,
+		"id": 1285,
 		"category": "science_tech",
 		"question": "ดาวเคราะห์ที่อยู่ใกล้ดวงอาทิตย์มากที่สุด คือข้อใด?",
 		"choices": [
@@ -171,7 +171,7 @@ export const PACK3_PART1_QUESTIONS: TheChaseQuestion[] = [
 		"difficulty": "normal"
 	},
 	{
-		"id": 3014,
+		"id": 1286,
 		"category": "science_tech",
 		"question": "ดาวเคราะห์ที่มีอุณหภูมิพื้นผิวเฉลี่ยร้อนที่สุดในระบบสุริยะ คือข้อใด?",
 		"choices": [
@@ -184,7 +184,7 @@ export const PACK3_PART1_QUESTIONS: TheChaseQuestion[] = [
 		"difficulty": "normal"
 	},
 	{
-		"id": 3015,
+		"id": 1287,
 		"category": "science_tech",
 		"question": "ดาวบริวาร (ดวงจันทร์) ที่มีขนาดใหญ่ที่สุดในระบบสุริยะ คือข้อใด?",
 		"choices": [
@@ -197,7 +197,7 @@ export const PACK3_PART1_QUESTIONS: TheChaseQuestion[] = [
 		"difficulty": "normal"
 	},
 	{
-		"id": 3016,
+		"id": 1288,
 		"category": "science_tech",
 		"question": "ดวงจันทร์ดวงเดียวในระบบสุริยะที่มีชั้นบรรยากาศหนาแน่นและมีทะเลมีเทนเหลว คือข้อใด?",
 		"choices": [
@@ -210,7 +210,7 @@ export const PACK3_PART1_QUESTIONS: TheChaseQuestion[] = [
 		"difficulty": "normal"
 	},
 	{
-		"id": 3017,
+		"id": 1289,
 		"category": "science_tech",
 		"question": "ภารกิจยานอวกาศลำแรกที่พามนุษย์ไปลงจอดบนพื้นผิวดวงจันทร์สำเร็จ คือข้อใด?",
 		"choices": [
@@ -223,7 +223,7 @@ export const PACK3_PART1_QUESTIONS: TheChaseQuestion[] = [
 		"difficulty": "normal"
 	},
 	{
-		"id": 3018,
+		"id": 1290,
 		"category": "science_tech",
 		"question": "มนุษย์คนแรกที่เดินทางขึ้นสู่อวกาศ คือข้อใด?",
 		"choices": [
@@ -236,7 +236,7 @@ export const PACK3_PART1_QUESTIONS: TheChaseQuestion[] = [
 		"difficulty": "normal"
 	},
 	{
-		"id": 3019,
+		"id": 1291,
 		"category": "science_tech",
 		"question": "กล้องโทรทรรศน์อวกาศอินฟราเรดฟอร์มยักษ์ที่ส่งขึ้นสู่อวกาศในวันคริสต์มาสปี 2021 คือข้อใด?",
 		"choices": [
@@ -249,7 +249,7 @@ export const PACK3_PART1_QUESTIONS: TheChaseQuestion[] = [
 		"difficulty": "normal"
 	},
 	{
-		"id": 3020,
+		"id": 1292,
 		"category": "science_tech",
 		"question": "ดาวฤกษ์ที่อยู่ใกล้ระบบสุริยะของเรามากที่สุด (ระยะทางราว 4.24 ปีแสง) คือข้อใด?",
 		"choices": [
@@ -262,7 +262,7 @@ export const PACK3_PART1_QUESTIONS: TheChaseQuestion[] = [
 		"difficulty": "normal"
 	},
 	{
-		"id": 3021,
+		"id": 1293,
 		"category": "science_tech",
 		"question": "อวัยวะภายในที่มีขนาดใหญ่ที่สุดและมีน้ำหนักมากที่สุดในร่างกายมนุษย์ คือข้อใด?",
 		"choices": [
@@ -275,7 +275,7 @@ export const PACK3_PART1_QUESTIONS: TheChaseQuestion[] = [
 		"difficulty": "normal"
 	},
 	{
-		"id": 3022,
+		"id": 1294,
 		"category": "science_tech",
 		"question": "กระดูกที่ยาวและแข็งแรงที่สุดในร่างกายมนุษย์ คือข้อใด?",
 		"choices": [
@@ -288,7 +288,7 @@ export const PACK3_PART1_QUESTIONS: TheChaseQuestion[] = [
 		"difficulty": "normal"
 	},
 	{
-		"id": 3023,
+		"id": 1295,
 		"category": "science_tech",
 		"question": "กระดูกที่มีขนาดเล็กที่สุดในร่างกายมนุษย์ คือข้อใด?",
 		"choices": [
@@ -301,7 +301,7 @@ export const PACK3_PART1_QUESTIONS: TheChaseQuestion[] = [
 		"difficulty": "normal"
 	},
 	{
-		"id": 3024,
+		"id": 1296,
 		"category": "science_tech",
 		"question": "เซลล์เม็ดเลือดที่ทำหน้าที่ขนส่งก๊าซออกซิเจนไปยังเซลล์ต่างๆ คือข้อใด?",
 		"choices": [
@@ -314,7 +314,7 @@ export const PACK3_PART1_QUESTIONS: TheChaseQuestion[] = [
 		"difficulty": "normal"
 	},
 	{
-		"id": 3025,
+		"id": 1297,
 		"category": "science_tech",
 		"question": "เซลล์เม็ดเลือดหรือส่วนประกอบที่ทำหน้าที่ช่วยในการแข็งตัวของเลือดเมื่อเกิดบาดแผล คือข้อใด?",
 		"choices": [
@@ -324,981 +324,6 @@ export const PACK3_PART1_QUESTIONS: TheChaseQuestion[] = [
 		],
 		"correctIndex": 2,
 		"explanation": "ช่วยสร้างลิ่มเลือดอุดรอยรั่ว",
-		"difficulty": "normal"
-	},
-	{
-		"id": 3026,
-		"category": "science_tech",
-		"question": "สารพันธุกรรมที่มีโครงสร้างเป็นเกลียวคู่ (Double Helix) คือข้อใด?",
-		"choices": [
-			"โปรตีน",
-			"ดีเอ็นเอ",
-			"อาร์เอ็นเอ"
-		],
-		"correctIndex": 1,
-		"explanation": "วัตสันและคลิกค้นพบโครงสร้าง DNA ในปี 1953",
-		"difficulty": "normal"
-	},
-	{
-		"id": 3027,
-		"category": "science_tech",
-		"question": "ออร์แกเนลล์ในเซลล์ที่เปรียบเสมือน \"โรงไฟฟ้า\" ผลิตพลังงาน ATP ให้แก่เซลล์ คือข้อใด?",
-		"choices": [
-			"ไมโทคอนเดรีย",
-			"ไรโบโซม",
-			"กอลจิบอดี"
-		],
-		"correctIndex": 0,
-		"explanation": "ทำหน้าที่หายใจระดับเซลล์",
-		"difficulty": "normal"
-	},
-	{
-		"id": 3028,
-		"category": "science_tech",
-		"question": "กระบวนการสังเคราะห์ด้วยแสงของพืชเกิดขึ้นที่ออร์แกเนลล์ใด คือข้อใด?",
-		"choices": [
-			"ไมโทคอนเดรีย",
-			"แวคิวโอล",
-			"คลอโรพลาสต์"
-		],
-		"correctIndex": 2,
-		"explanation": "มีเม็ดสีคลอโรฟิลล์ดูดกลืนพลังงานแสง",
-		"difficulty": "normal"
-	},
-	{
-		"id": 3029,
-		"category": "science_tech",
-		"question": "ฮอร์โมนที่ควบคุมระดับน้ำตาลในเลือด สร้างจากตับอ่อน คือข้อใด?",
-		"choices": [
-			"ไทรอกซิน",
-			"อินซูลิน",
-			"กลูคากอน"
-		],
-		"correctIndex": 1,
-		"explanation": "ช่วยนำน้ำตาลกลูโคสเข้าสู่เซลล์",
-		"difficulty": "normal"
-	},
-	{
-		"id": 3030,
-		"category": "science_tech",
-		"question": "ระบบภูมิคุ้มกันที่ต่อสู้กับสิ่งแปลกปลอมรูปตัว Y เรียกว่าอะไร คือข้อใด?",
-		"choices": [
-			"แอนติบอดี",
-			"แอนติเจน",
-			"ฮิสตามีน"
-		],
-		"correctIndex": 0,
-		"explanation": "สร้างจากเซลล์บีลิมโฟไซต์",
-		"difficulty": "normal"
-	},
-	{
-		"id": 3031,
-		"category": "science_tech",
-		"question": "สมบัติทางเคมีของ ธาตุที่มีน้ำหนักเบาที่สุดและมีมากที่สุดในเอกภพ ตรงกับข้อใด?",
-		"choices": [
-			"ฮีเลียม",
-			"ลิเทียม",
-			"ไฮโดรเจน"
-		],
-		"correctIndex": 2,
-		"explanation": "ไฮโดรเจน (H) มีเลขอะตอม 1 คิดเป็น 75% ของมวลสารในเอกภพ",
-		"difficulty": "normal"
-	},
-	{
-		"id": 3032,
-		"category": "science_tech",
-		"question": "สมบัติทางเคมีของ ก๊าซเฉื่อยที่มีปริมาณมากที่สุดในชั้นบรรยากาศของโลก ตรงกับข้อใด?",
-		"choices": [
-			"นีออน",
-			"อาร์กอน",
-			"ฮีเลียม"
-		],
-		"correctIndex": 1,
-		"explanation": "อาร์กอน (Ar) คิดเป็นประมาณ 0.93% ของบรรยากาศโลก",
-		"difficulty": "normal"
-	},
-	{
-		"id": 3033,
-		"category": "science_tech",
-		"question": "สมบัติทางเคมีของ ธาตุโลหะที่มีสถานะเป็นของเหลวที่อุณหภูมิห้อง ตรงกับข้อใด?",
-		"choices": [
-			"ปรอท",
-			"แกลเลียม",
-			"โบรมีน"
-		],
-		"correctIndex": 0,
-		"explanation": "ปรอท (Hg) มีเลขอะตอม 80 เป็นโลหะของเหลว",
-		"difficulty": "normal"
-	},
-	{
-		"id": 3034,
-		"category": "science_tech",
-		"question": "สมบัติทางเคมีของ ธาตุอโลหะชนิดเดียวที่มีสถานะเป็นของเหลวที่อุณหภูมิห้อง ตรงกับข้อใด?",
-		"choices": [
-			"คลอรีน",
-			"ไอโอดีน",
-			"โบรมีน"
-		],
-		"correctIndex": 2,
-		"explanation": "โบรมีน (Br) เป็นของเหลวสีน้ำตาลแดง",
-		"difficulty": "normal"
-	},
-	{
-		"id": 3035,
-		"category": "science_tech",
-		"question": "สมบัติทางเคมีของ ธาตุที่มีความสามารถในการดึงดูดอิเล็กตรอน (Electronegativity) สูงที่สุด ตรงกับข้อใด?",
-		"choices": [
-			"ออกซิเจน",
-			"ฟลูออรีน",
-			"คลอรีน"
-		],
-		"correctIndex": 1,
-		"explanation": "ฟลูออรีน (F) มีค่า EN สูงสุดที่ 3.98",
-		"difficulty": "normal"
-	},
-	{
-		"id": 3036,
-		"category": "science_tech",
-		"question": "สมบัติทางเคมีของ ธาตุที่เป็นพื้นฐานหลักของสารประกอบอินทรีย์และสิ่งมีชีวิต ตรงกับข้อใด?",
-		"choices": [
-			"คาร์บอน",
-			"ไนโตรเจน",
-			"ซิลิคอน"
-		],
-		"correctIndex": 0,
-		"explanation": "คาร์บอน (C) สร้างพันธะโคเวเลนต์ได้ถึง 4 พันธะ",
-		"difficulty": "normal"
-	},
-	{
-		"id": 3037,
-		"category": "science_tech",
-		"question": "สมบัติทางเคมีของ โลหะที่นำไฟฟ้าและความร้อนได้ดีที่สุดในบรรดาธาตุทั้งหมด ตรงกับข้อใด?",
-		"choices": [
-			"ทองแดง",
-			"ทองคำ",
-			"เงิน"
-		],
-		"correctIndex": 2,
-		"explanation": "เงิน (Ag) มีการนำไฟฟ้าสูงที่สุด ตามด้วยทองแดงและทองคำ",
-		"difficulty": "normal"
-	},
-	{
-		"id": 3038,
-		"category": "science_tech",
-		"question": "สมบัติทางเคมีของ ธาตุที่มีจุดหลอมเหลวสูงที่สุดในบรรดาโลหะ (ใช้ทำไส้หลอดไฟ) ตรงกับข้อใด?",
-		"choices": [
-			"แพลทินัม",
-			"ทังสเตน",
-			"ไทเทเนียม"
-		],
-		"correctIndex": 1,
-		"explanation": "ทังสเตน (W) หลอมเหลวที่ 3,422 องศาเซลเซียส",
-		"difficulty": "normal"
-	},
-	{
-		"id": 3039,
-		"category": "science_tech",
-		"question": "สมบัติทางเคมีของ ก๊าซที่มีสัดส่วนมากที่สุดในชั้นบรรยากาศของโลก (ประมาณ 78%) ตรงกับข้อใด?",
-		"choices": [
-			"ไนโตรเจน",
-			"ออกซิเจน",
-			"คาร์บอนไดออกไซด์"
-		],
-		"correctIndex": 0,
-		"explanation": "ไนโตรเจน (N2) คิดเป็น 78% ของบรรยากาศ",
-		"difficulty": "normal"
-	},
-	{
-		"id": 3040,
-		"category": "science_tech",
-		"question": "สมบัติทางเคมีของ แร่ธาตุที่มีความแข็งมากที่สุดตามสเกลโมห์ส (ระดับ 10) ตรงกับข้อใด?",
-		"choices": [
-			"คอรันดัม",
-			"โทแพซ",
-			"เพชร"
-		],
-		"correctIndex": 2,
-		"explanation": "เพชรเป็นอัญมณีคาร์บอนที่มีโครงสร้างผลึกแข็งแกร่งที่สุด",
-		"difficulty": "normal"
-	},
-	{
-		"id": 3041,
-		"category": "science_tech",
-		"question": "ข้อมูลดาราศาสตร์ของ ดาวเคราะห์ที่มีขนาดใหญ่ที่สุดในระบบสุริยะ คืออะไร?",
-		"choices": [
-			"ดาวเนปจูน",
-			"ดาวพฤหัสบดี",
-			"ดาวเสาร์"
-		],
-		"correctIndex": 1,
-		"explanation": "ดาวพฤหัสบดีมีมวลมากกว่าดาวเคราะห์อื่นรวมกัน 2.5 เท่า",
-		"difficulty": "normal"
-	},
-	{
-		"id": 3042,
-		"category": "science_tech",
-		"question": "ข้อมูลดาราศาสตร์ของ ดาวเคราะห์ที่มีวงแหวนโดดเด่นและสวยงามที่สุด คืออะไร?",
-		"choices": [
-			"ดาวเสาร์",
-			"ดาวยูเรนัส",
-			"ดาวเนปจูน"
-		],
-		"correctIndex": 0,
-		"explanation": "วงแหวนของดาวเสาร์ประกอบด้วยก้อนน้ำแข็งและหิน",
-		"difficulty": "normal"
-	},
-	{
-		"id": 3043,
-		"category": "science_tech",
-		"question": "ข้อมูลดาราศาสตร์ของ ดาวเคราะห์ที่อยู่ใกล้ดวงอาทิตย์มากที่สุด คืออะไร?",
-		"choices": [
-			"ดาวศุกร์",
-			"ดาวอังคาร",
-			"ดาวพุธ"
-		],
-		"correctIndex": 2,
-		"explanation": "ดาวพุธใช้เวลาโคจรรอบดวงอาทิตย์เพียง 88 วัน",
-		"difficulty": "normal"
-	},
-	{
-		"id": 3044,
-		"category": "science_tech",
-		"question": "ข้อมูลดาราศาสตร์ของ ดาวเคราะห์ที่มีอุณหภูมิพื้นผิวเฉลี่ยร้อนที่สุดในระบบสุริยะ คืออะไร?",
-		"choices": [
-			"ดาวอังคาร",
-			"ดาวศุกร์",
-			"ดาวพุธ"
-		],
-		"correctIndex": 1,
-		"explanation": "บรรยากาศก๊าซคาร์บอนไดออกไซด์หนาแน่นทำให้เกิดเรือนกระจกสุดขั้ว",
-		"difficulty": "normal"
-	},
-	{
-		"id": 3045,
-		"category": "science_tech",
-		"question": "ข้อมูลดาราศาสตร์ของ ดาวบริวาร (ดวงจันทร์) ที่มีขนาดใหญ่ที่สุดในระบบสุริยะ คืออะไร?",
-		"choices": [
-			"แกนีมีด",
-			"ไททัน",
-			"คัลลิสโต"
-		],
-		"correctIndex": 0,
-		"explanation": "แกนีมีด (ดวงจันทร์ของดาวพฤหัสบดี) มีขนาดใหญ่กว่าดาวพุธ",
-		"difficulty": "normal"
-	},
-	{
-		"id": 3046,
-		"category": "science_tech",
-		"question": "ข้อมูลดาราศาสตร์ของ ดวงจันทร์ดวงเดียวในระบบสุริยะที่มีชั้นบรรยากาศหนาแน่นและมีทะเลมีเทนเหลว คืออะไร?",
-		"choices": [
-			"ยูโรปา",
-			"เอนเซลาดัส",
-			"ไททัน"
-		],
-		"correctIndex": 2,
-		"explanation": "ไททันเป็นดาวบริวารของดาวเสาร์",
-		"difficulty": "normal"
-	},
-	{
-		"id": 3047,
-		"category": "science_tech",
-		"question": "ข้อมูลดาราศาสตร์ของ ภารกิจยานอวกาศลำแรกที่พามนุษย์ไปลงจอดบนพื้นผิวดวงจันทร์สำเร็จ คืออะไร?",
-		"choices": [
-			"เจมินี 4",
-			"อะพอลโล 11",
-			"อะพอลโล 13"
-		],
-		"correctIndex": 1,
-		"explanation": "นีล อาร์มสตรอง เหยียบดวงจันทร์ในปี 1969",
-		"difficulty": "normal"
-	},
-	{
-		"id": 3048,
-		"category": "science_tech",
-		"question": "ข้อมูลดาราศาสตร์ของ มนุษย์คนแรกที่เดินทางขึ้นสู่อวกาศ คืออะไร?",
-		"choices": [
-			"ยูริ กาการิน",
-			"นีล อาร์มสตรอง",
-			"จอห์น เกลนน์"
-		],
-		"correctIndex": 0,
-		"explanation": "ยูริ กาการิน นักบินอวกาศโซเวียตขึ้นสู่อวกาศในปี 1961 ด้วยยานวอสตอก 1",
-		"difficulty": "normal"
-	},
-	{
-		"id": 3049,
-		"category": "science_tech",
-		"question": "ข้อมูลดาราศาสตร์ของ กล้องโทรทรรศน์อวกาศอินฟราเรดฟอร์มยักษ์ที่ส่งขึ้นสู่อวกาศในวันคริสต์มาสปี 2021 คืออะไร?",
-		"choices": [
-			"ฮับเบิล",
-			"เคปเลอร์",
-			"เจมส์ เว็บบ์"
-		],
-		"correctIndex": 2,
-		"explanation": "JWST สังเกตการณ์เอกภพยุคแรกเริ่มด้วยกระจกเคลือบทองคำ",
-		"difficulty": "normal"
-	},
-	{
-		"id": 3050,
-		"category": "science_tech",
-		"question": "ข้อมูลดาราศาสตร์ของ ดาวฤกษ์ที่อยู่ใกล้ระบบสุริยะของเรามากที่สุด (ระยะทางราว 4.24 ปีแสง) คืออะไร?",
-		"choices": [
-			"อัลฟา เซนทอรี เอ",
-			"ปร็อกซิมา เซนทอรี",
-			"ซิริอุส"
-		],
-		"correctIndex": 1,
-		"explanation": "เป็นดาวแคระแดงในกลุ่มดาวคนครึ่งม้า",
-		"difficulty": "normal"
-	},
-	{
-		"id": 3051,
-		"category": "science_tech",
-		"question": "โครงสร้างทางชีววิทยาของ อวัยวะภายในที่มีขนาดใหญ่ที่สุดและมีน้ำหนักมากที่สุดในร่างกายมนุษย์ คืออะไร?",
-		"choices": [
-			"ตับ",
-			"ปอด",
-			"สมอง"
-		],
-		"correctIndex": 0,
-		"explanation": "ตับหนักประมาณ 1.5 กิโลกรัมและทำหน้าที่กรองสารพิษ",
-		"difficulty": "normal"
-	},
-	{
-		"id": 3052,
-		"category": "science_tech",
-		"question": "โครงสร้างทางชีววิทยาของ กระดูกที่ยาวและแข็งแรงที่สุดในร่างกายมนุษย์ คืออะไร?",
-		"choices": [
-			"กระดูกหน้าแข้ง",
-			"กระดูกต้นแขน",
-			"กระดูกต้นขา"
-		],
-		"correctIndex": 2,
-		"explanation": "กระดูกฟีเมอร์รับน้ำหนักตัวทั้งหมด",
-		"difficulty": "normal"
-	},
-	{
-		"id": 3053,
-		"category": "science_tech",
-		"question": "โครงสร้างทางชีววิทยาของ กระดูกที่มีขนาดเล็กที่สุดในร่างกายมนุษย์ คืออะไร?",
-		"choices": [
-			"กระดูกทั่ง",
-			"กระดูกโกลน",
-			"กระดูกค้อน"
-		],
-		"correctIndex": 1,
-		"explanation": "อยู่ในหูชั้นกลาง มีขนาดยาวเพียง 3 มิลลิเมตร",
-		"difficulty": "normal"
-	},
-	{
-		"id": 3054,
-		"category": "science_tech",
-		"question": "โครงสร้างทางชีววิทยาของ เซลล์เม็ดเลือดที่ทำหน้าที่ขนส่งก๊าซออกซิเจนไปยังเซลล์ต่างๆ คืออะไร?",
-		"choices": [
-			"เม็ดเลือดแดง",
-			"เม็ดเลือดขาว",
-			"เกล็ดเลือด"
-		],
-		"correctIndex": 0,
-		"explanation": "มีฮีโมโกลบินเป็นโปรตีนจับออกซิเจน",
-		"difficulty": "normal"
-	},
-	{
-		"id": 3055,
-		"category": "science_tech",
-		"question": "โครงสร้างทางชีววิทยาของ เซลล์เม็ดเลือดหรือส่วนประกอบที่ทำหน้าที่ช่วยในการแข็งตัวของเลือดเมื่อเกิดบาดแผล คืออะไร?",
-		"choices": [
-			"เม็ดเลือดแดง",
-			"พลาสมา",
-			"เกล็ดเลือด"
-		],
-		"correctIndex": 2,
-		"explanation": "ช่วยสร้างลิ่มเลือดอุดรอยรั่ว",
-		"difficulty": "normal"
-	},
-	{
-		"id": 3056,
-		"category": "science_tech",
-		"question": "โครงสร้างทางชีววิทยาของ สารพันธุกรรมที่มีโครงสร้างเป็นเกลียวคู่ (Double Helix) คืออะไร?",
-		"choices": [
-			"โปรตีน",
-			"ดีเอ็นเอ",
-			"อาร์เอ็นเอ"
-		],
-		"correctIndex": 1,
-		"explanation": "วัตสันและคลิกค้นพบโครงสร้าง DNA ในปี 1953",
-		"difficulty": "normal"
-	},
-	{
-		"id": 3057,
-		"category": "science_tech",
-		"question": "โครงสร้างทางชีววิทยาของ ออร์แกเนลล์ในเซลล์ที่เปรียบเสมือน \"โรงไฟฟ้า\" ผลิตพลังงาน ATP ให้แก่เซลล์ คืออะไร?",
-		"choices": [
-			"ไมโทคอนเดรีย",
-			"ไรโบโซม",
-			"กอลจิบอดี"
-		],
-		"correctIndex": 0,
-		"explanation": "ทำหน้าที่หายใจระดับเซลล์",
-		"difficulty": "normal"
-	},
-	{
-		"id": 3058,
-		"category": "science_tech",
-		"question": "โครงสร้างทางชีววิทยาของ กระบวนการสังเคราะห์ด้วยแสงของพืชเกิดขึ้นที่ออร์แกเนลล์ใด คืออะไร?",
-		"choices": [
-			"ไมโทคอนเดรีย",
-			"แวคิวโอล",
-			"คลอโรพลาสต์"
-		],
-		"correctIndex": 2,
-		"explanation": "มีเม็ดสีคลอโรฟิลล์ดูดกลืนพลังงานแสง",
-		"difficulty": "normal"
-	},
-	{
-		"id": 3059,
-		"category": "science_tech",
-		"question": "โครงสร้างทางชีววิทยาของ ฮอร์โมนที่ควบคุมระดับน้ำตาลในเลือด สร้างจากตับอ่อน คืออะไร?",
-		"choices": [
-			"ไทรอกซิน",
-			"อินซูลิน",
-			"กลูคากอน"
-		],
-		"correctIndex": 1,
-		"explanation": "ช่วยนำน้ำตาลกลูโคสเข้าสู่เซลล์",
-		"difficulty": "normal"
-	},
-	{
-		"id": 3060,
-		"category": "science_tech",
-		"question": "โครงสร้างทางชีววิทยาของ ระบบภูมิคุ้มกันที่ต่อสู้กับสิ่งแปลกปลอมรูปตัว Y เรียกว่าอะไร คืออะไร?",
-		"choices": [
-			"แอนติบอดี",
-			"แอนติเจน",
-			"ฮิสตามีน"
-		],
-		"correctIndex": 0,
-		"explanation": "สร้างจากเซลล์บีลิมโฟไซต์",
-		"difficulty": "normal"
-	},
-	{
-		"id": 3061,
-		"category": "science_tech",
-		"question": "สมบัติทางเคมีของ ธาตุที่มีน้ำหนักเบาที่สุดและมีมากที่สุดในเอกภพ ตรงกับข้อใด?",
-		"choices": [
-			"ฮีเลียม",
-			"ลิเทียม",
-			"ไฮโดรเจน"
-		],
-		"correctIndex": 2,
-		"explanation": "ไฮโดรเจน (H) มีเลขอะตอม 1 คิดเป็น 75% ของมวลสารในเอกภพ",
-		"difficulty": "normal"
-	},
-	{
-		"id": 3062,
-		"category": "science_tech",
-		"question": "สมบัติทางเคมีของ ก๊าซเฉื่อยที่มีปริมาณมากที่สุดในชั้นบรรยากาศของโลก ตรงกับข้อใด?",
-		"choices": [
-			"นีออน",
-			"อาร์กอน",
-			"ฮีเลียม"
-		],
-		"correctIndex": 1,
-		"explanation": "อาร์กอน (Ar) คิดเป็นประมาณ 0.93% ของบรรยากาศโลก",
-		"difficulty": "normal"
-	},
-	{
-		"id": 3063,
-		"category": "science_tech",
-		"question": "สมบัติทางเคมีของ ธาตุโลหะที่มีสถานะเป็นของเหลวที่อุณหภูมิห้อง ตรงกับข้อใด?",
-		"choices": [
-			"ปรอท",
-			"แกลเลียม",
-			"โบรมีน"
-		],
-		"correctIndex": 0,
-		"explanation": "ปรอท (Hg) มีเลขอะตอม 80 เป็นโลหะของเหลว",
-		"difficulty": "normal"
-	},
-	{
-		"id": 3064,
-		"category": "science_tech",
-		"question": "สมบัติทางเคมีของ ธาตุอโลหะชนิดเดียวที่มีสถานะเป็นของเหลวที่อุณหภูมิห้อง ตรงกับข้อใด?",
-		"choices": [
-			"คลอรีน",
-			"ไอโอดีน",
-			"โบรมีน"
-		],
-		"correctIndex": 2,
-		"explanation": "โบรมีน (Br) เป็นของเหลวสีน้ำตาลแดง",
-		"difficulty": "normal"
-	},
-	{
-		"id": 3065,
-		"category": "science_tech",
-		"question": "สมบัติทางเคมีของ ธาตุที่มีความสามารถในการดึงดูดอิเล็กตรอน (Electronegativity) สูงที่สุด ตรงกับข้อใด?",
-		"choices": [
-			"ออกซิเจน",
-			"ฟลูออรีน",
-			"คลอรีน"
-		],
-		"correctIndex": 1,
-		"explanation": "ฟลูออรีน (F) มีค่า EN สูงสุดที่ 3.98",
-		"difficulty": "normal"
-	},
-	{
-		"id": 3066,
-		"category": "science_tech",
-		"question": "สมบัติทางเคมีของ ธาตุที่เป็นพื้นฐานหลักของสารประกอบอินทรีย์และสิ่งมีชีวิต ตรงกับข้อใด?",
-		"choices": [
-			"คาร์บอน",
-			"ไนโตรเจน",
-			"ซิลิคอน"
-		],
-		"correctIndex": 0,
-		"explanation": "คาร์บอน (C) สร้างพันธะโคเวเลนต์ได้ถึง 4 พันธะ",
-		"difficulty": "normal"
-	},
-	{
-		"id": 3067,
-		"category": "science_tech",
-		"question": "สมบัติทางเคมีของ โลหะที่นำไฟฟ้าและความร้อนได้ดีที่สุดในบรรดาธาตุทั้งหมด ตรงกับข้อใด?",
-		"choices": [
-			"ทองแดง",
-			"ทองคำ",
-			"เงิน"
-		],
-		"correctIndex": 2,
-		"explanation": "เงิน (Ag) มีการนำไฟฟ้าสูงที่สุด ตามด้วยทองแดงและทองคำ",
-		"difficulty": "normal"
-	},
-	{
-		"id": 3068,
-		"category": "science_tech",
-		"question": "สมบัติทางเคมีของ ธาตุที่มีจุดหลอมเหลวสูงที่สุดในบรรดาโลหะ (ใช้ทำไส้หลอดไฟ) ตรงกับข้อใด?",
-		"choices": [
-			"แพลทินัม",
-			"ทังสเตน",
-			"ไทเทเนียม"
-		],
-		"correctIndex": 1,
-		"explanation": "ทังสเตน (W) หลอมเหลวที่ 3,422 องศาเซลเซียส",
-		"difficulty": "normal"
-	},
-	{
-		"id": 3069,
-		"category": "science_tech",
-		"question": "สมบัติทางเคมีของ ก๊าซที่มีสัดส่วนมากที่สุดในชั้นบรรยากาศของโลก (ประมาณ 78%) ตรงกับข้อใด?",
-		"choices": [
-			"ไนโตรเจน",
-			"ออกซิเจน",
-			"คาร์บอนไดออกไซด์"
-		],
-		"correctIndex": 0,
-		"explanation": "ไนโตรเจน (N2) คิดเป็น 78% ของบรรยากาศ",
-		"difficulty": "normal"
-	},
-	{
-		"id": 3070,
-		"category": "science_tech",
-		"question": "สมบัติทางเคมีของ แร่ธาตุที่มีความแข็งมากที่สุดตามสเกลโมห์ส (ระดับ 10) ตรงกับข้อใด?",
-		"choices": [
-			"คอรันดัม",
-			"โทแพซ",
-			"เพชร"
-		],
-		"correctIndex": 2,
-		"explanation": "เพชรเป็นอัญมณีคาร์บอนที่มีโครงสร้างผลึกแข็งแกร่งที่สุด",
-		"difficulty": "normal"
-	},
-	{
-		"id": 3071,
-		"category": "science_tech",
-		"question": "ข้อมูลดาราศาสตร์ของ ดาวเคราะห์ที่มีขนาดใหญ่ที่สุดในระบบสุริยะ คืออะไร?",
-		"choices": [
-			"ดาวเนปจูน",
-			"ดาวพฤหัสบดี",
-			"ดาวเสาร์"
-		],
-		"correctIndex": 1,
-		"explanation": "ดาวพฤหัสบดีมีมวลมากกว่าดาวเคราะห์อื่นรวมกัน 2.5 เท่า",
-		"difficulty": "normal"
-	},
-	{
-		"id": 3072,
-		"category": "science_tech",
-		"question": "ข้อมูลดาราศาสตร์ของ ดาวเคราะห์ที่มีวงแหวนโดดเด่นและสวยงามที่สุด คืออะไร?",
-		"choices": [
-			"ดาวเสาร์",
-			"ดาวยูเรนัส",
-			"ดาวเนปจูน"
-		],
-		"correctIndex": 0,
-		"explanation": "วงแหวนของดาวเสาร์ประกอบด้วยก้อนน้ำแข็งและหิน",
-		"difficulty": "normal"
-	},
-	{
-		"id": 3073,
-		"category": "science_tech",
-		"question": "ข้อมูลดาราศาสตร์ของ ดาวเคราะห์ที่อยู่ใกล้ดวงอาทิตย์มากที่สุด คืออะไร?",
-		"choices": [
-			"ดาวศุกร์",
-			"ดาวอังคาร",
-			"ดาวพุธ"
-		],
-		"correctIndex": 2,
-		"explanation": "ดาวพุธใช้เวลาโคจรรอบดวงอาทิตย์เพียง 88 วัน",
-		"difficulty": "normal"
-	},
-	{
-		"id": 3074,
-		"category": "science_tech",
-		"question": "ข้อมูลดาราศาสตร์ของ ดาวเคราะห์ที่มีอุณหภูมิพื้นผิวเฉลี่ยร้อนที่สุดในระบบสุริยะ คืออะไร?",
-		"choices": [
-			"ดาวอังคาร",
-			"ดาวศุกร์",
-			"ดาวพุธ"
-		],
-		"correctIndex": 1,
-		"explanation": "บรรยากาศก๊าซคาร์บอนไดออกไซด์หนาแน่นทำให้เกิดเรือนกระจกสุดขั้ว",
-		"difficulty": "normal"
-	},
-	{
-		"id": 3075,
-		"category": "science_tech",
-		"question": "ข้อมูลดาราศาสตร์ของ ดาวบริวาร (ดวงจันทร์) ที่มีขนาดใหญ่ที่สุดในระบบสุริยะ คืออะไร?",
-		"choices": [
-			"แกนีมีด",
-			"ไททัน",
-			"คัลลิสโต"
-		],
-		"correctIndex": 0,
-		"explanation": "แกนีมีด (ดวงจันทร์ของดาวพฤหัสบดี) มีขนาดใหญ่กว่าดาวพุธ",
-		"difficulty": "normal"
-	},
-	{
-		"id": 3076,
-		"category": "science_tech",
-		"question": "ข้อมูลดาราศาสตร์ของ ดวงจันทร์ดวงเดียวในระบบสุริยะที่มีชั้นบรรยากาศหนาแน่นและมีทะเลมีเทนเหลว คืออะไร?",
-		"choices": [
-			"ยูโรปา",
-			"เอนเซลาดัส",
-			"ไททัน"
-		],
-		"correctIndex": 2,
-		"explanation": "ไททันเป็นดาวบริวารของดาวเสาร์",
-		"difficulty": "normal"
-	},
-	{
-		"id": 3077,
-		"category": "science_tech",
-		"question": "ข้อมูลดาราศาสตร์ของ ภารกิจยานอวกาศลำแรกที่พามนุษย์ไปลงจอดบนพื้นผิวดวงจันทร์สำเร็จ คืออะไร?",
-		"choices": [
-			"เจมินี 4",
-			"อะพอลโล 11",
-			"อะพอลโล 13"
-		],
-		"correctIndex": 1,
-		"explanation": "นีล อาร์มสตรอง เหยียบดวงจันทร์ในปี 1969",
-		"difficulty": "normal"
-	},
-	{
-		"id": 3078,
-		"category": "science_tech",
-		"question": "ข้อมูลดาราศาสตร์ของ มนุษย์คนแรกที่เดินทางขึ้นสู่อวกาศ คืออะไร?",
-		"choices": [
-			"ยูริ กาการิน",
-			"นีล อาร์มสตรอง",
-			"จอห์น เกลนน์"
-		],
-		"correctIndex": 0,
-		"explanation": "ยูริ กาการิน นักบินอวกาศโซเวียตขึ้นสู่อวกาศในปี 1961 ด้วยยานวอสตอก 1",
-		"difficulty": "normal"
-	},
-	{
-		"id": 3079,
-		"category": "science_tech",
-		"question": "ข้อมูลดาราศาสตร์ของ กล้องโทรทรรศน์อวกาศอินฟราเรดฟอร์มยักษ์ที่ส่งขึ้นสู่อวกาศในวันคริสต์มาสปี 2021 คืออะไร?",
-		"choices": [
-			"ฮับเบิล",
-			"เคปเลอร์",
-			"เจมส์ เว็บบ์"
-		],
-		"correctIndex": 2,
-		"explanation": "JWST สังเกตการณ์เอกภพยุคแรกเริ่มด้วยกระจกเคลือบทองคำ",
-		"difficulty": "normal"
-	},
-	{
-		"id": 3080,
-		"category": "science_tech",
-		"question": "ข้อมูลดาราศาสตร์ของ ดาวฤกษ์ที่อยู่ใกล้ระบบสุริยะของเรามากที่สุด (ระยะทางราว 4.24 ปีแสง) คืออะไร?",
-		"choices": [
-			"อัลฟา เซนทอรี เอ",
-			"ปร็อกซิมา เซนทอรี",
-			"ซิริอุส"
-		],
-		"correctIndex": 1,
-		"explanation": "เป็นดาวแคระแดงในกลุ่มดาวคนครึ่งม้า",
-		"difficulty": "normal"
-	},
-	{
-		"id": 3081,
-		"category": "science_tech",
-		"question": "โครงสร้างทางชีววิทยาของ อวัยวะภายในที่มีขนาดใหญ่ที่สุดและมีน้ำหนักมากที่สุดในร่างกายมนุษย์ คืออะไร?",
-		"choices": [
-			"ตับ",
-			"ปอด",
-			"สมอง"
-		],
-		"correctIndex": 0,
-		"explanation": "ตับหนักประมาณ 1.5 กิโลกรัมและทำหน้าที่กรองสารพิษ",
-		"difficulty": "normal"
-	},
-	{
-		"id": 3082,
-		"category": "science_tech",
-		"question": "โครงสร้างทางชีววิทยาของ กระดูกที่ยาวและแข็งแรงที่สุดในร่างกายมนุษย์ คืออะไร?",
-		"choices": [
-			"กระดูกหน้าแข้ง",
-			"กระดูกต้นแขน",
-			"กระดูกต้นขา"
-		],
-		"correctIndex": 2,
-		"explanation": "กระดูกฟีเมอร์รับน้ำหนักตัวทั้งหมด",
-		"difficulty": "normal"
-	},
-	{
-		"id": 3083,
-		"category": "science_tech",
-		"question": "โครงสร้างทางชีววิทยาของ กระดูกที่มีขนาดเล็กที่สุดในร่างกายมนุษย์ คืออะไร?",
-		"choices": [
-			"กระดูกทั่ง",
-			"กระดูกโกลน",
-			"กระดูกค้อน"
-		],
-		"correctIndex": 1,
-		"explanation": "อยู่ในหูชั้นกลาง มีขนาดยาวเพียง 3 มิลลิเมตร",
-		"difficulty": "normal"
-	},
-	{
-		"id": 3084,
-		"category": "science_tech",
-		"question": "โครงสร้างทางชีววิทยาของ เซลล์เม็ดเลือดที่ทำหน้าที่ขนส่งก๊าซออกซิเจนไปยังเซลล์ต่างๆ คืออะไร?",
-		"choices": [
-			"เม็ดเลือดแดง",
-			"เม็ดเลือดขาว",
-			"เกล็ดเลือด"
-		],
-		"correctIndex": 0,
-		"explanation": "มีฮีโมโกลบินเป็นโปรตีนจับออกซิเจน",
-		"difficulty": "normal"
-	},
-	{
-		"id": 3085,
-		"category": "science_tech",
-		"question": "โครงสร้างทางชีววิทยาของ เซลล์เม็ดเลือดหรือส่วนประกอบที่ทำหน้าที่ช่วยในการแข็งตัวของเลือดเมื่อเกิดบาดแผล คืออะไร?",
-		"choices": [
-			"เม็ดเลือดแดง",
-			"พลาสมา",
-			"เกล็ดเลือด"
-		],
-		"correctIndex": 2,
-		"explanation": "ช่วยสร้างลิ่มเลือดอุดรอยรั่ว",
-		"difficulty": "normal"
-	},
-	{
-		"id": 3086,
-		"category": "science_tech",
-		"question": "โครงสร้างทางชีววิทยาของ สารพันธุกรรมที่มีโครงสร้างเป็นเกลียวคู่ (Double Helix) คืออะไร?",
-		"choices": [
-			"โปรตีน",
-			"ดีเอ็นเอ",
-			"อาร์เอ็นเอ"
-		],
-		"correctIndex": 1,
-		"explanation": "วัตสันและคลิกค้นพบโครงสร้าง DNA ในปี 1953",
-		"difficulty": "normal"
-	},
-	{
-		"id": 3087,
-		"category": "science_tech",
-		"question": "โครงสร้างทางชีววิทยาของ ออร์แกเนลล์ในเซลล์ที่เปรียบเสมือน \"โรงไฟฟ้า\" ผลิตพลังงาน ATP ให้แก่เซลล์ คืออะไร?",
-		"choices": [
-			"ไมโทคอนเดรีย",
-			"ไรโบโซม",
-			"กอลจิบอดี"
-		],
-		"correctIndex": 0,
-		"explanation": "ทำหน้าที่หายใจระดับเซลล์",
-		"difficulty": "normal"
-	},
-	{
-		"id": 3088,
-		"category": "science_tech",
-		"question": "โครงสร้างทางชีววิทยาของ กระบวนการสังเคราะห์ด้วยแสงของพืชเกิดขึ้นที่ออร์แกเนลล์ใด คืออะไร?",
-		"choices": [
-			"ไมโทคอนเดรีย",
-			"แวคิวโอล",
-			"คลอโรพลาสต์"
-		],
-		"correctIndex": 2,
-		"explanation": "มีเม็ดสีคลอโรฟิลล์ดูดกลืนพลังงานแสง",
-		"difficulty": "normal"
-	},
-	{
-		"id": 3089,
-		"category": "science_tech",
-		"question": "โครงสร้างทางชีววิทยาของ ฮอร์โมนที่ควบคุมระดับน้ำตาลในเลือด สร้างจากตับอ่อน คืออะไร?",
-		"choices": [
-			"ไทรอกซิน",
-			"อินซูลิน",
-			"กลูคากอน"
-		],
-		"correctIndex": 1,
-		"explanation": "ช่วยนำน้ำตาลกลูโคสเข้าสู่เซลล์",
-		"difficulty": "normal"
-	},
-	{
-		"id": 3090,
-		"category": "science_tech",
-		"question": "โครงสร้างทางชีววิทยาของ ระบบภูมิคุ้มกันที่ต่อสู้กับสิ่งแปลกปลอมรูปตัว Y เรียกว่าอะไร คืออะไร?",
-		"choices": [
-			"แอนติบอดี",
-			"แอนติเจน",
-			"ฮิสตามีน"
-		],
-		"correctIndex": 0,
-		"explanation": "สร้างจากเซลล์บีลิมโฟไซต์",
-		"difficulty": "normal"
-	},
-	{
-		"id": 3091,
-		"category": "science_tech",
-		"question": "สมบัติทางเคมีของ ธาตุที่มีน้ำหนักเบาที่สุดและมีมากที่สุดในเอกภพ ตรงกับข้อใด?",
-		"choices": [
-			"ฮีเลียม",
-			"ลิเทียม",
-			"ไฮโดรเจน"
-		],
-		"correctIndex": 2,
-		"explanation": "ไฮโดรเจน (H) มีเลขอะตอม 1 คิดเป็น 75% ของมวลสารในเอกภพ",
-		"difficulty": "normal"
-	},
-	{
-		"id": 3092,
-		"category": "science_tech",
-		"question": "สมบัติทางเคมีของ ก๊าซเฉื่อยที่มีปริมาณมากที่สุดในชั้นบรรยากาศของโลก ตรงกับข้อใด?",
-		"choices": [
-			"นีออน",
-			"อาร์กอน",
-			"ฮีเลียม"
-		],
-		"correctIndex": 1,
-		"explanation": "อาร์กอน (Ar) คิดเป็นประมาณ 0.93% ของบรรยากาศโลก",
-		"difficulty": "normal"
-	},
-	{
-		"id": 3093,
-		"category": "science_tech",
-		"question": "สมบัติทางเคมีของ ธาตุโลหะที่มีสถานะเป็นของเหลวที่อุณหภูมิห้อง ตรงกับข้อใด?",
-		"choices": [
-			"ปรอท",
-			"แกลเลียม",
-			"โบรมีน"
-		],
-		"correctIndex": 0,
-		"explanation": "ปรอท (Hg) มีเลขอะตอม 80 เป็นโลหะของเหลว",
-		"difficulty": "normal"
-	},
-	{
-		"id": 3094,
-		"category": "science_tech",
-		"question": "สมบัติทางเคมีของ ธาตุอโลหะชนิดเดียวที่มีสถานะเป็นของเหลวที่อุณหภูมิห้อง ตรงกับข้อใด?",
-		"choices": [
-			"คลอรีน",
-			"ไอโอดีน",
-			"โบรมีน"
-		],
-		"correctIndex": 2,
-		"explanation": "โบรมีน (Br) เป็นของเหลวสีน้ำตาลแดง",
-		"difficulty": "normal"
-	},
-	{
-		"id": 3095,
-		"category": "science_tech",
-		"question": "สมบัติทางเคมีของ ธาตุที่มีความสามารถในการดึงดูดอิเล็กตรอน (Electronegativity) สูงที่สุด ตรงกับข้อใด?",
-		"choices": [
-			"ออกซิเจน",
-			"ฟลูออรีน",
-			"คลอรีน"
-		],
-		"correctIndex": 1,
-		"explanation": "ฟลูออรีน (F) มีค่า EN สูงสุดที่ 3.98",
-		"difficulty": "normal"
-	},
-	{
-		"id": 3096,
-		"category": "science_tech",
-		"question": "สมบัติทางเคมีของ ธาตุที่เป็นพื้นฐานหลักของสารประกอบอินทรีย์และสิ่งมีชีวิต ตรงกับข้อใด?",
-		"choices": [
-			"คาร์บอน",
-			"ไนโตรเจน",
-			"ซิลิคอน"
-		],
-		"correctIndex": 0,
-		"explanation": "คาร์บอน (C) สร้างพันธะโคเวเลนต์ได้ถึง 4 พันธะ",
-		"difficulty": "normal"
-	},
-	{
-		"id": 3097,
-		"category": "science_tech",
-		"question": "สมบัติทางเคมีของ โลหะที่นำไฟฟ้าและความร้อนได้ดีที่สุดในบรรดาธาตุทั้งหมด ตรงกับข้อใด?",
-		"choices": [
-			"ทองแดง",
-			"ทองคำ",
-			"เงิน"
-		],
-		"correctIndex": 2,
-		"explanation": "เงิน (Ag) มีการนำไฟฟ้าสูงที่สุด ตามด้วยทองแดงและทองคำ",
-		"difficulty": "normal"
-	},
-	{
-		"id": 3098,
-		"category": "science_tech",
-		"question": "สมบัติทางเคมีของ ธาตุที่มีจุดหลอมเหลวสูงที่สุดในบรรดาโลหะ (ใช้ทำไส้หลอดไฟ) ตรงกับข้อใด?",
-		"choices": [
-			"แพลทินัม",
-			"ทังสเตน",
-			"ไทเทเนียม"
-		],
-		"correctIndex": 1,
-		"explanation": "ทังสเตน (W) หลอมเหลวที่ 3,422 องศาเซลเซียส",
-		"difficulty": "normal"
-	},
-	{
-		"id": 3099,
-		"category": "science_tech",
-		"question": "สมบัติทางเคมีของ ก๊าซที่มีสัดส่วนมากที่สุดในชั้นบรรยากาศของโลก (ประมาณ 78%) ตรงกับข้อใด?",
-		"choices": [
-			"ไนโตรเจน",
-			"ออกซิเจน",
-			"คาร์บอนไดออกไซด์"
-		],
-		"correctIndex": 0,
-		"explanation": "ไนโตรเจน (N2) คิดเป็น 78% ของบรรยากาศ",
-		"difficulty": "normal"
-	},
-	{
-		"id": 3100,
-		"category": "science_tech",
-		"question": "สมบัติทางเคมีของ แร่ธาตุที่มีความแข็งมากที่สุดตามสเกลโมห์ส (ระดับ 10) ตรงกับข้อใด?",
-		"choices": [
-			"คอรันดัม",
-			"โทแพซ",
-			"เพชร"
-		],
-		"correctIndex": 2,
-		"explanation": "เพชรเป็นอัญมณีคาร์บอนที่มีโครงสร้างผลึกแข็งแกร่งที่สุด",
 		"difficulty": "normal"
 	}
 ];

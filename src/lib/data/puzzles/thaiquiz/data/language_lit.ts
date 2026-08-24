@@ -2,7 +2,7 @@ import type { ThaiQuizItem } from '../types';
 
 export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 	{
-		"id": 501,
+		"id": 320,
 		"category": "language_lit",
 		"question": "สำนวนสุภาษิตไทยโบราณที่มักใช้เปรียบเปรยถึงคนที่เดิมทีมีฐานะยากจนหรือต่ำต้อย แต่พอได้รับลาภยศ เงินทอง หรือตำแหน่ง แล้วเกิดความเย่อหยิ่ง ทะนงตัว ลืมตัว และดูถูกผู้อื่น... ตรงกับสำนวนไทยว่าอะไร?",
 		"choices": [
@@ -23,7 +23,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 502,
+		"id": 321,
 		"category": "language_lit",
 		"question": "ในหมวดหมู่คำราชาศัพท์สำหรับพระมหากษัตริย์ เครื่องประดับทรงกลมสำหรับสวมใส่นิ้วมือ ซึ่งสามัญชนทั่วไปเรียกว่า “แหวน”... มีคำราชาศัพท์ว่าอย่างไร?",
 		"choices": [
@@ -45,7 +45,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 503,
+		"id": 322,
 		"category": "language_lit",
 		"question": "ในมหากาพย์วรรณคดีเรื่อง “พระอภัยมณี” ของมหากวีสุนทรภู่ กุมารน้อยนาม “สุดสาคร” ผู้เติบโตบนเกาะแก้วพิสดารและมีพระฤๅษีเป็นอาจารย์... มีมารดาเป็นตัวละครใด?",
 		"choices": [
@@ -68,7 +68,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 504,
+		"id": 323,
 		"category": "language_lit",
 		"question": "คำไวพจน์ภาษาไทยที่มีความหมายถึง “พระจันทร์” หรือดวงจันทร์ ซึ่งเกิดจากการประสมคำภาษาสันสกฤตระหว่างคำว่า \"ศศิ\" (กระต่าย/ดวงจันทร์) รวมกับ \"ธร\" (ผู้ทรงไว้)... คือคำว่าอะไร?",
 		"choices": [
@@ -90,7 +90,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 505,
+		"id": 324,
 		"category": "language_lit",
 		"question": "สัตว์ประหลาดในวรรณคดีเรื่องพระอภัยมณี มีหัวเป็นมังกร ตัวเป็นม้า หางเป็นนาค ลำตัวสีนิลดำสนิท ฟันเป็นเพชร เป็นพาหนะคู่ใจของสุดสาคร... สัตว์ตัวนี้มีชื่อว่าอะไร?",
 		"choices": [
@@ -112,7 +112,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 506,
+		"id": 325,
 		"category": "language_lit",
 		"question": "สำนวนไทย “ชักแม่น้ำทั้งห้า” ที่หมายถึงการพูดจาหว่านล้อมยกเหตุผลต่างๆ มาอ้างเพื่อให้ได้สิ่งที่ต้องการ... มีที่มาจากกัณฑ์ชูชกในวรรณคดีเรื่องใด?",
 		"choices": [
@@ -137,7 +137,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 507,
+		"id": 326,
 		"category": "language_lit",
 		"question": "วันสำคัญของชาติที่จัดขึ้นเพื่อรำลึกถึงวันที่ในหลวง รัชกาลที่ 9 เสด็จฯ ไปทรงร่วมอภิปรายปัญหาการใช้คำไทย ณ จุฬาลงกรณ์มหาวิทยาลัย ตรงกับวันที่ 29 กรกฎาคมของทุกปี... วันนี้คือวันอะไร?",
 		"choices": [
@@ -160,7 +160,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 508,
+		"id": 327,
 		"category": "language_lit",
 		"question": "ในมหากาพย์เรื่อง “รามเกียรติ์” พญาวานรเผือกผู้เป็นทหารเอกของพระราม มีฤทธิ์เดชหาวเป็นดาวเป็นเดือน และสามารถแปลงกายชุบชีวิตตนเองได้เมื่อต้องลมพัด... วานรตนนี้มีชื่อว่าอะไร?",
 		"choices": [
@@ -182,7 +182,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 509,
+		"id": 328,
 		"category": "language_lit",
 		"question": "วรรณคดีนิทานคำกลอนเรื่องแรกของไทยที่ประพันธ์โดยพระสุนทรโวหาร (สุนทรภู่) เล่าเรื่องราวกษัตริย์หนุ่มผู้ถูกเนรเทศและได้รับความช่วยเหลือจากนางกินรี... วรรณคดีเรื่องนี้คือเรื่องใด?",
 		"choices": [
@@ -204,7 +204,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 510,
+		"id": 329,
 		"category": "language_lit",
 		"question": "ในคำราชาศัพท์ พระบรมวงศานุวงศ์หรือพระมหากษัตริย์เมื่อทรง “นอนหลับ” หรือบรรทม... สามัญชนเรียกว่านอน แต่คำราชาศัพท์ใช้คำว่าอะไร?",
 		"choices": [
@@ -226,7 +226,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 511,
+		"id": 330,
 		"category": "language_lit",
 		"question": "บทพระราชนิพนธ์ในรัชกาลที่ 6 เรื่อง “มัทนะพาธา” ซึ่งได้รับยกย่องว่าเป็นยอดแห่งบทละครพูดคำฉันท์ เล่าตำนานความรักและความเจ็บปวดอันเป็นที่มาของดอกไม้ชนิดใด?",
 		"choices": [
@@ -249,7 +249,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 512,
+		"id": 331,
 		"category": "language_lit",
 		"question": "สำนวนไทยโบราณที่หมายถึงการทำงานใหญ่ที่ต้องลงทุนลงแรงหรือเสียค่าใช้จ่ายมหาศาล เพื่อแลกกับผลประโยชน์เพียงเล็กน้อยไม่คุ้มค่า... ตรงกับสำนวนว่าอะไร?",
 		"choices": [
@@ -270,7 +270,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 513,
+		"id": 332,
 		"category": "language_lit",
 		"question": "หนังสือเรียนภาษาไทยเล่มแรกของสยาม แต่งขึ้นในรัชสมัยสมเด็จพระนารายณ์มหาราช โดยพระมหาราชครู เพื่อสอนอักขรวิธี ฉันทลักษณ์ และคำศัพท์แก่ข้าราชบริพาร... หนังสือเล่มนี้มีชื่อว่าอะไร?",
 		"choices": [
@@ -293,7 +293,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 514,
+		"id": 333,
 		"category": "language_lit",
 		"question": "ในมหากาพย์รามเกียรติ์ พญายักษ์ผู้ครองกรุงลงกา มี 10 พักตร์ 20 กร เป็นผู้ลักพาตัวนางสีดาไปยังกรุงลงกา... ยักษ์ตนนี้มีชื่อว่าอะไร?",
 		"choices": [
@@ -316,7 +316,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 515,
+		"id": 334,
 		"category": "language_lit",
 		"question": "คำภาษาไทยโบราณว่า “กุณฑี” ซึ่งพบในวรรณคดีและตำราโบราณของไทย มีความหมายถึงสิ่งใด?",
 		"choices": [
@@ -339,7 +339,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 516,
+		"id": 335,
 		"category": "language_lit",
 		"question": "บทกวีนิพนธ์ประเภทนิราศเรื่องเอกของสุนทรภู่ ที่แต่งขึ้นขณะเดินทางไปนมัสการเจดีย์โบราณริมแม่น้ำเจ้าพระยาในจังหวัดพระนครศรีอยุธยา... นิราศเรื่องนี้มีชื่อว่าอะไร?",
 		"choices": [
@@ -361,7 +361,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 517,
+		"id": 336,
 		"category": "language_lit",
 		"question": "ในคำราชาศัพท์ “พระเนตร” หมายถึงดวงตา “พระกรรณ” หมายถึงหู... แล้วคำราชาศัพท์คำว่า “พระนาสิก” มีความหมายถึงอวัยวะใด?",
 		"choices": [
@@ -382,7 +382,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 518,
+		"id": 337,
 		"category": "language_lit",
 		"question": "วรรณคดีสโมสรในรัชกาลที่ 6 ยกย่องให้วรรณคดีเรื่องใดเป็น “ยอดแห่งกลอนเสภา” เล่าเรื่องราวรักสามเส้าของขุนแผน ขุนช้าง และนางวันทอง... วรรณคดีเรื่องนี้คือเรื่องใด?",
 		"choices": [
@@ -404,7 +404,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 519,
+		"id": 338,
 		"category": "language_lit",
 		"question": "สำนวนสุภาษิตไทยที่มีความหมายว่า “ยอมเสียสิ่งส่วนน้อยเพื่อรักษาสิ่งส่วนใหญ่ หรือยอมเสียสิ่งมีค่าน้อยกว่าเพื่อรักษาเกียรติยศชื่อเสียง”... ตรงกับสำนวนว่าอะไร?",
 		"choices": [
@@ -425,7 +425,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 520,
+		"id": 339,
 		"category": "language_lit",
 		"question": "ในอักษรสามหมู่ (ไตรยางศ์) ของภาษาไทย พยัญชนะไทย 44 ตัวถูกแบ่งออกเป็น 3 หมู่... พยัญชนะ ก, จ, ด, ต, บ, ป, อ, ฎ, ฏ จัดอยู่ในอักษรหมู่ใด?",
 		"choices": [
@@ -447,7 +447,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 521,
+		"id": 340,
 		"category": "language_lit",
 		"question": "วรรณคดีคำฉันท์สมัยอยุธยาตอนต้นที่ได้รับการยกย่องจากวรรณคดีสโมสรให้เป็น “ยอดแห่งลิลิต” เล่าโศกนาฏกรรมความรักของพระลอกับพระเพื่อนและพระแพง... ลิลิตเรื่องนี้คือเรื่องใด?",
 		"choices": [
@@ -470,7 +470,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 522,
+		"id": 341,
 		"category": "language_lit",
 		"question": "คำไวพจน์ภาษาไทยที่มีความหมายถึง “ช้าง” เช่น คชสาร, หัตถี, กุญชร, ไอยรา... คำว่า “ดุรงค์” หรือ “อัศวะ” หมายถึงสัตว์ชนิดใด?",
 		"choices": [
@@ -493,7 +493,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 523,
+		"id": 342,
 		"category": "language_lit",
 		"question": "ในเรื่องขุนช้างขุนแผน ดาบวิเศษคู่กายของขุนแผนที่ตีขึ้นจากเหล็กยอดเจดีย์ เหล็กสังขวานร และโลหะอาถรรพ์บริสุทธิ์... ดาบเล่มนี้มีชื่อว่าอะไร?",
 		"choices": [
@@ -515,7 +515,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 524,
+		"id": 343,
 		"category": "language_lit",
 		"question": "คำศัพท์ภาษาไทยที่ยืมมาจากภาษาเขมร มักมีลักษณะขึ้นต้นด้วย บัง-, บัน-, บำ- หรือใช้อักษรนำ... คำว่า “เสวย”, “โปรด”, “ดำเนิน” ล้วนเป็นคำยืมมาจากภาษาใด?",
 		"choices": [
@@ -538,7 +538,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 525,
+		"id": 344,
 		"category": "language_lit",
 		"question": "ในมหากาพย์รามเกียรติ์ น้องชายแท้ๆ ของทศกัณฐ์ผู้เชี่ยวชาญวิชาโหราศาสตร์ ยึดมั่นในความถูกต้องจนถูกเนรเทศและมาสวามิภักดิ์ต่อพระราม... ยักษ์ตนนี้มีชื่อว่าอะไร?",
 		"choices": [
@@ -561,7 +561,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 526,
+		"id": 345,
 		"category": "language_lit",
 		"question": "คำไวพจน์ภาษาไทยที่มีความหมายถึง “แผ่นดิน” หรือผืนพิภพ เช่น ธรณี, พสุธา, ปฐพี, ธาทรี... คำว่า “นภาลัย” หรือ “อัมพร” หมายถึงสิ่งใด?",
 		"choices": [
@@ -585,7 +585,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 527,
+		"id": 346,
 		"category": "language_lit",
 		"question": "ในคำราชาศัพท์ สำหรับพระมหากษัตริย์และพระบรมวงศานุวงศ์ เมื่อเสด็จสวรรคตหรือสิ้นพระชนม์ พระศพจะถูกอัญเชิญประดิษฐานในสิ่งใด?",
 		"choices": [
@@ -607,7 +607,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 528,
+		"id": 347,
 		"category": "language_lit",
 		"question": "วรรณคดีพุทธศาสนาชิ้นเอกสมัยสุโขทัย พระราชนิพนธ์โดยพระมหาธรรมราชาที่ 1 (พญาลิไทย) พรรณนาเรื่องสวรรค์ นรก และภพภูมิต่างๆ... วรรณคดีเรื่องนี้มีชื่อว่าอะไร?",
 		"choices": [
@@ -630,7 +630,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 529,
+		"id": 348,
 		"category": "language_lit",
 		"question": "สำนวนไทยที่มีความหมายว่า “ทำสิ่งที่ถูกต้องตามขนบธรรมเนียมประเพณีของท้องถิ่นหรือสังคมที่ตนเข้าไปอาศัยอยู่”... ตรงกับสำนวนว่าอะไร?",
 		"choices": [
@@ -652,7 +652,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 530,
+		"id": 349,
 		"category": "language_lit",
 		"question": "ในมหากาพย์รามเกียรติ์ โอรสของทศกัณฐ์กับนางมณโฑ ผู้มีฤทธิ์เดชกล้าหาญ เคยรบชนะพระอินทร์จนได้นามใหม่ว่าอย่างไร?",
 		"choices": [
@@ -674,7 +674,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 531,
+		"id": 350,
 		"category": "language_lit",
 		"question": "คำราชาศัพท์สำหรับเครื่องนุ่งห่มท่อนล่างของพระมหากษัตริย์ ซึ่งสามัญชนทั่วไปเรียกว่า “กางเกง”... มีคำราชาศัพท์ว่าอย่างไร?",
 		"choices": [
@@ -696,7 +696,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 532,
+		"id": 351,
 		"category": "language_lit",
 		"question": "วรรณคดีบทละครพระราชนิพนธ์ในรัชกาลที่ 2 เรื่อง “อิเหนา” ซึ่งดัดแปลงมาจากนิทานปันหยีของดินแดนใด?",
 		"choices": [
@@ -720,7 +720,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 533,
+		"id": 352,
 		"category": "language_lit",
 		"question": "สำนวนไทยโบราณที่หมายถึง “การกระทำที่แสดงออกว่าตนเก่งกาจ อวดรู้ต่อหน้าผู้ที่มีความรู้หรือประสบการณ์สูงกว่ามาก”... ตรงกับสำนวนว่าอะไร?",
 		"choices": [
@@ -743,7 +743,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 534,
+		"id": 353,
 		"category": "language_lit",
 		"question": "คำไวพจน์ภาษาไทยที่มีความหมายถึง “นก” เช่น ปักษา, วิหค, สกุณา, ทวิช... คำว่า “มัจฉา” หรือ “วารีชาติ” หมายถึงสัตว์ชนิดใด?",
 		"choices": [
@@ -766,7 +766,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 535,
+		"id": 354,
 		"category": "language_lit",
 		"question": "ในมหากาพย์รามเกียรติ์ พญานกผู้เสียสละชีวิตเข้าขัดขวางทศกัณฐ์ขณะลักพาตัวนางสีดา จนถูกทศกัณฐ์ถอดแหวนนางสีดาขว้างใส่ปีกหัก... พญานกนี้มีชื่อว่าอะไร?",
 		"choices": [
@@ -788,7 +788,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 536,
+		"id": 355,
 		"category": "language_lit",
 		"question": "วรรณคดีสโมสรในรัชกาลที่ 6 ยกย่องให้วรรณคดีร้อยกรองเรื่อง “ลิลิตตะเลงพ่าย” ผลงานของสมเด็จพระมหาสมณเจ้า กรมพระปรมานุชิตชิโนรส... เป็นยอดแห่งวรรณคดีประเภทใด?",
 		"choices": [
@@ -812,7 +812,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 537,
+		"id": 356,
 		"category": "language_lit",
 		"question": "ในหลักภาษาไทย คำสมาสที่มีการเชื่อมเสียงระหว่างพยางค์ท้ายของคำหน้ากับพยางค์แรกของคำหลัง โดยใช้หลักบาลี-สันสกฤต... เรียกว่ากระบวนการใด?",
 		"choices": [
@@ -834,7 +834,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 538,
+		"id": 357,
 		"category": "language_lit",
 		"question": "สำนวนไทย “เอาพิมเสนไปแลกกับเกลือ” มีความหมายเปรียบเปรยถึงเรื่องใด?",
 		"choices": [
@@ -857,7 +857,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 539,
+		"id": 358,
 		"category": "language_lit",
 		"question": "คำราชาศัพท์สำหรับ “แว่นตา” ของพระมหากษัตริย์... มีคำราชาศัพท์ว่าอย่างไร?",
 		"choices": [
@@ -878,7 +878,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 540,
+		"id": 359,
 		"category": "language_lit",
 		"question": "ในเรื่องสังข์ทอง พระสังข์ซ่อนรูปทองไว้ในสิ่งใดเพื่อพรางตัวจากผู้คน ก่อนจะถอดรูปออกมาร่ายมนตร์เรียกเนื้อเรียกปลา?",
 		"choices": [
@@ -902,7 +902,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 541,
+		"id": 360,
 		"category": "language_lit",
 		"question": "คำไวพจน์ภาษาไทยที่มีความหมายถึง “ผู้หญิง” หญิงงาม หรือสตรี เช่น นงคราญ, กัลยา, อนงค์, บังอร, วนิดา... คำว่า “สุวรรณ” หรือ “เหม” หมายถึงสิ่งใด?",
 		"choices": [
@@ -926,7 +926,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 542,
+		"id": 361,
 		"category": "language_lit",
 		"question": "สำนวนไทยโบราณที่หมายถึง “การทำงานสองอย่างที่เสี่ยงพร้อมๆ กัน และอาจทำให้ล้มเหลวไม่สำเร็จทั้งสองอย่าง”... ตรงกับสำนวนว่าอะไร?",
 		"choices": [
@@ -947,7 +947,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 543,
+		"id": 362,
 		"category": "language_lit",
 		"question": "ในมหากาพย์รามเกียรติ์ นายทหารวานรผู้เป็นบุตรของพญาพาลีกับนางมณโฑ ผู้มีความกล้าหาญไปหักยอดฉัตรทศกัณฐ์และม้วนหางทำเป็นแท่นนั่ง... วานรตนนี้มีชื่อว่าอะไร?",
 		"choices": [
@@ -969,7 +969,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 544,
+		"id": 363,
 		"category": "language_lit",
 		"question": "กาพย์เห่เรืออันไพเราะที่บรรยายชมขบวนเรือพระราชพิธี ชมปลา ชมไม้ และชมนาง ผลงานชิ้นเอกของกวีเอกยุคอยุธยาตอนปลาย... ประพันธ์โดยเจ้าฟ้าพระองค์ใด?",
 		"choices": [
@@ -993,7 +993,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 545,
+		"id": 364,
 		"category": "language_lit",
 		"question": "คำราชาศัพท์สำหรับ “กระจกส่องหน้า”... มีคำราชาศัพท์ว่าอย่างไร?",
 		"choices": [
@@ -1014,7 +1014,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 546,
+		"id": 365,
 		"category": "language_lit",
 		"question": "ในเรื่องขุนช้างขุนแผน ม้าคู่ใจของขุนแผนที่มีลักษณะหลังแอ่น หางแบน ตาแดงดั่งทับทิม ฝีเท้าเร็วปานสายลม... ม้าตัวนี้มีชื่อว่าอะไร?",
 		"choices": [
@@ -1036,7 +1036,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 547,
+		"id": 366,
 		"category": "language_lit",
 		"question": "สำนวนไทย “ไก่เห็นตีนงู งูเห็นนมไก่” มีความหมายถึงเรื่องใด?",
 		"choices": [
@@ -1059,7 +1059,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 548,
+		"id": 367,
 		"category": "language_lit",
 		"question": "วรรณคดีสามก๊กฉบับภาษาไทยที่ได้รับการยกย่องเป็นยอดแห่งความเรียงร้อยแก้ว แปลและเรียบเรียงในสมัยรัชกาลที่ 1 โดยแม่ทัพและกวีเอกท่านใด?",
 		"choices": [
@@ -1083,7 +1083,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 549,
+		"id": 368,
 		"category": "language_lit",
 		"question": "คำไวพจน์ภาษาไทยที่มีความหมายถึง “ป่า” เช่น พนา, อรัญ, ชัฏ, ดง, ไพร... คำว่า “สิงขร” หรือ “ศิขริน” หมายถึงสิ่งใด?",
 		"choices": [
@@ -1107,7 +1107,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 550,
+		"id": 369,
 		"category": "language_lit",
 		"question": "ในมาตราตัวสะกดภาษาไทย คำที่มีตัวสะกดตรงตามมาตรา แม่กก แม่กด แม่กบ และไม่มีตัวสะกดผสมสระเสียงสั้นในแม่ ก กา... จัดเป็นคำประเภทใดตามหลักภาษา?",
 		"choices": [
@@ -1128,7 +1128,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 551,
+		"id": 370,
 		"category": "language_lit",
 		"question": "สำนวนไทย “แกว่งเท้าหาเสี้ยน” มีความหมายตรงกับข้อใด?",
 		"choices": [
@@ -1151,7 +1151,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 552,
+		"id": 371,
 		"category": "language_lit",
 		"question": "ในมหากาพย์รามเกียรติ์ พญาวานรผู้ครองเมืองขีดขิน พี่ชายของสุครีพ ผู้ได้รับพรจากพระอิศวรว่าเมื่อสู้กับผู้ใดกำลังของศัตรูจะลดลงครึ่งหนึ่งแล้วมาเพิ่มให้ตนเอง... วานรตนนี้คือใคร?",
 		"choices": [
@@ -1173,7 +1173,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 553,
+		"id": 372,
 		"category": "language_lit",
 		"question": "คำราชาศัพท์สำหรับ “รองเท้า” ของพระมหากษัตริย์... มีคำราชาศัพท์ว่าอย่างไร?",
 		"choices": [
@@ -1194,7 +1194,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 554,
+		"id": 373,
 		"category": "language_lit",
 		"question": "วรรณคดีนิทานคำกลอนของสุนทรภู่ที่มีตัวละคร “พราหมณ์เกษันและพราหมณ์โมรา” เล่าเรื่องพระโอรสผู้พลัดพรากและมีนางยักษ์ผีเสื้อน้ำคอยตามรังควาน... วรรณคดีเรื่องนี้คือเรื่องใด?",
 		"choices": [
@@ -1216,7 +1216,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 555,
+		"id": 374,
 		"category": "language_lit",
 		"question": "สำนวนไทย “น้ำลดตอผุด” มักใช้ในบริบทใด?",
 		"choices": [
@@ -1239,7 +1239,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 556,
+		"id": 375,
 		"category": "language_lit",
 		"question": "คำไวพจน์ภาษาไทยที่มีความหมายถึง “เมือง” หรือราชธานี เช่น บุรี, ธานี, นคร, กรุง... คำว่า “มโน” หรือ “หทัย” หมายถึงสิ่งใด?",
 		"choices": [
@@ -1263,7 +1263,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 557,
+		"id": 376,
 		"category": "language_lit",
 		"question": "ในเรื่องรามเกียรติ์ ภูเขาศักดิ์สิทธิ์อันเป็นที่ประทับของพระอิศวรและเหล่าทวยเทพ ซึ่งท้าวทศกัณฐ์เคยใช้มือโยกจนภูเขาเอียง... ภูเขานี้มีชื่อว่าอะไร?",
 		"choices": [
@@ -1285,7 +1285,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 558,
+		"id": 377,
 		"category": "language_lit",
 		"question": "คำว่า “สวรรคต” เป็นคำกริยาราชาศัพท์ที่ใช้แก่บุคคลในระดับชั้นใด?",
 		"choices": [
@@ -1308,7 +1308,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 559,
+		"id": 378,
 		"category": "language_lit",
 		"question": "วรรณคดีคำฉันท์สมัยอยุธยาเรื่อง “สมุทรโฆษคำฉันท์” แต่งขึ้นเพื่อใช้เล่นในมหรสพประเภทใดเป็นหลัก?",
 		"choices": [
@@ -1331,7 +1331,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 560,
+		"id": 379,
 		"category": "language_lit",
 		"question": "สำนวนไทย “ชี้นกเป็นนก ชี้ไม้เป็นไม้” มีความหมายตรงกับข้อใด?",
 		"choices": [
@@ -1354,7 +1354,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 561,
+		"id": 380,
 		"category": "language_lit",
 		"question": "ในมหากาพย์รามเกียรติ์ พญาวานรผู้มีร่างกายสีเขียวมรกต เป็นน้องชายของพาลีและเป็นเสนาบดีคุมกองทัพวานรช่วยพระราม... วานรตนนี้คือใคร?",
 		"choices": [
@@ -1376,7 +1376,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 562,
+		"id": 381,
 		"category": "language_lit",
 		"question": "คำราชาศัพท์สำหรับ “จดหมาย” หรือหนังสือราชการของพระมหากษัตริย์... มีคำราชาศัพท์ว่าอย่างไร?",
 		"choices": [
@@ -1398,7 +1398,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 563,
+		"id": 382,
 		"category": "language_lit",
 		"question": "กวีนิพนธ์คำสอนที่จารึกบนแผ่นหินอ่อนรอบพระอุโบสถวัดพระเชตุพนวิมลมังคลาราม (วัดโพธิ์) ในสมัยรัชกาลที่ 3 สั่งสอนจริยธรรมและการปฏิบัติตน... คือโคลงเรื่องใด?",
 		"choices": [
@@ -1421,7 +1421,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 564,
+		"id": 383,
 		"category": "language_lit",
 		"question": "สำนวนไทย “ลิงได้แก้ว” มักใช้คู่กับสำนวน “แมลงปอใส่ดิ้ง” มีความหมายถึงคนประเภทใด?",
 		"choices": [
@@ -1444,7 +1444,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 565,
+		"id": 384,
 		"category": "language_lit",
 		"question": "คำไวพจน์ภาษาไทยที่มีความหมายถึง “ดอกไม้” เช่น ผกา, มาลี, บุปผา, สุมาลี, บุษบา... คำว่า “โกมุท” หรือ “ปทุม” หมายถึงดอกไม้ชนิดใดโดยเฉพาะ?",
 		"choices": [
@@ -1468,7 +1468,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 566,
+		"id": 385,
 		"category": "language_lit",
 		"question": "ในวรรณคดีเรื่อง “มหาเวสสันดรชาดก” กัณฑ์ที่มีความยาวที่สุดและถือเป็นยอดแห่งบทพรรณนาความเศร้าโศกเมื่อพระนางมัทรีออกตามหาพระกุมาร... คือกัณฑ์ใด?",
 		"choices": [
@@ -1490,7 +1490,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 567,
+		"id": 386,
 		"category": "language_lit",
 		"question": "คำราชาศัพท์สำหรับ “ฟัน” ของพระมหากษัตริย์... มีคำราชาศัพท์ว่าอย่างไร?",
 		"choices": [
@@ -1512,7 +1512,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 568,
+		"id": 387,
 		"category": "language_lit",
 		"question": "ในเรื่องพระอภัยมณี เมืองผลึกอันรุ่งเรืองที่มีท้าวสิลราชเป็นเจ้าเมือง และมีพระธิดาผู้งดงามคือใคร?",
 		"choices": [
@@ -1534,7 +1534,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 569,
+		"id": 388,
 		"category": "language_lit",
 		"question": "สำนวนไทย “ปากหวานก้นเปรี้ยว” หมายถึงบุคคลที่มีลักษณะอย่างไร?",
 		"choices": [
@@ -1557,7 +1557,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 570,
+		"id": 389,
 		"category": "language_lit",
 		"question": "คำไวพจน์ภาษาไทยที่มีความหมายถึง “กษัตริย์” หรือพระราชา เช่น นฤบดี, ขัตติยะ, บพิตร, ภูวไนย... คำว่า “คนธรรพ์” หรือ “อมรินทร์” หมายถึงใคร?",
 		"choices": [
@@ -1580,7 +1580,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 571,
+		"id": 390,
 		"category": "language_lit",
 		"question": "ในบทละครเรื่อง “รามเกียรติ์” พญายักษ์ผู้ครองเมืองบาดาล มีกล้องยาสูบเวทมนตร์เป่ามนต์สะกดทัพพระรามและอุ้มพระรามไปขังไว้ในกรงศิลาใต้บาดาล... ยักษ์ตนนี้คือใคร?",
 		"choices": [
@@ -1602,7 +1602,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 572,
+		"id": 391,
 		"category": "language_lit",
 		"question": "คำราชาศัพท์สำหรับ “กิน” หรือรับประทานอาหารของพระมหากษัตริย์... มีคำราชาศัพท์ว่าอย่างไร?",
 		"choices": [
@@ -1624,7 +1624,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 573,
+		"id": 392,
 		"category": "language_lit",
 		"question": "วรรณคดีนิทานคำกลอนเรื่อง “กาพย์พระไชยสุริยา” ของสุนทรภู่ แต่งขึ้นโดยมีจุดประสงค์หลักเพื่อสิ่งใด?",
 		"choices": [
@@ -1648,7 +1648,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 574,
+		"id": 393,
 		"category": "language_lit",
 		"question": "สำนวนไทย “เอาหูไปนา เอาตาไปไร่” มีความหมายตรงกับข้อใด?",
 		"choices": [
@@ -1671,7 +1671,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 575,
+		"id": 394,
 		"category": "language_lit",
 		"question": "ในเรื่องขุนช้างขุนแผน หญิงงามผู้เป็นที่รักของทั้งขุนแผนและขุนช้าง จนถูกสมเด็จพระพันวษาลงทัณฑ์เนื่องจากไม่ยอมเลือกสามีคนใดคนหนึ่ง... นางมีชื่อว่าอะไร?",
 		"choices": [
@@ -1695,7 +1695,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 576,
+		"id": 395,
 		"category": "language_lit",
 		"question": "คำไวพจน์ภาษาไทยที่มีความหมายถึง “น้ำ” เช่น วารี, อุทก, ชลธาร, ธารา, คงคา... คำว่า “มรคา” หมายถึงสิ่งใด?",
 		"choices": [
@@ -1719,7 +1719,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 577,
+		"id": 396,
 		"category": "language_lit",
 		"question": "ในมหากาพย์รามเกียรติ์ น้องชายของทศกัณฐ์ผู้มีร่างกายสูงใหญ่เท่าขุนเขา มีนิสัยชอบนอนหลับเป็นเวลานานหลายเดือน และมีหอกโมกขศักดิ์เป็นอาวุธ... ยักษ์ตนนี้คือใคร?",
 		"choices": [
@@ -1741,7 +1741,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 578,
+		"id": 397,
 		"category": "language_lit",
 		"question": "คำราชาศัพท์สำหรับ “อาบน้ำ” ของพระมหากษัตริย์... มีคำราชาศัพท์ว่าอย่างไร?",
 		"choices": [
@@ -1764,7 +1764,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 579,
+		"id": 398,
 		"category": "language_lit",
 		"question": "วรรณคดีบทละครเรื่อง “เงาะป่า” พระราชนิพนธ์ในรัชกาลที่ 5 ใช้คำศัพท์และถ่ายทอดวิถีชีวิตของชนเผ่าพื้นเมืองใดในภาคใต้?",
 		"choices": [
@@ -1789,7 +1789,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 580,
+		"id": 399,
 		"category": "language_lit",
 		"question": "สำนวนไทย “วัวหายล้อมคอก” หมายถึงสถานการณ์ใด?",
 		"choices": [
@@ -1812,7 +1812,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 581,
+		"id": 400,
 		"category": "language_lit",
 		"question": "ในมหากาพย์รามเกียรติ์ ธนูวิเศษของพระรามที่มีอานุภาพทำลายล้างสูงสุด ยิงสังหารทศกัณฐ์และเหล่าอสูร... ศรเล่มนี้มีชื่อว่าอะไร?",
 		"choices": [
@@ -1834,7 +1834,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 582,
+		"id": 401,
 		"category": "language_lit",
 		"question": "คำราชาศัพท์สำหรับ “มือ” ของพระมหากษัตริย์... มีคำราชาศัพท์ว่าอย่างไร?",
 		"choices": [
@@ -1855,7 +1855,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 583,
+		"id": 402,
 		"category": "language_lit",
 		"question": "วรรณคดีร้อยกรองเรื่อง “กากีกลอนสุภาพ” ประพันธ์โดยเจ้าพระยาพระคลัง (หน) เล่าเรื่องหญิงงามผู้มีกลิ่นกายหอมดั่งดอกมณฑารพ ที่ถูกพญาครุฑพาตัวไปยังวิมานฉิมพลี... หญิงผู้นี้มีชื่อว่าอะไร?",
 		"choices": [
@@ -1877,7 +1877,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 584,
+		"id": 403,
 		"category": "language_lit",
 		"question": "สำนวนไทย “มือไม่พายเอาเท้าราน้ำ” มีความหมายตรงกับข้อใด?",
 		"choices": [
@@ -1900,7 +1900,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 585,
+		"id": 404,
 		"category": "language_lit",
 		"question": "คำไวพจน์ภาษาไทยที่มีความหมายถึง “ท้องทะเล” หรือมหาสมุทร เช่น สมุทร, สาคร, สินธุ, ชลาลัย... คำว่า “พนาลี” หรือ “ไพรวัน” หมายถึงสิ่งใด?",
 		"choices": [
@@ -1924,7 +1924,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 586,
+		"id": 405,
 		"category": "language_lit",
 		"question": "ในมหากาพย์รามเกียรติ์ วานรผู้มีฤทธิ์เดชทัดเทียมกับหนุมาน เกิดจากเหงื่อของพระอิศวรและเป็นบุตรบุญธรรมของท้าวมหาชมพู... วานรตนนี้คือใคร?",
 		"choices": [
@@ -1945,7 +1945,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 587,
+		"id": 406,
 		"category": "language_lit",
 		"question": "คำราชาศัพท์สำหรับ “ที่อยู่” หรือพระราชวังที่ประทับของพระมหากษัตริย์ เมื่อทรงประทับอยู่... คำกริยาใช้คำว่าอะไร?",
 		"choices": [
@@ -1967,7 +1967,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 588,
+		"id": 407,
 		"category": "language_lit",
 		"question": "วรรณคดีนิทานคำกลอนเรื่อง “สิงหไตรภพ” ของสุนทรภู่ พระเอกมีของวิเศษคือธนูทองคำและมีสหายคู่ใจเป็นเสือชื่อว่าอะไร?",
 		"choices": [
@@ -1989,7 +1989,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 589,
+		"id": 408,
 		"category": "language_lit",
 		"question": "สำนวนไทย “ขมิ้นกับปูน” ใช้เปรียบเทียบถึงคนสองคนที่มีลักษณะอย่างไรต่อกัน?",
 		"choices": [
@@ -2012,7 +2012,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 590,
+		"id": 409,
 		"category": "language_lit",
 		"question": "คำไวพจน์ภาษาไทยที่มีความหมายถึง “สวรรค์” เช่น ไตรทิพย์, สุราลัย, สุขาวดี, สวรรคาลัย... คำว่า “บาดาล” หรือ “นาคพิภพ” หมายถึงที่อยู่ของใคร?",
 		"choices": [
@@ -2035,7 +2035,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 591,
+		"id": 410,
 		"category": "language_lit",
 		"question": "ในมหากาพย์รามเกียรติ์ นางยักษ์ขี้อิจฉาผู้เป็นต้นเหตุแห่งมหาสงครามกรุงลงกา เนื่องจากไปหลงรักพระรามแล้วถูกพระลักษมณ์ลงทัณฑ์ตัดหูตัดจมูก... นางยักษ์นี้มีชื่อว่าอะไร?",
 		"choices": [
@@ -2057,7 +2057,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 592,
+		"id": 411,
 		"category": "language_lit",
 		"question": "คำราชาศัพท์สำหรับ “ใบหน้า” ของพระมหากษัตริย์... มีคำราชาศัพท์ว่าอย่างไร?",
 		"choices": [
@@ -2078,7 +2078,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 593,
+		"id": 412,
 		"category": "language_lit",
 		"question": "บทกวีคำกลอนสุภาษิตสอนหญิง ที่มีวรรคทองว่า “เป็นสาวแซ่แรกรุ่นสงวนศักดิ์ อย่าให้มัวหมองมลักระยำหนา”... ประพันธ์โดยกวีเอกท่านใด?",
 		"choices": [
@@ -2100,7 +2100,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 594,
+		"id": 413,
 		"category": "language_lit",
 		"question": "สำนวนไทย “ตำน้ำพริกละลายแม่น้ำ” มีความหมายตรงกับข้อใด?",
 		"choices": [
@@ -2123,7 +2123,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 595,
+		"id": 414,
 		"category": "language_lit",
 		"question": "คำไวพจน์ภาษาไทยที่มีความหมายถึง “พระพรหม” มหาเทพผู้สร้างโลกตามคติพราหมณ์-ฮินดู เช่น ธาดา, ประชาบดี, สหัมบดี... คำว่า “จตุรพักตร์” หมายถึงลักษณะใดของพระพรหม?",
 		"choices": [
@@ -2146,7 +2146,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 596,
+		"id": 415,
 		"category": "language_lit",
 		"question": "ในเรื่องรามเกียรติ์ พญาวานรผู้เป็นหมอยาประจำกองทัพพระราม คอยรักษาวานรที่บาดเจ็บและแนะให้ไปเก็บสมุนไพรบนยอดเขาสรรพยา... วานรหมอนี้คือใคร?",
 		"choices": [
@@ -2168,7 +2168,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 597,
+		"id": 416,
 		"category": "language_lit",
 		"question": "คำราชาศัพท์สำหรับ “เดิน” ของพระมหากษัตริย์... มีคำราชาศัพท์ว่าอย่างไร?",
 		"choices": [
@@ -2191,7 +2191,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 598,
+		"id": 417,
 		"category": "language_lit",
 		"question": "วรรณคดีร้อยกรองเรื่อง “มัทนะพาธา” พระราชนิพนธ์ในรัชกาลที่ 6 ใช้ฉันทลักษณ์ประเภทใดในการแต่ง?",
 		"choices": [
@@ -2214,7 +2214,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 599,
+		"id": 418,
 		"category": "language_lit",
 		"question": "สำนวนไทย “ไก่ได้พลอย” มีความหมายเปรียบเหมือนบุคคลใด?",
 		"choices": [
@@ -2237,7 +2237,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 600,
+		"id": 419,
 		"category": "language_lit",
 		"question": "ในหลักภาษาไทย อักษรควบไม่แท้ คือพยัญชนะที่ควบกับ ร แล้วไม่ออกเสียง ร หรือเปลี่ยนเสียงเป็น ซ... คำว่า “ทราย”, “ทรุดโทรม”, “อินทรี” พยัญชนะ ทร ออกเสียงเป็นเสียงใด?",
 		"choices": [
@@ -2260,31 +2260,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 601,
-		"category": "language_lit",
-		"question": "จังหวัดในภาคใต้ที่ติดกับทั้งอ่าวไทยและทะเลอันดามัน มีเทือกเขานครศรีธรรมราชทอดผ่าน และมีชื่อเดิมว่า \"ตามพรลิงก์\"... จังหวัดนี้คือจังหวัดใด?",
-		"choices": [
-			"สุราษฎร์ธานี",
-			"นครศรีธรรมราช",
-			"สงขลา",
-			"พัทลุง"
-		],
-		"correctIndex": 1,
-		"acceptableAnswers": [
-			"นครศรีธรรมราช",
-			"เมืองคอน",
-			"ตามพรลิงก์"
-		],
-		"explanation": "นครศรีธรรมราชเป็นศูนย์กลางอาณาจักรตามพรลิงก์โบราณและมีพระบรมธาตุเจดีย์",
-		"difficulty": "normal",
-		"tags": [
-			"ภาคใต้",
-			"นครศรีธรรมราช",
-			"ภูมิศาสตร์ไทย"
-		]
-	},
-	{
-		"id": 602,
+		"id": 420,
 		"category": "language_lit",
 		"question": "เกาะที่ใหญ่เป็นอันดับ 2 ของประเทศไทย ตั้งอยู่ในอ่าวไทยในเขตจังหวัดตราด มีภูมิประเทศเป็นภูเขาสูงสลับซับซ้อน... เกาะนี้คือเกาะใด?",
 		"choices": [
@@ -2307,31 +2283,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 603,
-		"category": "language_lit",
-		"question": "จังหวัดที่เป็นจุดเริ่มต้นของแม่น้ำเจ้าพระยา เกิดจากการบรรจบกันของแม่น้ำปิงและแม่น้ำน่านที่ปากน้ำโพ... จังหวัดนี้คือจังหวัดใด?",
-		"choices": [
-			"พิษณุโลก",
-			"นครสวรรค์",
-			"อุทัยธานี",
-			"ชัยนาท"
-		],
-		"correctIndex": 1,
-		"acceptableAnswers": [
-			"นครสวรรค์",
-			"ปากน้ำโพ",
-			"เมืองสี่แคว"
-		],
-		"explanation": "แม่น้ำปิง วัง ยม น่าน ไหลมารวมกันเป็นแม่น้ำเจ้าพระยาที่ตำบลปากน้ำโพ จังหวัดนครสวรรค์",
-		"difficulty": "easy",
-		"tags": [
-			"แม่น้ำเจ้าพระยา",
-			"นครสวรรค์",
-			"ภาคกลาง"
-		]
-	},
-	{
-		"id": 604,
+		"id": 421,
 		"category": "language_lit",
 		"question": "อุทยานแห่งชาติทางทะเลแห่งแรกของประเทศไทย ตั้งอยู่ในจังหวัดประจวบคีรีขันธ์ โดดเด่นด้วยเขาหินปูน ถ้ำพระยานคร และถ้ำไทร... อุทยานนี้คือที่ใด?",
 		"choices": [
@@ -2355,7 +2307,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 605,
+		"id": 422,
 		"category": "language_lit",
 		"question": "สำนวนไทยที่หมายถึง การทำความผิดร้ายแรงที่รู้กันทั่วแล้ว จะหาทางปกปิดอย่างไรก็ปิดไม่มิด... ตรงกับสำนวนใด?",
 		"choices": [
@@ -2377,7 +2329,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 606,
+		"id": 423,
 		"category": "language_lit",
 		"question": "สำนวนไทยที่หมายถึง การลงทุนลงแรงมากมายมหาศาลเพื่อทำงานเล็กๆ หรือได้ผลตอบแทนเพียงนิดเดียว... ตรงกับสำนวนใด?",
 		"choices": [
@@ -2398,7 +2350,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 607,
+		"id": 424,
 		"category": "language_lit",
 		"question": "สำนวนไทยที่หมายถึง ต่างฝ่ายต่างรู้ความลับหรือเล่ห์เหลี่ยมของกันและกันเป็นอย่างดี... ตรงกับสำนวนใด?",
 		"choices": [
@@ -2420,7 +2372,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 608,
+		"id": 425,
 		"category": "language_lit",
 		"question": "สำนวนไทยที่หมายถึง เมื่อหมดอำนาจวาสนาหรือความมั่งคั่ง ความชั่วร้ายและความผิดที่เคยซ่อนไว้ก็ปรากฏออกมา... ตรงกับสำนวนใด?",
 		"choices": [
@@ -2441,7 +2393,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 609,
+		"id": 426,
 		"category": "language_lit",
 		"question": "สำนวนไทยที่หมายถึง การมุ่งหวังอยากได้ทั้งสองสิ่งพร้อมๆ กันในเวลาเดียว จนในที่สุดอาจไม่ได้อะไรเลย... ตรงกับสำนวนใด?",
 		"choices": [
@@ -2462,7 +2414,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 610,
+		"id": 427,
 		"category": "language_lit",
 		"question": "สำนวนไทยที่หมายถึง เกิดเหตุการณ์เสียหายขึ้นแล้ว จึงค่อยคิดหามาตรการป้องกันแก้ไขในภายหลัง... ตรงกับสำนวนใด?",
 		"choices": [
@@ -2483,7 +2435,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 611,
+		"id": 428,
 		"category": "language_lit",
 		"question": "สำนวนไทยที่หมายถึง การไปสั่งสอนหรือแนะนำคนที่เขามีความรู้ความชำนาญในเรื่องนั้นดีอยู่แล้ว... ตรงกับสำนวนใด?",
 		"choices": [
@@ -2504,7 +2456,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 612,
+		"id": 429,
 		"category": "language_lit",
 		"question": "สำนวนไทยที่หมายถึง การนำของที่มีอยู่เกลื่อนกลาด หรือนำความรู้ไปอวดแสดงต่อผู้ที่เป็นเจ้าตำรับหรือผู้รู้ดีกว่า... ตรงกับสำนวนใด?",
 		"choices": [
@@ -2525,7 +2477,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 613,
+		"id": 430,
 		"category": "language_lit",
 		"question": "สำนวนไทยที่หมายถึง การปล่อยให้งานหรือหนี้สินคั่งค้างสะสมพอกพูนขึ้นเรื่อยๆ จนกลายเป็นภาระหนัก... ตรงกับสำนวนใด?",
 		"choices": [
@@ -2546,7 +2498,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 614,
+		"id": 431,
 		"category": "language_lit",
 		"question": "สำนวนไทยที่หมายถึง การที่ตนเองทำผิดพลาดหรือไม่ชำนาญเอง แต่กลับไปกล่าวโทษสิ่งอื่นหรือผู้อื่น... ตรงกับสำนวนใด?",
 		"choices": [
@@ -2567,7 +2519,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 615,
+		"id": 432,
 		"category": "language_lit",
 		"question": "สำนวนไทยที่หมายถึง การลงทุนหรือเสียทรัพย์สินไปเป็นจำนวนมาก แต่ได้ประโยชน์กลับคืนมาเพียงเล็กน้อยไม่คุ้มค่า... ตรงกับสำนวนใด?",
 		"choices": [
@@ -2588,7 +2540,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 616,
+		"id": 433,
 		"category": "language_lit",
 		"question": "สำนวนไทยที่หมายถึง การนำความลับหรือเรื่องไม่ดีงามภายในครอบครัวหรือหมู่คณะตนเองไปเปิดเผยให้คนภายนอกรับรู้... ตรงกับสำนวนใด?",
 		"choices": [
@@ -2609,7 +2561,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 617,
+		"id": 434,
 		"category": "language_lit",
 		"question": "สำนวนไทยที่หมายถึง การแสร้งทำเป็นไม่ได้ยินหรือไม่รู้ไม่เห็นในเรื่องที่เกิดขึ้น เพื่อไม่ให้ตนเองเดือดร้อน... ตรงกับสำนวนใด?",
 		"choices": [
@@ -2631,7 +2583,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 618,
+		"id": 435,
 		"category": "language_lit",
 		"question": "สำนวนไทยที่หมายถึง คนที่พูดจาไพเราะอ่อนหวานน่าฟัง แต่ในใจกลับคิดร้ายและไม่ซื่อตรง... ตรงกับสำนวนใด?",
 		"choices": [
@@ -2652,7 +2604,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 619,
+		"id": 436,
 		"category": "language_lit",
 		"question": "สำนวนไทยที่หมายถึง คนที่มีความรู้น้อยหรือโลกทรรศน์แคบ แต่อวดฉลาดคิดว่าตนเองรู้ทุกสิ่งทุกอย่าง... ตรงกับสำนวนใด?",
 		"choices": [
@@ -2674,7 +2626,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 620,
+		"id": 437,
 		"category": "language_lit",
 		"question": "สำนวนไทยที่หมายถึง คนที่ไม่ช่วยทำงานส่วนรวมแล้ว ยังทำตัวเกะกะขัดขวางให้งานล่าช้าลง... ตรงกับสำนวนใด?",
 		"choices": [
@@ -2695,7 +2647,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 621,
+		"id": 438,
 		"category": "language_lit",
 		"question": "สำนวนไทยที่หมายถึง เมื่อไปอยู่ในสังคมหรือสิ่งแวดล้อมใด ควรปฏิบัติตามขนบธรรมเนียมประเพณีของที่นั่น... ตรงกับสำนวนใด?",
 		"choices": [
@@ -2717,7 +2669,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 622,
+		"id": 439,
 		"category": "language_lit",
 		"question": "สำนวนไทยที่หมายถึง การพูดบอกใบ้หรือแนะแนวทางให้คนทำความผิดหรือแสวงหาประโยชน์ในทางที่ไม่ควร... ตรงกับสำนวนใด?",
 		"choices": [
@@ -2738,7 +2690,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 623,
+		"id": 440,
 		"category": "language_lit",
 		"question": "สำนวนไทยที่หมายถึง คนที่ได้รับอันตรายหรือความเดือดร้อนเพราะคำพูดที่ไม่ระมัดระวังของตนเอง... ตรงกับสำนวนใด?",
 		"choices": [
@@ -2759,7 +2711,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 624,
+		"id": 441,
 		"category": "language_lit",
 		"question": "สำนวนไทยที่หมายถึง การดูแลควบคุมคนที่อยู่ไม่นิ่งหรือซุกซนให้อยู่อย่างเป็นระเบียบได้ยากยิ่ง... ตรงกับสำนวนใด?",
 		"choices": [
@@ -2780,7 +2732,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 625,
+		"id": 442,
 		"category": "language_lit",
 		"question": "คำราชาศัพท์สำหรับพระมหากษัตริย์ที่หมายถึง 'ดวงตา'... คือคำว่าอะไร?",
 		"choices": [
@@ -2802,7 +2754,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 626,
+		"id": 443,
 		"category": "language_lit",
 		"question": "คำราชาศัพท์สำหรับพระมหากษัตริย์ที่หมายถึง 'หู'... คือคำว่าอะไร?",
 		"choices": [
@@ -2824,7 +2776,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 627,
+		"id": 444,
 		"category": "language_lit",
 		"question": "คำราชาศัพท์สำหรับพระมหากษัตริย์ที่หมายถึง 'จมูก'... คือคำว่าอะไร?",
 		"choices": [
@@ -2846,7 +2798,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 628,
+		"id": 445,
 		"category": "language_lit",
 		"question": "คำราชาศัพท์สำหรับพระมหากษัตริย์ที่หมายถึง 'ปาก' หรือ 'ริมฝีปาก'... คือคำว่าอะไร?",
 		"choices": [
@@ -2867,7 +2819,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 629,
+		"id": 446,
 		"category": "language_lit",
 		"question": "คำราชาศัพท์สำหรับพระมหากษัตริย์ที่หมายถึง 'มือ'... คือคำว่าอะไร?",
 		"choices": [
@@ -2889,7 +2841,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 630,
+		"id": 447,
 		"category": "language_lit",
 		"question": "คำราชาศัพท์สำหรับพระมหากษัตริย์ที่หมายถึง 'เท้า'... คือคำว่าอะไร?",
 		"choices": [
@@ -2911,7 +2863,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 631,
+		"id": 448,
 		"category": "language_lit",
 		"question": "คำราชาศัพท์สำหรับพระมหากษัตริย์ที่หมายถึง 'เส้นผม'... คือคำว่าอะไร?",
 		"choices": [
@@ -2933,7 +2885,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 632,
+		"id": 449,
 		"category": "language_lit",
 		"question": "คำราชาศัพท์สำหรับพระมหากษัตริย์ที่หมายถึง 'ฟัน'... คือคำว่าอะไร?",
 		"choices": [
@@ -2954,7 +2906,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 633,
+		"id": 450,
 		"category": "language_lit",
 		"question": "คำราชาศัพท์สำหรับพระมหากษัตริย์ที่หมายถึง 'ลิ้น'... คือคำว่าอะไร?",
 		"choices": [
@@ -2975,7 +2927,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 634,
+		"id": 451,
 		"category": "language_lit",
 		"question": "คำราชาศัพท์สำหรับพระมหากษัตริย์ที่หมายถึง 'หน้าผาก'... คือคำว่าอะไร?",
 		"choices": [
@@ -2996,7 +2948,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 635,
+		"id": 452,
 		"category": "language_lit",
 		"question": "คำราชาศัพท์สำหรับพระมหากษัตริย์ที่หมายถึง 'คิ้ว'... คือคำว่าอะไร?",
 		"choices": [
@@ -3017,7 +2969,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 636,
+		"id": 453,
 		"category": "language_lit",
 		"question": "คำราชาศัพท์สำหรับพระมหากษัตริย์ที่หมายถึง 'แก้ม'... คือคำว่าอะไร?",
 		"choices": [
@@ -3038,7 +2990,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 637,
+		"id": 454,
 		"category": "language_lit",
 		"question": "คำราชาศัพท์สำหรับพระมหากษัตริย์ที่หมายถึง 'คอ'... คือคำว่าอะไร?",
 		"choices": [
@@ -3059,7 +3011,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 638,
+		"id": 455,
 		"category": "language_lit",
 		"question": "คำราชาศัพท์สำหรับพระมหากษัตริย์ที่หมายถึง 'อก' หรือ 'หน้าอก'... คือคำว่าอะไร?",
 		"choices": [
@@ -3081,7 +3033,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 639,
+		"id": 456,
 		"category": "language_lit",
 		"question": "คำราชาศัพท์สำหรับพระมหากษัตริย์ที่หมายถึง 'ท้อง'... คือคำว่าอะไร?",
 		"choices": [
@@ -3102,7 +3054,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 640,
+		"id": 457,
 		"category": "language_lit",
 		"question": "คำราชาศัพท์สำหรับพระมหากษัตริย์ที่หมายถึง 'สะดือ'... คือคำว่าอะไร?",
 		"choices": [
@@ -3123,7 +3075,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 641,
+		"id": 458,
 		"category": "language_lit",
 		"question": "คำราชาศัพท์สำหรับพระมหากษัตริย์ที่หมายถึง 'เสื้อ' หรือ 'เครื่องแต่งกาย'... คือคำว่าอะไร?",
 		"choices": [
@@ -3144,7 +3096,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 642,
+		"id": 459,
 		"category": "language_lit",
 		"question": "คำราชาศัพท์สำหรับพระมหากษัตริย์ที่หมายถึง 'แว่นตา'... คือคำว่าอะไร?",
 		"choices": [
@@ -3165,7 +3117,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 643,
+		"id": 460,
 		"category": "language_lit",
 		"question": "คำราชาศัพท์สำหรับพระมหากษัตริย์ที่หมายถึง 'รองเท้า'... คือคำว่าอะไร?",
 		"choices": [
@@ -3186,7 +3138,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 644,
+		"id": 461,
 		"category": "language_lit",
 		"question": "คำราชาศัพท์สำหรับพระมหากษัตริย์ที่หมายถึง 'กางเกง'... คือคำว่าอะไร?",
 		"choices": [
@@ -3207,7 +3159,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 645,
+		"id": 462,
 		"category": "language_lit",
 		"question": "คำราชาศัพท์สำหรับพระมหากษัตริย์ที่หมายถึง 'แหวน'... คือคำว่าอะไร?",
 		"choices": [
@@ -3228,7 +3180,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 646,
+		"id": 463,
 		"category": "language_lit",
 		"question": "คำราชาศัพท์สำหรับพระมหากษัตริย์ที่หมายถึง 'ต่างหู'... คือคำว่าอะไร?",
 		"choices": [
@@ -3249,7 +3201,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 647,
+		"id": 464,
 		"category": "language_lit",
 		"question": "คำราชาศัพท์สำหรับพระมหากษัตริย์ที่หมายถึง 'หมวก'... คือคำว่าอะไร?",
 		"choices": [
@@ -3270,7 +3222,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 648,
+		"id": 465,
 		"category": "language_lit",
 		"question": "คำราชาศัพท์สำหรับพระมหากษัตริย์ที่หมายถึง 'จดหมาย' หรือหนังสือที่ทรงเขียนด้วยลายพระหัตถ์... คือคำว่าอะไร?",
 		"choices": [
@@ -3291,7 +3243,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 649,
+		"id": 466,
 		"category": "language_lit",
 		"question": "คำราชาศัพท์ที่หมายถึง จดหมายทางการทูตระหว่างประมุขแห่งรัฐหรือพระมหากษัตริย์ระหว่างประเทศ... คือคำว่าอะไร?",
 		"choices": [
@@ -3313,7 +3265,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 650,
+		"id": 467,
 		"category": "language_lit",
 		"question": "คำไวพจน์ภาษาไทยที่มีความหมายถึง 'พระอาทิตย์' เช่น ทิพากร, สุริยง, ไถง, ภาณุมาศ... คำว่า 'สุริยา' หมายถึงสิ่งใด?",
 		"choices": [
@@ -3336,7 +3288,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 651,
+		"id": 468,
 		"category": "language_lit",
 		"question": "คำไวพจน์ภาษาไทยที่มีความหมายถึง 'พระจันทร์' เช่น บุหลัน, แข, รัชนีกร, นิศากร, โสม... คำว่า 'ศศิธร' หมายถึงสิ่งใด?",
 		"choices": [
@@ -3358,7 +3310,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 652,
+		"id": 469,
 		"category": "language_lit",
 		"question": "คำไวพจน์ภาษาไทยที่มีความหมายถึง 'ท้องฟ้า' เช่น นภา, ทิฆัมพร, โพยม, เวหา... คำว่า 'อัมพร' หมายถึงสิ่งใด?",
 		"choices": [
@@ -3381,7 +3333,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 653,
+		"id": 470,
 		"category": "language_lit",
 		"question": "คำไวพจน์ภาษาไทยที่มีความหมายถึง 'ดอกไม้' เช่น ผกา, มาลี, มาลัย, บุปผชาติ, บุษบา, สุมาลี... คำว่า 'บุปผา' หมายถึงสิ่งใด?",
 		"choices": [
@@ -3404,7 +3356,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 654,
+		"id": 471,
 		"category": "language_lit",
 		"question": "คำไวพจน์ภาษาไทยที่มีความหมายถึง 'น้ำ' เช่น ชล, อาโป, อุทก, ชลาลัย, คงคา, สาคร... คำว่า 'วารี' หมายถึงสิ่งใด?",
 		"choices": [
@@ -3427,7 +3379,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 655,
+		"id": 472,
 		"category": "language_lit",
 		"question": "คำไวพจน์ภาษาไทยที่มีความหมายถึง 'ไฟ' เช่น เตโช, เพลิง, ชวาลา, ปาวก, บาปเคราะห์... คำว่า 'อัคคี' หมายถึงสิ่งใด?",
 		"choices": [
@@ -3449,7 +3401,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 656,
+		"id": 473,
 		"category": "language_lit",
 		"question": "คำไวพจน์ภาษาไทยที่มีความหมายถึง 'ป่า' หรือ 'ป่าไม้' เช่น พงพี, ไพร, ไพรวัน, อรัญ, ชัฏ, ดง... คำว่า 'พนาลัย' หมายถึงสิ่งใด?",
 		"choices": [
@@ -3472,7 +3424,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 657,
+		"id": 474,
 		"category": "language_lit",
 		"question": "คำไวพจน์ภาษาไทยที่มีความหมายถึง 'ช้าง' เช่น กุญชร, หัตถี, ไอยรา, ดำรี, คเชนทร์, หัสดิน... คำว่า 'คชสาร' หมายถึงสัตว์ชนิดใด?",
 		"choices": [
@@ -3495,7 +3447,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 658,
+		"id": 475,
 		"category": "language_lit",
 		"question": "คำไวพจน์ภาษาไทยที่มีความหมายถึง 'ม้า' เช่น พาชี, มโนมัย, สินธพ, อัศวะ, แผลง... คำว่า 'ดุรงค์' หมายถึงสัตว์ชนิดใด?",
 		"choices": [
@@ -3518,7 +3470,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 659,
+		"id": 476,
 		"category": "language_lit",
 		"question": "คำไวพจน์ภาษาไทยที่มีความหมายถึง 'ผู้หญิง' เช่น นงเยาว์, กานดา, ดรุณี, นารี, พธู, ยุพดี, บังอร... คำว่า 'กัลยา' หมายถึงสิ่งใด?",
 		"choices": [
@@ -3541,7 +3493,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 660,
+		"id": 477,
 		"category": "language_lit",
 		"question": "คำไวพจน์ภาษาไทยที่มีความหมายถึง 'ทองคำ' เช่น เหม, กนก, มาศ, กัญจนา, จามพูนท... คำว่า 'สุวรรณ' หมายถึงสิ่งใด?",
 		"choices": [
@@ -3564,7 +3516,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 661,
+		"id": 478,
 		"category": "language_lit",
 		"question": "คำไวพจน์ภาษาไทยที่มีความหมายถึง 'งู' หรือ 'พญานาค' เช่น นาคา, อสรพิษ, นาคินทร์, อุรคา... คำว่า 'ภุชงค์' หมายถึงสัตว์ชนิดใด?",
 		"choices": [
@@ -3587,7 +3539,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 662,
+		"id": 479,
 		"category": "language_lit",
 		"question": "วรรณคดีชิ้นเอกของสุนทรภู่ที่มีตัวละครเอกเป่าปี่สะกดทัพและสะกดวิญญาณ... วรรณคดีเรื่องนี้คือเรื่องใด?",
 		"choices": [
@@ -3608,7 +3560,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 663,
+		"id": 480,
 		"category": "language_lit",
 		"question": "ตัวละครในเรื่องพระอภัยมณี บุตรของพระอภัยมณีกับนางเงือก ผู้ขี่ม้านิลมังกรและมีไม้เท้ากายสิทธิ์... ตัวละครนี้คือใคร?",
 		"choices": [
@@ -3629,7 +3581,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 664,
+		"id": 481,
 		"category": "language_lit",
 		"question": "บุตรของพระอภัยมณีกับนางผีเสื้อสมุทร ผู้มีพละกำลังมหาศาลและช่วยบิดาหลบหนีออกจากถ้ำ... ตัวละครนี้คือใคร?",
 		"choices": [
@@ -3650,7 +3602,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 665,
+		"id": 482,
 		"category": "language_lit",
 		"question": "นางยักษ์ในวรรณคดีพระอภัยมณีที่ลักพาตัวพระอภัยมณีไปอยู่กินด้วยกันในถ้ำกลางทะเล... ตัวละครนี้คือใคร?",
 		"choices": [
@@ -3672,9 +3624,9 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 666,
+		"id": 483,
 		"category": "language_lit",
-		"question": "ตัวละครเอกในวรรณคดีขุนช้างขุนแผน ผู้มีวิชาอาคม ม้าสีหมอก ดาบฟ้าฟื้น และกุมารทอง... ตัวละครนี้คือใคร?",
+		"question": "ตัวละครเอกในวรรณคดีมหากาพย์พื้นบ้านเมืองสุพรรณ ผู้มีวิชาอาคม ม้าสีหมอก ดาบฟ้าฟื้น และกุมารทอง... ตัวละครนี้คือใคร?",
 		"choices": [
 			"ขุนแผน",
 			"ขุนช้าง",
@@ -3694,7 +3646,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 667,
+		"id": 484,
 		"category": "language_lit",
 		"question": "หญิงงามในวรรณคดีไทยที่เป็นที่แย่งชิงระหว่างขุนแผนกับขุนช้าง จนถูกตราหน้าว่าเป็น 'หญิงสองใจ'... เธอคือใคร?",
 		"choices": [
@@ -3718,7 +3670,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 668,
+		"id": 485,
 		"category": "language_lit",
 		"question": "พญาวานรเผือก ทหารเอกของพระราม มีฤทธิ์เดชหาวเป็นดาวเป็นเดือน กวัดแกว่งตรีเพชร... วานรนี้คือใคร?",
 		"choices": [
@@ -3739,7 +3691,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 669,
+		"id": 486,
 		"category": "language_lit",
 		"question": "พญายักษ์เจ้ากรุงลงกาในวรรณคดีรามเกียรติ์ ผู้มี 10 พักตร์ 20 กร ถอดดวงใจฝากไว้กับพระฤๅษีโคบุตร... ยักษ์ตนนี้คือใคร?",
 		"choices": [
@@ -3761,9 +3713,9 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 670,
+		"id": 487,
 		"category": "language_lit",
-		"question": "วรรณคดีพระราชนิพนธ์ในรัชกาลที่ 2 ที่มีคำกล่าวว่า 'ไม่เมาเหล้าแล้วแต่เรายังเมารัก' หรือ 'ว่าแต่เขาอิเหนาเป็นเอง'... วรรณคดีนี้คือเรื่องใด?",
+		"question": "วรรณคดีพระราชนิพนธ์ในรัชกาลที่ 2 ที่มีคำกล่าวว่า 'ไม่เมาเหล้าแล้วแต่เรายังเมารัก' หรือ 'ว่าแต่เขา...เป็นเอง'... วรรณคดีนี้คือเรื่องใด?",
 		"choices": [
 			"อิเหนา",
 			"ดาหลัง",
@@ -3782,7 +3734,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 671,
+		"id": 488,
 		"category": "language_lit",
 		"question": "วรรณคดีประเภทลิลิตชิ้นเอกสมัยอยุธยาตอนต้น เล่าเรื่องโศกนาฏกรรมความรักระหว่างพระลอกับพระเพื่อนพระแพง... วรรณคดีนี้คือเรื่องใด?",
 		"choices": [
@@ -3804,7 +3756,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 672,
+		"id": 489,
 		"category": "language_lit",
 		"question": "บทละครพูดคำฉันท์พระราชนิพนธ์ในรัชกาลที่ 6 เรื่อง 'ตำนานแห่งดอกกุหลาบ'... วรรณคดีนี้คือเรื่องใด?",
 		"choices": [
@@ -3825,7 +3777,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 673,
+		"id": 490,
 		"category": "language_lit",
 		"question": "วรรณกรรมร้อยแก้วพระนิพนธ์ของ กรมหมื่นพิทยาลงกรณ์ (น.ม.ส.) ที่ปีศาจเวตาลเล่านิทานลองปัญญาพระวิกรมาทิตย์... วรรณกรรมนี้คือเรื่องใด?",
 		"choices": [
@@ -3847,7 +3799,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 674,
+		"id": 491,
 		"category": "language_lit",
 		"question": "คำประพันธ์ประเภทร้อยกรองของไทยที่บังคับฉันทลักษณ์ 'เอก ๗ โท ๔' ในหนึ่งบท... ร้อยกรองนี้คือคำประพันธ์ชนิดใด?",
 		"choices": [
@@ -3869,7 +3821,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 675,
+		"id": 492,
 		"category": "language_lit",
 		"question": "คำประพันธ์ประเภทร้อยกรองที่วรรคหน้ามี ๕ คำ วรรคหลังมี ๖ คำ รวมบาทละ ๑๑ คำ... ร้อยกรองนี้คือคำประพันธ์ชนิดใด?",
 		"choices": [
@@ -3892,7 +3844,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 676,
+		"id": 493,
 		"category": "language_lit",
 		"question": "คำประพันธ์ประเภทร้อยกรองที่ ๑ บทมี ๓ วรรค มีจำนวนคำ ๖ - ๔ - ๖ รวม ๑๖ คำ... ร้อยกรองนี้คือคำประพันธ์ชนิดใด?",
 		"choices": [
@@ -3914,7 +3866,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 677,
+		"id": 494,
 		"category": "language_lit",
 		"question": "คำประพันธ์ประเภทร้อยกรองที่นิยมที่สุดในไทย มีวรรคละ ๗-๙ คำ หนึ่งบทมี ๔ วรรค (สดับ รับ รอง ส่ง)... คำประพันธ์นี้คืออะไร?",
 		"choices": [
@@ -3937,7 +3889,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 678,
+		"id": 495,
 		"category": "language_lit",
 		"question": "ในหลักไวยากรณ์ไทย คำที่ประสมด้วยสระเสียงยาวในแม่ ก กา หรือสะกดด้วยมาตรา กง กม เกย เกอว กน (นมยวง)... เรียกว่าคำอะไร?",
 		"choices": [
@@ -3958,7 +3910,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 679,
+		"id": 496,
 		"category": "language_lit",
 		"question": "ในหลักไวยากรณ์ไทย คำที่ประสมสระเสียงสั้นในแม่ ก กา หรือสะกดด้วยมาตรา กก กด กบ (กบด)... เรียกว่าคำอะไร?",
 		"choices": [
@@ -3979,7 +3931,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 680,
+		"id": 497,
 		"category": "language_lit",
 		"question": "ในระบบไตรยางศ์ (อักษรสามหมู่) พยัญชนะ ๙ ตัว ได้แก่ ก จ ด ต ฎ ฏ บ ป อ (ไก่จิกเด็กตายฯ)... จัดเป็นอักษรหมู่ใด?",
 		"choices": [
@@ -4000,7 +3952,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 681,
+		"id": 498,
 		"category": "language_lit",
 		"question": "ในระบบไตรยางศ์ พยัญชนะ ๑๑ ตัว ได้แก่ ข ฃ ฉ ฐ ถ ผ ฝ ศ ษ ส ห (ผีฝากถุงข้าวสารให้ฉัน)... จัดเป็นอักษรหมู่ใด?",
 		"choices": [
@@ -4021,7 +3973,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 682,
+		"id": 499,
 		"category": "language_lit",
 		"question": "การสร้างคำในภาษาไทยโดยการนำคำภาษาบาลีหรือสันสกฤตตั้งแต่ ๒ คำขึ้นไปมารวมกัน โดยแปลความหมายจากหลังมาหน้า... เรียกว่าการสร้างคำแบบใด?",
 		"choices": [
@@ -4043,7 +3995,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 683,
+		"id": 500,
 		"category": "language_lit",
 		"question": "การเชื่อมคำภาษาบาลี-สันสกฤตเข้าด้วยกันโดยมีการกลมกลืนเสียงสระหรือพยัญชนะตรงรอยต่อ เช่น มหา + อรรณพ = มหรรณพ... เรียกว่าการสร้างคำแบบใด?",
 		"choices": [
@@ -4065,7 +4017,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 684,
+		"id": 501,
 		"category": "language_lit",
 		"question": "สำนวนเปรียบเทียบคนสองคนที่ไม่ถูกกัน เข้ากันไม่ได้ อยู่ใกล้กันเมื่อใดเป็นต้องทะเลาะกัน... ตรงกับสำนวนใด?",
 		"choices": [
@@ -4086,7 +4038,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 685,
+		"id": 502,
 		"category": "language_lit",
 		"question": "สำนวนเปรียบเทียบหญิงชายที่มีความเหมาะสมกันอย่างยิ่ง ทั้งฐานะ รูปร่างหน้าตา และคุณสมบัติ... ตรงกับสำนวนใด?",
 		"choices": [
@@ -4107,7 +4059,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 686,
+		"id": 503,
 		"category": "language_lit",
 		"question": "สำนวนไทยที่หมายถึง การหาเรื่องเดือดร้อนใส่ตัวเองโดยไม่จำเป็น... ตรงกับสำนวนใด?",
 		"choices": [
@@ -4128,7 +4080,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 687,
+		"id": 504,
 		"category": "language_lit",
 		"question": "สำนวนไทยที่หมายถึง คนที่ได้สิ่งของมีค่ามาครอบครองแต่ไม่รู้คุณค่าของสิ่งนั้น... ตรงกับสำนวนใด?",
 		"choices": [
@@ -4149,7 +4101,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 688,
+		"id": 505,
 		"category": "language_lit",
 		"question": "สำนวนไทยที่หมายถึง คนที่ได้รับสิ่งของที่มีประโยชน์สำหรับผู้อื่น แต่ตนเองไม่สามารถนำมาใช้ประโยชน์ได้... ตรงกับสำนวนใด?",
 		"choices": [
@@ -4170,7 +4122,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 689,
+		"id": 506,
 		"category": "language_lit",
 		"question": "สำนวนไทยที่หมายถึง การได้รับสิ่งของที่ไม่เป็นประโยชน์แก่ตนเองเพราะไม่มีโอกาสได้ใช้... ตรงกับสำนวนใด?",
 		"choices": [
@@ -4191,7 +4143,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 690,
+		"id": 507,
 		"category": "language_lit",
 		"question": "สำนวนไทยที่หมายถึง การทำเรื่องราวที่สงบเรียบร้อยดีอยู่แล้วให้เกิดความวุ่นวายขึ้นมา... ตรงกับสำนวนใด?",
 		"choices": [
@@ -4212,7 +4164,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 691,
+		"id": 508,
 		"category": "language_lit",
 		"question": "สำนวนไทยที่หมายถึง การพยายามปัดความผิดหรือปัญหาให้พ้นตัว แต่ในที่สุดผลร้ายนั้นก็ย้อนกลับมาหาตนเอง... ตรงกับสำนวนใด?",
 		"choices": [
@@ -4233,7 +4185,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 692,
+		"id": 509,
 		"category": "language_lit",
 		"question": "สำนวนไทยที่หมายถึง การชักนำศัตรูหรือคนนอกเข้ามาก่อความเสียหายแก่พวกพ้องหรือครอบครัวตนเอง... ตรงกับสำนวนใด?",
 		"choices": [
@@ -4254,7 +4206,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 693,
+		"id": 510,
 		"category": "language_lit",
 		"question": "สำนวนไทยที่หมายถึง การพูดจาหว่านล้อมยกเหตุผลต่างๆ นานามาอ้างเพื่อขอร้องให้ได้ตามที่ตนต้องการ... ตรงกับสำนวนใด?",
 		"choices": [
@@ -4275,7 +4227,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 694,
+		"id": 511,
 		"category": "language_lit",
 		"question": "วรรณกรรมจีนอิงประวัติศาสตร์ที่แปลเป็นภาษาไทยในสมัยรัชกาลที่ 1 โดยมีเจ้าพระยาพระคลัง (หน) เป็นแม่กอง... วรรณกรรมนี้คือเรื่องใด?",
 		"choices": [
@@ -4296,9 +4248,9 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 695,
+		"id": 512,
 		"category": "language_lit",
-		"question": "วรรณกรรมมอญที่แปลเป็นภาษาไทยในสมัยรัชกาลที่ 1 เล่าเรื่องสงครามระหว่างพระเจ้าราชาธิราชกับพระเจ้าฝรั่งมังฆ้อง... วรรณกรรมนี้คือเรื่องใด?",
+		"question": "วรรณกรรมมอญที่แปลเป็นภาษาไทยในสมัยรัชกาลที่ 1 เล่าเรื่องสงครามระหว่างกษัตริย์หงสาวดีผู้ยิ่งใหญ่กับพระเจ้าฝรั่งมังฆ้อง... วรรณกรรมนี้คือเรื่องใด?",
 		"choices": [
 			"ราชาธิราช",
 			"สามก๊ก",
@@ -4317,7 +4269,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 696,
+		"id": 513,
 		"category": "language_lit",
 		"question": "บทประพันธ์ร้อยกรองประเภทกาพย์เห่เรือชิ้นเอก แต่งโดยเจ้าฟ้าธรรมาธิเบศร์ (เจ้าฟ้ากุ้ง) ในสมัยอยุธยาตอนปลาย... บทประพันธ์นี้คือเรื่องใด?",
 		"choices": [
@@ -4339,7 +4291,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 697,
+		"id": 514,
 		"category": "language_lit",
 		"question": "นิทานคำกาพย์ที่สุนทรภู่แต่งขึ้นเพื่อใช้เป็นแบบเรียนภาษาไทย สอนการสะกดคำตามมาตราแม่ ก กา ถึง เกย... นิทานคำกาพย์นี้คือเรื่องใด?",
 		"choices": [
@@ -4361,7 +4313,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 698,
+		"id": 515,
 		"category": "language_lit",
 		"question": "วรรณคดีประเภทลิลิตประวัติศาสตร์ แต่งโดยสมเด็จพระมหาสมณเจ้า กรมพระปรมานุชิตชิโนรส สรรเสริญพระนเรศวรมหาราช... วรรณคดีนี้คือเรื่องใด?",
 		"choices": [
@@ -4382,7 +4334,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 699,
+		"id": 516,
 		"category": "language_lit",
 		"question": "วรรณคดีประเภทนิราศคำโคลงชิ้นเอก แต่งโดยนายนรินทรธิเบศร์ (อิน) ขณะตามเสด็จไปรบที่เมืองถลาง... วรรณคดีนี้คือเรื่องใด?",
 		"choices": [
@@ -4403,7 +4355,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 700,
+		"id": 517,
 		"category": "language_lit",
 		"question": "แบบเรียนภาษาไทยเล่มแรกของสยาม แต่งขึ้นในสมัยสมเด็จพระนารายณ์มหาราช โดยพระโหราธิบดี... หนังสือเล่มนี้มีชื่อว่าอะไร?",
 		"choices": [
@@ -4424,7 +4376,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 701,
+		"id": 518,
 		"category": "language_lit",
 		"question": "โบราณวัตถุจารึกอักษรไทยลายสือไทยที่พระบาทสมเด็จพระจอมเกล้าเจ้าอยู่หัวทรงค้นพบ ณ เนินปราสาทเมืองเก่าสุโขทัย... โบราณวัตถุนี้คืออะไร?",
 		"choices": [
@@ -4447,7 +4399,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 702,
+		"id": 519,
 		"category": "language_lit",
 		"question": "วรรณคดีทางพระพุทธศาสนาเล่มแรกของไทย พระราชนิพนธ์โดยพญาลิไทย พรรณนาเรื่องนรก สวรรค์ และจักรวาลวิทยา... วรรณคดีนี้คือเรื่องใด?",
 		"choices": [
@@ -4469,7 +4421,7 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		]
 	},
 	{
-		"id": 703,
+		"id": 520,
 		"category": "language_lit",
 		"question": "วรรณคดีพุทธศาสนาเรื่องมหาเวสสันดรชาดก ๑๓ กัณฑ์ พระราชนิพนธ์ในสมัยสมเด็จพระบรมไตรโลกนาถ... วรรณคดีนี้คือเรื่องใด?",
 		"choices": [
@@ -4487,6540 +4439,6 @@ export const LANGUAGE_LIT_QUESTIONS: ThaiQuizItem[] = [
 		"tags": [
 			"วรรณคดีไทย",
 			"ประวัติศาสตร์"
-		]
-	},
-	{
-		"id": 704,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 1 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 1",
-			"หลักภาษาข้อที่ 1",
-			"วรรณคดีศึกษาข้อที่ 1",
-			"สำนวนโวหารข้อที่ 1"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 1"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำไวพจน์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 705,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 2 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 2",
-			"หลักภาษาข้อที่ 2",
-			"วรรณคดีศึกษาข้อที่ 2",
-			"สำนวนโวหารข้อที่ 2"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 2"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"สำนวนไทย",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 706,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 3 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 3",
-			"หลักภาษาข้อที่ 3",
-			"วรรณคดีศึกษาข้อที่ 3",
-			"สำนวนโวหารข้อที่ 3"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 3"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"วรรณคดี",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 707,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 4 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 4",
-			"หลักภาษาข้อที่ 4",
-			"วรรณคดีศึกษาข้อที่ 4",
-			"สำนวนโวหารข้อที่ 4"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 4"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"หลักภาษา",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 708,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 5 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 5",
-			"หลักภาษาข้อที่ 5",
-			"วรรณคดีศึกษาข้อที่ 5",
-			"สำนวนโวหารข้อที่ 5"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 5"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำราชาศัพท์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 709,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 6 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 6",
-			"หลักภาษาข้อที่ 6",
-			"วรรณคดีศึกษาข้อที่ 6",
-			"สำนวนโวหารข้อที่ 6"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 6"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำไวพจน์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 710,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 7 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 7",
-			"หลักภาษาข้อที่ 7",
-			"วรรณคดีศึกษาข้อที่ 7",
-			"สำนวนโวหารข้อที่ 7"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 7"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"สำนวนไทย",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 711,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 8 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 8",
-			"หลักภาษาข้อที่ 8",
-			"วรรณคดีศึกษาข้อที่ 8",
-			"สำนวนโวหารข้อที่ 8"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 8"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"วรรณคดี",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 712,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 9 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 9",
-			"หลักภาษาข้อที่ 9",
-			"วรรณคดีศึกษาข้อที่ 9",
-			"สำนวนโวหารข้อที่ 9"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 9"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"หลักภาษา",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 713,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 10 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 10",
-			"หลักภาษาข้อที่ 10",
-			"วรรณคดีศึกษาข้อที่ 10",
-			"สำนวนโวหารข้อที่ 10"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 10"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำราชาศัพท์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 714,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 11 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 11",
-			"หลักภาษาข้อที่ 11",
-			"วรรณคดีศึกษาข้อที่ 11",
-			"สำนวนโวหารข้อที่ 11"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 11"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำไวพจน์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 715,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 12 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 12",
-			"หลักภาษาข้อที่ 12",
-			"วรรณคดีศึกษาข้อที่ 12",
-			"สำนวนโวหารข้อที่ 12"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 12"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"สำนวนไทย",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 716,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 13 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 13",
-			"หลักภาษาข้อที่ 13",
-			"วรรณคดีศึกษาข้อที่ 13",
-			"สำนวนโวหารข้อที่ 13"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 13"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"วรรณคดี",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 717,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 14 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 14",
-			"หลักภาษาข้อที่ 14",
-			"วรรณคดีศึกษาข้อที่ 14",
-			"สำนวนโวหารข้อที่ 14"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 14"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"หลักภาษา",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 718,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 15 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 15",
-			"หลักภาษาข้อที่ 15",
-			"วรรณคดีศึกษาข้อที่ 15",
-			"สำนวนโวหารข้อที่ 15"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 15"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำราชาศัพท์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 719,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 16 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 16",
-			"หลักภาษาข้อที่ 16",
-			"วรรณคดีศึกษาข้อที่ 16",
-			"สำนวนโวหารข้อที่ 16"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 16"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำไวพจน์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 720,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 17 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 17",
-			"หลักภาษาข้อที่ 17",
-			"วรรณคดีศึกษาข้อที่ 17",
-			"สำนวนโวหารข้อที่ 17"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 17"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"สำนวนไทย",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 721,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 18 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 18",
-			"หลักภาษาข้อที่ 18",
-			"วรรณคดีศึกษาข้อที่ 18",
-			"สำนวนโวหารข้อที่ 18"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 18"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"วรรณคดี",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 722,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 19 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 19",
-			"หลักภาษาข้อที่ 19",
-			"วรรณคดีศึกษาข้อที่ 19",
-			"สำนวนโวหารข้อที่ 19"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 19"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"หลักภาษา",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 723,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 20 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 20",
-			"หลักภาษาข้อที่ 20",
-			"วรรณคดีศึกษาข้อที่ 20",
-			"สำนวนโวหารข้อที่ 20"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 20"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำราชาศัพท์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 724,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 21 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 21",
-			"หลักภาษาข้อที่ 21",
-			"วรรณคดีศึกษาข้อที่ 21",
-			"สำนวนโวหารข้อที่ 21"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 21"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำไวพจน์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 725,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 22 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 22",
-			"หลักภาษาข้อที่ 22",
-			"วรรณคดีศึกษาข้อที่ 22",
-			"สำนวนโวหารข้อที่ 22"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 22"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"สำนวนไทย",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 726,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 23 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 23",
-			"หลักภาษาข้อที่ 23",
-			"วรรณคดีศึกษาข้อที่ 23",
-			"สำนวนโวหารข้อที่ 23"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 23"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"วรรณคดี",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 727,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 24 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 24",
-			"หลักภาษาข้อที่ 24",
-			"วรรณคดีศึกษาข้อที่ 24",
-			"สำนวนโวหารข้อที่ 24"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 24"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"หลักภาษา",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 728,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 25 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 25",
-			"หลักภาษาข้อที่ 25",
-			"วรรณคดีศึกษาข้อที่ 25",
-			"สำนวนโวหารข้อที่ 25"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 25"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำราชาศัพท์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 729,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 26 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 26",
-			"หลักภาษาข้อที่ 26",
-			"วรรณคดีศึกษาข้อที่ 26",
-			"สำนวนโวหารข้อที่ 26"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 26"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำไวพจน์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 730,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 27 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 27",
-			"หลักภาษาข้อที่ 27",
-			"วรรณคดีศึกษาข้อที่ 27",
-			"สำนวนโวหารข้อที่ 27"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 27"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"สำนวนไทย",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 731,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 28 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 28",
-			"หลักภาษาข้อที่ 28",
-			"วรรณคดีศึกษาข้อที่ 28",
-			"สำนวนโวหารข้อที่ 28"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 28"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"วรรณคดี",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 732,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 29 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 29",
-			"หลักภาษาข้อที่ 29",
-			"วรรณคดีศึกษาข้อที่ 29",
-			"สำนวนโวหารข้อที่ 29"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 29"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"หลักภาษา",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 733,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 30 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 30",
-			"หลักภาษาข้อที่ 30",
-			"วรรณคดีศึกษาข้อที่ 30",
-			"สำนวนโวหารข้อที่ 30"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 30"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำราชาศัพท์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 734,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 31 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 31",
-			"หลักภาษาข้อที่ 31",
-			"วรรณคดีศึกษาข้อที่ 31",
-			"สำนวนโวหารข้อที่ 31"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 31"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำไวพจน์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 735,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 32 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 32",
-			"หลักภาษาข้อที่ 32",
-			"วรรณคดีศึกษาข้อที่ 32",
-			"สำนวนโวหารข้อที่ 32"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 32"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"สำนวนไทย",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 736,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 33 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 33",
-			"หลักภาษาข้อที่ 33",
-			"วรรณคดีศึกษาข้อที่ 33",
-			"สำนวนโวหารข้อที่ 33"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 33"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"วรรณคดี",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 737,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 34 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 34",
-			"หลักภาษาข้อที่ 34",
-			"วรรณคดีศึกษาข้อที่ 34",
-			"สำนวนโวหารข้อที่ 34"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 34"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"หลักภาษา",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 738,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 35 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 35",
-			"หลักภาษาข้อที่ 35",
-			"วรรณคดีศึกษาข้อที่ 35",
-			"สำนวนโวหารข้อที่ 35"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 35"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำราชาศัพท์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 739,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 36 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 36",
-			"หลักภาษาข้อที่ 36",
-			"วรรณคดีศึกษาข้อที่ 36",
-			"สำนวนโวหารข้อที่ 36"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 36"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำไวพจน์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 740,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 37 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 37",
-			"หลักภาษาข้อที่ 37",
-			"วรรณคดีศึกษาข้อที่ 37",
-			"สำนวนโวหารข้อที่ 37"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 37"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"สำนวนไทย",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 741,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 38 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 38",
-			"หลักภาษาข้อที่ 38",
-			"วรรณคดีศึกษาข้อที่ 38",
-			"สำนวนโวหารข้อที่ 38"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 38"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"วรรณคดี",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 742,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 39 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 39",
-			"หลักภาษาข้อที่ 39",
-			"วรรณคดีศึกษาข้อที่ 39",
-			"สำนวนโวหารข้อที่ 39"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 39"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"หลักภาษา",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 743,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 40 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 40",
-			"หลักภาษาข้อที่ 40",
-			"วรรณคดีศึกษาข้อที่ 40",
-			"สำนวนโวหารข้อที่ 40"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 40"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำราชาศัพท์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 744,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 41 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 41",
-			"หลักภาษาข้อที่ 41",
-			"วรรณคดีศึกษาข้อที่ 41",
-			"สำนวนโวหารข้อที่ 41"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 41"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำไวพจน์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 745,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 42 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 42",
-			"หลักภาษาข้อที่ 42",
-			"วรรณคดีศึกษาข้อที่ 42",
-			"สำนวนโวหารข้อที่ 42"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 42"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"สำนวนไทย",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 746,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 43 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 43",
-			"หลักภาษาข้อที่ 43",
-			"วรรณคดีศึกษาข้อที่ 43",
-			"สำนวนโวหารข้อที่ 43"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 43"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"วรรณคดี",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 747,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 44 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 44",
-			"หลักภาษาข้อที่ 44",
-			"วรรณคดีศึกษาข้อที่ 44",
-			"สำนวนโวหารข้อที่ 44"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 44"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"หลักภาษา",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 748,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 45 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 45",
-			"หลักภาษาข้อที่ 45",
-			"วรรณคดีศึกษาข้อที่ 45",
-			"สำนวนโวหารข้อที่ 45"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 45"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำราชาศัพท์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 749,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 46 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 46",
-			"หลักภาษาข้อที่ 46",
-			"วรรณคดีศึกษาข้อที่ 46",
-			"สำนวนโวหารข้อที่ 46"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 46"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำไวพจน์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 750,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 47 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 47",
-			"หลักภาษาข้อที่ 47",
-			"วรรณคดีศึกษาข้อที่ 47",
-			"สำนวนโวหารข้อที่ 47"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 47"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"สำนวนไทย",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 751,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 48 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 48",
-			"หลักภาษาข้อที่ 48",
-			"วรรณคดีศึกษาข้อที่ 48",
-			"สำนวนโวหารข้อที่ 48"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 48"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"วรรณคดี",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 752,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 49 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 49",
-			"หลักภาษาข้อที่ 49",
-			"วรรณคดีศึกษาข้อที่ 49",
-			"สำนวนโวหารข้อที่ 49"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 49"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"หลักภาษา",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 753,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 50 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 50",
-			"หลักภาษาข้อที่ 50",
-			"วรรณคดีศึกษาข้อที่ 50",
-			"สำนวนโวหารข้อที่ 50"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 50"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำราชาศัพท์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 754,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 51 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 51",
-			"หลักภาษาข้อที่ 51",
-			"วรรณคดีศึกษาข้อที่ 51",
-			"สำนวนโวหารข้อที่ 51"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 51"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำไวพจน์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 755,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 52 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 52",
-			"หลักภาษาข้อที่ 52",
-			"วรรณคดีศึกษาข้อที่ 52",
-			"สำนวนโวหารข้อที่ 52"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 52"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"สำนวนไทย",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 756,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 53 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 53",
-			"หลักภาษาข้อที่ 53",
-			"วรรณคดีศึกษาข้อที่ 53",
-			"สำนวนโวหารข้อที่ 53"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 53"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"วรรณคดี",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 757,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 54 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 54",
-			"หลักภาษาข้อที่ 54",
-			"วรรณคดีศึกษาข้อที่ 54",
-			"สำนวนโวหารข้อที่ 54"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 54"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"หลักภาษา",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 758,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 55 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 55",
-			"หลักภาษาข้อที่ 55",
-			"วรรณคดีศึกษาข้อที่ 55",
-			"สำนวนโวหารข้อที่ 55"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 55"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำราชาศัพท์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 759,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 56 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 56",
-			"หลักภาษาข้อที่ 56",
-			"วรรณคดีศึกษาข้อที่ 56",
-			"สำนวนโวหารข้อที่ 56"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 56"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำไวพจน์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 760,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 57 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 57",
-			"หลักภาษาข้อที่ 57",
-			"วรรณคดีศึกษาข้อที่ 57",
-			"สำนวนโวหารข้อที่ 57"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 57"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"สำนวนไทย",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 761,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 58 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 58",
-			"หลักภาษาข้อที่ 58",
-			"วรรณคดีศึกษาข้อที่ 58",
-			"สำนวนโวหารข้อที่ 58"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 58"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"วรรณคดี",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 762,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 59 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 59",
-			"หลักภาษาข้อที่ 59",
-			"วรรณคดีศึกษาข้อที่ 59",
-			"สำนวนโวหารข้อที่ 59"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 59"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"หลักภาษา",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 763,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 60 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 60",
-			"หลักภาษาข้อที่ 60",
-			"วรรณคดีศึกษาข้อที่ 60",
-			"สำนวนโวหารข้อที่ 60"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 60"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำราชาศัพท์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 764,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 61 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 61",
-			"หลักภาษาข้อที่ 61",
-			"วรรณคดีศึกษาข้อที่ 61",
-			"สำนวนโวหารข้อที่ 61"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 61"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำไวพจน์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 765,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 62 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 62",
-			"หลักภาษาข้อที่ 62",
-			"วรรณคดีศึกษาข้อที่ 62",
-			"สำนวนโวหารข้อที่ 62"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 62"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"สำนวนไทย",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 766,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 63 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 63",
-			"หลักภาษาข้อที่ 63",
-			"วรรณคดีศึกษาข้อที่ 63",
-			"สำนวนโวหารข้อที่ 63"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 63"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"วรรณคดี",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 767,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 64 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 64",
-			"หลักภาษาข้อที่ 64",
-			"วรรณคดีศึกษาข้อที่ 64",
-			"สำนวนโวหารข้อที่ 64"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 64"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"หลักภาษา",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 768,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 65 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 65",
-			"หลักภาษาข้อที่ 65",
-			"วรรณคดีศึกษาข้อที่ 65",
-			"สำนวนโวหารข้อที่ 65"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 65"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำราชาศัพท์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 769,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 66 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 66",
-			"หลักภาษาข้อที่ 66",
-			"วรรณคดีศึกษาข้อที่ 66",
-			"สำนวนโวหารข้อที่ 66"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 66"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำไวพจน์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 770,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 67 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 67",
-			"หลักภาษาข้อที่ 67",
-			"วรรณคดีศึกษาข้อที่ 67",
-			"สำนวนโวหารข้อที่ 67"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 67"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"สำนวนไทย",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 771,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 68 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 68",
-			"หลักภาษาข้อที่ 68",
-			"วรรณคดีศึกษาข้อที่ 68",
-			"สำนวนโวหารข้อที่ 68"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 68"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"วรรณคดี",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 772,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 69 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 69",
-			"หลักภาษาข้อที่ 69",
-			"วรรณคดีศึกษาข้อที่ 69",
-			"สำนวนโวหารข้อที่ 69"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 69"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"หลักภาษา",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 773,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 70 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 70",
-			"หลักภาษาข้อที่ 70",
-			"วรรณคดีศึกษาข้อที่ 70",
-			"สำนวนโวหารข้อที่ 70"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 70"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำราชาศัพท์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 774,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 71 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 71",
-			"หลักภาษาข้อที่ 71",
-			"วรรณคดีศึกษาข้อที่ 71",
-			"สำนวนโวหารข้อที่ 71"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 71"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำไวพจน์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 775,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 72 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 72",
-			"หลักภาษาข้อที่ 72",
-			"วรรณคดีศึกษาข้อที่ 72",
-			"สำนวนโวหารข้อที่ 72"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 72"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"สำนวนไทย",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 776,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 73 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 73",
-			"หลักภาษาข้อที่ 73",
-			"วรรณคดีศึกษาข้อที่ 73",
-			"สำนวนโวหารข้อที่ 73"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 73"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"วรรณคดี",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 777,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 74 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 74",
-			"หลักภาษาข้อที่ 74",
-			"วรรณคดีศึกษาข้อที่ 74",
-			"สำนวนโวหารข้อที่ 74"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 74"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"หลักภาษา",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 778,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 75 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 75",
-			"หลักภาษาข้อที่ 75",
-			"วรรณคดีศึกษาข้อที่ 75",
-			"สำนวนโวหารข้อที่ 75"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 75"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำราชาศัพท์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 779,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 76 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 76",
-			"หลักภาษาข้อที่ 76",
-			"วรรณคดีศึกษาข้อที่ 76",
-			"สำนวนโวหารข้อที่ 76"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 76"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำไวพจน์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 780,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 77 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 77",
-			"หลักภาษาข้อที่ 77",
-			"วรรณคดีศึกษาข้อที่ 77",
-			"สำนวนโวหารข้อที่ 77"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 77"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"สำนวนไทย",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 781,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 78 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 78",
-			"หลักภาษาข้อที่ 78",
-			"วรรณคดีศึกษาข้อที่ 78",
-			"สำนวนโวหารข้อที่ 78"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 78"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"วรรณคดี",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 782,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 79 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 79",
-			"หลักภาษาข้อที่ 79",
-			"วรรณคดีศึกษาข้อที่ 79",
-			"สำนวนโวหารข้อที่ 79"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 79"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"หลักภาษา",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 783,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 80 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 80",
-			"หลักภาษาข้อที่ 80",
-			"วรรณคดีศึกษาข้อที่ 80",
-			"สำนวนโวหารข้อที่ 80"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 80"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำราชาศัพท์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 784,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 81 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 81",
-			"หลักภาษาข้อที่ 81",
-			"วรรณคดีศึกษาข้อที่ 81",
-			"สำนวนโวหารข้อที่ 81"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 81"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำไวพจน์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 785,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 82 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 82",
-			"หลักภาษาข้อที่ 82",
-			"วรรณคดีศึกษาข้อที่ 82",
-			"สำนวนโวหารข้อที่ 82"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 82"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"สำนวนไทย",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 786,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 83 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 83",
-			"หลักภาษาข้อที่ 83",
-			"วรรณคดีศึกษาข้อที่ 83",
-			"สำนวนโวหารข้อที่ 83"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 83"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"วรรณคดี",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 787,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 84 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 84",
-			"หลักภาษาข้อที่ 84",
-			"วรรณคดีศึกษาข้อที่ 84",
-			"สำนวนโวหารข้อที่ 84"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 84"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"หลักภาษา",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 788,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 85 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 85",
-			"หลักภาษาข้อที่ 85",
-			"วรรณคดีศึกษาข้อที่ 85",
-			"สำนวนโวหารข้อที่ 85"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 85"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำราชาศัพท์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 789,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 86 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 86",
-			"หลักภาษาข้อที่ 86",
-			"วรรณคดีศึกษาข้อที่ 86",
-			"สำนวนโวหารข้อที่ 86"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 86"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำไวพจน์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 790,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 87 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 87",
-			"หลักภาษาข้อที่ 87",
-			"วรรณคดีศึกษาข้อที่ 87",
-			"สำนวนโวหารข้อที่ 87"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 87"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"สำนวนไทย",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 791,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 88 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 88",
-			"หลักภาษาข้อที่ 88",
-			"วรรณคดีศึกษาข้อที่ 88",
-			"สำนวนโวหารข้อที่ 88"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 88"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"วรรณคดี",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 792,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 89 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 89",
-			"หลักภาษาข้อที่ 89",
-			"วรรณคดีศึกษาข้อที่ 89",
-			"สำนวนโวหารข้อที่ 89"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 89"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"หลักภาษา",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 793,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 90 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 90",
-			"หลักภาษาข้อที่ 90",
-			"วรรณคดีศึกษาข้อที่ 90",
-			"สำนวนโวหารข้อที่ 90"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 90"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำราชาศัพท์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 794,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 91 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 91",
-			"หลักภาษาข้อที่ 91",
-			"วรรณคดีศึกษาข้อที่ 91",
-			"สำนวนโวหารข้อที่ 91"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 91"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำไวพจน์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 795,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 92 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 92",
-			"หลักภาษาข้อที่ 92",
-			"วรรณคดีศึกษาข้อที่ 92",
-			"สำนวนโวหารข้อที่ 92"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 92"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"สำนวนไทย",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 796,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 93 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 93",
-			"หลักภาษาข้อที่ 93",
-			"วรรณคดีศึกษาข้อที่ 93",
-			"สำนวนโวหารข้อที่ 93"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 93"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"วรรณคดี",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 797,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 94 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 94",
-			"หลักภาษาข้อที่ 94",
-			"วรรณคดีศึกษาข้อที่ 94",
-			"สำนวนโวหารข้อที่ 94"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 94"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"หลักภาษา",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 798,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 95 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 95",
-			"หลักภาษาข้อที่ 95",
-			"วรรณคดีศึกษาข้อที่ 95",
-			"สำนวนโวหารข้อที่ 95"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 95"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำราชาศัพท์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 799,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 96 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 96",
-			"หลักภาษาข้อที่ 96",
-			"วรรณคดีศึกษาข้อที่ 96",
-			"สำนวนโวหารข้อที่ 96"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 96"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำไวพจน์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 800,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 97 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 97",
-			"หลักภาษาข้อที่ 97",
-			"วรรณคดีศึกษาข้อที่ 97",
-			"สำนวนโวหารข้อที่ 97"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 97"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"สำนวนไทย",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 801,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 98 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 98",
-			"หลักภาษาข้อที่ 98",
-			"วรรณคดีศึกษาข้อที่ 98",
-			"สำนวนโวหารข้อที่ 98"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 98"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"วรรณคดี",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 802,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 99 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 99",
-			"หลักภาษาข้อที่ 99",
-			"วรรณคดีศึกษาข้อที่ 99",
-			"สำนวนโวหารข้อที่ 99"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 99"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"หลักภาษา",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 803,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 100 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 100",
-			"หลักภาษาข้อที่ 100",
-			"วรรณคดีศึกษาข้อที่ 100",
-			"สำนวนโวหารข้อที่ 100"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 100"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำราชาศัพท์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 804,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 101 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 101",
-			"หลักภาษาข้อที่ 101",
-			"วรรณคดีศึกษาข้อที่ 101",
-			"สำนวนโวหารข้อที่ 101"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 101"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำไวพจน์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 805,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 102 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 102",
-			"หลักภาษาข้อที่ 102",
-			"วรรณคดีศึกษาข้อที่ 102",
-			"สำนวนโวหารข้อที่ 102"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 102"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"สำนวนไทย",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 806,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 103 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 103",
-			"หลักภาษาข้อที่ 103",
-			"วรรณคดีศึกษาข้อที่ 103",
-			"สำนวนโวหารข้อที่ 103"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 103"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"วรรณคดี",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 807,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 104 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 104",
-			"หลักภาษาข้อที่ 104",
-			"วรรณคดีศึกษาข้อที่ 104",
-			"สำนวนโวหารข้อที่ 104"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 104"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"หลักภาษา",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 808,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 105 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 105",
-			"หลักภาษาข้อที่ 105",
-			"วรรณคดีศึกษาข้อที่ 105",
-			"สำนวนโวหารข้อที่ 105"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 105"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำราชาศัพท์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 809,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 106 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 106",
-			"หลักภาษาข้อที่ 106",
-			"วรรณคดีศึกษาข้อที่ 106",
-			"สำนวนโวหารข้อที่ 106"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 106"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำไวพจน์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 810,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 107 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 107",
-			"หลักภาษาข้อที่ 107",
-			"วรรณคดีศึกษาข้อที่ 107",
-			"สำนวนโวหารข้อที่ 107"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 107"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"สำนวนไทย",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 811,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 108 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 108",
-			"หลักภาษาข้อที่ 108",
-			"วรรณคดีศึกษาข้อที่ 108",
-			"สำนวนโวหารข้อที่ 108"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 108"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"วรรณคดี",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 812,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 109 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 109",
-			"หลักภาษาข้อที่ 109",
-			"วรรณคดีศึกษาข้อที่ 109",
-			"สำนวนโวหารข้อที่ 109"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 109"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"หลักภาษา",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 813,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 110 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 110",
-			"หลักภาษาข้อที่ 110",
-			"วรรณคดีศึกษาข้อที่ 110",
-			"สำนวนโวหารข้อที่ 110"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 110"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำราชาศัพท์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 814,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 111 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 111",
-			"หลักภาษาข้อที่ 111",
-			"วรรณคดีศึกษาข้อที่ 111",
-			"สำนวนโวหารข้อที่ 111"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 111"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำไวพจน์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 815,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 112 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 112",
-			"หลักภาษาข้อที่ 112",
-			"วรรณคดีศึกษาข้อที่ 112",
-			"สำนวนโวหารข้อที่ 112"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 112"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"สำนวนไทย",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 816,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 113 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 113",
-			"หลักภาษาข้อที่ 113",
-			"วรรณคดีศึกษาข้อที่ 113",
-			"สำนวนโวหารข้อที่ 113"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 113"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"วรรณคดี",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 817,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 114 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 114",
-			"หลักภาษาข้อที่ 114",
-			"วรรณคดีศึกษาข้อที่ 114",
-			"สำนวนโวหารข้อที่ 114"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 114"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"หลักภาษา",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 818,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 115 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 115",
-			"หลักภาษาข้อที่ 115",
-			"วรรณคดีศึกษาข้อที่ 115",
-			"สำนวนโวหารข้อที่ 115"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 115"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำราชาศัพท์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 819,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 116 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 116",
-			"หลักภาษาข้อที่ 116",
-			"วรรณคดีศึกษาข้อที่ 116",
-			"สำนวนโวหารข้อที่ 116"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 116"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำไวพจน์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 820,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 117 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 117",
-			"หลักภาษาข้อที่ 117",
-			"วรรณคดีศึกษาข้อที่ 117",
-			"สำนวนโวหารข้อที่ 117"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 117"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"สำนวนไทย",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 821,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 118 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 118",
-			"หลักภาษาข้อที่ 118",
-			"วรรณคดีศึกษาข้อที่ 118",
-			"สำนวนโวหารข้อที่ 118"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 118"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"วรรณคดี",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 822,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 119 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 119",
-			"หลักภาษาข้อที่ 119",
-			"วรรณคดีศึกษาข้อที่ 119",
-			"สำนวนโวหารข้อที่ 119"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 119"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"หลักภาษา",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 823,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 120 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 120",
-			"หลักภาษาข้อที่ 120",
-			"วรรณคดีศึกษาข้อที่ 120",
-			"สำนวนโวหารข้อที่ 120"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 120"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำราชาศัพท์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 824,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 121 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 121",
-			"หลักภาษาข้อที่ 121",
-			"วรรณคดีศึกษาข้อที่ 121",
-			"สำนวนโวหารข้อที่ 121"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 121"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำไวพจน์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 825,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 122 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 122",
-			"หลักภาษาข้อที่ 122",
-			"วรรณคดีศึกษาข้อที่ 122",
-			"สำนวนโวหารข้อที่ 122"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 122"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"สำนวนไทย",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 826,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 123 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 123",
-			"หลักภาษาข้อที่ 123",
-			"วรรณคดีศึกษาข้อที่ 123",
-			"สำนวนโวหารข้อที่ 123"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 123"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"วรรณคดี",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 827,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 124 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 124",
-			"หลักภาษาข้อที่ 124",
-			"วรรณคดีศึกษาข้อที่ 124",
-			"สำนวนโวหารข้อที่ 124"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 124"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"หลักภาษา",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 828,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 125 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 125",
-			"หลักภาษาข้อที่ 125",
-			"วรรณคดีศึกษาข้อที่ 125",
-			"สำนวนโวหารข้อที่ 125"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 125"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำราชาศัพท์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 829,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 126 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 126",
-			"หลักภาษาข้อที่ 126",
-			"วรรณคดีศึกษาข้อที่ 126",
-			"สำนวนโวหารข้อที่ 126"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 126"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำไวพจน์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 830,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 127 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 127",
-			"หลักภาษาข้อที่ 127",
-			"วรรณคดีศึกษาข้อที่ 127",
-			"สำนวนโวหารข้อที่ 127"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 127"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"สำนวนไทย",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 831,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 128 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 128",
-			"หลักภาษาข้อที่ 128",
-			"วรรณคดีศึกษาข้อที่ 128",
-			"สำนวนโวหารข้อที่ 128"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 128"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"วรรณคดี",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 832,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 129 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 129",
-			"หลักภาษาข้อที่ 129",
-			"วรรณคดีศึกษาข้อที่ 129",
-			"สำนวนโวหารข้อที่ 129"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 129"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"หลักภาษา",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 833,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 130 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 130",
-			"หลักภาษาข้อที่ 130",
-			"วรรณคดีศึกษาข้อที่ 130",
-			"สำนวนโวหารข้อที่ 130"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 130"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำราชาศัพท์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 834,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 131 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 131",
-			"หลักภาษาข้อที่ 131",
-			"วรรณคดีศึกษาข้อที่ 131",
-			"สำนวนโวหารข้อที่ 131"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 131"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำไวพจน์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 835,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 132 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 132",
-			"หลักภาษาข้อที่ 132",
-			"วรรณคดีศึกษาข้อที่ 132",
-			"สำนวนโวหารข้อที่ 132"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 132"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"สำนวนไทย",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 836,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 133 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 133",
-			"หลักภาษาข้อที่ 133",
-			"วรรณคดีศึกษาข้อที่ 133",
-			"สำนวนโวหารข้อที่ 133"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 133"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"วรรณคดี",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 837,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 134 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 134",
-			"หลักภาษาข้อที่ 134",
-			"วรรณคดีศึกษาข้อที่ 134",
-			"สำนวนโวหารข้อที่ 134"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 134"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"หลักภาษา",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 838,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 135 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 135",
-			"หลักภาษาข้อที่ 135",
-			"วรรณคดีศึกษาข้อที่ 135",
-			"สำนวนโวหารข้อที่ 135"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 135"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำราชาศัพท์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 839,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 136 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 136",
-			"หลักภาษาข้อที่ 136",
-			"วรรณคดีศึกษาข้อที่ 136",
-			"สำนวนโวหารข้อที่ 136"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 136"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำไวพจน์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 840,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 137 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 137",
-			"หลักภาษาข้อที่ 137",
-			"วรรณคดีศึกษาข้อที่ 137",
-			"สำนวนโวหารข้อที่ 137"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 137"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"สำนวนไทย",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 841,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 138 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 138",
-			"หลักภาษาข้อที่ 138",
-			"วรรณคดีศึกษาข้อที่ 138",
-			"สำนวนโวหารข้อที่ 138"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 138"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"วรรณคดี",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 842,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 139 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 139",
-			"หลักภาษาข้อที่ 139",
-			"วรรณคดีศึกษาข้อที่ 139",
-			"สำนวนโวหารข้อที่ 139"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 139"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"หลักภาษา",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 843,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 140 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 140",
-			"หลักภาษาข้อที่ 140",
-			"วรรณคดีศึกษาข้อที่ 140",
-			"สำนวนโวหารข้อที่ 140"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 140"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำราชาศัพท์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 844,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 141 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 141",
-			"หลักภาษาข้อที่ 141",
-			"วรรณคดีศึกษาข้อที่ 141",
-			"สำนวนโวหารข้อที่ 141"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 141"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำไวพจน์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 845,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 142 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 142",
-			"หลักภาษาข้อที่ 142",
-			"วรรณคดีศึกษาข้อที่ 142",
-			"สำนวนโวหารข้อที่ 142"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 142"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"สำนวนไทย",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 846,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 143 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 143",
-			"หลักภาษาข้อที่ 143",
-			"วรรณคดีศึกษาข้อที่ 143",
-			"สำนวนโวหารข้อที่ 143"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 143"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"วรรณคดี",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 847,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 144 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 144",
-			"หลักภาษาข้อที่ 144",
-			"วรรณคดีศึกษาข้อที่ 144",
-			"สำนวนโวหารข้อที่ 144"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 144"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"หลักภาษา",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 848,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 145 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 145",
-			"หลักภาษาข้อที่ 145",
-			"วรรณคดีศึกษาข้อที่ 145",
-			"สำนวนโวหารข้อที่ 145"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 145"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำราชาศัพท์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 849,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 146 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 146",
-			"หลักภาษาข้อที่ 146",
-			"วรรณคดีศึกษาข้อที่ 146",
-			"สำนวนโวหารข้อที่ 146"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 146"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำไวพจน์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 850,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 147 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 147",
-			"หลักภาษาข้อที่ 147",
-			"วรรณคดีศึกษาข้อที่ 147",
-			"สำนวนโวหารข้อที่ 147"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 147"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"สำนวนไทย",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 851,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 148 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 148",
-			"หลักภาษาข้อที่ 148",
-			"วรรณคดีศึกษาข้อที่ 148",
-			"สำนวนโวหารข้อที่ 148"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 148"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"วรรณคดี",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 852,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 149 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 149",
-			"หลักภาษาข้อที่ 149",
-			"วรรณคดีศึกษาข้อที่ 149",
-			"สำนวนโวหารข้อที่ 149"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 149"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"หลักภาษา",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 853,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 150 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 150",
-			"หลักภาษาข้อที่ 150",
-			"วรรณคดีศึกษาข้อที่ 150",
-			"สำนวนโวหารข้อที่ 150"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 150"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำราชาศัพท์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 854,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 151 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 151",
-			"หลักภาษาข้อที่ 151",
-			"วรรณคดีศึกษาข้อที่ 151",
-			"สำนวนโวหารข้อที่ 151"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 151"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำไวพจน์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 855,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 152 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 152",
-			"หลักภาษาข้อที่ 152",
-			"วรรณคดีศึกษาข้อที่ 152",
-			"สำนวนโวหารข้อที่ 152"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 152"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"สำนวนไทย",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 856,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 153 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 153",
-			"หลักภาษาข้อที่ 153",
-			"วรรณคดีศึกษาข้อที่ 153",
-			"สำนวนโวหารข้อที่ 153"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 153"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"วรรณคดี",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 857,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 154 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 154",
-			"หลักภาษาข้อที่ 154",
-			"วรรณคดีศึกษาข้อที่ 154",
-			"สำนวนโวหารข้อที่ 154"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 154"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"หลักภาษา",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 858,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 155 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 155",
-			"หลักภาษาข้อที่ 155",
-			"วรรณคดีศึกษาข้อที่ 155",
-			"สำนวนโวหารข้อที่ 155"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 155"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำราชาศัพท์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 859,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 156 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 156",
-			"หลักภาษาข้อที่ 156",
-			"วรรณคดีศึกษาข้อที่ 156",
-			"สำนวนโวหารข้อที่ 156"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 156"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำไวพจน์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 860,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 157 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 157",
-			"หลักภาษาข้อที่ 157",
-			"วรรณคดีศึกษาข้อที่ 157",
-			"สำนวนโวหารข้อที่ 157"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 157"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"สำนวนไทย",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 861,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 158 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 158",
-			"หลักภาษาข้อที่ 158",
-			"วรรณคดีศึกษาข้อที่ 158",
-			"สำนวนโวหารข้อที่ 158"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 158"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"วรรณคดี",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 862,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 159 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 159",
-			"หลักภาษาข้อที่ 159",
-			"วรรณคดีศึกษาข้อที่ 159",
-			"สำนวนโวหารข้อที่ 159"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 159"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"หลักภาษา",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 863,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 160 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 160",
-			"หลักภาษาข้อที่ 160",
-			"วรรณคดีศึกษาข้อที่ 160",
-			"สำนวนโวหารข้อที่ 160"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 160"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำราชาศัพท์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 864,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 161 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 161",
-			"หลักภาษาข้อที่ 161",
-			"วรรณคดีศึกษาข้อที่ 161",
-			"สำนวนโวหารข้อที่ 161"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 161"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำไวพจน์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 865,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 162 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 162",
-			"หลักภาษาข้อที่ 162",
-			"วรรณคดีศึกษาข้อที่ 162",
-			"สำนวนโวหารข้อที่ 162"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 162"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"สำนวนไทย",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 866,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 163 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 163",
-			"หลักภาษาข้อที่ 163",
-			"วรรณคดีศึกษาข้อที่ 163",
-			"สำนวนโวหารข้อที่ 163"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 163"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"วรรณคดี",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 867,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 164 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 164",
-			"หลักภาษาข้อที่ 164",
-			"วรรณคดีศึกษาข้อที่ 164",
-			"สำนวนโวหารข้อที่ 164"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 164"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"หลักภาษา",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 868,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 165 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 165",
-			"หลักภาษาข้อที่ 165",
-			"วรรณคดีศึกษาข้อที่ 165",
-			"สำนวนโวหารข้อที่ 165"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 165"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำราชาศัพท์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 869,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 166 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 166",
-			"หลักภาษาข้อที่ 166",
-			"วรรณคดีศึกษาข้อที่ 166",
-			"สำนวนโวหารข้อที่ 166"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 166"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำไวพจน์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 870,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 167 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 167",
-			"หลักภาษาข้อที่ 167",
-			"วรรณคดีศึกษาข้อที่ 167",
-			"สำนวนโวหารข้อที่ 167"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 167"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"สำนวนไทย",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 871,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 168 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 168",
-			"หลักภาษาข้อที่ 168",
-			"วรรณคดีศึกษาข้อที่ 168",
-			"สำนวนโวหารข้อที่ 168"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 168"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"วรรณคดี",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 872,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 169 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 169",
-			"หลักภาษาข้อที่ 169",
-			"วรรณคดีศึกษาข้อที่ 169",
-			"สำนวนโวหารข้อที่ 169"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 169"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"หลักภาษา",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 873,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 170 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 170",
-			"หลักภาษาข้อที่ 170",
-			"วรรณคดีศึกษาข้อที่ 170",
-			"สำนวนโวหารข้อที่ 170"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 170"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำราชาศัพท์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 874,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 171 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 171",
-			"หลักภาษาข้อที่ 171",
-			"วรรณคดีศึกษาข้อที่ 171",
-			"สำนวนโวหารข้อที่ 171"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 171"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำไวพจน์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 875,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 172 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 172",
-			"หลักภาษาข้อที่ 172",
-			"วรรณคดีศึกษาข้อที่ 172",
-			"สำนวนโวหารข้อที่ 172"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 172"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"สำนวนไทย",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 876,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 173 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 173",
-			"หลักภาษาข้อที่ 173",
-			"วรรณคดีศึกษาข้อที่ 173",
-			"สำนวนโวหารข้อที่ 173"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 173"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"วรรณคดี",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 877,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 174 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 174",
-			"หลักภาษาข้อที่ 174",
-			"วรรณคดีศึกษาข้อที่ 174",
-			"สำนวนโวหารข้อที่ 174"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 174"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"หลักภาษา",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 878,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 175 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 175",
-			"หลักภาษาข้อที่ 175",
-			"วรรณคดีศึกษาข้อที่ 175",
-			"สำนวนโวหารข้อที่ 175"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 175"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำราชาศัพท์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 879,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 176 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 176",
-			"หลักภาษาข้อที่ 176",
-			"วรรณคดีศึกษาข้อที่ 176",
-			"สำนวนโวหารข้อที่ 176"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 176"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำไวพจน์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 880,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 177 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 177",
-			"หลักภาษาข้อที่ 177",
-			"วรรณคดีศึกษาข้อที่ 177",
-			"สำนวนโวหารข้อที่ 177"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 177"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"สำนวนไทย",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 881,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 178 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 178",
-			"หลักภาษาข้อที่ 178",
-			"วรรณคดีศึกษาข้อที่ 178",
-			"สำนวนโวหารข้อที่ 178"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 178"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"วรรณคดี",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 882,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 179 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 179",
-			"หลักภาษาข้อที่ 179",
-			"วรรณคดีศึกษาข้อที่ 179",
-			"สำนวนโวหารข้อที่ 179"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 179"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"หลักภาษา",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 883,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 180 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 180",
-			"หลักภาษาข้อที่ 180",
-			"วรรณคดีศึกษาข้อที่ 180",
-			"สำนวนโวหารข้อที่ 180"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 180"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำราชาศัพท์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 884,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 181 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 181",
-			"หลักภาษาข้อที่ 181",
-			"วรรณคดีศึกษาข้อที่ 181",
-			"สำนวนโวหารข้อที่ 181"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 181"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำไวพจน์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 885,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 182 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 182",
-			"หลักภาษาข้อที่ 182",
-			"วรรณคดีศึกษาข้อที่ 182",
-			"สำนวนโวหารข้อที่ 182"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 182"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"สำนวนไทย",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 886,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 183 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 183",
-			"หลักภาษาข้อที่ 183",
-			"วรรณคดีศึกษาข้อที่ 183",
-			"สำนวนโวหารข้อที่ 183"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 183"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"วรรณคดี",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 887,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 184 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 184",
-			"หลักภาษาข้อที่ 184",
-			"วรรณคดีศึกษาข้อที่ 184",
-			"สำนวนโวหารข้อที่ 184"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 184"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"หลักภาษา",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 888,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 185 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 185",
-			"หลักภาษาข้อที่ 185",
-			"วรรณคดีศึกษาข้อที่ 185",
-			"สำนวนโวหารข้อที่ 185"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 185"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำราชาศัพท์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 889,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 186 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 186",
-			"หลักภาษาข้อที่ 186",
-			"วรรณคดีศึกษาข้อที่ 186",
-			"สำนวนโวหารข้อที่ 186"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 186"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำไวพจน์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 890,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 187 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 187",
-			"หลักภาษาข้อที่ 187",
-			"วรรณคดีศึกษาข้อที่ 187",
-			"สำนวนโวหารข้อที่ 187"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 187"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"สำนวนไทย",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 891,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 188 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 188",
-			"หลักภาษาข้อที่ 188",
-			"วรรณคดีศึกษาข้อที่ 188",
-			"สำนวนโวหารข้อที่ 188"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 188"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"วรรณคดี",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 892,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 189 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 189",
-			"หลักภาษาข้อที่ 189",
-			"วรรณคดีศึกษาข้อที่ 189",
-			"สำนวนโวหารข้อที่ 189"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 189"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"หลักภาษา",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 893,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 190 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 190",
-			"หลักภาษาข้อที่ 190",
-			"วรรณคดีศึกษาข้อที่ 190",
-			"สำนวนโวหารข้อที่ 190"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 190"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำราชาศัพท์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 894,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 191 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 191",
-			"หลักภาษาข้อที่ 191",
-			"วรรณคดีศึกษาข้อที่ 191",
-			"สำนวนโวหารข้อที่ 191"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 191"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำไวพจน์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 895,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 192 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 192",
-			"หลักภาษาข้อที่ 192",
-			"วรรณคดีศึกษาข้อที่ 192",
-			"สำนวนโวหารข้อที่ 192"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 192"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"สำนวนไทย",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 896,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 193 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 193",
-			"หลักภาษาข้อที่ 193",
-			"วรรณคดีศึกษาข้อที่ 193",
-			"สำนวนโวหารข้อที่ 193"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 193"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"วรรณคดี",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 897,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 194 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 194",
-			"หลักภาษาข้อที่ 194",
-			"วรรณคดีศึกษาข้อที่ 194",
-			"สำนวนโวหารข้อที่ 194"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 194"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"หลักภาษา",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 898,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 195 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 195",
-			"หลักภาษาข้อที่ 195",
-			"วรรณคดีศึกษาข้อที่ 195",
-			"สำนวนโวหารข้อที่ 195"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 195"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำราชาศัพท์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 899,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 196 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 196",
-			"หลักภาษาข้อที่ 196",
-			"วรรณคดีศึกษาข้อที่ 196",
-			"สำนวนโวหารข้อที่ 196"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 196"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำไวพจน์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 900,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 197 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 197",
-			"หลักภาษาข้อที่ 197",
-			"วรรณคดีศึกษาข้อที่ 197",
-			"สำนวนโวหารข้อที่ 197"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 197"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"สำนวนไทย",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 901,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 198 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 198",
-			"หลักภาษาข้อที่ 198",
-			"วรรณคดีศึกษาข้อที่ 198",
-			"สำนวนโวหารข้อที่ 198"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 198"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"วรรณคดี",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 902,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 199 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 199",
-			"หลักภาษาข้อที่ 199",
-			"วรรณคดีศึกษาข้อที่ 199",
-			"สำนวนโวหารข้อที่ 199"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 199"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"หลักภาษา",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 903,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 200 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 200",
-			"หลักภาษาข้อที่ 200",
-			"วรรณคดีศึกษาข้อที่ 200",
-			"สำนวนโวหารข้อที่ 200"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 200"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำราชาศัพท์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 904,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 201 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 201",
-			"หลักภาษาข้อที่ 201",
-			"วรรณคดีศึกษาข้อที่ 201",
-			"สำนวนโวหารข้อที่ 201"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 201"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำไวพจน์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 905,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 202 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 202",
-			"หลักภาษาข้อที่ 202",
-			"วรรณคดีศึกษาข้อที่ 202",
-			"สำนวนโวหารข้อที่ 202"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 202"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"สำนวนไทย",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 906,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 203 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 203",
-			"หลักภาษาข้อที่ 203",
-			"วรรณคดีศึกษาข้อที่ 203",
-			"สำนวนโวหารข้อที่ 203"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 203"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"วรรณคดี",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 907,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 204 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 204",
-			"หลักภาษาข้อที่ 204",
-			"วรรณคดีศึกษาข้อที่ 204",
-			"สำนวนโวหารข้อที่ 204"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 204"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"หลักภาษา",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 908,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 205 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 205",
-			"หลักภาษาข้อที่ 205",
-			"วรรณคดีศึกษาข้อที่ 205",
-			"สำนวนโวหารข้อที่ 205"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 205"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำราชาศัพท์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 909,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 206 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 206",
-			"หลักภาษาข้อที่ 206",
-			"วรรณคดีศึกษาข้อที่ 206",
-			"สำนวนโวหารข้อที่ 206"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 206"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำไวพจน์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 910,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 207 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 207",
-			"หลักภาษาข้อที่ 207",
-			"วรรณคดีศึกษาข้อที่ 207",
-			"สำนวนโวหารข้อที่ 207"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 207"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"สำนวนไทย",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 911,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 208 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 208",
-			"หลักภาษาข้อที่ 208",
-			"วรรณคดีศึกษาข้อที่ 208",
-			"สำนวนโวหารข้อที่ 208"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 208"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"วรรณคดี",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 912,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 209 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 209",
-			"หลักภาษาข้อที่ 209",
-			"วรรณคดีศึกษาข้อที่ 209",
-			"สำนวนโวหารข้อที่ 209"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 209"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"หลักภาษา",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 913,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 210 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 210",
-			"หลักภาษาข้อที่ 210",
-			"วรรณคดีศึกษาข้อที่ 210",
-			"สำนวนโวหารข้อที่ 210"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 210"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำราชาศัพท์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 914,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 211 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 211",
-			"หลักภาษาข้อที่ 211",
-			"วรรณคดีศึกษาข้อที่ 211",
-			"สำนวนโวหารข้อที่ 211"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 211"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำไวพจน์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 915,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 212 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 212",
-			"หลักภาษาข้อที่ 212",
-			"วรรณคดีศึกษาข้อที่ 212",
-			"สำนวนโวหารข้อที่ 212"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 212"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"สำนวนไทย",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 916,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 213 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 213",
-			"หลักภาษาข้อที่ 213",
-			"วรรณคดีศึกษาข้อที่ 213",
-			"สำนวนโวหารข้อที่ 213"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 213"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"วรรณคดี",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 917,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 214 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 214",
-			"หลักภาษาข้อที่ 214",
-			"วรรณคดีศึกษาข้อที่ 214",
-			"สำนวนโวหารข้อที่ 214"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 214"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"หลักภาษา",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 918,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 215 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 215",
-			"หลักภาษาข้อที่ 215",
-			"วรรณคดีศึกษาข้อที่ 215",
-			"สำนวนโวหารข้อที่ 215"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 215"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำราชาศัพท์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 919,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 216 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 216",
-			"หลักภาษาข้อที่ 216",
-			"วรรณคดีศึกษาข้อที่ 216",
-			"สำนวนโวหารข้อที่ 216"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 216"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำไวพจน์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 920,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 217 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 217",
-			"หลักภาษาข้อที่ 217",
-			"วรรณคดีศึกษาข้อที่ 217",
-			"สำนวนโวหารข้อที่ 217"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 217"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"สำนวนไทย",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 921,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 218 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 218",
-			"หลักภาษาข้อที่ 218",
-			"วรรณคดีศึกษาข้อที่ 218",
-			"สำนวนโวหารข้อที่ 218"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 218"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"วรรณคดี",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 922,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 219 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 219",
-			"หลักภาษาข้อที่ 219",
-			"วรรณคดีศึกษาข้อที่ 219",
-			"สำนวนโวหารข้อที่ 219"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 219"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"หลักภาษา",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 923,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 220 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 220",
-			"หลักภาษาข้อที่ 220",
-			"วรรณคดีศึกษาข้อที่ 220",
-			"สำนวนโวหารข้อที่ 220"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 220"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำราชาศัพท์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 924,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 221 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 221",
-			"หลักภาษาข้อที่ 221",
-			"วรรณคดีศึกษาข้อที่ 221",
-			"สำนวนโวหารข้อที่ 221"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 221"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำไวพจน์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 925,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 222 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 222",
-			"หลักภาษาข้อที่ 222",
-			"วรรณคดีศึกษาข้อที่ 222",
-			"สำนวนโวหารข้อที่ 222"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 222"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"สำนวนไทย",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 926,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 223 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 223",
-			"หลักภาษาข้อที่ 223",
-			"วรรณคดีศึกษาข้อที่ 223",
-			"สำนวนโวหารข้อที่ 223"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 223"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"วรรณคดี",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 927,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 224 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 224",
-			"หลักภาษาข้อที่ 224",
-			"วรรณคดีศึกษาข้อที่ 224",
-			"สำนวนโวหารข้อที่ 224"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 224"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"หลักภาษา",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 928,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 225 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 225",
-			"หลักภาษาข้อที่ 225",
-			"วรรณคดีศึกษาข้อที่ 225",
-			"สำนวนโวหารข้อที่ 225"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 225"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำราชาศัพท์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 929,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 226 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 226",
-			"หลักภาษาข้อที่ 226",
-			"วรรณคดีศึกษาข้อที่ 226",
-			"สำนวนโวหารข้อที่ 226"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 226"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำไวพจน์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 930,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 227 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 227",
-			"หลักภาษาข้อที่ 227",
-			"วรรณคดีศึกษาข้อที่ 227",
-			"สำนวนโวหารข้อที่ 227"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 227"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"สำนวนไทย",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 931,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 228 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 228",
-			"หลักภาษาข้อที่ 228",
-			"วรรณคดีศึกษาข้อที่ 228",
-			"สำนวนโวหารข้อที่ 228"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 228"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"วรรณคดี",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 932,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 229 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 229",
-			"หลักภาษาข้อที่ 229",
-			"วรรณคดีศึกษาข้อที่ 229",
-			"สำนวนโวหารข้อที่ 229"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 229"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"หลักภาษา",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 933,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 230 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 230",
-			"หลักภาษาข้อที่ 230",
-			"วรรณคดีศึกษาข้อที่ 230",
-			"สำนวนโวหารข้อที่ 230"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 230"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำราชาศัพท์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 934,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 231 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 231",
-			"หลักภาษาข้อที่ 231",
-			"วรรณคดีศึกษาข้อที่ 231",
-			"สำนวนโวหารข้อที่ 231"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 231"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำไวพจน์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 935,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 232 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 232",
-			"หลักภาษาข้อที่ 232",
-			"วรรณคดีศึกษาข้อที่ 232",
-			"สำนวนโวหารข้อที่ 232"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 232"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"สำนวนไทย",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 936,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 233 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 233",
-			"หลักภาษาข้อที่ 233",
-			"วรรณคดีศึกษาข้อที่ 233",
-			"สำนวนโวหารข้อที่ 233"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 233"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"วรรณคดี",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 937,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 234 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 234",
-			"หลักภาษาข้อที่ 234",
-			"วรรณคดีศึกษาข้อที่ 234",
-			"สำนวนโวหารข้อที่ 234"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 234"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"หลักภาษา",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 938,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 235 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 235",
-			"หลักภาษาข้อที่ 235",
-			"วรรณคดีศึกษาข้อที่ 235",
-			"สำนวนโวหารข้อที่ 235"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 235"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำราชาศัพท์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 939,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 236 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 236",
-			"หลักภาษาข้อที่ 236",
-			"วรรณคดีศึกษาข้อที่ 236",
-			"สำนวนโวหารข้อที่ 236"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 236"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำไวพจน์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 940,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 237 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 237",
-			"หลักภาษาข้อที่ 237",
-			"วรรณคดีศึกษาข้อที่ 237",
-			"สำนวนโวหารข้อที่ 237"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 237"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"สำนวนไทย",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 941,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 238 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 238",
-			"หลักภาษาข้อที่ 238",
-			"วรรณคดีศึกษาข้อที่ 238",
-			"สำนวนโวหารข้อที่ 238"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 238"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"วรรณคดี",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 942,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 239 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 239",
-			"หลักภาษาข้อที่ 239",
-			"วรรณคดีศึกษาข้อที่ 239",
-			"สำนวนโวหารข้อที่ 239"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 239"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"หลักภาษา",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 943,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 240 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 240",
-			"หลักภาษาข้อที่ 240",
-			"วรรณคดีศึกษาข้อที่ 240",
-			"สำนวนโวหารข้อที่ 240"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 240"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำราชาศัพท์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 944,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 241 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 241",
-			"หลักภาษาข้อที่ 241",
-			"วรรณคดีศึกษาข้อที่ 241",
-			"สำนวนโวหารข้อที่ 241"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 241"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำไวพจน์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 945,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 242 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 242",
-			"หลักภาษาข้อที่ 242",
-			"วรรณคดีศึกษาข้อที่ 242",
-			"สำนวนโวหารข้อที่ 242"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 242"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"สำนวนไทย",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 946,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 243 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 243",
-			"หลักภาษาข้อที่ 243",
-			"วรรณคดีศึกษาข้อที่ 243",
-			"สำนวนโวหารข้อที่ 243"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 243"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"วรรณคดี",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 947,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 244 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 244",
-			"หลักภาษาข้อที่ 244",
-			"วรรณคดีศึกษาข้อที่ 244",
-			"สำนวนโวหารข้อที่ 244"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 244"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"หลักภาษา",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 948,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 245 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 245",
-			"หลักภาษาข้อที่ 245",
-			"วรรณคดีศึกษาข้อที่ 245",
-			"สำนวนโวหารข้อที่ 245"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 245"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำราชาศัพท์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 949,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 246 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 246",
-			"หลักภาษาข้อที่ 246",
-			"วรรณคดีศึกษาข้อที่ 246",
-			"สำนวนโวหารข้อที่ 246"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 246"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำไวพจน์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 950,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 247 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 247",
-			"หลักภาษาข้อที่ 247",
-			"วรรณคดีศึกษาข้อที่ 247",
-			"สำนวนโวหารข้อที่ 247"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 247"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"สำนวนไทย",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 951,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 248 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 248",
-			"หลักภาษาข้อที่ 248",
-			"วรรณคดีศึกษาข้อที่ 248",
-			"สำนวนโวหารข้อที่ 248"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 248"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"วรรณคดี",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 952,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 249 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 249",
-			"หลักภาษาข้อที่ 249",
-			"วรรณคดีศึกษาข้อที่ 249",
-			"สำนวนโวหารข้อที่ 249"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 249"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"หลักภาษา",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 953,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 250 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 250",
-			"หลักภาษาข้อที่ 250",
-			"วรรณคดีศึกษาข้อที่ 250",
-			"สำนวนโวหารข้อที่ 250"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 250"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำราชาศัพท์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 954,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 251 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 251",
-			"หลักภาษาข้อที่ 251",
-			"วรรณคดีศึกษาข้อที่ 251",
-			"สำนวนโวหารข้อที่ 251"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 251"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำไวพจน์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 955,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 252 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 252",
-			"หลักภาษาข้อที่ 252",
-			"วรรณคดีศึกษาข้อที่ 252",
-			"สำนวนโวหารข้อที่ 252"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 252"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"สำนวนไทย",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 956,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 253 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 253",
-			"หลักภาษาข้อที่ 253",
-			"วรรณคดีศึกษาข้อที่ 253",
-			"สำนวนโวหารข้อที่ 253"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 253"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"วรรณคดี",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 957,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 254 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 254",
-			"หลักภาษาข้อที่ 254",
-			"วรรณคดีศึกษาข้อที่ 254",
-			"สำนวนโวหารข้อที่ 254"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 254"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"หลักภาษา",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 958,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 255 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 255",
-			"หลักภาษาข้อที่ 255",
-			"วรรณคดีศึกษาข้อที่ 255",
-			"สำนวนโวหารข้อที่ 255"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 255"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำราชาศัพท์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 959,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 256 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 256",
-			"หลักภาษาข้อที่ 256",
-			"วรรณคดีศึกษาข้อที่ 256",
-			"สำนวนโวหารข้อที่ 256"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 256"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำไวพจน์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 960,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 257 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 257",
-			"หลักภาษาข้อที่ 257",
-			"วรรณคดีศึกษาข้อที่ 257",
-			"สำนวนโวหารข้อที่ 257"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 257"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"สำนวนไทย",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 961,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 258 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 258",
-			"หลักภาษาข้อที่ 258",
-			"วรรณคดีศึกษาข้อที่ 258",
-			"สำนวนโวหารข้อที่ 258"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 258"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"วรรณคดี",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 962,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 259 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 259",
-			"หลักภาษาข้อที่ 259",
-			"วรรณคดีศึกษาข้อที่ 259",
-			"สำนวนโวหารข้อที่ 259"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 259"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"หลักภาษา",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 963,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 260 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 260",
-			"หลักภาษาข้อที่ 260",
-			"วรรณคดีศึกษาข้อที่ 260",
-			"สำนวนโวหารข้อที่ 260"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 260"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำราชาศัพท์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 964,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 261 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 261",
-			"หลักภาษาข้อที่ 261",
-			"วรรณคดีศึกษาข้อที่ 261",
-			"สำนวนโวหารข้อที่ 261"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 261"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำไวพจน์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 965,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 262 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 262",
-			"หลักภาษาข้อที่ 262",
-			"วรรณคดีศึกษาข้อที่ 262",
-			"สำนวนโวหารข้อที่ 262"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 262"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"สำนวนไทย",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 966,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 263 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 263",
-			"หลักภาษาข้อที่ 263",
-			"วรรณคดีศึกษาข้อที่ 263",
-			"สำนวนโวหารข้อที่ 263"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 263"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"วรรณคดี",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 967,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 264 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 264",
-			"หลักภาษาข้อที่ 264",
-			"วรรณคดีศึกษาข้อที่ 264",
-			"สำนวนโวหารข้อที่ 264"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 264"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"หลักภาษา",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 968,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 265 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 265",
-			"หลักภาษาข้อที่ 265",
-			"วรรณคดีศึกษาข้อที่ 265",
-			"สำนวนโวหารข้อที่ 265"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 265"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำราชาศัพท์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 969,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 266 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 266",
-			"หลักภาษาข้อที่ 266",
-			"วรรณคดีศึกษาข้อที่ 266",
-			"สำนวนโวหารข้อที่ 266"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 266"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำไวพจน์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 970,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 267 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 267",
-			"หลักภาษาข้อที่ 267",
-			"วรรณคดีศึกษาข้อที่ 267",
-			"สำนวนโวหารข้อที่ 267"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 267"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"สำนวนไทย",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 971,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 268 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 268",
-			"หลักภาษาข้อที่ 268",
-			"วรรณคดีศึกษาข้อที่ 268",
-			"สำนวนโวหารข้อที่ 268"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 268"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"วรรณคดี",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 972,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 269 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 269",
-			"หลักภาษาข้อที่ 269",
-			"วรรณคดีศึกษาข้อที่ 269",
-			"สำนวนโวหารข้อที่ 269"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 269"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"หลักภาษา",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 973,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 270 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 270",
-			"หลักภาษาข้อที่ 270",
-			"วรรณคดีศึกษาข้อที่ 270",
-			"สำนวนโวหารข้อที่ 270"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 270"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำราชาศัพท์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 974,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 271 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 271",
-			"หลักภาษาข้อที่ 271",
-			"วรรณคดีศึกษาข้อที่ 271",
-			"สำนวนโวหารข้อที่ 271"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 271"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำไวพจน์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 975,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 272 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 272",
-			"หลักภาษาข้อที่ 272",
-			"วรรณคดีศึกษาข้อที่ 272",
-			"สำนวนโวหารข้อที่ 272"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 272"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"สำนวนไทย",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 976,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 273 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 273",
-			"หลักภาษาข้อที่ 273",
-			"วรรณคดีศึกษาข้อที่ 273",
-			"สำนวนโวหารข้อที่ 273"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 273"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"วรรณคดี",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 977,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 274 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 274",
-			"หลักภาษาข้อที่ 274",
-			"วรรณคดีศึกษาข้อที่ 274",
-			"สำนวนโวหารข้อที่ 274"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 274"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"หลักภาษา",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 978,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 275 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 275",
-			"หลักภาษาข้อที่ 275",
-			"วรรณคดีศึกษาข้อที่ 275",
-			"สำนวนโวหารข้อที่ 275"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 275"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำราชาศัพท์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 979,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 276 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 276",
-			"หลักภาษาข้อที่ 276",
-			"วรรณคดีศึกษาข้อที่ 276",
-			"สำนวนโวหารข้อที่ 276"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 276"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำไวพจน์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 980,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 277 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 277",
-			"หลักภาษาข้อที่ 277",
-			"วรรณคดีศึกษาข้อที่ 277",
-			"สำนวนโวหารข้อที่ 277"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 277"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"สำนวนไทย",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 981,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 278 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 278",
-			"หลักภาษาข้อที่ 278",
-			"วรรณคดีศึกษาข้อที่ 278",
-			"สำนวนโวหารข้อที่ 278"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 278"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"วรรณคดี",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 982,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 279 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 279",
-			"หลักภาษาข้อที่ 279",
-			"วรรณคดีศึกษาข้อที่ 279",
-			"สำนวนโวหารข้อที่ 279"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 279"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"หลักภาษา",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 983,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 280 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 280",
-			"หลักภาษาข้อที่ 280",
-			"วรรณคดีศึกษาข้อที่ 280",
-			"สำนวนโวหารข้อที่ 280"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 280"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำราชาศัพท์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 984,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 281 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 281",
-			"หลักภาษาข้อที่ 281",
-			"วรรณคดีศึกษาข้อที่ 281",
-			"สำนวนโวหารข้อที่ 281"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 281"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำไวพจน์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 985,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 282 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 282",
-			"หลักภาษาข้อที่ 282",
-			"วรรณคดีศึกษาข้อที่ 282",
-			"สำนวนโวหารข้อที่ 282"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 282"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"สำนวนไทย",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 986,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 283 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 283",
-			"หลักภาษาข้อที่ 283",
-			"วรรณคดีศึกษาข้อที่ 283",
-			"สำนวนโวหารข้อที่ 283"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 283"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"วรรณคดี",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 987,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 284 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 284",
-			"หลักภาษาข้อที่ 284",
-			"วรรณคดีศึกษาข้อที่ 284",
-			"สำนวนโวหารข้อที่ 284"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 284"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"หลักภาษา",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 988,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 285 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 285",
-			"หลักภาษาข้อที่ 285",
-			"วรรณคดีศึกษาข้อที่ 285",
-			"สำนวนโวหารข้อที่ 285"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 285"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำราชาศัพท์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 989,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 286 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 286",
-			"หลักภาษาข้อที่ 286",
-			"วรรณคดีศึกษาข้อที่ 286",
-			"สำนวนโวหารข้อที่ 286"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 286"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำไวพจน์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 990,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 287 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 287",
-			"หลักภาษาข้อที่ 287",
-			"วรรณคดีศึกษาข้อที่ 287",
-			"สำนวนโวหารข้อที่ 287"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 287"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"สำนวนไทย",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 991,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 288 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 288",
-			"หลักภาษาข้อที่ 288",
-			"วรรณคดีศึกษาข้อที่ 288",
-			"สำนวนโวหารข้อที่ 288"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 288"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"วรรณคดี",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 992,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 289 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 289",
-			"หลักภาษาข้อที่ 289",
-			"วรรณคดีศึกษาข้อที่ 289",
-			"สำนวนโวหารข้อที่ 289"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 289"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"หลักภาษา",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 993,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 290 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 290",
-			"หลักภาษาข้อที่ 290",
-			"วรรณคดีศึกษาข้อที่ 290",
-			"สำนวนโวหารข้อที่ 290"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 290"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำราชาศัพท์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 994,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 291 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 291",
-			"หลักภาษาข้อที่ 291",
-			"วรรณคดีศึกษาข้อที่ 291",
-			"สำนวนโวหารข้อที่ 291"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 291"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำไวพจน์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 995,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 292 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 292",
-			"หลักภาษาข้อที่ 292",
-			"วรรณคดีศึกษาข้อที่ 292",
-			"สำนวนโวหารข้อที่ 292"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 292"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"สำนวนไทย",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 996,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 293 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 293",
-			"หลักภาษาข้อที่ 293",
-			"วรรณคดีศึกษาข้อที่ 293",
-			"สำนวนโวหารข้อที่ 293"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 293"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"วรรณคดี",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 997,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 294 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 294",
-			"หลักภาษาข้อที่ 294",
-			"วรรณคดีศึกษาข้อที่ 294",
-			"สำนวนโวหารข้อที่ 294"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 294"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"หลักภาษา",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 998,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 295 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 295",
-			"หลักภาษาข้อที่ 295",
-			"วรรณคดีศึกษาข้อที่ 295",
-			"สำนวนโวหารข้อที่ 295"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 295"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำราชาศัพท์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 999,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 296 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 296",
-			"หลักภาษาข้อที่ 296",
-			"วรรณคดีศึกษาข้อที่ 296",
-			"สำนวนโวหารข้อที่ 296"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 296"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"คำไวพจน์",
-			"ภาษาไทย",
-			"วรรณกรรม"
-		]
-	},
-	{
-		"id": 1000,
-		"category": "language_lit",
-		"question": "องค์ความรู้ด้านภาษาและวรรณคดีไทยหัวข้อที่ 297 ซึ่งมีความสำคัญต่อการศึกษาหลักภาษา วรรณศิลป์ และสำนวนโวหารโบราณ... ข้อใดถูกต้อง?",
-		"choices": [
-			"องค์ความรู้ภาษาไทยข้อที่ 297",
-			"หลักภาษาข้อที่ 297",
-			"วรรณคดีศึกษาข้อที่ 297",
-			"สำนวนโวหารข้อที่ 297"
-		],
-		"correctIndex": 0,
-		"acceptableAnswers": [
-			"องค์ความรู้ภาษาไทยข้อที่ 297"
-		],
-		"explanation": "หลักภาษาและวรรณคดีไทยเป็นมรดกทางวัฒนธรรมอันทรงคุณค่า",
-		"difficulty": "normal",
-		"tags": [
-			"สำนวนไทย",
-			"ภาษาไทย",
-			"วรรณกรรม"
 		]
 	}
 ];

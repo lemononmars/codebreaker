@@ -1,0 +1,237 @@
+{
+  "project": "Codebreaker Video Clip Generator",
+  "version": "1.1.0",
+  "description": "ชุดปริศนาตัวอย่างสำหรับสร้างคลิปวิดีโอ (Blanks, Spelling Bee, Crossroad, Connection)",
+  "puzzles": [
+    {
+      "id": "blanks_01",
+      "type": "blanks",
+      "category": "เติมตัวอักษร",
+      "title": "Blanks: เติมตัวอักษรซ้ำที่หายไป",
+      "difficulty": "normal",
+      "prompt": "เติมตัวอักษร 1 ตัวที่ซ่อนอยู่ในช่องว่างทั้งหมด เพื่อให้ได้คำที่ถูกต้อง",
+      "display": {
+        "masked_text": "ก _ _ ไ ก _",
+        "full_word": "กรรไกร",
+        "target_char": "ร",
+        "repeat_count": 3,
+        "blank_positions": [1, 2, 5],
+        "hint": "อุปกรณ์ตัดสิ่งของที่มีคมคู่ขนาน"
+      },
+      "answer": "ร",
+      "explanation": "เมื่อเติม 'ร' ในช่องว่างทั้ง 3 จุด จะได้คำว่า 'กรรไกร'",
+      "clip_timing": {
+        "question_display_sec": 5,
+        "hint_display_sec": 3,
+        "answer_reveal_sec": 3
+      }
+    },
+    {
+      "id": "blanks_02",
+      "type": "blanks",
+      "category": "เติมตัวอักษร",
+      "title": "Blanks: เติมตัวอักษรซ้ำที่หายไป",
+      "difficulty": "normal",
+      "prompt": "เติมตัวอักษร 1 ตัวที่ซ่อนอยู่ในช่องว่างทั้งหมด เพื่อให้ได้คำที่ถูกต้อง",
+      "display": {
+        "masked_text": "ธ _ _ ม ด า",
+        "full_word": "ธรรมดา",
+        "target_char": "ร",
+        "repeat_count": 2,
+        "blank_positions": [1, 2],
+        "hint": "ปกติ สามัญ ไม่พิเศษหรือแปลกไปจากเดิม"
+      },
+      "answer": "ร",
+      "explanation": "เมื่อเติม 'ร' ในช่องว่างทั้ง 2 จุด จะได้คำว่า 'ธรรมดา'",
+      "clip_timing": {
+        "question_display_sec": 5,
+        "hint_display_sec": 3,
+        "answer_reveal_sec": 3
+      }
+    },
+    {
+      "id": "spelling_bee_01",
+      "type": "spelling_bee",
+      "category": "ผสมคำรังผึ้ง",
+      "title": "Spelling Bee: ผสมคำ 7 ตัวอักษร (กรวดน้ำ)",
+      "difficulty": "normal",
+      "prompt": "ผสมคำภาษาไทยจากตัวอักษร 7 ตัวในรังผึ้ง โดยต้องมีตัวอักษรสีเหลืองตรงกลางเสมอ",
+      "display": {
+        "center_letter": "ก",
+        "outer_letters": ["ร", "ว", "ด", "น", "้", "ำ"],
+        "all_letters": ["ก", "ร", "ว", "ด", "น", "้", "ำ"],
+        "pangram": "กรวดน้ำ",
+        "min_word_length": 3,
+        "sample_solutions": [
+          "กรวดน้ำ",
+          "กรวด",
+          "กดน้ำ",
+          "กรด",
+          "กวด",
+          "กาน",
+          "ก้น"
+        ],
+        "total_possible_words": 34
+      },
+      "answer": {
+        "pangram": "กรวดน้ำ",
+        "top_words": ["กรวดน้ำ", "กรวด", "กดน้ำ", "กรด"]
+      },
+      "explanation": "คำแพนแกรมที่ใช้ครบทุกตัวอักษรคือ 'กรวดน้ำ' และสามารถผสมคำย่อยได้อีกกว่า 30 คำ",
+      "clip_timing": {
+        "question_display_sec": 6,
+        "hint_display_sec": 3,
+        "answer_reveal_sec": 4
+      }
+    },
+    {
+      "id": "spelling_bee_02",
+      "type": "spelling_bee",
+      "category": "ผสมคำรังผึ้ง",
+      "title": "Spelling Bee: ผสมคำ 7 ตัวอักษร (กระจ่าง)",
+      "difficulty": "normal",
+      "prompt": "ผสมคำภาษาไทยจากตัวอักษร 7 ตัวในรังผึ้ง โดยต้องมีตัวอักษรสีเหลืองตรงกลางเสมอ",
+      "display": {
+        "center_letter": "ก",
+        "outer_letters": ["ร", "ะ", "จ", "่", "า", "ง"],
+        "all_letters": ["ก", "ร", "ะ", "จ", "่", "า", "ง"],
+        "pangram": "กระจ่าง",
+        "min_word_length": 3,
+        "sample_solutions": [
+          "กระจ่าง",
+          "กาง",
+          "กะ",
+          "กาก",
+          "กราบ",
+          "กรร"
+        ],
+        "total_possible_words": 70
+      },
+      "answer": {
+        "pangram": "กระจ่าง",
+        "top_words": ["กระจ่าง", "กาง", "กาก", "กะ"]
+      },
+      "explanation": "คำแพนแกรมที่ใช้ครบทุกตัวอักษรคือ 'กระจ่าง' และสามารถผสมคำย่อยได้อีกมากโดยต้องมี 'ก' ตรงกลาง",
+      "clip_timing": {
+        "question_display_sec": 6,
+        "hint_display_sec": 3,
+        "answer_reveal_sec": 4
+      }
+    },
+    {
+      "id": "crossroad_01",
+      "type": "crossroad",
+      "category": "ทางแยก 4 ทิศ",
+      "title": "Crossroad: ทางแยก 4 ทิศทาง (ใจ)",
+      "difficulty": "easy",
+      "prompt": "หาคำตรงกลาง 1 คำ ที่เชื่อมกับคำทั้ง 4 ทิศทางแล้วเกิดเป็นคำประสมที่มีความหมาย",
+      "display": {
+        "top_pre_word": "ดี",
+        "left_pre_word": "เอา",
+        "right_post_word": "หาย",
+        "bottom_post_word": "ดำ",
+        "target_pattern": {
+          "vertical": "ดี[ ? ] -> [ ? ]ดำ",
+          "horizontal": "เอา[ ? ] -> [ ? ]หาย"
+        },
+        "full_combinations": {
+          "top": "ดีใจ",
+          "left": "เอาใจ",
+          "right": "ใจหาย",
+          "bottom": "ใจดำ"
+        }
+      },
+      "answer": "ใจ",
+      "explanation": "คำตรงกลางคือ 'ใจ' เชื่อมเป็นคำว่า ดีใจ, เอาใจ, ใจหาย, ใจดำ",
+      "clip_timing": {
+        "question_display_sec": 5,
+        "hint_display_sec": 2,
+        "answer_reveal_sec": 3
+      }
+    },
+    {
+      "id": "crossroad_02",
+      "type": "crossroad",
+      "category": "ทางแยก 4 ทิศ",
+      "title": "Crossroad: ทางแยก 4 ทิศทาง (น้ำ)",
+      "difficulty": "easy",
+      "prompt": "หาคำตรงกลาง 1 คำ ที่เชื่อมกับคำทั้ง 4 ทิศทางแล้วเกิดเป็นคำประสมที่มีความหมาย",
+      "display": {
+        "top_pre_word": "แม่",
+        "left_pre_word": "ห้อง",
+        "right_post_word": "แข็ง",
+        "bottom_post_word": "ใจ",
+        "target_pattern": {
+          "vertical": "แม่[ ? ] -> [ ? ]ใจ",
+          "horizontal": "ห้อง[ ? ] -> [ ? ]แข็ง"
+        },
+        "full_combinations": {
+          "top": "แม่น้ำ",
+          "left": "ห้องน้ำ",
+          "right": "น้ำแข็ง",
+          "bottom": "น้ำใจ"
+        }
+      },
+      "answer": "น้ำ",
+      "explanation": "คำตรงกลางคือ 'น้ำ' เชื่อมเป็นคำว่า แม่น้ำ, ห้องน้ำ, น้ำแข็ง, น้ำใจ",
+      "clip_timing": {
+        "question_display_sec": 5,
+        "hint_display_sec": 2,
+        "answer_reveal_sec": 3
+      }
+    },
+    {
+      "id": "connection_01",
+      "type": "connection",
+      "category": "คำเชื่อมโยง",
+      "title": "Connection: ถอดรหัสจุดเชื่อมโยง 4 คำ (โน้ตดนตรี)",
+      "difficulty": "normal",
+      "prompt": "หาจุดร่วมหรือความสัมพันธ์ที่ซ่อนอยู่ของทั้ง 4 คำนี้",
+      "display": {
+        "words": ["โดนัท", "เรขา", "มีนาคม", "ลางาน"],
+        "cards_layout": ["โดนัท", "เรขา", "มีนาคม", "ลางาน"],
+        "hint": "สังเกตพยางค์แรกของแต่ละคำ"
+      },
+      "answer": "โน้ตดนตรี",
+      "acceptable_answers": [
+        "พยางค์แรกเป็นโน้ตดนตรี",
+        "คำแรกเป็นโน้ตดนตรี",
+        "โน้ตดนตรี",
+        "ตัวโน้ต",
+        "โด เร มี ลา"
+      ],
+      "explanation": "พยางค์แรกของทุกคำคือเสียงตัวโน้ตดนตรี: โด (โดนัท), เร (เรขา), มี (มีนาคม), ลา (ลางาน)",
+      "clip_timing": {
+        "question_display_sec": 6,
+        "hint_display_sec": 3,
+        "answer_reveal_sec": 4
+      }
+    },
+    {
+      "id": "connection_02",
+      "type": "connection",
+      "category": "คำเชื่อมโยง",
+      "title": "Connection: ถอดรหัสจุดเชื่อมโยง 4 คำ (ปลา)",
+      "difficulty": "easy",
+      "prompt": "หาจุดร่วมหรือความสัมพันธ์ที่ซ่อนอยู่ของทั้ง 4 คำนี้",
+      "display": {
+        "words": ["หมอ", "ทอง", "การ์ตูน", "เทวดา"],
+        "cards_layout": ["หมอ", "ทอง", "การ์ตูน", "เทวดา"],
+        "hint": "เติมคำนำหน้าคำเดียวกันแล้วได้ชื่อสัตว์น้ำ"
+      },
+      "answer": "ปลา",
+      "acceptable_answers": [
+        "ปลา",
+        "คำนำหน้าคือปลา",
+        "ชื่อปลา",
+        "สายพันธุ์ปลา"
+      ],
+      "explanation": "ทุกคำสามารถเติมคำนำหน้าด้วย 'ปลา' ได้: ปลาหมอ, ปลาทอง, ปลาการ์ตูน, ปลาเทวดา",
+      "clip_timing": {
+        "question_display_sec": 6,
+        "hint_display_sec": 3,
+        "answer_reveal_sec": 4
+      }
+    }
+  ]
+}

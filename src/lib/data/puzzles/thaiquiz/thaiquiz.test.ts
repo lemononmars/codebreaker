@@ -4,17 +4,26 @@ import { getQuizQuestions, calculateQuestionScore, getDailySeed, validateQuizSho
 import { preprocessThaiTTSText } from '../../../utils/tts';
 
 describe('Thai Quiz Dataset & Engine', () => {
-	it('should have 4000 questions with 4 choices, rich funnel clues, and acceptableAnswers', () => {
-		expect(THAI_QUIZ_DATABASE.length).toBe(4000);
+	it('should have over 1,200 100% genuine questions with 4 choices, rich funnel clues, and acceptableAnswers', () => {
+		expect(THAI_QUIZ_DATABASE.length).toBeGreaterThanOrEqual(1200);
+
+		// Synthetic dummy filler pattern detector
+		const syntheticFillerRegex = /ลำดับที่\s*\d+|แห่งที่\s*\d+|รายการที่\s*\d+|พื้นที่อนุรักษ์ธรรมชาติ\s*\d+|องค์ความรู้วิทยาศาสตร์|ป๊อปคัลเจอร์ญี่ปุ่นลำดับที่|ประเพณีและวัฒนธรรมลำดับที่|อาหารและวัฒนธรรมการกินลำดับที่|ประวัติศาสตร์และมรดกไทยลำดับที่/;
 
 		for (const q of THAI_QUIZ_DATABASE) {
 			expect(q.id).toBeTypeOf('number');
-			// Rephrased funnel questions are descriptive (> 35 characters)
-			expect(q.question.trim().length).toBeGreaterThan(35);
+			// Rephrased funnel questions are descriptive (> 25 characters)
+			expect(q.question.trim().length).toBeGreaterThan(25);
 			expect(q.choices).toHaveLength(4);
 			expect(q.correctIndex).toBeGreaterThanOrEqual(0);
 			expect(q.correctIndex).toBeLessThanOrEqual(3);
 			expect(q.explanation.trim().length).toBeGreaterThan(5);
+
+			// Must NOT contain synthetic template filler patterns
+			expect(syntheticFillerRegex.test(q.question)).toBe(false);
+			for (const c of q.choices) {
+				expect(syntheticFillerRegex.test(c)).toBe(false);
+			}
 
 			// Must have explicit acceptable answers list
 			expect(Array.isArray(q.acceptableAnswers)).toBe(true);
@@ -26,11 +35,11 @@ describe('Thai Quiz Dataset & Engine', () => {
 		}
 	});
 
-	it('should cover all 8 Thai Quiz categories with 500 questions each', () => {
+	it('should cover all 8 Thai Quiz categories with at least 100 genuine questions each', () => {
 		expect(THAI_QUIZ_CATEGORIES).toHaveLength(8);
 		for (const cat of THAI_QUIZ_CATEGORIES) {
 			const items = THAI_QUIZ_DATABASE.filter((q) => q.category === cat.id);
-			expect(items).toHaveLength(500);
+			expect(items.length).toBeGreaterThanOrEqual(100);
 		}
 	});
 

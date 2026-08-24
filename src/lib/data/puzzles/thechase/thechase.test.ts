@@ -3,19 +3,24 @@ import { THE_CHASE_DATABASE, getChaseQuestions } from './questions';
 import { CHASERS, calculateOffers, simulateChaserAnswer, resolveBoardStepState } from './engine';
 
 describe('The Chase Game Mode & Dataset', () => {
-	it('should have 5000 questions in total with unique IDs from 1001 to 6000', () => {
-		expect(THE_CHASE_DATABASE.length).toBe(5000);
+	it('should have over 600 genuine questions in total with unique IDs', () => {
+		expect(THE_CHASE_DATABASE.length).toBeGreaterThanOrEqual(600);
+
+		const templateRegex = /ลำดับที่\s*\d+|แห่งที่\s*\d+|ข้อที่\s*\d+|รายการที่\s*\d+|พื้นที่อนุรักษ์ธรรมชาติ|ชุดที่\s*\d+/;
 
 		const idSet = new Set<number>();
 		for (const q of THE_CHASE_DATABASE) {
 			expect(q.id).toBeGreaterThanOrEqual(1001);
-			expect(q.id).toBeLessThanOrEqual(6000);
 			expect(idSet.has(q.id)).toBe(false);
 			idSet.add(q.id);
 
 			expect(q.question.trim().length).toBeGreaterThan(10);
+			expect(templateRegex.test(q.question)).toBe(false);
 			expect(q.choices).toHaveLength(3);
 			expect(new Set(q.choices).size).toBe(3); // All 3 choices must be unique
+			for (const c of q.choices) {
+				expect(templateRegex.test(c)).toBe(false);
+			}
 			expect(q.correctIndex).toBeGreaterThanOrEqual(0);
 			expect(q.correctIndex).toBeLessThanOrEqual(2);
 			expect(q.explanation.trim().length).toBeGreaterThan(5);

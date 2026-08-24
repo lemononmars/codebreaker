@@ -2,7 +2,7 @@ import type { TheChaseQuestion } from '../../types';
 
 export const PACK4_PART1_QUESTIONS: TheChaseQuestion[] = [
 	{
-		"id": 4001,
+		"id": 1388,
 		"category": "history_royalty",
 		"question": "ฟาโรห์ตุตันคาเมน แห่งอียิปต์โบราณ สุสานของพระองค์ถูกค้นพบโดยนักโบราณคดีท่านใดในปี 1922?",
 		"choices": [
@@ -15,7 +15,7 @@ export const PACK4_PART1_QUESTIONS: TheChaseQuestion[] = [
 		"difficulty": "normal"
 	},
 	{
-		"id": 4002,
+		"id": 1389,
 		"category": "history_royalty",
 		"question": "จักรพรรดิพระองค์แรกแห่งจักรวรรดิโรมัน ผู้เปลี่ยนกรุงโรมจากอิฐเป็นหินอ่อนคือใคร?",
 		"choices": [
@@ -28,7 +28,7 @@ export const PACK4_PART1_QUESTIONS: TheChaseQuestion[] = [
 		"difficulty": "normal"
 	},
 	{
-		"id": 4003,
+		"id": 1390,
 		"category": "history_royalty",
 		"question": "มหากษัตริย์แห่งมาซิโดเนียผู้พิชิตจักรวรรดิเปอร์เซียและขยายดินแดนไปถึงอินเดียคือใคร?",
 		"choices": [
@@ -41,7 +41,7 @@ export const PACK4_PART1_QUESTIONS: TheChaseQuestion[] = [
 		"difficulty": "normal"
 	},
 	{
-		"id": 4004,
+		"id": 1391,
 		"category": "history_royalty",
 		"question": "จักรพรรดิผู้รวมแผ่นดินจีนเป็นปึกแผ่นและสร้างกองทัพทหารดินเผาคือใคร?",
 		"choices": [
@@ -54,7 +54,7 @@ export const PACK4_PART1_QUESTIONS: TheChaseQuestion[] = [
 		"difficulty": "normal"
 	},
 	{
-		"id": 4005,
+		"id": 1392,
 		"category": "history_royalty",
 		"question": "สงครามกรุงทรอยระหว่างชาวกรีกกับชาวทรอย มีการใช้กลศึกสิ่งใดในการพิชิตเมือง?",
 		"choices": [
@@ -67,7 +67,7 @@ export const PACK4_PART1_QUESTIONS: TheChaseQuestion[] = [
 		"difficulty": "normal"
 	},
 	{
-		"id": 4006,
+		"id": 1393,
 		"category": "history_royalty",
 		"question": "นักปรัชญากรีกโบราณผู้เป็นอาจารย์ของเพลโต และยอมดื่มยาพิษเฮมล็อกคือใคร?",
 		"choices": [
@@ -80,7 +80,7 @@ export const PACK4_PART1_QUESTIONS: TheChaseQuestion[] = [
 		"difficulty": "normal"
 	},
 	{
-		"id": 4007,
+		"id": 1394,
 		"category": "history_royalty",
 		"question": "ประมวลกฎหมายฮัมมูราบีอันโด่งดังด้วยหลักการ \"ตาต่อตา ฟันต่อฟัน\" เป็นของอารยธรรมใด?",
 		"choices": [
@@ -93,7 +93,7 @@ export const PACK4_PART1_QUESTIONS: TheChaseQuestion[] = [
 		"difficulty": "normal"
 	},
 	{
-		"id": 4008,
+		"id": 1395,
 		"category": "history_royalty",
 		"question": "จักรพรรดิแห่งจักรวรรดิฝรั่งเศสผู้ปราชัยในสมรภูมิวอเตอร์ลูปี 1815 คือใคร?",
 		"choices": [
@@ -106,7 +106,7 @@ export const PACK4_PART1_QUESTIONS: TheChaseQuestion[] = [
 		"difficulty": "normal"
 	},
 	{
-		"id": 4009,
+		"id": 1396,
 		"category": "history_royalty",
 		"question": "กษัตริย์แห่งอังกฤษผู้มีพระมเหสี 6 พระองค์และทรงก่อตั้งคริสตจักรแห่งอังกฤษคือใคร?",
 		"choices": [
@@ -119,7 +119,7 @@ export const PACK4_PART1_QUESTIONS: TheChaseQuestion[] = [
 		"difficulty": "normal"
 	},
 	{
-		"id": 4010,
+		"id": 1397,
 		"category": "history_royalty",
 		"question": "ประธานาธิบดีสหรัฐอเมริกาคนแรกผู้ประกาศอิสรภาพคือใคร?",
 		"choices": [
@@ -132,7 +132,7 @@ export const PACK4_PART1_QUESTIONS: TheChaseQuestion[] = [
 		"difficulty": "normal"
 	},
 	{
-		"id": 4011,
+		"id": 1398,
 		"category": "history_royalty",
 		"question": "สงครามโลกครั้งที่ 1 สิ้นสุดลงอย่างเป็นทางการด้วยการลงนามในสนธิสัญญาใด?",
 		"choices": [
@@ -145,7 +145,7 @@ export const PACK4_PART1_QUESTIONS: TheChaseQuestion[] = [
 		"difficulty": "normal"
 	},
 	{
-		"id": 4012,
+		"id": 1399,
 		"category": "history_royalty",
 		"question": "วันดีเดย์ (D-Day) การยกพลขึ้นบกครั้งใหญ่ที่สุดของฝ่ายสัมพันธมิตรเกิดขึ้นที่ชายหาดใด?",
 		"choices": [
@@ -158,7 +158,7 @@ export const PACK4_PART1_QUESTIONS: TheChaseQuestion[] = [
 		"difficulty": "normal"
 	},
 	{
-		"id": 4013,
+		"id": 1400,
 		"category": "history_royalty",
 		"question": "นายกรัฐมนตรีอังกฤษผู้กล่าวสุนทรพจน์ \"We shall fight on the beaches\" ในสงครามโลกครั้งที่ 2 คือใคร?",
 		"choices": [
@@ -171,7 +171,7 @@ export const PACK4_PART1_QUESTIONS: TheChaseQuestion[] = [
 		"difficulty": "normal"
 	},
 	{
-		"id": 4014,
+		"id": 1401,
 		"category": "history_royalty",
 		"question": "เมืองแรกในประวัติศาสตร์ที่ถูกทิ้งระเบิดปรมาณูคือเมืองใด?",
 		"choices": [
@@ -184,7 +184,7 @@ export const PACK4_PART1_QUESTIONS: TheChaseQuestion[] = [
 		"difficulty": "normal"
 	},
 	{
-		"id": 4015,
+		"id": 1402,
 		"category": "history_royalty",
 		"question": "กำแพงเบอร์ลินที่แบ่งแยกเยอรมนีตะวันออกและตะวันตกถูกพังทลายลงในปี ค.ศ. ใด?",
 		"choices": [
@@ -197,7 +197,7 @@ export const PACK4_PART1_QUESTIONS: TheChaseQuestion[] = [
 		"difficulty": "normal"
 	},
 	{
-		"id": 4016,
+		"id": 1403,
 		"category": "history_royalty",
 		"question": "ประธานาธิบดีสหรัฐฯ ผู้นำพาประเทศผ่านพ้นสงครามกลางเมืองและประกาศเลิกทาสคือใคร?",
 		"choices": [
@@ -210,7 +210,7 @@ export const PACK4_PART1_QUESTIONS: TheChaseQuestion[] = [
 		"difficulty": "normal"
 	},
 	{
-		"id": 4017,
+		"id": 1404,
 		"category": "history_royalty",
 		"question": "ผู้นำการต่อสู้เพื่อสิทธิพลเมืองของคนผิวดำในสหรัฐฯ เจ้าของสุนทรพจน์ \"I Have a Dream\" คือใคร?",
 		"choices": [
@@ -223,7 +223,7 @@ export const PACK4_PART1_QUESTIONS: TheChaseQuestion[] = [
 		"difficulty": "normal"
 	},
 	{
-		"id": 4018,
+		"id": 1405,
 		"category": "history_royalty",
 		"question": "รัฐบุรุษผู้ต่อสู้ต่อต้านนโยบายแบ่งแยกสีผิว (Apartheid) และเป็นประธานาธิบดีผิวดำคนแรกของแอฟริกาใต้คือใคร?",
 		"choices": [
@@ -236,7 +236,7 @@ export const PACK4_PART1_QUESTIONS: TheChaseQuestion[] = [
 		"difficulty": "normal"
 	},
 	{
-		"id": 4019,
+		"id": 1406,
 		"category": "history_royalty",
 		"question": "เรือเดินสมุทรขนาดใหญ่ ไททานิก อับปางลงหลังชนภูเขาน้ำแข็งในปี ค.ศ. ใด?",
 		"choices": [
@@ -249,7 +249,7 @@ export const PACK4_PART1_QUESTIONS: TheChaseQuestion[] = [
 		"difficulty": "normal"
 	},
 	{
-		"id": 4020,
+		"id": 1407,
 		"category": "history_royalty",
 		"question": "การปฏิวัติฝรั่งเศสเริ่มต้นขึ้นด้วยการบุกทลายคุกบัสตีย์ในปี ค.ศ. ใด?",
 		"choices": [
@@ -262,7 +262,7 @@ export const PACK4_PART1_QUESTIONS: TheChaseQuestion[] = [
 		"difficulty": "normal"
 	},
 	{
-		"id": 4021,
+		"id": 1408,
 		"category": "history_royalty",
 		"question": "พระมหากษัตริย์ผู้ทรงกอบกู้เอกราชหลังการเสียกรุงศรีอยุธยาครั้งที่ 2 และสถาปนากรุงธนบุรีคือใคร?",
 		"choices": [
@@ -275,7 +275,7 @@ export const PACK4_PART1_QUESTIONS: TheChaseQuestion[] = [
 		"difficulty": "normal"
 	},
 	{
-		"id": 4022,
+		"id": 1409,
 		"category": "history_royalty",
 		"question": "สมเด็จพระนเรศวรมหาราช ทรงกระทำยุทธหัตถีมีชัยชนะเหนือพระมหาอุปราชา ณ ตำบลใด?",
 		"choices": [
@@ -288,7 +288,7 @@ export const PACK4_PART1_QUESTIONS: TheChaseQuestion[] = [
 		"difficulty": "normal"
 	},
 	{
-		"id": 4023,
+		"id": 1410,
 		"category": "history_royalty",
 		"question": "พระมหากษัตริย์แห่งกรุงรัตนโกสินทร์ผู้ทรงประกาศเลิกทาสและปฏิรูประบบราชการสมัยใหม่คือใคร?",
 		"choices": [
@@ -301,7 +301,7 @@ export const PACK4_PART1_QUESTIONS: TheChaseQuestion[] = [
 		"difficulty": "normal"
 	},
 	{
-		"id": 4024,
+		"id": 1411,
 		"category": "history_royalty",
 		"question": "พระมหากษัตริย์ผู้ทรงคำนวณการเกิดสุริยุปราคาเต็มดวงที่บ้านหว้ากอ จ.ประจวบคีรีขันธ์ ได้รับการยกย่องเป็น \"พระบิดาแห่งวิทยาศาสตร์ไทย\" คือใคร?",
 		"choices": [
@@ -314,982 +314,7 @@ export const PACK4_PART1_QUESTIONS: TheChaseQuestion[] = [
 		"difficulty": "normal"
 	},
 	{
-		"id": 4025,
-		"category": "history_royalty",
-		"question": "พระมหากษัตริย์แห่งกรุงสุโขทัยผู้ทรงประดิษฐ์อักษรไทยขึ้นเมื่อปี พ.ศ. 1826 คือใคร?",
-		"choices": [
-			"พระมหาธรรมราชาที่ 1",
-			"พ่อขุนรามคำแหงมหาราช",
-			"พ่อขุนศรีอินทราทิตย์"
-		],
-		"correctIndex": 1,
-		"explanation": "ทรงจารึกไว้บนศิลาจารึกหลักที่ 1",
-		"difficulty": "normal"
-	},
-	{
-		"id": 4026,
-		"category": "history_royalty",
-		"question": "ฟาโรห์ตุตันคาเมน แห่งอียิปต์โบราณ สุสานของพระองค์ถูกค้นพบโดยนักโบราณคดีท่านใดในปี 1922?",
-		"choices": [
-			"ฮาวเวิร์ด คาร์เตอร์",
-			"ลอร์ด คาร์นาร์วอน",
-			"ฌ็อง-ฟร็องซัว ช็องปอลียง"
-		],
-		"correctIndex": 0,
-		"explanation": "ประวัติศาสตร์โลก",
-		"difficulty": "normal"
-	},
-	{
-		"id": 4027,
-		"category": "history_royalty",
-		"question": "จักรพรรดิพระองค์แรกแห่งจักรวรรดิโรมัน ผู้เปลี่ยนกรุงโรมจากอิฐเป็นหินอ่อนคือใคร?",
-		"choices": [
-			"จูเลียส ซีซาร์",
-			"เนโร",
-			"ออกัสตัส ซีซาร์"
-		],
-		"correctIndex": 2,
-		"explanation": "ประวัติศาสตร์โลก",
-		"difficulty": "normal"
-	},
-	{
-		"id": 4028,
-		"category": "history_royalty",
-		"question": "มหากษัตริย์แห่งมาซิโดเนียผู้พิชิตจักรวรรดิเปอร์เซียและขยายดินแดนไปถึงอินเดียคือใคร?",
-		"choices": [
-			"พระเจ้าไซรัสมหาราช",
-			"อเล็กซานเดอร์มหาราช",
-			"พระเจ้าฟิลิปที่ 2"
-		],
-		"correctIndex": 1,
-		"explanation": "ประวัติศาสตร์โลก",
-		"difficulty": "normal"
-	},
-	{
-		"id": 4029,
-		"category": "history_royalty",
-		"question": "จักรพรรดิผู้รวมแผ่นดินจีนเป็นปึกแผ่นและสร้างกองทัพทหารดินเผาคือใคร?",
-		"choices": [
-			"จิ๋นซีฮ่องเต้",
-			"ฮั่นเกาจู่",
-			"ถังไท่จง"
-		],
-		"correctIndex": 0,
-		"explanation": "ประวัติศาสตร์โลก",
-		"difficulty": "normal"
-	},
-	{
-		"id": 4030,
-		"category": "history_royalty",
-		"question": "สงครามกรุงทรอยระหว่างชาวกรีกกับชาวทรอย มีการใช้กลศึกสิ่งใดในการพิชิตเมือง?",
-		"choices": [
-			"เรือสำเภาไฟ",
-			"อุโมงค์ใต้ดิน",
-			"ม้าไม้เมืองทรอย"
-		],
-		"correctIndex": 2,
-		"explanation": "ประวัติศาสตร์โลก",
-		"difficulty": "normal"
-	},
-	{
-		"id": 4031,
-		"category": "history_royalty",
-		"question": "นักปรัชญากรีกโบราณผู้เป็นอาจารย์ของเพลโต และยอมดื่มยาพิษเฮมล็อกคือใคร?",
-		"choices": [
-			"พีทาโกรัส",
-			"โสกราตีส",
-			"อริสโตเติล"
-		],
-		"correctIndex": 1,
-		"explanation": "ประวัติศาสตร์โลก",
-		"difficulty": "normal"
-	},
-	{
-		"id": 4032,
-		"category": "history_royalty",
-		"question": "ประมวลกฎหมายฮัมมูราบีอันโด่งดังด้วยหลักการ \"ตาต่อตา ฟันต่อฟัน\" เป็นของอารยธรรมใด?",
-		"choices": [
-			"บาบิโลเนีย",
-			"อียิปต์",
-			"เปอร์เซีย"
-		],
-		"correctIndex": 0,
-		"explanation": "ประวัติศาสตร์โลก",
-		"difficulty": "normal"
-	},
-	{
-		"id": 4033,
-		"category": "history_royalty",
-		"question": "จักรพรรดิแห่งจักรวรรดิฝรั่งเศสผู้ปราชัยในสมรภูมิวอเตอร์ลูปี 1815 คือใคร?",
-		"choices": [
-			"พระเจ้าหลุยส์ที่ 14",
-			"พระเจ้าหลุยส์ที่ 16",
-			"นโปเลียน โบนาปาร์ต"
-		],
-		"correctIndex": 2,
-		"explanation": "ประวัติศาสตร์โลก",
-		"difficulty": "normal"
-	},
-	{
-		"id": 4034,
-		"category": "history_royalty",
-		"question": "กษัตริย์แห่งอังกฤษผู้มีพระมเหสี 6 พระองค์และทรงก่อตั้งคริสตจักรแห่งอังกฤษคือใคร?",
-		"choices": [
-			"พระเจ้าจอร์จที่ 3",
-			"พระเจ้าเฮนรีที่ 8",
-			"พระเจ้าชาร์ลส์ที่ 1"
-		],
-		"correctIndex": 1,
-		"explanation": "ประวัติศาสตร์โลก",
-		"difficulty": "normal"
-	},
-	{
-		"id": 4035,
-		"category": "history_royalty",
-		"question": "ประธานาธิบดีสหรัฐอเมริกาคนแรกผู้ประกาศอิสรภาพคือใคร?",
-		"choices": [
-			"จอร์จ วอชิงตัน",
-			"โทมัส เจฟเฟอร์สัน",
-			"จอห์น แอดัมส์"
-		],
-		"correctIndex": 0,
-		"explanation": "ประวัติศาสตร์โลก",
-		"difficulty": "normal"
-	},
-	{
-		"id": 4036,
-		"category": "history_royalty",
-		"question": "สงครามโลกครั้งที่ 1 สิ้นสุดลงอย่างเป็นทางการด้วยการลงนามในสนธิสัญญาใด?",
-		"choices": [
-			"สนธิสัญญาเจนีวา",
-			"สนธิสัญญาปารีส",
-			"สนธิสัญญาแวร์ซายส์"
-		],
-		"correctIndex": 2,
-		"explanation": "ลงนามในปี 1919",
-		"difficulty": "normal"
-	},
-	{
-		"id": 4037,
-		"category": "history_royalty",
-		"question": "วันดีเดย์ (D-Day) การยกพลขึ้นบกครั้งใหญ่ที่สุดของฝ่ายสัมพันธมิตรเกิดขึ้นที่ชายหาดใด?",
-		"choices": [
-			"ซิซิลี",
-			"นอร์มองดี",
-			"ดันเคิร์ก"
-		],
-		"correctIndex": 1,
-		"explanation": "เกิดขึ้นเมื่อวันที่ 6 มิถุนายน 1944",
-		"difficulty": "normal"
-	},
-	{
-		"id": 4038,
-		"category": "history_royalty",
-		"question": "นายกรัฐมนตรีอังกฤษผู้กล่าวสุนทรพจน์ \"We shall fight on the beaches\" ในสงครามโลกครั้งที่ 2 คือใคร?",
-		"choices": [
-			"วินสตัน เชอร์ชิล",
-			"เนวิลล์ แชมเบอร์เลน",
-			"คลีเมนต์ แอตต์ลี"
-		],
-		"correctIndex": 0,
-		"explanation": "นำพาอังกฤษผ่านพ้นวิกฤตสงคราม",
-		"difficulty": "normal"
-	},
-	{
-		"id": 4039,
-		"category": "history_royalty",
-		"question": "เมืองแรกในประวัติศาสตร์ที่ถูกทิ้งระเบิดปรมาณูคือเมืองใด?",
-		"choices": [
-			"นางาซากิ",
-			"โตเกียว",
-			"ฮิโรชิมะ"
-		],
-		"correctIndex": 2,
-		"explanation": "ทิ้งระเบิดลิตเติลบอยเมื่อวันที่ 6 สิงหาคม 1945",
-		"difficulty": "normal"
-	},
-	{
-		"id": 4040,
-		"category": "history_royalty",
-		"question": "กำแพงเบอร์ลินที่แบ่งแยกเยอรมนีตะวันออกและตะวันตกถูกพังทลายลงในปี ค.ศ. ใด?",
-		"choices": [
-			"1985",
-			"1989",
-			"1991"
-		],
-		"correctIndex": 1,
-		"explanation": "เป็นจุดเริ่มต้นของการสิ้นสุดสงครามเย็น",
-		"difficulty": "normal"
-	},
-	{
-		"id": 4041,
-		"category": "history_royalty",
-		"question": "ประธานาธิบดีสหรัฐฯ ผู้นำพาประเทศผ่านพ้นสงครามกลางเมืองและประกาศเลิกทาสคือใคร?",
-		"choices": [
-			"อับราฮัม ลินคอล์น",
-			"ยูลิสซีส เอส. แกรนต์",
-			"แอนดรูว์ แจ็กสัน"
-		],
-		"correctIndex": 0,
-		"explanation": "กล่าวสุนทรพจน์เกตตีสเบิร์กอันโด่งดัง",
-		"difficulty": "normal"
-	},
-	{
-		"id": 4042,
-		"category": "history_royalty",
-		"question": "ผู้นำการต่อสู้เพื่อสิทธิพลเมืองของคนผิวดำในสหรัฐฯ เจ้าของสุนทรพจน์ \"I Have a Dream\" คือใคร?",
-		"choices": [
-			"มัลคอล์ม เอ็กซ์",
-			"เนลสัน แมนเดลา",
-			"มาร์ติน ลูเธอร์ คิง จูเนียร์"
-		],
-		"correctIndex": 2,
-		"explanation": "ได้รับรางวัลโนเบลสาขาสันติภาพปี 1964",
-		"difficulty": "normal"
-	},
-	{
-		"id": 4043,
-		"category": "history_royalty",
-		"question": "รัฐบุรุษผู้ต่อสู้ต่อต้านนโยบายแบ่งแยกสีผิว (Apartheid) และเป็นประธานาธิบดีผิวดำคนแรกของแอฟริกาใต้คือใคร?",
-		"choices": [
-			"โคฟี อันนัน",
-			"เนลสัน แมนเดลา",
-			"เดสมอนด์ ตูตู"
-		],
-		"correctIndex": 1,
-		"explanation": "ถูกจำคุกบนเกาะโรบเบินนานถึง 27 ปี",
-		"difficulty": "normal"
-	},
-	{
-		"id": 4044,
-		"category": "history_royalty",
-		"question": "เรือเดินสมุทรขนาดใหญ่ ไททานิก อับปางลงหลังชนภูเขาน้ำแข็งในปี ค.ศ. ใด?",
-		"choices": [
-			"1912",
-			"1905",
-			"1920"
-		],
-		"correctIndex": 0,
-		"explanation": "อับปางในการเดินทางเที่ยวปฐมฤกษ์ในมหาสมุทรแอตแลนติก",
-		"difficulty": "normal"
-	},
-	{
-		"id": 4045,
-		"category": "history_royalty",
-		"question": "การปฏิวัติฝรั่งเศสเริ่มต้นขึ้นด้วยการบุกทลายคุกบัสตีย์ในปี ค.ศ. ใด?",
-		"choices": [
-			"1799",
-			"1804",
-			"1789"
-		],
-		"correctIndex": 2,
-		"explanation": "วันที่ 14 กรกฎาคม กลายเป็นวันชาติฝรั่งเศส",
-		"difficulty": "normal"
-	},
-	{
-		"id": 4046,
-		"category": "history_royalty",
-		"question": "พระมหากษัตริย์ผู้ทรงกอบกู้เอกราชหลังการเสียกรุงศรีอยุธยาครั้งที่ 2 และสถาปนากรุงธนบุรีคือใคร?",
-		"choices": [
-			"พระบาทสมเด็จพระพุทธยอดฟ้าจุฬาโลกมหาราช",
-			"สมเด็จพระเจ้าตากสินมหาราช",
-			"สมเด็จพระนเรศวรมหาราช"
-		],
-		"correctIndex": 1,
-		"explanation": "ทรงกอบกู้เอกราชได้ภายในเวลา 7 เดือน",
-		"difficulty": "normal"
-	},
-	{
-		"id": 4047,
-		"category": "history_royalty",
-		"question": "สมเด็จพระนเรศวรมหาราช ทรงกระทำยุทธหัตถีมีชัยชนะเหนือพระมหาอุปราชา ณ ตำบลใด?",
-		"choices": [
-			"หนองสาหร่าย",
-			"ทุ่งลุมพลี",
-			"บางระจัน"
-		],
-		"correctIndex": 0,
-		"explanation": "เกิดขึ้นในปี พ.ศ. 2135",
-		"difficulty": "normal"
-	},
-	{
-		"id": 4048,
-		"category": "history_royalty",
-		"question": "พระมหากษัตริย์แห่งกรุงรัตนโกสินทร์ผู้ทรงประกาศเลิกทาสและปฏิรูประบบราชการสมัยใหม่คือใคร?",
-		"choices": [
-			"พระบาทสมเด็จพระจอมเกล้าเจ้าอยู่หัว",
-			"พระบาทสมเด็จพระมงกุฎเกล้าเจ้าอยู่หัว",
-			"พระบาทสมเด็จพระจุลจอมเกล้าเจ้าอยู่หัว"
-		],
-		"correctIndex": 2,
-		"explanation": "ทรงได้รับการถวายพระราชสมัญญานาม สมเด็จพระปิยมหาราช",
-		"difficulty": "normal"
-	},
-	{
-		"id": 4049,
-		"category": "history_royalty",
-		"question": "พระมหากษัตริย์ผู้ทรงคำนวณการเกิดสุริยุปราคาเต็มดวงที่บ้านหว้ากอ จ.ประจวบคีรีขันธ์ ได้รับการยกย่องเป็น \"พระบิดาแห่งวิทยาศาสตร์ไทย\" คือใคร?",
-		"choices": [
-			"พระบาทสมเด็จพระนั่งเกล้าเจ้าอยู่หัว",
-			"พระบาทสมเด็จพระจอมเกล้าเจ้าอยู่หัว",
-			"พระบาทสมเด็จพระจุลจอมเกล้าเจ้าอยู่หัว"
-		],
-		"correctIndex": 1,
-		"explanation": "ทรงคำนวณล่วงหน้าได้อย่างแม่นยำในปี พ.ศ. 2411",
-		"difficulty": "normal"
-	},
-	{
-		"id": 4050,
-		"category": "history_royalty",
-		"question": "พระมหากษัตริย์แห่งกรุงสุโขทัยผู้ทรงประดิษฐ์อักษรไทยขึ้นเมื่อปี พ.ศ. 1826 คือใคร?",
-		"choices": [
-			"พ่อขุนรามคำแหงมหาราช",
-			"พ่อขุนศรีอินทราทิตย์",
-			"พระมหาธรรมราชาที่ 1"
-		],
-		"correctIndex": 0,
-		"explanation": "ทรงจารึกไว้บนศิลาจารึกหลักที่ 1",
-		"difficulty": "normal"
-	},
-	{
-		"id": 4051,
-		"category": "history_royalty",
-		"question": "ฟาโรห์ตุตันคาเมน แห่งอียิปต์โบราณ สุสานของพระองค์ถูกค้นพบโดยนักโบราณคดีท่านใดในปี 1922?",
-		"choices": [
-			"ลอร์ด คาร์นาร์วอน",
-			"ฌ็อง-ฟร็องซัว ช็องปอลียง",
-			"ฮาวเวิร์ด คาร์เตอร์"
-		],
-		"correctIndex": 2,
-		"explanation": "ประวัติศาสตร์โลก",
-		"difficulty": "normal"
-	},
-	{
-		"id": 4052,
-		"category": "history_royalty",
-		"question": "จักรพรรดิพระองค์แรกแห่งจักรวรรดิโรมัน ผู้เปลี่ยนกรุงโรมจากอิฐเป็นหินอ่อนคือใคร?",
-		"choices": [
-			"เนโร",
-			"ออกัสตัส ซีซาร์",
-			"จูเลียส ซีซาร์"
-		],
-		"correctIndex": 1,
-		"explanation": "ประวัติศาสตร์โลก",
-		"difficulty": "normal"
-	},
-	{
-		"id": 4053,
-		"category": "history_royalty",
-		"question": "มหากษัตริย์แห่งมาซิโดเนียผู้พิชิตจักรวรรดิเปอร์เซียและขยายดินแดนไปถึงอินเดียคือใคร?",
-		"choices": [
-			"อเล็กซานเดอร์มหาราช",
-			"พระเจ้าฟิลิปที่ 2",
-			"พระเจ้าไซรัสมหาราช"
-		],
-		"correctIndex": 0,
-		"explanation": "ประวัติศาสตร์โลก",
-		"difficulty": "normal"
-	},
-	{
-		"id": 4054,
-		"category": "history_royalty",
-		"question": "จักรพรรดิผู้รวมแผ่นดินจีนเป็นปึกแผ่นและสร้างกองทัพทหารดินเผาคือใคร?",
-		"choices": [
-			"ฮั่นเกาจู่",
-			"ถังไท่จง",
-			"จิ๋นซีฮ่องเต้"
-		],
-		"correctIndex": 2,
-		"explanation": "ประวัติศาสตร์โลก",
-		"difficulty": "normal"
-	},
-	{
-		"id": 4055,
-		"category": "history_royalty",
-		"question": "สงครามกรุงทรอยระหว่างชาวกรีกกับชาวทรอย มีการใช้กลศึกสิ่งใดในการพิชิตเมือง?",
-		"choices": [
-			"อุโมงค์ใต้ดิน",
-			"ม้าไม้เมืองทรอย",
-			"เรือสำเภาไฟ"
-		],
-		"correctIndex": 1,
-		"explanation": "ประวัติศาสตร์โลก",
-		"difficulty": "normal"
-	},
-	{
-		"id": 4056,
-		"category": "history_royalty",
-		"question": "นักปรัชญากรีกโบราณผู้เป็นอาจารย์ของเพลโต และยอมดื่มยาพิษเฮมล็อกคือใคร?",
-		"choices": [
-			"โสกราตีส",
-			"อริสโตเติล",
-			"พีทาโกรัส"
-		],
-		"correctIndex": 0,
-		"explanation": "ประวัติศาสตร์โลก",
-		"difficulty": "normal"
-	},
-	{
-		"id": 4057,
-		"category": "history_royalty",
-		"question": "ประมวลกฎหมายฮัมมูราบีอันโด่งดังด้วยหลักการ \"ตาต่อตา ฟันต่อฟัน\" เป็นของอารยธรรมใด?",
-		"choices": [
-			"อียิปต์",
-			"เปอร์เซีย",
-			"บาบิโลเนีย"
-		],
-		"correctIndex": 2,
-		"explanation": "ประวัติศาสตร์โลก",
-		"difficulty": "normal"
-	},
-	{
-		"id": 4058,
-		"category": "history_royalty",
-		"question": "จักรพรรดิแห่งจักรวรรดิฝรั่งเศสผู้ปราชัยในสมรภูมิวอเตอร์ลูปี 1815 คือใคร?",
-		"choices": [
-			"พระเจ้าหลุยส์ที่ 16",
-			"นโปเลียน โบนาปาร์ต",
-			"พระเจ้าหลุยส์ที่ 14"
-		],
-		"correctIndex": 1,
-		"explanation": "ประวัติศาสตร์โลก",
-		"difficulty": "normal"
-	},
-	{
-		"id": 4059,
-		"category": "history_royalty",
-		"question": "กษัตริย์แห่งอังกฤษผู้มีพระมเหสี 6 พระองค์และทรงก่อตั้งคริสตจักรแห่งอังกฤษคือใคร?",
-		"choices": [
-			"พระเจ้าเฮนรีที่ 8",
-			"พระเจ้าชาร์ลส์ที่ 1",
-			"พระเจ้าจอร์จที่ 3"
-		],
-		"correctIndex": 0,
-		"explanation": "ประวัติศาสตร์โลก",
-		"difficulty": "normal"
-	},
-	{
-		"id": 4060,
-		"category": "history_royalty",
-		"question": "ประธานาธิบดีสหรัฐอเมริกาคนแรกผู้ประกาศอิสรภาพคือใคร?",
-		"choices": [
-			"โทมัส เจฟเฟอร์สัน",
-			"จอห์น แอดัมส์",
-			"จอร์จ วอชิงตัน"
-		],
-		"correctIndex": 2,
-		"explanation": "ประวัติศาสตร์โลก",
-		"difficulty": "normal"
-	},
-	{
-		"id": 4061,
-		"category": "history_royalty",
-		"question": "สงครามโลกครั้งที่ 1 สิ้นสุดลงอย่างเป็นทางการด้วยการลงนามในสนธิสัญญาใด?",
-		"choices": [
-			"สนธิสัญญาปารีส",
-			"สนธิสัญญาแวร์ซายส์",
-			"สนธิสัญญาเจนีวา"
-		],
-		"correctIndex": 1,
-		"explanation": "ลงนามในปี 1919",
-		"difficulty": "normal"
-	},
-	{
-		"id": 4062,
-		"category": "history_royalty",
-		"question": "วันดีเดย์ (D-Day) การยกพลขึ้นบกครั้งใหญ่ที่สุดของฝ่ายสัมพันธมิตรเกิดขึ้นที่ชายหาดใด?",
-		"choices": [
-			"นอร์มองดี",
-			"ดันเคิร์ก",
-			"ซิซิลี"
-		],
-		"correctIndex": 0,
-		"explanation": "เกิดขึ้นเมื่อวันที่ 6 มิถุนายน 1944",
-		"difficulty": "normal"
-	},
-	{
-		"id": 4063,
-		"category": "history_royalty",
-		"question": "นายกรัฐมนตรีอังกฤษผู้กล่าวสุนทรพจน์ \"We shall fight on the beaches\" ในสงครามโลกครั้งที่ 2 คือใคร?",
-		"choices": [
-			"เนวิลล์ แชมเบอร์เลน",
-			"คลีเมนต์ แอตต์ลี",
-			"วินสตัน เชอร์ชิล"
-		],
-		"correctIndex": 2,
-		"explanation": "นำพาอังกฤษผ่านพ้นวิกฤตสงคราม",
-		"difficulty": "normal"
-	},
-	{
-		"id": 4064,
-		"category": "history_royalty",
-		"question": "เมืองแรกในประวัติศาสตร์ที่ถูกทิ้งระเบิดปรมาณูคือเมืองใด?",
-		"choices": [
-			"โตเกียว",
-			"ฮิโรชิมะ",
-			"นางาซากิ"
-		],
-		"correctIndex": 1,
-		"explanation": "ทิ้งระเบิดลิตเติลบอยเมื่อวันที่ 6 สิงหาคม 1945",
-		"difficulty": "normal"
-	},
-	{
-		"id": 4065,
-		"category": "history_royalty",
-		"question": "กำแพงเบอร์ลินที่แบ่งแยกเยอรมนีตะวันออกและตะวันตกถูกพังทลายลงในปี ค.ศ. ใด?",
-		"choices": [
-			"1989",
-			"1991",
-			"1985"
-		],
-		"correctIndex": 0,
-		"explanation": "เป็นจุดเริ่มต้นของการสิ้นสุดสงครามเย็น",
-		"difficulty": "normal"
-	},
-	{
-		"id": 4066,
-		"category": "history_royalty",
-		"question": "ประธานาธิบดีสหรัฐฯ ผู้นำพาประเทศผ่านพ้นสงครามกลางเมืองและประกาศเลิกทาสคือใคร?",
-		"choices": [
-			"ยูลิสซีส เอส. แกรนต์",
-			"แอนดรูว์ แจ็กสัน",
-			"อับราฮัม ลินคอล์น"
-		],
-		"correctIndex": 2,
-		"explanation": "กล่าวสุนทรพจน์เกตตีสเบิร์กอันโด่งดัง",
-		"difficulty": "normal"
-	},
-	{
-		"id": 4067,
-		"category": "history_royalty",
-		"question": "ผู้นำการต่อสู้เพื่อสิทธิพลเมืองของคนผิวดำในสหรัฐฯ เจ้าของสุนทรพจน์ \"I Have a Dream\" คือใคร?",
-		"choices": [
-			"เนลสัน แมนเดลา",
-			"มาร์ติน ลูเธอร์ คิง จูเนียร์",
-			"มัลคอล์ม เอ็กซ์"
-		],
-		"correctIndex": 1,
-		"explanation": "ได้รับรางวัลโนเบลสาขาสันติภาพปี 1964",
-		"difficulty": "normal"
-	},
-	{
-		"id": 4068,
-		"category": "history_royalty",
-		"question": "รัฐบุรุษผู้ต่อสู้ต่อต้านนโยบายแบ่งแยกสีผิว (Apartheid) และเป็นประธานาธิบดีผิวดำคนแรกของแอฟริกาใต้คือใคร?",
-		"choices": [
-			"เนลสัน แมนเดลา",
-			"เดสมอนด์ ตูตู",
-			"โคฟี อันนัน"
-		],
-		"correctIndex": 0,
-		"explanation": "ถูกจำคุกบนเกาะโรบเบินนานถึง 27 ปี",
-		"difficulty": "normal"
-	},
-	{
-		"id": 4069,
-		"category": "history_royalty",
-		"question": "เรือเดินสมุทรขนาดใหญ่ ไททานิก อับปางลงหลังชนภูเขาน้ำแข็งในปี ค.ศ. ใด?",
-		"choices": [
-			"1905",
-			"1920",
-			"1912"
-		],
-		"correctIndex": 2,
-		"explanation": "อับปางในการเดินทางเที่ยวปฐมฤกษ์ในมหาสมุทรแอตแลนติก",
-		"difficulty": "normal"
-	},
-	{
-		"id": 4070,
-		"category": "history_royalty",
-		"question": "การปฏิวัติฝรั่งเศสเริ่มต้นขึ้นด้วยการบุกทลายคุกบัสตีย์ในปี ค.ศ. ใด?",
-		"choices": [
-			"1804",
-			"1789",
-			"1799"
-		],
-		"correctIndex": 1,
-		"explanation": "วันที่ 14 กรกฎาคม กลายเป็นวันชาติฝรั่งเศส",
-		"difficulty": "normal"
-	},
-	{
-		"id": 4071,
-		"category": "history_royalty",
-		"question": "พระมหากษัตริย์ผู้ทรงกอบกู้เอกราชหลังการเสียกรุงศรีอยุธยาครั้งที่ 2 และสถาปนากรุงธนบุรีคือใคร?",
-		"choices": [
-			"สมเด็จพระเจ้าตากสินมหาราช",
-			"สมเด็จพระนเรศวรมหาราช",
-			"พระบาทสมเด็จพระพุทธยอดฟ้าจุฬาโลกมหาราช"
-		],
-		"correctIndex": 0,
-		"explanation": "ทรงกอบกู้เอกราชได้ภายในเวลา 7 เดือน",
-		"difficulty": "normal"
-	},
-	{
-		"id": 4072,
-		"category": "history_royalty",
-		"question": "สมเด็จพระนเรศวรมหาราช ทรงกระทำยุทธหัตถีมีชัยชนะเหนือพระมหาอุปราชา ณ ตำบลใด?",
-		"choices": [
-			"ทุ่งลุมพลี",
-			"บางระจัน",
-			"หนองสาหร่าย"
-		],
-		"correctIndex": 2,
-		"explanation": "เกิดขึ้นในปี พ.ศ. 2135",
-		"difficulty": "normal"
-	},
-	{
-		"id": 4073,
-		"category": "history_royalty",
-		"question": "พระมหากษัตริย์แห่งกรุงรัตนโกสินทร์ผู้ทรงประกาศเลิกทาสและปฏิรูประบบราชการสมัยใหม่คือใคร?",
-		"choices": [
-			"พระบาทสมเด็จพระมงกุฎเกล้าเจ้าอยู่หัว",
-			"พระบาทสมเด็จพระจุลจอมเกล้าเจ้าอยู่หัว",
-			"พระบาทสมเด็จพระจอมเกล้าเจ้าอยู่หัว"
-		],
-		"correctIndex": 1,
-		"explanation": "ทรงได้รับการถวายพระราชสมัญญานาม สมเด็จพระปิยมหาราช",
-		"difficulty": "normal"
-	},
-	{
-		"id": 4074,
-		"category": "history_royalty",
-		"question": "พระมหากษัตริย์ผู้ทรงคำนวณการเกิดสุริยุปราคาเต็มดวงที่บ้านหว้ากอ จ.ประจวบคีรีขันธ์ ได้รับการยกย่องเป็น \"พระบิดาแห่งวิทยาศาสตร์ไทย\" คือใคร?",
-		"choices": [
-			"พระบาทสมเด็จพระจอมเกล้าเจ้าอยู่หัว",
-			"พระบาทสมเด็จพระจุลจอมเกล้าเจ้าอยู่หัว",
-			"พระบาทสมเด็จพระนั่งเกล้าเจ้าอยู่หัว"
-		],
-		"correctIndex": 0,
-		"explanation": "ทรงคำนวณล่วงหน้าได้อย่างแม่นยำในปี พ.ศ. 2411",
-		"difficulty": "normal"
-	},
-	{
-		"id": 4075,
-		"category": "history_royalty",
-		"question": "พระมหากษัตริย์แห่งกรุงสุโขทัยผู้ทรงประดิษฐ์อักษรไทยขึ้นเมื่อปี พ.ศ. 1826 คือใคร?",
-		"choices": [
-			"พ่อขุนศรีอินทราทิตย์",
-			"พระมหาธรรมราชาที่ 1",
-			"พ่อขุนรามคำแหงมหาราช"
-		],
-		"correctIndex": 2,
-		"explanation": "ทรงจารึกไว้บนศิลาจารึกหลักที่ 1",
-		"difficulty": "normal"
-	},
-	{
-		"id": 4076,
-		"category": "history_royalty",
-		"question": "ฟาโรห์ตุตันคาเมน แห่งอียิปต์โบราณ สุสานของพระองค์ถูกค้นพบโดยนักโบราณคดีท่านใดในปี 1922?",
-		"choices": [
-			"ฌ็อง-ฟร็องซัว ช็องปอลียง",
-			"ฮาวเวิร์ด คาร์เตอร์",
-			"ลอร์ด คาร์นาร์วอน"
-		],
-		"correctIndex": 1,
-		"explanation": "ประวัติศาสตร์โลก",
-		"difficulty": "normal"
-	},
-	{
-		"id": 4077,
-		"category": "history_royalty",
-		"question": "จักรพรรดิพระองค์แรกแห่งจักรวรรดิโรมัน ผู้เปลี่ยนกรุงโรมจากอิฐเป็นหินอ่อนคือใคร?",
-		"choices": [
-			"ออกัสตัส ซีซาร์",
-			"จูเลียส ซีซาร์",
-			"เนโร"
-		],
-		"correctIndex": 0,
-		"explanation": "ประวัติศาสตร์โลก",
-		"difficulty": "normal"
-	},
-	{
-		"id": 4078,
-		"category": "history_royalty",
-		"question": "มหากษัตริย์แห่งมาซิโดเนียผู้พิชิตจักรวรรดิเปอร์เซียและขยายดินแดนไปถึงอินเดียคือใคร?",
-		"choices": [
-			"พระเจ้าฟิลิปที่ 2",
-			"พระเจ้าไซรัสมหาราช",
-			"อเล็กซานเดอร์มหาราช"
-		],
-		"correctIndex": 2,
-		"explanation": "ประวัติศาสตร์โลก",
-		"difficulty": "normal"
-	},
-	{
-		"id": 4079,
-		"category": "history_royalty",
-		"question": "จักรพรรดิผู้รวมแผ่นดินจีนเป็นปึกแผ่นและสร้างกองทัพทหารดินเผาคือใคร?",
-		"choices": [
-			"ถังไท่จง",
-			"จิ๋นซีฮ่องเต้",
-			"ฮั่นเกาจู่"
-		],
-		"correctIndex": 1,
-		"explanation": "ประวัติศาสตร์โลก",
-		"difficulty": "normal"
-	},
-	{
-		"id": 4080,
-		"category": "history_royalty",
-		"question": "สงครามกรุงทรอยระหว่างชาวกรีกกับชาวทรอย มีการใช้กลศึกสิ่งใดในการพิชิตเมือง?",
-		"choices": [
-			"ม้าไม้เมืองทรอย",
-			"เรือสำเภาไฟ",
-			"อุโมงค์ใต้ดิน"
-		],
-		"correctIndex": 0,
-		"explanation": "ประวัติศาสตร์โลก",
-		"difficulty": "normal"
-	},
-	{
-		"id": 4081,
-		"category": "history_royalty",
-		"question": "นักปรัชญากรีกโบราณผู้เป็นอาจารย์ของเพลโต และยอมดื่มยาพิษเฮมล็อกคือใคร?",
-		"choices": [
-			"อริสโตเติล",
-			"พีทาโกรัส",
-			"โสกราตีส"
-		],
-		"correctIndex": 2,
-		"explanation": "ประวัติศาสตร์โลก",
-		"difficulty": "normal"
-	},
-	{
-		"id": 4082,
-		"category": "history_royalty",
-		"question": "ประมวลกฎหมายฮัมมูราบีอันโด่งดังด้วยหลักการ \"ตาต่อตา ฟันต่อฟัน\" เป็นของอารยธรรมใด?",
-		"choices": [
-			"เปอร์เซีย",
-			"บาบิโลเนีย",
-			"อียิปต์"
-		],
-		"correctIndex": 1,
-		"explanation": "ประวัติศาสตร์โลก",
-		"difficulty": "normal"
-	},
-	{
-		"id": 4083,
-		"category": "history_royalty",
-		"question": "จักรพรรดิแห่งจักรวรรดิฝรั่งเศสผู้ปราชัยในสมรภูมิวอเตอร์ลูปี 1815 คือใคร?",
-		"choices": [
-			"นโปเลียน โบนาปาร์ต",
-			"พระเจ้าหลุยส์ที่ 14",
-			"พระเจ้าหลุยส์ที่ 16"
-		],
-		"correctIndex": 0,
-		"explanation": "ประวัติศาสตร์โลก",
-		"difficulty": "normal"
-	},
-	{
-		"id": 4084,
-		"category": "history_royalty",
-		"question": "กษัตริย์แห่งอังกฤษผู้มีพระมเหสี 6 พระองค์และทรงก่อตั้งคริสตจักรแห่งอังกฤษคือใคร?",
-		"choices": [
-			"พระเจ้าชาร์ลส์ที่ 1",
-			"พระเจ้าจอร์จที่ 3",
-			"พระเจ้าเฮนรีที่ 8"
-		],
-		"correctIndex": 2,
-		"explanation": "ประวัติศาสตร์โลก",
-		"difficulty": "normal"
-	},
-	{
-		"id": 4085,
-		"category": "history_royalty",
-		"question": "ประธานาธิบดีสหรัฐอเมริกาคนแรกผู้ประกาศอิสรภาพคือใคร?",
-		"choices": [
-			"จอห์น แอดัมส์",
-			"จอร์จ วอชิงตัน",
-			"โทมัส เจฟเฟอร์สัน"
-		],
-		"correctIndex": 1,
-		"explanation": "ประวัติศาสตร์โลก",
-		"difficulty": "normal"
-	},
-	{
-		"id": 4086,
-		"category": "history_royalty",
-		"question": "สงครามโลกครั้งที่ 1 สิ้นสุดลงอย่างเป็นทางการด้วยการลงนามในสนธิสัญญาใด?",
-		"choices": [
-			"สนธิสัญญาแวร์ซายส์",
-			"สนธิสัญญาเจนีวา",
-			"สนธิสัญญาปารีส"
-		],
-		"correctIndex": 0,
-		"explanation": "ลงนามในปี 1919",
-		"difficulty": "normal"
-	},
-	{
-		"id": 4087,
-		"category": "history_royalty",
-		"question": "วันดีเดย์ (D-Day) การยกพลขึ้นบกครั้งใหญ่ที่สุดของฝ่ายสัมพันธมิตรเกิดขึ้นที่ชายหาดใด?",
-		"choices": [
-			"ดันเคิร์ก",
-			"ซิซิลี",
-			"นอร์มองดี"
-		],
-		"correctIndex": 2,
-		"explanation": "เกิดขึ้นเมื่อวันที่ 6 มิถุนายน 1944",
-		"difficulty": "normal"
-	},
-	{
-		"id": 4088,
-		"category": "history_royalty",
-		"question": "นายกรัฐมนตรีอังกฤษผู้กล่าวสุนทรพจน์ \"We shall fight on the beaches\" ในสงครามโลกครั้งที่ 2 คือใคร?",
-		"choices": [
-			"คลีเมนต์ แอตต์ลี",
-			"วินสตัน เชอร์ชิล",
-			"เนวิลล์ แชมเบอร์เลน"
-		],
-		"correctIndex": 1,
-		"explanation": "นำพาอังกฤษผ่านพ้นวิกฤตสงคราม",
-		"difficulty": "normal"
-	},
-	{
-		"id": 4089,
-		"category": "history_royalty",
-		"question": "เมืองแรกในประวัติศาสตร์ที่ถูกทิ้งระเบิดปรมาณูคือเมืองใด?",
-		"choices": [
-			"ฮิโรชิมะ",
-			"นางาซากิ",
-			"โตเกียว"
-		],
-		"correctIndex": 0,
-		"explanation": "ทิ้งระเบิดลิตเติลบอยเมื่อวันที่ 6 สิงหาคม 1945",
-		"difficulty": "normal"
-	},
-	{
-		"id": 4090,
-		"category": "history_royalty",
-		"question": "กำแพงเบอร์ลินที่แบ่งแยกเยอรมนีตะวันออกและตะวันตกถูกพังทลายลงในปี ค.ศ. ใด?",
-		"choices": [
-			"1991",
-			"1985",
-			"1989"
-		],
-		"correctIndex": 2,
-		"explanation": "เป็นจุดเริ่มต้นของการสิ้นสุดสงครามเย็น",
-		"difficulty": "normal"
-	},
-	{
-		"id": 4091,
-		"category": "history_royalty",
-		"question": "ประธานาธิบดีสหรัฐฯ ผู้นำพาประเทศผ่านพ้นสงครามกลางเมืองและประกาศเลิกทาสคือใคร?",
-		"choices": [
-			"แอนดรูว์ แจ็กสัน",
-			"อับราฮัม ลินคอล์น",
-			"ยูลิสซีส เอส. แกรนต์"
-		],
-		"correctIndex": 1,
-		"explanation": "กล่าวสุนทรพจน์เกตตีสเบิร์กอันโด่งดัง",
-		"difficulty": "normal"
-	},
-	{
-		"id": 4092,
-		"category": "history_royalty",
-		"question": "ผู้นำการต่อสู้เพื่อสิทธิพลเมืองของคนผิวดำในสหรัฐฯ เจ้าของสุนทรพจน์ \"I Have a Dream\" คือใคร?",
-		"choices": [
-			"มาร์ติน ลูเธอร์ คิง จูเนียร์",
-			"มัลคอล์ม เอ็กซ์",
-			"เนลสัน แมนเดลา"
-		],
-		"correctIndex": 0,
-		"explanation": "ได้รับรางวัลโนเบลสาขาสันติภาพปี 1964",
-		"difficulty": "normal"
-	},
-	{
-		"id": 4093,
-		"category": "history_royalty",
-		"question": "รัฐบุรุษผู้ต่อสู้ต่อต้านนโยบายแบ่งแยกสีผิว (Apartheid) และเป็นประธานาธิบดีผิวดำคนแรกของแอฟริกาใต้คือใคร?",
-		"choices": [
-			"เดสมอนด์ ตูตู",
-			"โคฟี อันนัน",
-			"เนลสัน แมนเดลา"
-		],
-		"correctIndex": 2,
-		"explanation": "ถูกจำคุกบนเกาะโรบเบินนานถึง 27 ปี",
-		"difficulty": "normal"
-	},
-	{
-		"id": 4094,
-		"category": "history_royalty",
-		"question": "เรือเดินสมุทรขนาดใหญ่ ไททานิก อับปางลงหลังชนภูเขาน้ำแข็งในปี ค.ศ. ใด?",
-		"choices": [
-			"1920",
-			"1912",
-			"1905"
-		],
-		"correctIndex": 1,
-		"explanation": "อับปางในการเดินทางเที่ยวปฐมฤกษ์ในมหาสมุทรแอตแลนติก",
-		"difficulty": "normal"
-	},
-	{
-		"id": 4095,
-		"category": "history_royalty",
-		"question": "การปฏิวัติฝรั่งเศสเริ่มต้นขึ้นด้วยการบุกทลายคุกบัสตีย์ในปี ค.ศ. ใด?",
-		"choices": [
-			"1789",
-			"1799",
-			"1804"
-		],
-		"correctIndex": 0,
-		"explanation": "วันที่ 14 กรกฎาคม กลายเป็นวันชาติฝรั่งเศส",
-		"difficulty": "normal"
-	},
-	{
-		"id": 4096,
-		"category": "history_royalty",
-		"question": "พระมหากษัตริย์ผู้ทรงกอบกู้เอกราชหลังการเสียกรุงศรีอยุธยาครั้งที่ 2 และสถาปนากรุงธนบุรีคือใคร?",
-		"choices": [
-			"สมเด็จพระนเรศวรมหาราช",
-			"พระบาทสมเด็จพระพุทธยอดฟ้าจุฬาโลกมหาราช",
-			"สมเด็จพระเจ้าตากสินมหาราช"
-		],
-		"correctIndex": 2,
-		"explanation": "ทรงกอบกู้เอกราชได้ภายในเวลา 7 เดือน",
-		"difficulty": "normal"
-	},
-	{
-		"id": 4097,
-		"category": "history_royalty",
-		"question": "สมเด็จพระนเรศวรมหาราช ทรงกระทำยุทธหัตถีมีชัยชนะเหนือพระมหาอุปราชา ณ ตำบลใด?",
-		"choices": [
-			"บางระจัน",
-			"หนองสาหร่าย",
-			"ทุ่งลุมพลี"
-		],
-		"correctIndex": 1,
-		"explanation": "เกิดขึ้นในปี พ.ศ. 2135",
-		"difficulty": "normal"
-	},
-	{
-		"id": 4098,
-		"category": "history_royalty",
-		"question": "พระมหากษัตริย์แห่งกรุงรัตนโกสินทร์ผู้ทรงประกาศเลิกทาสและปฏิรูประบบราชการสมัยใหม่คือใคร?",
-		"choices": [
-			"พระบาทสมเด็จพระจุลจอมเกล้าเจ้าอยู่หัว",
-			"พระบาทสมเด็จพระจอมเกล้าเจ้าอยู่หัว",
-			"พระบาทสมเด็จพระมงกุฎเกล้าเจ้าอยู่หัว"
-		],
-		"correctIndex": 0,
-		"explanation": "ทรงได้รับการถวายพระราชสมัญญานาม สมเด็จพระปิยมหาราช",
-		"difficulty": "normal"
-	},
-	{
-		"id": 4099,
-		"category": "history_royalty",
-		"question": "พระมหากษัตริย์ผู้ทรงคำนวณการเกิดสุริยุปราคาเต็มดวงที่บ้านหว้ากอ จ.ประจวบคีรีขันธ์ ได้รับการยกย่องเป็น \"พระบิดาแห่งวิทยาศาสตร์ไทย\" คือใคร?",
-		"choices": [
-			"พระบาทสมเด็จพระจุลจอมเกล้าเจ้าอยู่หัว",
-			"พระบาทสมเด็จพระนั่งเกล้าเจ้าอยู่หัว",
-			"พระบาทสมเด็จพระจอมเกล้าเจ้าอยู่หัว"
-		],
-		"correctIndex": 2,
-		"explanation": "ทรงคำนวณล่วงหน้าได้อย่างแม่นยำในปี พ.ศ. 2411",
-		"difficulty": "normal"
-	},
-	{
-		"id": 4100,
+		"id": 1412,
 		"category": "history_royalty",
 		"question": "พระมหากษัตริย์แห่งกรุงสุโขทัยผู้ทรงประดิษฐ์อักษรไทยขึ้นเมื่อปี พ.ศ. 1826 คือใคร?",
 		"choices": [

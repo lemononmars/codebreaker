@@ -38,10 +38,9 @@
 		stopSpeech,
 		playQuizShowSound
 	} from '$lib/utils/tts';
-	import TheChaseGame from '$lib/components/TheChaseGame.svelte';
 
 	// Top-Level Main Style Mode
-	let activeStyleTab: 'thechase' | 'quizshow' | 'normal' = 'thechase';
+	let activeStyleTab: 'quizshow' | 'normal' = 'quizshow';
 
 	// Sub-modes for Normal style
 	type NormalGameMode = 'daily' | 'timeattack' | 'survival' | 'category' | 'endless';
@@ -135,7 +134,7 @@
 
 	// ─── START GAME FLOW ────────────────────────────────────────────────────────
 
-	function startCountdown(style: 'normal' | 'quizshow' | 'thechase', mode: NormalGameMode = 'timeattack', category: ThaiQuizCategory | 'all' = 'all') {
+	function startCountdown(style: 'normal' | 'quizshow', mode: NormalGameMode = 'timeattack', category: ThaiQuizCategory | 'all' = 'all') {
 		stopAllTimersAndAudio();
 		activeStyleTab = style;
 		selectedNormalMode = mode;
@@ -563,6 +562,10 @@
 					<span class="text-[11px] hidden sm:inline">ความเร็ว ({speechRate}x)</span>
 				</button>
 
+				<a href="/puzzles/thechase" class="btn btn-xs btn-outline border-amber-500/50 hover:bg-amber-500 hover:text-slate-950 text-amber-300 font-bold gap-1 px-2.5 shadow-sm">
+					⚡ The Chase
+				</a>
+
 				<a href="/puzzles/battle" class="btn btn-xs btn-primary font-bold text-primary-content gap-1 px-2.5 shadow-sm">
 					⚔️ Battle
 				</a>
@@ -575,26 +578,18 @@
 		{#if currentView === 'selection'}
 			<div class="flex flex-col gap-5" in:fade={{ duration: 200 }}>
 
-				<!-- Style Mode Tabs (3 Iconic Formats) -->
-				<div class="grid grid-cols-3 gap-1.5 p-1.5 rounded-2xl bg-slate-900 border border-slate-800 shadow-xl">
+				<!-- Style Mode Tabs (2 Iconic Formats) -->
+				<div class="grid grid-cols-2 gap-1.5 p-1.5 rounded-2xl bg-slate-900 border border-slate-800 shadow-xl">
 					<button
-						class="py-2.5 px-2 rounded-xl font-extrabold text-xs sm:text-sm flex items-center justify-center gap-1.5 transition-all {activeStyleTab === 'thechase' ? 'bg-gradient-to-r from-amber-500 to-yellow-500 text-slate-950 shadow-lg shadow-amber-500/20' : 'text-slate-400 hover:text-white'}"
-						on:click={() => (activeStyleTab = 'thechase')}
-					>
-						<span class="text-base sm:text-lg">⚡</span>
-						<span>The Chase (ผู้ล่าท้าดวล)</span>
-					</button>
-
-					<button
-						class="py-2.5 px-2 rounded-xl font-extrabold text-xs sm:text-sm flex items-center justify-center gap-1.5 transition-all {activeStyleTab === 'quizshow' ? 'bg-gradient-to-r from-amber-500 to-yellow-500 text-slate-950 shadow-lg shadow-amber-500/20' : 'text-slate-400 hover:text-white'}"
+						class="py-2.5 px-3 rounded-xl font-extrabold text-xs sm:text-sm flex items-center justify-center gap-2 transition-all {activeStyleTab === 'quizshow' ? 'bg-gradient-to-r from-amber-500 to-yellow-500 text-slate-950 shadow-lg shadow-amber-500/20' : 'text-slate-400 hover:text-white'}"
 						on:click={() => (activeStyleTab = 'quizshow')}
 					>
 						<span class="text-base sm:text-lg">🏮</span>
-						<span>Quiz Show (早押し)</span>
+						<span>Quiz Show (早押し กดกริ่งชิงตอบ)</span>
 					</button>
 
 					<button
-						class="py-2.5 px-2 rounded-xl font-extrabold text-xs sm:text-sm flex items-center justify-center gap-1.5 transition-all {activeStyleTab === 'normal' ? 'bg-gradient-to-r from-amber-500 to-yellow-500 text-slate-950 shadow-lg shadow-amber-500/20' : 'text-slate-400 hover:text-white'}"
+						class="py-2.5 px-3 rounded-xl font-extrabold text-xs sm:text-sm flex items-center justify-center gap-2 transition-all {activeStyleTab === 'normal' ? 'bg-gradient-to-r from-amber-500 to-yellow-500 text-slate-950 shadow-lg shadow-amber-500/20' : 'text-slate-400 hover:text-white'}"
 						on:click={() => (activeStyleTab = 'normal')}
 					>
 						<span class="text-base sm:text-lg">🎮</span>
@@ -602,14 +597,19 @@
 					</button>
 				</div>
 
-				<!-- TAB 1: THE CHASE MODE (UK QUIZ SHOW FORMAT) -->
-				{#if activeStyleTab === 'thechase'}
-					<div in:fly={{ y: 10, duration: 200 }}>
-						<TheChaseGame onExit={() => (activeStyleTab = 'quizshow')} />
+				<!-- Quick Link Banner to The Chase Standalone Page -->
+				<div class="flex items-center justify-between gap-3 px-4 py-2.5 rounded-xl bg-gradient-to-r from-slate-900 via-amber-950/20 to-slate-900 border border-amber-500/20 text-xs text-slate-300">
+					<div class="flex items-center gap-2">
+						<span class="text-amber-400 text-base">⚡</span>
+						<span>กำลังมองหาเกมโชว์ <strong>The Chase (ผู้ล่าท้าดวล)</strong> บอร์ด 7 ขั้น และ AI Chaser?</span>
 					</div>
+					<a href="/puzzles/thechase" class="btn btn-xs bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold gap-1 shrink-0">
+						เล่น The Chase &rarr;
+					</a>
+				</div>
 
-				<!-- TAB 2: JAPANESE QUIZ SHOW MODE SELECTION -->
-				{:else if activeStyleTab === 'quizshow'}
+				<!-- TAB 1: JAPANESE QUIZ SHOW MODE SELECTION -->
+				{#if activeStyleTab === 'quizshow'}
 					<div class="flex flex-col gap-4" in:fly={{ y: 10, duration: 200 }}>
 						<div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-slate-900 via-slate-900/90 to-amber-950/40 border border-amber-500/30 p-6 sm:p-8 shadow-2xl">
 							<div class="absolute -right-10 -top-10 w-72 h-72 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
