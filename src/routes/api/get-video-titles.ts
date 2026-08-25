@@ -17,21 +17,21 @@ export const get: RequestHandler = async () => {
     'HfRSmvwGxo4'
   ];
 
-  const results: Array<{ id: string; title?: string; thumbnail?: string; error?: string }> = [];
-
-  for (const id of ids) {
-    try {
-      const res = await fetch(`https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${id}&format=json`);
-      if (res.ok) {
-        const data = await res.json();
-        results.push({ id, title: data.title, thumbnail: data.thumbnail_url });
-      } else {
-        results.push({ id, error: `HTTP ${res.status}` });
+  const results = await Promise.all(
+    ids.map(async (id) => {
+      try {
+        const res = await fetch(`https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${id}&format=json`);
+        if (res.ok) {
+          const data = await res.json();
+          return { id, title: data.title, thumbnail: data.thumbnail_url };
+        } else {
+          return { id, error: `HTTP ${res.status}` };
+        }
+      } catch (e: any) {
+        return { id, error: e.message };
       }
-    } catch (e: any) {
-      results.push({ id, error: e.message });
-    }
-  }
+    })
+  );
 
   return {
     body: { results }
