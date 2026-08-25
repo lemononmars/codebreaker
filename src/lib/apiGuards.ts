@@ -12,7 +12,12 @@ export const PUZZLE_TABLES = new Set([
 
 export const PUBLIC_TABLES = new Set([...PUZZLE_TABLES, 'leaderboard']);
 
-export const PUBLIC_INSERT_TABLES = new Set(['crossword', 'wordsearch', 'leaderboard']);
+export const PUBLIC_INSERT_TABLES = new Set([
+	'alphabet',
+	'crossword',
+	'missingvowels',
+	'wordsearch'
+]);
 
 export function isAllowedTable(table: string, allowed: Set<string>) {
 	return allowed.has(table);
