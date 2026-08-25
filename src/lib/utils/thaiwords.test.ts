@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { search, splitWord, appendable } from './thaiwords';
+import { search, splitWord, appendable, getSubWords } from './thaiwords';
 
 describe('search', () => {
     it('should return true for words present in the dictionary', () => {
@@ -86,4 +86,28 @@ describe('appendable', () => {
 		expect(appendable('a', 'b')).toBeFalsy();
 		expect(appendable('ก', 'a')).toBeFalsy();
 	});
+});
+
+describe('getSubWords', () => {
+    it('should return words that can be formed from the given word with letters repeated (allowRepeat = true)', () => {
+        const result = getSubWords('กบง', true);
+        // Expected to match dictionary words where every character is in 'กบง'
+        // 'กก' has 'ก' which is in 'กบง', so it's included when allowRepeat is true.
+        expect(result).toEqual(expect.arrayContaining(['กก', 'กง', 'กบ', 'ง', 'งก', 'งง', 'งบ', 'บ', 'บก', 'บง']));
+        expect(result.length).toBe(10);
+    });
+
+    it('should return words that can be formed from the given word without repeating letters in the dictionary word itself (allowRepeat = false)', () => {
+        const result = getSubWords('กบง', false);
+        // 'กก' and 'งง' have repeating letters, so they should be excluded.
+        expect(result).toEqual(expect.arrayContaining(['กง', 'กบ', 'ง', 'งก', 'งบ', 'บ', 'บก', 'บง']));
+        expect(result.length).toBe(8);
+        expect(result).not.toContain('กก');
+        expect(result).not.toContain('งง');
+    });
+
+    it('should return an empty array if no subwords can be formed', () => {
+        const result = getSubWords('xyz'); // xyz contains non-Thai characters not in the dictionary
+        expect(result).toEqual([]);
+    });
 });
