@@ -1,5 +1,31 @@
 import { describe, it, expect } from 'vitest';
-import { search, splitWord, appendable, getSubWords } from './thaiwords';
+import { search, splitWord, appendable, isLegal, getSubWords } from './thaiwords';
+
+describe('isLegal', () => {
+    it('should return true for valid single Thai characters', () => {
+        expect(isLegal('ก')).toBe(true); // Consonant (\u0E01)
+        expect(isLegal('ะ')).toBe(true); // Vowel (\u0E30)
+        expect(isLegal('์')).toBe(true); // Tone mark/Symbol (\u0E4C)
+    });
+
+    it('should return false for empty strings', () => {
+        expect(isLegal('')).toBe(false);
+    });
+
+    it('should return false for strings with length greater than 1', () => {
+        expect(isLegal('กข')).toBe(false);
+        expect(isLegal('ก็')).toBe(false); // Consonant + upper vowel (length 2)
+    });
+
+    it('should return false for characters outside the allowed unicode range', () => {
+        expect(isLegal('a')).toBe(false); // English letter
+        expect(isLegal('1')).toBe(false); // Number
+        expect(isLegal(' ')).toBe(false); // Space
+        expect(isLegal('.')).toBe(false); // Punctuation
+        expect(isLegal('๑')).toBe(false); // Thai digit (\u0E51)
+        expect(isLegal('๚')).toBe(false); // Thai symbol Angkhankhu (\u0E5A)
+    });
+});
 
 describe('search', () => {
     it('should return true for words present in the dictionary', () => {
