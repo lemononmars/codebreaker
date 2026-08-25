@@ -20,7 +20,7 @@ const abbrWords = parseAbbrWords(abbrRaw);
 let dictTrie: any = null;
 let combinedTrie: any = null;
 
-function buildThaiTrie(words: string[]) {
+export function buildThaiTrie(words: string[]) {
   const root: any = {};
   for (let i = 0; i < words.length; i++) {
     const word = words[i];
@@ -36,7 +36,7 @@ function buildThaiTrie(words: string[]) {
   return root;
 }
 
-function searchThaiTrie(root: any, pattern: string, strict: boolean) {
+export function searchThaiTrie(root: any, pattern: string, strict: boolean) {
   const parts = splitWord(pattern);
   const results: string[] = [];
   function dfs(node: any, idx: number, currentWord: string) {
@@ -325,8 +325,8 @@ function matchQuery(w: string, q: string, e:string[], vars: Record<string, strin
     if(numFillers > 0 && wordSplitted.length < querySplitted.length + numWilds) return false
 
     let numMatches = 0
-    for(const qIndex in querySplitted)
-      for(const wIndex in wordSplitted)
+    for(let qIndex = 0; qIndex < querySplitted.length; qIndex++)
+      for(let wIndex = 0; wIndex < wordSplitted.length; wIndex++)
         if(wordSplitted[wIndex] && checkMatch(wordSplitted[wIndex], querySplitted[qIndex])) {
           wordSplitted[wIndex] = ''
           numMatches ++
@@ -351,7 +351,7 @@ function matchQuery(w: string, q: string, e:string[], vars: Record<string, strin
     if(extra.length > 0 && extra[0] === "+")
         allowedExtra = parseInt(extra.slice(1)) || 0
     let numOutside = 0
-    for(const wIndex in wordSplitted)
+    for(let wIndex = 0; wIndex < wordSplitted.length; wIndex++)
       if(!subset.some((s)=>checkMatch(wordSplitted[wIndex], s)))
         numOutside ++
         if(numOutside > allowedExtra) return false

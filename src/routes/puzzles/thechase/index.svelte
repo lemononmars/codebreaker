@@ -34,11 +34,6 @@
 				</div>
 			</div>
 
-			<div class="flex items-center gap-2">
-				<a href="/puzzles/thaiquiz" class="btn btn-xs btn-ghost text-slate-400 hover:text-amber-400 gap-1 px-2 text-xs">
-					🏮 Thai Quiz Arena
-				</a>
-			</div>
 		</header>
 
 		<!-- The Chase Game Engine Component -->

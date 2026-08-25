@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 
 // 1. Read PyThaiNLP TNC Frequency data
-const tncPath = 'C:\\Users\\sakul_bp6myy0\\.gemini\\antigravity-ide\\brain\\370baa26-4230-4352-b754-5b041d74c689\\.system_generated\\steps\\53\\content.md';
+const tncPath = process.env.TNC_PATH || '';
 const tncContent = fs.readFileSync(tncPath, 'utf-8');
 
 const freqMap = new Map();

@@ -2,9 +2,9 @@ import dict from '$lib/utils/dict'
 
 export function splitWord(word: string) {
    const alphas = word.split("");
-   let out: string[] = [];
+   const out: string[] = [];
    alphas.forEach(function (a) {
-       if (a.match(/[ก-ฮ]/) || a.match(/[ใเแโไาำะๆฯฤา]/) || a.match(/[\.\*\/]/)) {
+       if (a.match(/[ก-ฮ]/) || a.match(/[ใเแโไาำะๆฯฤา]/) || a.match(/[.*/]/)) {
            out.push(a);
        }
        else {   
@@ -57,19 +57,33 @@ export function search(word: string) {
 }
 
 export function getSubWords(word: string, allowRepeat = true) {
-    let subWords: string[] = []
+    const subWords: string[] = []
 
     if(allowRepeat)
         for(const w of dict) {
-            if(w.split("").every(l => word.includes(l))) {
-                subWords = [...subWords, w]
+            let match = true;
+            for (let i = 0; i < w.length; i++) {
+                if (!word.includes(w[i])) {
+                    match = false;
+                    break;
+                }
+            }
+            if (match) {
+                subWords.push(w)
             }
         }
     else
         for(const w of dict) {
-            const a = w.split("")
-            if(new Set(a).size == a.length && a.every(l => word.includes(l))) {
-                subWords = [...subWords, w]
+            let match = true;
+            for (let i = 0; i < w.length; i++) {
+                const l = w[i];
+                if (!word.includes(l) || w.indexOf(l) !== i) {
+                    match = false;
+                    break;
+                }
+            }
+            if (match) {
+                subWords.push(w)
             }
         }
 

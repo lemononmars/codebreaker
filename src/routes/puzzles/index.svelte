@@ -171,11 +171,14 @@
 				<circle cx="16" cy="16" r="1.5" />
 				<path d="M8 8l8 8" />
 			</svg>`
-		},
+		}
+	];
+
+	const quizPuzzles = [
 		{
 			type: 'thaiquiz',
 			title: 'Thai Quiz Arena',
-			description: 'ควิซความรู้รอบตัวไทย & ป๊อปคัลเจอร์ สไตล์ Japanese Quiz Show (早押し 800 ข้อ) พร้อมเสียงอ่าน TTS',
+			description: 'ควิซความรู้รอบตัวและป๊อปคัลเจอร์ สไตล์เกมโชว์ตอบคำถามกดปุ่มแย่งตอบ พร้อมเสียงอ่าน',
 			icon: `<svg class="w-10 h-10 text-amber-400 transition-all duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 				<circle cx="12" cy="12" r="10"/>
 				<path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
@@ -185,9 +188,19 @@
 		{
 			type: 'thechase',
 			title: 'The Chase (ผู้ล่าท้าดวล)',
-			description: 'เกมโชว์ตอบคำถาม UK Quiz Show 500 ข้อ 3 ตัวเลือก ประลองความไวบนบอร์ด 7 ขั้น และรอบ Final Chase กับ AI Chaser',
-			icon: `<svg class="w-10 h-10 text-yellow-400 transition-all duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+			description: 'เกมโชว์ตอบคำถาม 3 ตัวเลือก ประลองความไวบนกระดานไล่ล่า 7 ขั้น และรอบสุดท้ายกับผู้ล่า',
+			icon: `<svg class="w-10 h-10 text-amber-400 transition-all duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 				<polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+			</svg>`
+		},
+		{
+			type: 'thaimapquiz',
+			title: 'Thai Map Quiz',
+			description: 'ควิซทายชื่อจังหวัดและตำแหน่งบนแผนที่ไทย',
+			icon: `<svg class="w-10 h-10 text-amber-400 transition-all duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+				<polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/>
+				<line x1="8" y1="2" x2="8" y2="18"/>
+				<line x1="16" y1="6" x2="16" y2="22"/>
 			</svg>`
 		}
 	];
@@ -200,16 +213,6 @@
 			icon: `<svg class="w-10 h-10 text-teal-400 transition-all duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 				<rect x="3" y="3" width="18" height="18" rx="2" />
 				<path d="M3 9h18M3 15h18M9 3v18M15 3v18" />
-			</svg>`
-		},
-		{
-			type: 'thaimapquiz',
-			title: 'Thai Map Quiz',
-			description: 'ควิซทายชื่อจังหวัดและตำแหน่งบนแผนที่ไทย',
-			icon: `<svg class="w-10 h-10 text-teal-400 transition-all duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-				<polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/>
-				<line x1="8" y1="2" x2="8" y2="18"/>
-				<line x1="16" y1="6" x2="16" y2="22"/>
 			</svg>`
 		},
 		{
@@ -228,7 +231,7 @@
 			type: 'mathsticks',
 			title: 'Mathsticks',
 			description: 'ปริศนาย้ายไม้ขีดไฟเพื่อแก้สมการคณิตศาสตร์',
-			icon: `<svg class="w-10 h-10 text-yellow-400 transition-all duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+			icon: `<svg class="w-10 h-10 text-purple-400 transition-all duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 				<path d="M12 2v20M2 12h20"/>
 				<circle cx="12" cy="4" r="1.5" fill="currentColor"/>
 			</svg>`
@@ -237,7 +240,7 @@
 			type: 'mathdle',
 			title: 'Mathdle',
 			description: 'เกมนิรนัยทายสมการคณิตศาสตร์ประจำวัน',
-			icon: `<svg class="w-10 h-10 text-amber-400 transition-all duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+			icon: `<svg class="w-10 h-10 text-purple-400 transition-all duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 				<rect x="4" y="4" width="16" height="16" rx="2"/>
 				<line x1="8" y1="10" x2="16" y2="10"/>
 				<line x1="8" y1="14" x2="16" y2="14"/>
@@ -248,7 +251,7 @@
 			type: 'calendar2026',
 			title: 'Calendar 2026',
 			description: 'ปริศนาไปรษณียบัตรจากปฏิทิน Code Breaker 2026',
-			icon: `<svg class="w-10 h-10 text-amber-400 transition-all duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+			icon: `<svg class="w-10 h-10 text-purple-400 transition-all duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 				<rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
 				<line x1="16" y1="2" x2="16" y2="6"/>
 				<line x1="8" y1="2" x2="8" y2="6"/>
@@ -270,7 +273,7 @@
 			type: 'tbs2021',
 			title: 'TBS 2021 Puzzles',
 			description: 'ปริศนาจากงาน Thailand Board Game Show 2021',
-			icon: `<svg class="w-10 h-10 text-emerald-400 transition-all duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+			icon: `<svg class="w-10 h-10 text-purple-400 transition-all duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 				<rect x="3" y="3" width="18" height="18" rx="2" />
 				<path d="M7 7h3v3H7zM14 7h3v3h-3zM7 14h3v3H7zM14 14h3v3h-3z"/>
 			</svg>`
@@ -280,7 +283,7 @@
 			title: 'ปริศนาภาษาไทย',
 			description: 'แก้ปริศนาภาษาไทยผ่าน Line',
 			href: 'https://line.me/R/ti/p/@231qozuo',
-			icon: `<svg class="w-10 h-10 text-green-400 transition-all duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+			icon: `<svg class="w-10 h-10 text-purple-400 transition-all duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 				<path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
 			</svg>`
 		}
@@ -329,7 +332,24 @@
 		/>
 	</section>
 
-	<!-- 2. Crafted Word Puzzles Section (Rebus, Word Search, Crossword, Alphabet, Missing Vowels, Cryptogram) -->
+	<!-- 3. Quizzes Section (Thai Quiz, The Chase, Thai Map Quiz) -->
+	<section class="flex flex-col gap-4">
+		<h2 class="text-xl sm:text-2xl font-bold tracking-tight text-amber-400 border-b border-slate-800 pb-2">
+			🧠 ควิซและเกมตอบคำถาม (Quizzes)
+		</h2>
+		<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-6">
+			{#each quizPuzzles as p}
+				<PuzzleCard
+					type={p.type}
+					title={p.title}
+					description={p.description}
+					icon={p.icon}
+				/>
+			{/each}
+		</div>
+	</section>
+
+	<!-- 4. Crafted Word Puzzles Section (Rebus, Word Search, Crossword, Alphabet, Missing Vowels, Cryptogram) -->
 	<section class="flex flex-col gap-4">
 		<h2 class="text-xl sm:text-2xl font-bold tracking-tight text-emerald-400 border-b border-slate-800 pb-2">
 			🔠 ปริศนาภาษาทำมือ (Crafted Word Puzzles)
@@ -346,7 +366,7 @@
 		</div>
 	</section>
 
-	<!-- 3. Generated Word Puzzles Section (Crossroad, Spelling Bee, Blanks, Spelling Quiz) -->
+	<!-- 5. Generated Word Puzzles Section (Crossroad, Spelling Bee, Blanks, Spelling Quiz) -->
 	<section class="flex flex-col gap-4">
 		<h2 class="text-xl sm:text-2xl font-bold tracking-tight text-cyan-400 border-b border-slate-800 pb-2">
 			🔠 ปริศนาภาษาสร้างจากพจนานุกรม (Generated Word Puzzles)
@@ -363,7 +383,7 @@
 		</div>
 	</section>
 
-	<!-- 4. Non-Word Puzzles Section -->
+	<!-- 6. Non-Word Puzzles Section -->
 	<section class="flex flex-col gap-4">
 		<h2 class="text-xl sm:text-2xl font-bold tracking-tight text-teal-400 border-b border-slate-800 pb-2">
 			🧭 ปริศนาทั่วไปและตรรกศาสตร์ (Non-Word Puzzles)
@@ -380,10 +400,10 @@
 		</div>
 	</section>
 
-	<!-- 5. Other Puzzles Section -->
+	<!-- 7. Other Puzzles Section -->
 	<section class="flex flex-col gap-4">
-		<h2 class="text-xl sm:text-2xl font-bold tracking-tight text-green-400 border-b border-slate-800 pb-2">
-			💬 อื่นๆ (Other)
+		<h2 class="text-xl sm:text-2xl font-bold tracking-tight text-purple-400 border-b border-slate-800 pb-2">
+			💬 อื่นๆ (Others)
 		</h2>
 		<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-6">
 			{#each otherPuzzles as p}

@@ -9,6 +9,8 @@ HEADERS = {
     "User-Agent": "ThaiPuzzleWordbankBuilder/2.0 (contact: your_email@example.com)"
 }
 
+META_PREFIXES = ("คุยเรื่อง:", "วิกิพีเดีย:", "แม่แบบ:")
+
 
 async def get_words_from_category(session, category_th, semaphore):
     """Fetches all article titles inside a given Thai Wikipedia category."""
@@ -40,10 +42,7 @@ async def get_words_from_category(session, category_th, semaphore):
                     title = member.get("title")
 
                     # Clean out Wikipedia meta-junk if any slips through
-                    if title and not any(
-                        title.startswith(prefix)
-                        for prefix in ["คุยเรื่อง:", "วิกิพีเดีย:", "แม่แบบ:"]
-                    ):
+                    if title and not title.startswith(META_PREFIXES):
                         words.append(title)
 
         except Exception as e:

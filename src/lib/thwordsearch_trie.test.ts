@@ -1,0 +1,77 @@
+import { describe, it, expect, beforeEach } from 'vitest';
+import { buildThaiTrie, searchThaiTrie } from './thwordsearch';
+
+describe('Trie Implementation for Thai Crossword Optimization', () => {
+  it('builds a trie correctly from a list of words', () => {
+    const words = ['กาง', 'กิน', 'กบ', 'กำ'];
+    const trie = buildThaiTrie(words);
+
+    expect(trie).toHaveProperty('ก');
+    expect(trie['ก']).toHaveProperty('า');
+    expect(trie['ก']['า']).toHaveProperty('ง');
+    expect(trie['ก']['า']['ง']).toHaveProperty('$');
+    expect(trie['ก']['า']['ง']['$']).toBe(true);
+
+    expect(trie).toHaveProperty('กิ');
+    expect(trie['กิ']).toHaveProperty('น');
+    expect(trie['กิ']['น']['$']).toBe(true);
+
+    expect(trie['ก']).toHaveProperty('บ');
+    expect(trie['ก']['บ']['$']).toBe(true);
+
+    expect(trie['ก']).toHaveProperty('ำ');
+    expect(trie['ก']['ำ']['$']).toBe(true);
+  });
+
+  describe('strict matching', () => {
+    const words = ['แมว', 'แม่', 'หมา', 'กิน', 'กบ', 'กำ', 'กาง'];
+    let trie: any;
+
+    beforeEach(() => {
+      trie = buildThaiTrie(words);
+    });
+
+    it('matches exact words', () => {
+      expect(searchThaiTrie(trie, 'แมว', true)).toEqual(['แมว']);
+      expect(searchThaiTrie(trie, 'กิน', true)).toEqual(['กิน']);
+      expect(searchThaiTrie(trie, 'กาง', true)).toEqual(['กาง']);
+    });
+
+    it('matches words using wildcards', () => {
+      expect(searchThaiTrie(trie, 'แ.ว', true)).toEqual(['แมว']);
+      expect(searchThaiTrie(trie, 'แ.', true)).toEqual(['แม่']); // 'แม่' splits to ['แ', 'ม่'] which is 2 parts
+      expect(searchThaiTrie(trie, 'ห.า', true)).toEqual(['หมา']);
+      expect(searchThaiTrie(trie, 'ก.น', true)).toEqual([]); // 'กิ' is a single part, so it does not match 'ก' and '.'
+      expect(searchThaiTrie(trie, 'กิ.', true)).toEqual(['กิน']);
+      expect(searchThaiTrie(trie, 'ก.', true)).toEqual(['กบ', 'กำ']);
+    });
+
+    it('returns empty array when there are no matches', () => {
+      expect(searchThaiTrie(trie, 'นก', true)).toEqual([]);
+      expect(searchThaiTrie(trie, 'ห..', true)).toEqual(['หมา']);
+      expect(searchThaiTrie(trie, 'ห...', true)).toEqual([]);
+    });
+  });
+
+  describe('loose matching', () => {
+    const words = ['แมว', 'แม่', 'หมา', 'กิน', 'กบ', 'กำ', 'กาง'];
+    let trie: any;
+
+    beforeEach(() => {
+      trie = buildThaiTrie(words);
+    });
+
+    it('matches exact words', () => {
+      expect(searchThaiTrie(trie, 'แมว', false)).toEqual(['แมว']);
+      expect(searchThaiTrie(trie, 'กิน', false)).toEqual(['กิน']);
+    });
+
+    it('matches using wildcards with loose prefixes', () => {
+      // 'ก.' loosely matches 'กบ', 'กำ' and 'กิน'
+      // because 'กิ' starts with 'ก', so 'ก' is considered a match for 'กิ',
+      // and then '.' matches 'น', thus finding 'กิน'.
+      expect(searchThaiTrie(trie, 'ก.', false)).toEqual(expect.arrayContaining(['กบ', 'กำ', 'กิน']));
+      expect(searchThaiTrie(trie, 'ก..', false)).toEqual(['กาง']);
+    });
+  });
+});

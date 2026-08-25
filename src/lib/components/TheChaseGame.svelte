@@ -14,6 +14,7 @@
 		XCircleIcon,
 		HelpCircleIcon,
 		Volume2Icon,
+		VolumeXIcon,
 		ActivityIcon,
 		ArrowRightIcon
 	} from 'svelte-feather-icons';
@@ -29,20 +30,25 @@
 	let chaser: ChaserProfile = CHASERS[0];
 	let bankedAmount = 0;
 	let currentScore = 0;
+	let isSpeechMuted = false;
 
-	// Cash Builder State
+	// Cash Builder State (Round 1)
 	let cashBuilderTime = 60;
 	let cashBuilderTimer: any = null;
 	let cashBuilderQuestions: TheChaseQuestion[] = [];
 	let cashBuilderIdx = 0;
 	let cashBuilderCorrect = 0;
 	let cashBuilderAnswering = false;
+	let cashBuilderChoicesRevealed = false;
+	let cashBuilderRevealTimeout: any = null;
+	let cashBuilderAnswerChoice: number | null = null;
+	let cashBuilderAnswerFeedback: 'correct' | 'wrong' | null = null;
 
-	// Offer State
+	// Offer State (Round 2 Prep)
 	let offers: TableOffers | null = null;
 	let chosenOffer: 'low' | 'mid' | 'high' = 'mid';
 
-	// Head-to-Head Board State
+	// Head-to-Head Board State (Round 2)
 	let playerStep = 4; // 0 to 7
 	let chaserStep = 0; // 0 to 7
 	let boardQuestions: TheChaseQuestion[] = [];
@@ -51,9 +57,8 @@
 	let chaserChoice: number | null = null;
 	let boardState: 'reading' | 'player_locked' | 'chaser_locked' | 'revealing_player' | 'revealing_chaser' | 'moving' | 'question_done' = 'reading';
 	let chaserLockTimeout: any = null;
-	let isSpeechMuted = false;
 
-	// Final Chase State
+	// Final Chase State (Round 3)
 	let finalTargetSteps = 0;
 	let finalPlayerTime = 60;
 	let finalChaserTime = 60;
@@ -63,8 +68,16 @@
 	let finalChaserSteps = 0;
 	let pushbackPending = false;
 	let pushbackAnswerChoice: number | null = null;
+	let finalChoicesRevealed = false;
+	let finalRevealTimeout: any = null;
+	let finalPlayerAnswerChoice: number | null = null;
+	let finalPlayerFeedback: 'correct' | 'wrong' | null = null;
 
 	onMount(() => {
+		if (typeof window !== 'undefined') {
+			const savedMuted = localStorage.getItem('cb_thechase_muted');
+			if (savedMuted !== null) isSpeechMuted = savedMuted === 'true';
+		}
 		resetAll();
 	});
 
@@ -73,10 +86,20 @@
 		stopSpeech();
 	});
 
+	function toggleAudioMute() {
+		isSpeechMuted = !isSpeechMuted;
+		if (typeof window !== 'undefined') {
+			localStorage.setItem('cb_thechase_muted', isSpeechMuted.toString());
+		}
+		if (isSpeechMuted) stopSpeech();
+	}
+
 	function clearAllTimers() {
 		clearInterval(cashBuilderTimer);
 		clearInterval(finalChaseTimer);
 		clearTimeout(chaserLockTimeout);
+		clearTimeout(cashBuilderRevealTimeout);
+		clearTimeout(finalRevealTimeout);
 	}
 
 	function resetAll() {
@@ -92,6 +115,12 @@
 		finalTargetSteps = 0;
 		finalChaserSteps = 0;
 		pushbackPending = false;
+		cashBuilderChoicesRevealed = false;
+		cashBuilderAnswerChoice = null;
+		cashBuilderAnswerFeedback = null;
+		finalChoicesRevealed = false;
+		finalPlayerAnswerChoice = null;
+		finalPlayerFeedback = null;
 	}
 
 	// =========================================================================
@@ -105,14 +134,14 @@
 
 		setTimeout(() => {
 			phase = 'cash_builder_playing';
-			cashBuilderQuestions = getChaseQuestions({ count: 25 });
+			cashBuilderQuestions = getChaseQuestions({ count: 30 });
 			cashBuilderIdx = 0;
 			cashBuilderCorrect = 0;
 			cashBuilderTime = 60;
 			cashBuilderAnswering = false;
 
 			playQuizShowSound('lock');
-			readCashBuilderQuestion();
+			setupCashBuilderQuestion();
 
 			cashBuilderTimer = setInterval(() => {
 				if (cashBuilderTime > 0) {
@@ -127,19 +156,36 @@
 		}, 1000);
 	}
 
-	function readCashBuilderQuestion() {
+	function setupCashBuilderQuestion() {
+		cashBuilderChoicesRevealed = false;
+		cashBuilderAnswerChoice = null;
+		cashBuilderAnswerFeedback = null;
+		clearTimeout(cashBuilderRevealTimeout);
+
 		const q = cashBuilderQuestions[cashBuilderIdx];
-		if (!q || isSpeechMuted) return;
-		speakThai(q.question, { rate: 1.15 });
+		if (!q) return;
+
+		if (!isSpeechMuted) {
+			speakThai(q.question, { rate: 1.15 });
+		}
+
+		// 2-second anti-spam delay before revealing choices
+		cashBuilderRevealTimeout = setTimeout(() => {
+			cashBuilderChoicesRevealed = true;
+		}, 2000);
 	}
 
 	function handleCashBuilderChoice(idx: number) {
-		if (cashBuilderAnswering || phase !== 'cash_builder_playing') return;
+		if (!cashBuilderChoicesRevealed || cashBuilderAnswering || phase !== 'cash_builder_playing') return;
 		const q = cashBuilderQuestions[cashBuilderIdx];
 		if (!q) return;
 
 		cashBuilderAnswering = true;
+		cashBuilderAnswerChoice = idx;
+		(document.activeElement as HTMLElement)?.blur();
+
 		const isCorrect = idx === q.correctIndex;
+		cashBuilderAnswerFeedback = isCorrect ? 'correct' : 'wrong';
 
 		if (isCorrect) {
 			playQuizShowSound('correct');
@@ -151,15 +197,16 @@
 
 		setTimeout(() => {
 			cashBuilderAnswering = false;
+			cashBuilderAnswerChoice = null;
+			cashBuilderAnswerFeedback = null;
 			cashBuilderIdx++;
 			if (cashBuilderIdx < cashBuilderQuestions.length) {
-				readCashBuilderQuestion();
+				setupCashBuilderQuestion();
 			} else {
-				// Re-up questions if player is blazing fast
 				cashBuilderQuestions = [...cashBuilderQuestions, ...getChaseQuestions({ count: 10 })];
-				readCashBuilderQuestion();
+				setupCashBuilderQuestion();
 			}
-		}, 300);
+		}, 700);
 	}
 
 	function finishCashBuilder() {
@@ -179,7 +226,7 @@
 		offers = calculateOffers(bankedAmount);
 		playQuizShowSound('gong');
 		if (!isSpeechMuted) {
-			speakThai(`${chaser.title} เสนอข้อเสนอให้กับคุณ`, { rate: 1.0 });
+			speakThai(`${chaser.title} เสนอข้อเสนอให้กับคุณบนกระดานไล่ล่า`, { rate: 1.05 });
 		}
 	}
 
@@ -209,7 +256,7 @@
 
 	function startBoardChase() {
 		phase = 'board_chase';
-		boardQuestions = getChaseQuestions({ count: 20 });
+		boardQuestions = getChaseQuestions({ count: 25 });
 		currentBoardQIdx = 0;
 		startBoardQuestion();
 	}
@@ -234,6 +281,7 @@
 		playerChoice = idx;
 		boardState = 'player_locked';
 		playQuizShowSound('lock');
+		(document.activeElement as HTMLElement)?.blur();
 
 		const currentQ = boardQuestions[currentBoardQIdx];
 		if (!currentQ) return;
@@ -310,7 +358,7 @@
 		phase = 'final_chase_player_playing';
 		finalPlayerTime = 60;
 		playQuizShowSound('buzz');
-		readFinalPlayerQuestion();
+		setupFinalPlayerQuestion();
 
 		finalChaseTimer = setInterval(() => {
 			if (finalPlayerTime > 0) {
@@ -322,31 +370,54 @@
 		}, 1000);
 	}
 
-	function readFinalPlayerQuestion() {
-		const q = finalQuestions[finalQIdx];
-		if (!q || isSpeechMuted) return;
-		speakThai(q.question, { rate: 1.15 });
-	}
+	function setupFinalPlayerQuestion() {
+		finalChoicesRevealed = false;
+		finalPlayerAnswerChoice = null;
+		finalPlayerFeedback = null;
+		clearTimeout(finalRevealTimeout);
 
-	function handleFinalPlayerChoice(idx: number) {
-		if (phase !== 'final_chase_player_playing') return;
 		const q = finalQuestions[finalQIdx];
 		if (!q) return;
 
-		if (idx === q.correctIndex) {
+		if (!isSpeechMuted) {
+			speakThai(q.question, { rate: 1.15 });
+		}
+
+		// 2-second anti-spam delay before revealing choices
+		finalRevealTimeout = setTimeout(() => {
+			finalChoicesRevealed = true;
+		}, 2000);
+	}
+
+	function handleFinalPlayerChoice(idx: number) {
+		if (!finalChoicesRevealed || phase !== 'final_chase_player_playing') return;
+		const q = finalQuestions[finalQIdx];
+		if (!q) return;
+
+		finalPlayerAnswerChoice = idx;
+		(document.activeElement as HTMLElement)?.blur();
+
+		const isCorrect = idx === q.correctIndex;
+		finalPlayerFeedback = isCorrect ? 'correct' : 'wrong';
+
+		if (isCorrect) {
 			playQuizShowSound('correct');
 			finalTargetSteps++;
 		} else {
 			playQuizShowSound('wrong');
 		}
 
-		finalQIdx++;
-		if (finalQIdx < finalQuestions.length) {
-			readFinalPlayerQuestion();
-		} else {
-			finalQuestions = [...finalQuestions, ...getChaseQuestions({ count: 15 })];
-			readFinalPlayerQuestion();
-		}
+		setTimeout(() => {
+			finalPlayerAnswerChoice = null;
+			finalPlayerFeedback = null;
+			finalQIdx++;
+			if (finalQIdx < finalQuestions.length) {
+				setupFinalPlayerQuestion();
+			} else {
+				finalQuestions = [...finalQuestions, ...getChaseQuestions({ count: 15 })];
+				setupFinalPlayerQuestion();
+			}
+		}, 700);
 	}
 
 	function finishFinalPlayerRound() {
@@ -406,6 +477,9 @@
 				playQuizShowSound('wrong');
 				pushbackPending = true;
 				pushbackAnswerChoice = null;
+				if (!isSpeechMuted) {
+					speakThai(`ผู้ล่าตอบผิด! ${q.question}`, { rate: 1.1 });
+				}
 			}
 		}, sim.delayMs);
 	}
@@ -415,6 +489,7 @@
 		if (!q) return;
 
 		pushbackAnswerChoice = idx;
+		(document.activeElement as HTMLElement)?.blur();
 		const isCorrect = idx === q.correctIndex;
 
 		if (isCorrect) {
@@ -433,7 +508,27 @@
 	}
 </script>
 
-<div class="flex flex-col gap-4 max-w-4xl mx-auto w-full select-none" in:fade={{ duration: 250 }}>
+<div class="flex flex-col gap-4 max-w-4xl mx-auto w-full select-none" in:fade={{ duration: 200 }}>
+
+	<!-- Top Audio Control Bar -->
+	<div class="flex items-center justify-between px-3 py-1.5 rounded-xl bg-slate-900/60 border border-slate-800 text-xs">
+		<div class="flex items-center gap-2">
+			<span class="text-amber-400 font-bold">⚡ The Chase Game</span>
+		</div>
+		<button
+			class="btn btn-xs {isSpeechMuted ? 'btn-ghost text-slate-500' : 'btn-ghost text-amber-400'} gap-1 px-2"
+			on:click={toggleAudioMute}
+			title={isSpeechMuted ? 'เปิดเสียงอ่าน TTS' : 'ปิดเสียงอ่าน TTS'}
+		>
+			{#if isSpeechMuted}
+				<VolumeXIcon size="13" />
+				<span>Muted</span>
+			{:else}
+				<Volume2Icon size="13" />
+				<span>TTS On</span>
+			{/if}
+		</button>
+	</div>
 
 	<!-- ========================================================================= -->
 	<!-- 1. INTRO / WELCOME SCREEN                                                 -->
@@ -467,10 +562,6 @@
 				</button>
 			</div>
 
-			<div class="p-3.5 rounded-2xl bg-slate-950/80 border border-slate-800/80 text-xs sm:text-sm text-slate-300 italic">
-				💬 "{chaser.tagline}"
-			</div>
-
 			<!-- Rules of The Chase -->
 			<div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
 				<div class="p-3.5 rounded-2xl bg-slate-950/60 border border-slate-800 flex flex-col gap-1.5">
@@ -501,12 +592,9 @@
 				</div>
 			</div>
 
-			<div class="flex items-center justify-between pt-2">
-				<button class="btn btn-sm btn-ghost text-slate-400 hover:text-white" on:click={onExit}>
-					กลับหน้าหลัก
-				</button>
+			<div class="flex items-center justify-center pt-2">
 				<button
-					class="btn btn-warning btn-md font-black text-slate-950 gap-2 px-8 rounded-2xl shadow-xl shadow-amber-500/20"
+					class="btn btn-warning btn-md font-black text-warning-content gap-2 px-10 rounded-2xl shadow-xl shadow-amber-500/20 w-full sm:w-auto"
 					on:click={startCashBuilder}
 				>
 					<PlayIcon size="18" />
@@ -546,18 +634,40 @@
 						{q.question}
 					</h3>
 
-					<!-- 3 Choice Buttons (A, B, C) -->
-					<div class="grid grid-cols-1 gap-2.5 pt-2">
+					<!-- Anti-spam & Choices Container -->
+					<div class="grid grid-cols-1 gap-2.5 pt-1">
+						{#if !cashBuilderChoicesRevealed}
+							<div class="flex items-center justify-center gap-2 p-3.5 rounded-2xl bg-slate-950/60 border border-amber-500/30 text-amber-400 text-xs font-mono animate-pulse">
+								<span class="inline-block w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
+								<span>กำลังอ่านคำถาม... ตัวเลือกจะเปิดใน 2 วินาที</span>
+							</div>
+						{/if}
+
 						{#each q.choices as choice, idx}
+							{@const isSelected = cashBuilderAnswerChoice === idx}
+							{@const isCorrectChoice = idx === q.correctIndex}
+							{@const showFeedback = cashBuilderAnswerFeedback !== null}
 							<button
-								class="btn btn-lg justify-start h-auto py-3.5 px-5 rounded-2xl font-bold text-sm sm:text-base border-slate-700 bg-slate-950/70 text-slate-100 hover:bg-amber-500 hover:text-slate-950 hover:border-amber-400 transition-all text-left flex items-center gap-3"
-								disabled={cashBuilderAnswering}
+								class="btn btn-lg justify-start h-auto py-3.5 px-5 rounded-2xl font-bold text-sm sm:text-base border transition-all text-left flex items-center justify-between
+								{!cashBuilderChoicesRevealed ? 'opacity-40 pointer-events-none bg-slate-950/40 border-slate-800 text-slate-500' : ''}
+								{showFeedback && isSelected && isCorrectChoice ? 'bg-emerald-600 border-emerald-400 text-white shadow-lg shadow-emerald-500/30' : ''}
+								{showFeedback && isSelected && !isCorrectChoice ? 'bg-rose-600 border-rose-400 text-white shadow-lg shadow-rose-500/30 animate-shake' : ''}
+								{showFeedback && !isSelected && isCorrectChoice ? 'border-emerald-500/60 bg-emerald-950/40 text-emerald-300' : ''}
+								{!showFeedback && cashBuilderChoicesRevealed ? 'border-slate-700 bg-slate-950/70 text-slate-100 hover:bg-amber-500 hover:text-slate-950 hover:border-amber-400' : ''}"
+								disabled={cashBuilderAnswering || !cashBuilderChoicesRevealed}
 								on:click={() => handleCashBuilderChoice(idx)}
 							>
-								<span class="w-7 h-7 rounded-lg bg-slate-800 font-mono text-xs flex items-center justify-center font-black text-amber-400 shrink-0">
-									{['A', 'B', 'C'][idx]}
-								</span>
-								<span class="grow">{choice}</span>
+								<div class="flex items-center gap-3">
+									<span class="w-7 h-7 rounded-lg bg-slate-800 font-mono text-xs flex items-center justify-center font-black text-amber-400 shrink-0">
+										{['A', 'B', 'C'][idx]}
+									</span>
+									<span class="grow">{choice}</span>
+								</div>
+								{#if showFeedback && isSelected}
+									<span class="badge badge-sm {isCorrectChoice ? 'badge-success text-success-content' : 'badge-error text-error-content'} font-bold">
+										{isCorrectChoice ? '✔ ถูกต้อง (+฿10k)' : '✖ ไม่ถูกต้อง'}
+									</span>
+								{/if}
 							</button>
 						{/each}
 					</div>
@@ -587,7 +697,7 @@
 			</p>
 
 			<button
-				class="btn btn-warning btn-md font-black text-slate-950 px-8 rounded-2xl gap-2 shadow-lg shadow-amber-500/20 mt-2"
+				class="btn btn-warning btn-md font-black text-warning-content px-8 rounded-2xl gap-2 shadow-lg shadow-amber-500/20 mt-2"
 				on:click={proceedToOffers}
 			>
 				<span>ไปรับข้อเสนอของผู้ล่า</span>
@@ -596,15 +706,54 @@
 		</div>
 
 	<!-- ========================================================================= -->
-	<!-- 4. TABLE OFFERS SELECTION                                                 -->
+	<!-- 4. TABLE OFFERS SELECTION & BOARD VISUALIZATION                           -->
 	<!-- ========================================================================= -->
 	{:else if phase === 'offer_selection' && offers}
-		<div class="flex flex-col gap-5" in:fade={{ duration: 250 }}>
+		<div class="flex flex-col gap-4" in:fade={{ duration: 200 }}>
 			<div class="flex items-center gap-3 bg-slate-900 border border-slate-800 rounded-2xl p-4">
 				<span class="text-3xl">{chaser.avatarEmoji}</span>
 				<div>
 					<h3 class="font-black text-white text-base">{chaser.name} ยื่นข้อเสนอบนกระดาน</h3>
-					<p class="text-xs text-slate-400">เลือกจำนวนเงินและตำแหน่งเริ่มต้นที่คุณต้องการลงแข่งขัน</p>
+					<p class="text-xs text-slate-400">ดูตำแหน่งเริ่มต้นบนกระดานด้านล่าง แล้วเลือกข้อเสนอที่ต้องการ</p>
+				</div>
+			</div>
+
+			<!-- Visual Chase Board Showing Offer Positions -->
+			<div class="bg-slate-900 border border-slate-800 rounded-2xl p-3 flex flex-col gap-2 shadow-lg">
+				<div class="flex items-center justify-between text-xs font-bold text-slate-400 border-b border-slate-800 pb-1.5">
+					<span class="text-amber-400">⚡ ตำแหน่งข้อเสนอบนกระดาน 7 ขั้น</span>
+					<span class="text-[11px] text-slate-500">Chaser เริ่มที่ขั้น 0 • Home ที่ขั้น 7</span>
+				</div>
+
+				<!-- Horizontal Board Representation -->
+				<div class="flex flex-row gap-1 w-full overflow-x-auto py-1">
+					{#each [0, 1, 2, 3, 4, 5, 6, 7] as stepIdx}
+						{@const isHigh = stepIdx === 2}
+						{@const isMid = stepIdx === 3}
+						{@const isLow = stepIdx === 5}
+						{@const isHome = stepIdx === 7}
+						{@const isChaser = stepIdx === 0}
+						<div
+							class="flex-1 min-w-[38px] h-12 rounded-xl border flex flex-col items-center justify-center text-center p-0.5 relative transition-all
+							{isChaser ? 'bg-red-950/40 border-red-500/50 text-red-400' : ''}
+							{isHigh ? 'bg-red-500/20 border-red-500 text-red-300 ring-1 ring-red-400' : ''}
+							{isMid ? 'bg-amber-500/20 border-amber-500 text-amber-300 ring-1 ring-amber-400' : ''}
+							{isLow ? 'bg-emerald-500/20 border-emerald-500 text-emerald-300 ring-1 ring-emerald-400' : ''}
+							{isHome ? 'bg-emerald-950/60 border-emerald-400 text-emerald-300' : ''}
+							{!isChaser && !isHigh && !isMid && !isLow && !isHome ? 'bg-slate-950/60 border-slate-800 text-slate-500' : ''}"
+						>
+							<span class="text-[9px] font-mono font-bold leading-none">
+								{isChaser ? '👹' : isHome ? '🏆' : stepIdx}
+							</span>
+							{#if isHigh}
+								<span class="text-[8px] font-black text-red-400 mt-0.5 leading-none">HIGH</span>
+							{:else if isMid}
+								<span class="text-[8px] font-black text-amber-400 mt-0.5 leading-none">MID</span>
+							{:else if isLow}
+								<span class="text-[8px] font-black text-emerald-400 mt-0.5 leading-none">LOW</span>
+							{/if}
+						</div>
+					{/each}
 				</div>
 			</div>
 
@@ -612,56 +761,56 @@
 			<div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
 				<!-- High Offer -->
 				<button
-					class="flex flex-col items-center justify-between p-5 rounded-3xl bg-slate-900/90 border border-red-500/40 hover:border-red-400 hover:bg-slate-900 hover:scale-[1.02] transition-all text-center gap-3 shadow-xl group"
+					class="flex flex-col items-center justify-between p-4 sm:p-5 rounded-3xl bg-slate-900/90 border border-red-500/40 hover:border-red-400 hover:bg-slate-900 hover:scale-[1.02] transition-all text-center gap-2.5 shadow-xl group"
 					on:click={() => selectOffer('high')}
 				>
-					<div class="inline-flex items-center gap-1 text-[11px] font-black text-red-400 bg-red-500/10 px-3 py-1 rounded-full border border-red-500/20">
-						<TrendingUpIcon size="12" />
-						<span>ข้อเสนอด้านบน (High Risk)</span>
+					<div class="inline-flex items-center gap-1 text-[10px] font-black text-red-400 bg-red-500/10 px-2.5 py-0.5 rounded-full border border-red-500/20">
+						<TrendingUpIcon size="11" />
+						<span>ข้อเสนอสูง (เริ่มขั้น 2)</span>
 					</div>
 					<div class="text-2xl sm:text-3xl font-black text-red-400 font-mono group-hover:scale-105 transition-transform">
 						฿{offers.highAmount.toLocaleString()}
 					</div>
-					<div class="text-[11px] text-slate-400">
+					<div class="text-[11px] text-slate-400 leading-snug">
 						ห่างจาก Chaser <strong>2 ขั้น</strong><br>(4 ก้าวถึงบ้าน)
 					</div>
-					<div class="btn btn-xs btn-error font-bold w-full rounded-xl mt-1">เลือกข้อเสนอสูง</div>
+					<div class="btn btn-xs btn-error text-error-content font-bold w-full rounded-xl mt-1">เลือกข้อเสนอสูง</div>
 				</button>
 
 				<!-- Mid Offer -->
 				<button
-					class="flex flex-col items-center justify-between p-5 rounded-3xl bg-slate-900/90 border-2 border-amber-500 hover:border-amber-400 hover:bg-slate-900 hover:scale-[1.02] transition-all text-center gap-3 shadow-xl shadow-amber-500/10 group"
+					class="flex flex-col items-center justify-between p-4 sm:p-5 rounded-3xl bg-slate-900/90 border-2 border-amber-500 hover:border-amber-400 hover:bg-slate-900 hover:scale-[1.02] transition-all text-center gap-2.5 shadow-xl shadow-amber-500/10 group"
 					on:click={() => selectOffer('mid')}
 				>
-					<div class="inline-flex items-center gap-1 text-[11px] font-black text-amber-400 bg-amber-500/10 px-3 py-1 rounded-full border border-amber-500/20">
-						<ShieldIcon size="12" />
-						<span>ข้อเสนอปกติ (เงินที่ทำได้)</span>
+					<div class="inline-flex items-center gap-1 text-[10px] font-black text-amber-400 bg-amber-500/10 px-2.5 py-0.5 rounded-full border border-amber-500/20">
+						<ShieldIcon size="11" />
+						<span>ข้อเสนอปกติ (เริ่มขั้น 3)</span>
 					</div>
 					<div class="text-2xl sm:text-3xl font-black text-amber-400 font-mono group-hover:scale-105 transition-transform">
 						฿{offers.midAmount.toLocaleString()}
 					</div>
-					<div class="text-[11px] text-slate-400">
+					<div class="text-[11px] text-slate-400 leading-snug">
 						ห่างจาก Chaser <strong>3 ขั้น</strong><br>(3 ก้าวถึงบ้าน)
 					</div>
-					<div class="btn btn-xs btn-warning font-bold text-slate-950 w-full rounded-xl mt-1">เลือกข้อเสนอนี้</div>
+					<div class="btn btn-xs btn-warning text-warning-content font-bold w-full rounded-xl mt-1">เลือกข้อเสนอนี้</div>
 				</button>
 
 				<!-- Low Offer -->
 				<button
-					class="flex flex-col items-center justify-between p-5 rounded-3xl bg-slate-900/90 border border-emerald-500/40 hover:border-emerald-400 hover:bg-slate-900 hover:scale-[1.02] transition-all text-center gap-3 shadow-xl group"
+					class="flex flex-col items-center justify-between p-4 sm:p-5 rounded-3xl bg-slate-900/90 border border-emerald-500/40 hover:border-emerald-400 hover:bg-slate-900 hover:scale-[1.02] transition-all text-center gap-2.5 shadow-xl group"
 					on:click={() => selectOffer('low')}
 				>
-					<div class="inline-flex items-center gap-1 text-[11px] font-black text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20">
-						<TrendingDownIcon size="12" />
-						<span>ข้อเสนอด้านล่าง (Safe Buffer)</span>
+					<div class="inline-flex items-center gap-1 text-[10px] font-black text-emerald-400 bg-emerald-500/10 px-2.5 py-0.5 rounded-full border border-emerald-500/20">
+						<TrendingDownIcon size="11" />
+						<span>ข้อเสนอต่ำ (เริ่มขั้น 5)</span>
 					</div>
 					<div class="text-2xl sm:text-3xl font-black text-emerald-400 font-mono group-hover:scale-105 transition-transform">
 						฿{offers.lowAmount.toLocaleString()}
 					</div>
-					<div class="text-[11px] text-slate-400">
+					<div class="text-[11px] text-slate-400 leading-snug">
 						ห่างจาก Chaser <strong>5 ขั้น</strong><br>(2 ก้าวถึงบ้าน)
 					</div>
-					<div class="btn btn-xs btn-success font-bold w-full rounded-xl mt-1">เลือกข้อเสนอต่ำ</div>
+					<div class="btn btn-xs btn-success text-success-content font-bold w-full rounded-xl mt-1">เลือกข้อเสนอต่ำ</div>
 				</button>
 			</div>
 		</div>
@@ -670,46 +819,47 @@
 	<!-- 5. HEAD-TO-HEAD BOARD CHASE (7 STEPS)                                     -->
 	<!-- ========================================================================= -->
 	{:else if phase === 'board_chase'}
-		<div class="grid grid-cols-1 md:grid-cols-12 gap-4">
+		<div class="grid grid-cols-1 md:grid-cols-12 gap-3 sm:gap-4">
 
-			<!-- LEFT / TOP: 7-STEP CHASE BOARD (5 cols) -->
-			<div class="md:col-span-4 bg-slate-900 border border-slate-800 rounded-3xl p-4 flex flex-col gap-2 shadow-2xl">
-				<div class="flex items-center justify-between border-b border-slate-800 pb-2">
-					<div class="text-xs font-black text-white flex items-center gap-1.5">
-						<span>⚡ THE CHASE BOARD</span>
+			<!-- CHASE BOARD: Horizontal on Mobile with minimal height, Vertical on Desktop -->
+			<div class="md:col-span-4 bg-slate-900 border border-slate-800 rounded-2xl p-2.5 sm:p-4 flex flex-col gap-1.5 sm:gap-2 shadow-2xl">
+				<div class="flex items-center justify-between border-b border-slate-800 pb-1.5 px-0.5">
+					<div class="text-[11px] sm:text-xs font-black text-white flex items-center gap-1.5">
+						<span>⚡ CHASE BOARD</span>
 					</div>
 					<span class="font-mono text-xs font-bold text-amber-400">฿{bankedAmount.toLocaleString()}</span>
 				</div>
 
-				<!-- 8 Steps (Step 0 = Chaser Start, Steps 1-6 = Board, Step 7 = Home) -->
-				<div class="flex flex-col gap-1.5 py-1">
+				<!-- Responsive Board: flex-row on mobile (h-8), flex-col on desktop -->
+				<div class="flex flex-row md:flex-col gap-1 sm:gap-1.5 w-full overflow-x-auto py-0.5">
 					{#each [0, 1, 2, 3, 4, 5, 6, 7] as stepIdx}
 						{@const isChaserHere = chaserStep === stepIdx}
 						{@const isPlayerHere = playerStep === stepIdx}
 						{@const isHome = stepIdx === 7}
 
 						<div
-							class="h-9 rounded-xl border transition-all flex items-center justify-between px-3 relative overflow-hidden
+							class="flex-1 md:flex-initial min-w-[36px] h-8 sm:h-9 rounded-xl border transition-all flex items-center justify-center md:justify-between px-1 md:px-3 relative overflow-hidden
 							{isHome ? 'bg-gradient-to-r from-emerald-950/80 to-slate-900 border-emerald-500/60' : 'bg-slate-950/80 border-slate-800'}
-							{isPlayerHere ? 'ring-2 ring-blue-400 shadow-lg shadow-blue-500/20' : ''}
-							{isChaserHere ? 'ring-2 ring-red-500 shadow-lg shadow-red-500/20' : ''}"
+							{isPlayerHere ? 'ring-2 ring-blue-400 shadow-lg shadow-blue-500/30' : ''}
+							{isChaserHere ? 'ring-2 ring-red-500 shadow-lg shadow-red-500/30' : ''}"
 						>
-							<div class="flex items-center gap-2 z-10">
-								<span class="font-mono text-[10px] text-slate-500 font-bold">
-									{stepIdx === 0 ? 'START' : isHome ? 'HOME' : `STEP ${stepIdx}`}
+							<!-- Step label -->
+							<div class="flex items-center gap-1 z-10">
+								<span class="font-mono text-[9px] sm:text-[10px] text-slate-500 font-bold">
+									{stepIdx === 0 ? 'START' : isHome ? 'HOME' : `${stepIdx}`}
 								</span>
 							</div>
 
 							<!-- Occupant Markers -->
-							<div class="flex items-center gap-1.5 z-10">
+							<div class="flex items-center gap-1 z-10 ml-1 md:ml-0">
 								{#if isChaserHere}
-									<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-red-500/20 border border-red-500/50 text-red-400 text-[10px] font-black animate-pulse">
-										{chaser.avatarEmoji} CHASER
+									<span class="inline-flex items-center gap-0.5 px-1 py-0.5 rounded bg-red-500/20 border border-red-500/50 text-red-400 text-[9px] sm:text-[10px] font-black animate-pulse">
+										{chaser.avatarEmoji} <span class="hidden md:inline">CHASER</span>
 									</span>
 								{/if}
 								{#if isPlayerHere}
-									<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-blue-500/20 border border-blue-500/50 text-blue-300 text-[10px] font-black animate-bounce">
-										🔵 YOU
+									<span class="inline-flex items-center gap-0.5 px-1 py-0.5 rounded bg-blue-500/20 border border-blue-500/50 text-blue-300 text-[9px] sm:text-[10px] font-black animate-bounce">
+										🔵 <span class="hidden md:inline">YOU</span>
 									</span>
 								{/if}
 							</div>
@@ -718,14 +868,14 @@
 				</div>
 			</div>
 
-			<!-- RIGHT: QUESTION & 3-CHOICE LOCK-IN (8 cols) -->
-			<div class="md:col-span-8 flex flex-col gap-4">
+			<!-- QUESTION & 3-CHOICE LOCK-IN (8 cols) -->
+			<div class="md:col-span-8 flex flex-col gap-3">
 				{#if boardQuestions[currentBoardQIdx]}
 					{@const q = boardQuestions[currentBoardQIdx]}
-					<div class="bg-slate-900 border border-slate-800 rounded-3xl p-5 sm:p-7 shadow-2xl flex flex-col gap-4">
+					<div class="bg-slate-900 border border-slate-800 rounded-3xl p-4 sm:p-7 shadow-2xl flex flex-col gap-3.5 sm:gap-4">
 
 						<!-- Question status banner -->
-						<div class="flex items-center justify-between border-b border-slate-800 pb-2.5">
+						<div class="flex items-center justify-between border-b border-slate-800 pb-2">
 							<span class="text-xs text-slate-400 font-bold">ข้อที่ {currentBoardQIdx + 1}</span>
 							<div class="flex items-center gap-2">
 								{#if boardState === 'player_locked'}
@@ -736,12 +886,12 @@
 							</div>
 						</div>
 
-						<h3 class="text-lg sm:text-xl font-black text-white leading-snug min-h-[3.5rem] flex items-center">
+						<h3 class="text-base sm:text-xl font-black text-white leading-snug min-h-[3rem] sm:min-h-[3.5rem] flex items-center">
 							{q.question}
 						</h3>
 
 						<!-- 3 Choices -->
-						<div class="flex flex-col gap-2.5 pt-1">
+						<div class="flex flex-col gap-2 pt-1">
 							{#each q.choices as choice, idx}
 								{@const isPlayerSelected = playerChoice === idx}
 								{@const isChaserSelected = chaserChoice === idx}
@@ -750,10 +900,10 @@
 								{@const showChaserReveal = boardState === 'revealing_chaser' || boardState === 'moving'}
 
 								<button
-									class="btn btn-lg justify-start h-auto py-3.5 px-4 rounded-2xl font-bold text-sm sm:text-base transition-all text-left flex items-center justify-between border
+									class="btn btn-lg justify-start h-auto py-3 px-4 rounded-2xl font-bold text-sm sm:text-base transition-all text-left flex items-center justify-between border
 									{isPlayerSelected && !showPlayerReveal ? 'bg-blue-600 border-blue-400 text-white' : ''}
-									{showPlayerReveal && isPlayerSelected && isCorrectChoice ? 'bg-emerald-600 border-emerald-400 text-white' : ''}
-									{showPlayerReveal && isPlayerSelected && !isCorrectChoice ? 'bg-rose-600 border-rose-400 text-white' : ''}
+									{showPlayerReveal && isPlayerSelected && isCorrectChoice ? 'bg-emerald-600 border-emerald-400 text-white shadow-lg shadow-emerald-500/20' : ''}
+									{showPlayerReveal && isPlayerSelected && !isCorrectChoice ? 'bg-rose-600 border-rose-400 text-white shadow-lg shadow-rose-500/20' : ''}
 									{!isPlayerSelected && !showPlayerReveal ? 'bg-slate-950/70 border-slate-800 text-slate-200 hover:border-amber-400 hover:bg-slate-950' : ''}
 									{showPlayerReveal && !isPlayerSelected && isCorrectChoice ? 'border-emerald-500/50 bg-emerald-950/30 text-emerald-300' : ''}
 									{showPlayerReveal && !isPlayerSelected && !isCorrectChoice ? 'bg-slate-950/40 border-slate-800 text-slate-500' : ''}"
@@ -769,7 +919,7 @@
 
 									<div class="flex items-center gap-1.5">
 										{#if showPlayerReveal && isPlayerSelected}
-											<span class="badge badge-xs {isCorrectChoice ? 'badge-success' : 'badge-error'} font-bold">YOU</span>
+											<span class="badge badge-xs {isCorrectChoice ? 'badge-success text-success-content' : 'badge-error text-error-content'} font-bold">YOU</span>
 										{/if}
 										{#if showChaserReveal && isChaserSelected}
 											<span class="badge badge-xs badge-neutral border-red-500 text-red-400 font-bold">{chaser.avatarEmoji}</span>
@@ -804,7 +954,7 @@
 			</div>
 
 			<button
-				class="btn btn-success btn-md font-black text-slate-950 px-8 rounded-2xl gap-2 shadow-lg shadow-emerald-500/20 mt-2"
+				class="btn btn-success btn-md font-black text-success-content px-8 rounded-2xl gap-2 shadow-lg shadow-emerald-500/20 mt-2"
 				on:click={proceedToFinalChase}
 			>
 				<span>เข้าสู่รอบตัดสิน The Final Chase!</span>
@@ -822,7 +972,7 @@
 			<p class="text-xs sm:text-sm text-slate-300 max-w-md leading-relaxed">
 				คุณมีเวลา <strong>60 วินาที</strong> ในการตอบคำถามให้ได้มากที่สุด ทุก 1 ข้อที่ถูกต้องจะเพิ่ม <strong>Target Step (ก้าวหนี)</strong> ให้กับคุณ!
 			</p>
-			<button class="btn btn-warning btn-md font-black text-slate-950 px-8 rounded-2xl mt-2" on:click={startFinalPlayerRound}>
+			<button class="btn btn-warning btn-md font-black text-warning-content px-8 rounded-2xl mt-2" on:click={startFinalPlayerRound}>
 				<PlayIcon size="18" />
 				<span>เริ่มจับเวลา 60 วินาที</span>
 			</button>
@@ -855,15 +1005,38 @@
 					</h3>
 
 					<div class="grid grid-cols-1 gap-2.5">
+						{#if !finalChoicesRevealed}
+							<div class="flex items-center justify-center gap-2 p-3.5 rounded-2xl bg-slate-950/60 border border-amber-500/30 text-amber-400 text-xs font-mono animate-pulse">
+								<span class="inline-block w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
+								<span>กำลังอ่านคำถาม... ตัวเลือกจะเปิดใน 2 วินาที</span>
+							</div>
+						{/if}
+
 						{#each q.choices as choice, idx}
+							{@const isSelected = finalPlayerAnswerChoice === idx}
+							{@const isCorrectChoice = idx === q.correctIndex}
+							{@const showFeedback = finalPlayerFeedback !== null}
 							<button
-								class="btn btn-lg justify-start h-auto py-3.5 px-4 rounded-2xl font-bold text-sm sm:text-base border-slate-700 bg-slate-950/70 text-slate-100 hover:bg-amber-500 hover:text-slate-950 hover:border-amber-400 transition-all text-left flex items-center gap-3"
+								class="btn btn-lg justify-start h-auto py-3.5 px-4 rounded-2xl font-bold text-sm sm:text-base border transition-all text-left flex items-center justify-between
+								{!finalChoicesRevealed ? 'opacity-40 pointer-events-none bg-slate-950/40 border-slate-800 text-slate-500' : ''}
+								{showFeedback && isSelected && isCorrectChoice ? 'bg-emerald-600 border-emerald-400 text-white shadow-lg shadow-emerald-500/30' : ''}
+								{showFeedback && isSelected && !isCorrectChoice ? 'bg-rose-600 border-rose-400 text-white shadow-lg shadow-rose-500/30 animate-shake' : ''}
+								{showFeedback && !isSelected && isCorrectChoice ? 'border-emerald-500/60 bg-emerald-950/40 text-emerald-300' : ''}
+								{!showFeedback && finalChoicesRevealed ? 'border-slate-700 bg-slate-950/70 text-slate-100 hover:bg-amber-500 hover:text-slate-950 hover:border-amber-400' : ''}"
+								disabled={!finalChoicesRevealed || showFeedback}
 								on:click={() => handleFinalPlayerChoice(idx)}
 							>
-								<span class="w-6 h-6 rounded-md bg-slate-800 font-mono text-xs flex items-center justify-center font-black text-amber-400">
-									{['A', 'B', 'C'][idx]}
-								</span>
-								<span>{choice}</span>
+								<div class="flex items-center gap-3">
+									<span class="w-6 h-6 rounded-md bg-slate-800 font-mono text-xs flex items-center justify-center font-black text-amber-400">
+										{['A', 'B', 'C'][idx]}
+									</span>
+									<span>{choice}</span>
+								</div>
+								{#if showFeedback && isSelected}
+									<span class="badge badge-sm {isCorrectChoice ? 'badge-success text-success-content' : 'badge-error text-error-content'} font-bold">
+										{isCorrectChoice ? '✔ +1 ก้าว' : '✖ 0 ก้าว'}
+									</span>
+								{/if}
 							</button>
 						{/each}
 					</div>
@@ -900,7 +1073,7 @@
 				<div class="bg-gradient-to-br from-amber-950/80 to-slate-900 border-2 border-amber-500 rounded-3xl p-5 sm:p-7 shadow-2xl flex flex-col gap-4 animate-pulse">
 					<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 text-xs font-black w-fit">
 						<ActivityIcon size="14" />
-						<span>PUSHBACK OPPORTUNITY! (Chaser ตอบผิด!)</span>
+						<span>PUSHBACK OPPORTUNITY! (ผู้ล่าตอบผิด!)</span>
 					</div>
 
 					<h3 class="text-lg sm:text-xl font-black text-white">{q.question}</h3>
@@ -947,11 +1120,8 @@
 				฿{bankedAmount.toLocaleString()}
 			</div>
 
-			<div class="flex items-center gap-3 mt-2">
-				<button class="btn btn-outline border-slate-700 text-slate-300 hover:text-white" on:click={onExit}>
-					กลับหน้าหลัก
-				</button>
-				<button class="btn btn-warning font-black text-slate-950 px-6 rounded-2xl" on:click={resetAll}>
+			<div class="flex items-center justify-center gap-3 mt-2">
+				<button class="btn btn-warning font-black text-warning-content px-8 rounded-2xl" on:click={resetAll}>
 					<RefreshCwIcon size="16" />
 					<span>เล่นใหม่อีกครั้ง</span>
 				</button>
@@ -968,15 +1138,8 @@
 				<p class="text-sm text-slate-300 mt-1">{chaser.title} ไล่ตามทันและจับคุณได้สำเร็จ!</p>
 			</div>
 
-			<div class="p-4 rounded-2xl bg-slate-950 border border-slate-800 text-xs text-slate-400 max-w-sm italic">
-				"{chaser.tagline}"
-			</div>
-
-			<div class="flex items-center gap-3 mt-2">
-				<button class="btn btn-outline border-slate-700 text-slate-300 hover:text-white" on:click={onExit}>
-					กลับหน้าหลัก
-				</button>
-				<button class="btn btn-error font-black text-white px-6 rounded-2xl" on:click={resetAll}>
+			<div class="flex items-center justify-center gap-3 mt-2">
+				<button class="btn btn-error font-black text-error-content px-8 rounded-2xl" on:click={resetAll}>
 					<RefreshCwIcon size="16" />
 					<span>ท้าดวลอีกครั้ง</span>
 				</button>
