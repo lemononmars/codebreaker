@@ -7,7 +7,7 @@ const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS
 
 const supabase = createClient(supabaseUrl, process.env.VITE_SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9qamdnb2xjZm1qbm92bWlwYWF2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODg0OTk4MjYsImV4cCI6MjAwNDA3NTgyNn0.89u2S3G_G65u3Q6c9L1d5p0w3c675c276b5');
 
-const brainDir = 'C:\\Users\\sakul_bp6myy0\\.gemini\\antigravity-ide\\brain\\c91f4a0a-76e8-4604-9160-0d01cb4d2017';
+const brainDir = process.env.BRAIN_DIR || '';
 const files = fs.readdirSync(brainDir).filter(f => f.startsWith('media__') && f.endsWith('.jpg')).sort();
 
 console.log('Found media files:', files);
