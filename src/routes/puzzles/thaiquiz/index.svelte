@@ -145,7 +145,7 @@
 
 				speechRecognition.onresult = (event: any) => {
 					let transcript = '';
-					for (let i = event.resultIndex; i < event.results.length; i++) {
+					for (let i = 0; i < event.results.length; i++) {
 						transcript += event.results[i][0].transcript;
 					}
 					buzzInput = transcript;
@@ -157,7 +157,11 @@
 				};
 
 				speechRecognition.onend = () => {
+					const shouldSubmit = isListening && quizShowState === 'buzzed' && buzzInput.trim().length > 0;
 					isListening = false;
+					if (shouldSubmit) {
+						handleBuzzAnswerSubmit();
+					}
 				};
 			}
 		}
@@ -953,13 +957,13 @@
 								<div class="flex items-center justify-between w-full text-[11px] text-slate-400 font-mono px-1">
 									{#if isListening}
 										<span class="text-rose-400 animate-pulse font-bold flex items-center gap-1">
-											🔴 กำลังฟังเสียงภาษาไทย...
+											🔴 กำลังฟัง... (หยุดพูดเพื่อส่งคำตอบอัตโนมัติ)
 										</span>
 									{:else}
 										<span>กด Enter หรือคลิกปุ่มส่ง</span>
 									{/if}
 									{#if speechRecognitionSupported}
-										<span class="text-slate-500 hidden sm:inline">🎙️ รองรับไมโครโฟน</span>
+										<span class="text-slate-500 hidden sm:inline">🎙️ ระบบตรวจจับเสียงอัตโนมัติ</span>
 									{/if}
 								</div>
 							</div>

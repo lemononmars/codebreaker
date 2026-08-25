@@ -26,8 +26,9 @@ describe('apiGuards', () => {
 		it('PUBLIC_INSERT_TABLES should contain specific tables', () => {
 			expect(PUBLIC_INSERT_TABLES.has('crossword')).toBe(true);
 			expect(PUBLIC_INSERT_TABLES.has('wordsearch')).toBe(true);
-			expect(PUBLIC_INSERT_TABLES.has('leaderboard')).toBe(true);
-			expect(PUBLIC_INSERT_TABLES.has('alphabet')).toBe(false);
+			expect(PUBLIC_INSERT_TABLES.has('alphabet')).toBe(true);
+			expect(PUBLIC_INSERT_TABLES.has('missingvowels')).toBe(true);
+			expect(PUBLIC_INSERT_TABLES.has('leaderboard')).toBe(false);
 		});
 	});
 

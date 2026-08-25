@@ -5,9 +5,7 @@
 		CheckCircleIcon,
 		XCircleIcon,
 		Volume2Icon,
-		RefreshCwIcon,
-		BookOpenIcon,
-		ArrowRightIcon
+		RefreshCwIcon
 	} from 'svelte-feather-icons';
 
 	import { THAI_QUIZ_DATABASE, THAI_QUIZ_CATEGORIES } from '$lib/data/puzzles/thaiquiz/questions';
@@ -71,116 +69,97 @@
 	$: activeCategory = currentItem ? THAI_QUIZ_CATEGORIES.find((c) => c.id === currentItem?.category) : null;
 </script>
 
-<div class="bg-slate-900/50 backdrop-blur-xl border border-slate-800/90 rounded-3xl p-6 md:p-8 shadow-2xl relative overflow-hidden flex flex-col justify-between gap-6 min-h-[420px]">
-	<div class="absolute top-0 right-0 w-80 h-80 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
-
-	<!-- Header -->
-	<div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 border-b border-slate-800/70 pb-4">
-		<div>
-			<div class="flex items-center gap-2 mb-1">
-				<span class="h-2 w-2 rounded-full bg-amber-400"></span>
-				<span class="text-xs uppercase tracking-widest text-amber-400 font-bold">Thai Common Knowledge</span>
-			</div>
-			<div class="flex items-center gap-2.5">
-				<h2 class="text-2xl md:text-3xl font-extrabold text-white tracking-tight">
-					ควิซความรู้รอบตัวไทย 🇹🇭
-				</h2>
-				{#if activeCategory}
-					<span class="badge {activeCategory.color} badge-sm font-semibold hidden sm:inline-flex">
-						{activeCategory.icon} {activeCategory.name}
-					</span>
-				{/if}
-			</div>
+<div class="flex flex-col justify-between gap-3 sm:gap-4 w-full">
+	<!-- Compact Subheader -->
+	<div class="flex items-center justify-between border-b border-slate-800/70 pb-2.5">
+		<div class="flex items-center gap-2">
+			<span class="h-2 w-2 rounded-full bg-yellow-400"></span>
+			<span class="text-xs uppercase tracking-wider text-yellow-400 font-bold">Thai Quiz</span>
+			{#if activeCategory}
+				<span class="badge {activeCategory.color} badge-xs font-semibold text-[10px] hidden sm:inline-flex">
+					{activeCategory.icon} {activeCategory.name}
+				</span>
+			{/if}
 		</div>
 
-		<div class="flex items-center gap-2 w-full sm:w-auto justify-between sm:justify-end">
+		<div class="flex items-center gap-2">
 			<button
-				class="btn btn-xs sm:btn-sm btn-ghost text-amber-400 hover:bg-amber-400/15 gap-1.5"
+				class="btn btn-xs btn-ghost text-amber-400 hover:bg-amber-400/15 gap-1 px-2"
 				on:click={readQuestion}
-				title="ฟังเสียงอ่านโจทย์ (TTS)"
+				title="TTS Voice"
 			>
-				<Volume2Icon size="15" class={isSpeaking ? 'animate-bounce' : ''} />
-				<span class="text-xs">{isSpeaking ? 'กำลังอ่าน...' : 'ฟังโจทย์'}</span>
+				<Volume2Icon size="13" class={isSpeaking ? 'animate-bounce' : ''} />
+				<span class="text-[11px]">{isSpeaking ? 'Reading...' : 'Listen'}</span>
 			</button>
 
 			<a
 				href="/puzzles/thaiquiz"
-				class="inline-flex items-center gap-1.5 text-xs font-bold px-4 py-2 rounded-xl bg-amber-500/20 text-amber-300 border border-amber-500/40 hover:bg-amber-500/30 transition-all transform hover:-translate-y-0.5 shadow-md"
+				class="inline-flex items-center text-[11px] sm:text-xs font-bold px-2.5 py-1 rounded-lg bg-amber-500/20 text-amber-300 border border-amber-500/40 hover:bg-amber-500/30 transition-all shadow-sm"
 			>
-				เล่นโหมดเต็ม →
+				Full Mode →
 			</a>
 		</div>
 	</div>
 
 	<!-- Question Content & 4 Choices -->
 	{#if currentItem}
-		<div class="flex flex-col gap-5 my-auto" in:fade={{ duration: 200 }}>
-			<div class="bg-slate-950/70 border border-slate-800 rounded-2xl p-4 sm:p-5 text-center shadow-inner">
-				<p class="text-base sm:text-xl font-black text-white leading-relaxed tracking-tight max-w-2xl mx-auto">
+		<div class="flex flex-col gap-2.5 sm:gap-3.5 my-auto" in:fade={{ duration: 150 }}>
+			<!-- Question Box -->
+			<div class="bg-slate-950/80 border border-slate-800 rounded-xl p-2.5 sm:p-4 text-center shadow-inner">
+				<p class="text-xs sm:text-base font-black text-white leading-snug tracking-tight max-w-xl mx-auto">
 					{currentItem.question}
 				</p>
 			</div>
 
-			<!-- 4 Choices Grid -->
-			<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-2xl mx-auto w-full">
+			<!-- 4 Choices Grid (2x2 on all screens) -->
+			<div class="grid grid-cols-2 gap-1.5 sm:gap-2.5 max-w-xl mx-auto w-full">
 				{#each choices as choice, cIdx}
 					{@const isSelected = selectedChoiceIdx === cIdx}
 					<button
 						disabled={isAnswered}
 						on:click={() => handleChoiceClick(cIdx)}
-						class="p-3.5 sm:p-4 rounded-2xl border-2 text-left flex items-center justify-between gap-3 transition-all duration-200 transform hover:scale-[1.02] active:scale-[0.98] shadow-lg
+						class="p-2 sm:p-3 rounded-xl border-2 text-left flex items-center justify-between gap-1.5 sm:gap-2 transition-all duration-150 transform active:scale-95 shadow-sm
 						{isAnswered && choice.isCorrect
 							? 'bg-emerald-500/20 border-emerald-400 text-emerald-300'
 							: isAnswered && isSelected && !choice.isCorrect
 								? 'bg-rose-500/20 border-rose-500 text-rose-300 animate-shake'
 								: 'bg-slate-950/80 border-slate-800 text-slate-200 hover:border-amber-400/80 hover:text-white'}"
 					>
-						<div class="flex items-center gap-2.5">
-							<span class="w-6 h-6 rounded-lg bg-slate-900 border border-slate-700 flex items-center justify-center font-mono text-xs font-bold text-slate-400">
+						<div class="flex items-center gap-1.5 min-w-0">
+							<span class="w-4 h-4 sm:w-5 sm:h-5 rounded bg-slate-900 border border-slate-700 flex items-center justify-center font-mono text-[10px] sm:text-xs font-bold text-slate-400 shrink-0">
 								{['1', '2', '3', '4'][cIdx]}
 							</span>
-							<span class="font-bold text-sm sm:text-base">{choice.text}</span>
+							<span class="font-bold text-xs sm:text-sm truncate">{choice.text}</span>
 						</div>
 
 						{#if isAnswered && choice.isCorrect}
-							<CheckCircleIcon size="18" class="text-emerald-400 shrink-0" />
+							<CheckCircleIcon size="14" class="text-emerald-400 shrink-0" />
 						{:else if isAnswered && isSelected && !choice.isCorrect}
-							<XCircleIcon size="18" class="text-rose-400 shrink-0" />
+							<XCircleIcon size="14" class="text-rose-400 shrink-0" />
 						{/if}
 					</button>
 				{/each}
 			</div>
 
-			<!-- Feedback & Explanation Card -->
+			<!-- Feedback Card (compact) -->
 			{#if isAnswered}
-				<div class="bg-slate-950/90 border {isCorrect ? 'border-emerald-500/40' : 'border-rose-500/40'} rounded-2xl p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-xl" in:scale>
-					<div class="flex flex-col gap-1 text-xs text-slate-300">
-						<span class="font-bold {isCorrect ? 'text-emerald-400' : 'text-rose-400'} flex items-center gap-1.5 text-sm">
-							{isCorrect ? '🎉 ถูกต้อง!' : '❌ ยังไม่ถูกต้อง'}
-							<span class="text-slate-400 font-normal">คำตอบที่ถูกคือ: <strong class="text-white">{currentItem.choices[currentItem.correctIndex]}</strong></span>
+				<div class="bg-slate-950/90 border {isCorrect ? 'border-emerald-500/40' : 'border-rose-500/40'} rounded-xl p-2 sm:p-2.5 flex items-center justify-between gap-2 shadow-lg max-w-xl mx-auto w-full" in:scale>
+					<div class="flex flex-col gap-0.5 text-[11px] sm:text-xs text-slate-300 min-w-0">
+						<span class="font-bold {isCorrect ? 'text-emerald-400' : 'text-rose-400'} flex items-center gap-1">
+							{isCorrect ? '🎉 Correct!' : '❌ Incorrect!'}
+							<span class="text-slate-400 font-normal truncate">Answer: <strong class="text-white">{currentItem.choices[currentItem.correctIndex]}</strong></span>
 						</span>
-						<p class="text-[11px] text-slate-400 line-clamp-2">
-							💡 {currentItem.explanation}
-						</p>
 					</div>
 
 					<button
-						class="btn btn-sm btn-warning text-warning-content font-black gap-1.5 shrink-0 self-end sm:self-center"
+						class="btn btn-xs btn-warning text-warning-content font-bold gap-1 shrink-0 px-2"
 						on:click={loadNewQuestion}
 					>
-						<RefreshCwIcon size="14" />
-						ข้อถัดไป
+						<RefreshCwIcon size="11" />
+						Next 🎲
 					</button>
 				</div>
 			{/if}
 		</div>
 	{/if}
-
-	<!-- Footer Link -->
-	<div class="flex items-center justify-between pt-3 border-t border-slate-800/60 text-xs text-slate-400">
-		<span>คลังความรู้รอบตัวไทย 6 หมวดหมู่</span>
-		<a href="/puzzles/thaiquiz" class="text-amber-400 hover:text-amber-300 font-bold inline-flex items-center gap-1">
-			เข้าสู่ Thai Quiz Arena →
-		</a>
-	</div>
 </div>

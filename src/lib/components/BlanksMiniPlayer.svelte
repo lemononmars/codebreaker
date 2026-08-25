@@ -122,42 +122,35 @@
 	}
 </script>
 
-<div class="bg-slate-900/50 backdrop-blur-xl border border-slate-800/90 rounded-3xl p-4 sm:p-6 md:p-8 shadow-2xl relative overflow-hidden">
-	<div class="absolute top-0 right-0 w-80 h-80 bg-sky-500/10 rounded-full blur-3xl pointer-events-none"></div>
-
-	<!-- Header -->
-	<div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4 border-b border-slate-800/70 pb-4">
-		<div>
-			<div class="flex items-center gap-2 mb-1">
-				<span class="h-2 w-2 rounded-full bg-sky-400"></span>
-				<span class="text-xs uppercase tracking-widest text-sky-400 font-bold">Daily Blanks</span>
-			</div>
-			<h2 class="text-2xl md:text-3xl font-extrabold text-white tracking-tight">
-				ซ่อนอักษร
-			</h2>
+<div class="flex flex-col justify-between gap-3 sm:gap-4 w-full">
+	<!-- Compact Subheader -->
+	<div class="flex items-center justify-between border-b border-slate-800/70 pb-2.5">
+		<div class="flex items-center gap-2">
+			<span class="h-2 w-2 rounded-full bg-sky-400"></span>
+			<span class="text-xs uppercase tracking-wider text-sky-400 font-bold">Daily Blanks</span>
 		</div>
 		<a
 			href="/puzzles/blanks"
-			class="inline-flex items-center gap-1.5 text-xs font-bold px-4 py-2 rounded-xl bg-sky-500/20 text-sky-300 border border-sky-500/40 hover:bg-sky-500/30 transition-all transform hover:-translate-y-0.5 shadow-md"
+			class="inline-flex items-center text-[11px] sm:text-xs font-bold px-2.5 py-1 rounded-lg bg-sky-500/20 text-sky-300 border border-sky-500/40 hover:bg-sky-500/30 transition-all shadow-sm"
 		>
-			เล่นโหมดเต็ม →
+			Full Mode →
 		</a>
 	</div>
 
 	<!-- Content Box -->
-	<div class="flex flex-col items-center space-y-6">
+	<div class="flex flex-col items-center space-y-3 sm:space-y-4 w-full">
 		<!-- Word Display with Blanks -->
-		<div class="flex items-center justify-center gap-1 sm:gap-2 py-4 px-2 sm:px-4 bg-slate-950/70 border border-slate-800 rounded-2xl w-full max-w-lg shadow-inner overflow-x-auto">
+		<div class="flex items-center justify-center gap-1 sm:gap-2 py-2.5 px-2 bg-slate-950/80 border border-slate-800 rounded-xl w-full max-w-md shadow-inner overflow-x-auto">
 			{#each blocks as b}
 				{@const isBlank = b.base === targetChar}
-				<div class="flex flex-col items-center justify-center select-none min-w-[28px] max-w-[44px] flex-1">
+				<div class="flex flex-col items-center justify-center select-none min-w-[24px] max-w-[38px] sm:max-w-[44px] flex-1">
 					<!-- Upper mark -->
-					<div class="h-6 sm:h-8 font-black text-xl sm:text-3xl text-sky-400 flex items-center justify-center leading-none">
+					<div class="h-4 sm:h-6 font-black text-base sm:text-2xl text-sky-400 flex items-center justify-center leading-none">
 						{b.upper || ''}
 					</div>
 					<!-- Base box -->
 					<div
-						class="w-full aspect-square max-h-11 sm:max-h-14 rounded-xl border-2 flex items-center justify-center font-black text-base sm:text-2xl transition-all
+						class="w-full aspect-square max-h-9 sm:max-h-12 rounded-lg sm:rounded-xl border-2 flex items-center justify-center font-black text-sm sm:text-xl transition-all
 						{isBlank
 							? isSolved
 								? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/50'
@@ -167,21 +160,21 @@
 						{isBlank ? (isSolved ? targetChar : '_') : b.base}
 					</div>
 					<!-- Lower mark -->
-					<div class="h-6 sm:h-8 font-black text-xl sm:text-3xl text-sky-400 flex items-center justify-center leading-none">
+					<div class="h-4 sm:h-6 font-black text-base sm:text-2xl text-sky-400 flex items-center justify-center leading-none">
 						{b.lower || ''}
 					</div>
 				</div>
 			{/each}
 		</div>
 
-		<!-- Fixed Height Container for Choices & Solved State (Prevents Card Resizing) -->
-		<div class="w-full max-w-md h-[116px] sm:h-[64px] flex items-center justify-center">
+		<!-- Fixed Height Container for Choices & Solved State -->
+		<div class="w-full max-w-md h-[46px] sm:h-[54px] flex items-center justify-center">
 			{#if !isSolved}
-				<div class="grid grid-cols-2 sm:grid-cols-4 gap-3 w-full h-full">
+				<div class="grid grid-cols-4 gap-1.5 sm:gap-2.5 w-full h-full">
 					{#each choices as choice}
 						<button
 							on:click={() => handleChoiceClick(choice)}
-							class="w-full h-full rounded-2xl font-black text-xl sm:text-2xl border-2 transition-all transform hover:scale-105 active:scale-95 shadow-md flex items-center justify-center
+							class="w-full h-full rounded-xl font-black text-lg sm:text-2xl border-2 transition-all transform active:scale-95 shadow-sm flex items-center justify-center
 							{wrongChoice === choice
 								? 'bg-rose-500/20 text-rose-300 border-rose-500/50 animate-shake'
 								: 'bg-slate-950 text-slate-100 border-slate-800 hover:border-sky-400 hover:text-sky-300'}"
@@ -191,17 +184,17 @@
 					{/each}
 				</div>
 			{:else}
-				<!-- Solved Row: Correct Badge + Next Question Button in same row -->
-				<div class="flex flex-row items-center justify-center gap-3 w-full h-full">
-					<div class="flex-1 h-full px-4 rounded-2xl text-xs sm:text-sm font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 flex items-center justify-center gap-2">
-						<CheckCircleIcon size="18" /> ถูกต้อง! คำว่า "{word}"
+				<!-- Solved Row: Correct Badge + Next Question Button -->
+				<div class="flex flex-row items-center justify-center gap-2 w-full h-full">
+					<div class="flex-1 h-full px-3 rounded-xl text-xs sm:text-sm font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 flex items-center justify-center gap-1.5 truncate">
+						<CheckCircleIcon size="15" /> Correct! "{word}"
 					</div>
 					<button
 						on:click={loadNewQuestion}
-						class="px-6 h-full rounded-2xl font-black bg-sky-500 hover:bg-sky-400 text-slate-950 transition-all shadow-lg shadow-sky-500/20 text-sm whitespace-nowrap flex items-center justify-center"
+						class="px-4 h-full rounded-xl font-black bg-sky-500 hover:bg-sky-400 text-slate-950 transition-all shadow-md shadow-sky-500/20 text-xs sm:text-sm whitespace-nowrap flex items-center justify-center"
 						style="color: #0f172a;"
 					>
-						ข้อต่อไป 🎲 →
+						Next 🎲 →
 					</button>
 				</div>
 			{/if}

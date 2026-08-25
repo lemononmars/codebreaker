@@ -1,22 +1,23 @@
 <script lang="ts">
 	import Logo3D from '$lib/components/Logo3D.svelte';
 	import Footer from '$lib/components/Footer.svelte';
+	import CelebrationOverlay from '$lib/components/CelebrationOverlay.svelte';
 	import SpellingBeeMiniPlayer from '$lib/components/SpellingBeeMiniPlayer.svelte';
 	import BlanksMiniPlayer from '$lib/components/BlanksMiniPlayer.svelte';
 	import SpellingQuizMiniPlayer from '$lib/components/SpellingQuizMiniPlayer.svelte';
 	import ThaiQuizMiniPlayer from '$lib/components/ThaiQuizMiniPlayer.svelte';
-	import ShopCard from '$lib/components/ShopCard.svelte';
-	import {
-		puzzleDescriptions,
-		shopProductDescriptions,
-		shopImgUrlPrefix
-	} from '$lib/data/metadata';
+	import { puzzleDescriptions } from '$lib/data/metadata';
 	import { onMount } from 'svelte';
 	import { getPuzzleImageURL } from '$lib/supabase';
 	import { CheckCircleIcon, ImageIcon, CalendarIcon } from 'svelte-feather-icons';
 	import DOMPurify from 'isomorphic-dompurify';
 
 	let activeMiniPlayerTab: 'spellingbee' | 'thaiquiz' | 'blanks' | 'spellingquiz' = 'spellingbee';
+
+	const isAnniversary = (() => {
+		const now = new Date();
+		return now.getTime() <= new Date('2026-08-26T23:59:59.999+07:00').getTime() || (now.getFullYear() === 2026 && now.getMonth() === 7 && now.getDate() <= 26);
+	})();
 
 	// SVG Icon map matching Puzzles page
 	const puzzleSvgIcons: Record<string, string> = {
@@ -175,34 +176,46 @@
 	<meta name="twitter:image" content="/og-main.png" />
 </svelte:head>
 
-<div class="space-y-16 pb-12">
+{#if isAnniversary}
+	<CelebrationOverlay />
+{/if}
+
+<div class="space-y-12 sm:space-y-16 pb-12">
 	<!-- Hero Section with Centered 3D Showcase -->
-	<section class="relative pt-8 pb-12 px-4 min-h-[380px] sm:min-h-[460px] flex items-center justify-center overflow-hidden text-center">
+	<section class="relative pt-6 sm:pt-8 pb-8 sm:pb-12 px-4 min-h-[360px] sm:min-h-[440px] flex items-center justify-center overflow-hidden text-center">
 		<!-- 3D Model Background -->
 		<div class="absolute inset-0 z-0 flex items-center justify-center max-w-7xl mx-auto opacity-70 pointer-events-auto">
-			<div class="w-full max-w-xs sm:max-w-md lg:max-w-xl h-[320px] sm:h-[420px] mx-auto flex items-center justify-center">
+			<div class="w-full max-w-xs sm:max-w-md lg:max-w-xl h-[300px] sm:h-[400px] mx-auto flex items-center justify-center">
 				<Logo3D />
 			</div>
 		</div>
 
 		<!-- Hero Intro & Content (Centered) -->
-		<div class="relative z-10 max-w-4xl mx-auto w-full text-center flex flex-col items-center justify-center space-y-6 pointer-events-auto">
-			<h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-tight">
+		<div class="relative z-10 max-w-4xl mx-auto w-full text-center flex flex-col items-center justify-center space-y-4 sm:space-y-6 pointer-events-auto">
+			{#if isAnniversary}
+				<div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gradient-to-r from-amber-500/20 via-rose-500/20 to-cyan-500/20 border border-amber-400/50 shadow-lg shadow-amber-500/20 backdrop-blur-md text-amber-300 font-extrabold text-xs sm:text-sm tracking-wider uppercase">
+					<span class="animate-bounce">🎉</span>
+					<span>7th Anniversary Celebration</span>
+					<span class="animate-bounce">✨</span>
+				</div>
+			{/if}
+
+			<h1 class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-tight">
 				Welcome to <br class="hidden sm:inline" />
 				<span class="bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent">Code Breaker</span>
 			</h1>
 
 			<!-- Hero CTA Buttons: Transparent background, white text, accent border -->
-			<div class="flex flex-wrap gap-2.5 justify-center pt-2">
+			<div class="flex flex-wrap gap-2 sm:gap-2.5 justify-center pt-1 sm:pt-2">
 				<a
 					href="#mini-players"
 					on:click={(e) => {
 						activeMiniPlayerTab = 'spellingbee';
 						scrollToElement(e, 'mini-players');
 					}}
-					class="px-4 py-2.5 rounded-xl font-bold text-white bg-slate-900/60 hover:bg-slate-900/90 border border-amber-500/50 hover:border-amber-400 shadow-lg shadow-amber-500/10 transition-all duration-300 transform hover:-translate-y-0.5 text-xs sm:text-sm flex items-center gap-1.5 backdrop-blur-md"
+					class="px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-xl font-bold text-white bg-slate-900/60 hover:bg-slate-900/90 border border-amber-500/50 hover:border-amber-400 shadow-lg shadow-amber-500/10 transition-all duration-200 transform hover:-translate-y-0.5 text-xs sm:text-sm flex items-center gap-1.5 backdrop-blur-md"
 				>
-					<span>เล่นสะกดศัพท์ 🐝</span>
+					<span>Spelling Bee 🐝</span>
 				</a>
 				<a
 					href="#mini-players"
@@ -210,9 +223,9 @@
 						activeMiniPlayerTab = 'thaiquiz';
 						scrollToElement(e, 'mini-players');
 					}}
-					class="px-4 py-2.5 rounded-xl font-bold text-white bg-slate-900/60 hover:bg-slate-900/90 border border-yellow-500/50 hover:border-yellow-400 shadow-lg shadow-yellow-500/10 transition-all duration-300 transform hover:-translate-y-0.5 text-xs sm:text-sm flex items-center gap-1.5 backdrop-blur-md"
+					class="px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-xl font-bold text-white bg-slate-900/60 hover:bg-slate-900/90 border border-yellow-500/50 hover:border-yellow-400 shadow-lg shadow-yellow-500/10 transition-all duration-200 transform hover:-translate-y-0.5 text-xs sm:text-sm flex items-center gap-1.5 backdrop-blur-md"
 				>
-					<span>ควิซความรู้ไทย 🇹🇭</span>
+					<span>Thai Quiz 🇹🇭</span>
 				</a>
 				<a
 					href="#mini-players"
@@ -220,9 +233,9 @@
 						activeMiniPlayerTab = 'blanks';
 						scrollToElement(e, 'mini-players');
 					}}
-					class="px-4 py-2.5 rounded-xl font-bold text-white bg-slate-900/60 hover:bg-slate-900/90 border border-sky-500/50 hover:border-sky-400 shadow-lg shadow-sky-500/10 transition-all duration-300 transform hover:-translate-y-0.5 text-xs sm:text-sm flex items-center gap-1.5 backdrop-blur-md"
+					class="px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-xl font-bold text-white bg-slate-900/60 hover:bg-slate-900/90 border border-sky-500/50 hover:border-sky-400 shadow-lg shadow-sky-500/10 transition-all duration-200 transform hover:-translate-y-0.5 text-xs sm:text-sm flex items-center gap-1.5 backdrop-blur-md"
 				>
-					<span>เล่นซ่อนอักษร ✏️</span>
+					<span>Blanks ✏️</span>
 				</a>
 				<a
 					href="#mini-players"
@@ -230,43 +243,43 @@
 						activeMiniPlayerTab = 'spellingquiz';
 						scrollToElement(e, 'mini-players');
 					}}
-					class="px-4 py-2.5 rounded-xl font-bold text-white bg-slate-900/60 hover:bg-slate-900/90 border border-teal-500/50 hover:border-teal-400 shadow-lg shadow-teal-500/10 transition-all duration-300 transform hover:-translate-y-0.5 text-xs sm:text-sm flex items-center gap-1.5 backdrop-blur-md"
+					class="px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-xl font-bold text-white bg-slate-900/60 hover:bg-slate-900/90 border border-teal-500/50 hover:border-teal-400 shadow-lg shadow-teal-500/10 transition-all duration-200 transform hover:-translate-y-0.5 text-xs sm:text-sm flex items-center gap-1.5 backdrop-blur-md"
 				>
-					<span>เล่นปริศนาสะกดศัพท์ 📝</span>
+					<span>Spelling Quiz 📝</span>
 				</a>
 			</div>
 		</div>
 	</section>
 
 	<!-- Live Recent Weekly Solves Bar -->
-	<section class="max-w-7xl mx-auto px-4">
-		<div class="bg-slate-950/80 backdrop-blur-xl border border-slate-800/90 rounded-2xl p-4 shadow-xl">
-			<div class="flex items-center justify-between mb-3 border-b border-slate-800/70 pb-2.5">
+	<section class="max-w-7xl mx-auto px-2 sm:px-4">
+		<div class="bg-slate-950/80 backdrop-blur-xl border border-slate-800/90 rounded-2xl p-3 sm:p-4 shadow-xl">
+			<div class="flex items-center justify-between mb-2.5 border-b border-slate-800/70 pb-2">
 				<div class="flex items-center gap-2">
 					<span class="relative flex h-2.5 w-2.5">
 						<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
 						<span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
 					</span>
-					<h2 class="text-sm sm:text-base font-bold text-white tracking-wide">ผู้ไขปริศนารายสัปดาห์ล่าสุด</h2>
+					<h2 class="text-xs sm:text-base font-bold text-white tracking-wide">ผู้ไขปริศนารายสัปดาห์ล่าสุด</h2>
 				</div>
-				<a href="/puzzles/weekly" class="text-xs font-semibold text-emerald-400 hover:text-emerald-300 hover:underline transition-colors">
+				<a href="/puzzles/weekly" class="text-[11px] sm:text-xs font-semibold text-emerald-400 hover:text-emerald-300 hover:underline transition-colors">
 					ดูปริศนารายสัปดาห์ →
 				</a>
 			</div>
 
 			<!-- Compact Badges List with Time Difference -->
-			<div class="flex flex-wrap items-center gap-2 sm:gap-3">
+			<div class="flex flex-wrap items-center gap-1.5 sm:gap-3">
 				{#if isLoadingSolves}
 					{#each Array(4) as _}
-						<div class="animate-pulse bg-slate-900/60 rounded-full h-8 w-36 border border-slate-800"></div>
+						<div class="animate-pulse bg-slate-900/60 rounded-full h-7 w-28 sm:h-8 sm:w-36 border border-slate-800"></div>
 					{/each}
 				{:else}
 					{#each latestSolves as s}
-						{@const displayName = s.name || s.username || 'ผู้เล่น'}
-						<div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900 border border-slate-800 text-xs text-slate-300 shadow-sm hover:border-emerald-500/40 transition-colors">
+						{@const displayName = s.name || s.username || 'Player'}
+						<div class="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-full bg-slate-900 border border-slate-800 text-[11px] sm:text-xs text-slate-300 shadow-sm hover:border-emerald-500/40 transition-colors">
 							<span class="font-bold text-white">{displayName}</span>
 							<span class="text-slate-400 font-mono">• {s.puzzle_type || 'weekly'}{s.puzzle_id ? ` (${s.puzzle_id})` : ''}</span>
-							<span class="font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-md border border-emerald-500/30 text-[10px]">
+							<span class="font-mono text-emerald-400 bg-emerald-500/10 px-1.5 py-0.5 rounded-md border border-emerald-500/30 text-[9px] sm:text-[10px]">
 								{timeAgoThai(s.created_at)}
 							</span>
 						</div>
@@ -276,62 +289,67 @@
 		</div>
 	</section>
 
-	<!-- Consolidated Interactive Daily Mini Players Section with Tabs -->
-	<section id="mini-players" class="max-w-7xl mx-auto px-4 scroll-mt-24 space-y-4">
-		<!-- Tab Switcher Bar -->
-		<div class="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none bg-slate-900/60 backdrop-blur-md p-1.5 rounded-2xl border border-slate-800/90 shadow-xl">
-			<button
-				on:click={() => (activeMiniPlayerTab = 'spellingbee')}
-				class="px-4 py-2.5 rounded-xl font-extrabold text-xs sm:text-sm flex items-center gap-2 transition-all whitespace-nowrap {activeMiniPlayerTab === 'spellingbee' ? 'bg-amber-500 text-slate-950 shadow-lg shadow-amber-500/20' : 'text-slate-400 hover:text-white hover:bg-slate-800/60'}"
-			>
-				<span>🐝</span>
-				<span>Spelling Bee (รวงผึ้งผสมคำ)</span>
-			</button>
+	<!-- Integrated Interactive Daily Mini Players Section -->
+	<section id="mini-players" class="max-w-4xl mx-auto px-2 sm:px-4 scroll-mt-14 sm:scroll-mt-20">
+		<div class="bg-slate-900/50 backdrop-blur-xl border border-slate-800/90 rounded-2xl sm:rounded-3xl p-3 sm:p-6 shadow-2xl relative overflow-hidden">
+			<!-- Background Ambient Glow -->
+			<div class="absolute top-0 right-0 w-64 h-64 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
 
-			<button
-				on:click={() => (activeMiniPlayerTab = 'thaiquiz')}
-				class="px-4 py-2.5 rounded-xl font-extrabold text-xs sm:text-sm flex items-center gap-2 transition-all whitespace-nowrap {activeMiniPlayerTab === 'thaiquiz' ? 'bg-amber-500 text-slate-950 shadow-lg shadow-amber-500/20' : 'text-slate-400 hover:text-white hover:bg-slate-800/60'}"
-			>
-				<span>🇹🇭</span>
-				<span>Thai Quiz (ความรู้รอบตัวไทย)</span>
-			</button>
+			<!-- Integrated Quiz Selector inside the container -->
+			<div class="grid grid-cols-4 gap-1 p-1 mb-3 sm:mb-5 bg-slate-950/80 border border-slate-800/90 rounded-xl sm:rounded-2xl">
+				<button
+					on:click={() => (activeMiniPlayerTab = 'spellingbee')}
+					class="py-1.5 sm:py-2.5 px-1 sm:px-3 rounded-lg sm:rounded-xl font-extrabold text-[11px] sm:text-sm flex items-center justify-center gap-1 sm:gap-1.5 transition-all truncate {activeMiniPlayerTab === 'spellingbee' ? 'bg-amber-500 text-slate-950 shadow-md shadow-amber-500/20' : 'text-slate-400 hover:text-white hover:bg-slate-800/60'}"
+				>
+					<span>🐝</span>
+					<span class="truncate">Spelling Bee</span>
+				</button>
 
-			<button
-				on:click={() => (activeMiniPlayerTab = 'blanks')}
-				class="px-4 py-2.5 rounded-xl font-extrabold text-xs sm:text-sm flex items-center gap-2 transition-all whitespace-nowrap {activeMiniPlayerTab === 'blanks' ? 'bg-sky-500 text-slate-950 shadow-lg shadow-sky-500/20' : 'text-slate-400 hover:text-white hover:bg-slate-800/60'}"
-			>
-				<span>🕳️</span>
-				<span>Blanks (เติมอักษร)</span>
-			</button>
+				<button
+					on:click={() => (activeMiniPlayerTab = 'thaiquiz')}
+					class="py-1.5 sm:py-2.5 px-1 sm:px-3 rounded-lg sm:rounded-xl font-extrabold text-[11px] sm:text-sm flex items-center justify-center gap-1 sm:gap-1.5 transition-all truncate {activeMiniPlayerTab === 'thaiquiz' ? 'bg-yellow-500 text-slate-950 shadow-md shadow-yellow-500/20' : 'text-slate-400 hover:text-white hover:bg-slate-800/60'}"
+				>
+					<span>🇹🇭</span>
+					<span class="truncate">Thai Quiz</span>
+				</button>
 
-			<button
-				on:click={() => (activeMiniPlayerTab = 'spellingquiz')}
-				class="px-4 py-2.5 rounded-xl font-extrabold text-xs sm:text-sm flex items-center gap-2 transition-all whitespace-nowrap {activeMiniPlayerTab === 'spellingquiz' ? 'bg-teal-500 text-slate-950 shadow-lg shadow-teal-500/20' : 'text-slate-400 hover:text-white hover:bg-slate-800/60'}"
-			>
-				<span>📝</span>
-				<span>Spelling Quiz (สะกดคำ)</span>
-			</button>
-		</div>
+				<button
+					on:click={() => (activeMiniPlayerTab = 'blanks')}
+					class="py-1.5 sm:py-2.5 px-1 sm:px-3 rounded-lg sm:rounded-xl font-extrabold text-[11px] sm:text-sm flex items-center justify-center gap-1 sm:gap-1.5 transition-all truncate {activeMiniPlayerTab === 'blanks' ? 'bg-sky-500 text-slate-950 shadow-md shadow-sky-500/20' : 'text-slate-400 hover:text-white hover:bg-slate-800/60'}"
+				>
+					<span>✏️</span>
+					<span class="truncate">Blanks</span>
+				</button>
 
-		<!-- Single Consolidated Mini Player Container -->
-		<div class="transition-all duration-300">
-			{#if activeMiniPlayerTab === 'spellingbee'}
-				<div id="daily-spelling-bee">
-					<SpellingBeeMiniPlayer solvers={latestSolves} />
-				</div>
-			{:else if activeMiniPlayerTab === 'thaiquiz'}
-				<div id="daily-thai-quiz">
-					<ThaiQuizMiniPlayer />
-				</div>
-			{:else if activeMiniPlayerTab === 'blanks'}
-				<div id="daily-blanks">
-					<BlanksMiniPlayer />
-				</div>
-			{:else if activeMiniPlayerTab === 'spellingquiz'}
-				<div id="daily-spelling-quiz">
-					<SpellingQuizMiniPlayer />
-				</div>
-			{/if}
+				<button
+					on:click={() => (activeMiniPlayerTab = 'spellingquiz')}
+					class="py-1.5 sm:py-2.5 px-1 sm:px-3 rounded-lg sm:rounded-xl font-extrabold text-[11px] sm:text-sm flex items-center justify-center gap-1 sm:gap-1.5 transition-all truncate {activeMiniPlayerTab === 'spellingquiz' ? 'bg-teal-500 text-slate-950 shadow-md shadow-teal-500/20' : 'text-slate-400 hover:text-white hover:bg-slate-800/60'}"
+				>
+					<span>📝</span>
+					<span class="truncate">Spelling Quiz</span>
+				</button>
+			</div>
+
+			<!-- Active Mini Player Content -->
+			<div>
+				{#if activeMiniPlayerTab === 'spellingbee'}
+					<div id="daily-spelling-bee">
+						<SpellingBeeMiniPlayer solvers={latestSolves} />
+					</div>
+				{:else if activeMiniPlayerTab === 'thaiquiz'}
+					<div id="daily-thai-quiz">
+						<ThaiQuizMiniPlayer />
+					</div>
+				{:else if activeMiniPlayerTab === 'blanks'}
+					<div id="daily-blanks">
+						<BlanksMiniPlayer />
+					</div>
+				{:else if activeMiniPlayerTab === 'spellingquiz'}
+					<div id="daily-spelling-quiz">
+						<SpellingQuizMiniPlayer />
+					</div>
+				{/if}
+			</div>
 		</div>
 	</section>
 
@@ -446,40 +464,6 @@
 							{p.description}
 						</p>
 					</a>
-				{/each}
-			</div>
-		</div>
-	</section>
-
-	<!-- Shop Section -->
-	<section class="max-w-7xl mx-auto px-4">
-		<div class="bg-slate-900/40 backdrop-blur-xl border border-slate-800/80 rounded-3xl p-4 sm:p-8 shadow-2xl">
-			<div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-3 border-b border-slate-800/60 pb-4">
-				<div>
-					<div class="flex items-center gap-2 mb-1">
-						<span class="h-2 w-2 rounded-full bg-teal-400"></span>
-						<span class="text-xs uppercase tracking-widest text-teal-400 font-bold">Official Store</span>
-					</div>
-					<h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">ร้านค้าหนังสือ & การ์ดเกม</h2>
-				</div>
-				<a
-					href="/shop"
-					class="inline-flex items-center gap-1.5 text-sm font-semibold text-teal-400 hover:text-teal-300 transition-colors group"
-				>
-					ดูสินค้าทั้งหมด 
-					<span class="transform group-hover:translate-x-1 transition-transform">→</span>
-				</a>
-			</div>
-
-			<div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
-				{#each shopProductDescriptions as p}
-					<ShopCard
-						url={p.url}
-						title={p.title}
-						description={p.description}
-						imgUrl={p.imgUrl}
-						imgUrlPrefix={shopImgUrlPrefix}
-					/>
 				{/each}
 			</div>
 		</div>
