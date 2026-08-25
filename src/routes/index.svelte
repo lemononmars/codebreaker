@@ -14,6 +14,7 @@
 	import { onMount } from 'svelte';
 	import { getPuzzleImageURL } from '$lib/supabase';
 	import { CheckCircleIcon, ImageIcon, CalendarIcon } from 'svelte-feather-icons';
+	import DOMPurify from 'isomorphic-dompurify';
 
 	let activeMiniPlayerTab: 'spellingbee' | 'thaiquiz' | 'blanks' | 'spellingquiz' = 'spellingbee';
 
@@ -436,7 +437,7 @@
 						class="group flex flex-col items-center text-center bg-slate-950/60 border border-slate-800/80 hover:border-cyan-500/50 rounded-2xl p-4 sm:p-6 shadow-lg hover:shadow-cyan-500/10 transition-all duration-300 transform hover:-translate-y-1"
 					>
 						<div class="relative w-16 h-16 sm:w-20 sm:h-20 mb-3 rounded-2xl bg-slate-900/80 border border-slate-800 p-2.5 flex items-center justify-center group-hover:border-cyan-500/40 transition-colors shadow-inner">
-							{@html getPuzzleIconSvg(p.type)}
+							{@html DOMPurify.sanitize(getPuzzleIconSvg(p.type))}
 						</div>
 						<h3 class="text-base sm:text-xl font-bold text-white capitalize group-hover:text-cyan-400 transition-colors mb-1">
 							{p.type}
