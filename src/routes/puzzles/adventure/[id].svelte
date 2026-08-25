@@ -33,9 +33,6 @@
 	function executeSetup(lvl: number) {
 		if (!browser) return;
 		switch (lvl) {
-			case 4:
-				console.log("Password: debug");
-				break;
 			case 6: {
 				const meta = document.createElement("meta");
 				meta.name = "password";
