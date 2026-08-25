@@ -21,7 +21,8 @@
 		RadioIcon,
 		SettingsIcon,
 		SlidersIcon,
-		CheckIcon
+		CheckIcon,
+		MicIcon
 	} from 'svelte-feather-icons';
 
 	import { THAI_QUIZ_CATEGORIES, THAI_QUIZ_DATABASE } from '$lib/data/puzzles/thaiquiz/questions';
@@ -34,6 +35,8 @@
 	} from '$lib/data/puzzles/thaiquiz/engine';
 	import type { ThaiQuizCategory } from '$lib/data/puzzles/thaiquiz/types';
 	import {
+		getThaiVoices,
+		initVoices,
 		speakThai,
 		stopSpeech,
 		playQuizShowSound
@@ -83,6 +86,13 @@
 	let speechRate = 1.0;
 	let showVoiceModal = false;
 	let isTestingVoice = false;
+	let thaiVoices: SpeechSynthesisVoice[] = [];
+	let selectedVoiceURI = '';
+
+	// Speech-to-Text Recognition State
+	let isListening = false;
+	let speechRecognition: any = null;
+	let speechRecognitionSupported = false;
 
 	let revealedCharCount = 0;
 	let revealInterval: any = null;
@@ -104,6 +114,18 @@
 
 			const savedRate = localStorage.getItem('cb_tts_rate');
 			if (savedRate) speechRate = parseFloat(savedRate) || 1.0;
+
+			const savedVoice = localStorage.getItem('cb_tts_voice_uri');
+			if (savedVoice) selectedVoiceURI = savedVoice;
+
+			initVoices((voices) => {
+				thaiVoices = voices;
+				if (!selectedVoiceURI && voices.length > 0) {
+					selectedVoiceURI = voices[0].voiceURI;
+				}
+			});
+
+			initSpeechRecognition();
 		}
 	});
 
@@ -111,15 +133,65 @@
 		stopAllTimersAndAudio();
 	});
 
+	function initSpeechRecognition() {
+		if (typeof window !== 'undefined') {
+			const SpeechRecognitionClass = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+			if (SpeechRecognitionClass) {
+				speechRecognitionSupported = true;
+				speechRecognition = new SpeechRecognitionClass();
+				speechRecognition.lang = 'th-TH';
+				speechRecognition.continuous = false;
+				speechRecognition.interimResults = true;
+
+				speechRecognition.onresult = (event: any) => {
+					let transcript = '';
+					for (let i = event.resultIndex; i < event.results.length; i++) {
+						transcript += event.results[i][0].transcript;
+					}
+					buzzInput = transcript;
+				};
+
+				speechRecognition.onerror = (e: any) => {
+					console.error('Speech recognition error:', e);
+					isListening = false;
+				};
+
+				speechRecognition.onend = () => {
+					isListening = false;
+				};
+			}
+		}
+	}
+
+	function toggleSpeechRecognition() {
+		if (!speechRecognition) return;
+		if (isListening) {
+			speechRecognition.stop();
+			isListening = false;
+		} else {
+			try {
+				buzzInput = '';
+				speechRecognition.start();
+				isListening = true;
+			} catch (e) {
+				console.error(e);
+			}
+		}
+	}
+
 	function saveVoiceSettings() {
 		if (typeof window !== 'undefined') {
 			localStorage.setItem('cb_tts_rate', speechRate.toString());
+			if (selectedVoiceURI) {
+				localStorage.setItem('cb_tts_voice_uri', selectedVoiceURI);
+			}
 		}
 	}
 
 	async function testVoiceSample() {
 		isTestingVoice = true;
 		await speakThai('ยินดีต้อนรับสู่ Thai Quiz Arena โดย One Piece และ DNA', {
+			voiceURI: selectedVoiceURI,
 			rate: speechRate
 		});
 		isTestingVoice = false;
@@ -129,6 +201,10 @@
 		clearInterval(timerInterval);
 		clearInterval(countdownInterval);
 		clearInterval(revealInterval);
+		if (isListening && speechRecognition) {
+			try { speechRecognition.stop(); } catch (e) {}
+			isListening = false;
+		}
 		stopSpeech();
 	}
 
@@ -293,6 +369,7 @@
 		// Start / resume TTS from current revealed point if audio enabled
 		if (!isTTSMuted) {
 			speakThai(remainingText, {
+				voiceURI: selectedVoiceURI,
 				rate: speechRate,
 				onEnd: () => {
 					// Audio finished reading
@@ -512,32 +589,32 @@
 <div class="min-h-screen bg-slate-950 text-slate-100 pb-20 pt-4 px-3 sm:px-4 selection:bg-amber-500 selection:text-slate-950">
 	<div class="max-w-4xl mx-auto flex flex-col gap-4">
 
-		<!-- Top Header Navigation Bar (Compact) -->
-		<header class="flex items-center justify-between bg-slate-900/90 backdrop-blur-md border border-slate-800 rounded-xl px-3 py-2 sm:px-4 sm:py-2.5 shadow-lg">
-			<div class="flex items-center gap-2 sm:gap-3">
+		<!-- Top Header Navigation Bar (Compact & Mobile-Responsive) -->
+		<header class="flex flex-wrap sm:flex-nowrap items-center justify-between gap-2 bg-slate-900/90 backdrop-blur-md border border-slate-800 rounded-xl px-2.5 py-2 sm:px-4 sm:py-2.5 shadow-lg overflow-hidden">
+			<div class="flex items-center gap-1.5 sm:gap-3 min-w-0">
 				<a
 					href="/puzzles"
-					class="btn btn-xs sm:btn-sm btn-ghost gap-1 text-slate-400 hover:text-white px-1.5"
+					class="btn btn-xs sm:btn-sm btn-ghost gap-1 text-slate-400 hover:text-white px-1 sm:px-1.5 shrink-0"
 					title="กลับหน้า Puzzles"
 				>
 					<ArrowLeftIcon size="14" />
 					<span class="hidden sm:inline text-xs">Puzzles</span>
 				</a>
-				<div class="h-4 w-px bg-slate-800"></div>
-				<div class="flex items-center gap-1.5 sm:gap-2">
-					<span class="text-lg sm:text-xl">🇹🇭</span>
-					<div class="flex items-baseline gap-2">
-						<h1 class="text-sm sm:text-base font-black tracking-tight bg-gradient-to-r from-amber-400 to-orange-400 bg-clip-text text-transparent">
+				<div class="h-4 w-px bg-slate-800 shrink-0"></div>
+				<div class="flex items-center gap-1.5 min-w-0">
+					<span class="text-base sm:text-xl shrink-0">🇹🇭</span>
+					<div class="flex items-baseline gap-1.5 min-w-0">
+						<h1 class="text-xs sm:text-base font-black tracking-tight bg-gradient-to-r from-amber-400 to-orange-400 bg-clip-text text-transparent truncate">
 							Thai Quiz Arena
 						</h1>
-						<span class="text-[10px] text-slate-400 font-medium hidden md:inline">• Japanese Quiz Show & 4 Choices</span>
+						<span class="text-[10px] text-slate-400 font-medium hidden md:inline shrink-0">• Japanese Quiz Show & 4 Choices</span>
 					</div>
 				</div>
 			</div>
 
-			<div class="flex items-center gap-1.5">
+			<div class="flex items-center gap-1 shrink-0">
 				<button
-					class="btn btn-xs {isTTSMuted ? 'btn-ghost text-slate-500' : 'btn-ghost text-amber-400'} gap-1 px-2"
+					class="btn btn-xs {isTTSMuted ? 'btn-ghost text-slate-500' : 'btn-ghost text-amber-400'} gap-1 px-1.5 sm:px-2"
 					on:click={() => {
 						isTTSMuted = !isTTSMuted;
 						if (isTTSMuted) stopSpeech();
@@ -554,20 +631,16 @@
 				</button>
 
 				<button
-					class="btn btn-xs btn-ghost text-slate-400 hover:text-amber-400 gap-1 px-2"
+					class="btn btn-xs btn-ghost text-slate-400 hover:text-amber-400 gap-1 px-1.5 sm:px-2"
 					on:click={() => (showVoiceModal = true)}
-					title="ตั้งค่าความเร็วเสียงอ่าน TTS (Speed Rate)"
+					title="ตั้งค่าความเร็วและเสียงอ่าน TTS"
 				>
-					<ZapIcon size="13" />
-					<span class="text-[11px] hidden sm:inline">ความเร็ว ({speechRate}x)</span>
+					<SettingsIcon size="13" />
+					<span class="text-[11px] hidden sm:inline">{speechRate}x</span>
 				</button>
 
-				<a href="/puzzles/thechase" class="btn btn-xs btn-outline border-amber-500/50 hover:bg-amber-500 hover:text-slate-950 text-amber-300 font-bold gap-1 px-2.5 shadow-sm">
-					⚡ The Chase
-				</a>
-
-				<a href="/puzzles/battle" class="btn btn-xs btn-primary font-bold text-primary-content gap-1 px-2.5 shadow-sm">
-					⚔️ Battle
+				<a href="/puzzles/battle" class="btn btn-xs btn-primary font-bold text-primary-content gap-1 px-2 shadow-sm">
+					⚔️ <span class="hidden xs:inline">Battle</span>
 				</a>
 			</div>
 		</header>
@@ -597,23 +670,12 @@
 					</button>
 				</div>
 
-				<!-- Quick Link Banner to The Chase Standalone Page -->
-				<div class="flex items-center justify-between gap-3 px-4 py-2.5 rounded-xl bg-gradient-to-r from-slate-900 via-amber-950/20 to-slate-900 border border-amber-500/20 text-xs text-slate-300">
-					<div class="flex items-center gap-2">
-						<span class="text-amber-400 text-base">⚡</span>
-						<span>กำลังมองหาเกมโชว์ <strong>The Chase (ผู้ล่าท้าดวล)</strong> บอร์ด 7 ขั้น และ AI Chaser?</span>
-					</div>
-					<a href="/puzzles/thechase" class="btn btn-xs bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold gap-1 shrink-0">
-						เล่น The Chase &rarr;
-					</a>
-				</div>
-
 				<!-- TAB 1: JAPANESE QUIZ SHOW MODE SELECTION -->
 				{#if activeStyleTab === 'quizshow'}
 					<div class="flex flex-col gap-4" in:fly={{ y: 10, duration: 200 }}>
 						<div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-slate-900 via-slate-900/90 to-amber-950/40 border border-amber-500/30 p-6 sm:p-8 shadow-2xl">
 							<div class="absolute -right-10 -top-10 w-72 h-72 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
-							<div class="relative z-10 flex flex-col gap-3 max-w-xl">
+							<div class="relative z-10 flex flex-col gap-3 max-w-xl text-center sm:text-left items-center sm:items-start">
 								<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/20 border border-amber-500/40 text-amber-300 text-xs font-black w-fit">
 									<RadioIcon size="12" class="animate-pulse" />
 									<span>Japanese Quiz Show • 早押しクイズ</span>
@@ -624,10 +686,10 @@
 								<p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
 									ระบบจะอ่านคำถามทีละตัวอักษรด้วยเสียงพูด <strong>กด Spacebar หรือคลิกปุ่มกริ่งเพื่อหยุดเสียงและพิมพ์คำตอบ</strong> ยิ่งตอบได้เร็วเมื่อตัวอักษรขึ้นน้อย ยิ่งได้คะแนนโบนัสสูง!
 								</p>
-								<div class="flex items-center gap-3 mt-2">
+								<div class="flex items-center justify-center sm:justify-start gap-3 mt-3 w-full">
 									<button
 										on:click={() => startCountdown('quizshow', 'timeattack')}
-										class="btn btn-warning btn-md text-warning-content font-black gap-2 shadow-lg shadow-amber-500/30 rounded-2xl"
+										class="btn btn-warning btn-md text-warning-content font-black gap-2 shadow-lg shadow-amber-500/30 rounded-2xl w-full sm:w-auto"
 									>
 										<PlayIcon size="18" />
 										เริ่มเล่นควิซโชว์ทันที (10 ข้อ)
@@ -855,24 +917,51 @@
 
 						<!-- STATE 2: BUZZED → TEXT INPUT BOX -->
 						{:else if quizShowState === 'buzzed'}
-							<div class="flex flex-col items-center gap-2 w-full" in:scale={{ duration: 150 }}>
-								<div class="flex items-center gap-2 w-full">
+							<div class="flex flex-col items-center gap-2 w-full max-w-full" in:scale={{ duration: 150 }}>
+								<div class="flex items-center gap-1.5 sm:gap-2 w-full max-w-full">
 									<input
 										type="text"
 										bind:value={buzzInput}
 										bind:this={buzzInputElement}
-										placeholder="พิมพ์คำตอบภาษาไทย..."
-										class="input input-lg input-bordered flex-1 bg-slate-950 text-white font-black border-2 border-amber-400 text-lg sm:text-xl text-center focus:outline-none shadow-2xl shadow-amber-500/20"
+										placeholder="พิมพ์หรือพูดคำตอบ..."
+										class="input input-md sm:input-lg input-bordered flex-1 min-w-0 bg-slate-950 text-white font-black border-2 border-amber-400 text-base sm:text-xl text-center focus:outline-none shadow-xl shadow-amber-500/20"
 										style="color: #ffffff !important; background-color: #020617 !important;"
+										on:keydown={(e) => {
+											if (e.key === 'Enter') handleBuzzAnswerSubmit();
+										}}
 									/>
+
+									{#if speechRecognitionSupported}
+										<button
+											type="button"
+											class="btn btn-md sm:btn-lg {isListening ? 'btn-error animate-pulse text-white' : 'btn-outline border-amber-500/60 text-amber-300 hover:bg-amber-500/20'} px-2.5 sm:px-3.5 rounded-2xl shrink-0"
+											on:click={toggleSpeechRecognition}
+											title={isListening ? 'กำลังฟังเสียง... (คลิกเพื่อหยุด)' : 'พูดคำตอบด้วยไมโครโฟน'}
+										>
+											<MicIcon size="18" />
+										</button>
+									{/if}
+
 									<button
+										type="button"
 										on:click={handleBuzzAnswerSubmit}
-										class="btn btn-lg btn-warning text-warning-content font-black px-6 rounded-2xl shadow-lg"
+										class="btn btn-md sm:btn-lg btn-warning text-warning-content font-black px-3 sm:px-6 rounded-2xl shadow-lg shrink-0"
 									>
-										ส่ง (Enter)
+										ส่ง
 									</button>
 								</div>
-								<span class="text-[11px] text-slate-400 font-mono">กด Enter เพื่อตรวจคำตอบ</span>
+								<div class="flex items-center justify-between w-full text-[11px] text-slate-400 font-mono px-1">
+									{#if isListening}
+										<span class="text-rose-400 animate-pulse font-bold flex items-center gap-1">
+											🔴 กำลังฟังเสียงภาษาไทย...
+										</span>
+									{:else}
+										<span>กด Enter หรือคลิกปุ่มส่ง</span>
+									{/if}
+									{#if speechRecognitionSupported}
+										<span class="text-slate-500 hidden sm:inline">🎙️ รองรับไมโครโฟน</span>
+									{/if}
+								</div>
 							</div>
 
 						<!-- STATE 3: INCORRECT → CONTINUE BUTTON -->
@@ -1147,6 +1236,33 @@
 			</div>
 
 			<div class="flex flex-col gap-4 text-xs">
+				<!-- Voice Profile Selection -->
+				<div class="form-control">
+					<label for="voice-profile-select" class="label py-1">
+						<span class="label-text text-xs text-slate-300 font-bold">โปรไฟล์เสียงอ่าน (Voice Profile)</span>
+					</label>
+					{#if thaiVoices.length > 1}
+						<select
+							id="voice-profile-select"
+							bind:value={selectedVoiceURI}
+							on:change={saveVoiceSettings}
+							class="select select-bordered select-sm w-full bg-slate-950 text-slate-100 border-slate-700 focus:border-amber-400 text-xs"
+						>
+							{#each thaiVoices as voice}
+								<option value={voice.voiceURI}>{voice.name} ({voice.lang})</option>
+							{/each}
+						</select>
+					{:else if thaiVoices.length === 1}
+						<div class="p-2.5 rounded-xl bg-slate-950/80 border border-slate-800 text-xs text-amber-300 font-mono">
+							{thaiVoices[0].name} ({thaiVoices[0].lang})
+						</div>
+					{:else}
+						<div class="p-2.5 rounded-xl bg-slate-950/80 border border-slate-800 text-xs text-slate-400">
+							Default System Voice (th-TH)
+						</div>
+					{/if}
+				</div>
+
 				<!-- Speed Rate Slider (0.5x to 2.0x) -->
 				<div class="form-control">
 					<div class="flex items-center justify-between">
