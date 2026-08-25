@@ -20,7 +20,7 @@ const abbrWords = parseAbbrWords(abbrRaw);
 let dictTrie: any = null;
 let combinedTrie: any = null;
 
-function buildThaiTrie(words: string[]) {
+export function buildThaiTrie(words: string[]) {
   const root: any = {};
   for (let i = 0; i < words.length; i++) {
     const word = words[i];
@@ -36,7 +36,7 @@ function buildThaiTrie(words: string[]) {
   return root;
 }
 
-function searchThaiTrie(root: any, pattern: string, strict: boolean) {
+export function searchThaiTrie(root: any, pattern: string, strict: boolean) {
   const parts = splitWord(pattern);
   const results: string[] = [];
   function dfs(node: any, idx: number, currentWord: string) {
