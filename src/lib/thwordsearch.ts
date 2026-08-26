@@ -36,8 +36,149 @@ export function buildThaiTrie(words: string[]) {
   return root;
 }
 
+export interface ParsedCharClass {
+  isNegated: boolean;
+  ranges: Array<{ start: number; end: number }>;
+  exactGraphemes: string[];
+}
+
+function isCombiningChar(c: string): boolean {
+  const code = c.codePointAt(0)!;
+  return code === 0x0E31 || (code >= 0x0E34 && code <= 0x0E3A) || (code >= 0x0E47 && code <= 0x0E4E);
+}
+
+export function parseCharClass(classToken: string): ParsedCharClass {
+  const inner = classToken.startsWith('[') && classToken.endsWith(']')
+    ? classToken.slice(1, -1)
+    : classToken;
+
+  const isNegated = inner.startsWith('^');
+  const body = isNegated ? inner.slice(1) : inner;
+
+  const ranges: Array<{ start: number; end: number }> = [];
+  const exactGraphemes: string[] = [];
+
+  const chars = Array.from(body);
+  let i = 0;
+
+  while (i < chars.length) {
+    if (i + 2 < chars.length && chars[i + 1] === '-' && chars[i] !== '-' && chars[i + 2] !== '-') {
+      const start = chars[i].codePointAt(0)!;
+      const end = chars[i + 2].codePointAt(0)!;
+      ranges.push({
+        start: Math.min(start, end),
+        end: Math.max(start, end)
+      });
+      i += 3;
+    } else {
+      let grapheme = chars[i];
+      i++;
+      while (i < chars.length && chars[i] !== '-' && isCombiningChar(chars[i])) {
+        grapheme += chars[i];
+        i++;
+      }
+      exactGraphemes.push(grapheme);
+    }
+  }
+
+  return { isNegated, ranges, exactGraphemes };
+}
+
+export function matchCharClass(wCell: string, classToken: string, strict: boolean): boolean {
+  if (!wCell) return false;
+  const parsed = parseCharClass(classToken);
+
+  let positiveMatch = false;
+
+  for (const g of parsed.exactGraphemes) {
+    if (strict) {
+      if (wCell === g) {
+        positiveMatch = true;
+        break;
+      }
+    } else {
+      if (wCell.startsWith(g) || g.startsWith(wCell)) {
+        positiveMatch = true;
+        break;
+      }
+    }
+  }
+
+  if (!positiveMatch && parsed.ranges.length > 0) {
+    const firstCode = wCell.codePointAt(0)!;
+    for (const r of parsed.ranges) {
+      if (firstCode >= r.start && firstCode <= r.end) {
+        if (strict) {
+          if (wCell.length === 1 || (wCell.length === 2 && firstCode >= 0x10000)) {
+            positiveMatch = true;
+            break;
+          }
+        } else {
+          positiveMatch = true;
+          break;
+        }
+      }
+    }
+  }
+
+  return parsed.isNegated ? !positiveMatch : positiveMatch;
+}
+
+export function tokenizeQuery(query: string): string[] {
+  const tokens: string[] = [];
+  let i = 0;
+
+  while (i < query.length) {
+    const c = query[i];
+
+    if (c === '[') {
+      const closeIdx = query.indexOf(']', i + 1);
+      if (closeIdx !== -1) {
+        tokens.push(query.slice(i, closeIdx + 1));
+        i = closeIdx + 1;
+        continue;
+      }
+    }
+
+    if (c === '{') {
+      const closeIdx = query.indexOf('}', i + 1);
+      if (closeIdx !== -1) {
+        let endIdx = closeIdx + 1;
+        if (endIdx < query.length && query[endIdx] === '+') {
+          endIdx++;
+          while (endIdx < query.length && query[endIdx] >= '0' && query[endIdx] <= '9') {
+            endIdx++;
+          }
+        }
+        tokens.push(query.slice(i, endIdx));
+        i = endIdx;
+        continue;
+      }
+    }
+
+    if (c === '~' && i + 1 < query.length && query[i + 1] >= 'A' && query[i + 1] <= 'Z') {
+      tokens.push('~' + query[i + 1]);
+      i += 2;
+      continue;
+    }
+
+    if (c.match(/[A-Zก-ฮ]/) || c.match(/[ใเแโไาำะๆฯฤา]/) || c.match(/[\.\*\/\~]/)) {
+      tokens.push(c);
+      i++;
+    } else if (tokens.length > 0 && !tokens[tokens.length - 1].startsWith('[') && !tokens[tokens.length - 1].startsWith('{')) {
+      tokens[tokens.length - 1] += c;
+      i++;
+    } else {
+      tokens.push(c);
+      i++;
+    }
+  }
+
+  return tokens;
+}
+
 export function searchThaiTrie(root: any, pattern: string, strict: boolean) {
-  const parts = splitWord(pattern);
+  const parts = tokenizeQuery(pattern);
   const results: string[] = [];
   function dfs(node: any, idx: number, currentWord: string) {
     if (idx === parts.length) {
@@ -49,6 +190,13 @@ export function searchThaiTrie(root: any, pattern: string, strict: boolean) {
       for (const key in node) {
         if (key === '$') continue;
         dfs(node[key], idx + 1, currentWord + key);
+      }
+    } else if (p.startsWith('[') && p.endsWith(']')) {
+      for (const key in node) {
+        if (key === '$') continue;
+        if (matchCharClass(key, p, strict)) {
+          dfs(node[key], idx + 1, currentWord + key);
+        }
       }
     } else {
       if (strict) {
@@ -109,9 +257,9 @@ export async function search(query: string, includeWiki: boolean, abortSignal?: 
     return await solveSystem(query, includeWiki, abortSignal, progressObj, strict);
   }
 
-  // Crossword optimization: check if query is a simple pattern (Thai chars and dots only)
+  // Crossword optimization: check if query is a simple pattern (Thai chars, dots, and character classes)
   // No variable, no anagram, no subset, no length, no union/intersection
-  const isSimplePattern = !query.match(/[\&\|\^\:\/\!\{\}\*\[\]\~A-Z0-9]/);
+  const isSimplePattern = !query.match(/[\&\|\:\/\!\{\}\*\~]/) && !query.match(/(^|[^\[])([A-Z0-9])/);
   if (isSimplePattern) {
     if (includeWiki) {
       if (!combinedTrie) combinedTrie = buildThaiTrie([...dict, ...(wiki as string[]), ...abbrWords]);
@@ -250,9 +398,9 @@ export async function solveSystem(query: string, includeWiki: boolean, abortSign
       }
 
       let p = patterns[patternIndex];
-      let pSplitted = splitWord(p);
+      let pSplitted = tokenizeQuery(p);
       let hasUnbound = pSplitted.some(c => (c >= 'A' && c <= 'Z') && currentVars[c] === undefined);
-      let hasWildcard = pSplitted.some(c => c === '*' || c === '.' || c === '[' || c === '/' || c === '~');
+      let hasWildcard = pSplitted.some(c => c === '*' || c === '.' || c.startsWith('[') || c === '/' || c === '~');
       
       if (!hasUnbound && !hasWildcard) {
           let constructed = pSplitted.map(c => (c >= 'A' && c <= 'Z') ? currentVars[c] : c).join('');
@@ -302,7 +450,7 @@ function matchQuery(w: string, q: string, e:string[], vars: Record<string, strin
   }
 
   const wordSplitted = splitWord(w)
-  let querySplitted = splitWord(q)
+  let querySplitted = tokenizeQuery(q)
 
   const checkMatch = (wCell: string, qCell: string) => {
     if (!wCell) return false;
@@ -318,20 +466,28 @@ function matchQuery(w: string, q: string, e:string[], vars: Record<string, strin
   
   // Type 1: Anagram
   if(mode.anagram) {
-    querySplitted = splitWord(removeSymbols(q))
+    querySplitted = tokenizeQuery(removeSymbols(q))
 
     // first, check if their lenghts match
     if(numFillers == 0 && wordSplitted.length != querySplitted.length + numWilds) return false
     if(numFillers > 0 && wordSplitted.length < querySplitted.length + numWilds) return false
 
     let numMatches = 0
-    for(let qIndex = 0; qIndex < querySplitted.length; qIndex++)
-      for(let wIndex = 0; wIndex < wordSplitted.length; wIndex++)
-        if(wordSplitted[wIndex] && checkMatch(wordSplitted[wIndex], querySplitted[qIndex])) {
-          wordSplitted[wIndex] = ''
-          numMatches ++
-          break
+    for(let qIndex = 0; qIndex < querySplitted.length; qIndex++) {
+      const qToken = querySplitted[qIndex];
+      for(let wIndex = 0; wIndex < wordSplitted.length; wIndex++) {
+        if(wordSplitted[wIndex]) {
+          const isMatched = qToken.startsWith('[') && qToken.endsWith(']')
+            ? matchCharClass(wordSplitted[wIndex], qToken, strict)
+            : checkMatch(wordSplitted[wIndex], qToken);
+          if (isMatched) {
+            wordSplitted[wIndex] = ''
+            numMatches ++
+            break
+          }
         }
+      }
+    }
       
     // return if not all query letters match
     if(numMatches < querySplitted.length) return false
@@ -362,53 +518,41 @@ function matchQuery(w: string, q: string, e:string[], vars: Record<string, strin
   if(!mode.anagram) {
     let qIndex = 0, wIndex = 0
     while(qIndex < querySplitted.length && wIndex < wordSplitted.length){
-      if(querySplitted[qIndex] === "*"){
+      const qToken = querySplitted[qIndex];
+      if(qToken === "*"){
         qIndex ++
         // if * was the last character, it's done!
         if(qIndex == querySplitted.length)
           return true
         // otherwise, find the next matching character and recursively check the rest
         while(wIndex < wordSplitted.length) {
-          const wildMatch = querySplitted[qIndex] === ".";
-          if(wildMatch || checkMatch(wordSplitted[wIndex], querySplitted[qIndex]))
+          const nextToken = querySplitted[qIndex];
+          const wildMatch = nextToken === "." || (nextToken.startsWith('[') && nextToken.endsWith(']') && matchCharClass(wordSplitted[wIndex], nextToken, strict));
+          if(wildMatch || checkMatch(wordSplitted[wIndex], nextToken))
             if(matchQuery(wordSplitted.slice(wIndex).join(""), querySplitted.slice(qIndex).join(""), e, vars, strict))
               return true
           wIndex ++
         }
         if(wIndex >= wordSplitted.length) return false
       }
+      else if (qToken.startsWith('[') && qToken.endsWith(']')) {
+        if (matchCharClass(wordSplitted[wIndex], qToken, strict)) {
+          qIndex++;
+          wIndex++;
+        } else {
+          return false;
+        }
+      }
       // letter: must match
       // wild: increment
-      else if(querySplitted[qIndex] === "." || checkMatch(wordSplitted[wIndex], querySplitted[qIndex])) {
+      else if(qToken === "." || checkMatch(wordSplitted[wIndex], qToken)) {
         qIndex ++
         wIndex ++
       }
-      // [abc]: any character matches
-      else if (querySplitted[qIndex] === "[") {
-        // find closing ]
-        let closingIndex = qIndex+1
-        while(closingIndex < querySplitted.length && querySplitted[closingIndex] !== "]")
-          closingIndex ++
-        if(closingIndex == querySplitted.length) return false // no closing ]
-        // check if any character in the [] matches
-        let found = false
-        for(let i = qIndex+1; i < closingIndex; i++)
-          if(checkMatch(wordSplitted[wIndex], querySplitted[i])) {
-            found = true
-            break
-          }
-        if(found) {
-          qIndex = closingIndex + 1
-          wIndex ++
-        }
-        else
-          return false
-      }
       // Variable A-Z or ~A-Z
-      else if ((querySplitted[qIndex] >= 'A' && querySplitted[qIndex] <= 'Z') || (querySplitted[qIndex] === '~' && qIndex + 1 < querySplitted.length && querySplitted[qIndex+1] >= 'A' && querySplitted[qIndex+1] <= 'Z')) {
-          let isReversed = querySplitted[qIndex] === '~';
-          let tokenIndex = isReversed ? qIndex + 1 : qIndex;
-          let token = querySplitted[tokenIndex];
+      else if ((qToken >= 'A' && qToken <= 'Z') || (qToken.startsWith('~') && qToken.length === 2 && qToken[1] >= 'A' && qToken[1] <= 'Z')) {
+          let isReversed = qToken.startsWith('~');
+          let token = isReversed ? qToken.slice(1) : qToken;
           
           if (vars[token]) {
               let boundSplitted = splitWord(vars[token]);
@@ -420,7 +564,7 @@ function matchQuery(w: string, q: string, e:string[], vars: Record<string, strin
                   }
               }
               if (match) {
-                  if (matchQuery(wordSplitted.slice(wIndex + boundSplitted.length).join(""), querySplitted.slice(tokenIndex + 1).join(""), e, vars, strict)) {
+                  if (matchQuery(wordSplitted.slice(wIndex + boundSplitted.length).join(""), querySplitted.slice(qIndex + 1).join(""), e, vars, strict)) {
                       return true;
                   }
               }
@@ -431,7 +575,7 @@ function matchQuery(w: string, q: string, e:string[], vars: Record<string, strin
                   let candidateArr = wordSplitted.slice(wIndex, wIndex + len);
                   let candidate = isReversed ? [...candidateArr].reverse().join('') : candidateArr.join('');
                   vars[token] = candidate;
-                  if (matchQuery(wordSplitted.slice(wIndex + len).join(""), querySplitted.slice(tokenIndex + 1).join(""), e, vars, strict)) {
+                  if (matchQuery(wordSplitted.slice(wIndex + len).join(""), querySplitted.slice(qIndex + 1).join(""), e, vars, strict)) {
                       return true;
                   }
                   delete vars[token];

@@ -139,6 +139,10 @@
 
 	<!-- Content Box -->
 	<div class="flex flex-col items-center space-y-3 sm:space-y-4 w-full">
+		<p class="text-[11px] sm:text-xs text-slate-400 font-medium text-center">
+			เลือกพยัญชนะตัวเดียวกันเติมลงในช่องว่างเพื่อให้เป็นคำที่ถูกต้อง
+		</p>
+
 		<!-- Word Display with Blanks -->
 		<div class="flex items-center justify-center gap-1 sm:gap-2 py-2.5 px-2 bg-slate-950/80 border border-slate-800 rounded-xl w-full max-w-md shadow-inner overflow-x-auto">
 			{#each blocks as b}

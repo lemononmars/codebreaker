@@ -10,7 +10,6 @@
 	import { onMount } from 'svelte';
 	import { getPuzzleImageURL } from '$lib/supabase';
 	import { CheckCircleIcon, ImageIcon, CalendarIcon } from 'svelte-feather-icons';
-	import DOMPurify from 'isomorphic-dompurify';
 
 	let activeMiniPlayerTab: 'spellingbee' | 'thaiquiz' | 'blanks' | 'spellingquiz' = 'spellingbee';
 
@@ -89,13 +88,6 @@
 		}
 	}
 
-	function scrollToElement(e: MouseEvent, targetId: string) {
-		e.preventDefault();
-		const el = document.getElementById(targetId);
-		if (el) {
-			el.scrollIntoView({ behavior: 'smooth' });
-		}
-	}
 
 	onMount(async () => {
 		try {
@@ -176,9 +168,9 @@
 	<meta name="twitter:image" content="/og-main.png" />
 </svelte:head>
 
-{#if isAnniversary}
+<!-- {#if isAnniversary}
 	<CelebrationOverlay />
-{/if}
+{/if} -->
 
 <div class="space-y-12 sm:space-y-16 pb-12">
 	<!-- Hero Section with Centered 3D Showcase -->
@@ -195,7 +187,7 @@
 			{#if isAnniversary}
 				<div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gradient-to-r from-amber-500/20 via-rose-500/20 to-cyan-500/20 border border-amber-400/50 shadow-lg shadow-amber-500/20 backdrop-blur-md text-amber-300 font-extrabold text-xs sm:text-sm tracking-wider uppercase">
 					<span class="animate-bounce">🎉</span>
-					<span>7th Anniversary Celebration</span>
+					<span>7th Anniversary</span>
 					<span class="animate-bounce">✨</span>
 				</div>
 			{/if}
@@ -205,49 +197,7 @@
 				<span class="bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent">Code Breaker</span>
 			</h1>
 
-			<!-- Hero CTA Buttons: Transparent background, white text, accent border -->
-			<div class="flex flex-wrap gap-2 sm:gap-2.5 justify-center pt-1 sm:pt-2">
-				<a
-					href="#mini-players"
-					on:click={(e) => {
-						activeMiniPlayerTab = 'spellingbee';
-						scrollToElement(e, 'mini-players');
-					}}
-					class="px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-xl font-bold text-white bg-slate-900/60 hover:bg-slate-900/90 border border-amber-500/50 hover:border-amber-400 shadow-lg shadow-amber-500/10 transition-all duration-200 transform hover:-translate-y-0.5 text-xs sm:text-sm flex items-center gap-1.5 backdrop-blur-md"
-				>
-					<span>Spelling Bee 🐝</span>
-				</a>
-				<a
-					href="#mini-players"
-					on:click={(e) => {
-						activeMiniPlayerTab = 'thaiquiz';
-						scrollToElement(e, 'mini-players');
-					}}
-					class="px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-xl font-bold text-white bg-slate-900/60 hover:bg-slate-900/90 border border-yellow-500/50 hover:border-yellow-400 shadow-lg shadow-yellow-500/10 transition-all duration-200 transform hover:-translate-y-0.5 text-xs sm:text-sm flex items-center gap-1.5 backdrop-blur-md"
-				>
-					<span>Thai Quiz 🇹🇭</span>
-				</a>
-				<a
-					href="#mini-players"
-					on:click={(e) => {
-						activeMiniPlayerTab = 'blanks';
-						scrollToElement(e, 'mini-players');
-					}}
-					class="px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-xl font-bold text-white bg-slate-900/60 hover:bg-slate-900/90 border border-sky-500/50 hover:border-sky-400 shadow-lg shadow-sky-500/10 transition-all duration-200 transform hover:-translate-y-0.5 text-xs sm:text-sm flex items-center gap-1.5 backdrop-blur-md"
-				>
-					<span>Blanks ✏️</span>
-				</a>
-				<a
-					href="#mini-players"
-					on:click={(e) => {
-						activeMiniPlayerTab = 'spellingquiz';
-						scrollToElement(e, 'mini-players');
-					}}
-					class="px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-xl font-bold text-white bg-slate-900/60 hover:bg-slate-900/90 border border-teal-500/50 hover:border-teal-400 shadow-lg shadow-teal-500/10 transition-all duration-200 transform hover:-translate-y-0.5 text-xs sm:text-sm flex items-center gap-1.5 backdrop-blur-md"
-				>
-					<span>Spelling Quiz 📝</span>
-				</a>
-			</div>
+
 		</div>
 	</section>
 
@@ -267,16 +217,16 @@
 				</a>
 			</div>
 
-			<!-- Compact Badges List with Time Difference -->
-			<div class="flex flex-wrap items-center gap-1.5 sm:gap-3">
+			<!-- Compact Badges List: Horizontal scrolling on mobile (no scrollbar), flex-wrap on desktop -->
+			<div class="flex items-center gap-1.5 sm:gap-3 overflow-x-auto sm:flex-wrap no-scrollbar py-0.5">
 				{#if isLoadingSolves}
 					{#each Array(4) as _}
-						<div class="animate-pulse bg-slate-900/60 rounded-full h-7 w-28 sm:h-8 sm:w-36 border border-slate-800"></div>
+						<div class="animate-pulse bg-slate-900/60 rounded-full h-7 w-28 sm:h-8 sm:w-36 border border-slate-800 shrink-0"></div>
 					{/each}
 				{:else}
 					{#each latestSolves as s}
 						{@const displayName = s.name || s.username || 'Player'}
-						<div class="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-full bg-slate-900 border border-slate-800 text-[11px] sm:text-xs text-slate-300 shadow-sm hover:border-emerald-500/40 transition-colors">
+						<div class="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-full bg-slate-900 border border-slate-800 text-[11px] sm:text-xs text-slate-300 shadow-sm hover:border-emerald-500/40 transition-colors shrink-0 whitespace-nowrap">
 							<span class="font-bold text-white">{displayName}</span>
 							<span class="text-slate-400 font-mono">• {s.puzzle_type || 'weekly'}{s.puzzle_id ? ` (${s.puzzle_id})` : ''}</span>
 							<span class="font-mono text-emerald-400 bg-emerald-500/10 px-1.5 py-0.5 rounded-md border border-emerald-500/30 text-[9px] sm:text-[10px]">
@@ -310,7 +260,7 @@
 					class="py-1.5 sm:py-2.5 px-1 sm:px-3 rounded-lg sm:rounded-xl font-extrabold text-[11px] sm:text-sm flex items-center justify-center gap-1 sm:gap-1.5 transition-all truncate {activeMiniPlayerTab === 'thaiquiz' ? 'bg-yellow-500 text-slate-950 shadow-md shadow-yellow-500/20' : 'text-slate-400 hover:text-white hover:bg-slate-800/60'}"
 				>
 					<span>🇹🇭</span>
-					<span class="truncate">Thai Quiz</span>
+					<span class="truncate">Quiz</span>
 				</button>
 
 				<button
@@ -455,7 +405,7 @@
 						class="group flex flex-col items-center text-center bg-slate-950/60 border border-slate-800/80 hover:border-cyan-500/50 rounded-2xl p-4 sm:p-6 shadow-lg hover:shadow-cyan-500/10 transition-all duration-300 transform hover:-translate-y-1"
 					>
 						<div class="relative w-16 h-16 sm:w-20 sm:h-20 mb-3 rounded-2xl bg-slate-900/80 border border-slate-800 p-2.5 flex items-center justify-center group-hover:border-cyan-500/40 transition-colors shadow-inner">
-							{@html DOMPurify.sanitize(getPuzzleIconSvg(p.type))}
+							{@html getPuzzleIconSvg(p.type)}
 						</div>
 						<h3 class="text-base sm:text-xl font-bold text-white capitalize group-hover:text-cyan-400 transition-colors mb-1">
 							{p.type}
@@ -471,3 +421,13 @@
 </div>
 
 <Footer />
+
+<style>
+	.no-scrollbar::-webkit-scrollbar {
+		display: none;
+	}
+	.no-scrollbar {
+		-ms-overflow-style: none;
+		scrollbar-width: none;
+	}
+</style>

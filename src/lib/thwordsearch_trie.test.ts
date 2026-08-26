@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach } from 'vitest';
-import { buildThaiTrie, searchThaiTrie } from './thwordsearch';
+import { buildThaiTrie, searchThaiTrie, search } from './thwordsearch';
 
 describe('Trie Implementation for Thai Crossword Optimization', () => {
   it('builds a trie correctly from a list of words', () => {
@@ -51,6 +51,15 @@ describe('Trie Implementation for Thai Crossword Optimization', () => {
       expect(searchThaiTrie(trie, 'ห..', true)).toEqual(['หมา']);
       expect(searchThaiTrie(trie, 'ห...', true)).toEqual([]);
     });
+    it('matches words using character classes [ ] with ranges and negations', () => {
+      expect(searchThaiTrie(trie, 'แ[ม-ร]ว', true)).toEqual(['แมว']);
+      expect(searchThaiTrie(trie, 'แ[ก-ค]ว', true)).toEqual([]);
+      expect(searchThaiTrie(trie, 'แ[^ก-ค]ว', true)).toEqual(['แมว']);
+      expect(searchThaiTrie(trie, 'แ[^ม]ว', true)).toEqual([]);
+      expect(searchThaiTrie(trie, '[ก-ค]..', true)).toEqual(['กาง']);
+      expect(searchThaiTrie(trie, 'ก[บำ]', true)).toEqual(['กบ', 'กำ']);
+      expect(searchThaiTrie(trie, 'ก[^บ]', true)).toEqual(['กำ']);
+    });
   });
 
   describe('loose matching', () => {
@@ -72,6 +81,24 @@ describe('Trie Implementation for Thai Crossword Optimization', () => {
       // and then '.' matches 'น', thus finding 'กิน'.
       expect(searchThaiTrie(trie, 'ก.', false)).toEqual(expect.arrayContaining(['กบ', 'กำ', 'กิน']));
       expect(searchThaiTrie(trie, 'ก..', false)).toEqual(['กาง']);
+    });
+
+    it('matches using character classes with loose prefixes', () => {
+      expect(searchThaiTrie(trie, '[ก-ค].', false)).toEqual(expect.arrayContaining(['กบ', 'กำ', 'กิน']));
+      expect(searchThaiTrie(trie, '[ก-ค]..', false)).toEqual(['กาง']);
+    });
+  });
+
+  describe('search() end-to-end character class queries', () => {
+    it('supports regexp character class [ ] in search()', async () => {
+      const res = await search('[ใไโ]ก.', false);
+      expect(res.valid).toBe(true);
+      expect(res.results.length).toBeGreaterThan(0);
+      expect(res.results).toContain('ใกล้');
+
+      const rangeRes = await search('ส[ก-ฮ]น', false);
+      expect(rangeRes.valid).toBe(true);
+      expect(rangeRes.results).toContain('สนน');
     });
   });
 });

@@ -1,12 +1,14 @@
 <script context="module" lang="ts">
 	import type { Load } from '@sveltejs/kit';
-	export const load: Load = async ({ fetch }) => {
+	export const load: Load = async ({ fetch, url }) => {
 		const res = await fetch(`/api/puzzle/weekly/`);
 		const content = await res.json();
+		const yearParam = url.searchParams.get('year');
 
 		return {
 			props: {
-				content: content.content || []
+				content: content.content || [],
+				queryYear: yearParam ? parseInt(yearParam) : null
 			}
 		};
 	};
@@ -15,9 +17,13 @@
 <script lang="ts">
 	import { getPuzzleImageURL } from '$lib/supabase';
 	import { getNthFridayOfYear } from '$lib/weeklyGuard';
-	import { AwardIcon, CheckCircleIcon, CalendarIcon, ImageIcon, ArrowUpIcon, ArrowDownIcon } from 'svelte-feather-icons';
+	import { AwardIcon, CalendarIcon, ImageIcon, ArrowUpIcon, ArrowDownIcon } from 'svelte-feather-icons';
+	import { page } from '$app/stores';
+	import { goto } from '$app/navigation';
+	import { browser } from '$app/env';
 
 	export let content: any[] = [];
+	export let queryYear: number | null = null;
 
 	let years: number[] = [];
 	$: {
@@ -29,8 +35,23 @@
 	}
 
 	let selectedYear: number;
-	$: if (years.length > 0 && !selectedYear) {
-		selectedYear = years[0];
+	$: if (years.length > 0) {
+		const param = $page.url.searchParams.get('year');
+		const currentQueryYear = param ? parseInt(param) : queryYear;
+		if (currentQueryYear && years.includes(currentQueryYear)) {
+			selectedYear = currentQueryYear;
+		} else if (!selectedYear || !years.includes(selectedYear)) {
+			selectedYear = years[0];
+		}
+	}
+
+	function selectYear(yr: number) {
+		selectedYear = yr;
+		if (browser) {
+			const url = new URL(window.location.href);
+			url.searchParams.set('year', String(yr));
+			goto(url.toString(), { replaceState: true, keepfocus: true, noscroll: true });
+		}
 	}
 
 	let sortDirection: 'desc' | 'asc' = 'desc';
@@ -98,7 +119,7 @@
 				<span class="text-xs font-bold text-slate-400 uppercase tracking-wider mr-2">ปี:</span>
 				{#each years as yr}
 					<button
-						on:click={() => (selectedYear = yr)}
+						on:click={() => selectYear(yr)}
 						class="btn btn-sm rounded-xl font-bold transition-all {selectedYear === yr
 							? 'btn-emerald bg-emerald-500 text-slate-950 border-none shadow-md shadow-emerald-500/20'
 							: 'btn-ghost text-slate-400 hover:text-white hover:bg-slate-800'}"

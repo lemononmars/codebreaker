@@ -78,7 +78,7 @@
 			<div class="w-full max-w-md h-10 flex items-center justify-center">
 				{#if !isAnswered}
 					<p class="text-[11px] sm:text-xs text-slate-400 font-semibold tracking-wide text-center">
-						Pick the correctly spelled word
+						เลือกคำที่เขียนสะกดถูกต้องตามพจนานุกรม
 					</p>
 				{:else}
 					<div class="flex flex-row items-center justify-center gap-2 w-full h-full">

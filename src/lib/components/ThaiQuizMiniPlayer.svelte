@@ -74,7 +74,7 @@
 	<div class="flex items-center justify-between border-b border-slate-800/70 pb-2.5">
 		<div class="flex items-center gap-2">
 			<span class="h-2 w-2 rounded-full bg-yellow-400"></span>
-			<span class="text-xs uppercase tracking-wider text-yellow-400 font-bold">Thai Quiz</span>
+			<span class="text-xs uppercase tracking-wider text-yellow-400 font-bold">Quiz</span>
 			{#if activeCategory}
 				<span class="badge {activeCategory.color} badge-xs font-semibold text-[10px] hidden sm:inline-flex">
 					{activeCategory.icon} {activeCategory.name}
@@ -93,7 +93,7 @@
 			</button>
 
 			<a
-				href="/puzzles/thaiquiz"
+				href="/puzzles/quiz"
 				class="inline-flex items-center text-[11px] sm:text-xs font-bold px-2.5 py-1 rounded-lg bg-amber-500/20 text-amber-300 border border-amber-500/40 hover:bg-amber-500/30 transition-all shadow-sm"
 			>
 				Full Mode →
@@ -104,6 +104,10 @@
 	<!-- Question Content & 4 Choices -->
 	{#if currentItem}
 		<div class="flex flex-col gap-2.5 sm:gap-3.5 my-auto" in:fade={{ duration: 150 }}>
+			<p class="text-[11px] sm:text-xs text-slate-400 font-medium text-center">
+				ตอบคำถามความรู้รอบตัวและภาษาไทย เลือกคำตอบที่ถูกต้อง
+			</p>
+
 			<!-- Question Box -->
 			<div class="bg-slate-950/80 border border-slate-800 rounded-xl p-2.5 sm:p-4 text-center shadow-inner">
 				<p class="text-xs sm:text-base font-black text-white leading-snug tracking-tight max-w-xl mx-auto">

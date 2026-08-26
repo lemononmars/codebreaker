@@ -67,9 +67,9 @@
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-               type: 'missingvowels',
-               uid: content.uid || (content as any).id,
-               answer: guess,
+					type: 'missingvowels',
+					uid: (content as any).uid || (content as any).id,
+					answer: guess,
                roundIndex: currentRound
             })
          });

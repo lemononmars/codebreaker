@@ -162,7 +162,7 @@
 		{
 			type: 'boggle',
 			title: 'Boggle',
-			description: 'ลากเส้นเชื่อมตัวอักษรเพื่อผสมคำภาษาไทยในพจนานุกรม',
+			description: 'ลากเส้นเชื่อมตัวอักษรเพื่อผสมคำ',
 			icon: `<svg class="w-10 h-10 text-cyan-400 transition-all duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 				<rect x="3" y="3" width="18" height="18" rx="2" />
 				<circle cx="8" cy="8" r="1.5" />
@@ -176,8 +176,8 @@
 
 	const quizPuzzles = [
 		{
-			type: 'thaiquiz',
-			title: 'Thai Quiz Arena',
+			type: 'quiz',
+			title: 'Quiz',
 			description: 'ควิซความรู้รอบตัวและป๊อปคัลเจอร์ สไตล์เกมโชว์ตอบคำถามกดปุ่มแย่งตอบ พร้อมเสียงอ่าน',
 			icon: `<svg class="w-10 h-10 text-amber-400 transition-all duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 				<circle cx="12" cy="12" r="10"/>
@@ -187,7 +187,7 @@
 		},
 		{
 			type: 'thechase',
-			title: 'The Chase (ผู้ล่าท้าดวล)',
+			title: 'The Chase',
 			description: 'เกมโชว์ตอบคำถาม 3 ตัวเลือก ประลองความไวบนกระดานไล่ล่า 7 ขั้น และรอบสุดท้ายกับผู้ล่า',
 			icon: `<svg class="w-10 h-10 text-amber-400 transition-all duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 				<polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
@@ -209,7 +209,7 @@
 		{
 			type: 'logicpuzzle',
 			title: 'Logic Puzzles',
-			description: 'คลังโจทย์พัซเซิลตรรกะ (Slitherlink, Sudoku, Masyu, Akari)',
+			description: 'คลังโจทย์โลจิคพัซเซิล',
 			icon: `<svg class="w-10 h-10 text-teal-400 transition-all duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 				<rect x="3" y="3" width="18" height="18" rx="2" />
 				<path d="M3 9h18M3 15h18M9 3v18M15 3v18" />

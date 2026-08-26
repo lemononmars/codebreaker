@@ -108,7 +108,7 @@
 		},
 		{
 			id: 'thaiquiz',
-			name: 'Thai Quiz',
+			name: 'Quiz',
 			desc: 'ควิซความรู้รอบตัวไทย 4 ตัวเลือก',
 			icon: '🇹🇭',
 			badgeColor: 'badge-warning'

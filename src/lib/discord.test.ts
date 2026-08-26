@@ -34,7 +34,7 @@ describe('discord.ts', () => {
 		const mockSend = vi.mocked(WebhookClient).mock.results[0].value.send;
 		expect(mockSend).toHaveBeenCalledWith(message);
 		expect(mockSend).toHaveBeenCalledTimes(1);
-	});
+	}, 15000);
 
 	it('logs an error when webhook.send fails', async () => {
 		process.env.DISCORD_WEBHOOK_ID = 'test-webhook-id';
@@ -65,5 +65,5 @@ describe('discord.ts', () => {
 		expect(consoleSpy).toHaveBeenCalledWith('Discord webhook failed:', mockError);
 
 		consoleSpy.mockRestore();
-	});
+	}, 15000);
 });

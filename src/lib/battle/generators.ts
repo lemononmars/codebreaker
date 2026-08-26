@@ -329,7 +329,7 @@ export function generateThaiQuizRound(roundIndex: number): BattleRoundData {
 		roundIndex,
 		puzzleType: 'thaiquiz',
 		theme: 'general',
-		title: 'Thai Quiz (ความรู้รอบตัวไทย)',
+		title: 'Quiz (ความรู้รอบตัวไทย)',
 		payload: {
 			questions,
 			totalQuestions: questions.length

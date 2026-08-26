@@ -250,7 +250,7 @@
 	{:else if !isStarted}
 		<div class="flex flex-col items-center justify-center py-6 sm:py-10 px-2 space-y-4 text-center">
 			<p class="text-slate-300 text-xs sm:text-sm max-w-md font-medium">
-				Spell the 7-letter word! Ready for the timer?
+				สะกดคำ 7 ตัวอักษรจากตัวอักษรที่กำหนด! พร้อมจับเวลาหรือยัง?
 			</p>
 			<button
 				on:click={handleStartGame}
