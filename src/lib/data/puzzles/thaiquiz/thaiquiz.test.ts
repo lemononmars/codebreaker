@@ -1,6 +1,5 @@
 import { describe, it, expect } from 'vitest';
 import {
-	CHASE_EXPANSION_QUESTIONS,
 	THAI_QUIZ_DATABASE,
 	THAI_QUIZ_CATEGORIES
 } from './questions';
@@ -13,8 +12,8 @@ import {
 import { preprocessThaiTTSText } from '../../../utils/tts';
 
 describe('Thai Quiz Dataset & Engine', () => {
-	it('should have over 1,200 100% genuine questions with 4 choices, rich funnel clues, and acceptableAnswers', () => {
-		expect(THAI_QUIZ_DATABASE.length).toBeGreaterThanOrEqual(1200);
+	it('should have 100% genuine questions with 4 choices, rich funnel clues, and acceptableAnswers', () => {
+		expect(THAI_QUIZ_DATABASE.length).toBeGreaterThanOrEqual(800);
 
 		// Synthetic dummy filler pattern detector
 		const syntheticFillerRegex = /ลำดับที่\s*\d+|แห่งที่\s*\d+|รายการที่\s*\d+|พื้นที่อนุรักษ์ธรรมชาติ\s*\d+|องค์ความรู้วิทยาศาสตร์|ป๊อปคัลเจอร์ญี่ปุ่นลำดับที่|ประเพณีและวัฒนธรรมลำดับที่|อาหารและวัฒนธรรมการกินลำดับที่|ประวัติศาสตร์และมรดกไทยลำดับที่/;
@@ -62,16 +61,6 @@ describe('Thai Quiz Dataset & Engine', () => {
 			ids.add(item.id);
 			questions.add(normalizedQuestion);
 		}
-	});
-
-	it('should add 100 curated Chase questions to each compatible Quiz category', () => {
-		const counts = Object.fromEntries(
-			['geography', 'history_heritage', 'general_trivia', 'science'].map((category) => [
-				category,
-				CHASE_EXPANSION_QUESTIONS.filter((q) => q.category === category).length
-			])
-		);
-		expect(counts).toEqual({ geography: 100, history_heritage: 42, general_trivia: 100, science: 75 });
 	});
 
 	it('should generate shuffled questions and preserve correct choice text', () => {

@@ -7,7 +7,6 @@ import { HISTORY_HERITAGE_QUESTIONS } from './data/history_heritage';
 import { GENERAL_TRIVIA_QUESTIONS } from './data/general_trivia';
 import { SCIENCE_QUESTIONS } from './data/science';
 import { JAPANESE_POP_QUESTIONS } from './data/japanese_pop';
-import { buildChaseExpansion } from './data/chase_expansion';
 
 export const THAI_QUIZ_CATEGORIES: ThaiQuizCategoryInfo[] = [
 	{
@@ -99,13 +98,8 @@ const BASE_THAI_QUIZ_DATABASE = RAW_THAI_QUIZ_DATABASE.filter((question) => {
 	return true;
 });
 
-export const CHASE_EXPANSION_QUESTIONS = buildChaseExpansion(
-	BASE_THAI_QUIZ_DATABASE.map((question) => question.question)
-);
-
 export const THAI_QUIZ_DATABASE: ThaiQuizItem[] = [
-	...BASE_THAI_QUIZ_DATABASE,
-	...CHASE_EXPANSION_QUESTIONS
+	...BASE_THAI_QUIZ_DATABASE
 ];
 
 export {

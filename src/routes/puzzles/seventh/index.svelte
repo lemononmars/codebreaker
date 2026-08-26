@@ -109,7 +109,7 @@
 				},
 				body: JSON.stringify({
 					puzzle_type: 'seventh',
-					puzzle_id: '7th',
+					puzzle_id: 7,
 					name: nameToSubmit,
 					score: 100
 				})
