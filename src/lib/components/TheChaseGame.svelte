@@ -8,28 +8,20 @@
 		TrendingDownIcon,
 		PlayIcon,
 		RefreshCwIcon,
-		AwardIcon,
-		AlertCircleIcon,
-		CheckCircleIcon,
-		XCircleIcon,
-		HelpCircleIcon,
 		Volume2Icon,
 		VolumeXIcon,
 		ActivityIcon,
 		ArrowRightIcon
 	} from 'svelte-feather-icons';
 	import type { TheChaseQuestion, ChaserProfile, TableOffers, ChaseGamePhase } from '$lib/data/puzzles/thechase/types';
-	import { getChaseQuestions, THE_CHASE_DATABASE } from '$lib/data/puzzles/thechase/questions';
+	import { getChaseQuestions } from '$lib/data/puzzles/thechase/questions';
 	import { CHASERS, getRandomChaser, calculateOffers, simulateChaserAnswer, resolveBoardStepState } from '$lib/data/puzzles/thechase/engine';
 	import { speakThai, stopSpeech, playQuizShowSound } from '$lib/utils/tts';
-
-	export let onExit: () => void = () => {};
 
 	// Game State
 	let phase: ChaseGamePhase = 'intro';
 	let chaser: ChaserProfile = CHASERS[0];
 	let bankedAmount = 0;
-	let currentScore = 0;
 	let isSpeechMuted = false;
 
 	// Cash Builder State (Round 1)
@@ -46,7 +38,6 @@
 
 	// Offer State (Round 2 Prep)
 	let offers: TableOffers | null = null;
-	let chosenOffer: 'low' | 'mid' | 'high' = 'mid';
 
 	// Head-to-Head Board State (Round 2)
 	let playerStep = 4; // 0 to 7
@@ -72,6 +63,8 @@
 	let finalRevealTimeout: any = null;
 	let finalPlayerAnswerChoice: number | null = null;
 	let finalPlayerFeedback: 'correct' | 'wrong' | null = null;
+	let pendingTimeouts = new Set<any>();
+	let usedQuestionIds = new Set<number>();
 
 	onMount(() => {
 		if (typeof window !== 'undefined') {
@@ -100,6 +93,23 @@
 		clearTimeout(chaserLockTimeout);
 		clearTimeout(cashBuilderRevealTimeout);
 		clearTimeout(finalRevealTimeout);
+		for (const timeout of pendingTimeouts) clearTimeout(timeout);
+		pendingTimeouts.clear();
+	}
+
+	function schedule(callback: () => void, delayMs: number) {
+		const timeout = setTimeout(() => {
+			pendingTimeouts.delete(timeout);
+			callback();
+		}, delayMs);
+		pendingTimeouts.add(timeout);
+		return timeout;
+	}
+
+	function drawQuestions(count: number) {
+		const batch = getChaseQuestions({ count, excludeIds: Array.from(usedQuestionIds) });
+		for (const question of batch) usedQuestionIds.add(question.id);
+		return batch;
 	}
 
 	function resetAll() {
@@ -108,7 +118,6 @@
 		phase = 'intro';
 		chaser = getRandomChaser();
 		bankedAmount = 0;
-		currentScore = 0;
 		cashBuilderCorrect = 0;
 		playerStep = 4;
 		chaserStep = 0;
@@ -121,6 +130,7 @@
 		finalChoicesRevealed = false;
 		finalPlayerAnswerChoice = null;
 		finalPlayerFeedback = null;
+		usedQuestionIds = new Set<number>();
 	}
 
 	// =========================================================================
@@ -132,9 +142,9 @@
 		phase = 'cash_builder_countdown';
 		playQuizShowSound('buzz');
 
-		setTimeout(() => {
+		schedule(() => {
 			phase = 'cash_builder_playing';
-			cashBuilderQuestions = getChaseQuestions({ count: 30 });
+			cashBuilderQuestions = drawQuestions(30);
 			cashBuilderIdx = 0;
 			cashBuilderCorrect = 0;
 			cashBuilderTime = 60;
@@ -170,7 +180,7 @@
 		}
 
 		// 2-second anti-spam delay before revealing choices
-		cashBuilderRevealTimeout = setTimeout(() => {
+		cashBuilderRevealTimeout = schedule(() => {
 			cashBuilderChoicesRevealed = true;
 		}, 2000);
 	}
@@ -190,12 +200,11 @@
 		if (isCorrect) {
 			playQuizShowSound('correct');
 			cashBuilderCorrect++;
-			currentScore += 10000;
 		} else {
 			playQuizShowSound('wrong');
 		}
 
-		setTimeout(() => {
+		schedule(() => {
 			cashBuilderAnswering = false;
 			cashBuilderAnswerChoice = null;
 			cashBuilderAnswerFeedback = null;
@@ -203,7 +212,7 @@
 			if (cashBuilderIdx < cashBuilderQuestions.length) {
 				setupCashBuilderQuestion();
 			} else {
-				cashBuilderQuestions = [...cashBuilderQuestions, ...getChaseQuestions({ count: 10 })];
+				cashBuilderQuestions = [...cashBuilderQuestions, ...drawQuestions(10)];
 				setupCashBuilderQuestion();
 			}
 		}, 700);
@@ -232,7 +241,6 @@
 
 	function selectOffer(type: 'low' | 'mid' | 'high') {
 		if (!offers) return;
-		chosenOffer = type;
 		playQuizShowSound('lock');
 
 		if (type === 'low') {
@@ -256,7 +264,7 @@
 
 	function startBoardChase() {
 		phase = 'board_chase';
-		boardQuestions = getChaseQuestions({ count: 25 });
+		boardQuestions = drawQuestions(25);
 		currentBoardQIdx = 0;
 		startBoardQuestion();
 	}
@@ -264,7 +272,7 @@
 	function startBoardQuestion() {
 		const q = boardQuestions[currentBoardQIdx];
 		if (!q) {
-			boardQuestions = [...boardQuestions, ...getChaseQuestions({ count: 10 })];
+			boardQuestions = [...boardQuestions, ...drawQuestions(10)];
 		}
 		playerChoice = null;
 		chaserChoice = null;
@@ -288,13 +296,13 @@
 
 		// Simulate Chaser thinking & locking in
 		const sim = simulateChaserAnswer(currentQ, chaser);
-		chaserLockTimeout = setTimeout(() => {
+		chaserLockTimeout = schedule(() => {
 			chaserChoice = sim.chosenIndex;
 			boardState = 'chaser_locked';
 			playQuizShowSound('tick');
 
 			// Step 1: Reveal Player Answer
-			setTimeout(() => {
+			schedule(() => {
 				boardState = 'revealing_player';
 				const pCorrect = playerChoice === currentQ.correctIndex;
 				if (pCorrect) {
@@ -304,7 +312,7 @@
 				}
 
 				// Step 2: Reveal Chaser Answer
-				setTimeout(() => {
+				schedule(() => {
 					boardState = 'revealing_chaser';
 					const cCorrect = chaserChoice === currentQ.correctIndex;
 					if (cCorrect) {
@@ -314,14 +322,14 @@
 					}
 
 					// Step 3: Move on Board
-					setTimeout(() => {
+					schedule(() => {
 						boardState = 'moving';
 						const stepResult = resolveBoardStepState(playerStep, chaserStep, pCorrect, cCorrect);
 						playerStep = stepResult.nextPlayerStep;
 						chaserStep = stepResult.nextChaserStep;
 						playQuizShowSound('step');
 
-						setTimeout(() => {
+						schedule(() => {
 							if (stepResult.status === 'safe') {
 								// Escaped safely to Final Chase!
 								playQuizShowSound('safe');
@@ -348,7 +356,7 @@
 
 	function proceedToFinalChase() {
 		phase = 'final_chase_player_prep';
-		finalQuestions = getChaseQuestions({ count: 40 });
+		finalQuestions = drawQuestions(40);
 		finalQIdx = 0;
 		finalTargetSteps = 1; // 1 step head start for making it to Final Chase
 		playQuizShowSound('gong');
@@ -384,7 +392,7 @@
 		}
 
 		// 2-second anti-spam delay before revealing choices
-		finalRevealTimeout = setTimeout(() => {
+		finalRevealTimeout = schedule(() => {
 			finalChoicesRevealed = true;
 		}, 2000);
 	}
@@ -407,14 +415,14 @@
 			playQuizShowSound('wrong');
 		}
 
-		setTimeout(() => {
+		schedule(() => {
 			finalPlayerAnswerChoice = null;
 			finalPlayerFeedback = null;
 			finalQIdx++;
 			if (finalQIdx < finalQuestions.length) {
 				setupFinalPlayerQuestion();
 			} else {
-				finalQuestions = [...finalQuestions, ...getChaseQuestions({ count: 15 })];
+				finalQuestions = [...finalQuestions, ...drawQuestions(15)];
 				setupFinalPlayerQuestion();
 			}
 		}, 700);
@@ -428,7 +436,7 @@
 		finalChaserTime = 60;
 		playQuizShowSound('gong');
 
-		setTimeout(() => {
+		schedule(() => {
 			runChaserFinalStep();
 			finalChaseTimer = setInterval(() => {
 				if (!pushbackPending) {
@@ -454,7 +462,7 @@
 
 		const sim = simulateChaserAnswer(q, chaser);
 
-		setTimeout(() => {
+		schedule(() => {
 			if (phase !== 'final_chase_chaser_playing' || pushbackPending) return;
 
 			if (sim.isCorrect) {
@@ -485,6 +493,7 @@
 	}
 
 	function handlePushbackChoice(idx: number) {
+		if (phase !== 'final_chase_chaser_playing' || !pushbackPending || pushbackAnswerChoice !== null) return;
 		const q = finalQuestions[finalQIdx];
 		if (!q) return;
 
@@ -500,7 +509,7 @@
 			playQuizShowSound('wrong');
 		}
 
-		setTimeout(() => {
+		schedule(() => {
 			pushbackPending = false;
 			finalQIdx++;
 			runChaserFinalStep();
@@ -1084,6 +1093,7 @@
 						{#each q.choices as choice, idx}
 							<button
 								class="btn btn-lg justify-start h-auto py-3.5 px-4 rounded-2xl font-bold text-sm sm:text-base border-amber-500/40 bg-slate-950 text-slate-100 hover:bg-amber-500 hover:text-slate-950 transition-all text-left flex items-center gap-3"
+								disabled={pushbackAnswerChoice !== null}
 								on:click={() => handlePushbackChoice(idx)}
 							>
 								<span class="w-6 h-6 rounded-md bg-slate-800 font-mono text-xs flex items-center justify-center font-black text-amber-400">

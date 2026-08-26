@@ -44,3 +44,16 @@ export function getBogglePathWord(grid: string[][], path: BogglePathCell[]): str
 	if (!isValidBogglePath(grid, path)) return '';
 	return path.map((cell) => grid[cell.r][cell.c]).join('');
 }
+
+export function isBattleRoundOpen(
+	roundStartTime: number | null,
+	roundEndTime: number | null,
+	now = Date.now()
+): boolean {
+	return (
+		typeof roundStartTime === 'number' &&
+		typeof roundEndTime === 'number' &&
+		now >= roundStartTime &&
+		now < roundEndTime
+	);
+}

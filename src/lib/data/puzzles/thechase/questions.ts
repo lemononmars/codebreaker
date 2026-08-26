@@ -17,8 +17,18 @@ export function getChaseQuestions(options?: {
 	count?: number;
 	category?: string;
 	excludeIds?: number[];
+	pack?: number;
 }): TheChaseQuestion[] {
-	let pool = [...THE_CHASE_DATABASE];
+	const packs: Record<number, TheChaseQuestion[]> = {
+		1: PACK1_QUESTIONS,
+		2: PACK2_QUESTIONS,
+		3: PACK3_QUESTIONS,
+		4: PACK4_QUESTIONS,
+		5: PACK5_QUESTIONS
+	};
+	let pool = typeof options?.pack === 'number'
+		? [...(packs[options.pack] || [])]
+		: [...THE_CHASE_DATABASE];
 
 	if (options?.category && options.category !== 'all') {
 		pool = pool.filter((q) => q.category === options.category);

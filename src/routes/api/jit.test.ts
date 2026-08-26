@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { createQuizSession, getQuizSession, getStrippedQuestion, verifySessionAnswer } from '$lib/server/quizSessionStore';
+import { createQuizSession, getStrippedQuestion, verifySessionAnswer } from '$lib/server/quizSessionStore';
 import { signPayload, verifySignedPayload } from '$lib/server/puzzleToken';
 
 describe('Universal JIT Delivery & Anti-Scraping Architecture', () => {
@@ -69,6 +69,41 @@ describe('Universal JIT Delivery & Anti-Scraping Architecture', () => {
 			expect(correctResult.points).toBeGreaterThanOrEqual(100);
 			expect(correctResult.streak).toBe(1);
 			expect(correctResult.totalScore).toBe(correctResult.points);
+		});
+
+		it('should reject out-of-order and replayed answers without advancing or scoring', () => {
+			const session = createQuizSession({ type: 'thaiquiz', count: 3 });
+			const first = session.questions[0];
+			const second = session.questions[1];
+
+			const outOfOrder = verifySessionAnswer(session.id, second.id, second.correctIndex);
+			expect(outOfOrder.error).toBe('Question is not current');
+			expect(session.currentIndex).toBe(0);
+			expect(session.score).toBe(0);
+
+			const accepted = verifySessionAnswer(session.id, first.id, first.correctIndex);
+			expect(accepted.isCorrect).toBe(true);
+			const scoreAfterFirst = session.score;
+
+			const replayed = verifySessionAnswer(session.id, first.id, first.correctIndex);
+			expect(replayed.error).toBe('Question is not current');
+			expect(session.currentIndex).toBe(1);
+			expect(session.score).toBe(scoreAfterFirst);
+		});
+
+		it('should reject invalid choices and clamp unsafe session sizes', () => {
+			const session = createQuizSession({ type: 'thaiquiz', count: 100000 });
+			expect(session.questions.length).toBeLessThanOrEqual(50);
+
+			const first = session.questions[0];
+			const invalid = verifySessionAnswer(session.id, first.id, 99, 100);
+			expect(invalid.error).toBe('Invalid choice index');
+			expect(session.currentIndex).toBe(0);
+		});
+
+		it('should reject unsupported session types and Chase packs at runtime', () => {
+			expect(() => createQuizSession({ type: 'unsupported' } as any)).toThrow('Invalid quiz session type');
+			expect(() => createQuizSession({ type: 'thechase', pack: 99 })).toThrow('Invalid Chase pack');
 		});
 	});
 

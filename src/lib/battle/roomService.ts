@@ -6,6 +6,7 @@ import type {
 	SupabaseRoomRow
 } from './types';
 import { generateBattleRounds } from './generators';
+import { isBattleRoundOpen } from './rules';
 
 const ROOM_CODE_CHARS = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
 
@@ -459,11 +460,12 @@ export async function togglePlayerReady(
 // Update Room Configuration (Host only)
 export async function updateBattleRoomConfig(
 	roomId: string,
+	actorId: string,
 	newConfig: BattleGameConfig
 ): Promise<SupabaseRoomRow | null> {
 	try {
 		const currentRoom = await fetchRoomById(roomId);
-		if (!currentRoom) return null;
+		if (!currentRoom || currentRoom.host_user_id !== actorId || currentRoom.status !== 0) return null;
 
 		const rounds = generateBattleRounds(newConfig.puzzleType, newConfig.rounds);
 		const meta: BattleRoomMeta = {
@@ -492,10 +494,12 @@ export async function updateBattleRoomConfig(
 }
 
 // Start Game (Host only)
-export async function startBattleMatch(roomId: string): Promise<SupabaseRoomRow | null> {
+export async function startBattleMatch(roomId: string, actorId: string): Promise<SupabaseRoomRow | null> {
 	try {
 		const currentRoom = await fetchRoomById(roomId);
-		if (!currentRoom || currentRoom.status !== 0) return null;
+		if (!currentRoom || currentRoom.status !== 0 || currentRoom.host_user_id !== actorId) return null;
+		const activePlayers = (currentRoom.players || []).filter((player) => !player.isSpectator);
+		if (activePlayers.length === 0 || activePlayers.some((player) => !player.isReady)) return null;
 
 		const meta = parseRoomMeta(currentRoom.game_title);
 		if (!meta) return null;
@@ -552,7 +556,7 @@ export async function submitPlayerProgress(
 
 			const meta = parseRoomMeta(currentRoom.game_title);
 			const player = (currentRoom.players || []).find((candidate) => candidate.id === playerId);
-			if (!meta || !player || player.isSpectator) return;
+			if (!meta || !player || player.isSpectator || !isBattleRoundOpen(meta.roundStartTime, meta.roundEndTime)) return;
 
 			const players = currentRoom.players.map((candidate) =>
 				candidate.id === playerId
@@ -606,6 +610,7 @@ export async function submitSharedWord(
 			const meta = parseRoomMeta(currentRoom.game_title);
 			const playerObj = currentRoom.players.find((player) => player.id === playerId);
 			if (!meta || !playerObj || playerObj.isSpectator) return { success: false, reason: 'Player not active' };
+			if (!isBattleRoundOpen(meta.roundStartTime, meta.roundEndTime)) return { success: false, reason: 'Round not active' };
 
 			const shared = { ...(meta.sharedFoundWords || {}) };
 			if (shared[word]) {
@@ -668,6 +673,7 @@ export async function submitQuizClaim(
 			const meta = parseRoomMeta(currentRoom.game_title);
 			const playerObj = currentRoom.players.find((player) => player.id === playerId);
 			if (!meta || !playerObj || playerObj.isSpectator) return { success: false, reason: 'Player not active' };
+			if (!isBattleRoundOpen(meta.roundStartTime, meta.roundEndTime)) return { success: false, reason: 'Round not active' };
 
 			const claims = { ...(meta.quizClaims || {}) };
 			if (claims[claimKey]) {
@@ -720,10 +726,10 @@ export async function submitQuizClaim(
 }
 
 // Advance to next round or finish match
-export async function finishOrNextRound(roomId: string): Promise<SupabaseRoomRow | null> {
+export async function finishOrNextRound(roomId: string, actorId: string): Promise<SupabaseRoomRow | null> {
 	try {
 		const currentRoom = await fetchRoomById(roomId);
-		if (!currentRoom || currentRoom.status !== 1) return null;
+		if (!currentRoom || currentRoom.status !== 1 || currentRoom.host_user_id !== actorId) return null;
 
 		const meta = parseRoomMeta(currentRoom.game_title);
 		if (!meta) return null;
@@ -779,14 +785,18 @@ export async function finishOrNextRound(roomId: string): Promise<SupabaseRoomRow
 }
 
 // End Match Early (Host only)
-export async function endBattleMatchEarly(roomId: string): Promise<SupabaseRoomRow | null> {
+export async function endBattleMatchEarly(roomId: string, actorId: string): Promise<SupabaseRoomRow | null> {
 	try {
+		const currentRoom = await fetchRoomById(roomId);
+		if (!currentRoom || currentRoom.host_user_id !== actorId || currentRoom.status !== 1) return null;
 		const { data, error } = await supabaseClient
 			.from('rooms')
 			.update({
 				status: 2 // Finished -> Podium
 			})
 			.eq('room_id', roomId)
+			.eq('host_user_id', actorId)
+			.eq('status', 1)
 			.select('*')
 			.single();
 
@@ -798,10 +808,10 @@ export async function endBattleMatchEarly(roomId: string): Promise<SupabaseRoomR
 }
 
 // Reset Room to Lobby for Rematch
-export async function resetRoomToLobby(roomId: string): Promise<SupabaseRoomRow | null> {
+export async function resetRoomToLobby(roomId: string, actorId: string): Promise<SupabaseRoomRow | null> {
 	try {
 		const currentRoom = await fetchRoomById(roomId);
-		if (!currentRoom) return null;
+		if (!currentRoom || currentRoom.host_user_id !== actorId || currentRoom.status !== 2) return null;
 
 		const meta = parseRoomMeta(currentRoom.game_title);
 		if (meta) {
@@ -830,6 +840,8 @@ export async function resetRoomToLobby(roomId: string): Promise<SupabaseRoomRow 
 				players
 			})
 			.eq('room_id', roomId)
+			.eq('host_user_id', actorId)
+			.eq('status', 2)
 			.select('*')
 			.single();
 

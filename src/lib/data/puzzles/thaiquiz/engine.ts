@@ -1,5 +1,5 @@
 import { THAI_QUIZ_DATABASE } from './questions';
-import type { ThaiQuizCategory, ThaiQuizItem } from './types';
+import type { ThaiQuizCategory } from './types';
 
 export interface QuizQuestionInstance {
 	id: number;
@@ -37,13 +37,15 @@ export function getQuizQuestions(options: {
 	difficulty?: 'all' | 'easy' | 'normal' | 'hard';
 	seed?: number;
 	shuffleChoices?: boolean;
+	excludeIds?: number[];
 }): QuizQuestionInstance[] {
 	const {
 		category = 'all',
 		count = 10,
 		difficulty = 'all',
 		seed,
-		shuffleChoices = true
+		shuffleChoices = true,
+		excludeIds = []
 	} = options;
 
 	const rng = typeof seed === 'number' ? mulberry32(seed) : Math.random;
@@ -51,10 +53,11 @@ export function getQuizQuestions(options: {
 	let pool = THAI_QUIZ_DATABASE.filter((q) => {
 		if (category !== 'all' && q.category !== category) return false;
 		if (difficulty !== 'all' && q.difficulty !== difficulty) return false;
+		if (excludeIds.includes(q.id)) return false;
 		return true;
 	});
 
-	if (pool.length === 0) {
+	if (pool.length === 0 && excludeIds.length === 0) {
 		pool = THAI_QUIZ_DATABASE;
 	}
 
@@ -107,6 +110,22 @@ export function calculateQuestionScore(
 	const timeBonus = Math.round(Math.max(0, timeRemainingSec) * 5);
 	const total = Math.round(basePoints * streakMultiplier) + timeBonus;
 	return { points: total, bonus: timeBonus };
+}
+
+export function calculateQuizShowScore(
+	questionLength: number,
+	buzzedCharIndex: number,
+	streak: number
+): { points: number; earlyBonus: number; buzzedCharIndex: number } {
+	const safeLength = Math.max(1, Math.trunc(questionLength));
+	const safeBuzzIndex = Math.min(safeLength, Math.max(0, Math.trunc(buzzedCharIndex)));
+	const unrevealedFraction = (safeLength - safeBuzzIndex) / safeLength;
+	const earlyBonus = Math.round(Math.max(0.3, unrevealedFraction) * 150);
+	return {
+		points: 100 + earlyBonus + Math.max(0, Math.trunc(streak)) * 10,
+		earlyBonus,
+		buzzedCharIndex: safeBuzzIndex
+	};
 }
 
 // Clean punctuation, spaces, and formatting characters

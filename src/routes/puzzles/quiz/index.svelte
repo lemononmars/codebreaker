@@ -2,10 +2,8 @@
 	import { onMount, onDestroy } from 'svelte';
 	import { fade, fly, scale } from 'svelte/transition';
 	import {
-		HelpCircleIcon,
 		AwardIcon,
 		ClockIcon,
-		HeartIcon,
 		ArrowLeftIcon,
 		PlayIcon,
 		RefreshCwIcon,
@@ -14,28 +12,25 @@
 		BookOpenIcon,
 		ZapIcon,
 		SendIcon,
-		CalendarIcon,
 		ChevronRightIcon,
 		Volume2Icon,
 		VolumeXIcon,
 		RadioIcon,
 		SettingsIcon,
-		SlidersIcon,
-		CheckIcon,
 		MicIcon
 	} from 'svelte-feather-icons';
 
-	import { THAI_QUIZ_CATEGORIES, THAI_QUIZ_DATABASE } from '$lib/data/puzzles/thaiquiz/questions';
+	import { THAI_QUIZ_CATEGORIES } from '$lib/data/puzzles/thaiquiz/questions';
 	import {
 		getQuizQuestions,
 		getDailySeed,
 		calculateQuestionScore,
+		calculateQuizShowScore,
 		validateQuizShowAnswer,
 		type QuizQuestionInstance
 	} from '$lib/data/puzzles/thaiquiz/engine';
 	import type { ThaiQuizCategory } from '$lib/data/puzzles/thaiquiz/types';
 	import {
-		getThaiVoices,
 		initVoices,
 		speakThai,
 		stopSpeech,
@@ -55,6 +50,7 @@
 
 	// Question Deck
 	let questions: QuizQuestionInstance[] = [];
+	let usedQuestionIds = new Set<number>();
 	let currentQIdx = 0;
 	let userAnswers: Array<{
 		question: QuizQuestionInstance;
@@ -106,6 +102,7 @@
 	let submitName = '';
 	let submitStatus: 'idle' | 'loading' | 'success' | 'error' | 'duplicate' = 'idle';
 	let submitError = '';
+	let pendingTimeouts = new Set<any>();
 
 	onMount(() => {
 		if (typeof window !== 'undefined') {
@@ -205,11 +202,32 @@
 		clearInterval(timerInterval);
 		clearInterval(countdownInterval);
 		clearInterval(revealInterval);
+		for (const timeout of pendingTimeouts) clearTimeout(timeout);
+		pendingTimeouts.clear();
 		if (isListening && speechRecognition) {
 			try { speechRecognition.stop(); } catch (e) {}
 			isListening = false;
 		}
 		stopSpeech();
+	}
+
+	function schedule(callback: () => void, delayMs: number) {
+		const timeout = setTimeout(() => {
+			pendingTimeouts.delete(timeout);
+			callback();
+		}, delayMs);
+		pendingTimeouts.add(timeout);
+		return timeout;
+	}
+
+	function drawQuestions(count: number, category: ThaiQuizCategory | 'all' = 'all') {
+		const batch = getQuizQuestions({
+			count,
+			category,
+			excludeIds: Array.from(usedQuestionIds)
+		});
+		for (const question of batch) usedQuestionIds.add(question.id);
+		return batch;
 	}
 
 	// ─── START GAME FLOW ────────────────────────────────────────────────────────
@@ -219,20 +237,21 @@
 		activeStyleTab = style;
 		selectedNormalMode = mode;
 		selectedCategory = category;
+		usedQuestionIds = new Set<number>();
 
 		if (style === 'quizshow') {
 			// Quizshow: 10 curated questions
-			questions = getQuizQuestions({ count: 10, category: category !== 'all' ? category : 'all' });
+			questions = drawQuestions(10, category !== 'all' ? category : 'all');
 		} else {
 			if (mode === 'endless') {
-				questions = getQuizQuestions({ count: 50 });
+				questions = drawQuestions(50);
 			} else if (mode === 'category') {
-				questions = getQuizQuestions({ count: 10, category });
+				questions = drawQuestions(10, category);
 			} else if (mode === 'survival') {
-				questions = getQuizQuestions({ count: 40 });
+				questions = drawQuestions(40);
 			} else {
 				// Time attack
-				questions = getQuizQuestions({ count: 30 });
+				questions = drawQuestions(30);
 			}
 		}
 
@@ -316,7 +335,7 @@
 			}
 		];
 
-		setTimeout(() => {
+		schedule(() => {
 			selectedChoiceIdx = null;
 			isAnswering = false;
 
@@ -328,7 +347,7 @@
 			const nextIdx = currentQIdx + 1;
 			if (nextIdx >= questions.length) {
 				if (selectedNormalMode === 'endless') {
-					questions = [...questions, ...getQuizQuestions({ count: 20 })];
+					questions = [...questions, ...drawQuestions(20)];
 					currentQIdx = nextIdx;
 				} else {
 					finishGame();
@@ -408,7 +427,7 @@
 		playQuizShowSound('buzz');
 
 		// Focus the input
-		setTimeout(() => {
+		schedule(() => {
 			if (buzzInputElement) {
 				buzzInputElement.focus();
 			}
@@ -429,6 +448,7 @@
 			stopSpeech();
 			clearInterval(revealInterval);
 			quizShowState = 'solved';
+			const buzzedCharIndex = revealedCharCount;
 			revealedCharCount = currentQ.question.length; // Reveal full question
 
 			streak++;
@@ -436,9 +456,11 @@
 			correctCount++;
 
 			// Calculate early-buzz multiplier: answer with less revealed text = higher points!
-			const fraction = Math.max(0.3, (currentQ.question.length - revealedCharCount) / currentQ.question.length);
-			const earlyBonus = Math.round(fraction * 150);
-			const earned = 100 + earlyBonus + streak * 10;
+			const { points: earned } = calculateQuizShowScore(
+				currentQ.question.length,
+				buzzedCharIndex,
+				streak
+			);
 			score += earned;
 
 			userAnswers = [
@@ -448,7 +470,7 @@
 					chosenText: buzzInput.trim(),
 					isCorrect: true,
 					pointsEarned: earned,
-					buzzedCharIndex: revealedCharCount
+					buzzedCharIndex
 				}
 			];
 		} else {
@@ -514,8 +536,6 @@
 		}
 
 		if (currentView === 'playing_quizshow') {
-			const targetTag = (e.target as HTMLElement)?.tagName?.toLowerCase();
-
 			if (quizShowState === 'revealing') {
 				if (e.code === 'Space' || e.key === ' ') {
 					e.preventDefault();

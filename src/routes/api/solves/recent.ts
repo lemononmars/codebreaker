@@ -5,6 +5,7 @@ export const get: RequestHandler = async () => {
 	try {
 		const { data, error } = await from('leaderboard')
 			.select('*')
+			.neq('puzzle_type', 'seventh')
 			.order('created_at', { ascending: false })
 			.limit(6);
 

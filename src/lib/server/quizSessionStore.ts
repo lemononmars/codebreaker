@@ -1,7 +1,9 @@
-import { getQuizQuestions, type QuizQuestionInstance } from '$lib/data/puzzles/thaiquiz/engine';
+import { getQuizQuestions } from '$lib/data/puzzles/thaiquiz/engine';
 import { getChaseQuestions } from '$lib/data/puzzles/thechase/questions';
-import type { ChaseQuestion } from '$lib/data/puzzles/thechase/types';
 import type { ThaiQuizCategory } from '$lib/data/puzzles/thaiquiz/types';
+
+const SESSION_TYPES = new Set(['thechase', 'thaiquiz', 'quizshow']);
+const CHASE_PACKS = new Set([1, 2, 3, 4, 5]);
 
 export interface QuizSession {
 	id: string;
@@ -46,9 +48,17 @@ export function createQuizSession(options: {
 	pack?: number;
 }): QuizSession {
 	cleanupExpiredSessions();
+	if (!SESSION_TYPES.has(options.type)) throw new Error('Invalid quiz session type');
+	if (options.pack !== undefined && (!Number.isInteger(options.pack) || !CHASE_PACKS.has(options.pack))) {
+		throw new Error('Invalid Chase pack');
+	}
 
 	const sessionId = 'qs_' + Math.random().toString(36).substring(2, 11) + '_' + Date.now().toString(36);
-	const count = options.count || (options.type === 'thechase' ? 25 : 10);
+	const defaultCount = options.type === 'thechase' ? 25 : 10;
+	const requestedCount = typeof options.count === 'number' && Number.isFinite(options.count)
+		? Math.trunc(options.count)
+		: defaultCount;
+	const count = Math.min(50, Math.max(1, requestedCount));
 
 	let rawQuestions: any[] = [];
 
@@ -124,14 +134,15 @@ export function verifySessionAnswer(
 	}
 
 	const currentQ = session.questions[session.currentIndex];
-	if (!currentQ || currentQ.id !== questionId) {
-		// Fallback: search by questionId in session
-		const found = session.questions.find((q) => q.id === questionId);
-		if (!found) return { error: 'Invalid question ID for session' };
+	if (!currentQ || currentQ.id !== questionId) return { error: 'Question is not current' };
+	if (!Number.isInteger(chosenIndex) || chosenIndex < 0 || chosenIndex >= currentQ.choices.length) {
+		return { error: 'Invalid choice index' };
 	}
 
-	const targetQ = currentQ?.id === questionId ? currentQ : session.questions.find((q) => q.id === questionId)!;
-	const isCorrect = chosenIndex === targetQ.correctIndex;
+	const isCorrect = chosenIndex === currentQ.correctIndex;
+	const safeTimeRemainingRatio = Number.isFinite(timeRemainingRatio)
+		? Math.min(1, Math.max(0, timeRemainingRatio))
+		: 1;
 
 	let points = 0;
 	if (isCorrect) {
@@ -139,7 +150,7 @@ export function verifySessionAnswer(
 		if (session.streak > session.maxStreak) session.maxStreak = session.streak;
 		// Base: 100 pts + streak bonus (up to 50 pts) + time speed multiplier
 		const streakBonus = Math.min(50, (session.streak - 1) * 10);
-		points = Math.round((100 + streakBonus) * Math.max(0.5, timeRemainingRatio));
+		points = Math.round((100 + streakBonus) * Math.max(0.5, safeTimeRemainingRatio));
 		session.score += points;
 	} else {
 		session.streak = 0;
@@ -149,8 +160,8 @@ export function verifySessionAnswer(
 
 	return {
 		isCorrect,
-		correctIndex: targetQ.correctIndex,
-		explanation: targetQ.explanation,
+		correctIndex: currentQ.correctIndex,
+		explanation: currentQ.explanation,
 		points,
 		totalScore: session.score,
 		streak: session.streak,

@@ -50,7 +50,7 @@
 	} from '$lib/battle/roomService';
 	import { search, isUpper, isLower } from '$lib/utils/thaiwords';
 	import { splitSlots, diffSlots } from '$lib/wordladder/wordladder';
-	import { canBuildWordFromLetters, getBogglePathWord } from '$lib/battle/rules';
+	import { canBuildWordFromLetters, getBogglePathWord, isBattleRoundOpen } from '$lib/battle/rules';
 	import KeyboardLayout from '$lib/components/KeyboardLayout.svelte';
 
 	// Available Avatars
@@ -483,7 +483,7 @@
 				const roundStartTime = roomMeta?.roundStartTime || null;
 				if (me?.isHost && currentRoom && advancingRoundStartTime !== roundStartTime) {
 					advancingRoundStartTime = roundStartTime;
-					finishOrNextRound(currentRoom.room_id).then((room) => {
+					finishOrNextRound(currentRoom.room_id, localPlayer.id).then((room) => {
 						if (!room) advancingRoundStartTime = null;
 					});
 				}
@@ -503,7 +503,7 @@
 
 	async function handleStartMatch() {
 		if (!currentRoom) return;
-		await startBattleMatch(currentRoom.room_id);
+		await startBattleMatch(currentRoom.room_id, localPlayer.id);
 	}
 
 	async function handleLeaveRoom() {
@@ -525,13 +525,17 @@
 		if (!currentRoom || !isHostUser) return;
 		const ok = confirm('คุณต้องการจบการแข่งขันทันทีและไปที่หน้าสรุปคะแนนหรือไม่?');
 		if (ok) {
-			await endBattleMatchEarly(currentRoom.room_id);
+			await endBattleMatchEarly(currentRoom.room_id, localPlayer.id);
 		}
 	}
 
 	async function handleRematch() {
-		if (!currentRoom) return;
-		await resetRoomToLobby(currentRoom.room_id);
+		if (!currentRoom || !isHostUser) return;
+		await resetRoomToLobby(currentRoom.room_id, localPlayer.id);
+	}
+
+	function canAnswerActiveRound(): boolean {
+		return !!roomMeta && isBattleRoundOpen(roomMeta.roundStartTime, roomMeta.roundEndTime);
 	}
 
 	function copyInviteLink() {
@@ -565,7 +569,7 @@
 	}
 
 	async function handleCrossroadSubmit() {
-		if (myPlayer?.isSpectator || crossroadSolved || !playerInput.trim() || !activeRoundData || !currentRoom) return;
+		if (myPlayer?.isSpectator || !canAnswerActiveRound() || crossroadSolved || !playerInput.trim() || !activeRoundData || !currentRoom) return;
 		const target = (activeRoundData.payload.targetWord || '').trim();
 		const input = playerInput.trim();
 
@@ -611,7 +615,7 @@
 
 	// 2. Spelling Bee Submit
 	async function handleSpellingBeeSubmit() {
-		if (myPlayer?.isSpectator || !playerInput.trim() || !activeRoundData || !currentRoom) return;
+		if (myPlayer?.isSpectator || !canAnswerActiveRound() || !playerInput.trim() || !activeRoundData || !currentRoom) return;
 		const word = playerInput.trim();
 		playerInput = '';
 
@@ -656,7 +660,7 @@
 
 	// 3. Blanks Letter Choice
 	async function handleBlanksType(letter: string) {
-		if (myPlayer?.isSpectator || !activeRoundData || !currentRoom) return;
+		if (myPlayer?.isSpectator || !canAnswerActiveRound() || !activeRoundData || !currentRoom) return;
 		const questions = activeRoundData.payload.questions || [];
 		const currentQ = questions[blanksQuestionIdx];
 		if (!currentQ) return;
@@ -700,7 +704,7 @@
 
 	// 4. Spelling Quiz Choice
 	async function handleSpellingQuizSide(side: 'left' | 'right') {
-		if (myPlayer?.isSpectator || !activeRoundData || !currentRoom) return;
+		if (myPlayer?.isSpectator || !canAnswerActiveRound() || !activeRoundData || !currentRoom) return;
 		const questions = activeRoundData.payload.questions || [];
 		const currentQ = questions[spellingQuizIdx];
 		if (!currentQ) return;
@@ -742,7 +746,7 @@
 
 	// 5. Thai Quiz Choice (4 choices)
 	async function handleThaiQuizChoice(choiceIdx: number) {
-		if (myPlayer?.isSpectator || !activeRoundData || !currentRoom) return;
+		if (myPlayer?.isSpectator || !canAnswerActiveRound() || !activeRoundData || !currentRoom) return;
 		const questions = activeRoundData.payload.questions || [];
 		const currentQ = questions[thaiQuizIdx];
 		if (!currentQ) return;
@@ -797,7 +801,7 @@
 			: '';
 
 	function handleBoggleCellStart(r: number, c: number) {
-		if (myPlayer?.isSpectator) return;
+		if (myPlayer?.isSpectator || !canAnswerActiveRound()) return;
 		boggleIsDragging = true;
 		boggleSelectedPath = [{ r, c }];
 		if (activeRoundData?.payload?.grid) {
@@ -833,7 +837,7 @@
 	}
 
 	async function handleBoggleSubmit() {
-		if (myPlayer?.isSpectator || !playerInput.trim() || !activeRoundData || !currentRoom) return;
+		if (myPlayer?.isSpectator || !canAnswerActiveRound() || !playerInput.trim() || !activeRoundData || !currentRoom) return;
 		const word = playerInput.trim();
 		const pathLength = boggleSelectedPath.length;
 		const pathWord = getBogglePathWord(activeRoundData.payload.grid || [], boggleSelectedPath);
@@ -883,7 +887,7 @@
 
 	// 6. Word Ladder Handlers
 	async function handleLadderSubmit() {
-		if (myPlayer?.isSpectator || ladderSolved || !playerInput.trim() || !activeRoundData || !currentRoom) return;
+		if (myPlayer?.isSpectator || !canAnswerActiveRound() || ladderSolved || !playerInput.trim() || !activeRoundData || !currentRoom) return;
 		const word = playerInput.trim();
 		playerInput = '';
 

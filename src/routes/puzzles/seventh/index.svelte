@@ -193,8 +193,37 @@
 
 	<!-- Main Puzzle Card Container -->
 	<div
-		class="w-full bg-slate-900/90 backdrop-blur-xl border border-slate-800 rounded-3xl p-6 sm:p-8 shadow-2xl space-y-6"
+		class="w-full bg-slate-900/90 backdrop-blur-xl border border-slate-800 rounded-3xl p-4 sm:p-8 shadow-2xl space-y-6"
 	>
+		<!-- Puzzle Diagram Hint -->
+		<div class="flex justify-center w-full py-2">
+			<svg
+				viewBox="0 0 270 150"
+				class="w-full max-w-xs sm:max-w-sm h-auto overflow-visible select-none drop-shadow-lg"
+				aria-label="Puzzle Hint"
+			>
+				{#each [{ n: 1, x: 45, y: 75 }, { n: 2, x: 81, y: 111 }, { n: 3, x: 81, y: 39 }, { n: 4, x: 117, y: 75 }, { n: 5, x: 153, y: 111 }, { n: 6, x: 189, y: 75 }, { n: 7, x: 225, y: 111 }] as { n, x, y }}
+					<g transform="translate({x}, {y})">
+						<rect
+							x="-25.45"
+							y="-25.45"
+							width="50.91"
+							height="50.91"
+							transform="rotate(45)"
+							class="fill-gray-600"
+						/>
+						<text
+							text-anchor="middle"
+							dominant-baseline="central"
+							class="fill-emerald-400 font-black text-base select-none font-mono"
+						>
+							{n}
+						</text>
+					</g>
+				{/each}
+			</svg>
+		</div>
+
 		<!-- Solved Banner / Answer Box Section -->
 		{#if isSolved}
 			<div class="flex flex-col items-center text-center space-y-4 py-4 animate-fade-in">
@@ -222,45 +251,42 @@
 		{:else}
 			<!-- Single Answer Submission Box -->
 			<div class="space-y-4">
-				<div class="text-center space-y-1">
-					<label for="seventh-answer" class="text-sm font-bold text-slate-200">
-						กรอกคำตอบปริศนา
-					</label>
-					<p class="text-xs text-slate-400">พิมพ์คำตอบภาษาไทยแล้วกดส่ง</p>
-				</div>
-
 				<div class="flex justify-center w-full">
-					<div class="input-group w-full max-w-md" class:wiggle={isWiggle}>
-						<div
-							class="btn btn-square bg-slate-950 border border-slate-800 text-amber-400 pointer-events-none"
+					<form
+						on:submit|preventDefault={checkAnswer}
+						class="input-group w-full max-w-md"
+						class:wiggle={isWiggle}
+					>
+						<span
+							class="bg-slate-950 border border-slate-800 text-amber-400 px-2.5 sm:px-4 shrink-0"
 						>
-							<KeyIcon size="20" />
-						</div>
+							<KeyIcon size="18" />
+						</span>
 						<input
 							id="seventh-answer"
 							type="text"
 							bind:value={answer}
 							placeholder="พิมพ์คำตอบ..."
-							class="input input-bordered flex-1 bg-slate-950 border-slate-800 text-white font-bold placeholder-slate-500 focus:border-amber-400"
+							class="input input-bordered min-w-0 flex-1 bg-slate-950 border-slate-800 text-white font-bold placeholder-slate-500 focus:border-amber-400 text-xs sm:text-base px-2.5 sm:px-4"
 						/>
 						{#if answer}
 							<button
 								type="button"
-								class="btn btn-ghost btn-square text-slate-400 hover:text-white -ml-12 z-10"
+								class="-translate-x-8 w-0 my-auto z-10 text-slate-400 hover:text-white flex items-center justify-center cursor-pointer border-none bg-transparent p-0 shrink-0"
 								on:click={() => (answer = '')}
+								aria-label="ล้างคำตอบ"
 							>
 								<XCircleIcon size="18" />
 							</button>
 						{/if}
 						<button
-							type="button"
-							on:click={checkAnswer}
-							class="btn btn-warning font-bold text-slate-950 shadow-md"
+							type="submit"
+							class="btn btn-warning font-bold text-slate-950 shadow-md shrink-0 px-3 sm:px-6 text-xs sm:text-sm"
 							class:loading={isSubmitting}
 						>
 							ส่งคำตอบ
 						</button>
-					</div>
+					</form>
 				</div>
 			</div>
 		{/if}

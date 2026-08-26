@@ -110,8 +110,9 @@
 		try {
 			const res = await fetch('/api/solves/recent');
 			const data = await res.json();
-			if (Array.isArray(data) && data.length > 0) {
-				latestSolves = data;
+			const validSolves = Array.isArray(data) ? data.filter((s: any) => s.puzzle_type !== 'seventh') : [];
+			if (validSolves.length > 0) {
+				latestSolves = validSolves;
 			} else {
 				latestSolves = defaultSolves;
 			}

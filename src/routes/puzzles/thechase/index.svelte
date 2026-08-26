@@ -37,7 +37,7 @@
 		</header>
 
 		<!-- The Chase Game Engine Component -->
-		<TheChaseGame onExit={() => { window.location.href = '/puzzles'; }} />
+		<TheChaseGame />
 
 	</div>
 </div>

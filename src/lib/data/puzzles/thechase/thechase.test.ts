@@ -1,6 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { THE_CHASE_DATABASE, getChaseQuestions } from './questions';
 import { CHASERS, calculateOffers, simulateChaserAnswer, resolveBoardStepState } from './engine';
+import { PACK3_QUESTIONS } from './data/pack3';
 
 describe('The Chase Game Mode & Dataset', () => {
 	it('should have over 600 genuine questions in total with unique IDs', () => {
@@ -40,6 +41,11 @@ describe('The Chase Game Mode & Dataset', () => {
 		const excludeId = sampled[0].id;
 		const withoutExcluded = getChaseQuestions({ count: 10, excludeIds: [excludeId] });
 		expect(withoutExcluded.some((q) => q.id === excludeId)).toBe(false);
+
+		const packThree = getChaseQuestions({ count: 20, pack: 3 });
+		expect(packThree).toHaveLength(20);
+		const packThreeIds = new Set(PACK3_QUESTIONS.map((q) => q.id));
+		expect(packThree.every((q) => packThreeIds.has(q.id))).toBe(true);
 	});
 
 	it('should provide valid Chaser profiles with balanced stats', () => {

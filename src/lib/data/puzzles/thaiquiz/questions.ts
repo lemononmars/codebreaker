@@ -7,6 +7,7 @@ import { HISTORY_HERITAGE_QUESTIONS } from './data/history_heritage';
 import { GENERAL_TRIVIA_QUESTIONS } from './data/general_trivia';
 import { SCIENCE_QUESTIONS } from './data/science';
 import { JAPANESE_POP_QUESTIONS } from './data/japanese_pop';
+import { buildChaseExpansion } from './data/chase_expansion';
 
 export const THAI_QUIZ_CATEGORIES: ThaiQuizCategoryInfo[] = [
 	{
@@ -75,7 +76,7 @@ export const THAI_QUIZ_CATEGORIES: ThaiQuizCategoryInfo[] = [
 	}
 ];
 
-export const THAI_QUIZ_DATABASE: ThaiQuizItem[] = [
+const RAW_THAI_QUIZ_DATABASE: ThaiQuizItem[] = [
 	...GEOGRAPHY_QUESTIONS,
 	...LANGUAGE_LIT_QUESTIONS,
 	...CULTURE_TRADITION_QUESTIONS,
@@ -84,6 +85,27 @@ export const THAI_QUIZ_DATABASE: ThaiQuizItem[] = [
 	...GENERAL_TRIVIA_QUESTIONS,
 	...SCIENCE_QUESTIONS,
 	...JAPANESE_POP_QUESTIONS
+];
+
+function normalizeQuestion(question: string): string {
+	return question.trim().toLocaleLowerCase('th-TH').replace(/\s+/g, ' ');
+}
+
+const seenBaseQuestions = new Set<string>();
+const BASE_THAI_QUIZ_DATABASE = RAW_THAI_QUIZ_DATABASE.filter((question) => {
+	const normalized = normalizeQuestion(question.question);
+	if (seenBaseQuestions.has(normalized)) return false;
+	seenBaseQuestions.add(normalized);
+	return true;
+});
+
+export const CHASE_EXPANSION_QUESTIONS = buildChaseExpansion(
+	BASE_THAI_QUIZ_DATABASE.map((question) => question.question)
+);
+
+export const THAI_QUIZ_DATABASE: ThaiQuizItem[] = [
+	...BASE_THAI_QUIZ_DATABASE,
+	...CHASE_EXPANSION_QUESTIONS
 ];
 
 export {

@@ -1,6 +1,11 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { generateBoggleRound, splitThaiCells } from './generators';
-import { canBuildWordFromLetters, getBogglePathWord, isValidBogglePath } from './rules';
+import {
+	canBuildWordFromLetters,
+	getBogglePathWord,
+	isBattleRoundOpen,
+	isValidBogglePath
+} from './rules';
 
 function gridContainsWord(grid: string[][], word: string): boolean {
 	const cells = splitThaiCells(word);
@@ -74,5 +79,13 @@ describe('battle input rules', () => {
 		expect(getBogglePathWord(grid, legalPath)).toBe('กาง');
 		expect(isValidBogglePath(grid, [...legalPath, { r: 0, c: 0 }])).toBe(false);
 		expect(isValidBogglePath(grid, [{ r: 0, c: 0 }, { r: 0, c: 2 }])).toBe(false);
+	});
+
+	it('only accepts answers inside the authoritative round window', () => {
+		expect(isBattleRoundOpen(1_000, 2_000, 999)).toBe(false);
+		expect(isBattleRoundOpen(1_000, 2_000, 1_000)).toBe(true);
+		expect(isBattleRoundOpen(1_000, 2_000, 1_999)).toBe(true);
+		expect(isBattleRoundOpen(1_000, 2_000, 2_000)).toBe(false);
+		expect(isBattleRoundOpen(null, 2_000, 1_500)).toBe(false);
 	});
 });
