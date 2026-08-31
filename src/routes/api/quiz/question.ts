@@ -13,7 +13,7 @@ export const get: RequestHandler = async ({ url }) => {
 			};
 		}
 
-		const session = getQuizSession(sessionId);
+		const session = await getQuizSession(sessionId);
 		if (!session) {
 			return {
 				status: 404,
@@ -22,6 +22,9 @@ export const get: RequestHandler = async ({ url }) => {
 		}
 
 		const index = indexStr !== null ? parseInt(indexStr, 10) : session.currentIndex;
+		if (!Number.isInteger(index) || index !== session.currentIndex) {
+			return { status: 409, body: { error: 'Only the current question may be fetched' } as any };
+		}
 		const question = getStrippedQuestion(session, index);
 
 		if (!question) {

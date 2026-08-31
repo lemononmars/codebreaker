@@ -1,5 +1,12 @@
 <script lang="ts">
-	import { RadioIcon, KeyIcon, BookOpenIcon, VideoIcon, InfoIcon } from 'svelte-feather-icons';
+	import {
+		RadioIcon,
+		KeyIcon,
+		BookOpenIcon,
+		VideoIcon,
+		InfoIcon,
+		LayersIcon
+	} from 'svelte-feather-icons';
 
 	const mediaResources = [
 		{
@@ -22,7 +29,8 @@
 		{
 			name: 'Cipher Library',
 			path: '/resources/ciphers',
-			description: 'คลังรหัสลับพื้นฐาน (Pigpen, Morse, Caesar, Atbash, Vigenère, A1Z26, Polybius, Rail Fence ฯลฯ)',
+			description:
+				'คลังรหัสลับพื้นฐาน (Pigpen, Morse, Caesar, Atbash, Vigenère, A1Z26, Polybius, Rail Fence ฯลฯ)',
 			icon: KeyIcon,
 			color: 'text-emerald-400'
 		},
@@ -36,8 +44,16 @@
 		{
 			name: 'Puzzle Knowledge',
 			path: '/resources/knowledge',
-			description: 'ข้อมูลอ้างอิงที่ใช้บ่อยในพัซเซิลญี่ปุ่น (วันในสัปดาห์, 12 ราศี, ระบบสุริยะ, ทิศคันจิ, โน้ตดนตรี ฯลฯ)',
+			description:
+				'ข้อมูลอ้างอิงที่ใช้บ่อยในพัซเซิลญี่ปุ่น (วันในสัปดาห์, 12 ราศี, ระบบสุริยะ, ทิศคันจิ, โน้ตดนตรี ฯลฯ)',
 			icon: InfoIcon,
+			color: 'text-emerald-400'
+		},
+		{
+			name: 'Puzzle Mechanic',
+			path: '/resources/mechanics',
+			description: 'สารานุกรมกลไกปริศนา 94 รูปแบบ พร้อมชื่อและคำอธิบายภาษาอังกฤษ ไทย และญี่ปุ่น',
+			icon: LayersIcon,
 			color: 'text-emerald-400'
 		}
 	];
@@ -45,7 +61,10 @@
 
 <svelte:head>
 	<title>Code Breaker | แหล่งความรู้ & ทรัพยากร 📚</title>
-	<meta name="description" content="ศูนย์รวมความรู้สำหรับนักไขปริศนา พอดแคสต์ สื่อสอน แหล่งข้อมูลอ้างอิง คลังรหัสลับ และพจนานุกรม" />
+	<meta
+		name="description"
+		content="ศูนย์รวมความรู้สำหรับนักไขปริศนา พอดแคสต์ สื่อสอน แหล่งข้อมูลอ้างอิง คลังรหัสลับ และพจนานุกรม"
+	/>
 </svelte:head>
 
 <div class="flex flex-col gap-8 w-full max-w-5xl mx-auto px-4 py-8 select-none">
@@ -74,10 +93,14 @@
 							<svelte:component this={tool.icon} size="24" class={tool.color} />
 						</div>
 						<div class="flex flex-col gap-0.5 flex-1 min-w-0">
-							<h3 class="card-title text-base sm:text-lg font-bold text-white group-hover:text-amber-400 transition-colors line-clamp-1">
+							<h3
+								class="card-title text-base sm:text-lg font-bold text-white group-hover:text-amber-400 transition-colors line-clamp-1"
+							>
 								{tool.name}
 							</h3>
-							<p class="text-xs sm:text-sm text-slate-400 font-light line-clamp-2">{tool.description}</p>
+							<p class="text-xs sm:text-sm text-slate-400 font-light line-clamp-2">
+								{tool.description}
+							</p>
 						</div>
 					</div>
 				</a>
@@ -88,7 +111,9 @@
 	<!-- Section 2: แหล่งข้อมูลอ้างอิง (Reference Resources) -->
 	<section class="space-y-4">
 		<div class="flex items-center gap-2 border-b border-slate-800 pb-2">
-			<h2 class="text-xl font-extrabold text-emerald-400">แหล่งข้อมูลอ้างอิง (Reference Resources)</h2>
+			<h2 class="text-xl font-extrabold text-emerald-400">
+				แหล่งข้อมูลอ้างอิง (Reference Resources)
+			</h2>
 		</div>
 		<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 			{#each referenceResources as tool}
@@ -103,10 +128,14 @@
 							<svelte:component this={tool.icon} size="24" class={tool.color} />
 						</div>
 						<div class="flex flex-col gap-0.5 flex-1 min-w-0">
-							<h3 class="card-title text-base sm:text-lg font-bold text-white group-hover:text-emerald-400 transition-colors line-clamp-1">
+							<h3
+								class="card-title text-base sm:text-lg font-bold text-white group-hover:text-emerald-400 transition-colors line-clamp-1"
+							>
 								{tool.name}
 							</h3>
-							<p class="text-xs sm:text-sm text-slate-400 font-light line-clamp-2">{tool.description}</p>
+							<p class="text-xs sm:text-sm text-slate-400 font-light line-clamp-2">
+								{tool.description}
+							</p>
 						</div>
 					</div>
 				</a>

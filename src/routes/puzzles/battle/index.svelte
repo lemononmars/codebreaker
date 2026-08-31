@@ -150,6 +150,15 @@
 		isPublic: true,
 		maxPlayers: 4
 	};
+	const ROOM_PRESETS: Array<{ name: string; description: string; config: Partial<BattleGameConfig> }> = [
+		{ name: '⚡ Quick Match', description: '3 รอบ • 30 วิ • 4 คน', config: { rounds: 3, timePerRound: 30, maxPlayers: 4, difficulty: 'easy', isPublic: true } },
+		{ name: '🏆 Ranked Night', description: '5 รอบ • 60 วิ • 8 คน', config: { rounds: 5, timePerRound: 60, maxPlayers: 8, difficulty: 'hard', isPublic: true } },
+		{ name: '👨‍👩‍👧 Private Party', description: '3 รอบ • 90 วิ • ห้องส่วนตัว', config: { rounds: 3, timePerRound: 90, maxPlayers: 8, difficulty: 'normal', isPublic: false } }
+	];
+
+	function applyRoomPreset(config: Partial<BattleGameConfig>) {
+		createForm = { ...createForm, ...config };
+	}
 
 	// Live Game & Timers
 	let countdownNumber: number | null = null;
@@ -538,6 +547,10 @@
 		return !!roomMeta && isBattleRoundOpen(roomMeta.roundStartTime, roomMeta.roundEndTime);
 	}
 
+	function actionId(kind: string, detail: string): string {
+		return `${roomMeta?.roundStartTime || 0}:${localPlayer.id}:${kind}:${detail}`;
+	}
+
 	function copyInviteLink() {
 		if (!currentRoom) return;
 		if (typeof window !== 'undefined') {
@@ -590,6 +603,8 @@
 					100,
 					100,
 					`ชิงตอบ Crossroad สำเร็จ: "${target}"`
+					,
+					actionId('crossroad', input)
 				);
 				if (!result.success) {
 					addScoreToast(result.reason || 'มีผู้เล่นชิงตอบข้อนี้ไปแล้ว', 'text-rose-400');
@@ -601,14 +616,14 @@
 			addScoreToast('+100 ตอบถูกเป้าหมาย!', 'text-emerald-400');
 
 			if (!isQuiz) {
-				await submitPlayerProgress(currentRoom.room_id, localPlayer.id, 100, 100, 1, `แก้ Crossroad สำเร็จ: "${target}"`);
+				await submitPlayerProgress(currentRoom.room_id, localPlayer.id, 100, 100, 1, `แก้ Crossroad สำเร็จ: "${target}"`, actionId('crossroad', input));
 			}
 		} else {
 			crossroadWiggle = true;
 			setTimeout(() => (crossroadWiggle = false), 600);
 			addScoreToast('-20 ยังไม่ถูกต้อง', 'text-rose-400');
 			if (!isQuiz) {
-				await submitPlayerProgress(currentRoom.room_id, localPlayer.id, -20, 25, 0);
+				await submitPlayerProgress(currentRoom.room_id, localPlayer.id, -20, 25, 0, undefined, actionId('crossroad-wrong', input));
 			}
 		}
 	}
@@ -638,13 +653,13 @@
 			const progress = Math.min(100, Math.round(((spellingBeeFound.length + 1) / totalSols) * 100));
 
 			if (isQuiz) {
-				const result = await submitSharedWord(currentRoom.room_id, localPlayer.id, word, points, progress, `ชิงพบคำว่า "${word}"`);
+				const result = await submitSharedWord(currentRoom.room_id, localPlayer.id, word, points, progress, `ชิงพบคำว่า "${word}"`, actionId('spellingbee', word));
 				if (!result.success) {
 					addScoreToast(result.reason || 'มีผู้เล่นชิงคำนี้ไปแล้ว', 'text-yellow-400');
 					return;
 				}
 			} else {
-				await submitPlayerProgress(currentRoom.room_id, localPlayer.id, points, progress, 1, `พบคำว่า "${word}"`);
+				await submitPlayerProgress(currentRoom.room_id, localPlayer.id, points, progress, 1, `พบคำว่า "${word}"`, actionId('spellingbee', word));
 			}
 			spellingBeeFound = [...spellingBeeFound, word];
 			addScoreToast(`+${points} พบคำว่า "${word}"`, 'text-amber-400');
@@ -678,13 +693,13 @@
 			const progress = Math.min(100, Math.round((nextIdx / questions.length) * 100));
 
 			if (isQuiz) {
-				const result = await submitQuizClaim(currentRoom.room_id, localPlayer.id, claimKey, 50, progress, `ชิงตอบถูก ${currentQ.word}`);
+				const result = await submitQuizClaim(currentRoom.room_id, localPlayer.id, claimKey, 50, progress, `ชิงตอบถูก ${currentQ.word}`, actionId('blanks', `${blanksQuestionIdx}:${letter}`));
 				if (!result.success) {
 					addScoreToast(result.reason || 'มีผู้เล่นชิงตอบข้อนี้ไปแล้ว', 'text-rose-400');
 					return;
 				}
 			} else {
-				await submitPlayerProgress(currentRoom.room_id, localPlayer.id, 50, progress, 1, `ตอบถูก ${currentQ.word}`);
+				await submitPlayerProgress(currentRoom.room_id, localPlayer.id, 50, progress, 1, `ตอบถูก ${currentQ.word}`, actionId('blanks', `${blanksQuestionIdx}:${letter}`));
 			}
 			blanksQuestionIdx = nextIdx;
 			addScoreToast('+50 เติมถูกต้อง!', 'text-teal-400');
@@ -697,7 +712,7 @@
 		} else {
 			addScoreToast('-10 อักษรผิด', 'text-rose-400');
 			if (!isQuiz) {
-				await submitPlayerProgress(currentRoom.room_id, localPlayer.id, -10, 0, 0);
+				await submitPlayerProgress(currentRoom.room_id, localPlayer.id, -10, 0, 0, undefined, actionId('blanks-wrong', `${blanksQuestionIdx}:${letter}`));
 			}
 		}
 	}
@@ -724,13 +739,13 @@
 			const progress = Math.min(100, Math.round((nextIdx / questions.length) * 100));
 
 			if (isQuiz) {
-				const result = await submitQuizClaim(currentRoom.room_id, localPlayer.id, claimKey, 50, progress, `ชิงตอบถูก: "${currentQ.correct}"`);
+				const result = await submitQuizClaim(currentRoom.room_id, localPlayer.id, claimKey, 50, progress, `ชิงตอบถูก: "${currentQ.correct}"`, actionId('spellingquiz', `${spellingQuizIdx}:${side}`));
 				if (!result.success) {
 					addScoreToast(result.reason || 'มีผู้เล่นชิงตอบข้อนี้ไปแล้ว', 'text-rose-400');
 					return;
 				}
 			} else {
-				await submitPlayerProgress(currentRoom.room_id, localPlayer.id, 50, progress, 1, `สะกดถูก: "${currentQ.correct}"`);
+				await submitPlayerProgress(currentRoom.room_id, localPlayer.id, 50, progress, 1, `สะกดถูก: "${currentQ.correct}"`, actionId('spellingquiz', `${spellingQuizIdx}:${side}`));
 			}
 			spellingQuizIdx = nextIdx;
 			addScoreToast(`+50 สะกดถูกต้อง! (${currentQ.correct})`, 'text-info');
@@ -739,7 +754,7 @@
 			if (!isQuiz) {
 				const nextIdx = spellingQuizIdx + 1;
 				spellingQuizIdx = nextIdx;
-				await submitPlayerProgress(currentRoom.room_id, localPlayer.id, -20, Math.min(100, Math.round((nextIdx / questions.length) * 100)), 0);
+				await submitPlayerProgress(currentRoom.room_id, localPlayer.id, -20, Math.min(100, Math.round((nextIdx / questions.length) * 100)), 0, undefined, actionId('spellingquiz-wrong', `${spellingQuizIdx}:${side}`));
 			}
 		}
 	}
@@ -766,13 +781,13 @@
 			const progress = Math.min(100, Math.round((nextIdx / questions.length) * 100));
 
 			if (isQuiz) {
-				const result = await submitQuizClaim(currentRoom.room_id, localPlayer.id, claimKey, 60, progress, `ชิงตอบถูกข้อ ${nextIdx}`);
+				const result = await submitQuizClaim(currentRoom.room_id, localPlayer.id, claimKey, 60, progress, `ชิงตอบถูกข้อ ${nextIdx}`, actionId('thaiquiz', `${thaiQuizIdx}:${choiceIdx}`));
 				if (!result.success) {
 					addScoreToast(result.reason || 'มีผู้เล่นชิงตอบข้อนี้ไปแล้ว', 'text-rose-400');
 					return;
 				}
 			} else {
-				await submitPlayerProgress(currentRoom.room_id, localPlayer.id, 60, progress, 1, `ตอบถูกข้อ ${nextIdx}`);
+				await submitPlayerProgress(currentRoom.room_id, localPlayer.id, 60, progress, 1, `ตอบถูกข้อ ${nextIdx}`, actionId('thaiquiz', `${thaiQuizIdx}:${choiceIdx}`));
 			}
 			thaiQuizIdx = nextIdx;
 			addScoreToast(`+60 ตอบถูกต้อง! (${currentQ.choices[currentQ.correctIndex]})`, 'text-amber-400');
@@ -781,7 +796,7 @@
 			if (!isQuiz) {
 				const nextIdx = thaiQuizIdx + 1;
 				thaiQuizIdx = nextIdx;
-				await submitPlayerProgress(currentRoom.room_id, localPlayer.id, -20, Math.min(100, Math.round((nextIdx / questions.length) * 100)), 0);
+				await submitPlayerProgress(currentRoom.room_id, localPlayer.id, -20, Math.min(100, Math.round((nextIdx / questions.length) * 100)), 0, undefined, actionId('thaiquiz-wrong', `${thaiQuizIdx}:${choiceIdx}`));
 			}
 		}
 	}
@@ -870,13 +885,13 @@
 			const progress = Math.min(100, (boggleFound.length + 1) * 15);
 
 			if (isQuiz) {
-				const result = await submitSharedWord(currentRoom.room_id, localPlayer.id, word, points, progress, `ชิงพบคำว่า "${word}"`);
+				const result = await submitSharedWord(currentRoom.room_id, localPlayer.id, word, points, progress, `ชิงพบคำว่า "${word}"`, actionId('boggle', word));
 				if (!result.success) {
 					addScoreToast(result.reason || 'มีผู้เล่นชิงคำนี้ไปแล้ว', 'text-yellow-400');
 					return;
 				}
 			} else {
-				await submitPlayerProgress(currentRoom.room_id, localPlayer.id, points, progress, 1, `พบคำว่า "${word}"`);
+				await submitPlayerProgress(currentRoom.room_id, localPlayer.id, points, progress, 1, `พบคำว่า "${word}"`, actionId('boggle', word));
 			}
 			boggleFound = [...boggleFound, word];
 			addScoreToast(`+${points} พบคำว่า "${word}"`, 'text-secondary');
@@ -916,9 +931,9 @@
 		if (word === endWord) {
 			ladderSolved = true;
 			addScoreToast('🎉 พิชิต Word Ladder สำเร็จ! +150', 'text-emerald-400');
-			await submitPlayerProgress(currentRoom.room_id, localPlayer.id, 150, 100, 1, `พิชิต Word Ladder สู่ "${endWord}"`);
+			await submitPlayerProgress(currentRoom.room_id, localPlayer.id, 150, 100, 1, `พิชิต Word Ladder สู่ "${endWord}"`, actionId('wordladder-finish', word));
 		} else {
-			await submitPlayerProgress(currentRoom.room_id, localPlayer.id, 30, Math.min(90, ladderChain.length * 20), 0);
+			await submitPlayerProgress(currentRoom.room_id, localPlayer.id, 30, Math.min(90, ladderChain.length * 20), 0, undefined, actionId('wordladder-step', `${ladderChain.length}:${word}`));
 		}
 	}
 
@@ -2080,6 +2095,16 @@
 
 			<div class="flex flex-col gap-3.5 text-xs">
 				<div class="form-control">
+					<div class="label py-1"><span class="label-text text-xs text-slate-300 font-bold">ตั้งค่าด่วน (Room Presets)</span></div>
+					<div class="grid grid-cols-1 sm:grid-cols-3 gap-1.5">
+						{#each ROOM_PRESETS as preset}
+							<button type="button" class="rounded-xl border border-slate-700 bg-slate-950 p-2 text-left hover:border-primary transition-colors" on:click={() => applyRoomPreset(preset.config)}>
+								<strong class="text-white text-[11px]">{preset.name}</strong><span class="block text-[9px] text-slate-400 mt-0.5">{preset.description}</span>
+							</button>
+						{/each}
+					</div>
+				</div>
+				<div class="form-control">
 					<label for="create-room-name-input" class="label py-1"><span class="label-text text-xs text-slate-300 font-bold">ชื่อห้องแข่งขัน</span></label>
 					<input
 						id="create-room-name-input"
@@ -2165,6 +2190,16 @@
 							{/each}
 						</div>
 					</div>
+				</div>
+
+				<div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+					<label class="form-control"><span class="label-text text-xs text-slate-300 font-bold mb-1">ระดับความยาก</span><select class="select select-sm select-bordered bg-slate-950 text-white border-slate-700" bind:value={createForm.difficulty}><option value="easy">ง่าย</option><option value="normal">ปกติ</option><option value="hard">ยาก</option></select></label>
+					<label class="form-control"><span class="label-text text-xs text-slate-300 font-bold mb-1">ผู้เล่นสูงสุด</span><select class="select select-sm select-bordered bg-slate-950 text-white border-slate-700" bind:value={createForm.maxPlayers}><option value={2}>2 คน</option><option value={4}>4 คน</option><option value={8}>8 คน</option><option value={12}>12 คน</option><option value={16}>16 คน</option></select></label>
+					<label class="form-control"><span class="label-text text-xs text-slate-300 font-bold mb-1">การมองเห็น</span><select class="select select-sm select-bordered bg-slate-950 text-white border-slate-700" bind:value={createForm.isPublic}><option value={true}>สาธารณะ</option><option value={false}>ส่วนตัว / Invite</option></select></label>
+				</div>
+
+				<div class="rounded-xl bg-base-200 text-base-content border border-slate-700 p-3 flex flex-wrap gap-x-4 gap-y-1 text-[11px]">
+					<strong>สรุปห้อง:</strong><span>{createForm.mode === 'quiz' ? 'Quiz' : 'Race'}</span><span>{createForm.rounds} รอบ × {createForm.timePerRound} วิ</span><span>{createForm.maxPlayers} คน</span><span>{createForm.difficulty}</span><span>{createForm.isPublic ? 'Public' : 'Private'}</span>
 				</div>
 			</div>
 

@@ -4,14 +4,15 @@ import { createQuizSession, getStrippedQuestion } from '$lib/server/quizSessionS
 export const post: RequestHandler = async ({ request }) => {
 	try {
 		const body = await request.json().catch(() => ({}));
-		const { type = 'thaiquiz', count, category, mode, pack } = body;
+		const { type = 'thaiquiz', count, category, mode, pack, excludeIds } = body;
 
-		const session = createQuizSession({
+		const session = await createQuizSession({
 			type,
 			count,
 			category,
 			mode,
-			pack
+			pack,
+			excludeIds
 		});
 
 		const firstQuestion = getStrippedQuestion(session, 0);

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Banner Render</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;600;700;800;900&family=Outfit:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 2100px; height: 800px; overflow: hidden; background: #000; }
+    svg { width: 2100px; height: 800px; display: block; }
+  </style>
+</head>
+<body>
+  <div id="svg-container"></div>
+  <script>
+    fetch('codebreaker-7th-anniversary-banner.svg?nocache=' + Date.now())
+      .then(res => res.text())
+      .then(svgText => {
+        document.getElementById('svg-container').innerHTML = svgText;
+        document.body.setAttribute('data-rendered', 'true');
+      });
+  </script>
+</body>
+</html>

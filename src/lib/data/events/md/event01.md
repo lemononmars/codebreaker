@@ -15,13 +15,13 @@ Code Breaker : Exploding Countdown เกมล่าปริศนา ขอ�
 
 โปสเตอร์งาน
 
-![image](https://raw.githubusercontent.com/lemononmars/codebreaker/main/src/lib/images/event/event_exploding_poster.jpg)
+![โปสเตอร์กิจกรรม Exploding Countdown](https://raw.githubusercontent.com/lemononmars/codebreaker/main/src/lib/images/event/event_exploding_poster.jpg)
 
 อุปกรณ์การเล่น
 
-![image](https://raw.githubusercontent.com/lemononmars/codebreaker/main/src/lib/images/event/event_exploding_booklet.jpg)
+![อุปกรณ์และสมุดปริศนาของกิจกรรม](https://raw.githubusercontent.com/lemononmars/codebreaker/main/src/lib/images/event/event_exploding_booklet.jpg)
 
 ภาพปิดท้าย
 
-![image](https://raw.githubusercontent.com/lemononmars/codebreaker/main/src/lib/images/event/event_exploding_group.jpg)
+![ภาพหมู่ผู้ร่วมกิจกรรมหลังจบภารกิจ](https://raw.githubusercontent.com/lemononmars/codebreaker/main/src/lib/images/event/event_exploding_group.jpg)
 </div>

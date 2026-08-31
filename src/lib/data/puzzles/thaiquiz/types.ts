@@ -6,7 +6,8 @@ export type ThaiQuizCategory =
 	| 'history_heritage'
 	| 'general_trivia'
 	| 'science'
-	| 'japanese_pop';
+	| 'japanese_pop'
+	| 'year_2026';
 
 export interface ThaiQuizCategoryInfo {
 	id: ThaiQuizCategory;
@@ -27,4 +28,26 @@ export interface ThaiQuizItem {
 	explanation: string;
 	difficulty: 'easy' | 'normal' | 'hard';
 	tags: string[];
+	provenance?: QuestionProvenance;
+	blueprint?: QuestionBlueprint;
+	quality?: QuestionQualityMetadata;
+}
+
+export interface QuestionProvenance {
+	sourceUrl: string;
+	sourceTitle: string;
+	factCheckedAt: string;
+	reviewAfter?: string;
+}
+
+export interface QuestionBlueprint {
+	skill: 'recall' | 'understand' | 'apply' | 'compare';
+	knowledgePoint: string;
+	answerForm: 'person' | 'place' | 'date' | 'term' | 'number' | 'work' | 'other';
+}
+
+export interface QuestionQualityMetadata {
+	reviewStatus: 'draft' | 'needs_review' | 'approved' | 'retired';
+	reviewedAt?: string;
+	reviewerNote?: string;
 }

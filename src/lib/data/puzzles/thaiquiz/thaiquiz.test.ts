@@ -43,11 +43,22 @@ describe('Thai Quiz Dataset & Engine', () => {
 		}
 	});
 
-	it('should cover all 8 Thai Quiz categories with at least 100 genuine questions each', () => {
-		expect(THAI_QUIZ_CATEGORIES).toHaveLength(8);
+	it('should cover all 9 Thai Quiz categories with at least 100 genuine questions each', () => {
+		expect(THAI_QUIZ_CATEGORIES).toHaveLength(9);
 		for (const cat of THAI_QUIZ_CATEGORIES) {
 			const items = THAI_QUIZ_DATABASE.filter((q) => q.category === cat.id);
 			expect(items.length).toBeGreaterThanOrEqual(100);
+		}
+	});
+
+	it('should keep every 2026 question sourced and ready for periodic review', () => {
+		const questions2026 = THAI_QUIZ_DATABASE.filter((q) => q.category === 'year_2026');
+		expect(questions2026).toHaveLength(100);
+		for (const question of questions2026) {
+			expect(question.provenance?.sourceUrl).toMatch(/^https:\/\//);
+			expect(question.provenance?.factCheckedAt).toBe('2026-08-31');
+			expect(question.blueprint?.knowledgePoint.trim().length).toBeGreaterThan(0);
+			expect(question.quality?.reviewStatus).toBe('approved');
 		}
 	});
 

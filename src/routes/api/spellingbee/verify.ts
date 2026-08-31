@@ -6,7 +6,7 @@ export const post: RequestHandler = async ({ request }) => {
 		const body = await request.json().catch(() => ({}));
 		const { puzzleWord, guess } = body;
 
-		if (!puzzleWord || !guess || typeof guess !== 'string') {
+		if (typeof puzzleWord !== 'string' || !puzzleWord || typeof guess !== 'string' || !guess) {
 			return {
 				status: 400,
 				body: { error: 'Missing puzzleWord or guess' } as any

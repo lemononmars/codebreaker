@@ -1,4 +1,4 @@
-import type { BattlePuzzleType, BattleRoundData } from './types';
+import type { BattlePuzzleType, BattleRoundData, ThaiLetterBlock } from './types';
 import crossroadData from '$lib/utils/crossroad_word.json';
 import spellingBeeWords from '$lib/data/puzzles/spellingbee/7letters.json';
 import { wordDatabase } from '$lib/data/puzzles/spelling/words';
@@ -32,11 +32,7 @@ function isLowerChar(c: string): boolean {
 	return ['ุ', 'ู', 'ฺ'].includes(c);
 }
 
-export interface ThaiBlock {
-	base: string;
-	upper: string;
-	lower: string;
-}
+export type ThaiBlock = ThaiLetterBlock;
 
 export function parseThaiBlocks(w: string): ThaiBlock[] {
 	const result: ThaiBlock[] = [];

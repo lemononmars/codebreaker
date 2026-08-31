@@ -35,6 +35,11 @@ const config = {
 		  split: false
 		}),
 		vite: {
+			build: {
+				// Thai dictionaries are intentional, route-scoped data assets. Keep them out of
+				// shared entry chunks while setting the warning budget to their measured size.
+				chunkSizeWarningLimit: 18000
+			},
 			ssr: {
 			  noExternal: ['three']
 			},

@@ -82,11 +82,15 @@
 	const title = 'Thai Word Search';
 	const description = 'Pattern-matching in Thai language';
 
+	// Assemble bracket syntax at runtime so Tailwind's source scanner does not
+	// mistake search examples for arbitrary utility classes.
+	const squarePattern = `${String.fromCharCode(91)}ใไโ${String.fromCharCode(93)}ก.`;
+	const exactLettersPattern = `${String.fromCharCode(123)}บนมา${String.fromCharCode(125)}`;
 	const examples = [
 		['มีตัวอักษรในตำแหน่งที่กำหนด', 'ส..น', 'สงวน, สถาน, สุทัศน์, ...'],
-		['ตัวอักษรบางตำแหน่งเป็นไปได้หลายแบบ', '[ใไโ]ก.', 'โกก, ไกร, ใกล้, ...'],
-		['มีแต่ตัวอักษรที่กำหนด', '{บนมา}', 'มัน, นมนาน, บนบาน, ...'],
-		['มีตัวอักษรที่กำหนด และตัวอักษรอื่นได้อีก 1 ตัว', '{บนมา}+1', 'รามา, สนามบิน, ขนานนาม, ...'],
+		['ตัวอักษรบางตำแหน่งเป็นไปได้หลายแบบ', squarePattern, 'โกก, ไกร, ใกล้, ...'],
+		['มีแต่ตัวอักษรที่กำหนด', exactLettersPattern, 'มัน, นมนาน, บนบาน, ...'],
+		['มีตัวอักษรที่กำหนด และตัวอักษรอื่นได้อีก 1 ตัว', `${exactLettersPattern}+1`, 'รามา, สนามบิน, ขนานนาม, ...'],
 		['ขึ้นต้นด้วย สับ', 'สับ*', 'สับไก, สับราง, สับปะรด,...'],
 		['มีตัวอักษรเรียงกันตามลำดับ', '*ธ*ท*', 'กรีธาทัพ, ธรณีวิทยา, อิทธิบาท, ...'],
 		['anagram ตัวอักษรทั้งหมด', '/กลม', 'กมล, มกุล, มีลูก, ...'],

@@ -14,9 +14,15 @@
 		ArrowRightIcon
 	} from 'svelte-feather-icons';
 	import type { TheChaseQuestion, ChaserProfile, TableOffers, ChaseGamePhase } from '$lib/data/puzzles/thechase/types';
-	import { getChaseQuestions } from '$lib/data/puzzles/thechase/questions';
-	import { CHASERS, getRandomChaser, calculateOffers, simulateChaserAnswer, resolveBoardStepState } from '$lib/data/puzzles/thechase/engine';
+	import { CHASERS, getRandomChaser, calculateOffers, resolveBoardStepState } from '$lib/data/puzzles/thechase/engine';
+	import { answerQuizQuestion, startQuizSession, type DeliveredQuizQuestion } from '$lib/quiz/client';
 	import { speakThai, stopSpeech, playQuizShowSound } from '$lib/utils/tts';
+
+	type ClientChaseQuestion = Omit<TheChaseQuestion, 'choices' | 'correctIndex' | 'difficulty'> & {
+		choices: string[];
+		correctIndex: number;
+		difficulty?: string;
+	};
 
 	// Game State
 	let phase: ChaseGamePhase = 'intro';
@@ -27,7 +33,7 @@
 	// Cash Builder State (Round 1)
 	let cashBuilderTime = 60;
 	let cashBuilderTimer: any = null;
-	let cashBuilderQuestions: TheChaseQuestion[] = [];
+	let cashBuilderQuestions: ClientChaseQuestion[] = [];
 	let cashBuilderIdx = 0;
 	let cashBuilderCorrect = 0;
 	let cashBuilderAnswering = false;
@@ -42,7 +48,7 @@
 	// Head-to-Head Board State (Round 2)
 	let playerStep = 4; // 0 to 7
 	let chaserStep = 0; // 0 to 7
-	let boardQuestions: TheChaseQuestion[] = [];
+	let boardQuestions: ClientChaseQuestion[] = [];
 	let currentBoardQIdx = 0;
 	let playerChoice: number | null = null;
 	let chaserChoice: number | null = null;
@@ -54,7 +60,7 @@
 	let finalPlayerTime = 60;
 	let finalChaserTime = 60;
 	let finalChaseTimer: any = null;
-	let finalQuestions: TheChaseQuestion[] = [];
+	let finalQuestions: ClientChaseQuestion[] = [];
 	let finalQIdx = 0;
 	let finalChaserSteps = 0;
 	let pushbackPending = false;
@@ -65,6 +71,7 @@
 	let finalPlayerFeedback: 'correct' | 'wrong' | null = null;
 	let pendingTimeouts = new Set<any>();
 	let usedQuestionIds = new Set<number>();
+	let chaseSessionId = '';
 
 	onMount(() => {
 		if (typeof window !== 'undefined') {
@@ -97,19 +104,41 @@
 		pendingTimeouts.clear();
 	}
 
-	function schedule(callback: () => void, delayMs: number) {
+	function schedule(callback: () => void | Promise<void>, delayMs: number) {
 		const timeout = setTimeout(() => {
 			pendingTimeouts.delete(timeout);
-			callback();
+			void callback();
 		}, delayMs);
 		pendingTimeouts.add(timeout);
 		return timeout;
 	}
 
-	function drawQuestions(count: number) {
-		const batch = getChaseQuestions({ count, excludeIds: Array.from(usedQuestionIds) });
-		for (const question of batch) usedQuestionIds.add(question.id);
-		return batch;
+	function toChaseQuestion(question: DeliveredQuizQuestion): ClientChaseQuestion {
+		return { ...question, correctIndex: -1, explanation: '', category: question.category as TheChaseQuestion['category'] };
+	}
+
+	async function drawQuestions(count: number) {
+		const session = await startQuizSession({
+			type: 'thechase',
+			count,
+			excludeIds: Array.from(usedQuestionIds)
+		});
+		chaseSessionId = session.sessionId;
+		usedQuestionIds.add(session.firstQuestion.id);
+		return [toChaseQuestion(session.firstQuestion)];
+	}
+
+	function revealAndAppend(
+		question: ClientChaseQuestion,
+		result: Awaited<ReturnType<typeof answerQuizQuestion>>,
+		append: (next: ClientChaseQuestion) => void
+	) {
+		question.correctIndex = result.correctIndex;
+		question.explanation = result.explanation;
+		if (result.nextQuestion) {
+			usedQuestionIds.add(result.nextQuestion.id);
+			append(toChaseQuestion(result.nextQuestion));
+		}
 	}
 
 	function resetAll() {
@@ -142,9 +171,9 @@
 		phase = 'cash_builder_countdown';
 		playQuizShowSound('buzz');
 
-		schedule(() => {
+		schedule(async () => {
 			phase = 'cash_builder_playing';
-			cashBuilderQuestions = drawQuestions(30);
+			cashBuilderQuestions = await drawQuestions(30);
 			cashBuilderIdx = 0;
 			cashBuilderCorrect = 0;
 			cashBuilderTime = 60;
@@ -185,7 +214,7 @@
 		}, 2000);
 	}
 
-	function handleCashBuilderChoice(idx: number) {
+	async function handleCashBuilderChoice(idx: number) {
 		if (!cashBuilderChoicesRevealed || cashBuilderAnswering || phase !== 'cash_builder_playing') return;
 		const q = cashBuilderQuestions[cashBuilderIdx];
 		if (!q) return;
@@ -194,7 +223,9 @@
 		cashBuilderAnswerChoice = idx;
 		(document.activeElement as HTMLElement)?.blur();
 
-		const isCorrect = idx === q.correctIndex;
+		const result = await answerQuizQuestion({ sessionId: chaseSessionId, questionId: q.id, choiceIndex: idx });
+		revealAndAppend(q, result, (next) => (cashBuilderQuestions = [...cashBuilderQuestions, next]));
+		const isCorrect = result.isCorrect;
 		cashBuilderAnswerFeedback = isCorrect ? 'correct' : 'wrong';
 
 		if (isCorrect) {
@@ -204,15 +235,15 @@
 			playQuizShowSound('wrong');
 		}
 
-		schedule(() => {
+		schedule(async () => {
 			cashBuilderAnswering = false;
 			cashBuilderAnswerChoice = null;
 			cashBuilderAnswerFeedback = null;
 			cashBuilderIdx++;
 			if (cashBuilderIdx < cashBuilderQuestions.length) {
 				setupCashBuilderQuestion();
-			} else {
-				cashBuilderQuestions = [...cashBuilderQuestions, ...drawQuestions(10)];
+			} else if (result.isCompleted) {
+				cashBuilderQuestions = [...cashBuilderQuestions, ...(await drawQuestions(10))];
 				setupCashBuilderQuestion();
 			}
 		}, 700);
@@ -262,18 +293,16 @@
 	// PHASE 3: HEAD-TO-HEAD BOARD CHASE (7 STEPS)
 	// =========================================================================
 
-	function startBoardChase() {
+	async function startBoardChase() {
 		phase = 'board_chase';
-		boardQuestions = drawQuestions(25);
+		boardQuestions = await drawQuestions(25);
 		currentBoardQIdx = 0;
 		startBoardQuestion();
 	}
 
 	function startBoardQuestion() {
 		const q = boardQuestions[currentBoardQIdx];
-		if (!q) {
-			boardQuestions = [...boardQuestions, ...drawQuestions(10)];
-		}
+		if (!q) return;
 		playerChoice = null;
 		chaserChoice = null;
 		boardState = 'reading';
@@ -284,7 +313,7 @@
 		}
 	}
 
-	function handleBoardPlayerChoice(idx: number) {
+	async function handleBoardPlayerChoice(idx: number) {
 		if (boardState !== 'reading') return;
 		playerChoice = idx;
 		boardState = 'player_locked';
@@ -293,11 +322,17 @@
 
 		const currentQ = boardQuestions[currentBoardQIdx];
 		if (!currentQ) return;
+		const result = await answerQuizQuestion({ sessionId: chaseSessionId, questionId: currentQ.id, choiceIndex: idx });
+		revealAndAppend(currentQ, result, (next) => (boardQuestions = [...boardQuestions, next]));
 
 		// Simulate Chaser thinking & locking in
-		const sim = simulateChaserAnswer(currentQ, chaser);
+		const chaserIsCorrect = Math.random() < chaser.accuracyRate;
+		const incorrectChoices = currentQ.choices.map((_choice, index) => index).filter((index) => index !== currentQ.correctIndex);
+		const simulatedChoice = chaserIsCorrect
+			? currentQ.correctIndex
+			: incorrectChoices[Math.floor(Math.random() * incorrectChoices.length)];
 		chaserLockTimeout = schedule(() => {
-			chaserChoice = sim.chosenIndex;
+			chaserChoice = simulatedChoice;
 			boardState = 'chaser_locked';
 			playQuizShowSound('tick');
 
@@ -347,16 +382,16 @@
 					}, 1000);
 				}, 1200);
 			}, 800);
-		}, sim.delayMs);
+		}, 700 + Math.random() * 900);
 	}
 
 	// =========================================================================
 	// PHASE 4: THE FINAL CHASE
 	// =========================================================================
 
-	function proceedToFinalChase() {
+	async function proceedToFinalChase() {
 		phase = 'final_chase_player_prep';
-		finalQuestions = drawQuestions(40);
+		finalQuestions = await drawQuestions(40);
 		finalQIdx = 0;
 		finalTargetSteps = 1; // 1 step head start for making it to Final Chase
 		playQuizShowSound('gong');
@@ -397,7 +432,7 @@
 		}, 2000);
 	}
 
-	function handleFinalPlayerChoice(idx: number) {
+	async function handleFinalPlayerChoice(idx: number) {
 		if (!finalChoicesRevealed || phase !== 'final_chase_player_playing') return;
 		const q = finalQuestions[finalQIdx];
 		if (!q) return;
@@ -405,7 +440,9 @@
 		finalPlayerAnswerChoice = idx;
 		(document.activeElement as HTMLElement)?.blur();
 
-		const isCorrect = idx === q.correctIndex;
+		const result = await answerQuizQuestion({ sessionId: chaseSessionId, questionId: q.id, choiceIndex: idx });
+		revealAndAppend(q, result, (next) => (finalQuestions = [...finalQuestions, next]));
+		const isCorrect = result.isCorrect;
 		finalPlayerFeedback = isCorrect ? 'correct' : 'wrong';
 
 		if (isCorrect) {
@@ -415,14 +452,14 @@
 			playQuizShowSound('wrong');
 		}
 
-		schedule(() => {
+		schedule(async () => {
 			finalPlayerAnswerChoice = null;
 			finalPlayerFeedback = null;
 			finalQIdx++;
 			if (finalQIdx < finalQuestions.length) {
 				setupFinalPlayerQuestion();
-			} else {
-				finalQuestions = [...finalQuestions, ...drawQuestions(15)];
+			} else if (result.isCompleted) {
+				finalQuestions = [...finalQuestions, ...(await drawQuestions(15))];
 				setupFinalPlayerQuestion();
 			}
 		}, 700);
@@ -454,18 +491,23 @@
 		}, 1500);
 	}
 
-	function runChaserFinalStep() {
+	async function runChaserFinalStep() {
 		if (phase !== 'final_chase_chaser_playing' || pushbackPending) return;
 
 		const q = finalQuestions[finalQIdx];
 		if (!q) return;
 
-		const sim = simulateChaserAnswer(q, chaser);
+		const result = await answerQuizQuestion({
+			sessionId: chaseSessionId,
+			questionId: q.id,
+			simulateAccuracy: chaser.accuracyRate
+		});
+		revealAndAppend(q, result, (next) => (finalQuestions = [...finalQuestions, next]));
 
 		schedule(() => {
 			if (phase !== 'final_chase_chaser_playing' || pushbackPending) return;
 
-			if (sim.isCorrect) {
+			if (result.isCorrect) {
 				playQuizShowSound('correct');
 				finalChaserSteps++;
 
@@ -489,7 +531,7 @@
 					speakThai(`ผู้ล่าตอบผิด! ${q.question}`, { rate: 1.1 });
 				}
 			}
-		}, sim.delayMs);
+		}, 700 + Math.random() * 900);
 	}
 
 	function handlePushbackChoice(idx: number) {

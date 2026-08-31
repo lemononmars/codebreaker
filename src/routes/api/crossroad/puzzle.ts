@@ -33,6 +33,9 @@ export const get: RequestHandler = async ({ url }) => {
 			chosenWord = words[0];
 			chosenData = (crossroadData as any)[chosenWord];
 		}
+		if (!chosenData) {
+			return { status: 503, body: { error: 'Crossroad data is empty' } as any };
+		}
 
 		const preClues = getRandomClues(chosenData.pre);
 		const postClues = getRandomClues(chosenData.post);

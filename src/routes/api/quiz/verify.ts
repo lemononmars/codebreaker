@@ -4,16 +4,16 @@ import { verifySessionAnswer } from '$lib/server/quizSessionStore';
 export const post: RequestHandler = async ({ request }) => {
 	try {
 		const body = await request.json().catch(() => ({}));
-		const { sessionId, questionId, choiceIndex, timeRemainingRatio = 1.0 } = body;
+		const { sessionId, questionId, choiceIndex, textAnswer, skip = false, simulateAccuracy, timeRemainingRatio = 1.0 } = body;
 
-		if (!sessionId || typeof questionId !== 'number' || typeof choiceIndex !== 'number') {
+		if (typeof sessionId !== 'string' || !sessionId || typeof questionId !== 'number') {
 			return {
 				status: 400,
 				body: { error: 'Missing required parameters: sessionId, questionId, choiceIndex' } as any
 			};
 		}
 
-		const result = verifySessionAnswer(sessionId, questionId, choiceIndex, timeRemainingRatio);
+		const result = await verifySessionAnswer(sessionId, questionId, choiceIndex, textAnswer, skip === true, simulateAccuracy, timeRemainingRatio);
 
 		if (result.error) {
 			return {

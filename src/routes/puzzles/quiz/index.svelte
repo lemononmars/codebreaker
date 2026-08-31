@@ -20,22 +20,22 @@
 		MicIcon
 	} from 'svelte-feather-icons';
 
-	import { THAI_QUIZ_CATEGORIES } from '$lib/data/puzzles/thaiquiz/questions';
-	import {
-		getQuizQuestions,
-		getDailySeed,
-		calculateQuestionScore,
-		calculateQuizShowScore,
-		validateQuizShowAnswer,
-		type QuizQuestionInstance
-	} from '$lib/data/puzzles/thaiquiz/engine';
+	import { THAI_QUIZ_CATEGORIES } from '$lib/data/puzzles/thaiquiz/catalog';
 	import type { ThaiQuizCategory } from '$lib/data/puzzles/thaiquiz/types';
+	import {
+		answerQuizQuestion,
+		rateQuizQuestion,
+		startQuizSession,
+		type DeliveredQuizQuestion,
+		type QuizAnswerResult
+	} from '$lib/quiz/client';
 	import {
 		initVoices,
 		speakThai,
 		stopSpeech,
 		playQuizShowSound
 	} from '$lib/utils/tts';
+	import { loadMastery, masteryLabel, masteryPercent, recordMastery, type MasteryMap } from '$lib/quiz/mastery';
 
 	// Top-Level Main Style Mode
 	let activeStyleTab: 'quizshow' | 'normal' = 'quizshow';
@@ -49,8 +49,17 @@
 	let currentView: 'selection' | 'countdown' | 'playing_normal' | 'playing_quizshow' | 'summary' = 'selection';
 
 	// Question Deck
+	interface QuizQuestionInstance extends DeliveredQuizQuestion {
+		category: ThaiQuizCategory;
+		correctIndex: number;
+		explanation: string;
+		acceptableAnswers: string[];
+		tags: string[];
+	}
 	let questions: QuizQuestionInstance[] = [];
-	let usedQuestionIds = new Set<number>();
+	let quizSessionId = '';
+	let sessionTotal = 0;
+	let sessionScoreOffset = 0;
 	let currentQIdx = 0;
 	let userAnswers: Array<{
 		question: QuizQuestionInstance;
@@ -103,9 +112,12 @@
 	let submitStatus: 'idle' | 'loading' | 'success' | 'error' | 'duplicate' = 'idle';
 	let submitError = '';
 	let pendingTimeouts = new Set<any>();
+	let mastery: MasteryMap = {};
+	let questionRatings: Record<string, -1 | 1 | 'pending'> = {};
 
 	onMount(() => {
 		if (typeof window !== 'undefined') {
+			mastery = loadMastery();
 			const saved = localStorage.getItem('codebreaker_player_name');
 			if (saved) submitName = saved;
 
@@ -220,39 +232,44 @@
 		return timeout;
 	}
 
-	function drawQuestions(count: number, category: ThaiQuizCategory | 'all' = 'all') {
-		const batch = getQuizQuestions({
-			count,
-			category,
-			excludeIds: Array.from(usedQuestionIds)
-		});
-		for (const question of batch) usedQuestionIds.add(question.id);
-		return batch;
+	function toClientQuestion(question: DeliveredQuizQuestion): QuizQuestionInstance {
+		return {
+			...question,
+			category: question.category as ThaiQuizCategory,
+			correctIndex: -1,
+			explanation: '',
+			acceptableAnswers: [],
+			tags: []
+		};
+	}
+
+	function getDailySeed(): number {
+		const date = new Date();
+		return date.getFullYear() * 10000 + (date.getMonth() + 1) * 100 + date.getDate();
 	}
 
 	// ─── START GAME FLOW ────────────────────────────────────────────────────────
 
-	function startCountdown(style: 'normal' | 'quizshow', mode: NormalGameMode = 'timeattack', category: ThaiQuizCategory | 'all' = 'all') {
+	async function startCountdown(style: 'normal' | 'quizshow', mode: NormalGameMode = 'timeattack', category: ThaiQuizCategory | 'all' = 'all') {
 		stopAllTimersAndAudio();
 		activeStyleTab = style;
 		selectedNormalMode = mode;
 		selectedCategory = category;
-		usedQuestionIds = new Set<number>();
-
-		if (style === 'quizshow') {
-			// Quizshow: 10 curated questions
-			questions = drawQuestions(10, category !== 'all' ? category : 'all');
-		} else {
-			if (mode === 'endless') {
-				questions = drawQuestions(50);
-			} else if (mode === 'category') {
-				questions = drawQuestions(10, category);
-			} else if (mode === 'survival') {
-				questions = drawQuestions(40);
-			} else {
-				// Time attack
-				questions = drawQuestions(30);
-			}
+		const count = style === 'quizshow' ? 10 : mode === 'endless' ? 50 : mode === 'category' ? 10 : mode === 'survival' ? 40 : 30;
+		try {
+			const session = await startQuizSession({
+				type: style === 'quizshow' ? 'quizshow' : 'thaiquiz',
+				count,
+				category: category === 'all' ? undefined : category,
+				mode
+			});
+			quizSessionId = session.sessionId;
+			sessionTotal = session.total;
+			sessionScoreOffset = 0;
+			questions = [toClientQuestion(session.firstQuestion)];
+		} catch (error) {
+			feedbackMessage = error instanceof Error ? error.message : 'ไม่สามารถเริ่มเกมได้';
+			return;
 		}
 
 		currentQIdx = 0;
@@ -298,7 +315,7 @@
 		}
 	}
 
-	function handleChoiceClick(idx: number) {
+	async function handleChoiceClick(idx: number) {
 		if (isAnswering || currentView !== 'playing_normal') return;
 		const currentQ = questions[currentQIdx];
 		if (!currentQ) return;
@@ -306,20 +323,33 @@
 		isAnswering = true;
 		selectedChoiceIdx = idx;
 
-		const isCorrect = idx === currentQ.correctIndex;
-		let points = 0;
+		let result: QuizAnswerResult;
+		try {
+			result = await answerQuizQuestion({
+				sessionId: quizSessionId,
+				questionId: currentQ.id,
+				choiceIndex: idx,
+				timeRemainingRatio: selectedNormalMode === 'timeattack' ? timeLeft / 60 : 1
+			});
+		} catch (error) {
+			isAnswering = false;
+			feedbackMessage = error instanceof Error ? error.message : 'ตรวจคำตอบไม่สำเร็จ';
+			return;
+		}
+		currentQ.correctIndex = result.correctIndex;
+		currentQ.explanation = result.explanation;
+		const isCorrect = result.isCorrect;
+		mastery = recordMastery(currentQ.category, isCorrect);
+		const points = result.points;
+		score = sessionScoreOffset + result.totalScore;
+		streak = result.streak;
+		maxStreak = result.maxStreak;
 
 		if (isCorrect) {
 			playQuizShowSound('correct');
-			streak++;
-			if (streak > maxStreak) maxStreak = streak;
 			correctCount++;
-			const calc = calculateQuestionScore(true, streak, selectedNormalMode === 'timeattack' ? timeLeft : 5);
-			points = calc.points;
-			score += points;
 		} else {
 			playQuizShowSound('wrong');
-			streak = 0;
 			if (selectedNormalMode === 'survival') {
 				lives--;
 			}
@@ -334,6 +364,7 @@
 				pointsEarned: points
 			}
 		];
+		if (result.nextQuestion) questions = [...questions, toClientQuestion(result.nextQuestion)];
 
 		schedule(() => {
 			selectedChoiceIdx = null;
@@ -345,17 +376,22 @@
 			}
 
 			const nextIdx = currentQIdx + 1;
-			if (nextIdx >= questions.length) {
-				if (selectedNormalMode === 'endless') {
-					questions = [...questions, ...drawQuestions(20)];
-					currentQIdx = nextIdx;
-				} else {
-					finishGame();
-				}
+			if (result.isCompleted) {
+				if (selectedNormalMode === 'endless') startEndlessContinuation();
+				else finishGame();
 			} else {
 				currentQIdx = nextIdx;
 			}
 		}, 600);
+	}
+
+	async function startEndlessContinuation() {
+		const session = await startQuizSession({ type: 'thaiquiz', count: 50, mode: 'endless' });
+		quizSessionId = session.sessionId;
+		sessionTotal += session.total;
+		sessionScoreOffset = score;
+		questions = [...questions, toClientQuestion(session.firstQuestion)];
+		currentQIdx++;
 	}
 
 	// ─── JAPANESE QUIZ SHOW (早押し HAYAOSHI) ENGINE ────────────────────────────
@@ -434,13 +470,19 @@
 		}, 80);
 	}
 
-	function handleBuzzAnswerSubmit() {
+	async function handleBuzzAnswerSubmit() {
 		if (quizShowState !== 'buzzed') return;
 		const currentQ = questions[currentQIdx];
 		if (!currentQ || !buzzInput.trim()) return;
 
-		const targetAnswer = currentQ.choices[currentQ.correctIndex];
-		const isCorrect = validateQuizShowAnswer(buzzInput, targetAnswer, currentQ.acceptableAnswers);
+		const buzzedCharIndex = revealedCharCount;
+		const result = await answerQuizQuestion({
+			sessionId: quizSessionId,
+			questionId: currentQ.id,
+			textAnswer: buzzInput,
+			timeRemainingRatio: 1 - buzzedCharIndex / Math.max(1, currentQ.question.length)
+		});
+		const isCorrect = result.isCorrect;
 
 		if (isCorrect) {
 			// CORRECT (正解)
@@ -448,20 +490,15 @@
 			stopSpeech();
 			clearInterval(revealInterval);
 			quizShowState = 'solved';
-			const buzzedCharIndex = revealedCharCount;
+			currentQ.correctIndex = result.correctIndex;
+			currentQ.explanation = result.explanation;
 			revealedCharCount = currentQ.question.length; // Reveal full question
-
-			streak++;
-			if (streak > maxStreak) maxStreak = streak;
+			streak = result.streak;
+			maxStreak = result.maxStreak;
 			correctCount++;
-
-			// Calculate early-buzz multiplier: answer with less revealed text = higher points!
-			const { points: earned } = calculateQuizShowScore(
-				currentQ.question.length,
-				buzzedCharIndex,
-				streak
-			);
-			score += earned;
+			mastery = recordMastery(currentQ.category, true);
+			const earned = result.points;
+			score = sessionScoreOffset + result.totalScore;
 
 			userAnswers = [
 				...userAnswers,
@@ -473,6 +510,7 @@
 					buzzedCharIndex
 				}
 			];
+			if (result.nextQuestion) questions = [...questions, toClientQuestion(result.nextQuestion)];
 		} else {
 			// INCORRECT (不正解)
 			playQuizShowSound('wrong');
@@ -497,11 +535,20 @@
 		}
 	}
 
-	function handleSkipOrReveal() {
+	async function handleSkipOrReveal() {
 		const currentQ = questions[currentQIdx];
 		if (!currentQ) return;
 		stopSpeech();
 		clearInterval(revealInterval);
+		const result = await answerQuizQuestion({
+			sessionId: quizSessionId,
+			questionId: currentQ.id,
+			skip: true
+		});
+		currentQ.correctIndex = result.correctIndex;
+		currentQ.explanation = result.explanation;
+		mastery = recordMastery(currentQ.category, false);
+		if (result.nextQuestion) questions = [...questions, toClientQuestion(result.nextQuestion)];
 		quizShowState = 'solved';
 		revealedCharCount = currentQ.question.length;
 
@@ -520,6 +567,19 @@
 	function finishGame() {
 		stopAllTimersAndAudio();
 		currentView = 'summary';
+	}
+
+	async function handleQuestionRating(question: QuizQuestionInstance, rating: -1 | 1) {
+		const key = `thaiquiz:${question.category}:${question.id}`;
+		if (questionRatings[key]) return;
+		questionRatings = { ...questionRatings, [key]: 'pending' };
+		try {
+			await rateQuizQuestion({ questionKey: key, category: question.category, rating });
+			questionRatings = { ...questionRatings, [key]: rating };
+		} catch {
+			delete questionRatings[key];
+			questionRatings = { ...questionRatings };
+		}
 	}
 
 	// ─── KEYBOARD SHORTCUTS ─────────────────────────────────────────────────────
@@ -739,6 +799,7 @@
 										<div class="truncate">
 											<h4 class="font-bold text-xs text-white group-hover:text-amber-300 transition-colors truncate">{cat.name}</h4>
 											<p class="text-[10px] text-slate-500 truncate">{cat.description}</p>
+											<p class="text-[10px] text-amber-400 mt-1">{masteryLabel(mastery[cat.id])} • {masteryPercent(mastery[cat.id])}%</p>
 										</div>
 									</button>
 								{/each}
@@ -828,6 +889,7 @@
 										<div class="truncate">
 											<h4 class="font-bold text-xs text-white group-hover:text-amber-300 transition-colors truncate">{cat.name}</h4>
 											<p class="text-[10px] text-slate-500 truncate">{cat.description}</p>
+											<p class="text-[10px] text-amber-400 mt-1">{masteryLabel(mastery[cat.id])} • {masteryPercent(mastery[cat.id])}%</p>
 										</div>
 									</button>
 								{/each}
@@ -864,7 +926,7 @@
 				<div class="flex items-center justify-between bg-slate-900/90 border border-slate-800 rounded-2xl p-3.5 sm:p-4 shadow-xl">
 					<div class="flex items-center gap-2.5">
 						<span class="badge badge-warning text-warning-content font-mono text-xs font-black py-2">
-							ข้อที่ {currentQIdx + 1}/{questions.length}
+							ข้อที่ {currentQIdx + 1}/{sessionTotal}
 						</span>
 						{#if activeCategory}
 							<span class="badge {activeCategory.color} badge-xs sm:badge-sm font-semibold">
@@ -1046,7 +1108,7 @@
 				<div class="flex items-center justify-between bg-slate-900/90 border border-slate-800 rounded-2xl p-3.5 sm:p-4 shadow-xl">
 					<div class="flex items-center gap-2.5">
 						<span class="badge badge-neutral font-mono text-xs font-bold py-2">
-							ข้อ {currentQIdx + 1}{selectedNormalMode === 'endless' ? ' (โหมดต่อเนื่อง)' : `/${questions.length}`}
+							ข้อ {currentQIdx + 1}{selectedNormalMode === 'endless' ? ' (โหมดต่อเนื่อง)' : `/${sessionTotal}`}
 						</span>
 						{#if activeCategory}
 							<span class="badge {activeCategory.color} badge-xs sm:badge-sm font-semibold hidden sm:inline-flex">
@@ -1236,6 +1298,12 @@
 
 								<div class="p-3 rounded-xl bg-slate-950/80 border border-slate-800 text-xs text-slate-300 leading-relaxed mt-1">
 									<span class="font-bold text-amber-400">💡 เกร็ดความรู้:</span> {q.explanation}
+								</div>
+								<div class="flex items-center justify-end gap-2 text-[11px] text-slate-400">
+									<span>คำถามนี้มีคุณภาพไหม?</span>
+									<button class="btn btn-xs btn-ghost" disabled={!!questionRatings[`thaiquiz:${q.category}:${q.id}`]} on:click={() => handleQuestionRating(q, 1)}>👍 ดี</button>
+									<button class="btn btn-xs btn-ghost" disabled={!!questionRatings[`thaiquiz:${q.category}:${q.id}`]} on:click={() => handleQuestionRating(q, -1)}>👎 ควรแก้</button>
+									{#if questionRatings[`thaiquiz:${q.category}:${q.id}`] === 1 || questionRatings[`thaiquiz:${q.category}:${q.id}`] === -1}<span class="text-success">ขอบคุณสำหรับความคิดเห็น</span>{/if}
 								</div>
 							</div>
 						{/each}

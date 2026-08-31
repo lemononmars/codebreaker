@@ -56,13 +56,85 @@ export interface BattlePlayer {
 
 export type RoomStatus = 0 | 1 | 2; // 0: Waiting / Lobby, 1: Playing / Battle, 2: Finished / Podium
 
-export interface BattleRoundData {
+interface BattleRoundBase<TType extends BattlePuzzleType, TPayload> {
 	roundIndex: number;
-	puzzleType: BattlePuzzleType;
+	puzzleType: TType;
 	theme: BattleThemeId;
 	title: string;
-	payload: any; // Game specific board/clues payload
+	payload: TPayload;
 }
+
+export interface ThaiLetterBlock {
+	base: string;
+	upper: string;
+	lower: string;
+}
+
+export type CrossroadRound = BattleRoundBase<'crossroad', {
+	targetWord: string;
+	topClue: string;
+	bottomClue: string;
+	leftClue: string;
+	rightClue: string;
+	allPre: string[];
+	allPost: string[];
+}>;
+
+export type SpellingBeeRound = BattleRoundBase<'spellingbee', {
+	id: number;
+	word: string;
+	letters: string[];
+	solutions: string[];
+	totalWords: number;
+}>;
+
+export type BlanksRound = BattleRoundBase<'blanks', {
+	questions: Array<{ word: string; blocks: ThaiLetterBlock[]; targetChar: string }>;
+	totalQuestions: number;
+}>;
+
+export type SpellingQuizRound = BattleRoundBase<'spellingquiz', {
+	questions: Array<{
+		correct: string;
+		incorrect: string;
+		leftOption: string;
+		rightOption: string;
+		leftIsCorrect: boolean;
+		explanation: string;
+	}>;
+	totalQuestions: number;
+}>;
+
+export type BoggleRound = BattleRoundBase<'boggle', { grid: string[][]; seedWords: string[] }>;
+export type WordLadderRound = BattleRoundBase<'wordladder', {
+	start: string;
+	end: string;
+	minPath: string[];
+	slotSize: number;
+}>;
+
+export interface BattleQuizQuestion {
+	id: number;
+	category: string;
+	question: string;
+	choices: string[];
+	correctIndex: number;
+	explanation: string;
+}
+
+export type ThaiQuizRound = BattleRoundBase<'thaiquiz', {
+	questions: BattleQuizQuestion[];
+	totalQuestions: number;
+}>;
+
+export type BattleRoundData =
+	| CrossroadRound
+	| SpellingBeeRound
+	| BlanksRound
+	| SpellingQuizRound
+	| BoggleRound
+	| WordLadderRound
+	| ThaiQuizRound;
 
 export interface BattleRoomMeta {
 	config: BattleGameConfig;
@@ -72,6 +144,7 @@ export interface BattleRoomMeta {
 	roundStartTime: number | null;
 	roundEndTime: number | null;
 	revision?: number;
+	actionReceipts?: Record<string, { playerId: string; timestamp: number }>;
 	sharedFoundWords?: Record<string, { playerId: string; playerName: string; avatar: string }>;
 	quizClaims?: Record<string, { playerId: string; playerName: string; avatar: string; score: number }>;
 	lastAction?: {

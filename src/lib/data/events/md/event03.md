@@ -2,13 +2,13 @@
 
 <div align="center">
 
-![image](https://raw.githubusercontent.com/lemononmars/codebreaker/main/src/lib/images/event/event_unlock1.jpg)
+![ผู้เล่นร่วมกิจกรรม Unlock Thailand](https://raw.githubusercontent.com/lemononmars/codebreaker/main/src/lib/images/event/event_unlock1.jpg)
 
-![image](https://raw.githubusercontent.com/lemononmars/codebreaker/main/src/lib/images/event/event_unlock2.jpg)
+![ทีมผู้เล่นกำลังไขปริศนา Unlock Thailand](https://raw.githubusercontent.com/lemononmars/codebreaker/main/src/lib/images/event/event_unlock2.jpg)
 
-![image](https://raw.githubusercontent.com/lemononmars/codebreaker/main/src/lib/images/event/event_unlock3.jpg)
+![บรรยากาศการแข่งขัน Unlock Thailand](https://raw.githubusercontent.com/lemononmars/codebreaker/main/src/lib/images/event/event_unlock3.jpg)
 
-![image](https://raw.githubusercontent.com/lemononmars/codebreaker/main/src/lib/images/event/event_unlock4.jpg)
+![ผู้ร่วมงาน Unlock Thailand กับชุดปริศนา](https://raw.githubusercontent.com/lemononmars/codebreaker/main/src/lib/images/event/event_unlock4.jpg)
 
 # เฉลย
 

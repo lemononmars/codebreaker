@@ -16,4 +16,4 @@
 * องค์กร/หน่วยงาน ที่สนใจในเครื่องมือพัฒนาบุคลากรรูปแบบใหม่
 * บุคคลที่สนใจในการพัฒนาทักษะ 5c
 
-![image](https://raw.githubusercontent.com/lemononmars/codebreaker/main/src/lib/images/event/event-5c-screenshot.png)
+![ตัวอย่างหน้าจอกิจกรรมพัฒนาทักษะ 5C](https://raw.githubusercontent.com/lemononmars/codebreaker/main/src/lib/images/event/event-5c-screenshot.png)

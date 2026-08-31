@@ -5,8 +5,12 @@ import type {
 	BattleRoomMeta,
 	SupabaseRoomRow
 } from './types';
-import { generateBattleRounds } from './generators';
 import { isBattleRoundOpen } from './rules';
+import { validateBattleConfig, validateBattleRoomMeta } from './validation';
+import { recordDiagnostic } from '$lib/diagnostics';
+import { claimBattleAction } from './actionReceipts';
+
+export { subscribeToLobbyRealtime, subscribeToRoomRealtime } from './realtime';
 
 const ROOM_CODE_CHARS = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
 
@@ -20,14 +24,16 @@ export function generateRoomCode(length = 4): string {
 
 export function parseRoomMeta(gameTitle: string): BattleRoomMeta | null {
 	try {
-		const parsed = JSON.parse(gameTitle);
-		if (parsed && parsed.config && parsed.rounds) {
-			return parsed as BattleRoomMeta;
-		}
+		return validateBattleRoomMeta(JSON.parse(gameTitle));
 	} catch {
 		// Not json or older game_title string
 	}
 	return null;
+}
+
+async function generateRounds(config: BattleGameConfig) {
+	const { generateBattleRounds } = await import('./generators');
+	return generateBattleRounds(config.puzzleType, config.rounds);
 }
 
 async function compareAndSwapRoom(
@@ -44,6 +50,7 @@ async function compareAndSwapRoom(
 		.maybeSingle();
 
 	if (error) return { updated: false, error: error.message };
+	if (!data) recordDiagnostic('battle.cas_conflict', { roomId }, 'warn');
 	return { updated: !!data };
 }
 
@@ -197,64 +204,19 @@ export async function fetchRoomById(roomId: string): Promise<SupabaseRoomRow | n
 	}
 }
 
-// Subscribe to Lobby rooms list realtime
-export function subscribeToLobbyRealtime(onRoomsChange: () => void) {
-	const channel = supabaseClient
-		.channel('battle-lobby-changes')
-		.on(
-			'postgres_changes',
-			{
-				event: '*',
-				schema: 'public',
-				table: 'rooms'
-			},
-			() => {
-				onRoomsChange();
-			}
-		)
-		.subscribe();
-
-	return () => {
-		supabaseClient.removeChannel(channel);
-	};
-}
-
-// Subscribe to specific Room updates realtime
-export function subscribeToRoomRealtime(roomId: string, onUpdate: (room: SupabaseRoomRow) => void) {
-	const channel = supabaseClient
-		.channel(`room-${roomId}`)
-		.on(
-			'postgres_changes',
-			{
-				event: '*',
-				schema: 'public',
-				table: 'rooms',
-				filter: `room_id=eq.${roomId}`
-			},
-			(payload) => {
-				if (payload.new && (payload.new as SupabaseRoomRow).room_id === roomId) {
-					onUpdate(payload.new as SupabaseRoomRow);
-				}
-			}
-		)
-		.subscribe();
-
-	return () => {
-		supabaseClient.removeChannel(channel);
-	};
-}
-
 // Create new battle room
 export async function createBattleRoom(
 	hostPlayer: BattlePlayer,
 	config: BattleGameConfig
 ): Promise<{ room: SupabaseRoomRow | null; error: string | null }> {
 	try {
+		const validConfig = validateBattleConfig(config);
+		if (!validConfig) return { room: null, error: 'Invalid battle configuration' };
 		const roomId = generateRoomCode(4);
-		const rounds = generateBattleRounds(config.puzzleType, config.rounds);
+		const rounds = await generateRounds(validConfig);
 
 		const meta: BattleRoomMeta = {
-			config,
+			config: validConfig,
 			rounds,
 			currentRound: 0,
 			roundStartTime: null,
@@ -464,12 +426,14 @@ export async function updateBattleRoomConfig(
 	newConfig: BattleGameConfig
 ): Promise<SupabaseRoomRow | null> {
 	try {
+		const validConfig = validateBattleConfig(newConfig);
+		if (!validConfig) return null;
 		const currentRoom = await fetchRoomById(roomId);
 		if (!currentRoom || currentRoom.host_user_id !== actorId || currentRoom.status !== 0) return null;
 
-		const rounds = generateBattleRounds(newConfig.puzzleType, newConfig.rounds);
+		const rounds = await generateRounds(validConfig);
 		const meta: BattleRoomMeta = {
-			config: newConfig,
+			config: validConfig,
 			rounds,
 			currentRound: 0,
 			roundStartTime: null,
@@ -480,7 +444,7 @@ export async function updateBattleRoomConfig(
 			.from('rooms')
 			.update({
 				game_title: JSON.stringify(meta),
-				is_public: newConfig.isPublic
+				is_public: validConfig.isPublic
 			})
 			.eq('room_id', roomId)
 			.select('*')
@@ -547,7 +511,8 @@ export async function submitPlayerProgress(
 	scoreDelta: number,
 	progress: number,
 	solvedIncrement = 1,
-	actionDetail?: string
+	actionDetail: string | undefined,
+	actionId: string
 ): Promise<void> {
 	try {
 		for (let attempt = 0; attempt < 3; attempt++) {
@@ -557,6 +522,7 @@ export async function submitPlayerProgress(
 			const meta = parseRoomMeta(currentRoom.game_title);
 			const player = (currentRoom.players || []).find((candidate) => candidate.id === playerId);
 			if (!meta || !player || player.isSpectator || !isBattleRoundOpen(meta.roundStartTime, meta.roundEndTime)) return;
+			if (!claimBattleAction(meta, actionId, playerId)) return;
 
 			const players = currentRoom.players.map((candidate) =>
 				candidate.id === playerId
@@ -600,7 +566,8 @@ export async function submitSharedWord(
 	word: string,
 	scoreDelta: number,
 	progress: number,
-	actionDetail?: string
+	actionDetail: string | undefined,
+	actionId: string
 ): Promise<{ success: boolean; reason?: string }> {
 	try {
 		for (let attempt = 0; attempt < 3; attempt++) {
@@ -611,6 +578,8 @@ export async function submitSharedWord(
 			const playerObj = currentRoom.players.find((player) => player.id === playerId);
 			if (!meta || !playerObj || playerObj.isSpectator) return { success: false, reason: 'Player not active' };
 			if (!isBattleRoundOpen(meta.roundStartTime, meta.roundEndTime)) return { success: false, reason: 'Round not active' };
+			if (meta.actionReceipts?.[actionId]) return { success: true };
+			if (!claimBattleAction(meta, actionId, playerId)) return { success: false, reason: 'Invalid action' };
 
 			const shared = { ...(meta.sharedFoundWords || {}) };
 			if (shared[word]) {
@@ -663,7 +632,8 @@ export async function submitQuizClaim(
 	claimKey: string,
 	scoreDelta: number,
 	progress: number,
-	actionDetail?: string
+	actionDetail: string | undefined,
+	actionId: string
 ): Promise<{ success: boolean; reason?: string }> {
 	try {
 		for (let attempt = 0; attempt < 3; attempt++) {
@@ -674,6 +644,8 @@ export async function submitQuizClaim(
 			const playerObj = currentRoom.players.find((player) => player.id === playerId);
 			if (!meta || !playerObj || playerObj.isSpectator) return { success: false, reason: 'Player not active' };
 			if (!isBattleRoundOpen(meta.roundStartTime, meta.roundEndTime)) return { success: false, reason: 'Round not active' };
+			if (meta.actionReceipts?.[actionId]) return { success: true };
+			if (!claimBattleAction(meta, actionId, playerId)) return { success: false, reason: 'Invalid action' };
 
 			const claims = { ...(meta.quizClaims || {}) };
 			if (claims[claimKey]) {
@@ -816,7 +788,7 @@ export async function resetRoomToLobby(roomId: string, actorId: string): Promise
 		const meta = parseRoomMeta(currentRoom.game_title);
 		if (meta) {
 			// Generate fresh rounds
-			meta.rounds = generateBattleRounds(meta.config.puzzleType, meta.config.rounds);
+			meta.rounds = await generateRounds(meta.config);
 			meta.currentRound = 0;
 			meta.roundStartTime = null;
 			meta.roundEndTime = null;

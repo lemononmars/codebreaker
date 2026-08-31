@@ -1,117 +1,201 @@
 <script lang="ts">
-	import { LayersIcon } from 'svelte-feather-icons';
+	import {
+		ArrowLeftIcon,
+		BookOpenIcon,
+		ExternalLinkIcon,
+		LayersIcon,
+		SearchIcon
+	} from 'svelte-feather-icons';
+	import {
+		PUZZLE_MECHANIC_CHAPTERS,
+		PUZZLE_MECHANIC_COUNT
+	} from '$lib/data/resources/puzzleMechanics';
 
-	const mechanicsList = [
-		{
-			id: 'first-last',
-			name: '1. อ่านตัวอักษรตัวแรก/ตัวสุดท้าย (First/Last Letter Extraction)',
-			category: 'Text & Acrostic',
-			description: 'กลไกพื้นฐานของการไขปริศนา โดยนำอักษรตัวแรก (Acrostic) หรือตัวสุดท้ายของแต่ละคำ/แต่ละบรรทัดมาต่อกันเป็นคำตอบใหม่',
-			exampleText: 'P - Pixel / U - Umbrella / Z - Zebra / Z - Zero ➔ PUZZLE'
-		},
-		{
-			id: 'blanks',
-			name: '2. เติมคำในช่องว่าง (Fill in the Blanks / ◯◯)',
-			category: 'Word Completion',
-			description: 'การเติมคำที่หายไปในสัญลักษณ์ (◯◯) โดยใช้บริบทของกลุ่มคำหรือหมวดหมู่คำเดียวกันเพื่อดึงอักษรในตำแหน่งที่กำหนด',
-			exampleText: 'SUN[D]AY, M[O]NDAY, TUES[D]AY ➔ D O D'
-		},
-		{
-			id: 'hidden-word',
-			name: '3. คำซ่อนในประโยค (Hidden Word In Sentences)',
-			category: 'Word Search',
-			description: 'คำตอบถูกซ่อนไว้ระหว่างรอยต่อของสองคำหรือในประโยคโดยไม่ต้องพึ่งรหัสลับ',
-			exampleText: 'DIS[CO DE]SK ➔ CODE'
-		},
-		{
-			id: 'transparency',
-			name: '4. ซ้อนทับแผ่นใส (Transparency Stacking & Overlay)',
-			category: 'Visual & Geometry',
-			description: 'กลไกภาพยอดนิยมใน Escape Room โดยนำกระดาษหรือแผ่นใสที่มีรู/เส้น 2 แผ่นมาวางทับกันเพื่อเปิดเผยอักษรที่ซ่อนอยู่',
-			exampleText: 'แผ่น A (ตารางอักษร) + แผ่น B (เจาะรูเฉพาะตำแหน่ง) ➔ อ่านคำตอบ'
-		},
-		{
-			id: 'folding',
-			name: '5. พับกระดาษประกบเบาะแส (Origami & Folding Mechanic)',
-			category: 'Physical Puzzle',
-			description: 'การพับกระดาษตามรอยทแยงหรือตามครึ่ง เพื่อนำครึ่งตัวอักษรหรือเส้นที่กระจัดกระจายมาบรรจบกันเป็นคำตอบ',
-			exampleText: 'พับครึ่งกระดาษตามเส้นประ ➔ ข้อความกระจัดกระจายต่อกันเป็นรูปคำ'
-		},
-		{
-			id: 'metapuzzle',
-			name: '6. เมตาพัซเซิล (Metapuzzle Combination)',
-			category: 'Puzzle Architecture',
-			description: 'กลไกขั้นสูงของ Puzzle Hunt โดยนำคำตอบจากด่านย่อยทั้งหมด (Round Puzzles) มาใช้เป็นวัตถุดิบในการไขปริศนาสุดท้าย (Final Meta)',
-			exampleText: 'คำตอบด่าน 1-4 ➔ นำมาใส่ในตาราง Meta ➔ คำตอบชนะเลิศ'
-		},
-		{
-			id: 'color-index',
-			name: '7. สลับลำดับด้วยสีและสัญลักษณ์ (Color & Symbol Indexing)',
-			category: 'Ordering Mechanic',
-			description: 'การเรียงลำดับตัวอักษรใหม่ตามสีของสเปกตรัม (แดง, ส้ม, เหลือง, เขียว, ฟ้า, ม่วง) หรือตามรูปร่างของสัญลักษณ์',
-			exampleText: 'แดง=C, เหลือง=D, ส้ม=O, เขียว=E ➔ เรียงตามสีรุ้ง (แดง-ส้ม-เหลือง-เขียว) = CODE'
-		},
-		{
-			id: 'direction-clock',
-			name: '8. ทิศทางและเข็มนาฬิกา (Directional & Clockwise Tracing)',
-			category: 'Spatial Tracing',
-			description: 'การอ่านตัวอักษรตามทิศทางเข็มทิศ (N, E, S, W) หรือตามองศาเข็มนาฬิกาบนตารางเพื่อถอดคำตอบ',
-			exampleText: 'เริ่มที่ศูนย์กลาง ➔ เดิน ขึ้น 1, ขวา 2, ลง 1 ➔ สะกดได้คำตอบ'
-		}
-	];
+	let searchQuery = '';
+
+	$: normalizedQuery = searchQuery.trim().toLocaleLowerCase();
+	$: filteredChapters = PUZZLE_MECHANIC_CHAPTERS.map((chapter) => ({
+		...chapter,
+		mechanics: chapter.mechanics.filter((mechanic) =>
+			[mechanic.englishTitle, mechanic.thaiTitle, mechanic.japaneseTitle, mechanic.description]
+				.join(' ')
+				.toLocaleLowerCase()
+				.includes(normalizedQuery)
+		)
+	})).filter((chapter) => chapter.mechanics.length > 0);
+
+	$: visibleCount = filteredChapters.reduce(
+		(total, chapter) => total + chapter.mechanics.length,
+		0
+	);
 </script>
 
 <svelte:head>
-	<title>Code Breaker | สารานุกรมกลไกปริศนา (Puzzle Mechanics 謎図鑑) 🧩</title>
-	<meta name="description" content="รวมกลไกและรูปแบบปริศนาพบบ่อยใน Puzzle Hunt และ Escape Room (謎図鑑)" />
+	<title>Code Breaker | Puzzle Mechanics Wiki</title>
+	<meta
+		name="description"
+		content="สารานุกรมกลไกปริศนา 94 รูปแบบ พร้อมชื่อภาษาอังกฤษ ไทย และญี่ปุ่น"
+	/>
 </svelte:head>
 
-<div class="flex flex-col gap-8 w-full max-w-5xl mx-auto px-4 py-8 select-none">
-	<!-- Navigation -->
-	<div class="flex items-center justify-between">
-		<a href="/resources" class="btn btn-ghost btn-xs gap-1.5 font-bold">
-			← กลับไปหน้าแหล่งทรัพยากร
-		</a>
-	</div>
+<div class="w-full max-w-7xl mx-auto px-4 py-8 lg:py-10 text-base-content">
+	<a href="/resources" class="btn btn-ghost btn-sm gap-2 mb-6">
+		<ArrowLeftIcon size="16" />
+		กลับไปหน้า Resources
+	</a>
 
-	<!-- Header -->
-	<header class="text-center max-w-3xl mx-auto space-y-3">
-		<div class="w-16 h-16 rounded-2xl bg-neutral text-purple-400 flex items-center justify-center shadow-xl border border-base-300 mx-auto">
-			<LayersIcon size="30" />
-		</div>
-		<h1 class="text-3xl lg:text-5xl font-black tracking-tight text-white">
-			สารานุกรมกลไกปริศนา (Puzzle Mechanics / 謎図鑑)
-		</h1>
-		<p class="text-slate-300 text-sm lg:text-base leading-relaxed">
-			รวบรวมรูปแบบและกลไกการคิดโจทย์ยอดนิยมใน Puzzle Hunt, Escape Room และบอร์ดเกมปริศนา (อ้างอิงมาตรฐาน 謎図鑑 ของญี่ปุ่น)
-		</p>
-	</header>
-
-	<!-- Mechanics Grid -->
-	<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-		{#each mechanicsList as item}
-			<div class="bg-slate-900/80 border border-slate-800 p-6 rounded-3xl shadow-xl flex flex-col justify-between space-y-4">
-				<div class="space-y-3">
-					<div class="flex items-center justify-between">
-						<span class="badge badge-secondary font-bold text-xs px-3 py-1">
-							{item.category}
-						</span>
+	<header
+		class="rounded-3xl border border-base-300 bg-base-200 text-base-content overflow-hidden shadow-xl"
+	>
+		<div class="p-6 sm:p-8 lg:p-10 grid gap-8 lg:grid-cols-[1fr_22rem] lg:items-center">
+			<div class="space-y-5">
+				<div class="flex items-center gap-3">
+					<div
+						class="w-14 h-14 rounded-2xl bg-primary text-primary-content flex items-center justify-center shadow-lg"
+					>
+						<LayersIcon size="28" />
 					</div>
+					<div>
+						<p class="text-xs font-black uppercase tracking-[0.2em] text-primary">Reference wiki</p>
+						<p class="text-sm opacity-70">{PUZZLE_MECHANIC_COUNT} mechanics · 5 sections</p>
+					</div>
+				</div>
 
-					<h2 class="text-xl font-bold text-white leading-snug">
-						{item.name}
-					</h2>
-
-					<p class="text-xs text-slate-300 leading-relaxed">
-						{item.description}
+				<div class="space-y-2">
+					<h1 class="text-4xl sm:text-5xl font-black tracking-tight">Puzzle Mechanics</h1>
+					<p class="text-xl font-bold">
+						กลไกปริศนา <span class="opacity-40">·</span> <span lang="ja">謎解きの仕組み</span>
+					</p>
+					<p class="max-w-3xl leading-relaxed opacity-75">
+						ดัชนีรูปแบบการคิดที่พบบ่อยในปริศนาแบบภาพ เกมล่าปริศนา และห้องหลบหนี
+						สำหรับตอนนี้แต่ละหัวข้อมีคำอธิบายสั้น ๆ และจะเพิ่มโจทย์ทดลอง ระบบตรวจคำตอบ
+						และเฉลยในภายหลัง
 					</p>
 				</div>
-
-				<div class="bg-slate-950 p-3.5 rounded-2xl border border-slate-800 font-mono text-xs text-slate-200">
-					<span class="text-slate-500 text-[10px] uppercase font-bold block mb-1">ตัวอย่างการทำงาน:</span>
-					<span class="text-purple-300 font-bold">{item.exampleText}</span>
-				</div>
 			</div>
-		{/each}
+
+			<aside class="rounded-2xl border border-base-300 bg-base-100 text-base-content p-5 space-y-3">
+				<div class="flex items-center gap-2 font-black">
+					<BookOpenIcon size="18" class="text-primary" />
+					Book credit
+				</div>
+				<p class="text-sm leading-relaxed opacity-75">
+					โครงสร้างหมวดหมู่และรายชื่อหัวข้ออ้างอิงจากหนังสือของ SCRAP ซึ่งจัดกลไกปริศนาแบบภาพไว้ 94
+					หัวข้อ
+				</p>
+				<a
+					href="https://www.scrapgoods.jp/c/scrap/book/SCR-01-0230"
+					target="_blank"
+					rel="noreferrer"
+					class="btn btn-primary btn-sm w-full gap-2"
+				>
+					SCRAP presents 謎図鑑
+					<ExternalLinkIcon size="14" />
+				</a>
+				<p class="text-xs opacity-60">SCRAP · 2023 · ISBN 978-4-909474-70-4</p>
+			</aside>
+		</div>
+	</header>
+
+	<div
+		class="sticky top-2 z-20 mt-6 rounded-2xl border border-base-300 bg-base-100 text-base-content shadow-lg p-3 sm:p-4"
+	>
+		<label class="relative block">
+			<SearchIcon size="18" class="absolute left-4 top-1/2 -translate-y-1/2 opacity-50" />
+			<input
+				type="search"
+				bind:value={searchQuery}
+				class="input input-bordered bg-base-200 text-base-content w-full pl-11 pr-24"
+				placeholder="Search in English, Thai, or Japanese…"
+				aria-label="Search puzzle mechanics"
+			/>
+			<span class="absolute right-4 top-1/2 -translate-y-1/2 text-xs font-bold opacity-60">
+				{visibleCount}/{PUZZLE_MECHANIC_COUNT}
+			</span>
+		</label>
+	</div>
+
+	<div class="mt-8 grid gap-8 lg:grid-cols-[17rem_minmax(0,1fr)] lg:items-start">
+		<aside
+			class="hidden lg:block sticky top-24 rounded-2xl border border-base-300 bg-base-200 text-base-content p-5 max-h-[calc(100vh-7rem)] overflow-y-auto"
+		>
+			<h2 class="font-black text-sm uppercase tracking-wider mb-4">Contents</h2>
+			<nav aria-label="Puzzle mechanic chapters" class="space-y-4">
+				{#each PUZZLE_MECHANIC_CHAPTERS as chapter}
+					<div class="space-y-1">
+						<a href={'#' + chapter.id} class="font-bold text-sm link link-hover text-primary">
+							{chapter.englishTitle}
+						</a>
+						<p class="text-xs opacity-60">
+							{chapter.thaiTitle} · <span lang="ja">{chapter.japaneseTitle}</span>
+						</p>
+					</div>
+				{/each}
+			</nav>
+		</aside>
+
+		<main class="min-w-0 space-y-12">
+			{#if filteredChapters.length === 0}
+				<div
+					class="rounded-3xl border border-dashed border-base-300 bg-base-200 text-base-content p-12 text-center"
+				>
+					<p class="text-4xl mb-3">🔎</p>
+					<h2 class="text-xl font-black">No mechanics found</h2>
+					<p class="opacity-65 mt-1">ลองค้นด้วยชื่อภาษาอังกฤษ ภาษาไทย หรือภาษาญี่ปุ่น</p>
+				</div>
+			{:else}
+				{#each filteredChapters as chapter, chapterIndex}
+					<section id={chapter.id} class="scroll-mt-28 space-y-5">
+						<header
+							class="border-b border-base-300 pb-4 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3"
+						>
+							<div>
+								<p class="text-xs font-black uppercase tracking-[0.18em] opacity-50">
+									Section {chapterIndex + 1}
+								</p>
+								<h2 class="text-3xl font-black mt-1">{chapter.englishTitle}</h2>
+								<p class="font-bold opacity-70 mt-1">
+									{chapter.thaiTitle} <span class="opacity-35">·</span>
+									<span lang="ja">{chapter.japaneseTitle}</span>
+								</p>
+							</div>
+							<span class="badge {chapter.accent} font-bold self-start sm:self-auto"
+								>{chapter.mechanics.length} topics</span
+							>
+						</header>
+
+						<div class="grid gap-4 md:grid-cols-2">
+							{#each chapter.mechanics as mechanic}
+								<article
+									id={mechanic.id}
+									class="scroll-mt-28 rounded-2xl border border-base-300 bg-base-100 text-base-content p-5 shadow-sm hover:shadow-lg transition-shadow flex flex-col gap-4"
+								>
+									<div>
+										<h3 class="text-xl font-black leading-tight">{mechanic.englishTitle}</h3>
+										<div class="mt-2 space-y-0.5">
+											<p class="font-bold text-primary">{mechanic.thaiTitle}</p>
+											<p class="font-medium opacity-65" lang="ja">{mechanic.japaneseTitle}</p>
+										</div>
+									</div>
+
+									<p class="text-sm leading-relaxed opacity-75 flex-1">{mechanic.description}</p>
+
+									<div
+										class="pt-3 border-t border-base-300 flex items-center justify-between gap-3"
+									>
+										<a
+											href={'#' + mechanic.id}
+											class="text-xs link link-hover opacity-50"
+											aria-label={'Link to ' + mechanic.englishTitle}>#{mechanic.id}</a
+										>
+										<span class="badge badge-ghost text-xs">Puzzle coming later</span>
+									</div>
+								</article>
+							{/each}
+						</div>
+					</section>
+				{/each}
+			{/if}
+		</main>
 	</div>
 </div>

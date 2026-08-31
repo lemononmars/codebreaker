@@ -3,7 +3,7 @@
 	export const load: Load = async () => {
 		return {
 			status: 302,
-			redirect: '/admin/weekly'
+			redirect: '/admin/questions'
 		};
 	};
 </script>

@@ -1,13 +1,13 @@
 {
   "project": "Codebreaker Video Clip Generator",
-  "version": "1.1.0",
-  "description": "ชุดปริศนาตัวอย่างสำหรับสร้างคลิปวิดีโอ (Blanks, Spelling Bee, Crossroad, Connection)",
+  "version": "2.0.0",
+  "description": "ชุดปริศนามาตรฐาน จัดหมวดหมู่ตามรหัส A_B_C (A=วัน 1-7, B=ลำดับ 01-99, C=ชื่อประเภท)",
   "puzzles": [
     {
-      "id": "blanks_01",
+      "id": "1_01_blanks",
       "type": "blanks",
       "category": "เติมตัวอักษร",
-      "title": "Blanks: เติมตัวอักษรซ้ำที่หายไป",
+      "title": "Blanks: เติมตัวอักษรซ้ำที่หายไป (กรรไกร)",
       "difficulty": "normal",
       "prompt": "เติมตัวอักษร 1 ตัวที่ซ่อนอยู่ในช่องว่างทั้งหมด เพื่อให้ได้คำที่ถูกต้อง",
       "display": {
@@ -15,7 +15,11 @@
         "full_word": "กรรไกร",
         "target_char": "ร",
         "repeat_count": 3,
-        "blank_positions": [1, 2, 5],
+        "blank_positions": [
+          1,
+          2,
+          5
+        ],
         "hint": "อุปกรณ์ตัดสิ่งของที่มีคมคู่ขนาน"
       },
       "answer": "ร",
@@ -27,10 +31,10 @@
       }
     },
     {
-      "id": "blanks_02",
+      "id": "1_02_blanks",
       "type": "blanks",
       "category": "เติมตัวอักษร",
-      "title": "Blanks: เติมตัวอักษรซ้ำที่หายไป",
+      "title": "Blanks: เติมตัวอักษรซ้ำที่หายไป (ธรรมดา)",
       "difficulty": "normal",
       "prompt": "เติมตัวอักษร 1 ตัวที่ซ่อนอยู่ในช่องว่างทั้งหมด เพื่อให้ได้คำที่ถูกต้อง",
       "display": {
@@ -38,7 +42,10 @@
         "full_word": "ธรรมดา",
         "target_char": "ร",
         "repeat_count": 2,
-        "blank_positions": [1, 2],
+        "blank_positions": [
+          1,
+          2
+        ],
         "hint": "ปกติ สามัญ ไม่พิเศษหรือแปลกไปจากเดิม"
       },
       "answer": "ร",
@@ -50,76 +57,7 @@
       }
     },
     {
-      "id": "spelling_bee_01",
-      "type": "spelling_bee",
-      "category": "ผสมคำรังผึ้ง",
-      "title": "Spelling Bee: ผสมคำ 7 ตัวอักษร (กรวดน้ำ)",
-      "difficulty": "normal",
-      "prompt": "ผสมคำภาษาไทยจากตัวอักษร 7 ตัวในรังผึ้ง โดยต้องมีตัวอักษรสีเหลืองตรงกลางเสมอ",
-      "display": {
-        "center_letter": "ก",
-        "outer_letters": ["ร", "ว", "ด", "น", "้", "ำ"],
-        "all_letters": ["ก", "ร", "ว", "ด", "น", "้", "ำ"],
-        "pangram": "กรวดน้ำ",
-        "min_word_length": 3,
-        "sample_solutions": [
-          "กรวดน้ำ",
-          "กรวด",
-          "กดน้ำ",
-          "กรด",
-          "กวด",
-          "กาน",
-          "ก้น"
-        ],
-        "total_possible_words": 34
-      },
-      "answer": {
-        "pangram": "กรวดน้ำ",
-        "top_words": ["กรวดน้ำ", "กรวด", "กดน้ำ", "กรด"]
-      },
-      "explanation": "คำแพนแกรมที่ใช้ครบทุกตัวอักษรคือ 'กรวดน้ำ' และสามารถผสมคำย่อยได้อีกกว่า 30 คำ",
-      "clip_timing": {
-        "question_display_sec": 6,
-        "hint_display_sec": 3,
-        "answer_reveal_sec": 4
-      }
-    },
-    {
-      "id": "spelling_bee_02",
-      "type": "spelling_bee",
-      "category": "ผสมคำรังผึ้ง",
-      "title": "Spelling Bee: ผสมคำ 7 ตัวอักษร (กระจ่าง)",
-      "difficulty": "normal",
-      "prompt": "ผสมคำภาษาไทยจากตัวอักษร 7 ตัวในรังผึ้ง โดยต้องมีตัวอักษรสีเหลืองตรงกลางเสมอ",
-      "display": {
-        "center_letter": "ก",
-        "outer_letters": ["ร", "ะ", "จ", "่", "า", "ง"],
-        "all_letters": ["ก", "ร", "ะ", "จ", "่", "า", "ง"],
-        "pangram": "กระจ่าง",
-        "min_word_length": 3,
-        "sample_solutions": [
-          "กระจ่าง",
-          "กาง",
-          "กะ",
-          "กาก",
-          "กราบ",
-          "กรร"
-        ],
-        "total_possible_words": 70
-      },
-      "answer": {
-        "pangram": "กระจ่าง",
-        "top_words": ["กระจ่าง", "กาง", "กาก", "กะ"]
-      },
-      "explanation": "คำแพนแกรมที่ใช้ครบทุกตัวอักษรคือ 'กระจ่าง' และสามารถผสมคำย่อยได้อีกมากโดยต้องมี 'ก' ตรงกลาง",
-      "clip_timing": {
-        "question_display_sec": 6,
-        "hint_display_sec": 3,
-        "answer_reveal_sec": 4
-      }
-    },
-    {
-      "id": "crossroad_01",
+      "id": "2_01_crossroad",
       "type": "crossroad",
       "category": "ทางแยก 4 ทิศ",
       "title": "Crossroad: ทางแยก 4 ทิศทาง (ใจ)",
@@ -150,7 +88,7 @@
       }
     },
     {
-      "id": "crossroad_02",
+      "id": "2_02_crossroad",
       "type": "crossroad",
       "category": "ทางแยก 4 ทิศ",
       "title": "Crossroad: ทางแยก 4 ทิศทาง (น้ำ)",
@@ -181,15 +119,25 @@
       }
     },
     {
-      "id": "connection_01",
+      "id": "3_01_connection",
       "type": "connection",
       "category": "คำเชื่อมโยง",
       "title": "Connection: ถอดรหัสจุดเชื่อมโยง 4 คำ (โน้ตดนตรี)",
       "difficulty": "normal",
       "prompt": "หาจุดร่วมหรือความสัมพันธ์ที่ซ่อนอยู่ของทั้ง 4 คำนี้",
       "display": {
-        "words": ["โดนัท", "เรขา", "มีนาคม", "ลางาน"],
-        "cards_layout": ["โดนัท", "เรขา", "มีนาคม", "ลางาน"],
+        "words": [
+          "โดนัท",
+          "เรขา",
+          "มีนาคม",
+          "ลางาน"
+        ],
+        "cards_layout": [
+          "โดนัท",
+          "เรขา",
+          "มีนาคม",
+          "ลางาน"
+        ],
         "hint": "สังเกตพยางค์แรกของแต่ละคำ"
       },
       "answer": "โน้ตดนตรี",
@@ -208,15 +156,25 @@
       }
     },
     {
-      "id": "connection_02",
+      "id": "3_02_connection",
       "type": "connection",
       "category": "คำเชื่อมโยง",
       "title": "Connection: ถอดรหัสจุดเชื่อมโยง 4 คำ (ปลา)",
       "difficulty": "easy",
       "prompt": "หาจุดร่วมหรือความสัมพันธ์ที่ซ่อนอยู่ของทั้ง 4 คำนี้",
       "display": {
-        "words": ["หมอ", "ทอง", "การ์ตูน", "เทวดา"],
-        "cards_layout": ["หมอ", "ทอง", "การ์ตูน", "เทวดา"],
+        "words": [
+          "หมอ",
+          "ทอง",
+          "การ์ตูน",
+          "เทวดา"
+        ],
+        "cards_layout": [
+          "หมอ",
+          "ทอง",
+          "การ์ตูน",
+          "เทวดา"
+        ],
         "hint": "เติมคำนำหน้าคำเดียวกันแล้วได้ชื่อสัตว์น้ำ"
       },
       "answer": "ปลา",
@@ -231,6 +189,279 @@
         "question_display_sec": 6,
         "hint_display_sec": 3,
         "answer_reveal_sec": 4
+      }
+    },
+    {
+      "id": "4_01_spelling_bee",
+      "type": "spelling_bee",
+      "category": "ผสมคำรังผึ้ง",
+      "title": "Spelling Bee: ผสมคำ 7 ตัวอักษร (กองทหาร)",
+      "difficulty": "normal",
+      "prompt": "ผสมคำภาษาไทยจากตัวอักษร 7 ตัวในรังผึ้ง โดยต้องมีตัวอักษรสีเหลืองตรงกลางเสมอ",
+      "display": {
+        "center_letter": "ก",
+        "outer_letters": [
+          "อ",
+          "ง",
+          "ท",
+          "ห",
+          "า",
+          "ร"
+        ],
+        "all_letters": [
+          "ก",
+          "อ",
+          "ง",
+          "ท",
+          "ห",
+          "า",
+          "ร"
+        ],
+        "pangram": "กองทหาร",
+        "min_word_length": 3,
+        "sample_solutions": [
+          "กองทหาร",
+          "กอง",
+          "ทหาร",
+          "การ",
+          "ทาง",
+          "ทอง",
+          "หาร",
+          "รอง",
+          "หาง",
+          "กวาง"
+        ],
+        "total_possible_words": 42
+      },
+      "answer": {
+        "pangram": "กองทหาร",
+        "top_words": [
+          "กองทหาร",
+          "กอง",
+          "ทหาร",
+          "การ"
+        ]
+      },
+      "explanation": "คำแพนแกรมที่ใช้ครบทุกตัวอักษรคือ 'กองทหาร' และสามารถผสมคำย่อยได้อีกกว่า 40 คำโดยต้องมี 'ก' ตรงกลาง",
+      "clip_timing": {
+        "question_display_sec": 6,
+        "hint_display_sec": 3,
+        "answer_reveal_sec": 4
+      }
+    },
+    {
+      "id": "4_02_spelling_bee",
+      "type": "spelling_bee",
+      "category": "ผสมคำรังผึ้ง",
+      "title": "Spelling Bee: ผสมคำ 7 ตัวอักษร (ลมหายใจ)",
+      "difficulty": "normal",
+      "prompt": "ผสมคำภาษาไทยจากตัวอักษร 7 ตัวในรังผึ้ง โดยต้องมีตัวอักษรสีเหลืองตรงกลางเสมอ",
+      "display": {
+        "center_letter": "จ",
+        "outer_letters": [
+          "ล",
+          "ม",
+          "ห",
+          "า",
+          "ย",
+          "ใ"
+        ],
+        "all_letters": [
+          "ล",
+          "ม",
+          "ห",
+          "า",
+          "ย",
+          "ใ",
+          "จ"
+        ],
+        "pangram": "ลมหายใจ",
+        "min_word_length": 2,
+        "sample_solutions": [
+          "ลมหายใจ",
+          "ใจ",
+          "หาย",
+          "ลม",
+          "ลาย",
+          "หมาย",
+          "ใย",
+          "จาม",
+          "ลาม"
+        ],
+        "total_possible_words": 38
+      },
+      "answer": {
+        "pangram": "ลมหายใจ",
+        "top_words": [
+          "ลมหายใจ",
+          "ใจ",
+          "หาย",
+          "ลม"
+        ]
+      },
+      "explanation": "คำแพนแกรมที่ใช้ครบทุกตัวอักษรคือ 'ลมหายใจ' และสามารถผสมคำย่อยได้อีกมากโดยต้องมี 'จ' ตรงกลาง",
+      "clip_timing": {
+        "question_display_sec": 6,
+        "hint_display_sec": 3,
+        "answer_reveal_sec": 4
+      }
+    },
+    {
+      "id": "4_03_spelling_bee",
+      "type": "spelling_bee",
+      "category": "ผสมคำรังผึ้ง",
+      "title": "Spelling Bee: ผสมคำ 7 ตัวอักษร (ขาดแคลน)",
+      "difficulty": "normal",
+      "prompt": "ผสมคำภาษาไทยจากตัวอักษร 7 ตัวในรังผึ้ง โดยต้องมีตัวอักษรสีเหลืองตรงกลางเสมอ",
+      "display": {
+        "center_letter": "ค",
+        "outer_letters": [
+          "ข",
+          "า",
+          "ด",
+          "แ",
+          "ล",
+          "น"
+        ],
+        "all_letters": [
+          "ข",
+          "า",
+          "ด",
+          "แ",
+          "ค",
+          "ล",
+          "น"
+        ],
+        "pangram": "ขาดแคลน",
+        "min_word_length": 3,
+        "sample_solutions": [
+          "ขาดแคลน",
+          "ขาด",
+          "แคลน",
+          "คาน",
+          "ขาน",
+          "คน",
+          "แดน",
+          "ลาน",
+          "แคน"
+        ],
+        "total_possible_words": 35
+      },
+      "answer": {
+        "pangram": "ขาดแคลน",
+        "top_words": [
+          "ขาดแคลน",
+          "ขาด",
+          "แคลน",
+          "คาน"
+        ]
+      },
+      "explanation": "คำแพนแกรมที่ใช้ครบทุกตัวอักษรคือ 'ขาดแคลน' และสามารถผสมคำย่อยได้อีกมากโดยต้องมี 'ค' ตรงกลาง",
+      "clip_timing": {
+        "question_display_sec": 6,
+        "hint_display_sec": 3,
+        "answer_reveal_sec": 4
+      }
+    },
+    {
+      "id": "4_04_spelling_bee",
+      "type": "spelling_bee",
+      "category": "ผสมคำรังผึ้ง",
+      "title": "Spelling Bee: ผสมคำ 7 ตัวอักษร (ชายทะเล)",
+      "difficulty": "normal",
+      "prompt": "ผสมคำภาษาไทยจากตัวอักษร 7 ตัวในรังผึ้ง โดยต้องมีตัวอักษรสีเหลืองตรงกลางเสมอ",
+      "display": {
+        "center_letter": "ท",
+        "outer_letters": [
+          "ช",
+          "า",
+          "ย",
+          "เ",
+          "ล",
+          "ะ"
+        ],
+        "all_letters": [
+          "ช",
+          "า",
+          "ย",
+          "ท",
+          "เ",
+          "ล",
+          "ะ"
+        ],
+        "pangram": "ชายทะเล",
+        "min_word_length": 2,
+        "sample_solutions": [
+          "ชายทะเล",
+          "ทะเล",
+          "ชาย",
+          "ทาย",
+          "เท",
+          "ชา",
+          "เล",
+          "ยาย",
+          "เลย"
+        ],
+        "total_possible_words": 30
+      },
+      "answer": {
+        "pangram": "ชายทะเล",
+        "top_words": [
+          "ชายทะเล",
+          "ทะเล",
+          "ชาย",
+          "ทาย"
+        ]
+      },
+      "explanation": "คำแพนแกรมที่ใช้ครบทุกตัวอักษรคือ 'ชายทะเล' และสามารถผสมคำย่อยได้อีกมากโดยต้องมี 'ท' ตรงกลาง",
+      "clip_timing": {
+        "question_display_sec": 6,
+        "hint_display_sec": 3,
+        "answer_reveal_sec": 4
+      }
+    },
+    {
+      "id": "5_01_quiz",
+      "type": "quiz",
+      "category": "คำถามประลองปัญญา",
+      "title": "Quiz: ปริศนาคำทายไทยโบราณ (เต่า)",
+      "difficulty": "easy",
+      "question": "อะไรเอ่ย สี่เท้าเดินมา หลังคามุงกระเบื้อง?",
+      "choices": [
+        "เต่า",
+        "ช้าง",
+        "จระเข้",
+        "กระต่าย"
+      ],
+      "correct_index": 0,
+      "answer": "เต่า",
+      "explanation": "เต่า มี 4 ขา และกระดองบนหลังมีลวดลายคล้ายกระเบื้องมุงหลังคา",
+      "clip_timing": {
+        "question_display_sec": 5,
+        "countdown_sec": 5,
+        "answer_reveal_sec": 3
+      }
+    },
+    {
+      "id": "6_01_rebus",
+      "type": "rebus",
+      "category": "ทายคำจากภาพ",
+      "title": "Rebus: ปริศนาคำพ้องรูปพ้องเสียง (ตากลม)",
+      "difficulty": "normal",
+      "prompt": "ทายคำปริศนาจากภาพและคำใบ้",
+      "display": {
+        "images": [
+          "ตา",
+          "พัดลม"
+        ],
+        "hint": "ทำได้ทั้ง 'มองสิ่งกลมๆ' หรือ 'นั่งรับลมสบายๆ'"
+      },
+      "answer": "ตากลม",
+      "explanation": "เขียนเหมือนกันแต่อ่านได้ 2 แบบ คือ 'ตา-กลม' (ดวงตากลมโต) หรือ 'ตาก-ลม' (นั่งรับสายลม)",
+      "clip_timing": {
+        "question_display_sec": 5,
+        "countdown_sec": 5,
+        "answer_reveal_sec": 3
       }
     }
   ]

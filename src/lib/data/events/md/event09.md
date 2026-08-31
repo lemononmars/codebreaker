@@ -8,10 +8,10 @@
 
 ## ภาพกิจกรรม
 บรรยากาศห้องแข่งขันและผู้เข้าแข่งขันในการแข่งขันครั้งที่ 2
-![image](https://raw.githubusercontent.com/lemononmars/codebreaker/main/src/lib/images/event/event_logic2_02.jpg)
+![บรรยากาศการแข่งขัน Logic Puzzle Contest ครั้งที่ 2](https://raw.githubusercontent.com/lemononmars/codebreaker/main/src/lib/images/event/event_logic2_02.jpg)
 
 ภาพหมู่บรรยากาศการแข่งขันอันอบอุ่น
-![image](https://raw.githubusercontent.com/lemononmars/codebreaker/main/src/lib/images/event/event_logic2_01.jpg)
+![ภาพหมู่ผู้เข้าแข่งขัน Logic Puzzle Contest ครั้งที่ 2](https://raw.githubusercontent.com/lemononmars/codebreaker/main/src/lib/images/event/event_logic2_01.jpg)
 
 ## Instruction Booklet
 
@@ -24,7 +24,7 @@
 ## ผลการแข่งขัน
 
 อันดับที่ 1 - ตวัน สุนาถวนิชย์กุล
-![image](https://raw.githubusercontent.com/lemononmars/codebreaker/main/src/lib/images/event/event_logic2_winner1.jpg)
+![ผู้ชนะอันดับหนึ่ง Logic Puzzle Contest ครั้งที่ 2](https://raw.githubusercontent.com/lemononmars/codebreaker/main/src/lib/images/event/event_logic2_winner1.jpg)
 
 <br/>
 
@@ -33,7 +33,7 @@
 <br/>
 
 อันดับที่ 2 - ธนะ วัฒนวารุณ
-![image](https://raw.githubusercontent.com/lemononmars/codebreaker/main/src/lib/images/event/event_logic2_winner2.jpg)
+![ผู้ชนะอันดับสอง Logic Puzzle Contest ครั้งที่ 2](https://raw.githubusercontent.com/lemononmars/codebreaker/main/src/lib/images/event/event_logic2_winner2.jpg)
 
 <br/>
 
@@ -42,7 +42,7 @@
 <br/>
 
 อันดับที่ 3 - ภัคพงศ์ ศรีเจริญ
-![image](https://raw.githubusercontent.com/lemononmars/codebreaker/main/src/lib/images/event/event_logic2_winner3.jpg)
+![ผู้ชนะอันดับสาม Logic Puzzle Contest ครั้งที่ 2](https://raw.githubusercontent.com/lemononmars/codebreaker/main/src/lib/images/event/event_logic2_winner3.jpg)
 
 <br/>
 
@@ -51,7 +51,7 @@
 <br/>
 
 อันดับที่ 4 - ดอนนี่ พัสสาหรี่
-![image](https://raw.githubusercontent.com/lemononmars/codebreaker/main/src/lib/images/event/event_logic2_winner4.jpg)
+![ผู้ชนะอันดับสี่ Logic Puzzle Contest ครั้งที่ 2](https://raw.githubusercontent.com/lemononmars/codebreaker/main/src/lib/images/event/event_logic2_winner4.jpg)
 
 <br/>
 
@@ -60,7 +60,7 @@
 <br/>
 
 อันดับที่ 5 - สุเมธ ชูอริยมรรค
-![image](https://raw.githubusercontent.com/lemononmars/codebreaker/main/src/lib/images/event/event_logic2_winner5.jpg)
+![ผู้ชนะอันดับห้า Logic Puzzle Contest ครั้งที่ 2](https://raw.githubusercontent.com/lemononmars/codebreaker/main/src/lib/images/event/event_logic2_winner5.jpg)
 
 <br/>
 
