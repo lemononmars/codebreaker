@@ -9,7 +9,13 @@
 		AlertCircleIcon,
 		LogOutIcon,
 		UploadIcon,
-		ImageIcon
+		ImageIcon,
+		Share2Icon,
+		CalendarIcon,
+		ClockIcon,
+		RefreshCwIcon,
+		SendIcon,
+		FileTextIcon
 	} from 'svelte-feather-icons';
 
 	const DEFAULT_PASSWORD = 'nazo';
@@ -38,6 +44,13 @@
 	let selectedFile: File | null = null;
 	let imagePreviewUrl: string | null = null;
 	let newlyCreatedUrl: string | null = null;
+
+	// Facebook Integration State
+	let postToFacebook = false;
+	let fbCaption = '';
+	let fbPublishTiming: 'now' | 'schedule' | 'draft' = 'now';
+	let fbScheduleDate = '';
+	let fbPostResult: { success: boolean; id?: string; error?: string } | null = null;
 
 	onMount(() => {
 		const savedAuth = sessionStorage.getItem('weekly_admin_auth');
@@ -88,6 +101,24 @@
 		return matchYear && matchStatus;
 	});
 
+	function generateDefaultCaption(year: number, week: number, title: string) {
+		const titleStr = title ? `「${title}」` : `สัปดาห์ที่ ${week}`;
+		return `🧩 ปริศนาประจำสัปดาห์: ${titleStr} (ปี ${year} สัปดาห์ที่ ${week})
+
+ใครคิดว่าตอบได้ มาลองแก้ปริศนากันเลย! 🕵️‍♂️✨
+🔗 เล่นและส่งคำตอบได้ที่: https://codebreaker.club/puzzles/weekly/${year}/${week}
+
+#Codebreaker #ปริศนา #WeeklyPuzzle #PuzzleHunt #เกมทายคำ #ภาษาไทย`;
+	}
+
+	function getDefaultScheduleTime(): string {
+		const d = new Date(Date.now() + 60 * 60 * 1000); // 1 hour ahead
+		const pad = (n: number) => (n < 10 ? '0' + n : n);
+		return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}T${pad(
+			d.getHours()
+		)}:${pad(d.getMinutes())}`;
+	}
+
 	function openAddModal() {
 		isEditMode = false;
 		currentId = null;
@@ -104,6 +135,14 @@
 		newlyCreatedUrl = null;
 		saveMessage = '';
 		saveError = '';
+
+		// Facebook defaults
+		postToFacebook = true;
+		fbPublishTiming = 'now';
+		fbScheduleDate = getDefaultScheduleTime();
+		fbCaption = generateDefaultCaption(formYear, formWeek, formTitle);
+		fbPostResult = null;
+
 		showModal = true;
 	}
 
@@ -121,7 +160,24 @@
 		newlyCreatedUrl = null;
 		saveMessage = '';
 		saveError = '';
+
+		// Facebook defaults
+		postToFacebook = false;
+		fbPublishTiming = 'now';
+		fbScheduleDate = getDefaultScheduleTime();
+		fbCaption = generateDefaultCaption(formYear, formWeek, formTitle);
+		fbPostResult = null;
+
 		showModal = true;
+	}
+
+	function handleRegenerateCaption() {
+		fbCaption = generateDefaultCaption(formYear, formWeek, formTitle);
+	}
+
+	function handleImgError(e: Event) {
+		const target = e.currentTarget as HTMLElement | null;
+		if (target) target.style.display = 'none';
 	}
 
 	function handleFileChange(event: Event) {
@@ -136,6 +192,7 @@
 		saveMessage = '';
 		saveError = '';
 		newlyCreatedUrl = null;
+		fbPostResult = null;
 		isSaving = true;
 
 		try {
@@ -190,11 +247,68 @@
 
 			newlyCreatedUrl = `/puzzles/weekly/${formYear}/${formWeek}`;
 			saveMessage = isEditMode ? 'บันทึกข้อมูลเรียบร้อยแล้ว' : 'เพิ่มปริศนาใหม่เรียบร้อยแล้ว';
+
+			// 3. Post / Schedule on Facebook if enabled
+			if (postToFacebook) {
+				try {
+					let scheduledTimestamp: number | undefined = undefined;
+					if (fbPublishTiming === 'schedule') {
+						if (!fbScheduleDate) {
+							throw new Error('กรุณาระบุวันและเวลาที่ต้องการตั้งเวลาโพสต์');
+						}
+						scheduledTimestamp = Math.floor(new Date(fbScheduleDate).getTime() / 1000);
+					}
+
+					const puzzleImageUrl = getPuzzleImageURL('weekly', imageFilename);
+
+					const fbRes = await fetch('/api/admin/facebook-post', {
+						method: 'POST',
+						headers: {
+							'Content-Type': 'application/json',
+							'x-admin-password': passwordInput || DEFAULT_PASSWORD
+						},
+						body: JSON.stringify({
+							caption: fbCaption,
+							imageUrl: puzzleImageUrl,
+							published: fbPublishTiming === 'now',
+							scheduledPublishTime: scheduledTimestamp
+						})
+					});
+
+					const fbData = await fbRes.json();
+					if (!fbRes.ok || !fbData.success) {
+						fbPostResult = {
+							success: false,
+							error: fbData.error || 'ไม่สามารถโพสต์ลง Facebook ได้'
+						};
+						saveMessage += ` (⚠️ Facebook: ${fbData.error || 'ล้มเหลว'})`;
+					} else {
+						fbPostResult = {
+							success: true,
+							id: fbData.id
+						};
+						if (fbPublishTiming === 'draft') {
+							saveMessage += ` (✓ บันทึกเป็นแบบร่างบน Facebook เรียบร้อย ID: ${fbData.id || ''})`;
+						} else if (fbPublishTiming === 'now') {
+							saveMessage += ` (✓ โพสต์ลง Facebook เรียบร้อย ID: ${fbData.id})`;
+						} else {
+							saveMessage += ` (✓ ตั้งเวลาโพสต์บน Facebook เรียบร้อย)`;
+						}
+					}
+				} catch (fbErr: any) {
+					fbPostResult = {
+						success: false,
+						error: fbErr.message || 'เกิดข้อผิดพลาดในการเชื่อมต่อ Facebook API'
+					};
+					saveMessage += ` (⚠️ Facebook: ${fbErr.message})`;
+				}
+			}
+
 			await loadPuzzles();
-			if (isEditMode) {
+			if (isEditMode && (!postToFacebook || fbPostResult?.success)) {
 				setTimeout(() => {
 					showModal = false;
-				}, 800);
+				}, 1200);
 			}
 		} catch (err: any) {
 			saveError = err.message || 'เกิดข้อผิดพลาดในการบันทึกข้อมูล';
@@ -265,7 +379,7 @@
 						<span>ระบบจัดการปริศนาประจำสัปดาห์</span>
 						<span class="px-3 py-1 rounded-xl bg-blue-500/20 border border-blue-500/40 text-blue-300 font-mono text-xs">Admin</span>
 					</h1>
-					<p class="text-sm text-slate-400">เพิ่ม แก้ไข และอัปโหลดรูปภาพปริศนาประจำสัปดาห์</p>
+					<p class="text-sm text-slate-400">เพิ่ม แก้ไข อัปโหลดรูปภาพ และโพสต์ลง Facebook Page</p>
 				</div>
 
 				<div class="flex items-center gap-3">
@@ -344,7 +458,7 @@
 								<th class="px-4 py-3">ปี / สัปดาห์</th>
 								<th class="px-4 py-3">ชื่อปริศนา</th>
 								<th class="px-4 py-3">เฉลย</th>
-								<th class="px-4 py-3 text-center">แก้ไข</th>
+								<th class="px-4 py-3 text-center">จัดการ</th>
 							</tr>
 						</thead>
 						<tbody class="divide-y divide-slate-800">
@@ -359,7 +473,7 @@
 												src={imgUrl}
 												alt="thumb"
 												class="w-full h-full object-cover"
-												on:error={(e) => { e.currentTarget.style.display = 'none'; }}
+												on:error={handleImgError}
 											/>
 											<ImageIcon size="18" class="text-slate-600 absolute pointer-events-none" />
 										</div>
@@ -385,11 +499,11 @@
 											<span class="px-2.5 py-1 rounded-xl bg-amber-500/20 text-amber-300 border border-amber-500/40 text-xs font-bold whitespace-nowrap">ไม่มี</span>
 										{/if}
 									</td>
-									<!-- Edit button displaying ONLY pencil icon -->
+									<!-- Action buttons -->
 									<td class="px-4 py-3.5 text-center">
 										<button
-											class="p-2.5 rounded-xl font-bold bg-blue-500/20 hover:bg-blue-500/30 text-blue-300 border border-blue-500/40 text-xs transition-all flex items-center justify-center mx-auto hover:scale-110"
-											title="แก้ไขข้อมูลปริศนา"
+											class="p-2.5 rounded-xl font-bold bg-blue-500/20 hover:bg-blue-500/30 text-blue-300 border border-blue-500/40 text-xs transition-all flex items-center justify-center mx-auto hover:scale-110 gap-1"
+											title="แก้ไขข้อมูลปริศนา / โพสต์ลง Facebook"
 											on:click={() => openEditModal(p)}
 										>
 											<Edit3Icon size="16" />
@@ -409,11 +523,11 @@
 	{/if}
 </div>
 
-<!-- Modal for Add / Edit Puzzle (Large Image Left Column + Themed File Upload) -->
+<!-- Modal for Add / Edit Puzzle (Large Image Left Column + Themed File Upload + Facebook Options) -->
 <input type="checkbox" class="modal-toggle" checked={showModal} />
 {#if showModal}
 	<div class="fixed inset-0 bg-slate-950/80 backdrop-blur-md z-[10000] flex items-center justify-center p-4 overflow-y-auto">
-		<div class="bg-slate-900 border border-slate-800 text-slate-100 rounded-3xl p-6 sm:p-8 max-w-4xl w-full shadow-2xl relative my-8">
+		<div class="bg-slate-900 border border-slate-800 text-slate-100 rounded-3xl p-6 sm:p-8 max-w-5xl w-full shadow-2xl relative my-8 max-h-[90vh] overflow-y-auto">
 			<button class="btn btn-sm btn-circle btn-ghost text-slate-400 hover:text-white absolute right-4 top-4" on:click={() => (showModal = false)}>✕</button>
 
 			<h3 class="font-black text-2xl text-white border-b border-slate-800 pb-3 mb-6 flex items-center gap-2">
@@ -421,50 +535,50 @@
 				<span>{isEditMode ? 'แก้ไขปริศนาประจำสัปดาห์' : 'เพิ่มปริศนาใหม่'}</span>
 			</h3>
 
-			<form on:submit|preventDefault={handleSave} class="grid grid-cols-1 md:grid-cols-2 gap-8">
-				<!-- LEFT COLUMN: LARGE IMAGE PREVIEW & THEMED FILE UPLOAD -->
-				<div class="flex flex-col gap-4">
-					<div class="text-sm font-bold text-slate-300 flex items-center justify-between">
-						<span>รูปภาพปริศนา</span>
-						<span class="text-xs font-mono text-slate-500">
-							ไฟล์: <code class="text-sky-400">{formYear}{('0' + formWeek).slice(-2)}.jpg</code>
-						</span>
+			<form on:submit|preventDefault={handleSave} class="flex flex-col gap-6">
+				<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+					<!-- LEFT COLUMN: IMAGE PREVIEW & UPLOAD (5 cols) -->
+					<div class="lg:col-span-5 flex flex-col gap-4">
+						<div class="text-sm font-bold text-slate-300 flex items-center justify-between">
+							<span>รูปภาพปริศนา</span>
+							<span class="text-xs font-mono text-slate-500">
+								ไฟล์: <code class="text-sky-400">{formYear}{('0' + formWeek).slice(-2)}.jpg</code>
+							</span>
+						</div>
+
+						<!-- Large Image Preview Box -->
+						<div class="w-full h-64 sm:h-72 rounded-2xl bg-slate-950 border border-slate-800 flex items-center justify-center overflow-hidden relative shadow-inner group">
+							{#if imagePreviewUrl}
+								<img src={imagePreviewUrl} alt="preview" class="w-full h-full object-contain p-2" />
+							{:else}
+								<div class="flex flex-col items-center justify-center text-slate-500 gap-2 p-4 text-center">
+									<ImageIcon size="48" class="text-slate-600" />
+									<span class="text-xs font-semibold">ยังไม่มีรูปภาพปริศนาสำหรับสัปดาห์นี้</span>
+								</div>
+							{/if}
+						</div>
+
+						<!-- Custom Themed File Upload Button / Input -->
+						<div class="flex flex-col gap-1.5">
+							<input
+								type="file"
+								id="admin-puzzle-file-input"
+								accept="image/*"
+								on:change={handleFileChange}
+								class="hidden"
+							/>
+							<label
+								for="admin-puzzle-file-input"
+								class="w-full flex items-center justify-center gap-2 px-5 py-3.5 rounded-2xl bg-blue-600/20 hover:bg-blue-600/30 border border-blue-500/40 text-blue-300 font-black text-sm cursor-pointer transition-all shadow-md hover:scale-[1.01]"
+							>
+								<UploadIcon size="18" />
+								<span class="truncate">{selectedFile ? selectedFile.name : 'เลือกไฟล์รูปภาพอัปโหลด (.jpg/.png)'}</span>
+							</label>
+						</div>
 					</div>
 
-					<!-- Large Image Preview Box -->
-					<div class="w-full h-72 sm:h-80 rounded-2xl bg-slate-950 border border-slate-800 flex items-center justify-center overflow-hidden relative shadow-inner group">
-						{#if imagePreviewUrl}
-							<img src={imagePreviewUrl} alt="preview" class="w-full h-full object-contain p-2" />
-						{:else}
-							<div class="flex flex-col items-center justify-center text-slate-500 gap-2 p-4 text-center">
-								<ImageIcon size="48" class="text-slate-600" />
-								<span class="text-xs font-semibold">ยังไม่มีรูปภาพปริศนาสำหรับสัปดาห์นี้</span>
-							</div>
-						{/if}
-					</div>
-
-					<!-- Custom Themed File Upload Button / Input -->
-					<div class="flex flex-col gap-1.5">
-						<input
-							type="file"
-							id="admin-puzzle-file-input"
-							accept="image/*"
-							on:change={handleFileChange}
-							class="hidden"
-						/>
-						<label
-							for="admin-puzzle-file-input"
-							class="w-full flex items-center justify-center gap-2 px-5 py-3.5 rounded-2xl bg-blue-600/20 hover:bg-blue-600/30 border border-blue-500/40 text-blue-300 font-black text-sm cursor-pointer transition-all shadow-md hover:scale-[1.01]"
-						>
-							<UploadIcon size="18" />
-							<span class="truncate">{selectedFile ? selectedFile.name : 'เลือกไฟล์รูปภาพอัปโหลด (.jpg/.png)'}</span>
-						</label>
-					</div>
-				</div>
-
-				<!-- RIGHT COLUMN: FORM INPUTS & SAVE BUTTON -->
-				<div class="flex flex-col justify-between gap-4">
-					<div class="flex flex-col gap-4">
+					<!-- RIGHT COLUMN: PUZZLE FIELDS (7 cols) -->
+					<div class="lg:col-span-7 flex flex-col gap-4">
 						<div class="grid grid-cols-2 gap-4">
 							<div class="flex flex-col gap-1.5">
 								<label for="admin-year-input" class="text-xs font-bold text-slate-400">ปี (Year)</label>
@@ -472,7 +586,7 @@
 									id="admin-year-input"
 									type="number"
 									bind:value={formYear}
-									class="w-full px-4 py-3 rounded-2xl bg-black border border-slate-800 text-white font-bold focus:outline-none focus:border-blue-400 text-sm"
+									class="w-full px-4 py-2.5 rounded-2xl bg-black border border-slate-800 text-white font-bold focus:outline-none focus:border-blue-400 text-sm"
 									required
 									min="2000"
 									max="2099"
@@ -485,7 +599,7 @@
 									id="admin-week-input"
 									type="number"
 									bind:value={formWeek}
-									class="w-full px-4 py-3 rounded-2xl bg-black border border-slate-800 text-white font-bold focus:outline-none focus:border-blue-400 text-sm"
+									class="w-full px-4 py-2.5 rounded-2xl bg-black border border-slate-800 text-white font-bold focus:outline-none focus:border-blue-400 text-sm"
 									required
 									min="1"
 									max="53"
@@ -500,7 +614,7 @@
 								type="text"
 								bind:value={formTitle}
 								placeholder="เช่น ศิลปะ, ดิจิตัล, นับพร้อมกัน..."
-								class="w-full px-4 py-3 rounded-2xl bg-black border border-slate-800 text-white font-bold focus:outline-none focus:border-blue-400 text-sm"
+								class="w-full px-4 py-2.5 rounded-2xl bg-black border border-slate-800 text-white font-bold focus:outline-none focus:border-blue-400 text-sm"
 							/>
 						</div>
 
@@ -511,7 +625,7 @@
 								type="text"
 								bind:value={formAnswer}
 								placeholder="กรอกคำตอบ (ถ้ายังไม่ออกเฉลยให้เว้นว่างไว้)..."
-								class="w-full px-4 py-3 rounded-2xl bg-black border border-slate-800 text-sky-300 font-mono font-bold focus:outline-none focus:border-blue-400 text-sm"
+								class="w-full px-4 py-2.5 rounded-2xl bg-black border border-slate-800 text-sky-300 font-mono font-bold focus:outline-none focus:border-blue-400 text-sm"
 							/>
 						</div>
 
@@ -522,51 +636,168 @@
 								type="text"
 								bind:value={formAnswerGuide}
 								placeholder="เช่น ภาษาอังกฤษ 5 ตัวอักษร, คำขึ้นต้นด้วย ก..."
-								class="w-full px-4 py-3 rounded-2xl bg-black border border-slate-800 text-white font-bold focus:outline-none focus:border-blue-400 text-sm"
+								class="w-full px-4 py-2.5 rounded-2xl bg-black border border-slate-800 text-white font-bold focus:outline-none focus:border-blue-400 text-sm"
 							/>
 						</div>
 					</div>
+				</div>
 
-					<!-- Feedback Messages & Submit Buttons -->
-					<div class="flex flex-col gap-3 pt-2 border-t border-slate-800">
-						{#if saveMessage}
-							<div class="p-3 rounded-2xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 text-xs flex flex-col items-start gap-1.5">
-								<div class="flex items-center gap-1.5 font-bold">
-									<CheckCircleIcon size="16" />
-									<span>{saveMessage}</span>
-								</div>
-								{#if newlyCreatedUrl}
-									<a
-										href={newlyCreatedUrl}
-										target="_blank"
-										class="px-3 py-1.5 rounded-xl bg-emerald-500 text-slate-950 font-black text-xs hover:bg-emerald-400 transition-colors"
-										style="color: #0f172a;"
-									>
-										🔗 เปิดดูหน้าปริศนา ({formYear} สัปดาห์ที่ {formWeek}) ↗
-									</a>
-								{/if}
+				<!-- FACEBOOK INTEGRATION SECTION -->
+				<div class="rounded-2xl bg-slate-950/80 border border-blue-500/30 p-5 flex flex-col gap-4 shadow-lg">
+					<div class="flex items-center justify-between flex-wrap gap-2 border-b border-slate-800/80 pb-3">
+						<div class="flex items-center gap-2.5">
+							<div class="w-8 h-8 rounded-xl bg-blue-600/20 border border-blue-500/40 text-blue-400 flex items-center justify-center shadow-inner">
+								<Share2Icon size="16" />
 							</div>
-						{/if}
-
-						{#if saveError}
-							<div class="p-3 rounded-2xl bg-rose-500/20 border border-rose-500/40 text-rose-300 text-xs flex items-center gap-1.5 font-bold">
-								<AlertCircleIcon size="16" />
-								<span>{saveError}</span>
+							<div>
+								<span class="text-sm font-black text-white">Facebook Page Publishing</span>
+								<span class="text-xs text-slate-400 block">โพสต์รูปภาพและรายละเอียดปริศนาลงเพจอัตโนมัติ</span>
 							</div>
-						{/if}
-
-						<div class="flex justify-end gap-3 pt-2">
-							<button type="button" class="px-5 py-3 rounded-2xl font-bold bg-slate-950 border border-slate-800 text-slate-400 hover:text-white text-sm" on:click={() => (showModal = false)}>ยกเลิก</button>
-							<button type="submit" class="px-6 py-3 rounded-2xl font-black bg-blue-500 hover:bg-blue-400 text-white shadow-lg shadow-blue-500/30 text-sm flex items-center gap-2" disabled={isSaving}>
-								{#if isSaving}
-									<span class="loading loading-spinner loading-xs" />
-									กำลังบันทึก...
-								{:else}
-									<CheckCircleIcon size="18" />
-									บันทึก
-								{/if}
-							</button>
 						</div>
+
+						<!-- Toggle Post to Facebook -->
+						<label class="flex items-center gap-3 cursor-pointer select-none bg-slate-900 border border-slate-800 px-3.5 py-1.5 rounded-xl hover:border-blue-500/50 transition-colors">
+							<input
+								type="checkbox"
+								bind:checked={postToFacebook}
+								class="checkbox checkbox-primary checkbox-sm"
+							/>
+							<span class="text-xs font-bold text-slate-200">โพสต์ลง Facebook</span>
+						</label>
+					</div>
+
+					{#if postToFacebook}
+						<div class="flex flex-col gap-4 animate-fadeIn">
+							<!-- Post Details / Caption -->
+							<div class="flex flex-col gap-1.5">
+								<div class="flex items-center justify-between">
+									<label for="fb-caption-textarea" class="text-xs font-bold text-slate-300 flex items-center gap-1.5">
+										<span>รายละเอียดโพสต์ (Post Caption / Details)</span>
+										<span class="text-[10px] text-blue-400 font-mono">Meta Graph API</span>
+									</label>
+									<button
+										type="button"
+										on:click={handleRegenerateCaption}
+										class="text-xs text-blue-400 hover:text-blue-300 flex items-center gap-1 font-bold transition-colors py-0.5 px-2 rounded-lg hover:bg-blue-500/10"
+										title="สร้างข้อความใหม่อิงจาก ปี/สัปดาห์/ชื่อปริศนา"
+									>
+										<RefreshCwIcon size="12" />
+										<span>สร้างข้อความใหม่</span>
+									</button>
+								</div>
+								<textarea
+									id="fb-caption-textarea"
+									bind:value={fbCaption}
+									rows="4"
+									placeholder="พิมพ์ข้อความโพสต์..."
+									class="w-full px-4 py-3 rounded-2xl bg-black border border-slate-800 text-white font-medium focus:outline-none focus:border-blue-400 text-xs leading-relaxed"
+								/>
+							</div>
+
+							<!-- Schedule vs Publish Now vs Draft Controls -->
+							<div class="grid grid-cols-1 md:grid-cols-2 gap-4 items-center bg-slate-900/60 p-3.5 rounded-xl border border-slate-800/80">
+								<div class="flex flex-col gap-1.5">
+									<span class="text-xs font-bold text-slate-300">ตัวเลือกการเผยแพร่ (Publish Timing)</span>
+									<div class="grid grid-cols-3 gap-1.5">
+										<button
+											type="button"
+											class="py-2 px-2.5 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1 {fbPublishTiming === 'now' ? 'bg-blue-500 text-white shadow-md' : 'bg-slate-950 text-slate-400 hover:text-white border border-slate-800'}"
+											on:click={() => (fbPublishTiming = 'now')}
+										>
+											<SendIcon size="13" />
+											<span class="truncate">ตอนนี้ (Now)</span>
+										</button>
+										<button
+											type="button"
+											class="py-2 px-2.5 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1 {fbPublishTiming === 'schedule' ? 'bg-blue-500 text-white shadow-md' : 'bg-slate-950 text-slate-400 hover:text-white border border-slate-800'}"
+											on:click={() => (fbPublishTiming = 'schedule')}
+										>
+											<ClockIcon size="13" />
+											<span class="truncate">ตั้งเวลา</span>
+										</button>
+										<button
+											type="button"
+											class="py-2 px-2.5 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1 {fbPublishTiming === 'draft' ? 'bg-blue-500 text-white shadow-md' : 'bg-slate-950 text-slate-400 hover:text-white border border-slate-800'}"
+											on:click={() => (fbPublishTiming = 'draft')}
+										>
+											<FileTextIcon size="13" />
+											<span class="truncate">แบบร่าง (Draft)</span>
+										</button>
+									</div>
+								</div>
+
+								{#if fbPublishTiming === 'schedule'}
+									<div class="flex flex-col gap-1.5">
+										<label for="fb-schedule-datetime" class="text-xs font-bold text-slate-300 flex items-center gap-1">
+											<CalendarIcon size="13" class="text-blue-400" />
+											<span>วัน-เวลาที่ต้องการเผยแพร่</span>
+										</label>
+										<input
+											id="fb-schedule-datetime"
+											type="datetime-local"
+											bind:value={fbScheduleDate}
+											class="w-full px-3 py-2 rounded-xl bg-black border border-slate-800 text-white text-xs font-mono focus:outline-none focus:border-blue-400"
+											required={fbPublishTiming === 'schedule'}
+										/>
+										<span class="text-[10px] text-slate-500">
+											* ต้องอยู่ระหว่าง 10 นาที ถึง 75 วันนับจากปัจจุบัน
+										</span>
+									</div>
+								{:else if fbPublishTiming === 'draft'}
+									<div class="text-xs text-amber-200 flex items-center gap-2 p-2.5 bg-amber-500/10 border border-amber-500/30 rounded-xl">
+										<FileTextIcon size="16" class="text-amber-400 shrink-0" />
+										<span>บันทึกเป็นแบบร่าง (Draft) ใน Meta Business Suite เพื่อให้แอดมินเข้าไปตรวจสอบ/เผยแพร่ภายหลัง</span>
+									</div>
+								{:else}
+									<div class="text-xs text-slate-400 flex items-center gap-2 p-2.5 bg-slate-950 rounded-xl border border-slate-800">
+										<CheckCircleIcon size="14" class="text-emerald-400 shrink-0" />
+										<span>โพสต์จะถูกเผยแพร่ลง Facebook Page ทันทีที่กดบันทึก</span>
+									</div>
+								{/if}
+							</div>
+						</div>
+					{/if}
+				</div>
+
+				<!-- Feedback Messages & Submit Buttons -->
+				<div class="flex flex-col gap-3 pt-2 border-t border-slate-800">
+					{#if saveMessage}
+						<div class="p-3.5 rounded-2xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 text-xs flex flex-col items-start gap-2">
+							<div class="flex items-center gap-2 font-bold">
+								<CheckCircleIcon size="18" />
+								<span>{saveMessage}</span>
+							</div>
+							{#if newlyCreatedUrl}
+								<a
+									href={newlyCreatedUrl}
+									target="_blank"
+									class="px-3.5 py-1.5 rounded-xl bg-emerald-500 text-slate-950 font-black text-xs hover:bg-emerald-400 transition-colors inline-flex items-center gap-1"
+									style="color: #0f172a;"
+								>
+									<span>🔗 เปิดดูหน้าปริศนา ({formYear} สัปดาห์ที่ {formWeek}) ↗</span>
+								</a>
+							{/if}
+						</div>
+					{/if}
+
+					{#if saveError}
+						<div class="p-3.5 rounded-2xl bg-rose-500/20 border border-rose-500/40 text-rose-300 text-xs flex items-center gap-2 font-bold">
+							<AlertCircleIcon size="18" />
+							<span>{saveError}</span>
+						</div>
+					{/if}
+
+					<div class="flex justify-end gap-3 pt-2">
+						<button type="button" class="px-5 py-3 rounded-2xl font-bold bg-slate-950 border border-slate-800 text-slate-400 hover:text-white text-sm" on:click={() => (showModal = false)}>ยกเลิก</button>
+						<button type="submit" class="px-6 py-3 rounded-2xl font-black bg-blue-500 hover:bg-blue-400 text-white shadow-lg shadow-blue-500/30 text-sm flex items-center gap-2" disabled={isSaving}>
+							{#if isSaving}
+								<span class="loading loading-spinner loading-xs" />
+								กำลังบันทึก...
+							{:else}
+								<CheckCircleIcon size="18" />
+								บันทึก {postToFacebook ? '& โพสต์ Facebook' : ''}
+							{/if}
+						</button>
 					</div>
 				</div>
 			</form>
