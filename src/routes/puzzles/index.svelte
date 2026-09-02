@@ -207,6 +207,21 @@
 
 	const nonWordPuzzles = [
 		{
+			type: 'eulersquare',
+			title: 'Euler Square',
+			description: 'Graeco-Latin Square: Fill rows and columns with unique letter and color symbol pairs',
+			icon: `<svg class="w-10 h-10 text-teal-400 transition-all duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+				<rect x="3" y="3" width="18" height="18" rx="2" />
+				<line x1="3" y1="9" x2="21" y2="9" />
+				<line x1="3" y1="15" x2="21" y2="15" />
+				<line x1="9" y1="3" x2="9" y2="21" />
+				<line x1="15" y1="3" x2="15" y2="21" />
+				<circle cx="6" cy="6" r="1.5" fill="#ef4444" />
+				<circle cx="12" cy="12" r="1.5" fill="#3b82f6" />
+				<circle cx="18" cy="18" r="1.5" fill="#10b981" />
+			</svg>`
+		},
+		{
 			type: 'logicpuzzle',
 			title: 'Logic Puzzles',
 			description: 'คลังโจทย์โลจิคพัซเซิล',
