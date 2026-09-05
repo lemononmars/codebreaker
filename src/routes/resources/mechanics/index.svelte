@@ -10,6 +10,7 @@
 		PUZZLE_MECHANIC_CHAPTERS,
 		PUZZLE_MECHANIC_COUNT
 	} from '$lib/data/resources/puzzleMechanics';
+	import { getMechanicIcon } from '$lib/data/resources/mechanicIcons';
 
 	let searchQuery = '';
 
@@ -67,9 +68,9 @@
 						กลไกปริศนา <span class="opacity-40">·</span> <span lang="ja">謎解きの仕組み</span>
 					</p>
 					<p class="max-w-3xl leading-relaxed opacity-75">
-						ดัชนีรูปแบบการคิดที่พบบ่อยในปริศนาแบบภาพ เกมล่าปริศนา และห้องหลบหนี
-						สำหรับตอนนี้แต่ละหัวข้อมีคำอธิบายสั้น ๆ และจะเพิ่มโจทย์ทดลอง ระบบตรวจคำตอบ
-						และเฉลยในภายหลัง
+						ดัชนีรูปแบบการคิดและกลไกที่พบบ่อยในปริศนาแบบภาพ เกมล่าปริศนา และห้องหลบหนี
+						พร้อมคำอธิบายภาษาไทย ศัพท์เทคนิคภาษาอังกฤษและญี่ปุ่น โจทย์ทดลองแบบเวกเตอร์ (SVG)
+						ระบบตรวจคำตอบ และเฉลยวิธีคิดครบทุกหัวข้อ
 					</p>
 				</div>
 			</div>
@@ -170,11 +171,19 @@
 									id={mechanic.id}
 									class="scroll-mt-28 rounded-2xl border border-base-300 bg-base-100 text-base-content p-5 shadow-sm hover:shadow-lg transition-shadow flex flex-col gap-4"
 								>
-									<div>
-										<h3 class="text-xl font-black leading-tight">{mechanic.englishTitle}</h3>
-										<div class="mt-2 space-y-0.5">
-											<p class="font-bold text-primary">{mechanic.thaiTitle}</p>
-											<p class="font-medium opacity-65" lang="ja">{mechanic.japaneseTitle}</p>
+									<div class="flex items-start gap-3.5">
+										<div
+											class="w-11 h-11 rounded-2xl bg-primary/10 text-primary shrink-0 flex items-center justify-center p-2.5 shadow-sm border border-primary/20"
+											title={mechanic.englishTitle}
+										>
+											{@html getMechanicIcon(mechanic.id)}
+										</div>
+										<div class="min-w-0 flex-1">
+											<h3 class="text-xl font-black leading-tight">{mechanic.englishTitle}</h3>
+											<div class="mt-1.5 space-y-0.5">
+												<p class="font-bold text-primary text-sm">{mechanic.thaiTitle}</p>
+												<p class="font-medium opacity-65 text-xs" lang="ja">{mechanic.japaneseTitle}</p>
+											</div>
 										</div>
 									</div>
 
@@ -188,7 +197,15 @@
 											class="text-xs link link-hover opacity-50"
 											aria-label={'Link to ' + mechanic.englishTitle}>#{mechanic.id}</a
 										>
-										<span class="badge badge-ghost text-xs">Puzzle coming later</span>
+										{#if mechanic.hasExercise}
+											<a
+												href="/resources/mechanics/{mechanic.id}"
+												class="btn btn-primary btn-xs sm:btn-sm gap-1 text-primary-content font-bold shadow-sm"
+											>
+												<span>ดูโจทย์ & ลองไข</span>
+												<span>→</span>
+											</a>
+										{/if}
 									</div>
 								</article>
 							{/each}
