@@ -395,87 +395,266 @@
 	</div>
 
 	<!-- Main Area: Board on Left, Single Combined Control Div on Right -->
-	<div class="flex flex-col lg:flex-row items-center lg:items-start justify-center gap-8 w-full">
-		<!-- Left: Grid Board -->
-		<div
-			class="relative p-3 sm:p-5 rounded-3xl bg-slate-900/90 border border-slate-800 shadow-2xl backdrop-blur-md shrink-0"
-			style="max-width: min(92vw, {currentSize === 3 ? '420px' : currentSize === 4 ? '480px' : '540px'}); width: 100%;"
-		>
-			{#if isGenerating}
-				<div class="absolute inset-0 z-20 rounded-3xl bg-slate-950/85 backdrop-blur-sm flex flex-col items-center justify-center gap-3">
-					<span class="loading loading-spinner text-emerald-400 w-10"></span>
-					<span class="text-sm font-medium text-slate-300">Generating unique puzzle...</span>
-				</div>
-			{/if}
-
+	<!-- Main Area: Board on Left, Single Combined Control Div on Right -->
+	<div class="flex flex-col lg:flex-row items-center lg:items-start justify-center gap-6 lg:gap-8 w-full">
+		<!-- Left / Mobile Top Area: Board (+ Mobile Inputs Above Board) -->
+		<div class="flex flex-col items-center w-full lg:w-auto">
+			<!-- MOBILE INPUTS: Directly above the board on mobile mode (lg:hidden) -->
 			<div
-				class="grid gap-2 sm:gap-3"
-				style="grid-template-columns: repeat({currentSize}, minmax(0, 1fr));"
+				class="block lg:hidden w-full p-3.5 mb-3 rounded-2xl bg-slate-900/90 border border-slate-800 shadow-xl backdrop-blur-md space-y-2.5"
+				style="max-width: min(92vw, {currentSize === 3 ? '420px' : currentSize === 4 ? '480px' : '540px'});"
 			>
-				{#each playerGrid as row, rIndex}
-					{#each row as cell, cIndex}
-						{@const isSelected = selectedCell?.[0] === rIndex && selectedCell?.[1] === cIndex}
-						{@const isHinted = hintCell?.[0] === rIndex && hintCell?.[1] === cIndex}
-						{@const isSameRowOrCol = selectedCell && (selectedCell[0] === rIndex || selectedCell[1] === cIndex)}
-						{@const isSameLetter = selectedCell && activeLetter !== null && cell.letter === activeLetter}
-						{@const isSameColor = selectedCell && activeColor !== null && cell.color === activeColor}
-						{@const cellConflict = conflicts[`${rIndex},${cIndex}`]}
-						{@const hasConflict = cellConflict && (cellConflict.rowLetter || cellConflict.colLetter || cellConflict.rowColor || cellConflict.colColor || cellConflict.duplicatePair)}
-						{@const displayLetter = showSolution ? puzzle?.solution[rIndex][cIndex].letter : cell.letter}
-						{@const displayColor = showSolution ? puzzle?.solution[rIndex][cIndex].color : cell.color}
-						{@const colorInfo = displayColor !== null ? EULER_COLORS[displayColor] : null}
+				<!-- Selected Cell Header & Clear -->
+				<div class="flex items-center justify-between text-xs">
+					<span class="font-bold text-slate-300">
+						{#if selectedCell}
+							Cell ({selectedCell[0] + 1}, {selectedCell[1] + 1})
+							{#if isCellGiven}
+								<span class="text-amber-400 font-normal ml-1">(Locked)</span>
+							{/if}
+						{:else}
+							<span class="text-slate-400 font-normal">Select a cell on the board</span>
+						{/if}
+					</span>
+					{#if selectedCell && !isCellGiven}
+						<button
+							class="btn btn-xs btn-ghost text-red-400 hover:bg-red-500/20 text-[10px] px-2 h-6"
+							on:click={clearSelectedCell}
+						>
+							Clear Cell
+						</button>
+					{/if}
+				</div>
 
+				<!-- Letters Row (Square buttons, no "Letters" label) -->
+				<div class="flex items-center justify-center gap-2">
+					{#each Array.from({ length: currentSize }, (_, i) => i) as lIdx}
+						{@const isSelectedLetter = activeLetter === lIdx}
+						{@const isGivenLetter = activeCell?.isGivenLetter}
 						<button
 							type="button"
-							class="aspect-square relative flex flex-col items-center justify-center rounded-2xl border-2 transition-all duration-200 outline-none select-none overflow-hidden group
-								{isSelected
-									? 'ring-4 ring-cyan-400 ring-offset-2 ring-offset-slate-950 border-white z-10 scale-[1.03] shadow-lg shadow-cyan-500/30'
-									: isHinted
-									? 'ring-4 ring-amber-400 border-amber-300 animate-pulse z-10 scale-[1.02]'
-									: isSameRowOrCol
-									? 'bg-slate-800/80 border-slate-700'
-									: 'bg-slate-800/50 border-slate-800 hover:border-slate-700 hover:bg-slate-800/70'}
-								{hasConflict ? 'border-red-500 ring-2 ring-red-500/70 animate-pulse' : ''}
-								{colorInfo ? `${colorInfo.bgClass} ${colorInfo.borderClass}` : ''}"
-							on:click={() => selectCell(rIndex, cIndex)}
+							class="btn btn-sm aspect-square w-11 h-11 min-h-0 p-0 text-base font-black transition-all rounded-xl
+								{isSelectedLetter
+									? 'btn-primary text-primary-content ring-2 ring-emerald-400 scale-105'
+									: 'btn-ghost bg-slate-800 hover:bg-slate-700 text-slate-200'}
+								{isGivenLetter ? 'opacity-50 cursor-not-allowed' : ''}"
+							disabled={isGivenLetter}
+							on:click={() => setLetter(lIdx)}
 						>
-							<!-- Highlight matching letter or color -->
-							{#if (isSameLetter || isSameColor) && !isSelected}
-								<div class="absolute inset-0 bg-white/5 pointer-events-none"></div>
-							{/if}
-
-							<!-- Center Content: Letter + Geometry Symbol Side-by-Side -->
-							<div class="flex items-center justify-center gap-1 sm:gap-1.5">
-								{#if displayLetter !== null}
-									<span
-										class="font-black text-2xl sm:text-4xl tracking-tight transition-transform
-											{colorInfo ? colorInfo.textClass : 'text-slate-100'}"
-									>
-										{EULER_LETTERS[displayLetter]}
-									</span>
-								{/if}
-
-								{#if colorInfo}
-									<span
-										class="text-base sm:text-2xl font-bold transition-transform {colorInfo.textClass}"
-										title={colorInfo.name}
-									>
-										{colorInfo.symbol}
-									</span>
-								{/if}
-
-								{#if displayLetter === null && displayColor === null}
-									<span class="text-slate-600 font-bold text-xl">·</span>
-								{/if}
-							</div>
+							{EULER_LETTERS[lIdx]}
 						</button>
 					{/each}
-				{/each}
+					{#if activeCell && !activeCell.isGivenLetter && activeCell.letter !== null}
+						<button
+							class="btn btn-xs btn-ghost text-slate-400 hover:text-red-400 text-xs px-1.5 ml-1"
+							on:click={() => setLetter(null)}
+							title="Clear Letter"
+						>
+							✕
+						</button>
+					{/if}
+				</div>
+
+				<!-- Colors Row (Square buttons, no "Colors & Symbols" label, symbol only) -->
+				<div class="flex items-center justify-center gap-2">
+					{#each Array.from({ length: currentSize }, (_, i) => i) as cIdx}
+						{@const color = EULER_COLORS[cIdx]}
+						{@const isSelectedColor = activeColor === cIdx}
+						{@const isGivenColor = activeCell?.isGivenColor}
+						<button
+							type="button"
+							class="btn btn-sm aspect-square w-11 h-11 min-h-0 p-0 flex items-center justify-center text-lg font-black transition-all rounded-xl border
+								{isSelectedColor
+									? `${color.bgClass} ${color.borderClass} ring-2 ring-white scale-105`
+									: 'bg-slate-800/80 border-slate-700 hover:bg-slate-700 text-slate-200'}
+								{isGivenColor ? 'opacity-50 cursor-not-allowed' : ''}"
+							disabled={isGivenColor}
+							on:click={() => setColor(cIdx)}
+							title={color.name}
+						>
+							<span class="{color.textClass}">{color.symbol}</span>
+						</button>
+					{/each}
+					{#if activeCell && !activeCell.isGivenColor && activeCell.color !== null}
+						<button
+							class="btn btn-xs btn-ghost text-slate-400 hover:text-red-400 text-xs px-1.5 ml-1"
+							on:click={() => setColor(null)}
+							title="Clear Color"
+						>
+							✕
+						</button>
+					{/if}
+				</div>
+			</div>
+
+			<!-- Grid Board -->
+			<div
+				class="relative p-3 sm:p-5 rounded-3xl bg-slate-900/90 border border-slate-800 shadow-2xl backdrop-blur-md shrink-0 w-full"
+				style="max-width: min(92vw, {currentSize === 3 ? '420px' : currentSize === 4 ? '480px' : '540px'});"
+			>
+				{#if isGenerating}
+					<div class="absolute inset-0 z-20 rounded-3xl bg-slate-950/85 backdrop-blur-sm flex flex-col items-center justify-center gap-3">
+						<span class="loading loading-spinner text-emerald-400 w-10"></span>
+						<span class="text-sm font-medium text-slate-300">Generating unique puzzle...</span>
+					</div>
+				{/if}
+
+				<div
+					class="grid gap-2 sm:gap-3"
+					style="grid-template-columns: repeat({currentSize}, minmax(0, 1fr));"
+				>
+					{#each playerGrid as row, rIndex}
+						{#each row as cell, cIndex}
+							{@const isSelected = selectedCell?.[0] === rIndex && selectedCell?.[1] === cIndex}
+							{@const isHinted = hintCell?.[0] === rIndex && hintCell?.[1] === cIndex}
+							{@const isSameRowOrCol = selectedCell && (selectedCell[0] === rIndex || selectedCell[1] === cIndex)}
+							{@const isSameLetter = selectedCell && activeLetter !== null && cell.letter === activeLetter}
+							{@const isSameColor = selectedCell && activeColor !== null && cell.color === activeColor}
+							{@const cellConflict = conflicts[`${rIndex},${cIndex}`]}
+							{@const hasConflict = cellConflict && (cellConflict.rowLetter || cellConflict.colLetter || cellConflict.rowColor || cellConflict.colColor || cellConflict.duplicatePair)}
+							{@const displayLetter = (showSolution && puzzle) ? puzzle.solution[rIndex][cIndex].letter : cell.letter}
+							{@const displayColor = (showSolution && puzzle) ? puzzle.solution[rIndex][cIndex].color : cell.color}
+							{@const colorInfo = displayColor !== null && displayColor !== undefined ? EULER_COLORS[displayColor] : null}
+
+							<button
+								type="button"
+								class="aspect-square relative flex flex-col items-center justify-center rounded-2xl border-2 transition-all duration-200 outline-none select-none overflow-hidden group
+									{isSelected
+										? 'ring-4 ring-cyan-400 ring-offset-2 ring-offset-slate-950 border-white z-10 scale-[1.03] shadow-lg shadow-cyan-500/30'
+										: isHinted
+										? 'ring-4 ring-amber-400 border-amber-300 animate-pulse z-10 scale-[1.02]'
+										: isSameRowOrCol
+										? 'bg-slate-800/80 border-slate-700'
+										: 'bg-slate-800/50 border-slate-800 hover:border-slate-700 hover:bg-slate-800/70'}
+									{hasConflict ? 'border-red-500 ring-2 ring-red-500/70 animate-pulse' : ''}
+									{colorInfo ? `${colorInfo.bgClass} ${colorInfo.borderClass}` : ''}"
+								on:click={() => selectCell(rIndex, cIndex)}
+							>
+								<!-- Highlight matching letter or color -->
+								{#if (isSameLetter || isSameColor) && !isSelected}
+									<div class="absolute inset-0 bg-white/5 pointer-events-none"></div>
+								{/if}
+
+								<!-- Center Content: Letter + Geometry Symbol Side-by-Side -->
+								<div class="flex items-center justify-center gap-1 sm:gap-1.5">
+									{#if displayLetter !== null && displayLetter !== undefined}
+										<span
+											class="font-black text-2xl sm:text-4xl tracking-tight transition-transform
+												{colorInfo ? colorInfo.textClass : 'text-slate-100'}"
+										>
+											{EULER_LETTERS[displayLetter]}
+										</span>
+									{/if}
+
+									{#if colorInfo}
+										<span
+											class="text-base sm:text-2xl font-bold transition-transform {colorInfo.textClass}"
+											title={colorInfo.name}
+										>
+											{colorInfo.symbol}
+										</span>
+									{/if}
+
+									{#if displayLetter === null && displayColor === null}
+										<span class="text-slate-600 font-bold text-xl">·</span>
+									{/if}
+								</div>
+							</button>
+						{/each}
+					{/each}
+				</div>
 			</div>
 		</div>
 
 		<!-- Right: Single Combined Controls Panel (with separators) -->
 		<div class="w-full max-w-md bg-slate-900/90 border border-slate-800 rounded-3xl p-5 shadow-xl backdrop-blur-md flex flex-col gap-3.5">
+			<!-- DESKTOP INPUTS: Displayed on lg and above (hidden on mobile since it is above board) -->
+			<div class="hidden lg:flex flex-col gap-2.5">
+				<!-- Selected Cell Header -->
+				<div class="flex items-center justify-between">
+					<span class="text-[11px] font-bold uppercase tracking-wider text-slate-300">
+						{#if selectedCell}
+							Cell ({selectedCell[0] + 1}, {selectedCell[1] + 1})
+							{#if isCellGiven}
+								<span class="text-amber-400 font-normal ml-1">(Locked)</span>
+							{/if}
+						{:else}
+							Select a cell
+						{/if}
+					</span>
+					{#if selectedCell && !isCellGiven}
+						<button
+							class="btn btn-xs btn-ghost text-red-400 hover:bg-red-500/20 text-[10px] px-1.5 h-6"
+							on:click={clearSelectedCell}
+						>
+							Clear Cell
+						</button>
+					{/if}
+				</div>
+
+				<!-- Letters Row (Square buttons, no "Letters" label) -->
+				<div class="flex items-center justify-center gap-2">
+					{#each Array.from({ length: currentSize }, (_, i) => i) as lIdx}
+						{@const isSelectedLetter = activeLetter === lIdx}
+						{@const isGivenLetter = activeCell?.isGivenLetter}
+						<button
+							type="button"
+							class="btn btn-sm aspect-square w-11 h-11 min-h-0 p-0 text-base font-black transition-all rounded-xl
+								{isSelectedLetter
+									? 'btn-primary text-primary-content ring-2 ring-emerald-400 scale-105'
+									: 'btn-ghost bg-slate-800 hover:bg-slate-700 text-slate-200'}
+								{isGivenLetter ? 'opacity-50 cursor-not-allowed' : ''}"
+							disabled={isGivenLetter}
+							on:click={() => setLetter(lIdx)}
+						>
+							{EULER_LETTERS[lIdx]}
+						</button>
+					{/each}
+					{#if activeCell && !activeCell.isGivenLetter && activeCell.letter !== null}
+						<button
+							class="btn btn-xs btn-ghost text-slate-400 hover:text-red-400 text-xs px-1.5 ml-1"
+							on:click={() => setLetter(null)}
+							title="Clear Letter"
+						>
+							✕
+						</button>
+					{/if}
+				</div>
+
+				<!-- Colors Row (Square buttons, no "Colors & Symbols" label, symbol only) -->
+				<div class="flex items-center justify-center gap-2">
+					{#each Array.from({ length: currentSize }, (_, i) => i) as cIdx}
+						{@const color = EULER_COLORS[cIdx]}
+						{@const isSelectedColor = activeColor === cIdx}
+						{@const isGivenColor = activeCell?.isGivenColor}
+						<button
+							type="button"
+							class="btn btn-sm aspect-square w-11 h-11 min-h-0 p-0 flex items-center justify-center text-lg font-black transition-all rounded-xl border
+								{isSelectedColor
+									? `${color.bgClass} ${color.borderClass} ring-2 ring-white scale-105`
+									: 'bg-slate-800/80 border-slate-700 hover:bg-slate-700 text-slate-200'}
+								{isGivenColor ? 'opacity-50 cursor-not-allowed' : ''}"
+							disabled={isGivenColor}
+							on:click={() => setColor(cIdx)}
+							title={color.name}
+						>
+							<span class="{color.textClass}">{color.symbol}</span>
+						</button>
+					{/each}
+					{#if activeCell && !activeCell.isGivenColor && activeCell.color !== null}
+						<button
+							class="btn btn-xs btn-ghost text-slate-400 hover:text-red-400 text-xs px-1.5 ml-1"
+							on:click={() => setColor(null)}
+							title="Clear Color"
+						>
+							✕
+						</button>
+					{/if}
+				</div>
+
+				<div class="border-t border-slate-800/80 my-0.5"></div>
+			</div>
+
 			<!-- Top Row: Stats & Current Settings Display (swapped) -->
 			<div class="flex items-center justify-between gap-2">
 				<div class="flex items-center gap-3">
@@ -555,101 +734,6 @@
 					<RefreshCwIcon size="12" class={isGenerating ? 'animate-spin' : ''} />
 					<span>New</span>
 				</button>
-			</div>
-
-			<!-- Separator -->
-			<div class="border-t border-slate-800/80 my-0.5"></div>
-
-			<!-- Section 3: Input Pickers -->
-			<!-- Selected Cell Header -->
-			<div class="flex items-center justify-between">
-				<span class="text-[11px] font-bold uppercase tracking-wider text-slate-300">
-					{#if selectedCell}
-						Cell ({selectedCell[0] + 1}, {selectedCell[1] + 1})
-						{#if isCellGiven}
-							<span class="text-amber-400 font-normal ml-1">(Locked)</span>
-						{/if}
-					{:else}
-						Select a cell
-					{/if}
-				</span>
-				{#if selectedCell && !isCellGiven}
-					<button
-						class="btn btn-xs btn-ghost text-red-400 hover:bg-red-500/20 text-[10px] px-1.5 h-6"
-						on:click={clearSelectedCell}
-					>
-						Clear Cell
-					</button>
-				{/if}
-			</div>
-
-			<!-- Letters Row (Compact minimized buttons, without count subtitle) -->
-			<div class="flex flex-col gap-1">
-				<div class="flex items-center justify-between">
-					<span class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider">Letters</span>
-					{#if activeCell && !activeCell.isGivenLetter && activeCell.letter !== null}
-						<button
-							class="text-[10px] text-slate-400 hover:text-red-400"
-							on:click={() => setLetter(null)}
-						>
-							Clear
-						</button>
-					{/if}
-				</div>
-				<div class="grid grid-cols-5 gap-1.5">
-					{#each Array.from({ length: currentSize }, (_, i) => i) as lIdx}
-						{@const isSelectedLetter = activeLetter === lIdx}
-						{@const isGivenLetter = activeCell?.isGivenLetter}
-						<button
-							type="button"
-							class="btn btn-sm h-9 min-h-0 p-0 text-sm font-black transition-all rounded-lg
-								{isSelectedLetter
-									? 'btn-primary text-primary-content ring-2 ring-emerald-400'
-									: 'btn-ghost bg-slate-800 hover:bg-slate-700 text-slate-200'}
-								{isGivenLetter ? 'opacity-50 cursor-not-allowed' : ''}"
-							disabled={isGivenLetter}
-							on:click={() => setLetter(lIdx)}
-						>
-							{EULER_LETTERS[lIdx]}
-						</button>
-					{/each}
-				</div>
-			</div>
-
-			<!-- Colors Row (Compact minimized buttons, without count subtitle) -->
-			<div class="flex flex-col gap-1">
-				<div class="flex items-center justify-between">
-					<span class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider">Colors &amp; Symbols</span>
-					{#if activeCell && !activeCell.isGivenColor && activeCell.color !== null}
-						<button
-							class="text-[10px] text-slate-400 hover:text-red-400"
-							on:click={() => setColor(null)}
-						>
-							Clear
-						</button>
-					{/if}
-				</div>
-				<div class="grid grid-cols-5 gap-1.5">
-					{#each Array.from({ length: currentSize }, (_, i) => i) as cIdx}
-						{@const color = EULER_COLORS[cIdx]}
-						{@const isSelectedColor = activeColor === cIdx}
-						{@const isGivenColor = activeCell?.isGivenColor}
-						<button
-							type="button"
-							class="btn btn-sm h-9 min-h-0 p-0 flex items-center justify-center gap-1 transition-all rounded-lg border
-								{isSelectedColor
-									? `${color.bgClass} ${color.borderClass} ring-2 ring-white`
-									: 'bg-slate-800/80 border-slate-700 hover:bg-slate-700 text-slate-200'}
-								{isGivenColor ? 'opacity-50 cursor-not-allowed' : ''}"
-							disabled={isGivenColor}
-							on:click={() => setColor(cIdx)}
-							title={color.name}
-						>
-							<span class="text-sm font-black {color.textClass}">{color.symbol}</span>
-							<span class="text-[10px] font-bold hidden sm:inline {color.textClass}">{color.name.slice(0, 3)}</span>
-						</button>
-					{/each}
-				</div>
 			</div>
 
 			<!-- Separator -->
