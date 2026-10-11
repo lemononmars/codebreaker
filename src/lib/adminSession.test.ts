@@ -46,6 +46,7 @@ describe('shared admin login', () => {
 		expect(document.querySelector('nav')).toBeNull();
 		await login('custom-admin');
 		expect(document.querySelector('form')).toBeNull();
+		expect(document.querySelector('a[href="/admin"]')).toBeNull();
 		for (const page of ['questions', 'weekly', 'logic'])
 			expect(document.querySelector(`a[href="/admin/${page}"]`)).not.toBeNull();
 		component!.$destroy();

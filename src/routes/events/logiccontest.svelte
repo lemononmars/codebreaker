@@ -33,7 +33,7 @@
    </div>
    <div class="divider"></div>
 
-   <h1 class="bg-blue-100"><a href="/shop/logiccontestbook/errata">Book Errata</a></h1>
+   <h1 class="bg-blue-100"><a href="/shop/logiccontestbook1/errata">Book Errata</a></h1>
    <div class="divider"></div>
 </div>
 

@@ -105,8 +105,8 @@ export const shopProductDescriptions: ShopProduct[] = [
         refParam: "order_deck_vol1"
     },
     {
-        url: 'logiccontestbook',
-        title: "Code Breaker Logic Puzzle Contest Book",
+        url: 'logiccontestbook1',
+        title: "Logic Puzzle Contest 1 Book",
         description: "รวบรวมโจทย์ทั้งหมดจากงานแข่ง พร้อมโจทย์พิเศษ 40 ข้อ รวม 85 ปริศนา (เนื้อหาภาษาอังกฤษล้วน)",
         imgUrl: 'logic_puzzle_contest_book_cover.jpg',
         price: 150,
@@ -115,7 +115,20 @@ export const shopProductDescriptions: ShopProduct[] = [
         category: "Logic Puzzle",
         puzzlesCount: "85 ปริศนา (Logic & Variety)",
         format: "หนังสือ A5 พร้อมเฉลยละเอียด",
-        refParam: "order_logiccontestbook"
+        refParam: "order_logiccontestbook1"
+    },
+    {
+        url: 'logiccontestbook2',
+        title: "Logic Puzzle Contest 2 Book",
+        description: "137 ปริศนาใน 48 ประเภท จาก Contest II, Choco Banana Bus และ Logic Showcase (คำอธิบายภาษาอังกฤษ มีปริศนาคำภาษาไทย)",
+        imgUrl: '/images/product/logic_puzzle_contest_book2_cover.jpg',
+        price: 150,
+        shipping: 30,
+        badge: "137 ข้อ • 48 ประเภท",
+        category: "Logic Puzzle",
+        puzzlesCount: "137 ปริศนา",
+        format: "หนังสือ A4 พร้อมเฉลย",
+        refParam: "order_logiccontestbook2"
     },
     {
         url: 'rebusbook',
@@ -144,13 +157,6 @@ export const shopComingSoonProducts: ShopComingSoonProduct[] = [
         title: "Puzzle Card Deck Vol.3",
         description: "ชุดการ์ดปริศนาระดับความยากเข้มข้น ออกแบบมาสำหรับแฟนพันธุ์แท้",
         category: "Card Game",
-        badge: "Coming Soon",
-        expected: "เร็ว ๆ นี้"
-    },
-    {
-        title: "Code Breaker Logic Contest Book Vol. 2",
-        description: "รวมสุดยอดโจทย์แข่ง Logic Puzzle Contest ซีซั่นใหม่พร้อมโจทย์พิเศษ",
-        category: "Logic Puzzle",
         badge: "Coming Soon",
         expected: "เร็ว ๆ นี้"
     }

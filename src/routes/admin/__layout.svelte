@@ -47,7 +47,6 @@
 		aria-label="Admin"
 		class="flex flex-wrap items-center gap-2 p-4 bg-base-200 text-base-content"
 	>
-		<a class="btn btn-ghost" href="/admin">Admin</a>
 		<a class="btn btn-ghost" href="/admin/weekly">Weekly</a>
 		<a class="btn btn-ghost" href="/admin/logic">Logic</a>
 		<a class="btn btn-ghost" href="/admin/questions">Quiz</a>
@@ -62,7 +61,6 @@
 		>
 			<div class="card-body">
 				<h1 class="card-title">Code Breaker Admin</h1>
-				<p class="text-sm">เข้าสู่ระบบครั้งเดียวเพื่อจัดการ Weekly, Logic และ Quiz</p>
 				<label for="admin-password">รหัสผ่าน (Password)</label>
 				<input
 					id="admin-password"

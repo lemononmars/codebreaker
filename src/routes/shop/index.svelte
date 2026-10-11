@@ -11,6 +11,7 @@
 		HelpCircleIcon,
 		AwardIcon,
 		MessageSquareIcon,
+		MailIcon,
 		ExternalLinkIcon
 	} from 'svelte-feather-icons';
 </script>
@@ -22,7 +23,9 @@
 <div class="container mx-auto px-4 pt-6 sm:pt-12 pb-24 max-w-6xl">
 	<!-- Hero Title -->
 	<div class="text-center mb-8 sm:mb-12">
-		<h1 class="text-3xl lg:text-5xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-teal-400 via-emerald-400 to-teal-300">
+		<h1
+			class="text-3xl lg:text-5xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-teal-400 via-emerald-400 to-teal-300"
+		>
 			Code Breaker Shop
 		</h1>
 		<p class="text-slate-400 text-sm sm:text-base mt-2 max-w-xl mx-auto">
@@ -31,7 +34,9 @@
 
 		<!-- Trust / Value Proposition Bar -->
 		<div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-6 max-w-4xl mx-auto text-left">
-			<div class="flex items-center gap-3 p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 text-slate-300">
+			<div
+				class="flex items-center gap-3 p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 text-slate-300"
+			>
 				<div class="p-2 rounded-lg bg-teal-500/10 text-teal-400 shrink-0">
 					<PackageIcon size="18" />
 				</div>
@@ -41,7 +46,9 @@
 				</div>
 			</div>
 
-			<div class="flex items-center gap-3 p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 text-slate-300">
+			<div
+				class="flex items-center gap-3 p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 text-slate-300"
+			>
 				<div class="p-2 rounded-lg bg-teal-500/10 text-teal-400 shrink-0">
 					<HelpCircleIcon size="18" />
 				</div>
@@ -51,7 +58,9 @@
 				</div>
 			</div>
 
-			<div class="flex items-center gap-3 p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 text-slate-300">
+			<div
+				class="flex items-center gap-3 p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 text-slate-300"
+			>
 				<div class="p-2 rounded-lg bg-teal-500/10 text-teal-400 shrink-0">
 					<AwardIcon size="18" />
 				</div>
@@ -64,11 +73,17 @@
 	</div>
 
 	<!-- Bundle & Save Banner -->
-	<div class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-emerald-950/70 via-slate-900/90 to-teal-950/70 border border-teal-500/40 p-5 sm:p-7 shadow-2xl mb-12">
-		<div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 relative z-10">
+	<div
+		class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-emerald-950/70 via-slate-900/90 to-teal-950/70 border border-teal-500/40 p-5 sm:p-7 shadow-2xl mb-12"
+	>
+		<div
+			class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 relative z-10"
+		>
 			<div class="space-y-2 max-w-2xl">
 				<div class="flex flex-wrap items-center gap-2">
-					<span class="badge badge-accent text-accent-content font-bold text-xs uppercase tracking-wide">
+					<span
+						class="badge badge-accent text-accent-content font-bold text-xs uppercase tracking-wide"
+					>
 						Super Bundle Deal
 					</span>
 					<span class="badge badge-outline text-teal-300 border-teal-500/50 text-xs">
@@ -83,8 +98,12 @@
 				</p>
 				<div class="flex items-baseline gap-3 pt-1">
 					<span class="text-xs text-slate-400 line-through">฿{shopBundleDeal.originalPrice}</span>
-					<span class="text-2xl sm:text-3xl font-extrabold text-teal-400">฿{shopBundleDeal.bundlePrice}</span>
-					<span class="text-xs font-semibold text-emerald-400 bg-emerald-950/60 border border-emerald-800/60 px-2 py-0.5 rounded-md">
+					<span class="text-2xl sm:text-3xl font-extrabold text-teal-400"
+						>฿{shopBundleDeal.bundlePrice}</span
+					>
+					<span
+						class="text-xs font-semibold text-emerald-400 bg-emerald-950/60 border border-emerald-800/60 px-2 py-0.5 rounded-md"
+					>
 						{shopBundleDeal.shippingText}
 					</span>
 				</div>
@@ -132,12 +151,31 @@
 	</div>
 
 	<!-- Stage 4: Coming Soon Section -->
+	<section class="mb-10 rounded-2xl bg-base-200 text-base-content p-6 text-center space-y-3">
+		<h2 class="text-xl font-bold">ติดต่อร้านค้า / Contact the Shop</h2>
+		<p class="text-sm">สอบถามสินค้าและสั่งซื้อทาง Facebook Inbox หรืออีเมล</p>
+		<div class="flex flex-wrap justify-center gap-3">
+			<a
+				class="btn btn-primary text-primary-content gap-2"
+				href="https://m.me/codebreakerTH"
+				target="_blank"
+				rel="noreferrer"
+			>
+				<MessageSquareIcon size="16" /> Facebook Inbox
+			</a>
+			<a
+				class="btn btn-outline gap-2"
+				href="mailto:sakulbuth@gmail.com?subject=Code%20Breaker%20Shop"
+			>
+				<MailIcon size="16" /> sakulbuth@gmail.com
+			</a>
+		</div>
+	</section>
+
 	<div class="pt-8 border-t border-slate-800/80">
 		<div class="text-left mb-6">
 			<div class="inline-flex items-center gap-2 mb-1">
-				<span class="badge badge-warning text-warning-content font-bold text-xs">
-					เร็ว ๆ นี้
-				</span>
+				<span class="badge badge-warning text-warning-content font-bold text-xs"> เร็ว ๆ นี้ </span>
 				<h2 class="text-xl sm:text-2xl font-bold text-white">Coming Soon</h2>
 			</div>
 			<p class="text-xs sm:text-sm text-slate-400">
@@ -160,4 +198,3 @@
 		</div>
 	</div>
 </div>
-

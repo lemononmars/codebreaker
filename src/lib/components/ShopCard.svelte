@@ -51,7 +51,7 @@
 	>
 		<div class="relative w-full h-48 sm:h-56 shrink-0 overflow-hidden bg-slate-950 border-b border-slate-800">
 			<img
-				src={imgUrl.startsWith('http') ? imgUrl : imgUrlPrefix + imgUrl}
+				src={imgUrl.startsWith('http') || imgUrl.startsWith('/') ? imgUrl : imgUrlPrefix + imgUrl}
 				alt={title}
 				class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
 			/>
