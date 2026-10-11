@@ -67,13 +67,13 @@
 		</div>
 		<button
 			type="button"
-			class="btn btn-circle btn-sm bg-base-200 text-base-content border-0 absolute left-2 top-[min(240px,35vh)] -translate-y-1/2 opacity-40 hover:opacity-90 focus-visible:opacity-100"
+			class="gallery-nav gallery-nav-left flex h-8 w-8 items-center justify-center rounded-full transition-opacity bg-base-200 text-base-content border-0 absolute left-2 top-[min(240px,35vh)] -translate-y-1/2 opacity-40 hover:opacity-90 focus-visible:opacity-100"
 			aria-label={language === 'en' ? 'Previous image' : 'ภาพก่อนหน้า'}
 			on:click={() => showPage(selected - 1)}>◀</button
 		>
 		<button
 			type="button"
-			class="btn btn-circle btn-sm bg-base-200 text-base-content border-0 absolute right-2 top-[min(240px,35vh)] -translate-y-1/2 opacity-40 hover:opacity-90 focus-visible:opacity-100"
+			class="gallery-nav gallery-nav-right flex h-8 w-8 items-center justify-center rounded-full transition-opacity bg-base-200 text-base-content border-0 absolute right-2 top-[min(240px,35vh)] -translate-y-1/2 opacity-40 hover:opacity-90 focus-visible:opacity-100"
 			aria-label={language === 'en' ? 'Next image' : 'ภาพถัดไป'}
 			on:click={() => showPage(selected + 1)}>▶</button
 		>
@@ -120,6 +120,34 @@
 </dialog>
 
 <style>
+	.gallery-nav {
+		transform: translate(0, -50%);
+		transition: transform 180ms ease-out, opacity 180ms ease-out;
+	}
+
+	.gallery-nav-left {
+		--hover-offset: -3px;
+	}
+
+	.gallery-nav-right {
+		--hover-offset: 3px;
+	}
+
+	@media (hover: hover) {
+		.gallery-nav:hover {
+			transform: translate(var(--hover-offset), -50%);
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.gallery-nav {
+			transition: none;
+		}
+		.gallery-nav:hover {
+			transform: translate(0, -50%);
+		}
+	}
+
 	[role='region'],
 	dialog {
 		scrollbar-width: none;

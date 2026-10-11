@@ -5,8 +5,10 @@
 <main class="max-w-3xl mx-auto p-6 pb-24 space-y-4">
 	<a class="link" href="/shop/logiccontestbook2">← Logic Puzzle Contest 2 Book</a>
 	<h1 class="text-3xl font-bold">Book Errata</h1>
-	<p>No errata have been reported for Logic Puzzle Contest 2 Book so far.</p>
-	<p>
+	<p class="rounded-lg bg-base-200 text-base-content border-l-4 border-primary p-4 font-semibold">
+		No errata have been reported for Logic Puzzle Contest 2 Book so far.
+	</p>
+	<p class="text-sm">
 		Have a question or found an issue? Please include the section and puzzle number in your message
 		so we can check it.
 	</p>

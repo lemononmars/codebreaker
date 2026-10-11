@@ -41,10 +41,6 @@
 			errataQuestion: 'มีข้อสงสัยหรือต้องการตรวจคำตอบ?',
 			errataSubtitle: 'ตรวจสอบจุดแก้ไขและข้อผิดพลาดล่าสุดได้ตลอด 24 ชม.',
 			errataBtn: 'Book Errata',
-			orderStepsTitle: 'ขั้นตอนการสั่งซื้อ',
-			step1: 'ทัก Facebook Inbox หรืออีเมล พร้อมส่งข้อความสั่งซื้อ',
-			step2: 'แอดมินแจ้งสรุปยอดรวมและบัญชีโอนเงิน โอนแล้วส่งสลิป',
-			step3: 'แจ้งชื่อที่อยู่จัดส่ง รอรับหมายเลขพัสดุ (Tracking No.)',
 			contentTitle: 'เนื้อหาภายในเล่ม (85 ปริศนา)',
 			contentSubtitle:
 				'รวบรวมโจทย์การแข่งขันทั้งหมดจากงาน Code Breaker Logic Puzzle Contest พร้อมโจทย์พิเศษเพิ่มเติมอีกกว่า 40 ข้อ เหมาะสำหรับผู้ที่ชื่นชอบ Logic Puzzle ระดับมาตรฐานสากล',
@@ -70,10 +66,6 @@
 			errataQuestion: 'Questions or errata inquiries?',
 			errataSubtitle: 'Check the official book errata and recent updates 24/7.',
 			errataBtn: 'Book Errata',
-			orderStepsTitle: 'How to Order',
-			step1: 'Contact us via Facebook Inbox or email with your order details.',
-			step2: 'Admin confirms total amount and payment details. Transfer and share slip.',
-			step3: 'Provide your shipping address and receive your package tracking number.',
 			contentTitle: 'Book Contents (85 Puzzles)',
 			contentSubtitle:
 				'A complete collection of puzzles from the official Code Breaker Logic Puzzle Contest plus 40 bonus puzzles, totaling 85 international-standard logic puzzles.',
@@ -209,16 +201,20 @@
 						{ src: '/images/product/logic_contest_book1_page-35.jpg', page: 35 }
 					]}
 				/>
-				<div class="flex flex-wrap gap-2 mt-3">
-					<span class="badge badge-accent text-accent-content font-bold text-xs py-1">
+				<div class="flex flex-wrap items-center gap-2 mt-3">
+					<span
+						class="badge badge-accent text-accent-content font-bold text-xs h-auto px-3 py-1 leading-4"
+					>
 						85+ {currentLang === 'en' ? 'Puzzles' : 'ปริศนา'}
 					</span>
 					<span
-						class="badge badge-info text-info-content font-bold text-xs px-3 py-1.5 h-auto max-w-full whitespace-normal leading-snug text-left shadow-sm"
+						class="badge badge-info text-info-content font-bold text-xs h-auto px-3 py-1 leading-4 max-w-full whitespace-normal shadow-sm"
 					>
-						📖 {t[currentLang].englishBadgeShort}
+						{t[currentLang].englishBadgeShort}
 					</span>
-					<span class="badge badge-outline bg-slate-900/80 text-slate-300 text-xs py-1">
+					<span
+						class="badge badge-outline bg-slate-900/80 text-slate-300 text-xs h-auto px-3 py-1 leading-4"
+					>
 						{currentLang === 'en' ? 'A5 Book' : 'หนังสือขนาด A5'}
 					</span>
 				</div>
@@ -260,7 +256,7 @@
 						<span
 							class="badge badge-info text-info-content font-bold text-xs px-3 py-1.5 h-auto max-w-full whitespace-normal leading-snug text-left shadow-sm"
 						>
-							📖 {t[currentLang].englishBadgeFull}
+							{t[currentLang].englishBadgeFull}
 						</span>
 					</div>
 					<h1 class="text-2xl sm:text-3xl font-extrabold text-white">
@@ -327,39 +323,6 @@
 						<MailIcon size="17" />
 						{currentLang === 'en' ? 'Contact by Email' : 'ติดต่อทางอีเมล'}
 					</a>
-				</div>
-
-				<!-- 3-Step Buying Guide -->
-				<div class="pt-4 border-t border-slate-800/80 space-y-3">
-					<h3
-						class="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-1.5"
-					>
-						<PackageIcon size="14" class="text-teal-400" />
-						<span>{t[currentLang].orderStepsTitle}</span>
-					</h3>
-					<div class="space-y-2 text-xs text-slate-300">
-						<div class="flex items-start gap-2.5">
-							<span
-								class="w-5 h-5 rounded-full bg-teal-500/20 text-teal-400 flex items-center justify-center font-bold text-[11px] shrink-0 mt-0.5"
-								>1</span
-							>
-							<span>{t[currentLang].step1}</span>
-						</div>
-						<div class="flex items-start gap-2.5">
-							<span
-								class="w-5 h-5 rounded-full bg-teal-500/20 text-teal-400 flex items-center justify-center font-bold text-[11px] shrink-0 mt-0.5"
-								>2</span
-							>
-							<span>{t[currentLang].step2}</span>
-						</div>
-						<div class="flex items-start gap-2.5">
-							<span
-								class="w-5 h-5 rounded-full bg-teal-500/20 text-teal-400 flex items-center justify-center font-bold text-[11px] shrink-0 mt-0.5"
-								>3</span
-							>
-							<span>{t[currentLang].step3}</span>
-						</div>
-					</div>
 				</div>
 			</div>
 		</div>
