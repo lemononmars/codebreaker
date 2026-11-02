@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { wordSearchSvg, wordSearchExcel } from '$lib/wordsearchExport';
 	import { splitWord } from '$lib/utils/thaiwords';
 	import { SaveIcon, LinkIcon, EyeIcon } from 'svelte-feather-icons';
 
@@ -6,7 +7,9 @@
 	let author = '';
 	let wordsInput = '';
 	let difficulty = 1; // 1: Easy, 2: Medium, 3: Hard
-	let gridSize = 12; // 10, 12, 15
+	let gridSize: number | 'custom' = 12;
+	let customRows = 12;
+	let customColumns = 12;
 
 	let isSaving = false;
 	let saveStatus = '';
@@ -20,7 +23,43 @@
 	let scaleFactor = 1.0;
 	$: cellSize = 44 * scaleFactor;
 
+	function downloadExport(format: 'svg' | 'excel') {
+		if (!grid) return;
+		const contents =
+			format === 'svg'
+				? wordSearchSvg(
+						grid,
+						wordsData.map((w) => w.word),
+						title,
+						author,
+						cellSize
+				  )
+				: wordSearchExcel(
+						grid,
+						wordsData.map((w) => w.word),
+						title,
+						author
+				  );
+		const blob = new Blob([contents], {
+			type: format === 'svg' ? 'image/svg+xml;charset=utf-8' : 'application/xml;charset=utf-8'
+		});
+		const url = URL.createObjectURL(blob);
+		const link = document.createElement('a');
+		link.href = url;
+		link.download = `${(title.trim() || 'wordsearch').replace(/[<>:"/\\|?*]/g, '_')}.${
+			format === 'svg' ? 'svg' : 'xml'
+		}`;
+		link.click();
+		setTimeout(() => URL.revokeObjectURL(url), 1000);
+	}
+
 	function generateGrid() {
+		const rows = gridSize === 'custom' ? customRows : gridSize;
+		const columns = gridSize === 'custom' ? customColumns : gridSize;
+		if (![rows, columns].every((n) => Number.isInteger(n) && n >= 2 && n <= 50)) {
+			alert('ขนาดตารางต้องเป็นจำนวนเต็มตั้งแต่ 2 ถึง 50');
+			return;
+		}
 		const rawWords = wordsInput
 			.split('\n')
 			.map((w) => w.trim())
@@ -67,20 +106,14 @@
 
 		function countWord(wordChars: string[], g: string[][]) {
 			let count = 0;
-			for (let r = 0; r < gridSize; r++) {
-				for (let c = 0; c < gridSize; c++) {
+			for (let r = 0; r < rows; r++) {
+				for (let c = 0; c < columns; c++) {
 					for (let dir of allDirs) {
 						let match = true;
 						for (let i = 0; i < wordChars.length; i++) {
 							let rr = r + i * dir[0];
 							let cc = c + i * dir[1];
-							if (
-								rr < 0 ||
-								rr >= gridSize ||
-								cc < 0 ||
-								cc >= gridSize ||
-								g[rr][cc] !== wordChars[i]
-							) {
+							if (rr < 0 || rr >= rows || cc < 0 || cc >= columns || g[rr][cc] !== wordChars[i]) {
 								match = false;
 								break;
 							}
@@ -97,20 +130,20 @@
 		let maxAttempts = 50;
 
 		for (let globalAttempt = 0; globalAttempt < maxAttempts; globalAttempt++) {
-			let newGrid = Array.from({ length: gridSize }, () => Array(gridSize).fill(''));
+			let newGrid = Array.from({ length: rows }, () => Array(columns).fill(''));
 			let newWordsData: any[] = [];
 
 			function placeWord(wordChars: string[]) {
 				for (let attempts = 0; attempts < 100; attempts++) {
 					const dir = availableDirs[Math.floor(Math.random() * availableDirs.length)];
-					const startR = Math.floor(Math.random() * gridSize);
-					const startC = Math.floor(Math.random() * gridSize);
+					const startR = Math.floor(Math.random() * rows);
+					const startC = Math.floor(Math.random() * columns);
 
 					let canPlace = true;
 					for (let i = 0; i < wordChars.length; i++) {
 						const r = startR + i * dir[0];
 						const c = startC + i * dir[1];
-						if (r < 0 || r >= gridSize || c < 0 || c >= gridSize) {
+						if (r < 0 || r >= rows || c < 0 || c >= columns) {
 							canPlace = false;
 							break;
 						}
@@ -170,8 +203,8 @@
 					fillLetters = [...fillLetters, ...allWordChars, ...allWordChars];
 			}
 
-			for (let r = 0; r < gridSize; r++) {
-				for (let c = 0; c < gridSize; c++) {
+			for (let r = 0; r < rows; r++) {
+				for (let c = 0; c < columns; c++) {
 					if (newGrid[r][c] === '') {
 						newGrid[r][c] = fillLetters[Math.floor(Math.random() * fillLetters.length)];
 					}
@@ -286,7 +319,9 @@
 		<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 			<div class="space-y-4">
 				<div class="form-control">
-					<label for="ws-title" class="label"><span class="label-text font-bold">ชื่อปริศนา</span></label>
+					<label for="ws-title" class="label"
+						><span class="label-text font-bold">ชื่อปริศนา</span></label
+					>
 					<input
 						id="ws-title"
 						type="text"
@@ -315,17 +350,72 @@
 					</div>
 					<div class="flex flex-col gap-2">
 						<label class="cursor-pointer flex items-center gap-2">
-							<input type="radio" name="size" value={10} bind:group={gridSize} class="radio radio-primary" />
+							<input
+								type="radio"
+								name="size"
+								value={10}
+								bind:group={gridSize}
+								class="radio radio-primary"
+							/>
 							<span>10x10 (เล็ก)</span>
 						</label>
 						<label class="cursor-pointer flex items-center gap-2">
-							<input type="radio" name="size" value={12} bind:group={gridSize} class="radio radio-primary" />
+							<input
+								type="radio"
+								name="size"
+								value={12}
+								bind:group={gridSize}
+								class="radio radio-primary"
+							/>
 							<span>12x12 (กลาง)</span>
 						</label>
 						<label class="cursor-pointer flex items-center gap-2">
-							<input type="radio" name="size" value={15} bind:group={gridSize} class="radio radio-primary" />
+							<input
+								type="radio"
+								name="size"
+								value={15}
+								bind:group={gridSize}
+								class="radio radio-primary"
+							/>
 							<span>15x15 (ใหญ่)</span>
 						</label>
+						<label class="cursor-pointer flex items-center gap-2">
+							<input
+								type="radio"
+								name="size"
+								value="custom"
+								bind:group={gridSize}
+								class="radio radio-primary"
+							/>
+							<span>กำหนดเอง (Custom)</span>
+						</label>
+						{#if gridSize === 'custom'}
+							<label class="flex items-center gap-2"
+								>แถว (Rows)
+								<input
+									aria-label="Rows"
+									type="number"
+									min="2"
+									max="50"
+									step="1"
+									bind:value={customRows}
+									class="input input-bordered w-24"
+								/>
+							</label>
+							<label class="flex items-center gap-2"
+								>คอลัมน์ (Columns)
+								<input
+									aria-label="Columns"
+									type="number"
+									min="2"
+									max="50"
+									step="1"
+									bind:value={customColumns}
+									class="input input-bordered w-24"
+								/>
+							</label>
+							<p class="text-sm">2–50 แถว / คอลัมน์</p>
+						{/if}
 					</div>
 				</div>
 
@@ -335,15 +425,33 @@
 					</div>
 					<div class="flex flex-col gap-2">
 						<label class="cursor-pointer flex items-center gap-2">
-							<input type="radio" name="diff" value={1} bind:group={difficulty} class="radio radio-primary" />
+							<input
+								type="radio"
+								name="diff"
+								value={1}
+								bind:group={difficulty}
+								class="radio radio-primary"
+							/>
 							<span>ง่าย (สุ่มตัวอักษรมั่ว)</span>
 						</label>
 						<label class="cursor-pointer flex items-center gap-2">
-							<input type="radio" name="diff" value={2} bind:group={difficulty} class="radio radio-primary" />
+							<input
+								type="radio"
+								name="diff"
+								value={2}
+								bind:group={difficulty}
+								class="radio radio-primary"
+							/>
 							<span>ปานกลาง (ดึงตัวอักษรจากคำศัพท์มาหลอก)</span>
 						</label>
 						<label class="cursor-pointer flex items-center gap-2">
-							<input type="radio" name="diff" value={3} bind:group={difficulty} class="radio radio-primary" />
+							<input
+								type="radio"
+								name="diff"
+								value={3}
+								bind:group={difficulty}
+								class="radio radio-primary"
+							/>
 							<span>ยาก (สร้างคำที่เกือบถูก Near Misses ซ่อนไว้)</span>
 						</label>
 					</div>
@@ -378,25 +486,30 @@
 
 			{#if isGenerated && grid}
 				<div class="flex justify-end mb-4 items-center gap-3">
-					<span class="text-sm font-bold text-base-content/60">ขนาดตัวอักษร:</span>
+					<label for="ws-scale" class="text-sm font-bold text-base-content/60"
+						>ขนาดตาราง: {Math.round(scaleFactor * 100)}%</label
+					>
 					<input
+						id="ws-scale"
 						type="range"
-						min="0.6"
-						max="1.5"
-						step="0.1"
+						min="0.5"
+						max="2"
+						step="0.05"
 						bind:value={scaleFactor}
 						class="range range-primary range-xs w-32"
 					/>
+					<button class="btn btn-ghost btn-sm" on:click={() => (scaleFactor = 1)}>Reset 100%</button
+					>
 				</div>
 
 				<div
-					class="mt-4 bg-base-300 p-4 rounded-3xl shadow-inner overflow-x-auto border border-base-100/50 flex justify-center"
+					class="mt-4 bg-base-300 p-4 rounded-3xl shadow-inner overflow-x-auto border border-base-100/50 flex text-base-content"
 				>
 					<div
-						class="grid"
+						class="grid shrink-0 mx-auto"
 						style="width: {grid[0].length * cellSize}px; height: {grid.length *
 							cellSize}px; grid-template-columns: repeat({grid[0]
-							.length}, 1fr); grid-template-rows: repeat({grid.length}, 1fr);"
+							.length}, {cellSize}px); grid-template-rows: repeat({grid.length}, {cellSize}px);"
 					>
 						{#each grid as row}
 							{#each row as cell}
@@ -411,19 +524,26 @@
 					</div>
 				</div>
 
+				<div class="mt-4 flex flex-wrap justify-center gap-3">
+					<button class="btn btn-outline" on:click={() => downloadExport('excel')}
+						>Export Excel (.xml)</button
+					>
+					<button class="btn btn-outline" on:click={() => downloadExport('svg')}>Export SVG</button>
+				</div>
+
 				<div class="mt-10 flex flex-col items-center">
-					<div class="flex gap-4">
-						<button 
-							class="btn btn-primary btn-lg shadow-xl" 
-							on:click={() => saveToDatabase(true)} 
+					<div class="flex flex-wrap justify-center gap-4">
+						<button
+							class="btn btn-primary btn-lg shadow-xl"
+							on:click={() => saveToDatabase(true)}
 							disabled={isSaving}
 						>
 							<SaveIcon class="mr-2" />
 							{isSaving ? 'กำลังบันทึก...' : 'บันทึกสู่สาธารณะ'}
 						</button>
-						<button 
-							class="btn btn-outline btn-lg shadow-xl" 
-							on:click={() => saveToDatabase(false)} 
+						<button
+							class="btn btn-outline btn-lg shadow-xl"
+							on:click={() => saveToDatabase(false)}
 							disabled={isSaving}
 						>
 							<SaveIcon class="mr-2" />
