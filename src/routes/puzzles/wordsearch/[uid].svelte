@@ -501,10 +501,11 @@
 			<div class="grid grid-cols-2 lg:grid-cols-2 gap-1.5 max-h-64 lg:max-h-96 overflow-y-auto p-1">
 				{#each wordsData as w}
 					<div
-						class="px-2 py-1.5 rounded-xl text-center text-xs font-bold transition-all border truncate
+						class="px-2 py-1.5 rounded-xl text-center font-bold transition-all border min-w-0 break-words
 						{w.found
 							? 'bg-success/20 text-success border-success/40 line-through'
 							: 'bg-base-100 text-base-content border-base-300'}"
+						style="font-size: {0.75 * scaleFactor}rem; line-height: 1.5;"
 						title={w.word}
 					>
 						{w.word}
