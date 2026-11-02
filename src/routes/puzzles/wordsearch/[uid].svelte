@@ -16,6 +16,41 @@
 	// Layout Flip State (Desktop Grid left / Wordlist right)
 	let isFlipped = false;
 	let downloadMenu: HTMLDetailsElement;
+	let audioContext: AudioContext | null = null;
+
+	async function playSound(kind: 'click' | 'select' | 'found') {
+		try {
+			const Context = window.AudioContext || (window as any).webkitAudioContext;
+			if (!Context) return;
+			if (!audioContext) audioContext = new Context();
+			const context = audioContext!;
+			if (context.state === 'suspended') await context.resume();
+			if (context.state === 'closed') return;
+			const notes = kind === 'found' ? [523.25, 659.25, 783.99] : [kind === 'click' ? 440 : 660];
+			const duration = kind === 'found' ? 0.16 : 0.05;
+			const now = context.currentTime;
+			notes.forEach((frequency, index) => {
+				const oscillator = context.createOscillator();
+				const gain = context.createGain();
+				const start = now + index * 0.09;
+				oscillator.type = 'sine';
+				oscillator.frequency.setValueAtTime(frequency, start);
+				gain.gain.setValueAtTime(0, start);
+				gain.gain.linearRampToValueAtTime(0.06, start + 0.005);
+				gain.gain.exponentialRampToValueAtTime(0.001, start + duration);
+				oscillator.connect(gain);
+				gain.connect(context.destination);
+				oscillator.onended = () => {
+					oscillator.disconnect();
+					gain.disconnect();
+				};
+				oscillator.start(start);
+				oscillator.stop(start + duration);
+			});
+		} catch {
+			// Audio may be unavailable; puzzle interactions still work.
+		}
+	}
 
 	function startTimer() {
 		if (timerInterval) clearInterval(timerInterval);
@@ -147,6 +182,7 @@
 		window.addEventListener('touchend', handleMouseUp);
 		return () => {
 			if (timerInterval) clearInterval(timerInterval);
+			if (audioContext) void audioContext.close().catch(() => {});
 			window.removeEventListener('mouseup', handleMouseUp);
 			window.removeEventListener('touchend', handleMouseUp);
 		};
@@ -169,7 +205,8 @@
 	}
 
 	function startDrag(r: number, c: number) {
-		if (solved) return;
+		if (solved || isPaused) return;
+		void playSound('click');
 		isDragging = true;
 		dragStart = [r, c];
 		dragCurrent = [r, c];
@@ -177,9 +214,11 @@
 	}
 
 	function onDragOver(r: number, c: number) {
-		if (!isDragging || !dragStart) return;
+		if (!isDragging || !dragStart || isPaused) return;
+		if (dragCurrent?.[0] === r && dragCurrent?.[1] === c) return;
 		dragCurrent = [r, c];
 		currentSelection = getLine(dragStart[0], dragStart[1], dragCurrent[0], dragCurrent[1]);
+		if (currentSelection.length) void playSound('select');
 	}
 
 	async function endDrag() {
@@ -240,6 +279,7 @@
 		}
 
 		if (foundOne) {
+			void playSound('found');
 			wordsData = [...wordsData];
 			checkWin();
 		}
@@ -431,7 +471,7 @@
 					</button>
 					<details class="dropdown dropdown-end" bind:this={downloadMenu}>
 						<summary
-							class="btn btn-circle btn-ghost btn-xs text-slate-300"
+							class="btn btn-ghost btn-xs text-slate-300 gap-1"
 							title="Download"
 							aria-label="Download puzzle"
 						>
@@ -450,13 +490,34 @@
 									d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
 								/>
 							</svg>
+							<svg class="h-3 w-3" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+								<path
+									fill-rule="evenodd"
+									d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+									clip-rule="evenodd"
+								/>
+							</svg>
 						</summary>
 						<ul
-							class="dropdown-content menu p-2 shadow-xl bg-base-100 text-base-content rounded-box w-48 z-50"
+							class="dropdown-content menu menu-compact text-xs text-left p-2 shadow-xl bg-base-100 text-base-content rounded-box w-48 z-50"
 						>
-							<li><button on:click={exportImage}>PNG image (.png)</button></li>
-							<li><button on:click={() => downloadExport('excel')}>Excel (.xml)</button></li>
-							<li><button on:click={() => downloadExport('svg')}>SVG image (.svg)</button></li>
+							<li>
+								<button class="text-xs text-left justify-start" on:click={exportImage}
+									>PNG image (.png)</button
+								>
+							</li>
+							<li>
+								<button
+									class="text-xs text-left justify-start"
+									on:click={() => downloadExport('excel')}>Excel (.xml)</button
+								>
+							</li>
+							<li>
+								<button
+									class="text-xs text-left justify-start"
+									on:click={() => downloadExport('svg')}>SVG image (.svg)</button
+								>
+							</li>
 						</ul>
 					</details>
 					<!-- FLIP LEFT-RIGHT LAYOUT TOGGLE BUTTON (DESKTOP) -->
@@ -501,11 +562,11 @@
 			<div class="grid grid-cols-2 lg:grid-cols-2 gap-1.5 max-h-64 lg:max-h-96 overflow-y-auto p-1">
 				{#each wordsData as w}
 					<div
-						class="px-2 py-1.5 rounded-xl text-center font-bold transition-all border min-w-0 break-words
+						class="px-2 py-1.5 rounded-xl text-center font-bold transition-colors border min-w-0 break-words
 						{w.found
 							? 'bg-success/20 text-success border-success/40 line-through'
 							: 'bg-base-100 text-base-content border-base-300'}"
-						style="font-size: {0.75 * scaleFactor}rem; line-height: 1.5;"
+						style="font-size: {cellSize * 0.035}rem; line-height: 1.5;"
 						title={w.word}
 					>
 						{w.word}

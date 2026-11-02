@@ -38,9 +38,15 @@ describe('saved word search layout', () => {
 	])('renders a saved %i × %i grid at its actual dimensions on first render', (rows, columns) => {
 		const grid = Array.from({ length: rows }, () => Array(columns).fill('ม'));
 		const { html } = WordSearch.render({
-			content: { title: 'Saved puzzle', clues: { grid, wordsData: [] } }
+			content: {
+				title: 'Saved puzzle',
+				clues: { grid, wordsData: [{ word: 'ม', chars: ['ม'], found: false }] }
+			}
 		});
 		expect((html.match(/data-r=/g) || []).length).toBe(rows * columns);
+		const wordFont = html.match(/style="font-size: ([0-9.]+)rem; line-height: 1.5;"[^>]*title="ม"/);
+		expect(wordFont).not.toBeNull();
+		expect(Number(wordFont![1])).toBeCloseTo(36 * 0.035);
 		expect(html).toContain(`width: ${columns * 36}px; height: ${rows * 36}px;`);
 		expect(html).toContain(
 			`grid-template-columns: repeat(${columns}, 36px); grid-template-rows: repeat(${rows}, 36px);`
