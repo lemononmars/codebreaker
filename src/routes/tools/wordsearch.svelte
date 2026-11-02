@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { wordSearchSvg, wordSearchExcel } from '$lib/wordsearchExport';
-	import { splitWord } from '$lib/utils/thaiwords';
+	import { generateWordSearch } from '$lib/wordsearchGenerator';
 	import { SaveIcon, LinkIcon, EyeIcon } from 'svelte-feather-icons';
 
 	let title = '';
@@ -18,6 +18,7 @@
 	let grid: string[][] | null = null;
 	let wordsData: { word: string; chars: string[]; found: boolean }[] = [];
 	let isGenerated = false;
+	let generationError = '';
 
 	// UI Settings
 	let scaleFactor = 1.0;
@@ -54,190 +55,21 @@
 	}
 
 	function generateGrid() {
-		const rows = gridSize === 'custom' ? customRows : gridSize;
-		const columns = gridSize === 'custom' ? customColumns : gridSize;
-		if (![rows, columns].every((n) => Number.isInteger(n) && n >= 2 && n <= 50)) {
-			alert('ขนาดตารางต้องเป็นจำนวนเต็มตั้งแต่ 2 ถึง 50');
-			return;
+		generationError = '';
+		try {
+			const result = generateWordSearch(
+				wordsInput,
+				gridSize === 'custom' ? customRows : gridSize,
+				gridSize === 'custom' ? customColumns : gridSize,
+				difficulty
+			);
+			grid = result.grid;
+			wordsData = result.wordsData;
+			isGenerated = true;
+		} catch (error) {
+			isGenerated = false;
+			generationError = error instanceof Error ? error.message : 'Could not generate puzzle.';
 		}
-		const rawWords = wordsInput
-			.split('\n')
-			.map((w) => w.trim())
-			.filter((w) => w.length > 0);
-		const wordsList = [...new Set(rawWords)];
-
-		if (wordsList.length === 0) {
-			alert('กรุณาใส่คำศัพท์อย่างน้อย 1 คำ');
-			return;
-		}
-
-		const dirsEasy = [
-			[0, 1],
-			[1, 0]
-		];
-		const dirsMed = [
-			[0, 1],
-			[1, 0],
-			[1, 1],
-			[-1, 1]
-		];
-		const dirsHard = [
-			[0, 1],
-			[1, 0],
-			[1, 1],
-			[-1, 1],
-			[0, -1],
-			[-1, 0],
-			[-1, -1],
-			[1, -1]
-		];
-		const availableDirs = difficulty === 1 ? dirsEasy : difficulty === 2 ? dirsMed : dirsHard;
-		const allDirs = [
-			[0, 1],
-			[1, 0],
-			[1, 1],
-			[-1, 1],
-			[0, -1],
-			[-1, 0],
-			[-1, -1],
-			[1, -1]
-		];
-		const thaiLetters = 'กขคฆงจฉชซฌญฎฏฐฑฒณดตถทธนบปผฝพฟภมยรลวศษสหฬอฮ'.split('');
-
-		function countWord(wordChars: string[], g: string[][]) {
-			let count = 0;
-			for (let r = 0; r < rows; r++) {
-				for (let c = 0; c < columns; c++) {
-					for (let dir of allDirs) {
-						let match = true;
-						for (let i = 0; i < wordChars.length; i++) {
-							let rr = r + i * dir[0];
-							let cc = c + i * dir[1];
-							if (rr < 0 || rr >= rows || cc < 0 || cc >= columns || g[rr][cc] !== wordChars[i]) {
-								match = false;
-								break;
-							}
-						}
-						if (match) count++;
-					}
-				}
-			}
-			return count;
-		}
-
-		let bestGrid: string[][] | null = null;
-		let bestWordsData: any[] = [];
-		let maxAttempts = 50;
-
-		for (let globalAttempt = 0; globalAttempt < maxAttempts; globalAttempt++) {
-			let newGrid = Array.from({ length: rows }, () => Array(columns).fill(''));
-			let newWordsData: any[] = [];
-
-			function placeWord(wordChars: string[]) {
-				for (let attempts = 0; attempts < 100; attempts++) {
-					const dir = availableDirs[Math.floor(Math.random() * availableDirs.length)];
-					const startR = Math.floor(Math.random() * rows);
-					const startC = Math.floor(Math.random() * columns);
-
-					let canPlace = true;
-					for (let i = 0; i < wordChars.length; i++) {
-						const r = startR + i * dir[0];
-						const c = startC + i * dir[1];
-						if (r < 0 || r >= rows || c < 0 || c >= columns) {
-							canPlace = false;
-							break;
-						}
-						if (newGrid[r][c] !== '' && newGrid[r][c] !== wordChars[i]) {
-							canPlace = false;
-							break;
-						}
-					}
-
-					if (canPlace) {
-						const positions = [];
-						for (let i = 0; i < wordChars.length; i++) {
-							const r = startR + i * dir[0];
-							const c = startC + i * dir[1];
-							newGrid[r][c] = wordChars[i];
-							positions.push([r, c]);
-						}
-						return positions;
-					}
-				}
-				return null;
-			}
-
-			if (difficulty === 3) {
-				wordsList.forEach((w) => {
-					const chars = splitWord(w);
-					if (chars.length > 2) {
-						const nearMissLen = chars.length - 1;
-						const nearMissChars = chars.slice(0, nearMissLen);
-						nearMissChars[nearMissLen - 1] =
-							thaiLetters[Math.floor(Math.random() * thaiLetters.length)];
-						placeWord(nearMissChars);
-					}
-				});
-			}
-
-			let allPlaced = true;
-			wordsList.forEach((w) => {
-				const chars = splitWord(w);
-				const pos = placeWord(chars);
-				if (pos) {
-					newWordsData.push({ word: w, chars, found: false });
-				} else {
-					allPlaced = false;
-				}
-			});
-
-			if (!allPlaced) continue; // Try again if couldn't fit words
-
-			let fillLetters = [...thaiLetters];
-			if (difficulty === 2) {
-				const allWordChars = wordsList.flatMap((w) => splitWord(w));
-				if (allWordChars.length > 0) fillLetters = allWordChars;
-			} else if (difficulty === 3) {
-				const allWordChars = wordsList.flatMap((w) => splitWord(w));
-				if (allWordChars.length > 0)
-					fillLetters = [...fillLetters, ...allWordChars, ...allWordChars];
-			}
-
-			for (let r = 0; r < rows; r++) {
-				for (let c = 0; c < columns; c++) {
-					if (newGrid[r][c] === '') {
-						newGrid[r][c] = fillLetters[Math.floor(Math.random() * fillLetters.length)];
-					}
-				}
-			}
-
-			// Validate Uniqueness
-			let isUnique = true;
-			for (let w of wordsList) {
-				const chars = splitWord(w);
-				// A word search solution is technically unique if the word count is exactly 1 (for normal words),
-				// or if it matches exactly the amount of times it was intended, but usually it's just 1.
-				if (countWord(chars, newGrid) > 1) {
-					isUnique = false;
-					break;
-				}
-			}
-
-			if (isUnique) {
-				bestGrid = newGrid;
-				bestWordsData = newWordsData;
-				break;
-			}
-		}
-
-		if (!bestGrid) {
-			alert('ไม่สามารถสร้างตารางที่รับประกันคำตอบเดียวได้ กรุณาลดจำนวนคำหรือเปลี่ยนระดับความยาก');
-			return;
-		}
-
-		wordsData = bestWordsData.sort((a, b) => a.word.localeCompare(b.word));
-		grid = bestGrid;
-		isGenerated = true;
 	}
 
 	async function saveToDatabase(isPublic: boolean) {
@@ -461,7 +293,7 @@
 			<div class="space-y-4">
 				<div class="form-control h-full">
 					<label for="wordsearch-textarea" class="label">
-						<span class="label-text font-bold">รายการคำศัพท์ (1 คำต่อบรรทัด)</span>
+						<span class="label-text font-bold">รายการคำศัพท์ (ไทยหรืออังกฤษ, 1 คำต่อบรรทัด)</span>
 					</label>
 					<textarea
 						id="wordsearch-textarea"
@@ -470,6 +302,7 @@
 						placeholder="ส้ม&#10;มะละกอ&#10;กล้วย&#10;สับปะรด"
 						on:input={() => {
 							isGenerated = false;
+							generationError = '';
 						}}
 					/>
 				</div>
@@ -483,6 +316,10 @@
 					{isGenerated ? 'สุ่มตารางใหม่ (Regenerate)' : 'สร้างตัวอย่างตาราง'}
 				</button>
 			</div>
+
+			{#if generationError}
+				<p role="alert" class="mt-4 text-error font-bold">{generationError}</p>
+			{/if}
 
 			{#if isGenerated && grid}
 				<div class="flex justify-end mb-4 items-center gap-3">
