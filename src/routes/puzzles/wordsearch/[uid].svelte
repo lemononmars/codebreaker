@@ -38,9 +38,13 @@
 		return `${m}:${sec.toString().padStart(2, '0')}`;
 	}
 
-	let grid: string[][] = [];
-	let wordsData: { word: string; chars: string[]; found: boolean }[] = [];
-	let gridSize = 10;
+	$: grid = (content?.clues?.grid || []) as string[][];
+	$: wordsData = (content?.clues?.wordsData || []) as {
+		word: string;
+		chars: string[];
+		found: boolean;
+	}[];
+	$: gridSize = grid.length || 10;
 	$: gridColumns = grid[0]?.length || 10;
 
 	type FoundWordLine = { startR: number; startC: number; endR: number; endC: number };
@@ -133,22 +137,8 @@
 		link.click();
 	}
 
-	function initGame() {
-		if (content.clues) {
-			grid = content.clues.grid || [];
-			wordsData = content.clues.wordsData || [];
-			gridSize = grid.length || 10;
-		}
-	}
-
-	$: if (content) {
-		if (typeof window !== 'undefined') {
-			initGame();
-			startTimer();
-		}
-	}
-
 	onMount(() => {
+		startTimer();
 		const handleMouseUp = () => endDrag();
 		window.addEventListener('mouseup', handleMouseUp);
 		window.addEventListener('touchend', handleMouseUp);
@@ -325,14 +315,14 @@
 
 				<div
 					class="absolute inset-0 grid"
-					style="grid-template-columns: repeat({gridColumns}, 1fr); grid-template-rows: repeat({gridSize}, 1fr);"
+					style="grid-template-columns: repeat({gridColumns}, {cellSize}px); grid-template-rows: repeat({gridSize}, {cellSize}px);"
 				>
 					{#each grid as row, r}
 						{#each row as cell, c}
 							<div
 								data-r={r}
 								data-c={c}
-								class="flex items-center justify-center font-bold text-base-content hover:bg-base-content/10 transition-colors cursor-pointer rounded-full z-20"
+								class="flex items-center justify-center font-bold text-base-content hover:bg-base-content/10 transition-colors cursor-pointer rounded-full leading-none min-w-0 min-h-0 z-20"
 								style="font-size: {cellSize * 0.035}rem;"
 								on:mousedown={() => {
 									if (!isPaused) startDrag(r, c);
