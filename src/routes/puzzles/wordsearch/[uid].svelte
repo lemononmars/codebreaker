@@ -15,6 +15,7 @@
 	let isPaused = false;
 	// Layout Flip State (Desktop Grid left / Wordlist right)
 	let isFlipped = false;
+	let downloadMenu: HTMLDetailsElement;
 
 	function startTimer() {
 		if (timerInterval) clearInterval(timerInterval);
@@ -59,6 +60,7 @@
 	$: cellSize = 36 * scaleFactor;
 
 	function downloadExport(format: 'svg' | 'excel') {
+		downloadMenu.open = false;
 		if (!grid.length) return;
 		const words = wordsData.map((w) => w.word);
 		const contents =
@@ -80,6 +82,7 @@
 	}
 
 	function exportImage() {
+		downloadMenu.open = false;
 		const canvas = document.createElement('canvas');
 		const padding = 40;
 		const boardWidth = gridColumns * 36;
@@ -264,7 +267,7 @@
 </script>
 
 <div
-	class="max-w-6xl mx-auto px-2 sm:px-4 py-4 flex flex-col lg:flex-row items-center lg:items-start justify-center gap-6 select-none overflow-x-hidden {isFlipped
+	class="w-full max-w-none mx-auto px-2 sm:px-4 py-4 flex flex-col lg:flex-row items-center lg:items-start justify-center gap-6 select-none overflow-x-hidden {isFlipped
 		? 'lg:flex-row-reverse'
 		: ''}"
 >
@@ -426,25 +429,36 @@
 							/></svg
 						>
 					</button>
-					<button
-						class="btn btn-circle btn-ghost btn-xs text-slate-300"
-						on:click={exportImage}
-						title="บันทึกเป็นรูปภาพ"
-					>
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							class="h-5 w-5"
-							fill="none"
-							viewBox="0 0 24 24"
-							stroke="currentColor"
-							><path
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								stroke-width="2"
-								d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
-							/></svg
+					<details class="dropdown dropdown-end" bind:this={downloadMenu}>
+						<summary
+							class="btn btn-circle btn-ghost btn-xs text-slate-300"
+							title="Download"
+							aria-label="Download puzzle"
 						>
-					</button>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								class="h-5 w-5"
+								fill="none"
+								viewBox="0 0 24 24"
+								stroke="currentColor"
+								aria-hidden="true"
+							>
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									stroke-width="2"
+									d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+								/>
+							</svg>
+						</summary>
+						<ul
+							class="dropdown-content menu p-2 shadow-xl bg-base-100 text-base-content rounded-box w-48 z-50"
+						>
+							<li><button on:click={exportImage}>PNG image (.png)</button></li>
+							<li><button on:click={() => downloadExport('excel')}>Excel (.xml)</button></li>
+							<li><button on:click={() => downloadExport('svg')}>SVG image (.svg)</button></li>
+						</ul>
+					</details>
 					<!-- FLIP LEFT-RIGHT LAYOUT TOGGLE BUTTON (DESKTOP) -->
 					<button
 						class="btn btn-circle btn-ghost btn-xs text-slate-300 hidden lg:inline-flex"
@@ -472,15 +486,6 @@
 				<span class="text-sm">{Math.round(scaleFactor * 100)}%</span>
 				<button class="btn btn-ghost btn-xs" on:click={() => (scaleFactor = 1)}>Reset</button>
 			</div>
-		</div>
-
-		<div class="flex flex-wrap gap-2">
-			<button class="btn btn-outline btn-sm" on:click={() => downloadExport('excel')}
-				>Export Excel (.xml)</button
-			>
-			<button class="btn btn-outline btn-sm" on:click={() => downloadExport('svg')}
-				>Export SVG</button
-			>
 		</div>
 
 		<!-- Word List Box -->

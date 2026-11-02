@@ -48,7 +48,7 @@
 	<Navbar/>
 </header>
 
-<main class="relative z-10 overflow-x-clip" id="main">
+<main class="relative z-10 overflow-x-clip" class:max-w-none={currentPath.startsWith('/puzzles/wordsearch/')} class:w-full={currentPath.startsWith('/puzzles/wordsearch/')} id="main">
 	<div>
 		<slot />
 	</div>
